@@ -318,10 +318,9 @@ export default function HeroSection() {
             letterSpacing: "-0.025em",
           }}
         >
-          <span className="block">Dental practice management</span>
-          <span className="block">software that actually</span>
+          <span className="block">Dental practice management software</span>
           <span className="block">
-            <span style={{ color: "#2563EB" }}>makes sense.</span>
+            for <span style={{ color: "#2563EB" }}>UK private practices.</span>
           </span>
         </h1>
       </AnimatedGroup>
