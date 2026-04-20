@@ -97,7 +97,7 @@ export default function FeaturesSection() {
           <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-foreground leading-[1.1]">
             Your software is working
             <br />
-            <span className="text-muted-foreground">against you.</span>
+            <span className="text-[#2563EB]">against you</span>
           </h2>
           <p className="mt-5 text-base md:text-lg text-muted-foreground">
             Overpriced. Overcomplicated. Losing you patients every week.
