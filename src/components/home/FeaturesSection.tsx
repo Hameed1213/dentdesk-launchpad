@@ -32,28 +32,14 @@ const ComplexityPreview = () => (
 
 const NoShowsPreview = () => (
   <div className="rounded-xl border border-border bg-background p-4 shadow-sm">
-    <div className="flex items-center justify-between">
-      <span className="text-sm font-semibold text-foreground">Reception to-do</span>
-      <span className="text-[10px] font-semibold text-orange-500 bg-orange-500/10 rounded-full px-2 py-0.5">
-        12 manual tasks
-      </span>
+    <div className="text-sm font-semibold text-foreground">Reception to-do</div>
+    <div className="text-xs text-muted-foreground mt-0.5">Reminders, deposits, forms</div>
+    <div className="mt-3 text-2xl font-bold tabular-nums text-foreground">
+      12 tasks
     </div>
-    <div className="mt-3 space-y-1.5">
-      {[
-        { task: "Send reminders", count: "× 38" },
-        { task: "Chase deposits", count: "× 6" },
-      ].map((s, i) => (
-        <div
-          key={i}
-          className="flex items-center justify-between text-[11px] rounded-md bg-orange-500/5 border border-orange-500/20 px-2 py-1.5"
-        >
-          <div className="flex items-center gap-2">
-            <span className="font-medium text-foreground">{s.task}</span>
-            <span className="text-muted-foreground tabular-nums">{s.count}</span>
-          </div>
-          <X className="w-3 h-3 text-orange-500" />
-        </div>
-      ))}
+    <div className="mt-2 flex items-center gap-1.5 text-[11px] text-orange-500 font-medium">
+      <X className="w-3 h-3" />
+      <span>All done by hand</span>
     </div>
   </div>
 );
