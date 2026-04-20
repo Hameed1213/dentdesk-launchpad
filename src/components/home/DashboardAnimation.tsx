@@ -1145,12 +1145,12 @@ function DashboardMockup() {
   return (
     <div
       ref={containerRef}
-      className="w-full h-full bg-[#F8FAFC] flex overflow-hidden rounded-2xl relative select-none"
+      className="w-full h-full bg-[#F8FAFC] flex overflow-hidden rounded-[8px] relative select-none"
     >
       <SidebarIconOnly activePage={activePage} />
-      <div className="flex-1 flex flex-col overflow-hidden relative">
+      <div className="flex-1 min-h-0 flex flex-col overflow-hidden relative">
         <TopBar activePage={activePage} />
-        <div className="flex-1 overflow-hidden relative">
+        <div className="flex-1 min-h-0 overflow-hidden relative">
           <AnimatePresence mode="wait">
             {activePage === "dashboard" && <DashboardPage key="dashboard" />}
             {activePage === "calendar" && (
@@ -1176,9 +1176,11 @@ function DashboardMockup() {
 export default function DashboardAnimation() {
   return (
     <section className="bg-white pt-0 pb-24 overflow-hidden hidden md:block">
-      <ContainerScroll titleComponent={<></>}>
-        <DashboardMockup />
-      </ContainerScroll>
+      <div className="w-full max-w-7xl mx-auto px-0">
+        <ContainerScroll titleComponent={<></>}>
+          <DashboardMockup />
+        </ContainerScroll>
+      </div>
     </section>
   );
 }
