@@ -41,8 +41,8 @@ interface AnimatedGroupProps {
   className?: string;
   variants?: { container?: Variants; item?: Variants };
   preset?: PresetType;
-  as?: keyof JSX.IntrinsicElements;
-  asChild?: keyof JSX.IntrinsicElements;
+  as?: keyof React.JSX.IntrinsicElements;
+  asChild?: keyof React.JSX.IntrinsicElements;
 }
 
 export function AnimatedGroup({

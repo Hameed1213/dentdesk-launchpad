@@ -33,7 +33,7 @@ const presetVariants: Record<PresetType, { container: Variants; item: Variants }
 interface TextEffectProps {
   children: string;
   per?: PerType;
-  as?: keyof JSX.IntrinsicElements;
+  as?: keyof React.JSX.IntrinsicElements;
   variants?: { container?: Variants; item?: Variants };
   className?: string;
   preset?: PresetType;
