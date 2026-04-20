@@ -1,6 +1,5 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
-  ArrowRight,
   CalendarDays,
   Users,
   CreditCard,
@@ -8,8 +7,6 @@ import {
   FileText,
 } from "lucide-react";
 import { AnimatedGroup } from "@/components/ui/animated-group";
-
-const SIGNUP_URL = "https://app.dentdock.co.uk/signup";
 
 const transition = {
   type: "spring" as const,
@@ -30,31 +27,6 @@ const makeContainer = (delay: number) => ({
   },
 });
 
-function AnnouncementPill() {
-  return (
-    <a
-      href="#features"
-      className="group mx-auto inline-flex items-center gap-3 rounded-full border border-neutral-200 bg-neutral-100 px-4 py-1.5 text-sm text-neutral-600 transition-all hover:bg-neutral-200"
-    >
-      <span className="flex items-center gap-2">
-        <span style={{ color: "#2563EB" }}>✦</span>
-        Launching 2025 — Free migration from Dentally & EXACT
-      </span>
-      <span className="block h-4 w-px bg-neutral-300" />
-      <span className="relative size-5 overflow-hidden rounded-full bg-neutral-200/70">
-        <span className="absolute inset-0 flex w-10 transition-transform duration-500 ease-in-out group-hover:-translate-x-1/2">
-          <span className="flex size-5 items-center justify-center">
-            <ArrowRight className="m-auto size-3 text-neutral-700" />
-          </span>
-          <span className="flex size-5 items-center justify-center">
-            <ArrowRight className="m-auto size-3 text-neutral-700" />
-          </span>
-        </span>
-      </span>
-    </a>
-  );
-}
-
 function DashboardMockup() {
   const ref = useRef<HTMLDivElement>(null);
 
@@ -65,7 +37,6 @@ function DashboardMockup() {
     const update = () => {
       const rect = el.getBoundingClientRect();
       const vh = window.innerHeight;
-      // Progress: 0 when top of element at bottom of viewport, 1 when reaching ~40% from top
       const start = vh;
       const end = vh * 0.4;
       const p = Math.min(1, Math.max(0, (start - rect.top) / (start - end)));
@@ -171,7 +142,6 @@ function DashboardMockup() {
 
             {/* Appointments */}
             <div className="flex-1 overflow-hidden p-4 flex flex-col gap-2">
-              {/* Row 1 */}
               <div className="flex items-center gap-3">
                 <div className="text-[11px] text-neutral-300 w-9 shrink-0">09:00</div>
                 <div
@@ -190,7 +160,6 @@ function DashboardMockup() {
                 </div>
               </div>
 
-              {/* Row 2 */}
               <div className="flex items-center gap-3">
                 <div className="text-[11px] text-neutral-300 w-9 shrink-0">09:45</div>
                 <div className="flex-1 rounded-lg px-3 py-2 flex justify-between items-center bg-green-50 border-l-[3px] border-green-500">
@@ -206,7 +175,6 @@ function DashboardMockup() {
                 </div>
               </div>
 
-              {/* Row 3 */}
               <div className="flex items-center gap-3">
                 <div className="text-[11px] text-neutral-300 w-9 shrink-0">10:30</div>
                 <div className="flex-1 rounded-lg px-3 py-2 flex justify-center items-center bg-white border border-dashed border-neutral-200 text-[11px] text-neutral-300">
@@ -214,7 +182,6 @@ function DashboardMockup() {
                 </div>
               </div>
 
-              {/* Row 4 */}
               <div className="flex items-center gap-3">
                 <div className="text-[11px] text-neutral-300 w-9 shrink-0">11:15</div>
                 <div className="flex-1 rounded-lg px-3 py-2 flex justify-between items-center bg-purple-50 border-l-[3px] border-purple-500">
@@ -237,9 +204,73 @@ function DashboardMockup() {
   );
 }
 
+function WaitlistForm() {
+  const [email, setEmail] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const trimmed = email.trim();
+    const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmed);
+    if (!valid) {
+      setError("Please enter a valid email address.");
+      return;
+    }
+    setError(null);
+    setSubmitted(true);
+    console.log("Waitlist signup:", trimmed);
+  };
+
+  if (submitted) {
+    return (
+      <p className="text-sm text-green-600 font-medium text-center mt-2">
+        ✓ You're on the list. We'll be in touch soon.
+      </p>
+    );
+  }
+
+  return (
+    <form
+      onSubmit={handleSubmit}
+      className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto mt-10 w-full"
+      noValidate
+    >
+      <input
+        type="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        placeholder="your@practice.com"
+        aria-label="Email address"
+        maxLength={255}
+        className="flex-1 px-4 py-3 rounded-xl border border-neutral-200 bg-white text-sm text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:border-[#2563EB] transition-all shadow-sm"
+        style={
+          {
+            ["--tw-ring-color" as string]: "rgba(37,99,235,0.3)",
+          } as React.CSSProperties
+        }
+      />
+      <button
+        type="submit"
+        className="bg-[#2563EB] text-white text-sm font-semibold px-6 py-3 rounded-xl hover:bg-[#1d4ed8] transition-all shadow-md shadow-blue-500/20 whitespace-nowrap"
+      >
+        Join the waitlist →
+      </button>
+      {error && (
+        <p className="sm:absolute sm:mt-16 text-xs text-red-500 text-center w-full mt-1">
+          {error}
+        </p>
+      )}
+    </form>
+  );
+}
+
 export default function HeroSection() {
   return (
-    <section className="relative bg-white min-h-screen flex flex-col items-center justify-center pt-24 pb-16 px-6 overflow-hidden">
+    <section
+      id="waitlist"
+      className="relative bg-white min-h-screen flex flex-col items-center justify-center pt-24 pb-16 px-6 overflow-hidden"
+    >
       {/* Decorative background */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden -z-10">
         <div
@@ -265,97 +296,77 @@ export default function HeroSection() {
         />
       </div>
 
-      {/* Step 1: Pill */}
+      {/* H1 — three lines, each animated with stagger */}
       <AnimatedGroup
-        className="mx-auto"
-        variants={{ container: makeContainer(0), item: itemBlurSlide }}
-      >
-        <AnnouncementPill />
-      </AnimatedGroup>
-
-      {/* Step 2: H1 */}
-      <AnimatedGroup
-        className="mt-8"
-        variants={{ container: makeContainer(0.15), item: itemBlurSlide }}
+        className="text-center max-w-3xl mx-auto"
+        variants={{
+          container: {
+            hidden: { opacity: 0 },
+            visible: {
+              opacity: 1,
+              transition: { staggerChildren: 0.1, delayChildren: 0 },
+            },
+          },
+          item: itemBlurSlide,
+        }}
       >
         <h1
-          className="text-5xl md:text-6xl lg:text-[5rem] xl:text-[5.5rem] text-neutral-900 text-center max-w-4xl mx-auto"
+          className="text-4xl md:text-5xl lg:text-[3.75rem] text-neutral-900"
           style={{
-            fontWeight: 800,
-            lineHeight: 1.06,
-            letterSpacing: "-0.04em",
+            fontWeight: 600,
+            lineHeight: 1.1,
+            letterSpacing: "-0.025em",
           }}
         >
-          Practice management software that actually{" "}
-          <span style={{ color: "#2563EB" }}>makes sense.</span>
+          <span className="block">Dental practice management</span>
+          <span className="block">software that actually</span>
+          <span className="block">
+            <span style={{ color: "#2563EB" }}>makes sense.</span>
+          </span>
         </h1>
       </AnimatedGroup>
 
-      {/* Step 3: Subheadline */}
+      {/* Subheadline */}
       <AnimatedGroup
-        variants={{ container: makeContainer(0.25), item: itemBlurSlide }}
+        variants={{ container: makeContainer(0.3), item: itemBlurSlide }}
       >
-        <p className="text-lg md:text-xl text-neutral-500 max-w-2xl mx-auto text-center leading-relaxed mt-6">
-          DentDesk handles your bookings, reminders, payments and recalls — so you can focus on
-          patients, not admin. Built for independent UK practices going private.
+        <p className="text-lg text-neutral-500 max-w-xl mx-auto text-center leading-relaxed mt-5">
+          Dent Dock handles your bookings, reminders, payments and recalls — so you can focus on
+          patients, not admin. Built for independent UK practices.
         </p>
       </AnimatedGroup>
 
-      {/* Step 4: CTAs */}
+      {/* Waitlist form */}
       <AnimatedGroup
-        className="mt-10"
-        variants={{ container: makeContainer(0.35), item: itemBlurSlide }}
+        className="w-full"
+        variants={{ container: makeContainer(0.4), item: itemBlurSlide }}
       >
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-          <div className="bg-neutral-900/10 rounded-[14px] border border-neutral-900/5 p-0.5">
-            <a
-              href={SIGNUP_URL}
-              className="inline-flex items-center justify-center text-white font-semibold text-base px-6 py-3 rounded-xl transition-all"
-              style={{
-                backgroundColor: "#2563EB",
-                boxShadow: "0 12px 28px -8px rgba(37, 99, 235, 0.5)",
-              }}
-              onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#1d4ed8")}
-              onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#2563EB")}
-            >
-              Start your free trial
-            </a>
-          </div>
-          <a
-            href="#demo"
-            className="text-neutral-600 font-medium text-base px-6 py-3 rounded-xl hover:bg-neutral-100 transition-all"
-          >
-            Watch 2-min demo
-          </a>
-        </div>
+        <WaitlistForm />
       </AnimatedGroup>
 
-      {/* Step 5: Trust strip */}
+      {/* Trust strip */}
       <AnimatedGroup
         className="mt-4"
-        variants={{ container: makeContainer(0.45), item: itemBlurSlide }}
+        variants={{ container: makeContainer(0.5), item: itemBlurSlide }}
       >
         <div className="flex items-center justify-center gap-2 flex-wrap">
-          {[
-            "No credit card required",
-            "30-day free trial",
-            "UK data residency",
-            "GDPR compliant",
-          ].map((t, i, arr) => (
-            <span key={t} className="flex items-center gap-2">
-              <span className="text-xs text-neutral-400">{t}</span>
-              {i < arr.length - 1 && (
-                <span className="w-1 h-1 bg-neutral-300 rounded-full" />
-              )}
-            </span>
-          ))}
+          {["GDPR compliant", "UK data residency", "Built for private practices"].map(
+            (t, i, arr) => (
+              <span key={t} className="flex items-center gap-2">
+                <span className="text-xs text-neutral-400 font-medium">{t}</span>
+                {i < arr.length - 1 && (
+                  <span className="w-1 h-1 bg-neutral-300 rounded-full" />
+                )}
+              </span>
+            ),
+          )}
         </div>
       </AnimatedGroup>
 
-      {/* Step 6: Social proof */}
+      {/* Social proof */}
       <AnimatedGroup
         className="mt-6"
-        variants={{ container: makeContainer(0.55), item: itemBlurSlide }}
+        variants={{ container: makeContainer(0.6), item: itemBlurSlide }}
       >
         <div className="flex items-center justify-center gap-3 flex-wrap">
           <span className="text-amber-400 text-sm tracking-wide">★★★★★</span>
@@ -365,10 +376,10 @@ export default function HeroSection() {
         </div>
       </AnimatedGroup>
 
-      {/* Step 7: Dashboard mockup */}
+      {/* Dashboard mockup */}
       <AnimatedGroup
         className="w-full"
-        variants={{ container: makeContainer(0.65), item: itemBlurSlide }}
+        variants={{ container: makeContainer(0.7), item: itemBlurSlide }}
       >
         <div className="mt-16 w-full max-w-6xl mx-auto px-4 relative">
           <div

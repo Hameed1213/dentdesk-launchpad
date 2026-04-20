@@ -7,26 +7,35 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       {
-        title: "DentDesk — Practice management software that actually makes sense",
+        title:
+          "Dent Dock — Dental Practice Management Software for UK Private Practices",
       },
       {
         name: "description",
         content:
-          "DentDesk handles bookings, reminders, payments and recalls for independent UK dental practices going private. Free 30-day trial, no credit card.",
+          "Dent Dock is the modern dental practice management platform for independent UK dental practices. Online booking, automated reminders, Stripe payments and recalls — built for practices going private.",
       },
-      { property: "og:title", content: "DentDesk — Modern dental practice management" },
+      {
+        property: "og:title",
+        content:
+          "Dent Dock — Dental Practice Management Software for UK Private Practices",
+      },
       {
         property: "og:description",
         content:
-          "Bookings, reminders, payments and recalls — built for independent UK practices going private.",
+          "Online booking, automated reminders, Stripe payments and recalls — built for independent UK private practices.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "DentDesk — Modern dental practice management" },
+      {
+        name: "twitter:title",
+        content:
+          "Dent Dock — Dental Practice Management Software for UK Private Practices",
+      },
       {
         name: "twitter:description",
         content:
-          "Bookings, reminders, payments and recalls — built for independent UK practices going private.",
+          "Online booking, automated reminders, Stripe payments and recalls — built for independent UK private practices.",
       },
     ],
   }),

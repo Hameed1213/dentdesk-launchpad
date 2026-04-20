@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import ToothIcon from "@/components/icons/ToothIcon";
 
 const navLinks = [
   { label: "Features", href: "#features" },
@@ -9,34 +10,26 @@ const navLinks = [
   { label: "How it works", href: "#how-it-works" },
 ];
 
-const SIGNUP_URL = "https://app.dentdock.co.uk/signup";
 const LOGIN_URL = "https://app.dentdock.co.uk";
 
 function Logo() {
   return (
-    <a href="/" className="flex items-center gap-2.5 shrink-0">
-      <span
-        className="inline-flex h-7 w-7 items-center justify-center rounded-lg"
-        style={{ backgroundColor: "#2563EB" }}
-        aria-hidden
-      >
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path
-            d="M7 4c-2.2 0-4 1.8-4 4 0 2 .6 3.6 1.4 6 .5 1.5.7 3 .9 4.6.2 1.6.9 2.4 1.7 2.4.9 0 1.3-.8 1.7-2.5.4-1.7.6-3 1.3-3 .7 0 .9 1.3 1.3 3 .4 1.7.8 2.5 1.7 2.5.8 0 1.5-.8 1.7-2.4.2-1.6.4-3.1.9-4.6.8-2.4 1.4-4 1.4-6 0-2.2-1.8-4-4-4-1.5 0-2.4.7-3 .7s-1.5-.7-3-.7Z"
-            stroke="white"
-            strokeWidth="1.6"
-            strokeLinejoin="round"
-          />
-        </svg>
-      </span>
+    <a href="/" className="flex items-center gap-2 shrink-0">
+      <ToothIcon size={22} color="#2563EB" />
       <span
         className="text-lg tracking-tight"
-        style={{ color: "#2563EB", fontWeight: 800, letterSpacing: "-0.02em" }}
+        style={{ color: "#2563EB", fontWeight: 700, letterSpacing: "-0.02em" }}
       >
-        DentDesk
+        Dent Dock
       </span>
     </a>
   );
+}
+
+function scrollToWaitlist(e: React.MouseEvent) {
+  e.preventDefault();
+  const el = document.getElementById("waitlist");
+  if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
 export default function Navbar() {
@@ -88,7 +81,8 @@ export default function Navbar() {
               Log in
             </a>
             <a
-              href={SIGNUP_URL}
+              href="#waitlist"
+              onClick={scrollToWaitlist}
               className="text-sm font-semibold text-white px-5 py-2.5 rounded-xl transition-all hover:-translate-y-px"
               style={{
                 backgroundColor: "#2563EB",
@@ -97,7 +91,7 @@ export default function Navbar() {
               onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#1d4ed8")}
               onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#2563EB")}
             >
-              Start free trial →
+              Join the waitlist
             </a>
           </div>
 
@@ -138,14 +132,18 @@ export default function Navbar() {
             Log in
           </a>
           <a
-            href={SIGNUP_URL}
+            href="#waitlist"
+            onClick={(e) => {
+              setMobileOpen(false);
+              scrollToWaitlist(e);
+            }}
             className="text-sm font-semibold text-white text-center px-5 py-3 rounded-xl mt-1"
             style={{
               backgroundColor: "#2563EB",
               boxShadow: "0 8px 20px -6px rgba(37, 99, 235, 0.45)",
             }}
           >
-            Start free trial →
+            Join the waitlist
           </a>
         </div>
       </div>
