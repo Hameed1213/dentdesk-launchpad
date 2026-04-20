@@ -472,7 +472,7 @@ function DesktopDashboardMockup() {
           {countToday}
         </span>
       ),
-      sub: "Next: 9:30am · Sarah Mitchell",
+      sub: "Next: 9:45am · James Thompson",
     },
     {
       label: "CAPACITY",
@@ -621,7 +621,7 @@ function TabletDashboardMockup() {
               label: "TODAY",
               Icon: Calendar,
               value: countToday,
-              sub: "Next: 9:30am · Sarah",
+              sub: "Next: 9:45am · James",
             },
             {
               label: "CAPACITY",
@@ -742,7 +742,7 @@ function MobileDashboardMockup() {
               label: "TODAY",
               Icon: Calendar,
               value: countToday,
-              sub: "Next: 9:30am",
+              sub: "Next: 9:45am",
             },
             {
               label: "CAPACITY",
