@@ -343,7 +343,7 @@ export default function HeroSection() {
         variants={{ container: makeContainer(0.5), item: itemBlurSlide }}
       >
         <div className="flex items-center justify-center gap-2 flex-wrap">
-          {["GDPR compliant", "UK data residency", "Built for private practices"].map(
+          {["No contracts", "No setup fees", "Live within the day"].map(
             (t, i, arr) => (
               <span key={t} className="flex items-center gap-2">
                 <span className="text-xs text-neutral-400 font-medium">{t}</span>
