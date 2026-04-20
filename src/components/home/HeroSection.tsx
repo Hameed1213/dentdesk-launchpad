@@ -311,12 +311,10 @@ export default function HeroSection() {
         }}
       >
         <h1
-          className="text-[2rem] md:text-[2.75rem] lg:text-[3rem] text-center text-neutral-900 leading-[1.15] tracking-[-0.025em] max-w-4xl mx-auto"
+          className="text-[2.5rem] md:text-[3.5rem] lg:text-[4rem] text-center text-neutral-900 leading-[1.15] tracking-[-0.03em] max-w-4xl mx-auto"
           style={{ fontWeight: 600 }}
         >
-          Dental practice management software
-          <br />
-          for{" "}
+          Dental software for{" "}
           <span className="text-[#2563EB]">UK private practices.</span>
         </h1>
       </AnimatedGroup>
