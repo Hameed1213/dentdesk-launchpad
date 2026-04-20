@@ -223,7 +223,33 @@ function DashboardMockup() {
 
   useEffect(() => {
     const timeouts: ReturnType<typeof setTimeout>[] = [];
-    const intervals: ReturnType<typeof setInterval>[] = [];
+    const rafs: number[] = [];
+
+    // easeOutCubic — smooth deceleration, no jitter
+    const easeOut = (t: number) => 1 - Math.pow(1 - t, 3);
+
+    const animateCount = (
+      from: number,
+      to: number,
+      durationMs: number,
+      onUpdate: (value: number) => void,
+    ) => {
+      const start = performance.now();
+      const tick = (now: number) => {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / durationMs, 1);
+        const eased = easeOut(progress);
+        onUpdate(from + (to - from) * eased);
+        if (progress < 1) {
+          const id = requestAnimationFrame(tick);
+          rafs.push(id);
+        } else {
+          onUpdate(to);
+        }
+      };
+      const id = requestAnimationFrame(tick);
+      rafs.push(id);
+    };
 
     const runSequence = () => {
       // Reset
@@ -236,43 +262,27 @@ function DashboardMockup() {
 
       timeouts.push(setTimeout(() => setStarted(true), 300));
 
-      // TODAY: 0 → 12
+      // TODAY: 0 → 12 (integers)
       timeouts.push(
         setTimeout(() => {
-          let count = 0;
-          const interval = setInterval(() => {
-            count += 1;
-            setCountToday(count);
-            if (count >= 12) clearInterval(interval);
-          }, 67);
-          intervals.push(interval);
+          animateCount(0, 12, 1000, (v) => setCountToday(Math.round(v)));
         }, 400),
       );
 
-      // REVENUE: 0 → 840
+      // REVENUE: 0 → 840 (integers)
       timeouts.push(
         setTimeout(() => {
-          let count = 0;
-          const interval = setInterval(() => {
-            count += 14;
-            setCountRevenue(Math.min(count, 840));
-            if (count >= 840) clearInterval(interval);
-          }, 72);
-          intervals.push(interval);
+          animateCount(0, 840, 1200, (v) => setCountRevenue(Math.round(v)));
         }, 500),
       );
 
-      // CAPACITY: 0 → 78
+      // CAPACITY: 0 → 78 (integers + bar width float)
       timeouts.push(
         setTimeout(() => {
-          let count = 0;
-          const interval = setInterval(() => {
-            count += 2;
-            setCountCapacity(Math.min(count, 78));
-            setCapacityBarWidth(Math.min(count, 78));
-            if (count >= 78) clearInterval(interval);
-          }, 52);
-          intervals.push(interval);
+          animateCount(0, 78, 1100, (v) => {
+            setCountCapacity(Math.round(v));
+            setCapacityBarWidth(v);
+          });
         }, 600),
       );
 
@@ -280,9 +290,7 @@ function DashboardMockup() {
       [1100, 1400, 1700, 2000, 2300, 2600].forEach((t, i) => {
         timeouts.push(setTimeout(() => setVisibleRows(i + 1), t));
       });
-
     };
-
 
     runSequence();
     const loop = setInterval(runSequence, 8000);
@@ -290,7 +298,7 @@ function DashboardMockup() {
     return () => {
       clearInterval(loop);
       timeouts.forEach(clearTimeout);
-      intervals.forEach(clearInterval);
+      rafs.forEach(cancelAnimationFrame);
     };
   }, []);
 
@@ -299,15 +307,9 @@ function DashboardMockup() {
       label: "TODAY",
       Icon: Calendar,
       value: (
-        <motion.span
-          key={countToday}
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.15 }}
-          className="text-[40px] font-extrabold text-[#0F172A] leading-none mt-2 block"
-        >
+        <span className="text-[40px] font-extrabold text-[#0F172A] leading-none mt-2 block tabular-nums">
           {countToday}
-        </motion.span>
+        </span>
       ),
       sub: "Next: 9:30am · Sarah Mitchell",
     },
