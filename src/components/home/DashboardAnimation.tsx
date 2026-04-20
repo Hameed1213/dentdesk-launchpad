@@ -881,9 +881,6 @@ export default function DashboardAnimation() {
               <div className="text-[16px] font-bold text-[#0F172A]">
                 Good morning, Dr. James Webb
               </div>
-              <div className="text-[12px] text-[#64748b] mt-0.5">
-                Monday, 15 April · 12 appointments today
-              </div>
             </div>
 
             {/* 2x2 stat grid */}
