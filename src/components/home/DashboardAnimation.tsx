@@ -828,7 +828,7 @@ export default function DashboardAnimation() {
     <>
       {/* Desktop — keep current ContainerScroll behaviour */}
       <section
-        className="bg-white pt-0 pb-0 -mb-12 overflow-hidden hidden lg:block w-full pointer-events-none"
+        className="bg-white pt-0 pb-0 overflow-hidden hidden lg:block w-full pointer-events-none"
         style={{ marginTop: "-206px" }}
       >
         <ContainerScroll titleComponent={<></>}>
