@@ -233,7 +233,6 @@ function DashboardMockup() {
       setCountCapacity(0);
       setCapacityBarWidth(0);
       setVisibleRows(0);
-      setToasts([]);
 
       timeouts.push(setTimeout(() => setStarted(true), 300));
 
@@ -282,37 +281,8 @@ function DashboardMockup() {
         timeouts.push(setTimeout(() => setVisibleRows(i + 1), t));
       });
 
-      // Toast 1
-      timeouts.push(
-        setTimeout(() => {
-          const id = toastIdRef.current++;
-          setToasts((prev) => [...prev, { id, message: "✓ SMS reminders sent to 8 patients" }]);
-          timeouts.push(
-            setTimeout(
-              () => setToasts((prev) => prev.filter((t) => t.id !== id)),
-              3500,
-            ),
-          );
-        }, 3200),
-      );
-
-      // Toast 2
-      timeouts.push(
-        setTimeout(() => {
-          const id = toastIdRef.current++;
-          setToasts((prev) => [
-            ...prev,
-            { id, message: "✓ £80 deposit received — Sarah Mitchell" },
-          ]);
-          timeouts.push(
-            setTimeout(
-              () => setToasts((prev) => prev.filter((t) => t.id !== id)),
-              3500,
-            ),
-          );
-        }, 4400),
-      );
     };
+
 
     runSequence();
     const loop = setInterval(runSequence, 8000);
