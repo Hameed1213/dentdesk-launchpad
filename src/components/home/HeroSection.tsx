@@ -361,11 +361,9 @@ export default function HeroSection() {
         className="mt-4 flex justify-center"
         variants={{ container: makeContainer(0.6), item: itemBlurSlide }}
       >
-        <div className="inline-flex items-center gap-2 bg-blue-50 border border-blue-100 rounded-full px-5 py-2">
-          <span className="text-sm text-[#2563EB] font-medium text-center">
-            Be one of the first 30 practices — get priority support and help shape the product from day one.
-          </span>
-        </div>
+        <p className="text-sm text-neutral-400 text-center max-w-sm mx-auto mt-5 leading-relaxed">
+          Be one of the <span className="text-neutral-700 font-medium">first 30 practices</span> — get priority support and help shape the product from day one.
+        </p>
       </AnimatedGroup>
 
       {/* Dashboard mockup */}
