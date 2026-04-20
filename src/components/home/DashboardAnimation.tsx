@@ -852,252 +852,154 @@ export default function DashboardAnimation() {
         </div>
       </section>
 
-      {/* MOBILE — static scaled-down desktop view, fade-up on scroll */}
-      <div className="block md:hidden mt-8 pb-12 bg-white">
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="w-[95%] mx-auto"
-        >
-          {/* Browser chrome frame */}
-          <div className="w-full rounded-2xl overflow-hidden border border-[#E2E8F0] shadow-xl">
-            {/* Browser top bar */}
-            <div className="h-8 bg-[#F1F5F9] border-b border-[#E2E8F0] flex items-center px-3 gap-2 flex-shrink-0">
-              <div className="flex gap-1">
-                <div className="w-2 h-2 rounded-full bg-[#ff5f57]" />
-                <div className="w-2 h-2 rounded-full bg-[#febc2e]" />
-                <div className="w-2 h-2 rounded-full bg-[#28c840]" />
-              </div>
-              <div className="flex-1 bg-white rounded mx-2 px-2 py-0.5 text-[9px] text-[#94a3b8] text-center font-mono">
-                app.dentdock.co.uk
-              </div>
+      {/* MOBILE — simple clean card, fade up on scroll */}
+      <motion.div
+        className="block md:hidden mt-8 mx-4 pb-12"
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+      >
+        {/* Browser frame */}
+        <div className="rounded-2xl overflow-hidden border border-[#E2E8F0] shadow-lg">
+          {/* Browser chrome */}
+          <div className="h-8 bg-[#F1F5F9] border-b border-[#E2E8F0] flex items-center px-3 gap-2">
+            <div className="flex gap-1">
+              <div className="w-2 h-2 rounded-full bg-[#ff5f57]" />
+              <div className="w-2 h-2 rounded-full bg-[#febc2e]" />
+              <div className="w-2 h-2 rounded-full bg-[#28c840]" />
             </div>
-
-            {/* Scaled desktop dashboard — static snapshot, fluid to container width */}
-            <div
-              className="overflow-hidden bg-[#F8FAFC] relative w-full"
-              style={{ aspectRatio: "16 / 11" }}
-            >
-              <div
-                style={{
-                  transform: "scale(0.55)",
-                  transformOrigin: "top left",
-                  width: "calc(100% / 0.55)",
-                  height: "calc(100% / 0.55)",
-                  pointerEvents: "none",
-                  position: "absolute",
-                  top: 0,
-                  left: 0,
-                }}
-              >
-                <div className="w-full h-full bg-[#F8FAFC] flex overflow-hidden">
-                  {/* Sidebar — icon only */}
-                  <div className="w-14 bg-[#0F172A] flex flex-col items-center py-4 gap-2 flex-shrink-0">
-                    <div className="w-8 h-8 rounded-xl bg-[#1E293B] flex items-center justify-center mb-2">
-                      <span className="text-[#60a5fa] text-xs">✦</span>
-                    </div>
-                    {[
-                      { active: true },
-                      { active: false },
-                      { active: false },
-                      { active: false },
-                      { active: false },
-                      { active: false },
-                    ].map((item, i) => (
-                      <div
-                        key={i}
-                        className={`w-9 h-9 rounded-xl flex items-center justify-center ${item.active ? "bg-[#2563EB]" : "bg-transparent"}`}
-                      >
-                        <div
-                          className={`w-4 h-4 rounded-sm ${item.active ? "bg-white/80" : "bg-white/20"}`}
-                        />
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Main content */}
-                  <div className="flex-1 flex flex-col overflow-hidden">
-                    {/* Top bar */}
-                    <div className="h-[60px] bg-white border-b border-[#E2E8F0] flex items-center justify-between px-6 flex-shrink-0">
-                      <span className="text-[18px] font-semibold text-[#0F172A]">
-                        Dashboard
-                      </span>
-                      <div className="flex items-center gap-3">
-                        <div className="h-9 w-[200px] bg-[#F8FAFC] border border-[#E2E8F0] rounded-lg px-3 flex items-center gap-2">
-                          <div className="w-3 h-3 rounded-full bg-[#94a3b8]" />
-                          <span className="text-[12px] text-[#94a3b8]">
-                            Search patients...
-                          </span>
-                          <span className="ml-auto text-[10px] bg-[#E2E8F0] text-[#64748b] rounded px-1.5 py-0.5">
-                            ⌘K
-                          </span>
-                        </div>
-                        <div className="relative">
-                          <div className="w-5 h-5 rounded-full bg-[#94a3b8]" />
-                          <div className="absolute -top-1 -right-1 w-3.5 h-3.5 bg-[#DC2626] rounded-full flex items-center justify-center text-white text-[8px] font-bold">
-                            2
-                          </div>
-                        </div>
-                        <div className="w-8 h-8 rounded-full bg-[#2563EB] flex items-center justify-center text-white text-[11px] font-bold">
-                          JW
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Dashboard body */}
-                    <div className="flex-1 overflow-hidden p-6">
-                      {/* Greeting */}
-                      <div className="mb-5">
-                        <div className="text-[22px] font-bold text-[#0F172A]">
-                          Good morning, Dr. James Webb
-                        </div>
-                        <div className="text-[13px] text-[#64748b] mt-1">
-                          Monday, 15 April 2026 · Smile Dental · 12 appointments today
-                        </div>
-                      </div>
-
-                      {/* 3 stat cards (mobile-trimmed, no NEW PATIENTS) */}
-                      <div className="grid grid-cols-3 gap-4 mb-5">
-                        {[
-                          {
-                            label: "TODAY",
-                            value: "12",
-                            sub: "Next: 9:30am · Sarah Mit...",
-                            color: "#0F172A",
-                          },
-                          {
-                            label: "CAPACITY",
-                            value: "78%",
-                            sub: "5h 30m booked · 7h avail.",
-                            color: "#2563EB",
-                            bar: true,
-                          },
-                          {
-                            label: "REVENUE TODAY",
-                            value: "£840",
-                            sub: "↑ 12% vs yesterday",
-                            color: "#0F172A",
-                            green: true,
-                          },
-                        ].map((card, i) => (
-                          <div
-                            key={i}
-                            className="bg-white rounded-2xl p-5 border border-[#E2E8F0] h-[140px] overflow-hidden flex flex-col"
-                          >
-                            <div className="text-[12px] font-medium text-[#64748b] uppercase tracking-wide">
-                              {card.label}
-                            </div>
-                            <div
-                              className="text-[40px] font-extrabold leading-none mt-2"
-                              style={{
-                                color:
-                                  card.color === "#2563EB"
-                                    ? "#2563EB"
-                                    : "#0F172A",
-                              }}
-                            >
-                              {card.value}
-                            </div>
-                            <div
-                              className={`text-[13px] mt-1 truncate ${card.green ? "text-[#16a34a]" : "text-[#64748b]"}`}
-                            >
-                              {card.sub}
-                            </div>
-                            {card.bar && (
-                              <div className="w-full h-[2px] bg-[#E2E8F0] rounded-full mt-2">
-                                <div className="h-full bg-[#2563EB] rounded-full w-[78%]" />
-                              </div>
-                            )}
-                          </div>
-                        ))}
-                      </div>
-
-                      {/* Schedule */}
-                      <div className="bg-white rounded-2xl border border-[#E2E8F0] overflow-hidden">
-                        <div className="px-5 py-4 border-b border-[#E2E8F0] flex justify-between items-center">
-                          <span className="text-[15px] font-semibold text-[#0F172A]">
-                            Today's Schedule
-                          </span>
-                          <div className="bg-[#2563EB] text-white text-[12px] font-semibold px-3 py-1.5 rounded-lg">
-                            + New appointment
-                          </div>
-                        </div>
-                        {[
-                          {
-                            time: "9:00",
-                            period: "am",
-                            color: "#94a3b8",
-                            name: "Sarah Mitchell",
-                            treatment: "Whitening · 60 min",
-                            badge: "In Chair",
-                            badgeClass: "bg-[#faf5ff] text-[#7c3aed]",
-                          },
-                          {
-                            time: "9:45",
-                            period: "am",
-                            color: "#16a34a",
-                            name: "James Thompson",
-                            treatment: "Checkup · 30 min",
-                            badge: "Arrived",
-                            badgeClass: "bg-[#f0fdf4] text-[#16a34a]",
-                          },
-                          {
-                            time: "10:30",
-                            period: "am",
-                            color: "#2563EB",
-                            name: "Maria Lombardi",
-                            treatment: "Hygiene · 45 min",
-                            badge: "Confirmed",
-                            badgeClass: "bg-primary/10 text-[#2563EB]",
-                          },
-                        ].map((row, i) => (
-                          <div
-                            key={i}
-                            className="flex items-center px-5 py-3 border-b border-[#E2E8F0]/60 last:border-0"
-                          >
-                            <div className="w-12 shrink-0">
-                              <div className="text-[13px] font-semibold text-[#0F172A]">
-                                {row.time}
-                              </div>
-                              <div className="text-[11px] text-[#94a3b8]">
-                                {row.period}
-                              </div>
-                            </div>
-                            <div
-                              className="w-2 h-2 rounded-full mx-3 shrink-0"
-                              style={{ background: row.color }}
-                            />
-                            <div className="flex-1 min-w-0">
-                              <div className="text-[14px] font-semibold text-[#0F172A] truncate">
-                                {row.name}
-                              </div>
-                              <div className="text-[12px] text-[#64748b] truncate">
-                                {row.treatment}
-                              </div>
-                            </div>
-                            <span
-                              className={`text-[12px] font-medium px-2.5 py-0.5 rounded-full ${row.badgeClass}`}
-                            >
-                              {row.badge}
-                            </span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            <div className="flex-1 bg-white rounded mx-2 px-2 py-0.5 text-[10px] text-[#94a3b8] text-center font-mono">
+              app.dentdock.co.uk/dashboard
             </div>
           </div>
 
-          {/* Subtle caption */}
-          <p className="text-center text-xs text-[#94a3b8] mt-3">
-            The Dent Dock admin dashboard
-          </p>
-        </motion.div>
-      </div>
+          {/* Content */}
+          <div className="bg-[#F8FAFC] p-4">
+            {/* Greeting */}
+            <div className="mb-4">
+              <div className="text-[16px] font-bold text-[#0F172A]">
+                Good morning, Dr. James Webb
+              </div>
+              <div className="text-[12px] text-[#64748b] mt-0.5">
+                Monday, 15 April · 12 appointments today
+              </div>
+            </div>
+
+            {/* 2x2 stat grid */}
+            <div className="grid grid-cols-2 gap-3 mb-4">
+              <div className="bg-white rounded-xl p-3 border border-[#E2E8F0]">
+                <div className="text-[10px] font-semibold text-[#64748b] uppercase tracking-wide">
+                  Today
+                </div>
+                <div className="text-[28px] font-extrabold text-[#0F172A] leading-none mt-1">
+                  12
+                </div>
+                <div className="text-[11px] text-[#64748b] mt-1 truncate">
+                  Next: 9:30am · Sarah M.
+                </div>
+              </div>
+              <div className="bg-white rounded-xl p-3 border border-[#E2E8F0]">
+                <div className="text-[10px] font-semibold text-[#64748b] uppercase tracking-wide">
+                  Capacity
+                </div>
+                <div className="text-[28px] font-extrabold text-[#2563EB] leading-none mt-1">
+                  78%
+                </div>
+                <div className="w-full h-[2px] bg-[#E2E8F0] rounded-full mt-2">
+                  <div className="h-full bg-[#2563EB] rounded-full w-[78%]" />
+                </div>
+              </div>
+              <div className="bg-white rounded-xl p-3 border border-[#E2E8F0]">
+                <div className="text-[10px] font-semibold text-[#64748b] uppercase tracking-wide">
+                  Revenue
+                </div>
+                <div className="text-[28px] font-extrabold text-[#0F172A] leading-none mt-1">
+                  £840
+                </div>
+                <div className="text-[11px] text-[#16a34a] mt-1">
+                  ↑ 12% vs yesterday
+                </div>
+              </div>
+              <div className="bg-white rounded-xl p-3 border border-[#E2E8F0]">
+                <div className="text-[10px] font-semibold text-[#64748b] uppercase tracking-wide">
+                  New Patients
+                </div>
+                <div className="text-[28px] font-extrabold text-[#0F172A] leading-none mt-1">
+                  2
+                </div>
+                <div className="text-[11px] text-[#64748b] mt-1">
+                  first appt today
+                </div>
+              </div>
+            </div>
+
+            {/* Schedule */}
+            <div className="bg-white rounded-xl border border-[#E2E8F0] overflow-hidden">
+              <div className="px-4 py-3 border-b border-[#E2E8F0] flex justify-between items-center">
+                <span className="text-[13px] font-semibold text-[#0F172A]">
+                  Today's Schedule
+                </span>
+                <span className="text-[11px] font-semibold text-white bg-[#2563EB] px-2.5 py-1 rounded-lg">
+                  + New
+                </span>
+              </div>
+              {[
+                {
+                  time: "9:00",
+                  color: "#7c3aed",
+                  name: "Sarah Mitchell",
+                  treatment: "Whitening",
+                  badge: "In Chair",
+                  badgeClass: "bg-[#faf5ff] text-[#7c3aed]",
+                },
+                {
+                  time: "9:45",
+                  color: "#16a34a",
+                  name: "James Thompson",
+                  treatment: "Checkup",
+                  badge: "Arrived",
+                  badgeClass: "bg-[#f0fdf4] text-[#16a34a]",
+                },
+                {
+                  time: "10:30",
+                  color: "#2563EB",
+                  name: "Maria Lombardi",
+                  treatment: "Hygiene",
+                  badge: "Confirmed",
+                  badgeClass: "bg-[#eff6ff] text-[#2563EB]",
+                },
+              ].map((row, i) => (
+                <div
+                  key={i}
+                  className="flex items-center px-4 py-2.5 border-b border-[#E2E8F0] last:border-0"
+                >
+                  <span className="text-[12px] font-semibold text-[#94a3b8] w-10 shrink-0">
+                    {row.time}
+                  </span>
+                  <div
+                    className="w-2 h-2 rounded-full mx-2.5 shrink-0"
+                    style={{ background: row.color }}
+                  />
+                  <div className="flex-1 min-w-0">
+                    <div className="text-[13px] font-semibold text-[#0F172A] truncate">
+                      {row.name}
+                    </div>
+                    <div className="text-[11px] text-[#64748b]">
+                      {row.treatment}
+                    </div>
+                  </div>
+                  <span
+                    className={`text-[11px] font-medium px-2 py-0.5 rounded-full shrink-0 ${row.badgeClass}`}
+                  >
+                    {row.badge}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </motion.div>
     </>
   );
 }
