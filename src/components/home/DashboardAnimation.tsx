@@ -895,7 +895,7 @@ export default function DashboardAnimation() {
                 <div className="text-[28px] font-extrabold text-[#0F172A] leading-none mt-1">
                   12
                 </div>
-                <div className="text-[11px] text-[#64748b] mt-1 leading-tight">
+                <div className="text-[11px] text-[#64748b] mt-1">
                   Next: 9:45am
                   <br />
                   James
