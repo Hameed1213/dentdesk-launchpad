@@ -1,6 +1,6 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import {
   LayoutDashboard,
   Calendar,
@@ -15,7 +15,6 @@ import {
   Sparkles,
   Search,
   Bell,
-  CheckCircle,
   TrendingUp,
   UserPlus,
   Plus,
@@ -23,7 +22,6 @@ import {
 import ToothIcon from "@/components/icons/ToothIcon";
 import { ContainerScroll } from "@/components/ui/container-scroll-animation";
 
-type Toast = { id: number; message: string };
 
 // ---------- SIDEBAR ----------
 function SidebarIconBtn({
@@ -212,28 +210,7 @@ const rows: Row[] = [
   },
 ];
 
-// ---------- TOAST STACK ----------
-function ToastStack({ toasts }: { toasts: Toast[] }) {
-  return (
-    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-[150] flex flex-col gap-2 items-center">
-      <AnimatePresence>
-        {toasts.map((t) => (
-          <motion.div
-            key={t.id}
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 16 }}
-            transition={{ duration: 0.2, ease: "easeOut" }}
-            className="flex items-center gap-2 bg-[#2563EB] text-white rounded-xl px-5 py-3 text-[13px] font-medium shadow-[0_4px_20px_rgba(0,0,0,0.15)] whitespace-nowrap"
-          >
-            <CheckCircle size={16} className="shrink-0" />
-            {t.message}
-          </motion.div>
-        ))}
-      </AnimatePresence>
-    </div>
-  );
-}
+
 
 // ---------- MAIN MOCKUP ----------
 function DashboardMockup() {
@@ -243,8 +220,6 @@ function DashboardMockup() {
   const [countCapacity, setCountCapacity] = useState(0);
   const [capacityBarWidth, setCapacityBarWidth] = useState(0);
   const [visibleRows, setVisibleRows] = useState(0);
-  const [toasts, setToasts] = useState<Toast[]>([]);
-  const toastIdRef = useRef(0);
 
   useEffect(() => {
     const timeouts: ReturnType<typeof setTimeout>[] = [];
@@ -258,7 +233,6 @@ function DashboardMockup() {
       setCountCapacity(0);
       setCapacityBarWidth(0);
       setVisibleRows(0);
-      setToasts([]);
 
       timeouts.push(setTimeout(() => setStarted(true), 300));
 
@@ -307,37 +281,8 @@ function DashboardMockup() {
         timeouts.push(setTimeout(() => setVisibleRows(i + 1), t));
       });
 
-      // Toast 1
-      timeouts.push(
-        setTimeout(() => {
-          const id = toastIdRef.current++;
-          setToasts((prev) => [...prev, { id, message: "✓ SMS reminders sent to 8 patients" }]);
-          timeouts.push(
-            setTimeout(
-              () => setToasts((prev) => prev.filter((t) => t.id !== id)),
-              3500,
-            ),
-          );
-        }, 3200),
-      );
-
-      // Toast 2
-      timeouts.push(
-        setTimeout(() => {
-          const id = toastIdRef.current++;
-          setToasts((prev) => [
-            ...prev,
-            { id, message: "✓ £80 deposit received — Sarah Mitchell" },
-          ]);
-          timeouts.push(
-            setTimeout(
-              () => setToasts((prev) => prev.filter((t) => t.id !== id)),
-              3500,
-            ),
-          );
-        }, 4400),
-      );
     };
+
 
     runSequence();
     const loop = setInterval(runSequence, 8000);
@@ -542,7 +487,6 @@ function DashboardMockup() {
             </div>
           </div>
         </div>
-        <ToastStack toasts={toasts} />
       </div>
     </div>
   );
