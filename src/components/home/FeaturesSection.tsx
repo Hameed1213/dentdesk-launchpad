@@ -70,8 +70,8 @@ const NoShowsPreview = () => (
 const problems = [
   {
     Icon: CreditCard,
-    headline: "You're paying for features you'll never use",
-    body: "Dentally starts at £185/month. EXACT charges more. Both lock you into annual contracts for software built around NHS workflows your private practice doesn't need.",
+    headline: "You're paying for features you'll never use.",
+    body: "Most practice management platforms charge £150–250/month for clinical charting, NHS claim processing and imaging integrations your private practice will never touch.",
     preview: <PricePreview />,
   },
   {
