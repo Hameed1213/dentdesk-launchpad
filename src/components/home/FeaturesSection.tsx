@@ -18,22 +18,14 @@ const PricePreview = () => (
 
 const ComplexityPreview = () => (
   <div className="rounded-xl border border-border bg-background p-4 shadow-sm">
-    <div className="flex items-start gap-3">
-      <div className="w-7 h-7 rounded-full bg-amber-500/15 flex items-center justify-center shrink-0">
-        <MessageSquare className="w-3.5 h-3.5 text-amber-500" />
-      </div>
-      <div className="min-w-0 flex-1">
-        <div className="text-sm font-semibold text-foreground">
-          Support ticket #4821
-        </div>
-        <div className="text-xs text-muted-foreground mt-0.5">
-          "Thanks, we'll get back to you shortly."
-        </div>
-      </div>
+    <div className="text-sm font-semibold text-foreground">Support ticket #4821</div>
+    <div className="text-xs text-muted-foreground mt-0.5">"Thanks, we'll get back to you shortly."</div>
+    <div className="mt-3 text-2xl font-bold tabular-nums text-foreground">
+      48h
     </div>
-    <div className="mt-3 flex items-center gap-1.5 text-[11px] text-amber-500 font-medium">
+    <div className="mt-2 flex items-center gap-1.5 text-[11px] text-amber-500 font-medium">
       <Clock className="w-3 h-3" />
-      <span>Avg. reply: 48 hours</span>
+      <span>Average reply time</span>
     </div>
   </div>
 );
