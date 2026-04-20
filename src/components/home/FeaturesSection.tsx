@@ -77,7 +77,7 @@ const problems = [
   {
     Icon: Settings,
     headline: "It took 3 training days. It still breaks on a Tuesday.",
-    body: "Legacy software means legacy problems. Slow load times, confusing interfaces and a support line that puts you on hold.",
+    body: "Most dental software companies sell you the product and disappear. A chatbot, a help article and a 48-hour ticket.",
     preview: <ComplexityPreview />,
   },
   {
