@@ -181,13 +181,13 @@ const rows: Row[] = [
   {
     time: "9:00",
     period: "am",
-    color: "#7c3aed",
+    color: "#94a3b8",
     name: "Sarah Mitchell",
     treatment: "Whitening · 60 min",
-    badge: "In Chair",
-    badgeBg: "#faf5ff",
-    badgeColor: "#7c3aed",
-    pulse: true,
+    badge: "Completed",
+    badgeBg: "#F1F5F9",
+    badgeColor: "#64748b",
+    completed: true,
   },
   {
     time: "9:45",
