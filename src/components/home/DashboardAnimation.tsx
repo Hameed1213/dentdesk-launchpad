@@ -393,7 +393,7 @@ function DashboardMockup() {
           {countToday}
         </motion.span>
       ),
-      sub: "Next: 9:30am — Sarah Mitchell",
+      sub: "Next: 9:30am · Sarah Mitchell",
     },
     {
       label: "CAPACITY",
@@ -403,7 +403,7 @@ function DashboardMockup() {
           {countCapacity}%
         </span>
       ),
-      sub: "5h 30m booked · 7h available",
+      sub: "5h 30m booked · 7h avail.",
       showProgress: true,
       progressPct: capacityBarWidth,
     },
