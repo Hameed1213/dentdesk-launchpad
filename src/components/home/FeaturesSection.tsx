@@ -71,7 +71,7 @@ const problems = [
   {
     Icon: CreditCard,
     headline: "Most practices are overpaying",
-    body: "Most practices spend £150–250 a month on software that still needs three tools to do what one should.",
+    body: "The average practice spends £150–250 a month on software that still needs three tools to do what one should.",
     preview: <PricePreview />,
   },
   {
