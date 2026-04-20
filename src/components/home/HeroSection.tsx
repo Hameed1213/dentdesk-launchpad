@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { AnimatedGroup } from "@/components/ui/animated-group";
+import DashboardAnimation from "@/components/home/DashboardAnimation";
 
 const transition = {
   type: "spring" as const,
@@ -182,6 +183,8 @@ export default function HeroSection() {
         </p>
       </AnimatedGroup>
 
+      {/* Dashboard animation */}
+      <DashboardAnimation />
     </section>
   );
 }
