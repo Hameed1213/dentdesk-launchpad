@@ -448,7 +448,7 @@ function DashboardMockup() {
             ))}
           </div>
 
-          <div className="bg-white rounded-2xl border border-[#E2E8F0] shadow-[0_1px_4px_rgba(0,0,0,0.06)] overflow-hidden">
+          <div className="bg-white rounded-t-2xl border border-b-0 border-[#E2E8F0] shadow-[0_1px_4px_rgba(0,0,0,0.06)] overflow-hidden -mb-6">
             <div className="px-5 py-4 border-b border-[#E2E8F0] flex justify-between items-center">
               <div className="text-[15px] font-semibold text-[#0F172A]">
                 Today's Schedule
