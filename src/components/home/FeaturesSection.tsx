@@ -94,7 +94,7 @@ export default function FeaturesSection() {
       <div className="mx-auto max-w-6xl">
         {/* Section heading */}
         <div className="mx-auto max-w-2xl text-center mb-14 md:mb-20">
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-foreground leading-[1.1]">
+          <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-foreground leading-[1.1]">
             Your software is working
             <br />
             <span className="text-muted-foreground">against you.</span>
