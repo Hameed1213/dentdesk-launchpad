@@ -362,7 +362,7 @@ export default function HeroSection() {
         variants={{ container: makeContainer(0.6), item: itemBlurSlide }}
       >
         <p className="text-sm text-neutral-400 text-center max-w-sm mx-auto mt-5 leading-relaxed">
-          Be one of the <span className="text-neutral-700 font-medium">first 30 practices</span> — get priority support and help shape the product from day one.
+          Be one of the <span className="text-neutral-700 font-medium">first 30 practices</span>, get priority support and help shape the product from day one.
         </p>
       </AnimatedGroup>
 
