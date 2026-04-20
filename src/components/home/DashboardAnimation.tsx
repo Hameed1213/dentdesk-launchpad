@@ -882,10 +882,10 @@ export default function DashboardAnimation() {
             >
               <div
                 style={{
-                  transform: "scale(0.42)",
+                  transform: "scale(0.55)",
                   transformOrigin: "top left",
-                  width: "calc(100% / 0.42)",
-                  height: "calc(100% / 0.42)",
+                  width: "calc(100% / 0.55)",
+                  height: "calc(100% / 0.55)",
                   pointerEvents: "none",
                   position: "absolute",
                   top: 0,
