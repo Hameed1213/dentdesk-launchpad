@@ -211,36 +211,6 @@ const rows: Row[] = [
     badgeColor: "#7c3aed",
     pulse: true,
   },
-  {
-    time: "11:15",
-    period: "am",
-    color: "#2563EB",
-    name: "Robert Keane",
-    treatment: "Consultation · 30 min",
-    badge: "Confirmed",
-    badgeBg: "rgba(37,99,235,0.1)",
-    badgeColor: "#2563EB",
-  },
-  {
-    time: "12:00",
-    period: "pm",
-    color: "#d97706",
-    name: "Emma Wilson",
-    treatment: "Implant Review · 60 min",
-    badge: "Confirmed",
-    badgeBg: "rgba(37,99,235,0.1)",
-    badgeColor: "#2563EB",
-  },
-  {
-    time: "2:00",
-    period: "pm",
-    color: "#0891B2",
-    name: "John Barrett",
-    treatment: "Scale & Polish · 45 min",
-    badge: "Confirmed",
-    badgeBg: "rgba(37,99,235,0.1)",
-    badgeColor: "#2563EB",
-  },
 ];
 
 // ---------- TOAST STACK ----------
