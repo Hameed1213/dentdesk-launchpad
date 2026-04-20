@@ -487,7 +487,6 @@ function DashboardMockup() {
             </div>
           </div>
         </div>
-        <ToastStack toasts={toasts} />
       </div>
     </div>
   );
