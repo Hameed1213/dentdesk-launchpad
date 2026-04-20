@@ -10,7 +10,7 @@ const PricePreview = () => {
     { name: "Payments add-on", price: "£35" },
   ];
   return (
-    <div className="rounded-xl border border-border bg-background p-4 shadow-sm overflow-hidden min-h-[196px] flex flex-col">
+    <div className="rounded-xl border border-border bg-background p-4 shadow-sm overflow-hidden min-h-[168px] flex flex-col">
       <div className="flex items-center justify-between">
         <div>
           <div className="text-sm font-semibold text-foreground">Monthly software cost</div>
@@ -50,7 +50,7 @@ const PricePreview = () => {
 };
 
 const ComplexityPreview = () => (
-    <div className="rounded-xl border border-border bg-background p-4 shadow-sm overflow-hidden min-h-[196px] flex flex-col">
+    <div className="rounded-xl border border-border bg-background p-4 shadow-sm overflow-hidden min-h-[168px] flex flex-col">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <span
@@ -101,7 +101,7 @@ const NoShowsPreview = () => {
     { Icon: Banknote, label: "Chase deposits", count: "× 6" },
   ];
   return (
-    <div className="rounded-xl border border-border bg-background p-4 shadow-sm overflow-hidden min-h-[196px] flex flex-col">
+    <div className="rounded-xl border border-border bg-background p-4 shadow-sm overflow-hidden min-h-[168px] flex flex-col">
       <div className="flex items-center justify-between">
         <div>
           <div className="text-sm font-semibold text-foreground">Reception to-do</div>
