@@ -13,7 +13,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Dent Dock is the modern dental practice management platform for independent UK dental practices. Online booking, automated reminders, Stripe payments and recalls — built for practices going private.",
+          "Dent Dock is dental practice management software built for independent UK private practices. Online booking, automated reminders, Stripe payments and recalls — all in one platform.",
       },
       {
         property: "og:title",
