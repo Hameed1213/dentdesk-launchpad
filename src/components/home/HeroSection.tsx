@@ -324,8 +324,8 @@ export default function HeroSection() {
         variants={{ container: makeContainer(0.3), item: itemBlurSlide }}
       >
         <p className="text-lg text-neutral-500 max-w-xl mx-auto text-center leading-relaxed mt-5">
-          Dent Dock handles your bookings, reminders, payments and recalls — so you can focus on
-          patients, not admin. Built for independent UK practices.
+          Online booking, automated reminders, payments and recalls, all in one platform.
+          Finally, software that works as hard as you do.
         </p>
       </AnimatedGroup>
 
