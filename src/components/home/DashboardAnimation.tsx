@@ -875,18 +875,21 @@ export default function DashboardAnimation() {
               </div>
             </div>
 
-            {/* Scaled desktop dashboard — static snapshot */}
+            {/* Scaled desktop dashboard — static snapshot, fluid to container width */}
             <div
-              className="overflow-hidden bg-[#F8FAFC]"
-              style={{ height: "260px" }}
+              className="overflow-hidden bg-[#F8FAFC] relative w-full"
+              style={{ aspectRatio: "16 / 11" }}
             >
               <div
                 style={{
-                  transform: "scale(0.52)",
+                  transform: "scale(0.42)",
                   transformOrigin: "top left",
-                  width: "calc(100% / 0.52)",
-                  height: "calc(260px / 0.52)",
+                  width: "calc(100% / 0.42)",
+                  height: "calc(100% / 0.42)",
                   pointerEvents: "none",
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
                 }}
               >
                 <div className="w-full h-full bg-[#F8FAFC] flex overflow-hidden">
