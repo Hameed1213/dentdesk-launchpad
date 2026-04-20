@@ -852,18 +852,31 @@ export default function DashboardAnimation() {
         </div>
       </section>
 
-      {/* Mobile — show a laptop/desktop-style screen instead of a phone */}
+      {/* Mobile — browser-style card, not a phone frame */}
       <section className="bg-white pt-6 pb-12 block md:hidden w-full pointer-events-none">
-        <div className="w-full px-2">
+        <div className="w-full px-3">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className="border-4 border-[#6C6C6C] bg-[#222222] rounded-[18px] p-1.5 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.25)] mx-auto w-full"
-            style={{ height: 560 }}
+            className="w-full max-w-[420px] mx-auto rounded-2xl overflow-hidden border border-[#E2E8F0] shadow-xl bg-[#F8FAFC]"
           >
-            <TabletDashboardMockup />
+            {/* Browser chrome bar */}
+            <div className="h-9 bg-[#F1F5F9] border-b border-[#E2E8F0] flex items-center px-3 gap-2">
+              <div className="flex gap-1.5">
+                <div className="w-2.5 h-2.5 rounded-full bg-[#ff5f57]" />
+                <div className="w-2.5 h-2.5 rounded-full bg-[#febc2e]" />
+                <div className="w-2.5 h-2.5 rounded-full bg-[#28c840]" />
+              </div>
+              <div className="flex-1 bg-white rounded-md mx-2 px-3 py-1 text-[10px] text-[#94a3b8] text-center font-mono">
+                app.dentdock.co.uk
+              </div>
+            </div>
+            {/* Dashboard content */}
+            <div style={{ height: 560 }}>
+              <TabletDashboardMockup />
+            </div>
           </motion.div>
         </div>
       </section>
