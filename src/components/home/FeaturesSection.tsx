@@ -76,7 +76,7 @@ const problems = [
   },
   {
     Icon: Settings,
-    headline: "It took 3 training days. It still breaks on a Tuesday.",
+    headline: "After the sale, you're on your own.",
     body: "Most dental software companies sell you the product and disappear. A chatbot, a help article and a 48-hour ticket.",
     preview: <ComplexityPreview />,
   },
