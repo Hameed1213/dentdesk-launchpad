@@ -75,7 +75,7 @@ const problems = [
   },
   {
     Icon: CalendarX,
-    headline: "No-shows are emptying your diary every week",
+    headline: "Your team is doing your software's job.",
     body: "Manual reminders. Chasing deposits. Sending forms one by one. Hours every week on tasks that should happen automatically.",
     preview: <NoShowsPreview />,
   },
