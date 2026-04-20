@@ -142,3 +142,45 @@
     color: var(--color-foreground);
   }
 }
+
+/* ---------- Preview card animations ---------- */
+
+@keyframes preview-bar-grow {
+  0% { width: 0%; }
+  100% { width: var(--bar-target, 100%); }
+}
+
+@keyframes preview-typing {
+  0%, 60%, 100% { opacity: 0.25; transform: translateY(0); }
+  30% { opacity: 1; transform: translateY(-2px); }
+}
+
+@keyframes preview-tick {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes preview-check {
+  0% { stroke-dashoffset: 20; opacity: 0; }
+  60% { stroke-dashoffset: 0; opacity: 1; }
+  100% { stroke-dashoffset: 0; opacity: 1; }
+}
+
+@keyframes preview-fade-up {
+  0% { opacity: 0; transform: translateY(6px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes preview-pulse-ring {
+  0% { box-shadow: 0 0 0 0 var(--ring-color, rgba(244, 63, 94, 0.4)); }
+  70% { box-shadow: 0 0 0 8px transparent; }
+  100% { box-shadow: 0 0 0 0 transparent; }
+}
+
+.animate-preview-bar { animation: preview-bar-grow 1.6s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+.animate-preview-typing { animation: preview-typing 1.4s ease-in-out infinite; }
+.animate-preview-tick { animation: preview-tick 8s linear infinite; }
+.animate-preview-check { animation: preview-check 0.6s ease-out forwards; stroke-dasharray: 20; }
+.animate-preview-fade-up { animation: preview-fade-up 0.5s ease-out both; }
+.animate-preview-pulse-ring { animation: preview-pulse-ring 2s ease-out infinite; }
+
