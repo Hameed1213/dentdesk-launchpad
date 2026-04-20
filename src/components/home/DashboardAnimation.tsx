@@ -954,8 +954,8 @@ export default function DashboardAnimation() {
                         </div>
                       </div>
 
-                      {/* 4 stat cards */}
-                      <div className="grid grid-cols-4 gap-4 mb-5">
+                      {/* 3 stat cards (mobile-trimmed, no NEW PATIENTS) */}
+                      <div className="grid grid-cols-3 gap-4 mb-5">
                         {[
                           {
                             label: "TODAY",
@@ -976,12 +976,6 @@ export default function DashboardAnimation() {
                             sub: "↑ 12% vs yesterday",
                             color: "#0F172A",
                             green: true,
-                          },
-                          {
-                            label: "NEW PATIENTS",
-                            value: "2",
-                            sub: "first appointment today",
-                            color: "#0F172A",
                           },
                         ].map((card, i) => (
                           <div
