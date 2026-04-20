@@ -71,7 +71,7 @@ const problems = [
   {
     Icon: CreditCard,
     headline: "Most practices are overpaying for their software.",
-    body: "The average independent practice spends £150–250 a month on practice management software. For that price you'd expect online booking, automated reminders, payments and recalls all included. Most of the time, you'd be wrong.",
+    body: "Most practices spend £150–250 a month on software that still needs three tools to do what one should.",
     preview: <PricePreview />,
   },
   {
