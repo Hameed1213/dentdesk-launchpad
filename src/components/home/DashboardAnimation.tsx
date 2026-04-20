@@ -859,7 +859,7 @@ export default function DashboardAnimation() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="w-[90%] mx-auto"
+          className="w-[95%] mx-auto"
         >
           {/* Browser chrome frame */}
           <div className="w-full rounded-2xl overflow-hidden border border-[#E2E8F0] shadow-xl">
