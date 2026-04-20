@@ -895,8 +895,10 @@ export default function DashboardAnimation() {
                 <div className="text-[28px] font-extrabold text-[#0F172A] leading-none mt-1">
                   12
                 </div>
-                <div className="text-[11px] text-[#64748b] mt-1 truncate">
-                  Next: 9:30am · Sarah M.
+                <div className="text-[11px] text-[#64748b] mt-1 leading-tight">
+                  Next: 9:45am
+                  <br />
+                  James
                 </div>
               </div>
               <div className="bg-white rounded-xl p-3 border border-[#E2E8F0]">
