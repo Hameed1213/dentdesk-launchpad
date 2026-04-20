@@ -978,8 +978,58 @@ function InboxMockup() {
   );
 }
 
+
 /* =========================================================
-   MAIN COMPONENT
+   TAB CONTENT METADATA (Feature108 style)
+========================================================= */
+const tabContent = [
+  {
+    badge: "Smart Scheduling",
+    title: "A calendar that runs your day for you.",
+    description:
+      "Drag and drop appointments, see your whole team at a glance, and let Dent Dock handle reminders, deposits and confirmations automatically.",
+    buttonText: "See the calendar",
+  },
+  {
+    badge: "Patient-Facing",
+    title: "A booking page patients actually want to use.",
+    description:
+      "Branded to your practice, mobile-first, and live 24/7. Patients book in seconds — no phone calls, no double-bookings, no friction.",
+    buttonText: "See booking pages",
+  },
+  {
+    badge: "Get Paid Faster",
+    title: "Stripe payments, deposits and links built in.",
+    description:
+      "Take deposits at the time of booking, send payment links from the inbox, and reconcile everything in one place. No add-ons.",
+    buttonText: "See payments",
+  },
+  {
+    badge: "Set And Forget",
+    title: "Recalls and automations that run themselves.",
+    description:
+      "Six-month recalls, no-show follow-ups, post-treatment check-ins — all sent automatically from sequences you build once.",
+    buttonText: "See automations",
+  },
+  {
+    badge: "One Conversation",
+    title: "Every patient message in one inbox.",
+    description:
+      "SMS, email and booking enquiries land in a single shared inbox. Reply from anywhere, with full patient history one tap away.",
+    buttonText: "See the inbox",
+  },
+];
+
+const mockups = [
+  CalendarMockup,
+  BookingMockup,
+  PaymentsMockup,
+  RecallsMockup,
+  InboxMockup,
+];
+
+/* =========================================================
+   MAIN COMPONENT — Feature108 style
 ========================================================= */
 export default function ProductShowcase() {
   const [activeTab, setActiveTab] = useState(0);
@@ -998,7 +1048,6 @@ export default function ProductShowcase() {
     };
   }, [paused]);
 
-  // Cleanup pause timer on unmount
   useEffect(() => {
     return () => {
       if (pauseTimerRef.current) clearTimeout(pauseTimerRef.current);
@@ -1012,145 +1061,115 @@ export default function ProductShowcase() {
     pauseTimerRef.current = setTimeout(() => setPaused(false), 8000);
   };
 
+  const ActiveMockup = mockups[activeTab];
+  const content = tabContent[activeTab];
+
   return (
     <section className="bg-white py-24 px-6 overflow-hidden">
       <motion.div
-        className="max-w-7xl mx-auto"
+        className="container max-w-6xl mx-auto"
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
       >
         {/* Header */}
-        <div className="text-center">
-          <div className="inline-flex items-center gap-2 bg-[#eff6ff] border border-[#bfdbfe] text-[#2563EB] text-xs font-semibold px-4 py-1.5 rounded-full uppercase tracking-wide mb-6">
+        <div className="flex flex-col items-center text-center">
+          <span className="inline-flex items-center gap-2 bg-[#eff6ff] border border-[#bfdbfe] text-[#2563EB] text-xs font-semibold px-4 py-1.5 rounded-full uppercase tracking-wide mb-6">
             See it in action
-          </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-neutral-900 tracking-[-0.025em] leading-[1.1] max-w-2xl mx-auto">
+          </span>
+          <h2 className="text-4xl md:text-5xl font-bold text-neutral-900 tracking-[-0.025em] leading-[1.1] max-w-2xl">
             Everything in one place. Finally.
           </h2>
-          <p className="text-lg text-neutral-500 max-w-xl mx-auto leading-relaxed mt-4">
+          <p className="text-lg text-neutral-500 max-w-xl leading-relaxed mt-4">
             One platform that handles your entire front of house — from the
             moment a patient books to the moment they pay.
           </p>
         </div>
 
-        {/* Tabs + mockup */}
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 mt-16 items-start">
-          {/* MOBILE/TABLET top tab strip */}
-          <div className="lg:hidden flex gap-2 overflow-x-auto pb-2 -mx-2 px-2">
-            {tabs.map((tab, i) => {
-              const Icon = tabIcons[i];
-              const active = activeTab === i;
-              return (
-                <button
-                  key={tab}
-                  onClick={() => handleTabClick(i)}
-                  className={`shrink-0 inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold transition-all ${
-                    active
-                      ? "bg-[#2563EB] text-white"
-                      : "bg-neutral-100 text-neutral-500"
-                  }`}
-                >
-                  <Icon size={14} />
-                  <span>{tab}</span>
-                </button>
-              );
-            })}
-          </div>
+        {/* Tab pills — horizontal, centred */}
+        <div className="mt-12 flex flex-wrap justify-center gap-2 md:gap-3">
+          {tabs.map((tab, i) => {
+            const Icon = tabIcons[i];
+            const active = activeTab === i;
+            return (
+              <button
+                key={tab}
+                onClick={() => handleTabClick(i)}
+                className={`relative inline-flex items-center gap-2 rounded-full px-4 py-2.5 text-sm font-semibold transition-all duration-200 overflow-hidden ${
+                  active
+                    ? "bg-[#2563EB] text-white shadow-md shadow-[#2563EB]/20"
+                    : "bg-neutral-100 text-neutral-600 hover:bg-neutral-200"
+                }`}
+              >
+                <Icon size={16} className="shrink-0" />
+                <span>{tab}</span>
+                {active && !paused && (
+                  <motion.span
+                    key={`progress-${activeTab}-${paused}`}
+                    className="absolute bottom-0 left-0 h-[2px] bg-white/80 origin-left"
+                    initial={{ scaleX: 0 }}
+                    animate={{ scaleX: 1 }}
+                    transition={{ duration: 4, ease: "linear" }}
+                    style={{ width: "100%" }}
+                  />
+                )}
+              </button>
+            );
+          })}
+        </div>
 
-          {/* DESKTOP tab list */}
-          <div className="hidden lg:flex lg:col-span-2 flex-col gap-2">
-            {tabs.map((tab, i) => {
-              const Icon = tabIcons[i];
-              const active = activeTab === i;
-              return (
-                <button
-                  key={tab}
-                  onClick={() => handleTabClick(i)}
-                  className={`w-full text-left px-5 py-4 rounded-2xl transition-all duration-200 group ${
-                    active
-                      ? "bg-[#eff6ff] border-l-[3px] border-[#2563EB]"
-                      : "hover:bg-neutral-50 border-l-[3px] border-transparent"
-                  }`}
-                >
-                  <div className="flex items-center gap-3">
-                    <div
-                      className={`w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 ${
-                        active
-                          ? "bg-[#2563EB] text-white"
-                          : "bg-neutral-100 text-neutral-400"
-                      }`}
-                    >
-                      <Icon size={16} />
-                    </div>
-                    <div className="min-w-0">
-                      <div
-                        className={`text-sm font-semibold ${
-                          active ? "text-[#2563EB]" : "text-neutral-600"
-                        }`}
-                      >
-                        {tab}
-                      </div>
-                      {active && (
-                        <div className="text-xs text-neutral-400 mt-0.5">
-                          {tabDescriptions[i]}
-                        </div>
-                      )}
-                    </div>
+        {/* Tab content — 2 column */}
+        <div className="mt-10 lg:mt-14">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeTab}
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+              className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center"
+            >
+              {/* Left — copy */}
+              <div className="flex flex-col items-start">
+                <span className="inline-flex items-center rounded-full border border-[#bfdbfe] bg-[#eff6ff] px-3 py-1 text-xs font-semibold text-[#2563EB]">
+                  {content.badge}
+                </span>
+                <h3 className="mt-4 text-3xl md:text-4xl font-bold text-neutral-900 tracking-[-0.02em] leading-[1.15]">
+                  {content.title}
+                </h3>
+                <p className="mt-4 text-base md:text-lg text-neutral-500 leading-relaxed">
+                  {content.description}
+                </p>
+                <button className="mt-6 inline-flex items-center gap-2 bg-[#2563EB] text-white text-sm font-semibold px-5 py-3 rounded-full hover:bg-[#1d4fd8] transition-colors shadow-sm shadow-[#2563EB]/20">
+                  <span>{content.buttonText}</span>
+                  <ArrowRight size={15} />
+                </button>
+              </div>
+
+              {/* Right — mockup */}
+              <div className="rounded-2xl overflow-hidden border border-neutral-200 shadow-2xl shadow-neutral-200/60">
+                {/* Browser chrome */}
+                <div className="h-9 bg-neutral-100 border-b border-neutral-200 flex items-center px-4 gap-2 flex-shrink-0">
+                  <div className="flex gap-1.5">
+                    <div className="w-2.5 h-2.5 rounded-full bg-[#ff5f57]" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-[#febc2e]" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-[#28c840]" />
                   </div>
-                  {active && !paused && (
-                    <motion.div
-                      key={`${activeTab}-${paused}`}
-                      className="h-[2px] bg-[#2563EB] rounded-full mt-3 origin-left"
-                      initial={{ scaleX: 0 }}
-                      animate={{ scaleX: 1 }}
-                      transition={{ duration: 4, ease: "linear" }}
-                    />
-                  )}
-                </button>
-              );
-            })}
-          </div>
-
-          {/* Mockup frame */}
-          <div className="lg:col-span-3">
-            <div className="rounded-2xl overflow-hidden border border-neutral-200 shadow-2xl shadow-neutral-200/60">
-              {/* Browser chrome */}
-              <div className="h-9 bg-neutral-100 border-b border-neutral-200 flex items-center px-4 gap-2 flex-shrink-0">
-                <div className="flex gap-1.5">
-                  <div className="w-2.5 h-2.5 rounded-full bg-[#ff5f57]" />
-                  <div className="w-2.5 h-2.5 rounded-full bg-[#febc2e]" />
-                  <div className="w-2.5 h-2.5 rounded-full bg-[#28c840]" />
+                  <div className="flex-1 bg-white rounded-md mx-4 px-3 py-1 text-[11px] text-neutral-400 text-center font-mono truncate">
+                    {tabUrls[activeTab]}
+                  </div>
                 </div>
-                <div className="flex-1 bg-white rounded-md mx-4 px-3 py-1 text-[11px] text-neutral-400 text-center font-mono truncate">
-                  {tabUrls[activeTab]}
+                {/* Mockup */}
+                <div className="h-[460px] overflow-hidden relative bg-[#F8FAFC] pointer-events-none">
+                  <ActiveMockup />
                 </div>
               </div>
-
-              {/* Tab content */}
-              <div className="h-[480px] overflow-hidden relative bg-[#F8FAFC] pointer-events-none">
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={activeTab}
-                    initial={{ opacity: 0, x: 12 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -12 }}
-                    transition={{ duration: 0.25, ease: "easeOut" }}
-                    className="absolute inset-0"
-                  >
-                    {activeTab === 0 && <CalendarMockup />}
-                    {activeTab === 1 && <BookingMockup />}
-                    {activeTab === 2 && <PaymentsMockup />}
-                    {activeTab === 3 && <RecallsMockup />}
-                    {activeTab === 4 && <InboxMockup />}
-                  </motion.div>
-                </AnimatePresence>
-              </div>
-            </div>
-          </div>
+            </motion.div>
+          </AnimatePresence>
         </div>
       </motion.div>
     </section>
   );
 }
+
