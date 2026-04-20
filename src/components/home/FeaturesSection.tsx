@@ -1,29 +1,19 @@
 import { Card } from "@/components/ui/card";
-import { CreditCard, Settings, CalendarX } from "lucide-react";
 
 const problems = [
   {
-    icon: CreditCard,
-    iconBg: "bg-rose-500/10",
-    iconColor: "text-rose-500",
     eyebrow: "The price",
     headline: "You're paying for features you'll never use",
     body: "Dentally starts at £185/month. EXACT charges more. Both lock you into annual contracts for software built around NHS workflows your private practice doesn't need.",
     stat: "Average private practice overpays by £1,400/year",
   },
   {
-    icon: Settings,
-    iconBg: "bg-amber-500/10",
-    iconColor: "text-amber-500",
     eyebrow: "The complexity",
     headline: "It took 3 training days. It still breaks on a Tuesday.",
     body: "Legacy software means legacy problems. Slow load times, confusing interfaces and a support line that puts you on hold. Your receptionist shouldn't need a manual.",
     stat: "83% of practice managers rate their current software UX as poor",
   },
   {
-    icon: CalendarX,
-    iconBg: "bg-orange-500/10",
-    iconColor: "text-orange-500",
     eyebrow: "The no-shows",
     headline: "No-shows are emptying your diary every week",
     body: "Without automated reminders, the average practice loses 4–6 appointments per week to no-shows. At £100 a slot that's up to £600 every week walking out the door.",
@@ -52,37 +42,29 @@ export default function FeaturesSection() {
 
         {/* Feature grid — single row of 3 cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6">
-          {problems.map((problem, i) => {
-            const Icon = problem.icon;
-            return (
-              <Card
-                key={i}
-                className="overflow-hidden border-border bg-card flex flex-col"
-              >
-                <div className="p-8 flex flex-col flex-1">
-                  <div
-                    className={`w-11 h-11 rounded-xl ${problem.iconBg} flex items-center justify-center mb-5`}
-                  >
-                    <Icon className={`w-5 h-5 ${problem.iconColor}`} />
-                  </div>
-                  <div className="text-xs font-medium uppercase tracking-wider text-muted-foreground mb-2">
-                    {problem.eyebrow}
-                  </div>
-                  <h3 className="text-xl md:text-[22px] font-semibold text-foreground tracking-tight leading-snug">
-                    {problem.headline}
-                  </h3>
-                  <p className="mt-3 text-muted-foreground leading-relaxed text-[15px] flex-1">
-                    {problem.body}
-                  </p>
+          {problems.map((problem, i) => (
+            <Card
+              key={i}
+              className="overflow-hidden border-border bg-card flex flex-col"
+            >
+              <div className="p-8 flex flex-col flex-1">
+                <div className="text-xs font-medium uppercase tracking-wider text-muted-foreground mb-3">
+                  {problem.eyebrow}
                 </div>
-                <div className="bg-muted/40 px-6 py-4 border-t border-border">
-                  <p className="text-xs font-medium text-foreground/80 italic">
-                    "{problem.stat}"
-                  </p>
-                </div>
-              </Card>
-            );
-          })}
+                <h3 className="text-xl md:text-[22px] font-semibold text-foreground tracking-tight leading-snug">
+                  {problem.headline}
+                </h3>
+                <p className="mt-3 text-muted-foreground leading-relaxed text-[15px] flex-1">
+                  {problem.body}
+                </p>
+              </div>
+              <div className="bg-muted/40 px-6 py-4 border-t border-border">
+                <p className="text-xs font-medium text-foreground/80 italic">
+                  "{problem.stat}"
+                </p>
+              </div>
+            </Card>
+          ))}
         </div>
       </div>
     </section>
