@@ -181,13 +181,13 @@ const rows: Row[] = [
   {
     time: "9:00",
     period: "am",
-    color: "#94a3b8",
+    color: "#7c3aed",
     name: "Sarah Mitchell",
     treatment: "Whitening · 60 min",
-    badge: "Completed",
-    badgeBg: "#F1F5F9",
-    badgeColor: "#64748b",
-    completed: true,
+    badge: "In Chair",
+    badgeBg: "#faf5ff",
+    badgeColor: "#7c3aed",
+    pulse: true,
   },
   {
     time: "9:45",
@@ -203,13 +203,12 @@ const rows: Row[] = [
   {
     time: "10:30",
     period: "am",
-    color: "#7c3aed",
+    color: "#2563EB",
     name: "Maria Lombardi",
     treatment: "Hygiene · 45 min",
-    badge: "In Chair",
-    badgeBg: "#faf5ff",
-    badgeColor: "#7c3aed",
-    pulse: true,
+    badge: "Confirmed",
+    badgeBg: "rgba(37,99,235,0.1)",
+    badgeColor: "#2563EB",
   },
 ];
 
