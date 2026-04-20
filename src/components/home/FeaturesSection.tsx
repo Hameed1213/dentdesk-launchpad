@@ -70,8 +70,8 @@ const NoShowsPreview = () => (
 const problems = [
   {
     Icon: CreditCard,
-    headline: "You're paying for features you'll never use.",
-    body: "Most practice management platforms charge £150–250/month for clinical charting, NHS claim processing and imaging integrations your private practice will never touch.",
+    headline: "Most practices are overpaying for their software.",
+    body: "The average independent practice spends £150–250 a month on practice management software. For that price you'd expect online booking, automated reminders, payments and recalls all included. Most of the time, you'd be wrong.",
     preview: <PricePreview />,
   },
   {
