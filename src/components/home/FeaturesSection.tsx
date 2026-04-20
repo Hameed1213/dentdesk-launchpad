@@ -177,7 +177,7 @@ export default function FeaturesSection() {
         </div>
 
         {/* Feature grid — single row of 3 cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 lg:gap-6">
           {problems.map((problem, i) => {
             const Icon = problem.Icon;
             return (
