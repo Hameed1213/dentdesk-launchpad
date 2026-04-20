@@ -134,7 +134,7 @@ function StatCard({
   progressPct?: number;
 }) {
   return (
-    <div className="bg-white rounded-2xl p-5 border border-[#E2E8F0] shadow-[0_1px_4px_rgba(0,0,0,0.06)]">
+    <div className="bg-white rounded-2xl p-5 border border-[#E2E8F0] shadow-[0_1px_4px_rgba(0,0,0,0.06)] h-[140px] overflow-hidden flex flex-col">
       <div className="flex items-center">
         <span className="text-[12px] font-medium text-[#64748b] uppercase tracking-wide">
           {label}
@@ -143,11 +143,11 @@ function StatCard({
       </div>
       {children}
       <div
-        className="text-[13px] mt-1 flex items-center gap-1"
+        className="text-[13px] mt-1 flex items-center gap-1 truncate whitespace-nowrap"
         style={{ color: subColor }}
       >
-        {trendIcon && <TrendingUp size={12} />}
-        {sub}
+        {trendIcon && <TrendingUp size={12} className="shrink-0" />}
+        <span className="truncate">{sub}</span>
       </div>
       {showProgress && (
         <div className="w-full h-[2px] bg-[#E2E8F0] rounded-full mt-2">
@@ -393,7 +393,7 @@ function DashboardMockup() {
           {countToday}
         </motion.span>
       ),
-      sub: "Next: 9:30am — Sarah Mitchell",
+      sub: "Next: 9:30am · Sarah Mitchell",
     },
     {
       label: "CAPACITY",
@@ -403,7 +403,7 @@ function DashboardMockup() {
           {countCapacity}%
         </span>
       ),
-      sub: "5h 30m booked · 7h available",
+      sub: "5h 30m booked · 7h avail.",
       showProgress: true,
       progressPct: capacityBarWidth,
     },
