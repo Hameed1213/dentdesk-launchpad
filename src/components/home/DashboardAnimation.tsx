@@ -933,7 +933,7 @@ export default function DashboardAnimation() {
                   completed: true,
                 },
                 {
-                  time: "9:30",
+                  time: "9:45",
                   color: "#16a34a",
                   name: "James",
                   treatment: "Checkup",
@@ -951,36 +951,50 @@ export default function DashboardAnimation() {
                   completed: false,
                 },
               ].map((row, i) => (
-                <div
-                  key={i}
-                  className="flex items-center px-4 py-2.5 border-b border-[#E2E8F0] last:border-0"
-                >
-                  <span
-                    className={`text-[12px] font-semibold w-10 shrink-0 ${row.completed ? "text-[#cbd5e1]" : "text-[#94a3b8]"}`}
-                  >
-                    {row.time}
-                  </span>
-                  <div
-                    className="w-2 h-2 rounded-full mx-2.5 shrink-0"
-                    style={{ background: row.color }}
-                  />
-                  <div className="flex-1 min-w-0">
-                    <div
-                      className={`text-[13px] font-semibold truncate ${row.completed ? "text-[#94a3b8]" : "text-[#0F172A]"}`}
-                    >
-                      {row.name}
+                <div key={i}>
+                  {i === 1 && (
+                    <div className="relative flex items-center h-4 px-4">
+                      <span className="text-[10px] font-semibold text-[#f97316] w-10 shrink-0">
+                        9:30
+                      </span>
+                      <div className="w-2 h-2 rounded-full bg-[#f97316] shrink-0 z-10" />
+                      <div
+                        className="flex-1 h-[1.5px] ml-1"
+                        style={{
+                          backgroundImage:
+                            "repeating-linear-gradient(to right, #f97316 0px, #f97316 6px, transparent 6px, transparent 12px)",
+                        }}
+                      />
                     </div>
-                    <div
-                      className={`text-[11px] ${row.completed ? "text-[#94a3b8]" : "text-[#64748b]"}`}
+                  )}
+                  <div className="flex items-center px-4 py-2.5 border-b border-[#E2E8F0] last:border-0">
+                    <span
+                      className={`text-[12px] font-semibold w-10 shrink-0 ${row.completed ? "text-[#cbd5e1]" : "text-[#94a3b8]"}`}
                     >
-                      {row.treatment}
+                      {row.time}
+                    </span>
+                    <div
+                      className="w-2 h-2 rounded-full mx-2.5 shrink-0"
+                      style={{ background: row.color }}
+                    />
+                    <div className="flex-1 min-w-0">
+                      <div
+                        className={`text-[13px] font-semibold truncate ${row.completed ? "text-[#94a3b8]" : "text-[#0F172A]"}`}
+                      >
+                        {row.name}
+                      </div>
+                      <div
+                        className={`text-[11px] ${row.completed ? "text-[#94a3b8]" : "text-[#64748b]"}`}
+                      >
+                        {row.treatment}
+                      </div>
                     </div>
+                    <span
+                      className={`text-[11px] font-medium px-2 py-0.5 rounded-full shrink-0 ${row.badgeClass}`}
+                    >
+                      {row.badge}
+                    </span>
                   </div>
-                  <span
-                    className={`text-[11px] font-medium px-2 py-0.5 rounded-full shrink-0 ${row.badgeClass}`}
-                  >
-                    {row.badge}
-                  </span>
                 </div>
               ))}
             </div>
