@@ -925,34 +925,39 @@ export default function DashboardAnimation() {
               {[
                 {
                   time: "9:00",
-                  color: "#7c3aed",
-                  name: "Sarah Mitchell",
+                  color: "#94a3b8",
+                  name: "Sarah",
                   treatment: "Whitening",
-                  badge: "In Chair",
-                  badgeClass: "bg-[#faf5ff] text-[#7c3aed]",
+                  badge: "Completed",
+                  badgeClass: "bg-[#F1F5F9] text-[#64748b]",
+                  completed: true,
                 },
                 {
-                  time: "9:45",
+                  time: "9:30",
                   color: "#16a34a",
-                  name: "James Thompson",
+                  name: "James",
                   treatment: "Checkup",
                   badge: "Arrived",
                   badgeClass: "bg-[#f0fdf4] text-[#16a34a]",
+                  completed: false,
                 },
                 {
                   time: "10:30",
                   color: "#2563EB",
-                  name: "Maria Lombardi",
+                  name: "Maria",
                   treatment: "Hygiene",
                   badge: "Confirmed",
                   badgeClass: "bg-[#eff6ff] text-[#2563EB]",
+                  completed: false,
                 },
               ].map((row, i) => (
                 <div
                   key={i}
                   className="flex items-center px-4 py-2.5 border-b border-[#E2E8F0] last:border-0"
                 >
-                  <span className="text-[12px] font-semibold text-[#94a3b8] w-10 shrink-0">
+                  <span
+                    className={`text-[12px] font-semibold w-10 shrink-0 ${row.completed ? "text-[#cbd5e1]" : "text-[#94a3b8]"}`}
+                  >
                     {row.time}
                   </span>
                   <div
@@ -960,10 +965,14 @@ export default function DashboardAnimation() {
                     style={{ background: row.color }}
                   />
                   <div className="flex-1 min-w-0">
-                    <div className="text-[13px] font-semibold text-[#0F172A] truncate">
+                    <div
+                      className={`text-[13px] font-semibold truncate ${row.completed ? "text-[#94a3b8]" : "text-[#0F172A]"}`}
+                    >
                       {row.name}
                     </div>
-                    <div className="text-[11px] text-[#64748b]">
+                    <div
+                      className={`text-[11px] ${row.completed ? "text-[#94a3b8]" : "text-[#64748b]"}`}
+                    >
                       {row.treatment}
                     </div>
                   </div>
