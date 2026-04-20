@@ -879,18 +879,18 @@ export default function DashboardAnimation() {
                 Renders at fixed 1100px design width, then scales to fit phone */}
             <div
               className="overflow-hidden bg-[#F8FAFC] relative w-full"
-              style={{ aspectRatio: "1100 / 760" }}
+              style={{
+                aspectRatio: "1100 / 760",
+                containerType: "inline-size",
+              }}
             >
               <div
                 className="absolute top-0 left-0 origin-top-left"
                 style={{
                   width: "1100px",
                   height: "760px",
-                  transform: "scale(var(--mobile-scale))",
-                  // @ts-expect-error CSS custom property
-                  "--mobile-scale": "calc(100cqw / 1100)",
+                  transform: "scale(calc(100cqw / 1100))",
                   pointerEvents: "none",
-                  containerType: "inline-size",
                 }}
               >
                 <div className="w-full h-full bg-[#F8FAFC] flex overflow-hidden">
