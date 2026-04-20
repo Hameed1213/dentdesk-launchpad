@@ -49,51 +49,51 @@ const PricePreview = () => {
   );
 };
 
-const ComplexityPreview = () => (
-  <div className="rounded-xl border border-border bg-background p-4 shadow-sm overflow-hidden">
-    <div className="flex items-center justify-between">
-      <div className="flex items-center gap-2">
-        <span
-          className="w-2 h-2 rounded-full bg-amber-500 animate-preview-pulse-ring"
-          style={{ ["--ring-color" as string]: "rgba(245, 158, 11, 0.5)" }}
-        />
-        <span className="text-sm font-semibold text-foreground">Support ticket #4821</span>
-      </div>
-      <span className="text-[10px] font-medium text-amber-600 bg-amber-500/10 rounded-full px-2 py-0.5">Open</span>
-    </div>
-
-    <div className="mt-3 rounded-lg bg-muted/50 px-3 py-2 text-[11px] text-muted-foreground italic">
-      "Thanks, we'll get back to you shortly
-      <span className="inline-flex gap-0.5 ml-1 align-middle">
-        <span className="w-1 h-1 rounded-full bg-muted-foreground animate-preview-typing" style={{ animationDelay: "0ms" }} />
-        <span className="w-1 h-1 rounded-full bg-muted-foreground animate-preview-typing" style={{ animationDelay: "200ms" }} />
-        <span className="w-1 h-1 rounded-full bg-muted-foreground animate-preview-typing" style={{ animationDelay: "400ms" }} />
-      </span>
-      "
-    </div>
-
-    <div className="mt-3 flex items-center justify-between">
-      <div>
-        <div className="text-xl font-bold tabular-nums text-foreground">48h</div>
-        <div className="text-[10px] text-muted-foreground">Average reply time</div>
-      </div>
-      <svg className="w-9 h-9 text-amber-500" viewBox="0 0 36 36" fill="none">
-        <circle cx="18" cy="18" r="14" stroke="currentColor" strokeOpacity="0.15" strokeWidth="3" />
-        <g className="animate-preview-tick" style={{ transformOrigin: "18px 18px" }}>
-          <circle
-            cx="18"
-            cy="18"
-            r="14"
-            stroke="currentColor"
-            strokeWidth="3"
-            strokeLinecap="round"
-            strokeDasharray="22 88"
+const ComplexityPreview = () => {
+  const events = [
+    { label: "Ticket submitted", time: "Mon 09:14", muted: false },
+    { label: "Auto-reply sent", time: "Mon 09:14", muted: true },
+    { label: "Awaiting human…", time: "48h+", muted: true },
+  ];
+  return (
+    <div className="rounded-xl border border-border bg-background p-4 shadow-sm overflow-hidden">
+      <div className="flex items-center justify-between">
+        <div>
+          <div className="text-sm font-semibold text-foreground">Support ticket #4821</div>
+          <div className="text-xs text-muted-foreground mt-0.5">Average reply: 48h</div>
+        </div>
+        <div className="flex items-center gap-1.5">
+          <span
+            className="w-2 h-2 rounded-full bg-amber-500 animate-preview-pulse-ring"
+            style={{ ["--ring-color" as string]: "rgba(245, 158, 11, 0.5)" }}
           />
-        </g>
-      </svg>
+          <span className="text-[10px] font-medium text-amber-600 bg-amber-500/10 rounded-full px-2 py-0.5">Open</span>
+        </div>
+      </div>
+      <div className="mt-3 space-y-1.5">
+        {events.map((e, i) => (
+          <div
+            key={e.label}
+            className="flex items-center justify-between text-[11px] animate-preview-fade-up"
+            style={{ animationDelay: `${i * 120}ms` }}
+          >
+            <div className="flex items-center gap-1.5 min-w-0">
+              <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${e.muted ? "bg-amber-300/60" : "bg-amber-500"}`} />
+              <span className={`truncate ${e.muted ? "text-muted-foreground" : "text-foreground"}`}>{e.label}</span>
+            </div>
+            <span className="tabular-nums font-medium text-muted-foreground">{e.time}</span>
+          </div>
+        ))}
+      </div>
+      <div className="mt-3 h-1 w-full rounded-full bg-muted overflow-hidden">
+        <div
+          className="h-full rounded-full bg-gradient-to-r from-amber-400 to-amber-500 animate-preview-bar"
+          style={{ ["--bar-target" as string]: "70%" }}
+        />
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 const NoShowsPreview = () => {
   const tasks = [
@@ -112,29 +112,32 @@ const NoShowsPreview = () => {
           12 tasks
         </span>
       </div>
-
       <div className="mt-3 space-y-1.5">
         {tasks.map((t, i) => {
           const TaskIcon = t.Icon;
           return (
             <div
               key={t.label}
-              className="flex items-center justify-between text-[11px] rounded-md bg-orange-500/[0.04] border border-orange-500/15 px-2 py-1.5 animate-preview-fade-up"
-              style={{ animationDelay: `${i * 150}ms` }}
+              className="flex items-center justify-between text-[11px] animate-preview-fade-up"
+              style={{ animationDelay: `${i * 120}ms` }}
             >
-              <div className="flex items-center gap-2 min-w-0">
-                <div className="w-4 h-4 rounded flex items-center justify-center bg-orange-500/15 shrink-0">
-                  <TaskIcon className="w-2.5 h-2.5 text-orange-500" />
-                </div>
-                <span className="font-medium text-foreground truncate">{t.label}</span>
+              <div className="flex items-center gap-1.5 min-w-0">
+                <TaskIcon className="w-3 h-3 text-orange-500 shrink-0" />
+                <span className="text-muted-foreground truncate">{t.label}</span>
               </div>
               <div className="flex items-center gap-1.5">
-                <span className="text-muted-foreground tabular-nums">{t.count}</span>
+                <span className="tabular-nums font-medium text-foreground">{t.count}</span>
                 <Check className="w-3 h-3 text-muted-foreground/40" strokeWidth={2.5} />
               </div>
             </div>
           );
         })}
+      </div>
+      <div className="mt-3 h-1 w-full rounded-full bg-muted overflow-hidden">
+        <div
+          className="h-full rounded-full bg-gradient-to-r from-orange-400 to-orange-500 animate-preview-bar"
+          style={{ ["--bar-target" as string]: "92%" }}
+        />
       </div>
     </div>
   );
