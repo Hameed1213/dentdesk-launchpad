@@ -853,12 +853,13 @@ export default function DashboardAnimation() {
       </section>
 
       {/* MOBILE — static scaled-down desktop view, fade-up on scroll */}
-      <div className="block md:hidden mt-8 px-4 pb-12 bg-white">
+      <div className="block md:hidden mt-8 pb-12 bg-white">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease: "easeOut" }}
+          className="w-[90%] mx-auto"
         >
           {/* Browser chrome frame */}
           <div className="w-full rounded-2xl overflow-hidden border border-[#E2E8F0] shadow-xl">
