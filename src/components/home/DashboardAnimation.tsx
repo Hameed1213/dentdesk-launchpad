@@ -174,18 +174,20 @@ type Row = {
   badgeBg: string;
   badgeColor: string;
   pulse?: boolean;
+  completed?: boolean;
 };
 
 const rows: Row[] = [
   {
     time: "9:00",
     period: "am",
-    color: "#2563EB",
+    color: "#94a3b8",
     name: "Sarah Mitchell",
     treatment: "Whitening · 60 min",
-    badge: "Confirmed",
-    badgeBg: "rgba(37,99,235,0.1)",
-    badgeColor: "#2563EB",
+    badge: "Completed",
+    badgeBg: "#F1F5F9",
+    badgeColor: "#64748b",
+    completed: true,
   },
   {
     time: "9:45",
@@ -486,49 +488,89 @@ function DashboardMockup() {
               </button>
             </div>
 
-            <div className="divide-y divide-[#E2E8F0]/60">
+            <div className="divide-y divide-[#E2E8F0]/60 relative">
               {rows.map((row, index) => (
-                <motion.div
-                  key={row.name}
-                  initial={{ opacity: 0, x: -16 }}
-                  animate={{
-                    opacity: index < visibleRows ? 1 : 0,
-                    x: index < visibleRows ? 0 : -16,
-                  }}
-                  transition={{ duration: 0.3, ease: "easeOut" }}
-                  className="flex items-center px-5 py-3"
-                >
-                  <div className="w-12 shrink-0">
-                    <div className="text-[13px] font-semibold text-[#0F172A] leading-tight">
-                      {row.time}
-                    </div>
-                    <div className="text-[11px] text-[#94a3b8] leading-tight">
-                      {row.period}
-                    </div>
-                  </div>
-                  <span
-                    className="w-2 h-2 rounded-full mx-3 shrink-0"
-                    style={{ backgroundColor: row.color }}
-                  />
-                  <div className="flex-1 min-w-0">
-                    <div className="text-[14px] font-semibold text-[#0F172A]">
-                      {row.name}
-                    </div>
-                    <div className="text-[12px] text-[#64748b]">{row.treatment}</div>
-                  </div>
-                  <span
-                    className="text-[12px] font-medium rounded-full px-2.5 py-0.5 flex items-center gap-1.5"
-                    style={{ backgroundColor: row.badgeBg, color: row.badgeColor }}
-                  >
-                    {row.pulse && (
+                <div key={row.name}>
+                  {index === 1 && (
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: visibleRows >= 2 ? 1 : 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="relative flex items-center h-4 px-5"
+                    >
                       <span
-                        className="w-1.5 h-1.5 rounded-full animate-pulse"
-                        style={{ backgroundColor: row.badgeColor }}
+                        className="text-[11px] font-semibold text-[#DC2626]"
+                        style={{ minWidth: "48px" }}
+                      >
+                        9:30
+                      </span>
+                      <div className="w-2.5 h-2.5 rounded-full bg-[#DC2626] shrink-0 z-10" />
+                      <div
+                        className="flex-1 h-[1.5px] ml-1"
+                        style={{
+                          backgroundImage:
+                            "repeating-linear-gradient(to right, #DC2626 0px, #DC2626 6px, transparent 6px, transparent 12px)",
+                        }}
                       />
-                    )}
-                    {row.badge}
-                  </span>
-                </motion.div>
+                    </motion.div>
+                  )}
+                  <motion.div
+                    initial={{ opacity: 0, x: -16 }}
+                    animate={{
+                      opacity: index < visibleRows ? 1 : 0,
+                      x: index < visibleRows ? 0 : -16,
+                    }}
+                    transition={{ duration: 0.3, ease: "easeOut" }}
+                    className="flex items-center px-5 py-3"
+                  >
+                    <div className="w-12 shrink-0">
+                      <div
+                        className={`text-[13px] font-semibold leading-tight ${
+                          row.completed ? "text-[#94a3b8]" : "text-[#0F172A]"
+                        }`}
+                      >
+                        {row.time}
+                      </div>
+                      <div className="text-[11px] text-[#94a3b8] leading-tight">
+                        {row.period}
+                      </div>
+                    </div>
+                    <span
+                      className="w-2 h-2 rounded-full mx-3 shrink-0"
+                      style={{ backgroundColor: row.color }}
+                    />
+                    <div className="flex-1 min-w-0">
+                      <div
+                        className={`text-[14px] font-semibold ${
+                          row.completed
+                            ? "line-through text-[#94a3b8]"
+                            : "text-[#0F172A]"
+                        }`}
+                      >
+                        {row.name}
+                      </div>
+                      <div
+                        className={`text-[12px] ${
+                          row.completed ? "text-[#94a3b8]" : "text-[#64748b]"
+                        }`}
+                      >
+                        {row.treatment}
+                      </div>
+                    </div>
+                    <span
+                      className="text-[12px] font-medium rounded-full px-2.5 py-0.5 flex items-center gap-1.5"
+                      style={{ backgroundColor: row.badgeBg, color: row.badgeColor }}
+                    >
+                      {row.pulse && (
+                        <span
+                          className="w-1.5 h-1.5 rounded-full animate-pulse"
+                          style={{ backgroundColor: row.badgeColor }}
+                        />
+                      )}
+                      {row.badge}
+                    </span>
+                  </motion.div>
+                </div>
               ))}
             </div>
           </div>
