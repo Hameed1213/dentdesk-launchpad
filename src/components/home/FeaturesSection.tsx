@@ -1,5 +1,5 @@
 import { Card } from "@/components/ui/card";
-import { CreditCard, Settings, CalendarX, X, AlertTriangle } from "lucide-react";
+import { CreditCard, Settings, CalendarX, X, MessageSquare, Clock } from "lucide-react";
 
 /* ---------- Mini preview cards (bottom of each card) ---------- */
 
@@ -20,19 +20,20 @@ const ComplexityPreview = () => (
   <div className="rounded-xl border border-border bg-background p-4 shadow-sm">
     <div className="flex items-start gap-3">
       <div className="w-7 h-7 rounded-full bg-amber-500/15 flex items-center justify-center shrink-0">
-        <AlertTriangle className="w-3.5 h-3.5 text-amber-500" />
+        <MessageSquare className="w-3.5 h-3.5 text-amber-500" />
       </div>
-      <div className="min-w-0">
+      <div className="min-w-0 flex-1">
         <div className="text-sm font-semibold text-foreground">
-          Unexpected error
+          Support ticket #4821
         </div>
         <div className="text-xs text-muted-foreground mt-0.5">
-          Module booking.dll failed to load
+          "Thanks, we'll get back to you shortly."
         </div>
       </div>
     </div>
-    <div className="mt-3 h-1.5 w-full rounded bg-muted overflow-hidden">
-      <div className="h-full w-2/3 bg-amber-400/70" />
+    <div className="mt-3 flex items-center gap-1.5 text-[11px] text-amber-500 font-medium">
+      <Clock className="w-3 h-3" />
+      <span>Avg. reply: 48 hours</span>
     </div>
   </div>
 );
