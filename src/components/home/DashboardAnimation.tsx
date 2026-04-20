@@ -542,9 +542,7 @@ function DashboardMockup() {
                     <div className="flex-1 min-w-0">
                       <div
                         className={`text-[14px] font-semibold ${
-                          row.completed
-                            ? "line-through text-[#94a3b8]"
-                            : "text-[#0F172A]"
+                          row.completed ? "text-[#94a3b8]" : "text-[#0F172A]"
                         }`}
                       >
                         {row.name}
