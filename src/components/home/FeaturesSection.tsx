@@ -91,7 +91,7 @@ export default function FeaturesSection() {
                 className="border-border bg-card p-8 flex flex-col"
               >
                 <Icon
-                  className="w-5 h-5 text-foreground/70 mb-6"
+                  className="w-5 h-5 text-[#2563EB] mb-6"
                   strokeWidth={1.75}
                 />
                 <h3 className="text-[17px] font-semibold text-foreground tracking-tight leading-snug">
