@@ -10,7 +10,7 @@ const PricePreview = () => {
     { name: "Payments add-on", price: "£35" },
   ];
   return (
-    <div className="rounded-xl border border-border bg-background p-4 shadow-sm overflow-hidden">
+    <div className="rounded-xl border border-border bg-background p-4 shadow-sm overflow-hidden min-h-[196px] flex flex-col">
       <div className="flex items-center justify-between">
         <div>
           <div className="text-sm font-semibold text-foreground">Monthly software cost</div>
@@ -50,11 +50,11 @@ const PricePreview = () => {
 };
 
 const ComplexityPreview = () => (
-  <div className="rounded-xl border border-border bg-background p-4 shadow-sm overflow-hidden">
-    <div className="flex items-center justify-between">
-      <div className="flex items-center gap-2">
-        <span
-          className="w-2 h-2 rounded-full bg-amber-500 animate-preview-pulse-ring"
+    <div className="rounded-xl border border-border bg-background p-4 shadow-sm overflow-hidden min-h-[196px] flex flex-col">
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <span
+            className="w-2 h-2 rounded-full bg-amber-500 animate-preview-pulse-ring"
           style={{ ["--ring-color" as string]: "rgba(245, 158, 11, 0.5)" }}
         />
         <span className="text-sm font-semibold text-foreground">Support ticket #4821</span>
@@ -102,7 +102,7 @@ const NoShowsPreview = () => {
     { Icon: FileText, label: "Email forms", count: "× 14" },
   ];
   return (
-    <div className="rounded-xl border border-border bg-background p-4 shadow-sm overflow-hidden">
+    <div className="rounded-xl border border-border bg-background p-4 shadow-sm overflow-hidden min-h-[196px] flex flex-col">
       <div className="flex items-center justify-between">
         <div>
           <div className="text-sm font-semibold text-foreground">Reception to-do</div>
