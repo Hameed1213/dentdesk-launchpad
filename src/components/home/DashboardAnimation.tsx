@@ -1175,12 +1175,10 @@ function DashboardMockup() {
 
 export default function DashboardAnimation() {
   return (
-    <section className="bg-white pt-0 pb-24 overflow-hidden hidden md:block w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]">
-      <div className="w-full max-w-[1800px] mx-auto px-4">
-        <ContainerScroll titleComponent={<></>}>
-          <DashboardMockup />
-        </ContainerScroll>
-      </div>
+    <section className="bg-white pt-0 pb-24 overflow-hidden hidden md:block w-full">
+      <ContainerScroll titleComponent={<></>}>
+        <DashboardMockup />
+      </ContainerScroll>
     </section>
   );
 }
