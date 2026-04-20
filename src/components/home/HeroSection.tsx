@@ -231,37 +231,37 @@ function WaitlistForm() {
   }
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto mt-10 w-full"
-      noValidate
-    >
-      <input
-        type="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        placeholder="your@practice.com"
-        aria-label="Email address"
-        maxLength={255}
-        className="flex-1 px-4 py-3 rounded-xl border border-neutral-200 bg-white text-sm text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:border-[#2563EB] transition-all shadow-sm"
-        style={
-          {
-            ["--tw-ring-color" as string]: "rgba(37,99,235,0.3)",
-          } as React.CSSProperties
-        }
-      />
-      <button
-        type="submit"
-        className="bg-[#2563EB] text-white text-sm font-semibold px-6 py-3 rounded-xl hover:bg-[#1d4ed8] transition-all shadow-md shadow-blue-500/20 whitespace-nowrap"
+    <div className="flex flex-col items-center gap-2 max-w-md mx-auto mt-10 w-full">
+      <form
+        onSubmit={handleSubmit}
+        className="flex flex-col sm:flex-row gap-3 w-full"
+        noValidate
       >
-        Join the waitlist →
-      </button>
+        <input
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="your@practice.com"
+          aria-label="Email address"
+          maxLength={255}
+          className="flex-1 px-4 py-3 rounded-xl border border-neutral-200 bg-white text-sm text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:border-[#2563EB] transition-all shadow-sm"
+          style={
+            {
+              ["--tw-ring-color" as string]: "rgba(37,99,235,0.3)",
+            } as React.CSSProperties
+          }
+        />
+        <button
+          type="submit"
+          className="bg-[#2563EB] text-white text-sm font-semibold px-6 py-3 rounded-xl hover:bg-[#1d4ed8] transition-all shadow-md shadow-blue-500/20 whitespace-nowrap"
+        >
+          Join the waitlist →
+        </button>
+      </form>
       {error && (
-        <p className="sm:absolute sm:mt-16 text-xs text-red-500 text-center w-full mt-1">
-          {error}
-        </p>
+        <p className="text-sm text-red-500 text-center w-full mt-1">{error}</p>
       )}
-    </form>
+    </div>
   );
 }
 
