@@ -5,13 +5,13 @@ import { CreditCard, Settings, CalendarX, X, AlertTriangle } from "lucide-react"
 
 const PricePreview = () => (
   <div className="rounded-xl border border-border bg-background p-4 shadow-sm">
-    <div className="text-sm font-semibold text-foreground">Monthly bill</div>
-    <div className="text-xs text-muted-foreground mt-0.5">Dentally · Pro plan</div>
+    <div className="text-sm font-semibold text-foreground">Monthly software cost</div>
+    <div className="text-xs text-muted-foreground mt-0.5">Practice management + 2 add-ons</div>
     <div className="mt-3 text-2xl font-bold tabular-nums text-foreground">
-      £185.00
+      £200.00
     </div>
     <div className="mt-2 flex items-center gap-1.5 text-[11px] text-rose-500 font-medium">
-      <span>+ £1,400 / yr overspend</span>
+      <span>3 tools doing 1 job</span>
     </div>
   </div>
 );
