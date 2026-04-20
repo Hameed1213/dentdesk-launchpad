@@ -854,14 +854,14 @@ export default function DashboardAnimation() {
 
       {/* Mobile — show a laptop/desktop-style screen instead of a phone */}
       <section className="bg-white pt-6 pb-12 block md:hidden w-full pointer-events-none">
-        <div className="w-full px-4">
+        <div className="w-full px-2">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className="border-4 border-[#6C6C6C] bg-[#222222] rounded-[18px] p-1.5 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.25)] mx-auto"
-            style={{ height: 380, maxWidth: 520 }}
+            className="border-4 border-[#6C6C6C] bg-[#222222] rounded-[18px] p-1.5 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.25)] mx-auto w-full"
+            style={{ height: 560 }}
           >
             <TabletDashboardMockup />
           </motion.div>
