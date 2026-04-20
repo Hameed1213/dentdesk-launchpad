@@ -315,7 +315,7 @@ export default function HeroSection() {
           style={{ fontWeight: 600 }}
         >
           Dental software for{" "}
-          <span className="text-[#2563EB] whitespace-nowrap">UK private practices.</span>
+          <span className="text-[#2563EB] whitespace-nowrap">UK private practices</span>
         </h1>
       </AnimatedGroup>
 
