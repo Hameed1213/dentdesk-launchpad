@@ -499,17 +499,17 @@ function DashboardMockup() {
                       className="relative flex items-center h-4 px-5"
                     >
                       <span
-                        className="text-[11px] font-semibold text-[#DC2626]"
+                        className="text-[11px] font-semibold text-[#f97316]"
                         style={{ minWidth: "48px" }}
                       >
                         9:30
                       </span>
-                      <div className="w-2.5 h-2.5 rounded-full bg-[#DC2626] shrink-0 z-10" />
+                      <div className="w-2.5 h-2.5 rounded-full bg-[#f97316] shrink-0 z-10" />
                       <div
                         className="flex-1 h-[1.5px] ml-1"
                         style={{
                           backgroundImage:
-                            "repeating-linear-gradient(to right, #DC2626 0px, #DC2626 6px, transparent 6px, transparent 12px)",
+                            "repeating-linear-gradient(to right, #f97316 0px, #f97316 6px, transparent 6px, transparent 12px)",
                         }}
                       />
                     </motion.div>
