@@ -498,7 +498,7 @@ function DashboardMockup() {
 
 export default function DashboardAnimation() {
   return (
-    <section className="bg-white pt-0 pb-8 overflow-hidden hidden md:block w-full" style={{ marginTop: "-206px" }}>
+    <section className="bg-white pt-0 pb-8 overflow-hidden hidden md:block w-full pointer-events-none" style={{ marginTop: "-206px" }}>
       <ContainerScroll titleComponent={<></>}>
         <DashboardMockup />
       </ContainerScroll>
