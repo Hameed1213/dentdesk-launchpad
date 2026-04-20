@@ -25,28 +25,25 @@ export default function FeaturesSection() {
           </p>
         </div>
 
-        {/* Feature grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
-          {/* Card 1 — Online booking (large, spans 2 cols) */}
-          <Card className="md:col-span-2 overflow-hidden border-border bg-card">
-            <div className="grid md:grid-cols-2 gap-0">
-              <div className="p-8 md:p-10 flex flex-col justify-center">
-                <div className="flex items-center gap-2 text-xs font-medium uppercase tracking-wider text-primary mb-4">
-                  <CalendarCheck className="w-4 h-4" />
-                  Online booking
-                </div>
-                <h3 className="text-2xl md:text-3xl font-semibold text-foreground tracking-tight">
-                  Patients book themselves. 24/7.
-                </h3>
-                <p className="mt-3 text-muted-foreground leading-relaxed">
-                  A clean, branded booking page that works on any device. Your
-                  diary fills itself overnight while you sleep — no phone calls,
-                  no back and forth.
-                </p>
+        {/* Feature grid — single row of 3 cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6">
+          {/* Card 1 — Online booking */}
+          <Card className="overflow-hidden border-border bg-card">
+            <div className="p-8">
+              <div className="flex items-center gap-2 text-xs font-medium uppercase tracking-wider text-primary mb-4">
+                <CalendarCheck className="w-4 h-4" />
+                Online booking
               </div>
-              <div className="bg-muted/40 p-6 md:p-10 flex items-center justify-center border-t md:border-t-0 md:border-l border-border">
-                <BookingIllustration />
-              </div>
+              <h3 className="text-xl md:text-2xl font-semibold text-foreground tracking-tight">
+                Patients book themselves. 24/7.
+              </h3>
+              <p className="mt-3 text-muted-foreground leading-relaxed">
+                A clean, branded booking page that fills your diary overnight —
+                no phone calls, no back and forth.
+              </p>
+            </div>
+            <div className="bg-muted/40 px-6 py-8 border-t border-border flex items-center justify-center">
+              <BookingIllustration />
             </div>
           </Card>
 
