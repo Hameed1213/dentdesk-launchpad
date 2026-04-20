@@ -4,47 +4,44 @@ import { CreditCard, Settings, CalendarX, X, AlertTriangle } from "lucide-react"
 /* ---------- Mini preview cards (bottom of each card) ---------- */
 
 const PricePreview = () => (
-  <div className="rounded-xl border border-neutral-200 bg-white p-4 shadow-sm">
-    <div className="text-sm font-medium text-neutral-900">Monthly bill</div>
-    <div className="text-sm text-neutral-400 mt-0.5">Dentally · Pro plan</div>
-    <div
-      className="mt-3 text-[1.75rem] tabular-nums text-neutral-900 leading-none tracking-[-0.02em]"
-      style={{ fontWeight: 600 }}
-    >
+  <div className="rounded-xl border border-border bg-background p-4 shadow-sm">
+    <div className="text-sm font-semibold text-foreground">Monthly bill</div>
+    <div className="text-xs text-muted-foreground mt-0.5">Dentally · Pro plan</div>
+    <div className="mt-3 text-2xl font-bold tabular-nums text-foreground">
       £185.00
     </div>
-    <div className="mt-2 text-sm text-rose-500 font-medium">
-      + £1,400 / yr overspend
+    <div className="mt-2 flex items-center gap-1.5 text-[11px] text-rose-500 font-medium">
+      <span>+ £1,400 / yr overspend</span>
     </div>
   </div>
 );
 
 const ComplexityPreview = () => (
-  <div className="rounded-xl border border-neutral-200 bg-white p-4 shadow-sm">
+  <div className="rounded-xl border border-border bg-background p-4 shadow-sm">
     <div className="flex items-start gap-3">
       <div className="w-7 h-7 rounded-full bg-amber-500/15 flex items-center justify-center shrink-0">
         <AlertTriangle className="w-3.5 h-3.5 text-amber-500" />
       </div>
       <div className="min-w-0">
-        <div className="text-sm font-medium text-neutral-900">
+        <div className="text-sm font-semibold text-foreground">
           Unexpected error
         </div>
-        <div className="text-sm text-neutral-500 mt-0.5">
+        <div className="text-xs text-muted-foreground mt-0.5">
           Module booking.dll failed to load
         </div>
       </div>
     </div>
-    <div className="mt-3 h-1.5 w-full rounded bg-neutral-100 overflow-hidden">
+    <div className="mt-3 h-1.5 w-full rounded bg-muted overflow-hidden">
       <div className="h-full w-2/3 bg-amber-400/70" />
     </div>
   </div>
 );
 
 const NoShowsPreview = () => (
-  <div className="rounded-xl border border-neutral-200 bg-white p-4 shadow-sm">
+  <div className="rounded-xl border border-border bg-background p-4 shadow-sm">
     <div className="flex items-center justify-between">
-      <span className="text-sm font-medium text-neutral-900">Today</span>
-      <span className="text-sm font-medium text-orange-500 bg-orange-500/10 rounded-full px-2 py-0.5">
+      <span className="text-sm font-semibold text-foreground">Today</span>
+      <span className="text-[10px] font-semibold text-orange-500 bg-orange-500/10 rounded-full px-2 py-0.5">
         2 no-shows
       </span>
     </div>
@@ -55,13 +52,13 @@ const NoShowsPreview = () => (
       ].map((s, i) => (
         <div
           key={i}
-          className="flex items-center justify-between text-sm rounded-md bg-orange-500/5 border border-orange-500/20 px-2 py-1.5"
+          className="flex items-center justify-between text-[11px] rounded-md bg-orange-500/5 border border-orange-500/20 px-2 py-1.5"
         >
           <div className="flex items-center gap-2">
-            <span className="font-medium tabular-nums text-neutral-900">
+            <span className="font-medium tabular-nums text-foreground">
               {s.time}
             </span>
-            <span className="text-neutral-500 line-through">{s.name}</span>
+            <span className="text-muted-foreground line-through">{s.name}</span>
           </div>
           <X className="w-3 h-3 text-orange-500" />
         </div>
@@ -93,18 +90,16 @@ const problems = [
 
 export default function FeaturesSection() {
   return (
-    <section className="bg-white py-20 md:py-32 px-6">
+    <section className="bg-background py-20 md:py-32 px-6 md:px-8">
       <div className="mx-auto max-w-6xl">
-        {/* Section heading — matches hero typography */}
-        <div className="mx-auto max-w-3xl text-center mb-14 md:mb-20">
-          <h2
-            className="text-[2.5rem] md:text-[3.75rem] lg:text-[4.5rem] text-center text-neutral-900 leading-[1.15] tracking-[-0.03em]"
-            style={{ fontWeight: 600 }}
-          >
-            Your software is costing you{" "}
-            <span className="text-neutral-400">more than you think</span>
+        {/* Section heading */}
+        <div className="mx-auto max-w-2xl text-center mb-14 md:mb-20">
+          <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-foreground leading-[1.1]">
+            Your current software is costing you
+            <br />
+            <span className="text-muted-foreground">more than you think.</span>
           </h2>
-          <p className="text-lg text-neutral-500 max-w-xl mx-auto text-center leading-relaxed mt-5">
+          <p className="mt-5 text-base md:text-lg text-muted-foreground">
             Most independent UK practices are overpaying for tools that are too
             complex, too slow and built for a different era of dentistry.
           </p>
@@ -117,19 +112,16 @@ export default function FeaturesSection() {
             return (
               <Card
                 key={i}
-                className="border-neutral-200 bg-white p-8 flex flex-col shadow-sm"
+                className="border-border bg-card p-8 flex flex-col"
               >
                 <Icon
-                  className="w-5 h-5 text-neutral-700 mb-6"
+                  className="w-5 h-5 text-foreground/70 mb-6"
                   strokeWidth={1.75}
                 />
-                <h3
-                  className="text-lg text-neutral-900 leading-snug tracking-[-0.01em]"
-                  style={{ fontWeight: 600 }}
-                >
+                <h3 className="text-[17px] font-semibold text-foreground tracking-tight leading-snug">
                   {problem.headline}
                 </h3>
-                <p className="mt-3 text-lg text-neutral-500 leading-relaxed">
+                <p className="mt-3 text-[14px] text-muted-foreground leading-relaxed">
                   {problem.body}
                 </p>
                 <div className="mt-6 flex-1 flex items-end">
