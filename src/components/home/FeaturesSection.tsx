@@ -99,7 +99,6 @@ const NoShowsPreview = () => {
   const tasks = [
     { Icon: Bell, label: "Send reminders", count: "× 38" },
     { Icon: Banknote, label: "Chase deposits", count: "× 6" },
-    { Icon: FileText, label: "Email forms", count: "× 14" },
   ];
   return (
     <div className="rounded-xl border border-border bg-background p-4 shadow-sm overflow-hidden min-h-[196px] flex flex-col">
