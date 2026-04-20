@@ -69,13 +69,13 @@ const problems = [
   },
   {
     Icon: Settings,
-    headline: "After the sale, you're on your own.",
+    headline: "After the sale, you're on your own",
     body: "Most dental software companies sell you the product and disappear. A chatbot, a help article and a 48-hour ticket.",
     preview: <ComplexityPreview />,
   },
   {
     Icon: CalendarX,
-    headline: "Your team is doing your software's job.",
+    headline: "Your team is doing your software's job",
     body: "Manual reminders. Chasing deposits. Sending forms one by one. Hours every week on tasks that should happen automatically.",
     preview: <NoShowsPreview />,
   },
