@@ -95,13 +95,12 @@ export default function FeaturesSection() {
         {/* Section heading */}
         <div className="mx-auto max-w-2xl text-center mb-14 md:mb-20">
           <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-foreground leading-[1.1]">
-            Your current software is costing you
+            Your software is working
             <br />
-            <span className="text-muted-foreground">more than you think.</span>
+            <span className="text-muted-foreground">against you.</span>
           </h2>
           <p className="mt-5 text-base md:text-lg text-muted-foreground">
-            Most independent UK practices are overpaying for tools that are too
-            complex, too slow and built for a different era of dentistry.
+            Overpriced. Overcomplicated. Losing you patients every week.
           </p>
         </div>
 
