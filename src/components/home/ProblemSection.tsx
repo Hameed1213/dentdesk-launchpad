@@ -1,120 +1,163 @@
-import { motion } from "framer-motion";
-import { CreditCard, Settings, CalendarX } from "lucide-react";
+"use client";
 
-const problems = [
+import * as React from "react";
+import { cn } from "@/lib/utils";
+
+export type Problem = {
+  id: number;
+  area: string;
+  severity: "High" | "Medium" | "Critical";
+  severityVariant: "success" | "danger" | "warning";
+  headline: string;
+  detail: string;
+  cost: string;
+};
+
+const DEFAULT_PROBLEMS: Problem[] = [
   {
-    icon: CreditCard,
-    iconBg: "bg-rose-500/10",
-    iconColor: "text-rose-400",
-    headline: "You're overpaying for features you'll never use",
-    body: "Dentally starts at £185/month. EXACT charges more. Both lock you into annual contracts built around NHS workflows your private practice doesn't need.",
-    stat: "Independent practices overpay by over £1,000 a year on average",
+    id: 1,
+    area: "Pricing",
+    severity: "High",
+    severityVariant: "warning",
+    headline: "Overpaying for features you'll never use",
+    detail:
+      "Dentally starts at £185/month. EXACT charges more. Both lock you into annual contracts built around NHS workflows.",
+    cost: "£1,000+/yr",
   },
   {
-    icon: Settings,
-    iconBg: "bg-amber-500/10",
-    iconColor: "text-amber-400",
-    headline: "It took 3 training days. It still breaks on a Tuesday.",
-    body: "Legacy software means legacy problems. Slow load times, confusing interfaces and a support line that puts you on hold. Your receptionist shouldn't need a manual.",
-    stat: "Most practice managers rate their current software UX as poor",
+    id: 2,
+    area: "Usability",
+    severity: "Medium",
+    severityVariant: "warning",
+    headline: "3 training days. Still breaks on a Tuesday.",
+    detail:
+      "Legacy software, slow load times, confusing UI and a support line that puts you on hold.",
+    cost: "Hours/wk",
   },
   {
-    icon: CalendarX,
-    iconBg: "bg-orange-500/10",
-    iconColor: "text-orange-400",
-    headline: "No-shows are emptying your diary every week",
-    body: "Without automated reminders, the average practice loses 4–6 appointments a week to no-shows. At £100 a slot that's up to £600 walking out the door every week.",
-    stat: "Automated reminders reduce no-shows by up to 40%",
+    id: 3,
+    area: "No-shows",
+    severity: "Critical",
+    severityVariant: "danger",
+    headline: "Empty chairs are draining revenue weekly",
+    detail:
+      "Without automated reminders, the average practice loses 4–6 appointments a week to no-shows.",
+    cost: "£600/wk",
   },
 ];
 
-export default function ProblemSection() {
+const Badge = ({
+  children,
+  variant,
+}: {
+  children: React.ReactNode;
+  variant: "success" | "danger" | "warning";
+}) => {
+  const styles =
+    variant === "success"
+      ? "bg-lime-500/15 text-lime-800 dark:text-lime-300"
+      : variant === "danger"
+        ? "bg-red-500/15 text-red-800 dark:text-red-300"
+        : "bg-yellow-500/15 text-yellow-800 dark:text-yellow-300";
+
   return (
-    <section className="relative bg-[#0B1220] py-24 md:py-32 px-6 md:px-8 overflow-hidden">
-      {/* Subtle background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0B1220] via-[#0F172A] to-[#0B1220] pointer-events-none" />
+    <span
+      className={cn(
+        "inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium",
+        styles,
+      )}
+    >
+      {children}
+    </span>
+  );
+};
+
+export type ProblemSectionProps = {
+  title?: string;
+  subtitle?: string;
+  className?: string;
+  problems?: Problem[];
+};
+
+export default function ProblemSection({
+  title = "Your current software is costing you more than you think",
+  subtitle = "Most independent UK practices are overpaying for tools that are too complex, too slow and built for a different era of dentistry.",
+  problems = DEFAULT_PROBLEMS,
+  className,
+}: ProblemSectionProps) {
+  return (
+    <section className="bg-background py-20 md:py-28 px-6 md:px-8">
       <div
-        className="absolute inset-0 opacity-[0.03] pointer-events-none"
-        style={{
-          backgroundImage:
-            "radial-gradient(circle at 50% 0%, rgba(255,255,255,0.4) 0%, transparent 50%)",
-        }}
-      />
-
-      <div className="relative max-w-7xl mx-auto">
+        className={cn(
+          "mx-auto w-full max-w-5xl rounded-2xl border border-border bg-card text-card-foreground shadow-sm",
+          className,
+        )}
+      >
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16 md:mb-20"
-        >
-          <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-[1.1]">
-            Your current software is costing you
-            <br />
-            <span className="text-slate-400">more than you think.</span>
+        <div className="flex flex-col gap-1 border-b border-border p-6">
+          <div className="flex items-center gap-1">
+            <span className="h-2.5 w-2.5 rounded-full bg-red-400/80" />
+            <span className="h-2.5 w-2.5 rounded-full bg-yellow-400/80" />
+            <span className="h-2.5 w-2.5 rounded-full bg-lime-400/80" />
+          </div>
+          <h2 className="mt-3 text-xl md:text-2xl font-semibold tracking-tight">
+            {title}
           </h2>
-          <p className="mt-6 text-base md:text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed">
-            Most independent practices are overpaying for software that's too
-            complex, too slow and built for a different era of dentistry.
-          </p>
-        </motion.div>
-
-        {/* Three columns */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-          {problems.map((problem, i) => {
-            const Icon = problem.icon;
-            return (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.6, delay: i * 0.1 }}
-                className="relative bg-white/[0.03] border border-white/10 rounded-2xl p-8 backdrop-blur-sm hover:bg-white/[0.05] hover:border-white/20 transition-all duration-300"
-              >
-                {/* Icon */}
-                <div
-                  className={`w-12 h-12 rounded-xl ${problem.iconBg} flex items-center justify-center mb-6`}
-                >
-                  <Icon className={`w-6 h-6 ${problem.iconColor}`} />
-                </div>
-
-                {/* Headline */}
-                <h3 className="text-xl md:text-[22px] font-semibold text-white leading-tight mb-4">
-                  {problem.headline}
-                </h3>
-
-                {/* Body */}
-                <p className="text-[15px] text-slate-400 leading-relaxed mb-6">
-                  {problem.body}
-                </p>
-
-                {/* Stat */}
-                <div className="pt-6 border-t border-white/10">
-                  <p className="text-sm font-medium text-slate-300 italic">
-                    "{problem.stat}"
-                  </p>
-                </div>
-              </motion.div>
-            );
-          })}
+          <p className="text-sm text-muted-foreground">{subtitle}</p>
         </div>
 
-        {/* Transition line */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="text-center mt-20 md:mt-24"
-        >
-          <p className="text-2xl md:text-3xl font-semibold text-white tracking-tight">
-            There's a better way.
-          </p>
-          <div className="mt-6 mx-auto w-16 h-[2px] bg-gradient-to-r from-transparent via-white/40 to-transparent" />
-        </motion.div>
+        {/* Table wrapper for responsive overflow */}
+        <div className="overflow-x-auto">
+          <table className="w-full text-left text-sm">
+            <thead className="bg-muted/40 text-xs uppercase tracking-wide text-muted-foreground">
+              <tr>
+                <th className="px-6 py-3 font-medium">#</th>
+                <th className="px-6 py-3 font-medium">Area</th>
+                <th className="px-6 py-3 font-medium">Severity</th>
+                <th className="px-6 py-3 font-medium">Problem</th>
+                <th className="px-6 py-3 font-medium text-right">Cost</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-border">
+              {problems.map((problem, idx) => (
+                <tr
+                  key={problem.id}
+                  className="transition-colors hover:bg-muted/30"
+                >
+                  <td className="px-6 py-4 text-muted-foreground">{idx + 1}</td>
+                  <td className="px-6 py-4 font-medium">{problem.area}</td>
+                  <td className="px-6 py-4">
+                    <Badge variant={problem.severityVariant}>
+                      {problem.severity}
+                    </Badge>
+                  </td>
+                  <td className="px-6 py-4">
+                    <div className="flex flex-col">
+                      <span className="font-medium text-foreground">
+                        {problem.headline}
+                      </span>
+                      <span className="mt-0.5 text-xs text-muted-foreground">
+                        {problem.detail}
+                      </span>
+                    </div>
+                  </td>
+                  <td className="px-6 py-4 text-right font-semibold tabular-nums">
+                    {problem.cost}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        {/* Footer */}
+        <div className="flex items-center justify-between border-t border-border px-6 py-3 text-xs text-muted-foreground">
+          <span>
+            Showing {problems.length}{" "}
+            {problems.length === 1 ? "issue" : "issues"}
+          </span>
+          <span>There's a better way →</span>
+        </div>
       </div>
     </section>
   );
