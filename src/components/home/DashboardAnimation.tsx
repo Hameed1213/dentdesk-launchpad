@@ -901,17 +901,6 @@ export default function DashboardAnimation() {
               </div>
               <div className="bg-white rounded-xl p-3 border border-[#E2E8F0]">
                 <div className="text-[10px] font-semibold text-[#64748b] uppercase tracking-wide">
-                  Capacity
-                </div>
-                <div className="text-[28px] font-extrabold text-[#2563EB] leading-none mt-1">
-                  78%
-                </div>
-                <div className="w-full h-[2px] bg-[#E2E8F0] rounded-full mt-2">
-                  <div className="h-full bg-[#2563EB] rounded-full w-[78%]" />
-                </div>
-              </div>
-              <div className="bg-white rounded-xl p-3 border border-[#E2E8F0]">
-                <div className="text-[10px] font-semibold text-[#64748b] uppercase tracking-wide">
                   Revenue
                 </div>
                 <div className="text-[28px] font-extrabold text-[#0F172A] leading-none mt-1">
@@ -919,17 +908,6 @@ export default function DashboardAnimation() {
                 </div>
                 <div className="text-[11px] text-[#16a34a] mt-1">
                   ↑ 12% vs yesterday
-                </div>
-              </div>
-              <div className="bg-white rounded-xl p-3 border border-[#E2E8F0]">
-                <div className="text-[10px] font-semibold text-[#64748b] uppercase tracking-wide">
-                  New Patients
-                </div>
-                <div className="text-[28px] font-extrabold text-[#0F172A] leading-none mt-1">
-                  2
-                </div>
-                <div className="text-[11px] text-[#64748b] mt-1">
-                  first appt today
                 </div>
               </div>
             </div>
