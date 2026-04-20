@@ -1,26 +1,42 @@
 import { createFileRoute } from "@tanstack/react-router";
+import Navbar from "@/components/home/Navbar";
+import HeroSection from "@/components/home/HeroSection";
 
 export const Route = createFileRoute("/")({
   component: Index,
+  head: () => ({
+    meta: [
+      {
+        title: "DentDesk — Practice management software that actually makes sense",
+      },
+      {
+        name: "description",
+        content:
+          "DentDesk handles bookings, reminders, payments and recalls for independent UK dental practices going private. Free 30-day trial, no credit card.",
+      },
+      { property: "og:title", content: "DentDesk — Modern dental practice management" },
+      {
+        property: "og:description",
+        content:
+          "Bookings, reminders, payments and recalls — built for independent UK practices going private.",
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "DentDesk — Modern dental practice management" },
+      {
+        name: "twitter:description",
+        content:
+          "Bookings, reminders, payments and recalls — built for independent UK practices going private.",
+      },
+    ],
+  }),
 });
 
-// IMPORTANT: Replace this placeholder. For sites with multiple pages (About, Services, Contact, etc.),
-// create separate route files (about.tsx, services.tsx, contact.tsx) — don't put all pages in this file.
-function PlaceholderIndex() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
-}
-
 function Index() {
-  return <PlaceholderIndex />;
+  return (
+    <main>
+      <Navbar />
+      <HeroSection />
+    </main>
+  );
 }
