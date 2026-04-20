@@ -33,25 +33,23 @@ const ComplexityPreview = () => (
 const NoShowsPreview = () => (
   <div className="rounded-xl border border-border bg-background p-4 shadow-sm">
     <div className="flex items-center justify-between">
-      <span className="text-sm font-semibold text-foreground">Today</span>
+      <span className="text-sm font-semibold text-foreground">Reception to-do</span>
       <span className="text-[10px] font-semibold text-orange-500 bg-orange-500/10 rounded-full px-2 py-0.5">
-        2 no-shows
+        12 manual tasks
       </span>
     </div>
     <div className="mt-3 space-y-1.5">
       {[
-        { time: "10:30", name: "James T." },
-        { time: "14:00", name: "Tom W." },
+        { task: "Send reminders", count: "× 38" },
+        { task: "Chase deposits", count: "× 6" },
       ].map((s, i) => (
         <div
           key={i}
           className="flex items-center justify-between text-[11px] rounded-md bg-orange-500/5 border border-orange-500/20 px-2 py-1.5"
         >
           <div className="flex items-center gap-2">
-            <span className="font-medium tabular-nums text-foreground">
-              {s.time}
-            </span>
-            <span className="text-muted-foreground line-through">{s.name}</span>
+            <span className="font-medium text-foreground">{s.task}</span>
+            <span className="text-muted-foreground tabular-nums">{s.count}</span>
           </div>
           <X className="w-3 h-3 text-orange-500" />
         </div>
