@@ -148,12 +148,14 @@ function StatCard({
         <span className="truncate">{sub}</span>
       </div>
       {showProgress && (
-        <div className="w-full h-[2px] bg-[#E2E8F0] rounded-full mt-2">
-          <motion.div
+        <div className="w-full h-[2px] bg-[#E2E8F0] rounded-full mt-2 overflow-hidden">
+          <div
             className="h-full bg-[#2563EB] rounded-full"
-            initial={{ width: 0 }}
-            animate={{ width: `${progressPct ?? 0}%` }}
-            transition={{ duration: 0.05 }}
+            style={{
+              width: `${progressPct ?? 0}%`,
+              transform: "translateZ(0)",
+              willChange: "width",
+            }}
           />
         </div>
       )}
@@ -317,7 +319,7 @@ function DashboardMockup() {
       label: "CAPACITY",
       Icon: BarChart2,
       value: (
-        <span className="text-[40px] font-extrabold text-[#2563EB] leading-none mt-2 block">
+        <span className="text-[40px] font-extrabold text-[#2563EB] leading-none mt-2 block tabular-nums">
           {countCapacity}%
         </span>
       ),
@@ -329,7 +331,7 @@ function DashboardMockup() {
       label: "REVENUE TODAY",
       Icon: TrendingUp,
       value: (
-        <span className="text-[40px] font-extrabold text-[#0F172A] leading-none mt-2 block">
+        <span className="text-[40px] font-extrabold text-[#0F172A] leading-none mt-2 block tabular-nums">
           £{countRevenue.toLocaleString()}
         </span>
       ),
