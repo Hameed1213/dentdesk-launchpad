@@ -449,8 +449,6 @@ function BookingMockup() {
         </div>
 
         {/* CTA */}
-
-        {/* CTA */}
         <button className="w-full h-[54px] bg-[#2563EB] text-white font-bold text-[17px] rounded-full flex items-center justify-center gap-2 shadow-[0_4px_14px_rgba(37,99,235,0.3)]">
           <span>Book an Appointment</span>
           <ArrowRight size={18} />
