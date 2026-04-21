@@ -1039,6 +1039,14 @@ export default function ProductShowcase() {
   const sectionRef = useRef<HTMLElement | null>(null);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const pauseTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
+
+  // Scroll active tab into view (mainly for mobile horizontal scroll)
+  useEffect(() => {
+    const btn = tabRefs.current[activeTab];
+    if (!btn) return;
+    btn.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+  }, [activeTab]);
 
   // Observe when the section enters the viewport
   useEffect(() => {
@@ -1110,6 +1118,9 @@ export default function ProductShowcase() {
                 return (
                   <button
                     key={tab}
+                    ref={(el) => {
+                      tabRefs.current[i] = el;
+                    }}
                     onClick={() => handleTabClick(i)}
                     className={`relative inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold transition-all duration-200 overflow-hidden whitespace-nowrap shrink-0 border sm:border-0 ${
                       active
