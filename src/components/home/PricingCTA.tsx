@@ -46,7 +46,7 @@ export default function PricingCTA() {
                 Start free trial <ArrowRight className="w-4 h-4" />
               </a>
               <p className="text-[13px] text-[#94A3B8] mt-4">
-                30-day free trial · No credit card required
+                30-day free trial
               </p>
             </motion.div>
 
