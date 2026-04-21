@@ -1025,7 +1025,7 @@ const tabContent = [
     badge: "Set And Forget",
     title: "Recalls and automations that run themselves.",
     description:
-      "Six-month recalls, no-show follow-ups, post-treatment check-ins — all sent automatically from sequences you build once.",
+      "Six-month recalls, no-show follow-ups, post-treatment check-ins, all pre-built and ready to switch on. No setup. Just toggle and go.",
     buttonText: "See automations",
   },
   {
