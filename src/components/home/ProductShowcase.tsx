@@ -1059,19 +1059,35 @@ const mockups = [
 export default function ProductShowcase() {
   const [activeTab, setActiveTab] = useState(0);
   const [paused, setPaused] = useState(false);
+  const [inView, setInView] = useState(false);
+  const sectionRef = useRef<HTMLElement | null>(null);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const pauseTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  // Auto-advance every 4s
+  // Observe when the section enters the viewport
   useEffect(() => {
-    if (paused) return;
+    const el = sectionRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) setInView(true);
+      },
+      { threshold: 0.25 },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  // Auto-advance every 20s — only when in view and not paused
+  useEffect(() => {
+    if (paused || !inView) return;
     intervalRef.current = setInterval(() => {
       setActiveTab((prev) => (prev + 1) % tabs.length);
     }, 20000);
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current);
     };
-  }, [paused]);
+  }, [paused, inView]);
 
   useEffect(() => {
     return () => {
@@ -1090,7 +1106,7 @@ export default function ProductShowcase() {
   const content = tabContent[activeTab];
 
   return (
-    <section className="bg-white py-24 px-6 overflow-hidden">
+    <section ref={sectionRef} className="bg-white py-24 px-6 overflow-hidden">
       <motion.div
         className="container max-w-6xl mx-auto"
         initial={{ opacity: 0, y: 24 }}
@@ -1126,7 +1142,7 @@ export default function ProductShowcase() {
                 >
                   <Icon size={15} className="shrink-0" />
                   <span>{tab}</span>
-                  {active && !paused && (
+                  {active && !paused && inView && (
                     <motion.span
                       key={`progress-${activeTab}-${paused}`}
                       className="absolute bottom-0 left-0 h-[2px] bg-white/80 origin-left"
