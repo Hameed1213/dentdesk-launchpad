@@ -800,62 +800,48 @@ function InboxMockup() {
       bg: "#dbeafe",
       color: "#2563EB",
       name: "Sarah Mitchell",
-      preview: "Yes, 3pm Friday works for me — thank you!",
+      preview: "Haven't paid the deposit yet...",
       time: "2m",
+      unread: true,
       active: true,
-      unread: false,
     },
     {
       initials: "JT",
       bg: "#dcfce7",
       color: "#16a34a",
-      name: "James Thompson",
-      preview: "Hi, can I move my appointment to next week?",
-      time: "14m",
-      unread: true,
+      name: "James T.",
+      preview: "Reminder received, see you then!",
+      time: "1h",
+      unread: false,
+      active: false,
     },
     {
       initials: "ML",
-      bg: "#f3e8ff",
-      color: "#9333ea",
-      name: "Maria Lombardi",
-      preview: "Got the reminder, see you tomorrow.",
-      time: "1h",
-    },
-    {
-      initials: "RK",
-      bg: "#fef3c7",
-      color: "#d97706",
-      name: "Robert Keane",
-      preview: "Do you offer Invisalign consultations?",
+      bg: "#faf5ff",
+      color: "#7c3aed",
+      name: "Maria L.",
+      preview: "Can I get a receipt for today?",
       time: "3h",
       unread: true,
-    },
-    {
-      initials: "EW",
-      bg: "#cffafe",
-      color: "#0891b2",
-      name: "Emma Wilson",
-      preview: "Perfect, payment sent.",
-      time: "Yest",
+      active: false,
     },
   ];
 
   const messages = [
     {
-      type: "automated",
-      text: "Appointment reminder sent — Wed 15 Apr at 10:00am",
-      time: "9:00am",
-    },
-    {
       type: "inbound",
-      text: "Hi, just confirming I'll be there — see you Wednesday!",
-      time: "9:42am",
+      text: "Hi, I booked online but haven't paid the deposit yet — how do I do that?",
+      time: "10:14am",
     },
     {
       type: "outbound",
-      text: "Great, see you then! Let us know if anything changes.",
-      time: "9:45am",
+      text: "No problem! Here's your secure payment link: pay.dentdock.co.uk/sm-abc123",
+      time: "10:16am",
+    },
+    {
+      type: "automated",
+      text: "Payment of £80 received from Sarah Mitchell",
+      time: "10:19am",
     },
   ];
 
@@ -928,9 +914,9 @@ function InboxMockup() {
               <div className="text-[13px] font-bold text-[#0F172A]">
                 Sarah Mitchell
               </div>
-              <div className="text-[10px] text-[#16a34a] flex items-center gap-1">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#22c55e]" />
-                Active now
+              <div className="text-[11px] text-[#16a34a] flex items-center gap-1">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#22c55e] inline-block" />
+                SMS · Today
               </div>
             </div>
           </div>
@@ -940,12 +926,19 @@ function InboxMockup() {
             {messages.map((m, i) => {
               if (m.type === "automated") {
                 return (
-                  <div key={i} className="flex justify-center my-2">
-                    <div className="bg-[#F1F5F9] border border-dashed border-[#E2E8F0] rounded-xl px-4 py-2 text-[12px] text-[#64748b] italic max-w-[80%] text-center">
-                      {m.text}
-                      <span className="block text-[10px] text-[#94a3b8] mt-1 not-italic">
+                  <div key={i} className="flex justify-center my-1">
+                    <div className="flex items-center gap-2 bg-[#f0fdf4] border border-[#dcfce7] rounded-xl px-4 py-2">
+                      <div className="w-4 h-4 rounded-full bg-[#22c55e] flex items-center justify-center shrink-0">
+                        <span className="text-white text-[9px] font-bold">
+                          ✓
+                        </span>
+                      </div>
+                      <p className="text-[12px] text-[#16a34a] font-medium">
+                        {m.text}
+                      </p>
+                      <p className="text-[10px] text-[#94a3b8] ml-1">
                         {m.time}
-                      </span>
+                      </p>
                     </div>
                   </div>
                 );
@@ -980,7 +973,7 @@ function InboxMockup() {
           <div className="border-t border-[#E2E8F0] bg-white p-3 flex items-center gap-2 flex-shrink-0">
             <Paperclip size={14} className="text-[#64748b]" />
             <div className="flex-1 h-8 bg-[#F8FAFC] border border-[#E2E8F0] rounded-full px-3 flex items-center text-[11px] text-[#94a3b8]">
-              Type a message…
+              Reply to Sarah Mitchell…
             </div>
             <button className="w-8 h-8 rounded-full bg-[#2563EB] flex items-center justify-center text-white">
               <Send size={13} />
