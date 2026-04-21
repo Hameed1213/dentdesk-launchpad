@@ -14,7 +14,7 @@ export default function HowItWorks() {
   return (
     <section className="bg-white py-20 sm:py-28">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="rounded-3xl bg-[#F1F5F9] border border-[#E2E8F0] p-8 sm:p-12 lg:p-16">
+        <div className="rounded-3xl bg-[#FAFAFA] border border-[#EEEEEE] p-8 sm:p-12 lg:p-16">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Left — big statement */}
             <motion.div
