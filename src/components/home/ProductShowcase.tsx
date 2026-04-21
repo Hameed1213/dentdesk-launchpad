@@ -1148,7 +1148,7 @@ export default function ProductShowcase() {
               className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center"
             >
               {/* Left — copy */}
-              <div className="flex flex-col items-start max-w-[440px]">
+              <div className="flex flex-col items-start w-full lg:max-w-[440px]">
                 <h3
                   className="text-3xl md:text-4xl text-neutral-900 tracking-[-0.02em] leading-[1.15]"
                   style={{ fontWeight: 500 }}
