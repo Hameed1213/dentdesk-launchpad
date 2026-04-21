@@ -316,22 +316,23 @@ function CalendarMockup() {
                     .map((a, i) => (
                       <div
                         key={i}
-                        className="absolute left-1 right-1 rounded-md px-1.5 py-1 overflow-hidden border-l-[3px]"
+                        className="absolute left-1 right-1 rounded-[6px] px-2 py-1 overflow-hidden"
                         style={{
                           top: a.top,
                           height: a.h,
-                          backgroundColor: isPast ? "#f1f5f9" : a.bg,
-                          borderColor: isPast ? "#cbd5e1" : a.border,
+                          minHeight: "36px",
+                          backgroundColor: isPast ? "#f1f5f9" : `${a.color}1e`,
+                          borderLeft: `3px solid ${isPast ? "#cbd5e1" : a.color}`,
                         }}
                       >
                         <div
-                          className="text-[10px] font-semibold leading-tight truncate"
-                          style={{ color: isPast ? "#94a3b8" : a.color }}
+                          className="text-[10px] font-semibold truncate leading-tight"
+                          style={{ color: isPast ? "#94a3b8" : "#0F172A" }}
                         >
                           {a.label}
                         </div>
                         <div
-                          className="text-[9px] leading-tight truncate"
+                          className="text-[9px] truncate leading-tight"
                           style={{ color: isPast ? "#94a3b8" : "#64748b" }}
                         >
                           {a.sub}
@@ -1152,16 +1153,16 @@ export default function ProductShowcase() {
             >
               {/* Left — copy */}
               <div className="flex flex-col items-start">
-                <span className="inline-flex items-center rounded-full border border-[#bfdbfe] bg-[#eff6ff] px-3 py-1 text-xs font-semibold text-[#2563EB]">
-                  {content.badge}
-                </span>
-                <h3 className="mt-4 text-3xl md:text-4xl font-bold text-neutral-900 tracking-[-0.02em] leading-[1.15]">
+                <h3
+                  className="text-3xl md:text-4xl text-neutral-900 tracking-[-0.02em] leading-[1.15]"
+                  style={{ fontWeight: 600 }}
+                >
                   {content.title}
                 </h3>
                 <p className="mt-4 text-base md:text-lg text-neutral-500 leading-relaxed">
                   {content.description}
                 </p>
-                <button className="mt-6 inline-flex items-center gap-2 bg-[#2563EB] text-white text-sm font-semibold px-5 py-3 rounded-full hover:bg-[#1d4fd8] transition-colors shadow-sm shadow-[#2563EB]/20">
+                <button className="mt-6 inline-flex items-center gap-2 bg-[#2563EB] text-white text-sm font-semibold px-5 py-3 rounded-xl hover:bg-[#1d4fd8] transition-colors shadow-sm shadow-[#2563EB]/20">
                   <span>{content.buttonText}</span>
                   <ArrowRight size={15} />
                 </button>
