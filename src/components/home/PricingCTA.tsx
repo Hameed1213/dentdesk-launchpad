@@ -75,7 +75,7 @@ export default function PricingCTA() {
         </div>
 
         <p className="text-center text-[13px] text-[#94A3B8] mt-6">
-          All prices exclude VAT. Growth and Pro plans coming soon for multi-site practices.
+          Growth and Pro plans coming soon for multi-site practices.
         </p>
       </div>
     </section>
