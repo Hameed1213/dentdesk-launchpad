@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 import { cn } from "@/lib/utils";
 import ToothIcon from "@/components/icons/ToothIcon";
 
@@ -91,9 +92,8 @@ export default function Navbar() {
             >
               Log in
             </a>
-            <a
-              href="#waitlist"
-              onClick={scrollToWaitlist}
+            <Link
+              to="/waitlist"
               className="text-sm font-semibold text-white px-5 py-2.5 rounded-xl transition-all hover:-translate-y-px"
               style={{
                 backgroundColor: "#2563EB",
@@ -103,7 +103,7 @@ export default function Navbar() {
               onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#2563EB")}
             >
               Join the waitlist
-            </a>
+            </Link>
           </div>
 
           <button
@@ -145,12 +145,9 @@ export default function Navbar() {
           >
             Log in
           </a>
-          <a
-            href="#waitlist"
-            onClick={(e) => {
-              setMobileOpen(false);
-              scrollToWaitlist(e);
-            }}
+          <Link
+            to="/waitlist"
+            onClick={() => setMobileOpen(false)}
             className="text-sm font-semibold text-white text-center px-5 py-3 rounded-xl mt-1"
             style={{
               backgroundColor: "#2563EB",
@@ -158,7 +155,7 @@ export default function Navbar() {
             }}
           >
             Join the waitlist
-          </a>
+          </Link>
         </div>
       </div>
     </header>

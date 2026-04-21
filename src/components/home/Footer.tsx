@@ -11,7 +11,7 @@ const companyLinks = [
   { label: "About", href: "#about" },
   { label: "Contact", href: "mailto:hello@dentdock.co.uk" },
   { label: "Log in", href: "https://app.dentdock.co.uk" },
-  { label: "Join the waitlist", href: "#waitlist" },
+  { label: "Join the waitlist", href: "/waitlist" },
 ];
 
 const legalLinks = [
