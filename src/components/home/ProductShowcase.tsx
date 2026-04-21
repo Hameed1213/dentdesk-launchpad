@@ -367,7 +367,7 @@ function CalendarMockup() {
 ========================================================= */
 function BookingMockup() {
   return (
-    <div className="bg-white h-full overflow-hidden relative flex items-start justify-center">
+    <div className="bg-white h-full overflow-hidden relative flex items-center justify-center">
       {/* Decorative wave SVGs */}
       <svg
         className="absolute bottom-0 left-0 right-0 w-full pointer-events-none"
@@ -399,10 +399,10 @@ function BookingMockup() {
       <div
         style={{
           transform: "scale(0.82)",
-          transformOrigin: "top center",
+          transformOrigin: "center center",
           width: "calc(100% / 0.82)",
         }}
-        className="max-w-[420px] mx-auto px-4 pt-6 flex flex-col items-center relative z-10"
+        className="max-w-[420px] mx-auto px-4 flex flex-col items-center relative z-10"
       >
         {/* Logo circle */}
         <div className="w-20 h-20 rounded-full bg-[#2563eb26] flex items-center justify-center mx-auto mb-4 ring-4 ring-[#2563eb1a]">
