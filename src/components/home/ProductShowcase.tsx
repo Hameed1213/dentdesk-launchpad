@@ -755,8 +755,8 @@ function RecallsMockup() {
           </div>
         </div>
 
-        {/* Recall queue */}
-        <div className="bg-white rounded-xl border border-[#E2E8F0] overflow-hidden">
+        {/* Recall queue — hidden on mobile to give room for automations */}
+        <div className="hidden sm:flex bg-white rounded-xl border border-[#E2E8F0] overflow-hidden flex-col">
           <div className="px-4 py-3 border-b border-[#E2E8F0] flex justify-between items-center">
             <div className="text-[14px] font-semibold text-[#0F172A]">
               Recall queue
