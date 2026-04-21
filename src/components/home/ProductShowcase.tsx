@@ -732,7 +732,7 @@ function RecallsMockup() {
 
   return (
     <div className="bg-[#F8FAFC] h-full flex flex-col">
-      <MockTopBar title="Recalls" />
+      <MockTopBar title="Recalls" showSearch={false} />
       <div className="p-5 flex-1 overflow-hidden flex flex-col gap-4">
         {/* Recall stat */}
         <div className="bg-white rounded-xl border border-[#E2E8F0] p-5">
