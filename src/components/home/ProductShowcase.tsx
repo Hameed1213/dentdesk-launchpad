@@ -220,7 +220,7 @@ function CalendarMockup() {
             <div className="text-[15px] font-semibold text-[#0F172A]">
               April 2026
             </div>
-            <div className="flex items-center gap-1 ml-2">
+            <div className="hidden sm:flex items-center gap-1 ml-2">
               <button className="w-6 h-6 rounded-md border border-[#E2E8F0] bg-white text-[#64748b] text-[11px] flex items-center justify-center">
                 ‹
               </button>
@@ -237,7 +237,7 @@ function CalendarMockup() {
               </span>
               <span className="px-2 py-0.5 text-[#64748b]">Month</span>
             </div>
-            <button className="bg-[#2563EB] text-white text-[11px] font-semibold px-2.5 py-1.5 rounded-lg flex items-center gap-1">
+            <button className="hidden sm:flex bg-[#2563EB] text-white text-[11px] font-semibold px-2.5 py-1.5 rounded-lg items-center gap-1">
               <Plus size={11} /> New
             </button>
           </div>
@@ -246,17 +246,19 @@ function CalendarMockup() {
         {/* Week grid */}
         <div className="flex-1 bg-white rounded-xl border border-[#E2E8F0] overflow-hidden flex flex-col">
           {/* Day headers */}
-          <div className="grid grid-cols-[36px_repeat(5,1fr)] border-b border-[#E2E8F0]">
+          <div className="grid grid-cols-[28px_repeat(3,1fr)] sm:grid-cols-[36px_repeat(5,1fr)] border-b border-[#E2E8F0]">
             <div />
             {days.map((d, i) => {
               const isPast = i < 2;
               const isToday = i === 2;
+              // On mobile only show cols 1, 2, 3 (Tue 14, Wed 15, Thu 16)
+              const hideOnMobile = i === 0 || i === 4;
               return (
                 <div
                   key={d}
                   className={`px-2 py-2 text-center border-l border-[#E2E8F0] ${
                     isToday ? "bg-[#eff6ff]" : ""
-                  }`}
+                  } ${hideOnMobile ? "hidden sm:block" : ""}`}
                 >
                   <div
                     className={`text-[10px] font-medium uppercase tracking-wide ${
@@ -286,7 +288,7 @@ function CalendarMockup() {
           </div>
 
           {/* Time grid */}
-          <div className="grid grid-cols-[36px_repeat(5,1fr)] flex-1 relative overflow-hidden">
+          <div className="grid grid-cols-[28px_repeat(3,1fr)] sm:grid-cols-[36px_repeat(5,1fr)] flex-1 relative overflow-hidden">
             {/* Hour labels */}
             <div className="flex flex-col">
               {hours.map((h) => (
@@ -301,10 +303,11 @@ function CalendarMockup() {
             {/* Day columns */}
             {days.map((_, colIdx) => {
               const isPast = colIdx < 2;
+              const hideOnMobile = colIdx === 0 || colIdx === 4;
               return (
                 <div
                   key={colIdx}
-                  className="border-l border-[#E2E8F0] relative"
+                  className={`border-l border-[#E2E8F0] relative ${hideOnMobile ? "hidden sm:block" : ""}`}
                 >
                   {hours.map((h) => (
                     <div
@@ -350,7 +353,7 @@ function CalendarMockup() {
             })}
             {/* Now line on Wed (col 2) */}
             <div
-              className="absolute left-[36px] right-0 h-px bg-[#f97316] z-10"
+              className="absolute left-[28px] sm:left-[36px] right-0 h-px bg-[#f97316] z-10"
               style={{ top: 78 }}
             >
               <div className="absolute -left-1 -top-1 w-2 h-2 rounded-full bg-[#f97316]" />
