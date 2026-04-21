@@ -21,10 +21,10 @@ export default function HowItWorks() {
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-foreground leading-[1.1] mb-6">
-                You're live within <span className="text-[#2563EB]">the day</span>
+              <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-foreground leading-[1.1] mb-5">
+                Live within <span className="text-[#2563EB]">the day</span>
               </h2>
-              <p className="text-[17px] leading-[1.6] text-[#475569] mb-8 max-w-[480px]">
+              <p className="text-[17px] leading-[1.6] text-[#475569] mb-6 max-w-[480px]">
                 Sign up, add your practice details, pick your services and your booking page is ready. No implementation fees. No onboarding calls. No waiting.
               </p>
               <a
