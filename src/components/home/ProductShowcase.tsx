@@ -1075,15 +1075,11 @@ export default function ProductShowcase() {
       >
         {/* Header */}
         <div className="flex flex-col items-center text-center">
-          <span className="inline-flex items-center gap-2 bg-[#eff6ff] border border-[#bfdbfe] text-[#2563EB] text-xs font-semibold px-4 py-1.5 rounded-full uppercase tracking-wide mb-6">
-            See it in action
-          </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-neutral-900 tracking-[-0.025em] leading-[1.1] max-w-2xl">
-            Everything in one place. Finally.
+          <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-foreground leading-[1.1] max-w-2xl">
+            Everything in one place
           </h2>
           <p className="text-lg text-neutral-500 max-w-xl leading-relaxed mt-4">
-            One platform that handles your entire front of house — from the
-            moment a patient books to the moment they pay.
+            One platform for every part of your practice, from first booking to last recall.
           </p>
         </div>
 
