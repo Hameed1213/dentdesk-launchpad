@@ -28,9 +28,6 @@ export default function PricingCTA() {
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.6 }}
             >
-              <div className="inline-flex items-center gap-2 text-[12px] font-semibold text-[#2563EB] uppercase tracking-[0.12em] mb-4 md:mb-5">
-                Simple pricing
-              </div>
               <div className="flex items-end gap-2 mb-4 md:mb-5">
                 <span className="text-5xl sm:text-6xl md:text-7xl font-medium tracking-tight text-foreground leading-none">
                   £49
