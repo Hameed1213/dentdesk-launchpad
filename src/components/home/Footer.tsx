@@ -104,7 +104,7 @@ export default function Footer() {
             © {new Date().getFullYear()} Dent Dock. All rights reserved.
           </p>
           <p className="text-[13px] text-[#94A3B8]">
-            Made in the UK 🇬🇧
+            Made in the UK
           </p>
         </div>
       </div>
