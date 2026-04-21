@@ -1002,7 +1002,7 @@ const tabContent = [
     badge: "Get Paid Faster",
     title: "Payments, deposits and links. All built in.",
     description:
-      "Collect deposits at the time of booking, send payment links directly from the inbox, and reconcile everything in one place. No add-ons.",
+      "Take deposits, track every transaction and see your monthly revenue at a glance. No chasing. No guessing.",
     buttonText: "See payments",
   },
   {
