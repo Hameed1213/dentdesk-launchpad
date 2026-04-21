@@ -4,6 +4,7 @@ import HeroSection from "@/components/home/HeroSection";
 import FeaturesSection from "@/components/home/FeaturesSection";
 import ProductShowcase from "@/components/home/ProductShowcase";
 import HowItWorks from "@/components/home/HowItWorks";
+import FAQ from "@/components/home/FAQ";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -52,6 +53,7 @@ function Index() {
       <FeaturesSection />
       <ProductShowcase />
       <HowItWorks />
+      <FAQ />
     </main>
   );
 }
