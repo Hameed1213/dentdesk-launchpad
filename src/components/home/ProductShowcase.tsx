@@ -589,9 +589,12 @@ function PaymentsMockup() {
               </span>
             </div>
           </div>
-          <div className="grid grid-cols-5 px-4 py-2 border-b border-[#E2E8F0] text-[11px] font-semibold text-[#64748b] uppercase tracking-wide">
+          <div
+            className="grid px-4 py-2 border-b border-[#E2E8F0] text-[11px] font-semibold text-[#64748b] uppercase tracking-wide"
+            style={{ gridTemplateColumns: "140px 100px 70px 110px 70px" }}
+          >
             <div>Patient</div>
-            <div>Service</div>
+            <div className="pl-2">Service</div>
             <div>Amount</div>
             <div>Method</div>
             <div>Status</div>
@@ -599,7 +602,8 @@ function PaymentsMockup() {
           {transactions.map((t, i) => (
             <div
               key={i}
-              className="grid grid-cols-5 px-4 py-3 border-b border-[#E2E8F0]/60 last:border-0 items-center text-[13px]"
+              className="grid px-4 py-3 border-b border-[#E2E8F0]/60 last:border-0 items-center text-[13px]"
+              style={{ gridTemplateColumns: "140px 100px 70px 110px 70px" }}
             >
               <div className="flex items-center gap-2 min-w-0">
                 <div
@@ -611,9 +615,11 @@ function PaymentsMockup() {
                 >
                   {t.initials}
                 </div>
-                <span className="text-[#0F172A] truncate">{t.name}</span>
+                <span className="text-[13px] font-medium text-[#0F172A] truncate">
+                  {t.name}
+                </span>
               </div>
-              <div className="text-[#0F172A]">{t.service}</div>
+              <div className="text-[13px] text-[#64748b] pl-2">{t.service}</div>
               <div className="font-bold text-[#0F172A]">{t.amount}</div>
               <div className="text-[#64748b] truncate">{t.method}</div>
               <div>
