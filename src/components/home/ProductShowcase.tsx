@@ -814,7 +814,7 @@ function RecallsMockup() {
                     {a.trigger}
                   </div>
                 </div>
-                <div className="ml-auto w-8 h-4 rounded-full bg-[#2563EB] relative flex-shrink-0">
+                <div className="ml-auto w-8 h-4 rounded-full bg-[#2563EB] relative shrink-0">
                   <div className="w-3 h-3 bg-white rounded-full absolute right-0.5 top-0.5" />
                 </div>
               </div>
