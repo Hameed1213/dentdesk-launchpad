@@ -843,29 +843,19 @@ function InboxMockup() {
 
   const messages = [
     {
-      from: "them",
-      text: "Hi! I need to reschedule my whitening appointment.",
-      time: "10:14am",
+      type: "automated",
+      text: "Appointment reminder sent — Wed 15 Apr at 10:00am",
+      time: "9:00am",
     },
     {
-      from: "me",
-      text: "No problem Sarah — what day works for you?",
-      time: "10:18am",
+      type: "inbound",
+      text: "Hi, just confirming I'll be there — see you Wednesday!",
+      time: "9:42am",
     },
     {
-      from: "them",
-      text: "Friday afternoon if possible?",
-      time: "10:22am",
-    },
-    {
-      from: "me",
-      text: "Friday at 3pm is open — shall I book you in?",
-      time: "10:24am",
-    },
-    {
-      from: "them",
-      text: "Yes, 3pm Friday works for me — thank you!",
-      time: "10:26am",
+      type: "outbound",
+      text: "Great, see you then! Let us know if anything changes.",
+      time: "9:45am",
     },
   ];
 
@@ -943,40 +933,47 @@ function InboxMockup() {
                 Active now
               </div>
             </div>
-            <div className="text-[11px] text-[#2563EB] font-semibold">
-              View profile
-            </div>
           </div>
 
           {/* Messages */}
           <div className="flex-1 overflow-hidden p-4 flex flex-col gap-2.5">
-            {messages.map((m, i) => (
-              <div
-                key={i}
-                className={`flex ${
-                  m.from === "me" ? "justify-end" : "justify-start"
-                }`}
-              >
-                <div className="max-w-[75%]">
-                  <div
-                    className={`px-3 py-2 rounded-2xl text-[12px] leading-snug ${
-                      m.from === "me"
-                        ? "bg-[#2563EB] text-white rounded-br-sm"
-                        : "bg-white border border-[#E2E8F0] text-[#0F172A] rounded-bl-sm"
-                    }`}
-                  >
-                    {m.text}
+            {messages.map((m, i) => {
+              if (m.type === "automated") {
+                return (
+                  <div key={i} className="flex justify-center my-2">
+                    <div className="bg-[#F1F5F9] border border-dashed border-[#E2E8F0] rounded-xl px-4 py-2 text-[12px] text-[#64748b] italic max-w-[80%] text-center">
+                      {m.text}
+                      <span className="block text-[10px] text-[#94a3b8] mt-1 not-italic">
+                        {m.time}
+                      </span>
+                    </div>
                   </div>
-                  <div
-                    className={`text-[9px] text-[#94a3b8] mt-0.5 ${
-                      m.from === "me" ? "text-right" : "text-left"
-                    }`}
-                  >
-                    {m.time}
+                );
+              }
+              if (m.type === "inbound") {
+                return (
+                  <div key={i} className="flex items-end gap-2 justify-start">
+                    <div className="w-7 h-7 rounded-full bg-[#dbeafe] text-[#2563EB] text-[10px] font-bold flex items-center justify-center shrink-0">
+                      SM
+                    </div>
+                    <div className="bg-white border border-[#E2E8F0] rounded-xl rounded-bl-sm px-4 py-2.5 max-w-[65%] shadow-sm">
+                      <p className="text-[13px] text-[#0F172A]">{m.text}</p>
+                      <p className="text-[10px] text-[#94a3b8] mt-1">{m.time}</p>
+                    </div>
+                  </div>
+                );
+              }
+              return (
+                <div key={i} className="flex justify-end">
+                  <div className="bg-[#2563EB] rounded-xl rounded-br-sm px-4 py-2.5 max-w-[65%]">
+                    <p className="text-[13px] text-white">{m.text}</p>
+                    <p className="text-[10px] text-blue-200 mt-1 text-right">
+                      {m.time} · ✓✓
+                    </p>
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
 
           {/* Composer */}
@@ -1032,7 +1029,7 @@ const tabContent = [
     badge: "One Conversation",
     title: "Every patient message in one inbox.",
     description:
-      "SMS, email and booking enquiries land in a single shared inbox. Reply from anywhere, with full patient history one tap away.",
+      "Every patient SMS and WhatsApp message in one place. Reply, send payment links and forms — with full patient history one tap away.",
     buttonText: "See the inbox",
   },
 ];
