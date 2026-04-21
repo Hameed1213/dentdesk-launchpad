@@ -60,7 +60,7 @@ export default function Navbar() {
         className={cn(
           "transition-all duration-300 ease-out",
           scrolled
-            ? "mx-auto mt-3 max-w-4xl rounded-2xl border border-neutral-200/60 bg-white/80 shadow-sm backdrop-blur-lg"
+            ? "mx-4 sm:mx-6 mt-3 max-w-4xl lg:mx-auto rounded-2xl border border-neutral-200/60 bg-white/80 shadow-sm backdrop-blur-lg"
             : "mx-auto max-w-6xl border border-transparent bg-transparent",
         )}
       >
