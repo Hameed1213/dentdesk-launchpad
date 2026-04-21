@@ -847,16 +847,10 @@ function InboxMockup() {
 
   return (
     <div className="bg-[#F8FAFC] h-full flex flex-col">
-      <MockTopBar title="Inbox" />
+      <MockTopBar title="Inbox" showSearch={false} />
       <div className="flex-1 overflow-hidden flex">
         {/* Conversation list */}
         <div className="w-[200px] border-r border-[#E2E8F0] bg-white flex flex-col">
-          <div className="px-3 py-2.5 border-b border-[#E2E8F0]">
-            <div className="h-7 bg-[#F8FAFC] border border-[#E2E8F0] rounded-md px-2 flex items-center gap-1.5 text-[11px] text-[#94a3b8]">
-              <Search size={11} />
-              <span>Search messages…</span>
-            </div>
-          </div>
           {conversations.map((c, i) => (
             <div
               key={i}
