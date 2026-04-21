@@ -1124,37 +1124,39 @@ export default function ProductShowcase() {
           </p>
         </div>
 
-        {/* Tab segmented control — all in one container */}
-        <div className="mt-12 flex justify-center">
-          <div className="inline-flex flex-wrap justify-center gap-1 rounded-2xl border border-neutral-200 bg-white p-1.5 shadow-sm">
-            {tabs.map((tab, i) => {
-              const Icon = tabIcons[i];
-              const active = activeTab === i;
-              return (
-                <button
-                  key={tab}
-                  onClick={() => handleTabClick(i)}
-                  className={`relative inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold transition-all duration-200 overflow-hidden ${
-                    active
-                      ? "bg-[#2563EB] text-white shadow-sm"
-                      : "text-neutral-600 hover:bg-neutral-100 hover:text-neutral-900"
-                  }`}
-                >
-                  <Icon size={15} className="shrink-0" />
-                  <span>{tab}</span>
-                  {active && !paused && inView && (
-                    <motion.span
-                      key={`progress-${activeTab}-${paused}`}
-                      className="absolute bottom-0 left-0 h-[2px] bg-white/80 origin-left"
-                      initial={{ scaleX: 0 }}
-                      animate={{ scaleX: 1 }}
-                      transition={{ duration: 20, ease: "linear" }}
-                      style={{ width: "100%" }}
-                    />
-                  )}
-                </button>
-              );
-            })}
+        {/* Tab segmented control — scrollable on mobile, centered on desktop */}
+        <div className="mt-12 -mx-6 lg:mx-0 lg:flex lg:justify-center">
+          <div className="overflow-x-auto scrollbar-hide px-6 lg:px-0 lg:overflow-visible">
+            <div className="inline-flex flex-nowrap lg:flex-wrap justify-start lg:justify-center gap-1 rounded-2xl border border-neutral-200 bg-white p-1.5 shadow-sm">
+              {tabs.map((tab, i) => {
+                const Icon = tabIcons[i];
+                const active = activeTab === i;
+                return (
+                  <button
+                    key={tab}
+                    onClick={() => handleTabClick(i)}
+                    className={`relative inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold transition-all duration-200 overflow-hidden whitespace-nowrap shrink-0 ${
+                      active
+                        ? "bg-[#2563EB] text-white shadow-sm"
+                        : "text-neutral-600 hover:bg-neutral-100 hover:text-neutral-900"
+                    }`}
+                  >
+                    <Icon size={15} className="shrink-0" />
+                    <span>{tab}</span>
+                    {active && !paused && inView && (
+                      <motion.span
+                        key={`progress-${activeTab}-${paused}`}
+                        className="absolute bottom-0 left-0 h-[2px] bg-white/80 origin-left"
+                        initial={{ scaleX: 0 }}
+                        animate={{ scaleX: 1 }}
+                        transition={{ duration: 20, ease: "linear" }}
+                        style={{ width: "100%" }}
+                      />
+                    )}
+                  </button>
+                );
+              })}
+            </div>
           </div>
         </div>
 
