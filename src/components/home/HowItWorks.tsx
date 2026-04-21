@@ -3,11 +3,9 @@ import { motion } from "framer-motion";
 
 export default function HowItWorks() {
   const items = [
-    "Smart defaults — UK hours and services pre-filled",
     "Live booking page ready the moment you finish",
-    "22 SMS automations fire from your very first booking",
+    "Automations fire from your very first booking",
     "Import patients from Dentally, EXACT and more",
-    "Save your progress and pick up where you left off",
     "No payment required to complete setup",
   ];
 
