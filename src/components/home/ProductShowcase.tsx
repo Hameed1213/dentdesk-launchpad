@@ -886,7 +886,7 @@ function InboxMockup() {
       <MockTopBar title="Inbox" showSearch={false} />
       <div className="flex-1 overflow-hidden flex">
         {/* Conversation list */}
-        <div className="w-[200px] border-r border-[#E2E8F0] bg-white flex flex-col">
+        <div className="hidden sm:flex w-[200px] border-r border-[#E2E8F0] bg-white flex-col">
           {conversations.map((c, i) => (
             <div
               key={i}
