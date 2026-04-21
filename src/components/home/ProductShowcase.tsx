@@ -53,15 +53,17 @@ const tabUrls = [
 /* =========================================================
    SHARED MOCKUP TOPBAR (for app screens)
 ========================================================= */
-function MockTopBar({ title }: { title: string }) {
+function MockTopBar({ title, showSearch = true }: { title: string; showSearch?: boolean }) {
   return (
     <div className="h-[52px] bg-white border-b border-[#E2E8F0] flex items-center justify-between px-5 flex-shrink-0">
       <div className="text-[16px] font-semibold text-[#0F172A]">{title}</div>
       <div className="flex items-center gap-3">
-        <div className="h-8 w-[180px] bg-[#F8FAFC] border border-[#E2E8F0] rounded-lg px-2.5 flex items-center gap-2 text-[12px] text-[#94a3b8]">
-          <Search size={12} />
-          <span className="flex-1 truncate">Search…</span>
-        </div>
+        {showSearch && (
+          <div className="h-8 w-[180px] bg-[#F8FAFC] border border-[#E2E8F0] rounded-lg px-2.5 flex items-center gap-2 text-[12px] text-[#94a3b8]">
+            <Search size={12} />
+            <span className="flex-1 truncate">Search…</span>
+          </div>
+        )}
         <div className="relative">
           <Bell size={16} className="text-[#64748b]" />
           <span className="absolute -top-1 -right-1 w-3.5 h-3.5 bg-[#DC2626] rounded-full text-white text-[8px] flex items-center justify-center">
@@ -210,7 +212,7 @@ function CalendarMockup() {
 
   return (
     <div className="bg-[#F8FAFC] h-full flex flex-col">
-      <MockTopBar title="Calendar" />
+      <MockTopBar title="Calendar" showSearch={false} />
       <div className="p-4 flex-1 overflow-hidden flex flex-col gap-3">
         {/* Toolbar */}
         <div className="flex items-center justify-between">
