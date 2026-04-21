@@ -1010,9 +1010,9 @@ const tabContent = [
   },
   {
     badge: "Get Paid Faster",
-    title: "Stripe payments, deposits and links built in.",
+    title: "Payments, deposits and links. All built in.",
     description:
-      "Take deposits at the time of booking, send payment links from the inbox, and reconcile everything in one place. No add-ons.",
+      "Collect deposits at the time of booking, send payment links directly from the inbox, and reconcile everything in one place. No add-ons.",
     buttonText: "See payments",
   },
   {
