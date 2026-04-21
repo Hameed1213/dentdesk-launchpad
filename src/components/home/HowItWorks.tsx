@@ -12,8 +12,8 @@ export default function HowItWorks() {
   return (
     <section className="bg-white py-20 sm:py-28">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="rounded-3xl bg-[#FAFAFA] border border-[#EEEEEE] p-8 sm:p-12 lg:p-16">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="rounded-3xl bg-[#FAFAFA] border border-[#EEEEEE] p-8 sm:p-10 lg:p-14">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 items-center">
             {/* Left — big statement */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
