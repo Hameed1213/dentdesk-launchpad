@@ -554,19 +554,21 @@ function PaymentsMockup() {
   return (
     <div className="bg-[#F8FAFC] h-full flex flex-col">
       <MockTopBar title="Payments" showSearch={false} />
-      <div className="p-5 flex-1 overflow-hidden flex flex-col gap-4">
-        {/* KPI cards */}
-        <div className="grid grid-cols-4 gap-3">
-          {stats.map((s) => (
+      <div className="p-3 sm:p-5 flex-1 overflow-hidden flex flex-col gap-3 sm:gap-4">
+        {/* KPI cards — 2 on mobile, 4 on sm+ */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          {stats.map((s, i) => (
             <div
               key={s.label}
-              className="bg-white rounded-xl p-4 border border-[#E2E8F0]"
+              className={`bg-white rounded-xl p-3 sm:p-4 border border-[#E2E8F0] ${
+                i >= 2 ? "hidden sm:block" : ""
+              }`}
             >
               <div className="text-[10px] font-semibold text-[#64748b] uppercase tracking-wide truncate">
                 {s.label}
               </div>
               <div
-                className={`text-[22px] font-extrabold mt-1 ${s.color}`}
+                className={`text-[18px] sm:text-[22px] font-extrabold mt-1 ${s.color}`}
               >
                 {s.value}
               </div>
@@ -575,25 +577,27 @@ function PaymentsMockup() {
         </div>
 
         {/* Transactions */}
-        <div className="bg-white rounded-xl border border-[#E2E8F0] overflow-hidden flex flex-col">
-          <div className="px-4 py-3 border-b border-[#E2E8F0] flex items-center justify-between">
+        <div className="bg-white rounded-xl border border-[#E2E8F0] overflow-hidden flex flex-col flex-1">
+          <div className="px-3 sm:px-4 py-3 border-b border-[#E2E8F0] flex items-center justify-between gap-2">
             <div className="text-[14px] font-semibold text-[#0F172A]">
               Transactions
             </div>
             <div className="flex items-center gap-1">
-              <span className="bg-[#eff6ff] text-[#2563EB] text-[12px] font-medium px-3 py-1 rounded-full">
+              <span className="bg-[#eff6ff] text-[#2563EB] text-[11px] sm:text-[12px] font-medium px-2.5 sm:px-3 py-1 rounded-full">
                 All
               </span>
-              <span className="text-[#64748b] text-[12px] font-medium px-3 py-1 rounded-full">
+              <span className="hidden sm:inline text-[#64748b] text-[12px] font-medium px-3 py-1 rounded-full">
                 Outstanding
               </span>
-              <span className="text-[#64748b] text-[12px] font-medium px-3 py-1 rounded-full">
+              <span className="hidden sm:inline text-[#64748b] text-[12px] font-medium px-3 py-1 rounded-full">
                 Refunds
               </span>
             </div>
           </div>
+
+          {/* Desktop/tablet: table layout */}
           <div
-            className="grid px-4 py-2 border-b border-[#E2E8F0] text-[11px] font-semibold text-[#64748b] uppercase tracking-wide"
+            className="hidden sm:grid px-4 py-2 border-b border-[#E2E8F0] text-[11px] font-semibold text-[#64748b] uppercase tracking-wide"
             style={{ gridTemplateColumns: "140px 100px 70px 110px 70px" }}
           >
             <div>Patient</div>
@@ -605,7 +609,7 @@ function PaymentsMockup() {
           {transactions.map((t, i) => (
             <div
               key={i}
-              className="grid px-4 py-3 border-b border-[#E2E8F0]/60 last:border-0 items-center text-[13px]"
+              className="hidden sm:grid px-4 py-3 border-b border-[#E2E8F0]/60 last:border-0 items-center text-[13px]"
               style={{ gridTemplateColumns: "140px 100px 70px 110px 70px" }}
             >
               <div className="flex items-center gap-2 min-w-0">
@@ -635,6 +639,35 @@ function PaymentsMockup() {
                 >
                   {t.status}
                 </span>
+              </div>
+            </div>
+          ))}
+
+          {/* Mobile: stacked cards (first 4 only) */}
+          {transactions.slice(0, 4).map((t, i) => (
+            <div
+              key={`m-${i}`}
+              className="sm:hidden flex items-center gap-3 px-3 py-2.5 border-b border-[#E2E8F0]/60 last:border-0"
+            >
+              <div
+                className="w-8 h-8 rounded-full flex items-center justify-center text-[11px] font-bold shrink-0"
+                style={{
+                  backgroundColor: t.avatarBg,
+                  color: t.avatarColor,
+                }}
+              >
+                {t.initials}
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="text-[13px] font-semibold text-[#0F172A] truncate">
+                  {t.name}
+                </div>
+                <div className="text-[11px] text-[#64748b] truncate">
+                  {t.service}
+                </div>
+              </div>
+              <div className="text-[14px] font-bold text-[#0F172A]">
+                {t.amount}
               </div>
             </div>
           ))}
