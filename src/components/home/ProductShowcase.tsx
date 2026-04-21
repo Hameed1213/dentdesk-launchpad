@@ -367,7 +367,7 @@ function CalendarMockup() {
 ========================================================= */
 function BookingMockup() {
   return (
-    <div className="bg-white h-full overflow-auto relative">
+    <div className="bg-white h-full overflow-hidden relative flex items-start justify-center">
       {/* Decorative wave SVGs */}
       <svg
         className="absolute bottom-0 left-0 right-0 w-full pointer-events-none"
@@ -396,7 +396,14 @@ function BookingMockup() {
         />
       </svg>
 
-      <div className="max-w-[420px] mx-auto px-4 py-8 flex flex-col items-center relative z-10">
+      <div
+        style={{
+          transform: "scale(0.82)",
+          transformOrigin: "top center",
+          width: "calc(100% / 0.82)",
+        }}
+        className="max-w-[420px] mx-auto px-4 pt-6 flex flex-col items-center relative z-10"
+      >
         {/* Logo circle */}
         <div className="w-20 h-20 rounded-full bg-[#2563eb26] flex items-center justify-center mx-auto mb-4 ring-4 ring-[#2563eb1a]">
           <span className="text-[#2563EB] font-extrabold text-2xl">SD</span>
@@ -1019,7 +1026,7 @@ const tabContent = [
     badge: "Patient-Facing",
     title: "A booking page patients actually want to use.",
     description:
-      "Branded to your practice, mobile-first, and live 24/7. Patients book in seconds — no phone calls, no double-bookings, no friction.",
+      "Branded to your practice, mobile-first and live 24/7. Patients book in seconds, pay deposits instantly and manage their appointments through their own patient portal.",
     buttonText: "See booking pages",
   },
   {
