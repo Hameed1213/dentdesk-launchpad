@@ -5,6 +5,7 @@ import FeaturesSection from "@/components/home/FeaturesSection";
 import ProductShowcase from "@/components/home/ProductShowcase";
 import HowItWorks from "@/components/home/HowItWorks";
 import FAQ from "@/components/home/FAQ";
+import PricingCTA from "@/components/home/PricingCTA";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -54,6 +55,7 @@ function Index() {
       <ProductShowcase />
       <HowItWorks />
       <FAQ />
+      <PricingCTA />
     </main>
   );
 }
