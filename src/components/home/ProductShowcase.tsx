@@ -1009,7 +1009,7 @@ const tabContent = [
     badge: "Set And Forget",
     title: "Recalls and automations that run themselves.",
     description:
-      "Six-month recalls, no-show follow-ups, post-treatment check-ins, all pre-built and ready to switch on. No setup. Just toggle and go.",
+      "Take deposits, track every transaction and see your monthly revenue at a glance. No chasing. No guessing.",
     buttonText: "See automations",
   },
   {
