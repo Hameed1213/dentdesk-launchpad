@@ -246,29 +246,41 @@ function CalendarMockup() {
           {/* Day headers */}
           <div className="grid grid-cols-[36px_repeat(5,1fr)] border-b border-[#E2E8F0]">
             <div />
-            {days.map((d, i) => (
-              <div
-                key={d}
-                className={`px-2 py-2 text-center border-l border-[#E2E8F0] ${
-                  i === 2 ? "bg-[#eff6ff]" : ""
-                }`}
-              >
+            {days.map((d, i) => {
+              const isPast = i < 2;
+              const isToday = i === 2;
+              return (
                 <div
-                  className={`text-[10px] font-semibold uppercase tracking-wide ${
-                    i === 2 ? "text-[#2563EB]" : "text-[#64748b]"
+                  key={d}
+                  className={`px-2 py-2 text-center border-l border-[#E2E8F0] ${
+                    isToday ? "bg-[#eff6ff]" : ""
                   }`}
                 >
-                  {d}
+                  <div
+                    className={`text-[10px] font-medium uppercase tracking-wide ${
+                      isPast
+                        ? "text-[#cbd5e1]"
+                        : isToday
+                          ? "text-[#2563EB] font-semibold"
+                          : "text-[#64748b] font-semibold"
+                    }`}
+                  >
+                    {d}
+                  </div>
+                  <div
+                    className={`text-[14px] mt-0.5 ${
+                      isPast
+                        ? "text-[#cbd5e1] font-semibold"
+                        : isToday
+                          ? "text-[#2563EB] font-bold"
+                          : "text-[#0F172A] font-bold"
+                    }`}
+                  >
+                    {dates[i]}
+                  </div>
                 </div>
-                <div
-                  className={`text-[14px] font-bold mt-0.5 ${
-                    i === 2 ? "text-[#2563EB]" : "text-[#0F172A]"
-                  }`}
-                >
-                  {dates[i]}
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
 
           {/* Time grid */}
@@ -285,44 +297,54 @@ function CalendarMockup() {
               ))}
             </div>
             {/* Day columns */}
-            {days.map((_, colIdx) => (
-              <div
-                key={colIdx}
-                className="border-l border-[#E2E8F0] relative"
-              >
-                {hours.map((h) => (
-                  <div
-                    key={h}
-                    className="h-[34px] border-b border-[#E2E8F0]/60"
-                  />
-                ))}
-                {/* Appointments in this column */}
-                {appts
-                  .filter((a) => a.col === colIdx)
-                  .map((a, i) => (
+            {days.map((_, colIdx) => {
+              const isPast = colIdx < 2;
+              return (
+                <div
+                  key={colIdx}
+                  className="border-l border-[#E2E8F0] relative"
+                >
+                  {hours.map((h) => (
                     <div
-                      key={i}
-                      className="absolute left-1 right-1 rounded-md px-1.5 py-1 overflow-hidden border-l-[2px]"
-                      style={{
-                        top: a.top,
-                        height: a.h,
-                        backgroundColor: a.bg,
-                        borderColor: a.border,
-                      }}
-                    >
-                      <div
-                        className="text-[9px] font-semibold leading-tight truncate"
-                        style={{ color: a.color }}
-                      >
-                        {a.label}
-                      </div>
-                      <div className="text-[8px] text-[#64748b] leading-tight truncate">
-                        {a.sub}
-                      </div>
-                    </div>
+                      key={h}
+                      className="h-[34px] border-b border-[#E2E8F0]/60"
+                    />
                   ))}
-              </div>
-            ))}
+                  {/* Appointments in this column */}
+                  {appts
+                    .filter((a) => a.col === colIdx)
+                    .map((a, i) => (
+                      <div
+                        key={i}
+                        className="absolute left-1 right-1 rounded-md px-1.5 py-1 overflow-hidden border-l-[3px]"
+                        style={{
+                          top: a.top,
+                          height: a.h,
+                          backgroundColor: isPast ? "#f1f5f9" : a.bg,
+                          borderColor: isPast ? "#cbd5e1" : a.border,
+                        }}
+                      >
+                        <div
+                          className="text-[10px] font-semibold leading-tight truncate"
+                          style={{ color: isPast ? "#94a3b8" : a.color }}
+                        >
+                          {a.label}
+                        </div>
+                        <div
+                          className="text-[9px] leading-tight truncate"
+                          style={{ color: isPast ? "#94a3b8" : "#64748b" }}
+                        >
+                          {a.sub}
+                        </div>
+                      </div>
+                    ))}
+                  {/* Past day overlay */}
+                  {isPast && (
+                    <div className="absolute inset-0 bg-[#f8fafc]/60 pointer-events-none z-10" />
+                  )}
+                </div>
+              );
+            })}
             {/* Now line on Wed (col 2) */}
             <div
               className="absolute left-[36px] right-0 h-px bg-[#f97316] z-10"
