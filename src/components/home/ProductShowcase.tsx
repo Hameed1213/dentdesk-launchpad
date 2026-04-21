@@ -577,7 +577,7 @@ function PaymentsMockup() {
         </div>
 
         {/* Transactions */}
-        <div className="bg-white rounded-xl border border-[#E2E8F0] overflow-hidden flex flex-col flex-1">
+        <div className="bg-white rounded-xl border border-[#E2E8F0] overflow-hidden flex flex-col sm:flex-1">
           <div className="px-3 sm:px-4 py-3 border-b border-[#E2E8F0] flex items-center justify-between gap-2">
             <div className="text-[14px] font-semibold text-[#0F172A]">
               Transactions
