@@ -448,21 +448,7 @@ function BookingMockup() {
           </span>
         </div>
 
-        {/* Trust pills */}
-        <div className="flex items-center justify-center gap-2 flex-wrap mb-6">
-          <div className="flex items-center gap-1.5 rounded-full px-4 py-2 text-[12px] font-medium text-[#0A0F1E] bg-[#2563eb26] border border-[#2563eb42]">
-            <Shield size={12} className="text-[#2563EB]" />
-            <span>Secure booking</span>
-          </div>
-          <div className="flex items-center gap-1.5 rounded-full px-4 py-2 text-[12px] font-medium text-[#0A0F1E] bg-[#2563eb26] border border-[#2563eb42]">
-            <Zap size={12} className="text-[#2563EB]" />
-            <span>Instant confirmation</span>
-          </div>
-          <div className="flex items-center gap-1.5 rounded-full px-4 py-2 text-[12px] font-medium text-[#0A0F1E] bg-[#2563eb26] border border-[#2563eb42]">
-            <Bell size={12} className="text-[#2563EB]" />
-            <span>Free reminders</span>
-          </div>
-        </div>
+        {/* CTA */}
 
         {/* CTA */}
         <button className="w-full h-[54px] bg-[#2563EB] text-white font-bold text-[17px] rounded-full flex items-center justify-center gap-2 shadow-[0_4px_14px_rgba(37,99,235,0.3)]">
