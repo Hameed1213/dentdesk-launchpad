@@ -830,12 +830,12 @@ function InboxMockup() {
   const messages = [
     {
       type: "inbound",
-      text: "Hi, I booked online but haven't paid the deposit yet — how do I do that?",
+      text: "Hi, I booked online but haven't paid my deposit yet — how do I pay?",
       time: "10:14am",
     },
     {
       type: "outbound",
-      text: "No problem! Here's your secure payment link: pay.dentdock.co.uk/sm-abc123",
+      text: "No problem — here's your deposit link 👉 pay.dentdock.co.uk/sarah",
       time: "10:16am",
     },
     {
@@ -958,7 +958,7 @@ function InboxMockup() {
               }
               return (
                 <div key={i} className="flex justify-end">
-                  <div className="bg-[#2563EB] rounded-xl rounded-br-sm px-4 py-2.5 max-w-[65%]">
+                  <div className="bg-[#2563EB] rounded-xl rounded-br-sm px-4 py-2.5 max-w-[75%]">
                     <p className="text-[13px] text-white">{m.text}</p>
                     <p className="text-[10px] text-blue-200 mt-1 text-right">
                       {m.time} · ✓✓
