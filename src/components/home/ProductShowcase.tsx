@@ -830,12 +830,12 @@ function InboxMockup() {
   const messages = [
     {
       type: "inbound",
-      text: "Hi, I booked online but haven't paid my deposit yet — how do I pay?",
+      text: "Hi, I booked online but haven't paid my deposit yet, how do I pay?",
       time: "10:14am",
     },
     {
       type: "outbound",
-      text: "No problem — here's your deposit link 👉 pay.dentdock.co.uk/sarah",
+      text: "No problem — here's your deposit link: pay.dentdock.co.uk/sarah",
       time: "10:16am",
     },
     {
