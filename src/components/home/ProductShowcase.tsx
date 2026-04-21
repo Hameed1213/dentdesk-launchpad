@@ -1077,11 +1077,19 @@ export default function ProductShowcase() {
   const pauseTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
 
-  // Scroll active tab into view (mainly for mobile horizontal scroll)
+  // Scroll active tab into view horizontally (mobile tab strip only).
+  // We manually scroll the parent container so we don't hijack the page's
+  // vertical scroll position when tabs auto-advance.
   useEffect(() => {
     const btn = tabRefs.current[activeTab];
     if (!btn) return;
-    btn.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+    const container = btn.parentElement;
+    if (!container) return;
+    // Only scroll if the tab strip actually overflows horizontally
+    if (container.scrollWidth <= container.clientWidth) return;
+    const offset =
+      btn.offsetLeft - container.clientWidth / 2 + btn.offsetWidth / 2;
+    container.scrollTo({ left: offset, behavior: "smooth" });
   }, [activeTab]);
 
   // Observe when the section enters the viewport
