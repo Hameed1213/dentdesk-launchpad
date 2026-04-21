@@ -1100,10 +1100,10 @@ export default function ProductShowcase() {
           </p>
         </div>
 
-        {/* Tab segmented control — scrollable on mobile, centered on tablet/desktop */}
+        {/* Tab segmented control — individual pills on mobile, grouped pill on tablet/desktop */}
         <div className="mt-12 -mx-6 sm:mx-0 flex sm:justify-center">
           <div className="overflow-x-auto scrollbar-hide px-6 sm:px-0 sm:overflow-visible w-full sm:w-auto">
-            <div className="inline-flex flex-nowrap lg:flex-wrap justify-start lg:justify-center gap-1 rounded-2xl border border-neutral-200 bg-white p-1.5 shadow-sm mx-auto">
+            <div className="inline-flex flex-nowrap lg:flex-wrap justify-start lg:justify-center gap-2 sm:gap-1 sm:rounded-2xl sm:border sm:border-neutral-200 sm:bg-white sm:p-1.5 sm:shadow-sm mx-auto">
               {tabs.map((tab, i) => {
                 const Icon = tabIcons[i];
                 const active = activeTab === i;
@@ -1111,10 +1111,10 @@ export default function ProductShowcase() {
                   <button
                     key={tab}
                     onClick={() => handleTabClick(i)}
-                    className={`relative inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold transition-all duration-200 overflow-hidden whitespace-nowrap shrink-0 ${
+                    className={`relative inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold transition-all duration-200 overflow-hidden whitespace-nowrap shrink-0 border sm:border-0 ${
                       active
-                        ? "bg-[#2563EB] text-white shadow-sm"
-                        : "text-neutral-600 hover:bg-neutral-100 hover:text-neutral-900"
+                        ? "bg-[#2563EB] text-white border-[#2563EB] shadow-sm"
+                        : "text-neutral-600 bg-white border-neutral-200 hover:bg-neutral-100 hover:text-neutral-900 sm:bg-transparent"
                     }`}
                   >
                     <Icon size={15} className="shrink-0" />
