@@ -643,8 +643,8 @@ function PaymentsMockup() {
             </div>
           ))}
 
-          {/* Mobile: stacked cards (first 4 only) */}
-          {transactions.slice(0, 4).map((t, i) => (
+          {/* Mobile: stacked cards (exclude Robert K.) */}
+          {transactions.filter((t) => t.name !== "Robert K.").slice(0, 4).map((t, i) => (
             <div
               key={`m-${i}`}
               className="sm:hidden flex items-center gap-3 px-3 py-2.5 border-b border-[#E2E8F0]/60 last:border-0"
