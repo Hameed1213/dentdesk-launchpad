@@ -7,7 +7,7 @@ export default function FAQ() {
       id: "item-1",
       question: "When is Dent Dock launching?",
       answer:
-        "We're currently in early access with our first practices. Join the waitlist and you'll be among the first to get access — with priority support and early access pricing locked in.",
+        "We're currently in early access with our first practices. Join the waitlist and you'll be among the first to get access, with priority support and early access pricing locked in.",
     },
     {
       id: "item-2",
@@ -19,19 +19,19 @@ export default function FAQ() {
       id: "item-3",
       question: "Does it work for mixed NHS and private practices?",
       answer:
-        "Dent Dock is built for private and mixed practices. It doesn't include NHS UDA management or claim processing — if you need those, it may not be the right fit. If you're going private or already there, it's built for you.",
+        "Dent Dock is built for private and mixed practices. It doesn't include NHS UDA management or claim processing, if you need those, it may not be the right fit. If you're going private or already there, it's built for you.",
     },
     {
       id: "item-4",
       question: "How long does setup actually take?",
       answer:
-        "Most practices are fully configured and live in under 10 minutes. Your opening hours, services and SMS automations all have smart defaults pre-filled — you just confirm and go.",
+        "Most practices are fully configured and live in under 10 minutes. Your opening hours, services and SMS automations all have smart defaults pre-filled, you just confirm and go.",
     },
     {
       id: "item-5",
       question: "What happens after I join the waitlist?",
       answer:
-        "You'll get an email from us personally — not an automated sequence. We'll walk you through early access, answer any questions and get you set up when you're ready.",
+        "You'll get an email from us personally, not an automated sequence. We'll walk you through early access, answer any questions and get you set up when you're ready.",
     },
     {
       id: "item-6",
