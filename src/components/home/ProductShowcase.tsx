@@ -1155,7 +1155,7 @@ export default function ProductShowcase() {
               <div className="flex flex-col items-start">
                 <h3
                   className="text-3xl md:text-4xl text-neutral-900 tracking-[-0.02em] leading-[1.15]"
-                  style={{ fontWeight: 600 }}
+                  style={{ fontWeight: 500 }}
                 >
                   {content.title}
                 </h3>
