@@ -1099,7 +1099,7 @@ export default function ProductShowcase() {
         {/* Header */}
         <div className="flex flex-col items-center text-center">
           <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-foreground leading-[1.1] max-w-2xl">
-            Everything in one place
+            Everything in <span className="text-[#2563EB]">one place</span>
           </h2>
           <p className="text-lg text-neutral-500 max-w-xl leading-relaxed mt-4">
             One platform for every part of your practice, from first booking to last recall.
