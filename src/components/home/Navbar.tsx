@@ -5,9 +5,9 @@ import ToothIcon from "@/components/icons/ToothIcon";
 
 const navLinks = [
   { label: "Features", href: "#features" },
-  { label: "Pricing", href: "#pricing" },
-  { label: "About", href: "#about" },
   { label: "How it works", href: "#how-it-works" },
+  { label: "Pricing", href: "#pricing" },
+  { label: "FAQ", href: "#faq" },
 ];
 
 const LOGIN_URL = "https://app.dentdock.co.uk";
@@ -24,6 +24,16 @@ function Logo() {
       </span>
     </a>
   );
+}
+
+function smoothScrollTo(e: React.MouseEvent<HTMLAnchorElement>, href: string) {
+  if (!href.startsWith("#")) return;
+  const id = href.slice(1);
+  const el = document.getElementById(id);
+  if (el) {
+    e.preventDefault();
+    el.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
 }
 
 function scrollToWaitlist(e: React.MouseEvent) {
@@ -66,6 +76,7 @@ export default function Navbar() {
               <a
                 key={l.label}
                 href={l.href}
+                onClick={(e) => smoothScrollTo(e, l.href)}
                 className="text-sm font-medium text-neutral-600 hover:text-neutral-900 transition-colors"
               >
                 {l.label}
@@ -118,7 +129,10 @@ export default function Navbar() {
             <a
               key={l.label}
               href={l.href}
-              onClick={() => setMobileOpen(false)}
+              onClick={(e) => {
+                setMobileOpen(false);
+                smoothScrollTo(e, l.href);
+              }}
               className="text-sm font-medium text-neutral-700 hover:text-neutral-900 px-3 py-2.5 rounded-lg hover:bg-neutral-100"
             >
               {l.label}
