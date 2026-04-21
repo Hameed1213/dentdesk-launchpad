@@ -1100,10 +1100,10 @@ export default function ProductShowcase() {
           </p>
         </div>
 
-        {/* Tab segmented control — scrollable on mobile, centered on desktop */}
-        <div className="mt-12 -mx-6 lg:mx-0 lg:flex lg:justify-center">
-          <div className="overflow-x-auto scrollbar-hide px-6 lg:px-0 lg:overflow-visible">
-            <div className="inline-flex flex-nowrap lg:flex-wrap justify-start lg:justify-center gap-1 rounded-2xl border border-neutral-200 bg-white p-1.5 shadow-sm">
+        {/* Tab segmented control — scrollable on mobile, centered on tablet/desktop */}
+        <div className="mt-12 -mx-6 sm:mx-0 flex sm:justify-center">
+          <div className="overflow-x-auto scrollbar-hide px-6 sm:px-0 sm:overflow-visible w-full sm:w-auto">
+            <div className="inline-flex flex-nowrap lg:flex-wrap justify-start lg:justify-center gap-1 rounded-2xl border border-neutral-200 bg-white p-1.5 shadow-sm mx-auto">
               {tabs.map((tab, i) => {
                 const Icon = tabIcons[i];
                 const active = activeTab === i;
