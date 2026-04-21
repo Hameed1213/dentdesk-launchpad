@@ -414,11 +414,6 @@ function BookingMockup() {
           Smile Dental
         </h1>
 
-        {/* Tagline */}
-        <p className="text-[17px] text-[#5A6478] text-center mt-1">
-          Book your appointment online
-        </p>
-
         {/* Divider */}
         <div className="w-[60px] h-px bg-[#E8EBF5] mx-auto my-5" />
 
