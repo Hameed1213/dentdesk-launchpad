@@ -1029,7 +1029,7 @@ const tabContent = [
     badge: "One Conversation",
     title: "Every patient message in one inbox.",
     description:
-      "Every patient SMS and WhatsApp message in one place. Reply, send payment links and forms — with full patient history one tap away.",
+      "Every patient SMS message in one place. Reply, send payment links and forms, with full patient history one tap away.",
     buttonText: "See the inbox",
   },
 ];
