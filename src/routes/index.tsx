@@ -3,6 +3,7 @@ import Navbar from "@/components/home/Navbar";
 import HeroSection from "@/components/home/HeroSection";
 import FeaturesSection from "@/components/home/FeaturesSection";
 import ProductShowcase from "@/components/home/ProductShowcase";
+import HowItWorks from "@/components/home/HowItWorks";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -50,6 +51,7 @@ function Index() {
       <HeroSection />
       <FeaturesSection />
       <ProductShowcase />
+      <HowItWorks />
     </main>
   );
 }
