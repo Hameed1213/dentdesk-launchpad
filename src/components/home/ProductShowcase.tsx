@@ -550,7 +550,7 @@ function PaymentsMockup() {
 
   return (
     <div className="bg-[#F8FAFC] h-full flex flex-col">
-      <MockTopBar title="Payments" />
+      <MockTopBar title="Payments" showSearch={false} />
       <div className="p-5 flex-1 overflow-hidden flex flex-col gap-4">
         {/* KPI cards */}
         <div className="grid grid-cols-4 gap-3">
