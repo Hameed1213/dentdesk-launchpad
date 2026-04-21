@@ -86,7 +86,7 @@ export default function HeroSection() {
   return (
     <section
       id="waitlist"
-      className="relative bg-white min-h-screen flex flex-col items-center justify-center pt-40 md:pt-48 pb-16 px-6 overflow-x-hidden"
+      className="relative bg-white min-h-screen flex flex-col items-center justify-center pt-40 md:pt-48 pb-16 px-6 overflow-x-clip"
     >
       {/* Decorative background */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden -z-10">
