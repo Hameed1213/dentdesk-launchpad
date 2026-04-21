@@ -1065,7 +1065,7 @@ export default function ProductShowcase() {
     if (paused) return;
     intervalRef.current = setInterval(() => {
       setActiveTab((prev) => (prev + 1) % tabs.length);
-    }, 4000);
+    }, 20000);
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current);
     };
@@ -1130,7 +1130,7 @@ export default function ProductShowcase() {
                       className="absolute bottom-0 left-0 h-[2px] bg-white/80 origin-left"
                       initial={{ scaleX: 0 }}
                       animate={{ scaleX: 1 }}
-                      transition={{ duration: 4, ease: "linear" }}
+                      transition={{ duration: 20, ease: "linear" }}
                       style={{ width: "100%" }}
                     />
                   )}
