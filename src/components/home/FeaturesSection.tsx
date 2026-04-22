@@ -146,9 +146,9 @@ const problems = [
     body: "The average practice spends £150–250 a month on software that still needs three tools to do what one should.",
     preview: <PricePreview />,
     orbs: [
-      "absolute -top-16 -left-10 w-44 h-44 rounded-full bg-blue-400/25 blur-3xl",
-      "absolute top-1/3 -right-12 w-32 h-32 rounded-full bg-sky-300/30 blur-3xl",
-      "absolute bottom-10 left-1/4 w-28 h-28 rounded-full bg-indigo-300/20 blur-3xl",
+      "absolute -top-16 -left-10 w-44 h-44 rounded-full bg-blue-400/10 blur-3xl",
+      "absolute top-1/3 -right-12 w-32 h-32 rounded-full bg-sky-300/15 blur-3xl",
+      "absolute bottom-10 left-1/4 w-28 h-28 rounded-full bg-indigo-300/10 blur-3xl",
     ],
   },
   {
@@ -157,9 +157,9 @@ const problems = [
     body: "Most dental software companies sell you the product and disappear. A chatbot, a help article and a 48-hour ticket.",
     preview: <ComplexityPreview />,
     orbs: [
-      "absolute -top-10 right-8 w-40 h-40 rounded-full bg-cyan-300/25 blur-3xl",
-      "absolute top-1/2 -left-16 w-36 h-36 rounded-full bg-blue-300/30 blur-3xl",
-      "absolute bottom-0 right-1/3 w-32 h-32 rounded-full bg-violet-300/20 blur-3xl",
+      "absolute -top-10 right-8 w-40 h-40 rounded-full bg-cyan-300/12 blur-3xl",
+      "absolute top-1/2 -left-16 w-36 h-36 rounded-full bg-blue-300/15 blur-3xl",
+      "absolute bottom-0 right-1/3 w-32 h-32 rounded-full bg-violet-300/10 blur-3xl",
     ],
   },
   {
@@ -168,9 +168,9 @@ const problems = [
     body: "Manual reminders. Chasing deposits. Sending forms one by one. Hours every week on tasks that should happen automatically.",
     preview: <NoShowsPreview />,
     orbs: [
-      "absolute -top-14 left-1/3 w-44 h-44 rounded-full bg-sky-400/25 blur-3xl",
-      "absolute top-1/4 -right-10 w-32 h-32 rounded-full bg-indigo-300/25 blur-3xl",
-      "absolute -bottom-10 -left-8 w-36 h-36 rounded-full bg-blue-400/20 blur-3xl",
+      "absolute -top-14 left-1/3 w-44 h-44 rounded-full bg-sky-400/12 blur-3xl",
+      "absolute top-1/4 -right-10 w-32 h-32 rounded-full bg-indigo-300/12 blur-3xl",
+      "absolute -bottom-10 -left-8 w-36 h-36 rounded-full bg-blue-400/10 blur-3xl",
     ],
   },
 ];
@@ -210,6 +210,19 @@ export default function FeaturesSection() {
                     backgroundSize: "10px 10px",
                   }}
                 />
+                {/* Wavy line pattern at the bottom */}
+                <svg
+                  aria-hidden
+                  className="pointer-events-none absolute inset-x-0 bottom-0 w-full h-24 opacity-60"
+                  viewBox="0 0 400 100"
+                  preserveAspectRatio="none"
+                  fill="none"
+                >
+                  <path d="M0 70 Q 100 50 200 65 T 400 60" stroke="rgba(37,99,235,0.22)" strokeWidth="0.6" />
+                  <path d="M0 78 Q 100 60 200 74 T 400 70" stroke="rgba(37,99,235,0.18)" strokeWidth="0.6" />
+                  <path d="M0 86 Q 100 70 200 82 T 400 80" stroke="rgba(37,99,235,0.14)" strokeWidth="0.6" />
+                  <path d="M0 94 Q 100 80 200 90 T 400 90" stroke="rgba(37,99,235,0.10)" strokeWidth="0.6" />
+                </svg>
                 {/* Glossy top highlight */}
                 <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/80 to-transparent" />
                 {/* Per-card colored orbs */}
