@@ -191,7 +191,7 @@ export default function FeaturesSection() {
             return (
               <Card
                 key={i}
-                className="group relative overflow-hidden border border-neutral-200 bg-white/30 backdrop-blur-xl backdrop-saturate-150 p-8 flex flex-col rounded-2xl shadow-none transition-all duration-300 hover:bg-white/40 hover:-translate-y-1 hover:border-neutral-300"
+                className="group relative overflow-hidden border border-neutral-100 bg-white/30 backdrop-blur-xl backdrop-saturate-150 p-8 flex flex-col rounded-2xl shadow-none transition-all duration-300 hover:bg-white/40 hover:-translate-y-1 hover:border-neutral-200"
               >
                 {/* Subtle grid background — inset with radial fade-out */}
                 <div
