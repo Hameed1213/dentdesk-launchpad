@@ -139,92 +139,10 @@ const NoShowsPreview = () => {
   );
 };
 
-/* ---------- Per-card decorative line patterns ---------- */
-
-const WavyLines = ({ rgb }: { rgb: string }) => (
-  <svg
-    aria-hidden
-    className="pointer-events-none absolute inset-x-0 bottom-0 w-full h-24 opacity-70"
-    viewBox="0 0 400 100"
-    preserveAspectRatio="none"
-    fill="none"
-  >
-    <path d="M0 70 Q 100 50 200 65 T 400 60" stroke={`rgba(${rgb},0.28)`} strokeWidth="0.6" />
-    <path d="M0 78 Q 100 60 200 74 T 400 70" stroke={`rgba(${rgb},0.22)`} strokeWidth="0.6" />
-    <path d="M0 86 Q 100 70 200 82 T 400 80" stroke={`rgba(${rgb},0.16)`} strokeWidth="0.6" />
-    <path d="M0 94 Q 100 80 200 90 T 400 90" stroke={`rgba(${rgb},0.12)`} strokeWidth="0.6" />
-  </svg>
-);
-
-const DiagonalLines = ({ rgb }: { rgb: string }) => (
-  <svg
-    aria-hidden
-    className="pointer-events-none absolute inset-0 w-full h-full opacity-60"
-    width="100%"
-    height="100%"
-  >
-    <defs>
-      <pattern id={`diag-${rgb}`} width="32" height="32" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-        <line x1="0" y1="0" x2="0" y2="32" stroke={`rgba(${rgb},0.28)`} strokeWidth="0.5" />
-      </pattern>
-    </defs>
-    <rect width="100%" height="100%" fill={`url(#diag-${rgb})`} />
-  </svg>
-);
-
-const ConcentricArcs = ({ rgb }: { rgb: string }) => (
-  <svg
-    aria-hidden
-    className="pointer-events-none absolute -bottom-20 -right-20 w-64 h-64 opacity-60"
-    viewBox="0 0 200 200"
-    fill="none"
-  >
-    {[40, 60, 80, 100, 120, 140].map((r, i) => (
-      <circle
-        key={r}
-        cx="100"
-        cy="100"
-        r={r}
-        stroke={`rgba(${rgb},0.28)`}
-        strokeOpacity={1 - i * 0.12}
-        strokeWidth="0.6"
-      />
-    ))}
-  </svg>
-);
-
 // Per-card colour palettes (rgb triplet for inline rgba())
 const ROSE = "244,63,94";       // rose-500
 const AMBER = "245,158,11";     // amber-500
 const ORANGE = "249,115,22";    // orange-500
-
-/* Soft cloud shapes — subtle, themed per card */
-const Clouds = ({ rgb }: { rgb: string }) => (
-  <svg
-    aria-hidden
-    className="pointer-events-none absolute inset-0 w-full h-full opacity-60"
-    viewBox="0 0 400 300"
-    preserveAspectRatio="xMidYMid slice"
-    fill="none"
-  >
-    <defs>
-      <filter id={`cloud-blur-${rgb}`} x="-20%" y="-20%" width="140%" height="140%">
-        <feGaussianBlur stdDeviation="6" />
-      </filter>
-    </defs>
-    <g filter={`url(#cloud-blur-${rgb})`} fill={`rgba(${rgb},0.10)`}>
-      {/* top-left cloud */}
-      <ellipse cx="60" cy="40" rx="55" ry="18" />
-      <ellipse cx="95" cy="32" rx="38" ry="14" />
-      <ellipse cx="35" cy="48" rx="30" ry="12" />
-      {/* top-right cloud */}
-      <ellipse cx="330" cy="60" rx="60" ry="20" />
-      <ellipse cx="360" cy="50" rx="35" ry="14" />
-      {/* mid faint cloud */}
-      <ellipse cx="220" cy="120" rx="70" ry="16" opacity="0.6" />
-    </g>
-  </svg>
-);
 
 const problems = [
   {
@@ -232,39 +150,21 @@ const problems = [
     headline: "Most practices are overpaying",
     body: "The average practice spends £150–250 a month on software that still needs three tools to do what one should.",
     preview: <PricePreview />,
-    pattern: <WavyLines rgb={ROSE} />,
-    clouds: <Clouds rgb={ROSE} />,
-    orbs: [
-      "absolute -top-16 -left-10 w-44 h-44 rounded-full bg-rose-400/12 blur-3xl",
-      "absolute top-1/3 -right-12 w-32 h-32 rounded-full bg-rose-300/15 blur-3xl",
-      "absolute bottom-10 left-1/4 w-28 h-28 rounded-full bg-pink-300/10 blur-3xl",
-    ],
+    rgb: ROSE,
   },
   {
     Icon: Settings,
     headline: "After the sale, you're on your own",
     body: "Most dental software companies sell you the product and disappear. A chatbot, a help article and a 48-hour ticket.",
     preview: <ComplexityPreview />,
-    pattern: <DiagonalLines rgb={AMBER} />,
-    clouds: <Clouds rgb={AMBER} />,
-    orbs: [
-      "absolute -top-10 right-8 w-40 h-40 rounded-full bg-amber-300/12 blur-3xl",
-      "absolute top-1/2 -left-16 w-36 h-36 rounded-full bg-yellow-300/15 blur-3xl",
-      "absolute bottom-0 right-1/3 w-32 h-32 rounded-full bg-amber-400/10 blur-3xl",
-    ],
+    rgb: AMBER,
   },
   {
     Icon: CalendarX,
     headline: "Your team is doing your software's job",
     body: "Manual reminders. Chasing deposits. Sending forms one by one. Hours every week on tasks that should happen automatically.",
     preview: <NoShowsPreview />,
-    pattern: <ConcentricArcs rgb={ORANGE} />,
-    clouds: <Clouds rgb={ORANGE} />,
-    orbs: [
-      "absolute -top-14 left-1/3 w-44 h-44 rounded-full bg-orange-400/12 blur-3xl",
-      "absolute top-1/4 -right-10 w-32 h-32 rounded-full bg-orange-300/12 blur-3xl",
-      "absolute -bottom-10 -left-8 w-36 h-36 rounded-full bg-amber-400/10 blur-3xl",
-    ],
+    rgb: ORANGE,
   },
 ];
 
