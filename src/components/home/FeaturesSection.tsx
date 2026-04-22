@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import { CreditCard, Settings, CalendarX, Check, Bell, Banknote, Landmark } from "lucide-react";
