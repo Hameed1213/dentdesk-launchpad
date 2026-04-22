@@ -4,7 +4,7 @@ import {
   FileCheck,
   TrendingUp,
   Users,
-  Smartphone,
+  Monitor,
   Calendar,
   Check,
   X,
@@ -283,51 +283,106 @@ const StaffVisual = () => {
 };
 
 const PortalVisual = () => (
-  <div className="mx-auto w-[200px] rounded-[24px] bg-foreground/90 p-1.5 shadow-md">
-    <div className="rounded-[18px] bg-white overflow-hidden">
-      {/* Status bar */}
-      <div className="h-4 bg-[#2563EB]/5 flex items-center justify-between px-3">
-        <span className="text-[7px] font-semibold text-foreground">9:41</span>
-        <div className="flex items-center gap-0.5">
-          <div className="w-1 h-1 rounded-full bg-foreground/60" />
-          <div className="w-1 h-1 rounded-full bg-foreground/60" />
-          <div className="w-1 h-1 rounded-full bg-foreground/60" />
+  <div
+    className="w-full h-full relative"
+    style={{
+      filter:
+        "drop-shadow(0 20px 40px rgba(0,0,0,0.15)) drop-shadow(0 4px 12px rgba(0,0,0,0.1))",
+    }}
+  >
+    {/* Screen bezel */}
+    <div
+      className="w-full overflow-hidden"
+      style={{
+        background: "#1a1a1a",
+        padding: "8px 8px 0 8px",
+        borderRadius: "12px 12px 0 0",
+      }}
+    >
+      {/* Browser window */}
+      <div className="bg-[#f8fafc] rounded-t-lg overflow-hidden">
+        {/* Browser chrome */}
+        <div className="flex items-center gap-2 px-3 py-2 bg-[#f1f5f9] border-b border-[#e2e8f0]">
+          <div className="flex gap-1">
+            <div className="w-2 h-2 rounded-full bg-[#ff5f57]" />
+            <div className="w-2 h-2 rounded-full bg-[#febc2e]" />
+            <div className="w-2 h-2 rounded-full bg-[#28c840]" />
+          </div>
+          <div className="flex-1 bg-white rounded px-2 py-0.5 text-[9px] text-neutral-400 font-mono text-center truncate">
+            book.dentdock.co.uk/portal
+          </div>
         </div>
-      </div>
-      {/* Header */}
-      <div className="px-3 pt-3 pb-2">
-        <div className="text-[8px] text-muted-foreground">Hello,</div>
-        <div className="text-[11px] font-bold text-foreground">Sarah</div>
-      </div>
-      {/* Upcoming card */}
-      <div className="mx-3 rounded-xl bg-gradient-to-br from-[#2563EB] to-[#1d4ed8] p-2.5 text-white">
-        <div className="flex items-center justify-between">
-          <span className="text-[7px] uppercase tracking-wide opacity-80">
-            Upcoming
-          </span>
-          <span className="text-[7px] font-bold bg-emerald-400 text-emerald-950 rounded-full px-1.5 py-0.5 flex items-center gap-0.5">
-            <Check size={6} strokeWidth={3} /> Confirmed
-          </span>
+
+        {/* Portal content */}
+        <div className="p-3 bg-white">
+          {/* Header */}
+          <div className="flex items-center justify-between mb-3">
+            <div>
+              <div className="text-[9px] text-neutral-400 font-medium">
+                Hello,
+              </div>
+              <div className="text-[13px] font-bold text-[#0f172a]">Sarah</div>
+            </div>
+            <div className="text-[9px] font-semibold text-[#2563EB] bg-[#eff6ff] px-2 py-1 rounded-lg">
+              + Book appointment
+            </div>
+          </div>
+
+          {/* Upcoming card */}
+          <div className="bg-gradient-to-br from-[#2563EB] to-[#1d4ed8] rounded-xl p-3 mb-2">
+            <div className="flex items-center justify-between mb-1.5">
+              <span className="text-[8px] font-semibold text-blue-100 uppercase tracking-wide">
+                Upcoming
+              </span>
+              <span className="text-[8px] font-semibold bg-emerald-400 text-emerald-950 px-1.5 py-0.5 rounded-full flex items-center gap-0.5">
+                <Check size={7} strokeWidth={3} /> Confirmed
+              </span>
+            </div>
+            <div className="text-[12px] font-bold text-white mb-1">
+              Hygiene check
+            </div>
+            <div className="text-[9px] text-blue-100 flex items-center gap-1">
+              <Calendar size={8} />
+              <span>Thu 18 Apr · 10:30</span>
+            </div>
+            <div className="text-[9px] text-blue-100/90 mt-0.5">
+              Dr. James Webb
+            </div>
+          </div>
+
+          {/* Actions */}
+          <div className="flex gap-2">
+            <button className="flex-1 text-[9px] font-semibold text-[#475569] bg-[#f8fafc] border border-[#e2e8f0] rounded-lg py-1.5 flex items-center justify-center gap-1">
+              <Calendar size={9} /> Reschedule
+            </button>
+            <button className="flex-1 text-[9px] font-semibold text-[#ef4444] bg-[#fef2f2] border border-[#fecaca] rounded-lg py-1.5 flex items-center justify-center gap-1">
+              <X size={9} /> Cancel
+            </button>
+          </div>
         </div>
-        <div className="mt-1.5 text-[12px] font-bold leading-tight">
-          Hygiene check
-        </div>
-        <div className="flex items-center gap-1 mt-0.5 text-[8px] opacity-90">
-          <Calendar size={7} />
-          <span>Thu 18 Apr · 10:30</span>
-        </div>
-        <div className="text-[8px] opacity-80 mt-0.5">Dr. James Webb</div>
-      </div>
-      {/* Actions */}
-      <div className="px-3 pt-2 pb-3 grid grid-cols-2 gap-1.5">
-        <button className="h-6 rounded-md border border-neutral-200 bg-white text-[8px] font-semibold text-foreground flex items-center justify-center gap-1">
-          <Calendar size={7} /> Reschedule
-        </button>
-        <button className="h-6 rounded-md border border-rose-200 bg-rose-50 text-[8px] font-semibold text-rose-600 flex items-center justify-center gap-1">
-          <X size={7} /> Cancel
-        </button>
       </div>
     </div>
+
+    {/* Laptop hinge */}
+    <div
+      style={{
+        height: "10px",
+        background: "linear-gradient(to bottom, #2a2a2a, #1a1a1a)",
+        borderRadius: "0 0 4px 4px",
+        width: "100%",
+      }}
+    />
+    {/* Laptop bottom (slightly wider) */}
+    <div
+      style={{
+        height: "6px",
+        background: "#222",
+        borderRadius: "0 0 8px 8px",
+        width: "108%",
+        marginLeft: "-4%",
+        boxShadow: "0 4px 12px rgba(0,0,0,0.3)",
+      }}
+    />
   </div>
 );
 
@@ -375,11 +430,12 @@ const cells = [
     span: "md:col-span-2 md:row-span-2",
   },
   {
-    Icon: Smartphone,
+    Icon: Monitor,
     title: "Patients manage themselves.",
     visual: <PortalVisual />,
     span: "md:col-span-4 md:row-span-1",
     layout: "side" as const,
+    popOut: true,
   },
   {
     Icon: Users,
@@ -432,8 +488,10 @@ export default function BentoGrid() {
             return (
               <Card
                 key={i}
-                className={`group relative overflow-hidden border border-neutral-100 bg-white/30 backdrop-blur-xl backdrop-saturate-150 p-8 flex flex-col rounded-2xl shadow-none transition-all duration-300 hover:bg-white/40 hover:-translate-y-1 hover:border-neutral-200 ${cell.span}`}
+                className={`group relative ${cell.popOut ? "overflow-visible" : "overflow-hidden"} border border-neutral-100 bg-white/30 backdrop-blur-xl backdrop-saturate-150 p-8 flex flex-col rounded-2xl shadow-none transition-all duration-300 hover:bg-white/40 hover:-translate-y-1 hover:border-neutral-200 ${cell.span}`}
               >
+                {/* Inner clip wrapper for background decorations only */}
+                <div aria-hidden className="absolute inset-0 rounded-2xl overflow-hidden pointer-events-none">
                 {/* Subtle grid background */}
                 <div
                   aria-hidden
@@ -461,6 +519,7 @@ export default function BentoGrid() {
                   aria-hidden
                   className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/80 to-transparent"
                 />
+                </div>
 
                 {cell.layout === "side" ? (
                   <div className="relative flex h-full">
@@ -476,10 +535,21 @@ export default function BentoGrid() {
                         {cell.title}
                       </h3>
                     </div>
-                    {/* Right: phone, half cropped at bottom with padding */}
-                    <div className="absolute right-6 top-4 flex items-start pointer-events-none" style={{ bottom: "-50%" }}>
-                      {cell.visual}
-                    </div>
+                    {cell.popOut ? (
+                      <div
+                        className="absolute right-[-24px] top-[-40px] w-[58%] pointer-events-none"
+                        style={{ zIndex: 20 }}
+                      >
+                        {cell.visual}
+                      </div>
+                    ) : (
+                      <div
+                        className="absolute right-6 top-4 flex items-start pointer-events-none"
+                        style={{ bottom: "-50%" }}
+                      >
+                        {cell.visual}
+                      </div>
+                    )}
                   </div>
                 ) : (
                   <div className="relative flex flex-col h-full">
