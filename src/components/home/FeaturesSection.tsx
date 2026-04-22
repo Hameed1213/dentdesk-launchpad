@@ -1,39 +1,80 @@
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import { CreditCard, Settings, CalendarX, Check, Bell, Banknote, Landmark } from "lucide-react";
 
 /* ---------- Mini preview cards (bottom of each card) ---------- */
+
+const TOAST_INTERVAL_MS = 3000;
+const STACK_POSITIONS = [
+  { y: 0, scale: 1, opacity: 1, zIndex: 30 },
+  { y: -14, scale: 0.94, opacity: 0.82, zIndex: 20 },
+  { y: -28, scale: 0.88, opacity: 0.56, zIndex: 10 },
+] as const;
 
 const PricePreview = () => {
   const charges = [
     { app: "BANK", title: "Payment · Practice PM", amount: "−£120", time: "now" },
     { app: "BANK", title: "Payment · Reminders", amount: "−£45", time: "1m ago" },
     { app: "BANK", title: "Payment · Payments", amount: "−£35", time: "2m ago" },
-  ];
+  ] as const;
+
+  const [stack, setStack] = useState(() => [
+    { id: 0, charge: charges[0] },
+    { id: 1, charge: charges[1] },
+    { id: 2, charge: charges[2] },
+  ]);
+
+  useEffect(() => {
+    let nextId = 3;
+    let nextChargeIndex = 0;
+
+    const interval = window.setInterval(() => {
+      const nextCharge = charges[nextChargeIndex];
+      nextChargeIndex = (nextChargeIndex + 1) % charges.length;
+
+      setStack((current) => [{ id: nextId++, charge: nextCharge }, ...current].slice(0, 3));
+    }, TOAST_INTERVAL_MS);
+
+    return () => window.clearInterval(interval);
+  }, [charges]);
+
   return (
     <div className="relative rounded-xl border border-border bg-gradient-to-br from-slate-100 to-slate-200 p-4 shadow-sm overflow-hidden min-h-[168px]">
-      {charges.map((c, i) => (
-        <div
-          key={i}
-          className="animate-toast-stack absolute left-4 right-4 top-1/2 rounded-2xl bg-white/95 backdrop-blur-md border border-white shadow-md px-3.5 py-3 opacity-0 transform-gpu will-change-transform"
-          style={{ animationDelay: `${i * 3}s` }}
-        >
-          <div className="flex items-center justify-between text-[10px] font-semibold text-muted-foreground uppercase tracking-wide">
-            <div className="flex items-center gap-1.5">
-              <div className="w-4 h-4 rounded-[5px] bg-gradient-to-br from-sky-500 to-sky-700 flex items-center justify-center">
-                <Landmark className="w-2.5 h-2.5 text-white" strokeWidth={2.5} />
-              </div>
-              <span>{c.app}</span>
-            </div>
-            <span className="normal-case tracking-normal font-normal">{c.time}</span>
-          </div>
-          <div className="mt-1.5 flex items-center justify-between gap-2">
-            <div className="text-[13px] font-semibold text-foreground truncate">{c.title}</div>
-            <div className="text-[13px] font-bold tabular-nums text-rose-500 shrink-0">
-              {c.amount}
-            </div>
-          </div>
-        </div>
-      ))}
+      <div className="pointer-events-none absolute inset-x-4 top-1/2 -translate-y-1/2 h-[78px]">
+        <AnimatePresence initial={false}>
+          {stack.map((item, index) => {
+            const position = STACK_POSITIONS[index];
+
+            return (
+              <motion.div
+                key={item.id}
+                initial={{ y: 42, scale: 1, opacity: 0, zIndex: 40 }}
+                animate={position}
+                exit={{ y: -42, scale: 0.84, opacity: 0, zIndex: 0 }}
+                transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
+                className="absolute inset-0 rounded-2xl bg-white/95 backdrop-blur-md border border-white shadow-md px-3.5 py-3 will-change-transform"
+              >
+                <div className="flex items-center justify-between text-[10px] font-semibold text-muted-foreground uppercase tracking-wide">
+                  <div className="flex items-center gap-1.5">
+                    <div className="w-4 h-4 rounded-[5px] bg-gradient-to-br from-sky-500 to-sky-700 flex items-center justify-center">
+                      <Landmark className="w-2.5 h-2.5 text-white" strokeWidth={2.5} />
+                    </div>
+                    <span>{item.charge.app}</span>
+                  </div>
+                  <span className="normal-case tracking-normal font-normal">{item.charge.time}</span>
+                </div>
+                <div className="mt-1.5 flex items-center justify-between gap-2">
+                  <div className="text-[13px] font-semibold text-foreground truncate">{item.charge.title}</div>
+                  <div className="text-[13px] font-bold tabular-nums text-rose-500 shrink-0">
+                    {item.charge.amount}
+                  </div>
+                </div>
+              </motion.div>
+            );
+          })}
+        </AnimatePresence>
+      </div>
     </div>
   );
 };
