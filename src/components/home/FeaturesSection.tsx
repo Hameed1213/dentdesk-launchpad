@@ -198,6 +198,34 @@ const ROSE = "244,63,94";       // rose-500
 const AMBER = "245,158,11";     // amber-500
 const ORANGE = "249,115,22";    // orange-500
 
+/* Soft cloud shapes — subtle, themed per card */
+const Clouds = ({ rgb }: { rgb: string }) => (
+  <svg
+    aria-hidden
+    className="pointer-events-none absolute inset-0 w-full h-full opacity-60"
+    viewBox="0 0 400 300"
+    preserveAspectRatio="xMidYMid slice"
+    fill="none"
+  >
+    <defs>
+      <filter id={`cloud-blur-${rgb}`} x="-20%" y="-20%" width="140%" height="140%">
+        <feGaussianBlur stdDeviation="6" />
+      </filter>
+    </defs>
+    <g filter={`url(#cloud-blur-${rgb})`} fill={`rgba(${rgb},0.10)`}>
+      {/* top-left cloud */}
+      <ellipse cx="60" cy="40" rx="55" ry="18" />
+      <ellipse cx="95" cy="32" rx="38" ry="14" />
+      <ellipse cx="35" cy="48" rx="30" ry="12" />
+      {/* top-right cloud */}
+      <ellipse cx="330" cy="60" rx="60" ry="20" />
+      <ellipse cx="360" cy="50" rx="35" ry="14" />
+      {/* mid faint cloud */}
+      <ellipse cx="220" cy="120" rx="70" ry="16" opacity="0.6" />
+    </g>
+  </svg>
+);
+
 const problems = [
   {
     Icon: CreditCard,
