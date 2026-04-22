@@ -14,8 +14,8 @@ const PricePreview = () => {
       {charges.map((c, i) => (
         <div
           key={i}
-          className="animate-toast-cycle absolute left-4 right-4 bottom-4 rounded-2xl bg-white/95 backdrop-blur-md border border-white shadow-md px-3.5 py-3 opacity-0"
-          style={{ animationDelay: `${i * 4}s` }}
+          className="animate-toast-stack absolute left-4 right-4 bottom-4 rounded-2xl bg-white/95 backdrop-blur-md border border-white shadow-md px-3.5 py-3 opacity-0 transform-gpu will-change-transform"
+          style={{ animationDelay: `${i * 3}s` }}
         >
           <div className="flex items-center justify-between text-[10px] font-semibold text-muted-foreground uppercase tracking-wide">
             <div className="flex items-center gap-1.5">
