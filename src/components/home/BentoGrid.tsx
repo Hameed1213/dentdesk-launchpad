@@ -89,7 +89,7 @@ const PatientRecordVisual = () => (
 );
 
 const FormVisual = () => (
-  <div className="mx-auto w-[180px] rounded-[24px] bg-foreground/90 p-1.5 shadow-md">
+  <div className="w-[210px] rounded-[26px] bg-foreground/90 p-1.5 shadow-xl">
     <div className="rounded-[18px] bg-white overflow-hidden">
       {/* Status bar */}
       <div className="h-4 bg-[#2563EB]/5 flex items-center justify-between px-3">
@@ -379,6 +379,7 @@ const cells = [
     title: "Paperless from day one.",
     visual: <FormVisual />,
     span: "md:col-span-4 md:row-span-1",
+    layout: "side" as const,
   },
   {
     Icon: Users,
@@ -461,20 +462,41 @@ export default function BentoGrid() {
                   className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/80 to-transparent"
                 />
 
-                <div className="relative flex flex-col h-full">
-                  <div className="w-11 h-11 rounded-xl bg-white border border-neutral-100 flex items-center justify-center mb-6 shadow-sm">
-                    <Icon
-                      className="w-5 h-5 text-[#2563EB]"
-                      strokeWidth={1.75}
-                    />
+                {cell.layout === "side" ? (
+                  <div className="relative flex h-full">
+                    {/* Left: icon + title */}
+                    <div className="flex-1 flex flex-col">
+                      <div className="w-11 h-11 rounded-xl bg-white border border-neutral-100 flex items-center justify-center mb-6 shadow-sm">
+                        <Icon
+                          className="w-5 h-5 text-[#2563EB]"
+                          strokeWidth={1.75}
+                        />
+                      </div>
+                      <h3 className="text-[19px] font-semibold text-foreground tracking-tight leading-snug max-w-[220px]">
+                        {cell.title}
+                      </h3>
+                    </div>
+                    {/* Right: phone, cropped at bottom */}
+                    <div className="absolute right-0 -bottom-8 top-2 flex items-end pointer-events-none">
+                      {cell.visual}
+                    </div>
                   </div>
-                  <h3 className="text-[19px] font-semibold text-foreground tracking-tight leading-snug">
-                    {cell.title}
-                  </h3>
-                  <div className="mt-6 flex-1 flex items-end">
-                    <div className="w-full">{cell.visual}</div>
+                ) : (
+                  <div className="relative flex flex-col h-full">
+                    <div className="w-11 h-11 rounded-xl bg-white border border-neutral-100 flex items-center justify-center mb-6 shadow-sm">
+                      <Icon
+                        className="w-5 h-5 text-[#2563EB]"
+                        strokeWidth={1.75}
+                      />
+                    </div>
+                    <h3 className="text-[19px] font-semibold text-foreground tracking-tight leading-snug">
+                      {cell.title}
+                    </h3>
+                    <div className="mt-6 flex-1 flex items-end">
+                      <div className="w-full">{cell.visual}</div>
+                    </div>
                   </div>
-                </div>
+                )}
               </Card>
             );
           })}
