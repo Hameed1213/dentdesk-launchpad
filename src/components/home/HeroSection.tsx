@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { AnimatedGroup } from "@/components/ui/animated-group";
 import DashboardAnimation from "@/components/home/DashboardAnimation";
+import { AuroraBackground } from "@/components/ui/aurora-background";
 
 const transition = {
   type: "spring" as const,
