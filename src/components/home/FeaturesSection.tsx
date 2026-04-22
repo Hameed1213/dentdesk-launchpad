@@ -10,13 +10,19 @@ const PricePreview = () => {
     { name: "Payments add-on", price: "£35" },
   ];
   return (
-    <div className="rounded-xl border border-border bg-background p-4 shadow-sm overflow-hidden min-h-[168px] flex flex-col">
-      <div className="flex items-center justify-between">
+    <div className="relative rounded-xl border border-border bg-background p-4 shadow-sm overflow-hidden min-h-[168px] flex flex-col">
+      {/* Shimmer sweep across the card */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-y-0 -inset-x-1/2 w-1/3 bg-gradient-to-r from-transparent via-rose-100/60 to-transparent animate-preview-shimmer"
+      />
+
+      <div className="relative flex items-center justify-between">
         <div>
           <div className="text-sm font-semibold text-foreground">Monthly software cost</div>
           <div className="text-xs text-muted-foreground mt-0.5">3 tools, 1 job</div>
         </div>
-        <div className="text-right">
+        <div className="text-right animate-preview-price-bob">
           <div className="text-xl font-bold tabular-nums text-foreground">£200</div>
           <div className="text-[10px] text-rose-500 font-medium flex items-center gap-0.5 justify-end">
             <TrendingUp className="w-2.5 h-2.5" />
@@ -24,7 +30,7 @@ const PricePreview = () => {
           </div>
         </div>
       </div>
-      <div className="mt-3 space-y-1.5">
+      <div className="relative mt-3 space-y-1.5">
         {tools.map((t, i) => (
           <div
             key={t.name}
@@ -32,18 +38,18 @@ const PricePreview = () => {
             style={{ animationDelay: `${i * 120}ms` }}
           >
             <div className="flex items-center gap-1.5 min-w-0">
-              <span className="w-1.5 h-1.5 rounded-full bg-rose-400/70 shrink-0" />
+              <span
+                className="w-1.5 h-1.5 rounded-full bg-rose-400 shrink-0 animate-preview-dot-blink"
+                style={{ animationDelay: `${i * 200}ms` }}
+              />
               <span className="text-muted-foreground truncate">{t.name}</span>
             </div>
             <span className="tabular-nums font-medium text-foreground">{t.price}</span>
           </div>
         ))}
       </div>
-      <div className="mt-3 h-1 w-full rounded-full bg-muted overflow-hidden">
-        <div
-          className="h-full rounded-full bg-gradient-to-r from-rose-400 to-rose-500 animate-preview-bar"
-          style={{ ["--bar-target" as string]: "85%" }}
-        />
+      <div className="relative mt-3 h-1 w-full rounded-full bg-muted overflow-hidden">
+        <div className="h-full rounded-full bg-gradient-to-r from-rose-400 to-rose-500 animate-preview-bar-loop" />
       </div>
     </div>
   );
