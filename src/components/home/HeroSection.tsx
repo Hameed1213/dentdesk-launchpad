@@ -105,11 +105,11 @@ export default function HeroSection() {
           }}
         >
           <h1
-            className="text-[2.5rem] md:text-[3.75rem] lg:text-[4.5rem] text-center text-white leading-[1.15] tracking-[-0.03em] max-w-4xl mx-auto"
+            className="text-[2.5rem] md:text-[3.75rem] lg:text-[4.5rem] text-center text-neutral-900 leading-[1.15] tracking-[-0.03em] max-w-4xl mx-auto"
             style={{ fontWeight: 600 }}
           >
             Dental software for{" "}
-            <span className="text-[#60a5fa] whitespace-nowrap">UK private practices</span>
+            <span className="text-[#2563EB] whitespace-nowrap">UK private practices</span>
           </h1>
         </AnimatedGroup>
 
@@ -117,7 +117,7 @@ export default function HeroSection() {
         <AnimatedGroup
           variants={{ container: makeContainer(0.3), item: itemBlurSlide }}
         >
-          <p className="text-lg text-neutral-400 max-w-xl mx-auto text-center leading-relaxed mt-5">
+          <p className="text-lg text-neutral-500 max-w-xl mx-auto text-center leading-relaxed mt-5">
             Online booking, automated reminders, payments and recalls, all in one platform.
             Finally, software that works as hard as you do.
           </p>
@@ -140,9 +140,9 @@ export default function HeroSection() {
             {["No contracts", "No setup fees", "Live within the day"].map(
               (t, i, arr) => (
                 <span key={t} className="flex items-center gap-2">
-                  <span className="text-xs text-neutral-500 font-medium">{t}</span>
+                  <span className="text-xs text-neutral-400 font-medium">{t}</span>
                   {i < arr.length - 1 && (
-                    <span className="w-1 h-1 bg-neutral-600 rounded-full" />
+                    <span className="w-1 h-1 bg-neutral-300 rounded-full" />
                   )}
                 </span>
               ),
@@ -157,7 +157,7 @@ export default function HeroSection() {
         >
           <p className="text-sm text-neutral-400 text-center max-w-sm mx-auto mt-5 leading-relaxed">
             Be one of the{" "}
-            <span className="text-neutral-200 font-medium">first 30 practices</span>, get priority support and help shape the product from day one.
+            <span className="text-neutral-700 font-medium">first 30 practices</span>, get priority support and help shape the product from day one.
           </p>
         </AnimatedGroup>
 
