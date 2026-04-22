@@ -55,11 +55,11 @@ function Index() {
       <section id="features">
         <FeaturesSection />
       </section>
-      <section id="about">
-        <ProductShowcase />
-      </section>
       <section id="how-it-works">
         <HowItWorks />
+      </section>
+      <section id="about">
+        <ProductShowcase />
       </section>
       <section id="faq">
         <FAQ />
