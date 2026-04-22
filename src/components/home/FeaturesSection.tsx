@@ -17,6 +17,7 @@ type PriceCharge = {
   title: string;
   amount: string;
   time: string;
+  note: string;
 };
 
 type PriceToast = {
@@ -26,9 +27,9 @@ type PriceToast = {
 
 const PricePreview = () => {
   const charges: PriceCharge[] = [
-    { app: "BANK", title: "Practice software", amount: "−£120", time: "now" },
-    { app: "BANK", title: "SMS reminders", amount: "−£45", time: "1m ago" },
-    { app: "BANK", title: "Patient forms", amount: "−£35", time: "2m ago" },
+    { app: "BANK", title: "Practice software", amount: "−£120", time: "now", note: "Most features cost extra" },
+    { app: "BANK", title: "SMS reminders", amount: "−£45", time: "1m ago", note: "Charged on top of your plan" },
+    { app: "BANK", title: "Patient forms", amount: "−£35", time: "2m ago", note: "Separate tool, separate bill" },
   ];
 
   const [stack, setStack] = useState<PriceToast[]>([
@@ -53,7 +54,7 @@ const PricePreview = () => {
 
   return (
     <div className="relative rounded-xl border border-border bg-gradient-to-br from-slate-100 to-slate-200 p-4 shadow-sm overflow-hidden min-h-[168px]">
-      <div className="pointer-events-none absolute inset-x-4 top-1/2 h-[78px] -translate-y-1/2">
+      <div className="pointer-events-none absolute inset-x-4 top-1/2 h-[96px] -translate-y-1/2">
         <AnimatePresence initial={false}>
           {stack.map((item, index) => {
             const position = STACK_POSITIONS[index];
@@ -82,6 +83,9 @@ const PricePreview = () => {
                   <div className="text-[13px] font-bold tabular-nums text-rose-500 shrink-0">
                     {item.charge.amount}
                   </div>
+                </div>
+                <div className="mt-0.5 text-[11px] text-muted-foreground truncate">
+                  {item.charge.note}
                 </div>
               </motion.div>
             );
