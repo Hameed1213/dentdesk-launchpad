@@ -10,26 +10,26 @@ const PricePreview = () => {
     { app: "BARCLAYS", title: "Payment sent · Payments", amount: "−£35.00", time: "2m ago" },
   ];
   return (
-    <div className="relative rounded-xl border border-border bg-gradient-to-br from-slate-100 to-slate-200 p-3 shadow-sm overflow-hidden min-h-[168px]">
+    <div className="relative rounded-xl border border-border bg-gradient-to-br from-slate-100 to-slate-200 p-4 shadow-sm overflow-hidden min-h-[168px]">
       {charges.map((c, i) => (
         <div
           key={i}
-          className="animate-toast-cycle absolute left-3 right-3 bottom-3 rounded-xl bg-white/95 backdrop-blur-md border border-white shadow-md px-2.5 py-2 opacity-0"
-          style={{ animationDelay: `${i * 2}s` }}
+          className="animate-toast-cycle absolute left-4 right-4 bottom-4 rounded-2xl bg-white/95 backdrop-blur-md border border-white shadow-md px-3.5 py-3 opacity-0"
+          style={{ animationDelay: `${i * 4}s` }}
         >
-          <div className="flex items-center justify-between text-[9px] font-semibold text-muted-foreground uppercase tracking-wide">
+          <div className="flex items-center justify-between text-[10px] font-semibold text-muted-foreground uppercase tracking-wide">
             <div className="flex items-center gap-1.5">
-              <div className="w-3.5 h-3.5 rounded-[4px] bg-gradient-to-br from-sky-500 to-sky-700 flex items-center justify-center">
-                <Landmark className="w-2 h-2 text-white" strokeWidth={2.5} />
+              <div className="w-4 h-4 rounded-[5px] bg-gradient-to-br from-sky-500 to-sky-700 flex items-center justify-center">
+                <Landmark className="w-2.5 h-2.5 text-white" strokeWidth={2.5} />
               </div>
               <span>{c.app}</span>
             </div>
             <span className="normal-case tracking-normal font-normal">{c.time}</span>
           </div>
-          <div className="mt-1 flex items-center justify-between gap-2">
-            <div className="text-[11px] font-semibold text-foreground truncate">{c.title}</div>
-            <div className="text-[11px] font-bold tabular-nums text-rose-500 shrink-0 flex items-center gap-0.5">
-              <TrendingUp className="w-2.5 h-2.5 rotate-180" />
+          <div className="mt-1.5 flex items-center justify-between gap-2">
+            <div className="text-[13px] font-semibold text-foreground truncate">{c.title}</div>
+            <div className="text-[13px] font-bold tabular-nums text-rose-500 shrink-0 flex items-center gap-0.5">
+              <TrendingUp className="w-3 h-3 rotate-180" />
               {c.amount}
             </div>
           </div>
