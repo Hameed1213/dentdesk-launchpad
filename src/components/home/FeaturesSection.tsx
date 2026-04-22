@@ -178,13 +178,6 @@ const problems = [
 export default function FeaturesSection() {
   return (
     <section className="relative bg-background py-20 md:py-32 px-6 md:px-8 overflow-hidden">
-      {/* Ambient color blobs to give the glass something to refract */}
-      <div aria-hidden className="pointer-events-none absolute inset-0 -z-0">
-        <div className="absolute top-10 -left-20 w-[420px] h-[420px] rounded-full bg-rose-300/30 blur-3xl" />
-        <div className="absolute top-40 left-1/2 -translate-x-1/2 w-[500px] h-[500px] rounded-full bg-amber-200/30 blur-3xl" />
-        <div className="absolute bottom-0 right-0 w-[460px] h-[460px] rounded-full bg-blue-300/30 blur-3xl" />
-      </div>
-
       <div className="relative mx-auto max-w-6xl">
         {/* Section heading */}
         <div className="mx-auto max-w-2xl text-center mb-14 md:mb-20">
