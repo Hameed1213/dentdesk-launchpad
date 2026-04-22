@@ -13,17 +13,13 @@ const navLinks = [
 
 const LOGIN_URL = "https://app.dentdock.co.uk";
 
-function Logo({ scrolled }: { scrolled: boolean }) {
+function Logo() {
   return (
     <a href="/" className="flex items-center gap-2 shrink-0">
-      <ToothIcon size={22} color={scrolled ? "#2563EB" : "#ffffff"} />
+      <ToothIcon size={22} color="#2563EB" />
       <span
         className="text-lg tracking-tight"
-        style={{
-          color: scrolled ? "#2563EB" : "#ffffff",
-          fontWeight: 700,
-          letterSpacing: "-0.02em",
-        }}
+        style={{ color: "#2563EB", fontWeight: 700, letterSpacing: "-0.02em" }}
       >
         Dent Dock
       </span>
@@ -74,7 +70,7 @@ export default function Navbar() {
             scrolled ? "py-2.5" : "py-4",
           )}
         >
-          <Logo scrolled={scrolled} />
+          <Logo />
 
           <nav className="hidden lg:flex items-center gap-8">
             {navLinks.map((l) => (
@@ -82,12 +78,7 @@ export default function Navbar() {
                 key={l.label}
                 href={l.href}
                 onClick={(e) => smoothScrollTo(e, l.href)}
-                className={cn(
-                  "text-sm font-medium transition-colors",
-                  scrolled
-                    ? "text-neutral-600 hover:text-neutral-900"
-                    : "text-neutral-300 hover:text-white",
-                )}
+                className="text-sm font-medium text-neutral-600 hover:text-neutral-900 transition-colors"
               >
                 {l.label}
               </a>
@@ -97,12 +88,7 @@ export default function Navbar() {
           <div className="hidden lg:flex items-center gap-5">
             <a
               href={LOGIN_URL}
-              className={cn(
-                "text-sm font-medium transition-colors",
-                scrolled
-                  ? "text-neutral-600 hover:text-neutral-900"
-                  : "text-neutral-300 hover:text-white",
-              )}
+              className="text-sm font-medium text-neutral-600 hover:text-neutral-900 transition-colors"
             >
               Log in
             </a>

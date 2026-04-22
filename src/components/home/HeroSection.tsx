@@ -42,7 +42,7 @@ function WaitlistForm() {
 
   if (submitted) {
     return (
-      <p className="text-sm text-green-400 font-medium text-center mt-2">
+      <p className="text-sm text-green-600 font-medium text-center mt-2">
         ✓ You're on the list. We'll be in touch soon.
       </p>
     );
