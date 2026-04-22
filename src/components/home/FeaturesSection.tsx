@@ -97,7 +97,7 @@ const PricePreview = () => {
 };
 
 const ComplexityPreview = () => (
-    <div className="rounded-xl bg-white/40 backdrop-blur-sm border border-white/60 p-4 overflow-hidden min-h-[168px] flex flex-col">
+    <div className="rounded-xl bg-white/80 backdrop-blur-md border border-white shadow-md p-4 overflow-hidden min-h-[168px] flex flex-col">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <span
