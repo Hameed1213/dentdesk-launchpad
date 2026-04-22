@@ -379,7 +379,6 @@ const PortalVisual = () => (
                 </div>
               </div>
             ))}
-          </div>
         </div>
       </div>
     </div>
