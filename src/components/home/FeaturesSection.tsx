@@ -159,13 +159,13 @@ const WavyLines = () => (
 const DiagonalLines = () => (
   <svg
     aria-hidden
-    className="pointer-events-none absolute inset-0 w-full h-full opacity-40"
+    className="pointer-events-none absolute inset-0 w-full h-full opacity-50"
     width="100%"
     height="100%"
   >
     <defs>
-      <pattern id="diag-pattern" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-        <line x1="0" y1="0" x2="0" y2="14" stroke="rgba(37,99,235,0.25)" strokeWidth="0.6" />
+      <pattern id="diag-pattern" width="32" height="32" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+        <line x1="0" y1="0" x2="0" y2="32" stroke="rgba(37,99,235,0.22)" strokeWidth="0.5" />
       </pattern>
     </defs>
     <rect width="100%" height="100%" fill="url(#diag-pattern)" />
