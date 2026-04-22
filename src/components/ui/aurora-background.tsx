@@ -20,29 +20,26 @@ export const AuroraBackground = ({
       )}
       {...props}
     >
-      {/* Aurora layer */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div
-          aria-hidden
-          className="absolute -inset-[10px] pointer-events-none will-change-transform"
-          style={{
-            backgroundImage:
-              "repeating-linear-gradient(100deg, #000 0%, #000 7%, transparent 10%, transparent 12%, #000 16%), repeating-linear-gradient(100deg, #3b82f6 10%, #a5b4fc 15%, #93c5fd 20%, #ddd6fe 25%, #60a5fa 30%)",
-            backgroundSize: "300%, 200%",
-            backgroundPosition: "50% 50%, 50% 50%",
-            filter: "blur(40px)",
-            opacity: 0.6,
-            mixBlendMode: "screen",
-            animation: "aurora 60s linear infinite",
-            ...(showRadialGradient
-              ? {
-                  maskImage:
-                    "radial-gradient(ellipse 80% 60% at 100% 0%, black 10%, transparent 70%)",
-                  WebkitMaskImage:
-                    "radial-gradient(ellipse 80% 60% at 100% 0%, black 10%, transparent 70%)",
-                }
-              : {}),
-          }}
+          className={cn(
+            "[--white-gradient:repeating-linear-gradient(100deg,#fff_0%,#fff_7%,transparent_10%,transparent_12%,#fff_16%)]",
+            "[--dark-gradient:repeating-linear-gradient(100deg,#000_0%,#000_7%,transparent_10%,transparent_12%,#000_16%)]",
+            "[--aurora:repeating-linear-gradient(100deg,#3b82f6_10%,#a5b4fc_15%,#93c5fd_20%,#ddd6fe_25%,#60a5fa_30%)]",
+            "[background-image:var(--dark-gradient),var(--aurora)]",
+            "[background-size:300%,_200%]",
+            "[background-position:50%_50%,50%_50%]",
+            "filter blur-[10px] opacity-50",
+            "absolute -inset-[10px] pointer-events-none will-change-transform",
+            "after:content-[''] after:absolute after:inset-0",
+            "after:[background-image:var(--dark-gradient),var(--aurora)]",
+            "after:[background-size:200%,_100%]",
+            "after:[background-attachment:fixed]",
+            "after:mix-blend-difference",
+            "after:animate-[aurora_60s_linear_infinite]",
+            showRadialGradient &&
+              "[mask-image:radial-gradient(ellipse_at_100%_0%,black_10%,transparent_70%)]",
+          )}
         />
       </div>
 
