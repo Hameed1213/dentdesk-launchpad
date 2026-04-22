@@ -98,7 +98,7 @@ export default function HeroSection() {
           backgroundSize: "300%, 200%",
           backgroundPosition: "50% 50%, 50% 50%",
           filter: "blur(40px)",
-          opacity: 0.45,
+          opacity: 0.8,
           maskImage:
             "radial-gradient(ellipse 70% 60% at 100% 0%, black 10%, transparent 70%)",
           WebkitMaskImage:
