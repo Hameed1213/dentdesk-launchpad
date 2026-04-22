@@ -828,7 +828,7 @@ export default function DashboardAnimation() {
     <>
       {/* Desktop — keep current ContainerScroll behaviour */}
       <section
-        className="bg-white pt-0 pb-8 -mb-24 hidden lg:block w-full pointer-events-none relative z-10"
+        className="pt-0 pb-8 -mb-24 hidden lg:block w-full pointer-events-none relative z-10"
         style={{ marginTop: "16px" }}
       >
         <ContainerScroll titleComponent={<></>}>
@@ -837,7 +837,7 @@ export default function DashboardAnimation() {
       </section>
 
       {/* Tablet */}
-      <section className="bg-white pt-8 pb-12 hidden md:block lg:hidden w-full pointer-events-none">
+      <section className="pt-8 pb-12 hidden md:block lg:hidden w-full pointer-events-none">
         <div className="max-w-2xl mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
