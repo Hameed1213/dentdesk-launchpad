@@ -167,21 +167,20 @@ const NoShowsPreview = () => {
       const key = `c${rowIndex + 1}` as CountKey;
 
       addTimer(() => {
-        // Tick off one task — count goes down by 1
+        // Tick off one task — count goes down by 1 and stays
         setCounts((prev) => ({ ...prev, [key]: targets[key] - 1 }));
 
         addTimer(() => {
           setChecking(null);
-          // New task arrives — count returns to target
-          setCounts((prev) => ({ ...prev, [key]: targets[key] }));
 
           const nextRow = (rowIndex + 1) % 3;
           if (nextRow === 0) {
-            addTimer(runAnimation, 1200);
+            // Restart the whole animation after a pause
+            addTimer(runAnimation, 1600);
           } else {
-            addTimer(() => startCheckLoop(nextRow), 600);
+            addTimer(() => startCheckLoop(nextRow), 800);
           }
-        }, 700);
+        }, 900);
       }, 600);
     };
 
