@@ -233,6 +233,7 @@ const problems = [
     body: "The average practice spends £150–250 a month on software that still needs three tools to do what one should.",
     preview: <PricePreview />,
     pattern: <WavyLines rgb={ROSE} />,
+    clouds: <Clouds rgb={ROSE} />,
     orbs: [
       "absolute -top-16 -left-10 w-44 h-44 rounded-full bg-rose-400/12 blur-3xl",
       "absolute top-1/3 -right-12 w-32 h-32 rounded-full bg-rose-300/15 blur-3xl",
@@ -245,6 +246,7 @@ const problems = [
     body: "Most dental software companies sell you the product and disappear. A chatbot, a help article and a 48-hour ticket.",
     preview: <ComplexityPreview />,
     pattern: <DiagonalLines rgb={AMBER} />,
+    clouds: <Clouds rgb={AMBER} />,
     orbs: [
       "absolute -top-10 right-8 w-40 h-40 rounded-full bg-amber-300/12 blur-3xl",
       "absolute top-1/2 -left-16 w-36 h-36 rounded-full bg-yellow-300/15 blur-3xl",
@@ -257,6 +259,7 @@ const problems = [
     body: "Manual reminders. Chasing deposits. Sending forms one by one. Hours every week on tasks that should happen automatically.",
     preview: <NoShowsPreview />,
     pattern: <ConcentricArcs rgb={ORANGE} />,
+    clouds: <Clouds rgb={ORANGE} />,
     orbs: [
       "absolute -top-14 left-1/3 w-44 h-44 rounded-full bg-orange-400/12 blur-3xl",
       "absolute top-1/4 -right-10 w-32 h-32 rounded-full bg-orange-300/12 blur-3xl",
