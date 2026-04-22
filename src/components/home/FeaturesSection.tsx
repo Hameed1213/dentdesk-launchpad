@@ -1,7 +1,5 @@
 import { Card } from "@/components/ui/card";
-import { CreditCard, Settings, CalendarX, Check, Bell, Banknote, TrendingUp } from "lucide-react";
-import type { LucideIcon } from "lucide-react";
-import type { ReactNode } from "react";
+import { CreditCard, Settings, CalendarX, Check, Bell, Banknote, FileText, TrendingUp } from "lucide-react";
 
 /* ---------- Mini preview cards (bottom of each card) ---------- */
 
@@ -12,7 +10,7 @@ const PricePreview = () => {
     { name: "Payments add-on", price: "£35" },
   ];
   return (
-    <div className="rounded-xl border border-border bg-background/95 backdrop-blur-sm p-4 shadow-sm overflow-hidden min-h-[168px] flex flex-col">
+    <div className="rounded-xl border border-border bg-background p-4 shadow-sm overflow-hidden min-h-[168px] flex flex-col">
       <div className="flex items-center justify-between">
         <div>
           <div className="text-sm font-semibold text-foreground">Monthly software cost</div>
@@ -44,7 +42,7 @@ const PricePreview = () => {
       <div className="mt-3 h-1 w-full rounded-full bg-muted overflow-hidden">
         <div
           className="h-full rounded-full bg-gradient-to-r from-rose-400 to-rose-500 animate-preview-bar"
-          style={{ ["--bar-target" as string]: "85%" } as React.CSSProperties}
+          style={{ ["--bar-target" as string]: "85%" }}
         />
       </div>
     </div>
@@ -52,12 +50,12 @@ const PricePreview = () => {
 };
 
 const ComplexityPreview = () => (
-  <div className="rounded-xl border border-border bg-background/95 backdrop-blur-sm p-4 shadow-sm overflow-hidden min-h-[168px] flex flex-col">
-    <div className="flex items-center justify-between">
-      <div className="flex items-center gap-2">
-        <span
-          className="w-2 h-2 rounded-full bg-amber-500 animate-preview-pulse-ring"
-          style={{ ["--ring-color" as string]: "rgba(245, 158, 11, 0.5)" } as React.CSSProperties}
+    <div className="rounded-xl border border-border bg-background p-4 shadow-sm overflow-hidden min-h-[168px] flex flex-col">
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <span
+            className="w-2 h-2 rounded-full bg-amber-500 animate-preview-pulse-ring"
+          style={{ ["--ring-color" as string]: "rgba(245, 158, 11, 0.5)" }}
         />
         <span className="text-sm font-semibold text-foreground">Support ticket #4821</span>
       </div>
@@ -103,7 +101,7 @@ const NoShowsPreview = () => {
     { Icon: Banknote, label: "Chase deposits", count: "× 6" },
   ];
   return (
-    <div className="rounded-xl border border-border bg-background/95 backdrop-blur-sm p-4 shadow-sm overflow-hidden min-h-[168px] flex flex-col">
+    <div className="rounded-xl border border-border bg-background p-4 shadow-sm overflow-hidden min-h-[168px] flex flex-col">
       <div className="flex items-center justify-between">
         <div>
           <div className="text-sm font-semibold text-foreground">Reception to-do</div>
@@ -141,113 +139,33 @@ const NoShowsPreview = () => {
   );
 };
 
-/* ---------- Themed card system ---------- */
-
-type Theme = {
-  cardGradient: string;
-  border: string;
-  hoverBorder: string;
-  hoverShadow: string;
-  glowColor: string;
-  iconBg: string;
-  iconRing: string;
-  iconColor: string;
-  topBar: string;
-};
-
-const themes: Record<"rose" | "amber" | "orange", Theme> = {
-  rose: {
-    cardGradient: "bg-gradient-to-br from-white via-white to-rose-50/70",
-    border: "border-rose-100/80",
-    hoverBorder: "group-hover:border-rose-200",
-    hoverShadow: "group-hover:shadow-[0_20px_50px_-20px_rgba(244,63,94,0.28)]",
-    glowColor: "bg-rose-400/25",
-    iconBg: "bg-gradient-to-br from-rose-50 to-rose-100/80",
-    iconRing: "ring-1 ring-rose-200/60",
-    iconColor: "text-rose-500",
-    topBar: "from-rose-300 via-rose-500 to-rose-300",
-  },
-  amber: {
-    cardGradient: "bg-gradient-to-br from-white via-white to-amber-50/70",
-    border: "border-amber-100/80",
-    hoverBorder: "group-hover:border-amber-200",
-    hoverShadow: "group-hover:shadow-[0_20px_50px_-20px_rgba(245,158,11,0.30)]",
-    glowColor: "bg-amber-400/25",
-    iconBg: "bg-gradient-to-br from-amber-50 to-amber-100/80",
-    iconRing: "ring-1 ring-amber-200/60",
-    iconColor: "text-amber-500",
-    topBar: "from-amber-300 via-amber-500 to-amber-300",
-  },
-  orange: {
-    cardGradient: "bg-gradient-to-br from-white via-white to-orange-50/70",
-    border: "border-orange-100/80",
-    hoverBorder: "group-hover:border-orange-200",
-    hoverShadow: "group-hover:shadow-[0_20px_50px_-20px_rgba(249,115,22,0.30)]",
-    glowColor: "bg-orange-400/25",
-    iconBg: "bg-gradient-to-br from-orange-50 to-orange-100/80",
-    iconRing: "ring-1 ring-orange-200/60",
-    iconColor: "text-orange-500",
-    topBar: "from-orange-300 via-orange-500 to-orange-300",
-  },
-};
-
-const problems: Array<{
-  Icon: LucideIcon;
-  headline: string;
-  body: string;
-  preview: ReactNode;
-  theme: Theme;
-}> = [
+const problems = [
   {
     Icon: CreditCard,
     headline: "Most practices are overpaying",
     body: "The average practice spends £150–250 a month on software that still needs three tools to do what one should.",
     preview: <PricePreview />,
-    theme: themes.rose,
   },
   {
     Icon: Settings,
     headline: "After the sale, you're on your own",
     body: "Most dental software companies sell you the product and disappear. A chatbot, a help article and a 48-hour ticket.",
     preview: <ComplexityPreview />,
-    theme: themes.amber,
   },
   {
     Icon: CalendarX,
     headline: "Your team is doing your software's job",
     body: "Manual reminders. Chasing deposits. Sending forms one by one. Hours every week on tasks that should happen automatically.",
     preview: <NoShowsPreview />,
-    theme: themes.orange,
   },
 ];
 
 export default function FeaturesSection() {
   return (
-    <section className="relative bg-gradient-to-b from-muted/40 via-background to-background py-20 md:py-32 px-6 md:px-8 overflow-hidden">
-      {/* Subtle dotted backdrop */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-[0.35]"
-        style={{
-          backgroundImage:
-            "radial-gradient(circle, rgba(15,23,42,0.06) 1px, transparent 1px)",
-          backgroundSize: "22px 22px",
-          maskImage:
-            "radial-gradient(ellipse at center, black 40%, transparent 75%)",
-          WebkitMaskImage:
-            "radial-gradient(ellipse at center, black 40%, transparent 75%)",
-        }}
-      />
-
-      <div className="relative mx-auto max-w-6xl">
+    <section className="bg-background py-20 md:py-32 px-6 md:px-8">
+      <div className="mx-auto max-w-6xl">
         {/* Section heading */}
         <div className="mx-auto max-w-2xl text-center mb-14 md:mb-20">
-          <div className="inline-flex items-center gap-2 rounded-full border border-[#2563EB]/15 bg-[#2563EB]/5 px-3 py-1 mb-5">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#2563EB]" />
-            <span className="text-[11px] font-semibold tracking-[0.12em] text-[#2563EB] uppercase">
-              The Problem
-            </span>
-          </div>
           <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-foreground leading-[1.1]">
             Your software is working
             <br />
@@ -262,48 +180,25 @@ export default function FeaturesSection() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 lg:gap-6">
           {problems.map((problem, i) => {
             const Icon = problem.Icon;
-            const t = problem.theme;
             return (
-              <div
+              <Card
                 key={i}
-                className="group relative animate-fade-in"
-                style={{ animationDelay: `${i * 120}ms`, animationFillMode: "both" }}
+                className="border-border bg-card p-8 flex flex-col"
               >
-                {/* Soft glow halo behind card on hover */}
-                <div
-                  aria-hidden
-                  className={`pointer-events-none absolute -inset-2 rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 ${t.glowColor}`}
+                <Icon
+                  className="w-5 h-5 text-[#2563EB] mb-6"
+                  strokeWidth={1.75}
                 />
-
-                <Card
-                  className={`relative overflow-hidden border ${t.border} ${t.hoverBorder} ${t.cardGradient} ${t.hoverShadow} p-8 flex flex-col h-full rounded-2xl shadow-sm transition-all duration-300 ease-out group-hover:-translate-y-1`}
-                >
-                  {/* Top accent bar */}
-                  <div
-                    className={`absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r ${t.topBar} opacity-70`}
-                  />
-
-                  {/* Icon chip */}
-                  <div
-                    className={`w-11 h-11 rounded-xl flex items-center justify-center ${t.iconBg} ${t.iconRing} mb-6 transition-transform duration-300 group-hover:scale-105 group-hover:-rotate-3`}
-                  >
-                    <Icon
-                      className={`w-5 h-5 ${t.iconColor}`}
-                      strokeWidth={2}
-                    />
-                  </div>
-
-                  <h3 className="text-[17px] font-semibold text-foreground tracking-tight leading-snug">
-                    {problem.headline}
-                  </h3>
-                  <p className="mt-3 text-[14px] text-muted-foreground leading-relaxed">
-                    {problem.body}
-                  </p>
-                  <div className="mt-6 flex-1 flex items-end">
-                    <div className="w-full">{problem.preview}</div>
-                  </div>
-                </Card>
-              </div>
+                <h3 className="text-[17px] font-semibold text-foreground tracking-tight leading-snug">
+                  {problem.headline}
+                </h3>
+                <p className="mt-3 text-[14px] text-muted-foreground leading-relaxed">
+                  {problem.body}
+                </p>
+                <div className="mt-6 flex-1 flex items-end">
+                  <div className="w-full">{problem.preview}</div>
+                </div>
+              </Card>
             );
           })}
         </div>

@@ -1,75 +1,76 @@
 
 
-## Current state — "Your software is working against you" cards
+## Goal
 
-**What's there now:**
-- 3 plain white cards on a white section background (`bg-card` on `bg-background`)
-- Thin gray border, no shadow, no depth
-- Small blue icon top-left, headline, body text, then a nested mini-preview card at the bottom
-- The nested previews already animate (bars, typing dots, fade-ups), but the outer card is static and visually flat
-- Cards feel like documents, not like a product — nothing draws the eye, nothing differentiates the three "problems"
+Right now the dashboard mockup is **completely hidden** on tablet and phone (`hidden md:block`). I'll make it responsive so tablet/mobile users see a meaningful, native-feeling preview — matching the real app screenshots you shared (tablet = condensed dashboard, phone = single-column with bottom tab bar).
 
-**Why it feels dull:**
-1. White-on-white = zero contrast or visual rhythm
-2. Every card looks identical — no thematic color tying each problem to its preview
-3. No hover state, no depth, no motion at the card level
-4. The icon is tiny and lost in the corner
-5. The nested preview is the most interesting thing on the card but it's buried
+## Approach
 
----
+Use a **breakpoint-based component swap** rather than trying to scale one layout. The desktop dashboard is genuinely a different UI from the tablet/mobile version of your real app — squeezing the desktop layout down to 375px would just look broken (text wrapping, cramped sidebar, tiny fonts). Three tailored variants matching what your actual product looks like at each size.
 
-## Proposed direction
+```text
+Mobile (<768px)        Tablet (768-1024px)      Desktop (>1024px)
+┌──────────────┐       ┌────────────────────┐   ┌──────────────────────┐
+│ ☰  Dent Dock │       │ Dent Dock    🔍 🔔 │   │ [icons] Dashboard    │
+├──────────────┤       ├────────────────────┤   │ [bar  ] [4 stat]    │
+│ Good after.. │       │ Good afternoon...  │   │ [side ] [cards ]    │
+│ ┌─2x2 stat─┐ │       │ ┌─2x2 stat cards─┐│   │         [schedule]  │
+│ │  │  │  │ │ │       │ │   │   │   │   ││   │                      │
+│ ├──┼──┤    │ │       │ └────────────────┘│   │                      │
+│ │  │  │    │ │       │ Today's Schedule  │   │                      │
+│ └──────────┘ │       │ [rows...]         │   │                      │
+│ Schedule     │       └────────────────────┘   └──────────────────────┘
+│ [tab bar   ] │       (no scroll-tilt anim,    (scroll-tilt anim
+└──────────────┘        static framed mockup)   ContainerScroll)
+(static, no anim)
+```
 
-Pick **one** of these three styling directions. I'd recommend **Option A** as it matches the clean, modern aesthetic of the rest of the page while adding personality.
+## Changes
 
-### Option A — Themed cards with subtle gradient + glow (recommended)
-Each card gets a **distinct accent color** tied to its problem (so the eye reads them as three different pains, not three identical boxes):
+### 1. Refactor `DashboardAnimation.tsx`
 
-- Card 1 "Overpaying" → **rose/red** accent (already used in preview)
-- Card 2 "On your own" → **amber** accent (already used in preview)
-- Card 3 "Software's job" → **orange** accent (already used in preview)
+- Extract the dashboard content (sidebar + topbar + stats grid + schedule) into `DashboardMockup` (already done) and split the **stat cards array + schedule rows + count-up animation logic** into a shared hook `useDashboardCounters()` so all three variants share the animated numbers.
+- Export three layout components:
+  - `DesktopDashboard` — current desktop layout, wrapped in `ContainerScroll` (unchanged behaviour).
+  - `TabletDashboard` — condensed: no sidebar, top bar with logo + search icon + bell + avatar, **2×2 stat grid**, schedule list below. Static frame (no scroll tilt — the tilt feels excessive on smaller screens and the negative margin overlap doesn't make sense without the desktop hero spacing).
+  - `MobileDashboard` — phone frame (rounded device bezel like the desktop one but narrower, ~360px wide centered): top bar with logo + bell + avatar, greeting, **2×2 stat grid** matching screenshot 2, "Today's Schedule" card, and a fixed bottom tab bar (Dashboard / Calendar / Patients / Inbox / More) matching the real app.
+- Use Tailwind responsive visibility instead of `useIsMobile()` (avoids hydration flicker): `hidden lg:block` for desktop, `hidden md:block lg:hidden` for tablet, `block md:hidden` for mobile.
+- Remove the `marginTop: "-206px"` overlap on tablet/mobile (it only makes sense paired with the desktop ContainerScroll). Replace with normal top spacing (`mt-12`).
+- Keep `pointer-events-none` so the email input above stays clickable through any overlap zone.
 
-Per card:
-- Soft gradient background: from white → very faint accent tint at top-right
-- A larger icon in a **rounded square chip** with accent-tinted background and accent-colored icon (instead of a tiny floating icon)
-- Subtle accent-colored top border (2px) OR a soft accent glow behind the card
-- Soft drop shadow (`shadow-sm` → `shadow-lg` on hover)
-- Hover: card lifts (`-translate-y-1`), shadow grows, accent glow intensifies
-- Section background switches to a very light gray (`bg-muted/30`) so the white cards pop instead of blending in
+### 2. Tighten `HeroSection.tsx` spacing for small screens
 
-### Option B — Dark cards on light section (high contrast)
-- Section stays light, cards become **near-black** (`bg-neutral-950`) with white text
-- Accent color used for icon chip and preview accents
-- Nested preview stays light/white — creating a "card within a card" depth effect
-- Bold, editorial feel — more aggressive, more "anti-status-quo" messaging
+- The hero currently uses `pt-40 md:pt-48`. That's fine. The dashboard section will simply flow naturally below on tablet/mobile instead of overlapping.
+- No change to the H1, form, or trust strip — they're already responsive.
 
-### Option C — Bento-style asymmetric layout
-- Break the equal 3-column grid into a 2-column bento (one large card + two stacked smaller ones, or 1+2 layout)
-- First card (overpaying) gets more visual weight since it's the strongest pain point
-- Each card still gets the themed accent treatment from Option A
-- More magazine-like, more memorable, but bigger structural change
+### 3. Visual specs for the new variants
 
----
+**Tablet variant** (matches screenshot 1 condensed):
+- Container: `max-w-2xl mx-auto` with the same `border-4 border-[#6C6C6C] bg-[#222222] rounded-[30px]` device frame.
+- Inner height: ~520px. No tilt animation, just a fade-in on scroll.
+- Stat grid: `grid-cols-2 gap-3`, smaller stat numbers (`text-[28px]` instead of `text-[40px]`).
+- Schedule shows 3 rows.
 
-## Additional polish (applies to any option)
+**Mobile variant** (matches screenshot 2):
+- Container: `max-w-[360px] mx-auto` with same device frame.
+- Inner height: ~640px (taller, phone aspect).
+- Top bar: `Dent Dock` logo + bell (with `11` badge) + avatar.
+- Greeting wraps to 2 lines.
+- Stat grid: `grid-cols-2 gap-2`, compact cards with `text-[24px]` numbers.
+- Bottom tab bar fixed inside the frame: 5 icons (LayoutDashboard, Calendar, Users, MessageSquare, Menu) with labels, Dashboard active in blue.
+- Optional small floating "Sparkles" pill bottom-right (matches screenshot).
 
-1. **Section heading** — add a small eyebrow label above the H2 (e.g. "THE PROBLEM" in small caps, accent color) to frame the section
-2. **Icon treatment** — wrap the Lucide icon in a `w-11 h-11` rounded square with tinted background, increase icon size to `w-5 h-5` with `strokeWidth={2}`
-3. **Card entrance animation** — staggered fade-up on scroll (each card delays 100ms after the previous)
-4. **Hover micro-interaction** — on card hover, the inner preview's bar/animation re-triggers (subtle but delightful)
-5. **Section background** — light gray (`bg-muted/30`) or a very faint dotted/grid pattern so the cards have somewhere to "sit"
+### 4. Keep counter animations everywhere
 
----
+All three variants use the same animated counters (TODAY → 12, REVENUE → £840, CAPACITY → 78%) so the mockup feels alive on every device.
 
-## Technical notes (for implementation)
+## Files Touched
 
-- All changes scoped to `src/components/home/FeaturesSection.tsx`
-- Add a `theme` field to each `problems[]` entry: `{ accent: "rose" | "amber" | "orange", iconBg, border, glow }` to drive the accent treatment from data
-- Use Tailwind arbitrary values for accent tints (e.g. `bg-rose-50/60`, `ring-rose-200/50`) — no new tokens needed in `styles.css`
-- Add a `group` class to each `<Card>` and use `group-hover:` for the lift + glow + shadow transitions
-- Use `transition-all duration-300 ease-out` for smooth hover
-- For the staggered scroll-in, use the existing `animate-fade-in` from `tw-animate-css` with inline `animationDelay`
-- No new dependencies, no changes to other sections
+- `src/components/home/DashboardAnimation.tsx` — major refactor: extract counter hook, add `TabletDashboard` + `MobileDashboard` components, swap by breakpoint.
 
-**Pick A, B, or C and I'll implement it.**
+## Out of Scope
+
+- Real device-frame chrome (status bar, notch) — stays clean abstract frame.
+- Tablet landscape vs portrait — single layout for the whole `md`–`lg` range.
+- Reduced-motion preference handling for the counters (existing behaviour preserved).
 
