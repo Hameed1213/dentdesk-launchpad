@@ -87,7 +87,6 @@ export default function HeroSection() {
   return (
     <AuroraBackground
       id="waitlist"
-      as="section"
       className="min-h-screen pt-40 md:pt-48 pb-16 px-6 overflow-x-clip"
     >
 
@@ -163,6 +162,6 @@ export default function HeroSection() {
 
       {/* Dashboard animation */}
       <DashboardAnimation />
-    </section>
+    </AuroraBackground>
   );
 }
