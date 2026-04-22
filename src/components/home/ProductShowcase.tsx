@@ -1134,7 +1134,7 @@ export default function ProductShowcase() {
   const content = tabContent[activeTab];
 
   return (
-    <section ref={sectionRef} className="bg-white py-24 px-6 overflow-hidden">
+    <section ref={sectionRef} className="bg-[#f1f3f7] py-24 px-6 overflow-hidden">
       <motion.div
         className="container max-w-6xl mx-auto"
         initial={{ opacity: 0, y: 24 }}
