@@ -148,11 +148,10 @@ const NoShowsPreview = () => {
     { Icon: Banknote, label: "Chase deposits", count: "× 6" },
   ];
   return (
-    <div className="rounded-xl border border-border bg-background p-4 shadow-sm overflow-hidden min-h-[168px] flex flex-col">
+    <div className="rounded-xl bg-white/70 backdrop-blur-md border border-white/90 shadow-sm p-4 overflow-hidden min-h-[168px] flex flex-col">
       <div className="flex items-center justify-between">
         <div>
           <div className="text-sm font-semibold text-foreground">Reception to-do</div>
-          <div className="text-xs text-muted-foreground mt-0.5">All done by hand</div>
         </div>
         <span className="text-[10px] font-semibold text-orange-600 bg-orange-500/10 rounded-full px-2 py-0.5">
           12 tasks
