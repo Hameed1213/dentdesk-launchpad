@@ -203,12 +203,12 @@ export default function FeaturesSection() {
                     backgroundSize: "22px 22px",
                   }}
                 />
-                {/* Soft colored orb behind the grid */}
+                {/* Soft colored orb behind the preview image */}
                 <div
                   aria-hidden
-                  className="pointer-events-none absolute left-1/2 top-[38%] -translate-x-1/2 -translate-y-1/2 w-[80%] h-[55%] rounded-full blur-3xl"
+                  className="pointer-events-none absolute left-1/2 bottom-[12%] -translate-x-1/2 w-[85%] h-[40%] rounded-full blur-3xl"
                   style={{
-                    background: `radial-gradient(circle, rgba(${problem.rgb},0.30) 0%, rgba(${problem.rgb},0.12) 45%, transparent 75%)`,
+                    background: `radial-gradient(circle, rgba(${problem.rgb},0.35) 0%, rgba(${problem.rgb},0.15) 45%, transparent 75%)`,
                   }}
                 />
                 {/* Glossy top highlight */}
