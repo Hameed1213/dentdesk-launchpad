@@ -193,14 +193,18 @@ export default function FeaturesSection() {
                 key={i}
                 className="group relative overflow-hidden border border-neutral-200 bg-white/30 backdrop-blur-xl backdrop-saturate-150 p-8 flex flex-col rounded-2xl shadow-none transition-all duration-300 hover:bg-white/40 hover:-translate-y-1 hover:border-neutral-300"
               >
-                {/* Subtle grid background */}
+                {/* Subtle grid background — inset with radial fade-out */}
                 <div
                   aria-hidden
-                  className="pointer-events-none absolute inset-0 rounded-2xl opacity-[0.35]"
+                  className="pointer-events-none absolute inset-6 rounded-xl opacity-[0.45]"
                   style={{
                     backgroundImage:
-                      "linear-gradient(to right, rgba(0,0,0,0.06) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,0,0,0.06) 1px, transparent 1px)",
+                      "linear-gradient(to right, rgba(0,0,0,0.07) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,0,0,0.07) 1px, transparent 1px)",
                     backgroundSize: "22px 22px",
+                    WebkitMaskImage:
+                      "radial-gradient(ellipse at center, black 40%, transparent 80%)",
+                    maskImage:
+                      "radial-gradient(ellipse at center, black 40%, transparent 80%)",
                   }}
                 />
                 {/* Soft colored orb behind the preview image */}
