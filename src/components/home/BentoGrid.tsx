@@ -287,7 +287,7 @@ const PortalVisual = () => (
     className="w-full h-full relative"
     style={{
       filter:
-        "drop-shadow(0 20px 40px rgba(0,0,0,0.15)) drop-shadow(0 4px 12px rgba(0,0,0,0.1))",
+        "drop-shadow(0 8px 16px rgba(0,0,0,0.06)) drop-shadow(0 2px 4px rgba(0,0,0,0.04))",
     }}
   >
     {/* Screen bezel */}
