@@ -219,10 +219,10 @@ export default function FeaturesSection() {
                 <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/80 to-transparent" />
 
                 <div className="relative flex flex-col h-full">
-                  <div className="w-11 h-11 rounded-xl bg-white border border-neutral-200 flex items-center justify-center mb-6 shadow-sm">
+                  <div className="w-11 h-11 rounded-xl bg-white border border-neutral-100 flex items-center justify-center mb-6 shadow-sm">
                     <Icon className="w-5 h-5 text-[#2563EB]" strokeWidth={1.75} />
                   </div>
-                  <h3 className="text-[17px] font-semibold text-foreground tracking-tight leading-snug">
+                  <h3 className="text-[19px] font-semibold text-foreground tracking-tight leading-snug">
                     {problem.headline}
                   </h3>
                   <p className="mt-3 text-[14px] text-muted-foreground leading-relaxed">
