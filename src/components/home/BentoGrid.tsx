@@ -16,14 +16,14 @@ const BLUE = "37,99,235"; // primary blue rgb triplet
 /* ---------- Cell visuals ---------- */
 
 const PatientRecordVisual = () => (
-  <div className="rounded-xl bg-white/80 backdrop-blur-md border border-white shadow-sm p-4 overflow-hidden">
+  <div className="rounded-xl bg-white/80 backdrop-blur-md border border-white shadow-sm p-5 overflow-hidden mx-auto w-full max-w-[300px]">
     {/* Header */}
     <div className="flex items-center gap-3">
-      <div className="w-10 h-10 rounded-full bg-[#2563EB] flex items-center justify-center text-white text-[13px] font-bold shrink-0">
+      <div className="w-11 h-11 rounded-full bg-[#2563EB] flex items-center justify-center text-white text-[14px] font-bold shrink-0">
         SM
       </div>
       <div className="min-w-0 flex-1">
-        <div className="text-[13px] font-semibold text-foreground truncate">
+        <div className="text-[14px] font-semibold text-foreground truncate">
           Sarah Mitchell
         </div>
         <div className="text-[10px] text-muted-foreground">
@@ -36,47 +36,54 @@ const PatientRecordVisual = () => (
     </div>
 
     {/* Meta rows */}
-    <div className="mt-3 grid grid-cols-2 gap-2">
-      <div className="rounded-md bg-[#2563EB]/5 px-2 py-1.5">
+    <div className="mt-4 grid grid-cols-2 gap-2">
+      <div className="rounded-md bg-[#2563EB]/5 px-2.5 py-2">
         <div className="text-[9px] text-muted-foreground uppercase tracking-wide">
           Last visit
         </div>
-        <div className="text-[11px] font-semibold text-foreground">
+        <div className="text-[11px] font-semibold text-foreground mt-0.5">
           02 Apr 2026
         </div>
       </div>
-      <div className="rounded-md bg-[#2563EB]/5 px-2 py-1.5">
+      <div className="rounded-md bg-[#2563EB]/5 px-2.5 py-2">
         <div className="text-[9px] text-muted-foreground uppercase tracking-wide">
           Next appt
         </div>
-        <div className="text-[11px] font-semibold text-foreground">
+        <div className="text-[11px] font-semibold text-foreground mt-0.5">
           18 Apr · 10:30
         </div>
       </div>
     </div>
 
     {/* History */}
-    <div className="mt-3 space-y-1">
-      {[
-        { date: "02 Apr", svc: "Hygiene", price: "£90" },
-        { date: "11 Jan", svc: "Whitening", price: "£280" },
-        { date: "04 Oct", svc: "Checkup", price: "£60" },
-      ].map((row) => (
-        <div
-          key={row.date}
-          className="flex items-center justify-between text-[10px] py-1 border-b border-neutral-100 last:border-0"
-        >
-          <span className="text-muted-foreground tabular-nums w-12">
-            {row.date}
-          </span>
-          <span className="text-foreground font-medium flex-1 truncate">
-            {row.svc}
-          </span>
-          <span className="text-foreground font-semibold tabular-nums">
-            {row.price}
-          </span>
-        </div>
-      ))}
+    <div className="mt-4">
+      <div className="text-[9px] text-muted-foreground uppercase tracking-wide mb-1.5">
+        Appointment history
+      </div>
+      <div className="space-y-0.5">
+        {[
+          { date: "02 Apr", svc: "Hygiene", price: "£90" },
+          { date: "11 Jan", svc: "Whitening", price: "£280" },
+          { date: "04 Oct", svc: "Checkup", price: "£60" },
+          { date: "21 Jul", svc: "Filling", price: "£140" },
+          { date: "08 Apr", svc: "Hygiene", price: "£90" },
+        ].map((row) => (
+          <div
+            key={row.date}
+            className="flex items-center justify-between text-[10px] py-1.5 border-b border-neutral-100 last:border-0"
+          >
+            <span className="text-muted-foreground tabular-nums w-12">
+              {row.date}
+            </span>
+            <span className="text-foreground font-medium flex-1 truncate">
+              {row.svc}
+            </span>
+            <span className="text-foreground font-semibold tabular-nums">
+              {row.price}
+            </span>
+          </div>
+        ))}
+      </div>
     </div>
   </div>
 );
