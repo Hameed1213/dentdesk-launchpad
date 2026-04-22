@@ -11,12 +11,6 @@ const PricePreview = () => {
   ];
   return (
     <div className="relative rounded-xl border border-border bg-background p-4 shadow-sm overflow-hidden min-h-[168px] flex flex-col">
-      {/* Shimmer sweep across the card */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-y-0 -inset-x-1/2 w-1/3 bg-gradient-to-r from-transparent via-rose-100/60 to-transparent animate-preview-shimmer"
-      />
-
       <div className="relative flex items-center justify-between">
         <div>
           <div className="text-sm font-semibold text-foreground">Monthly software cost</div>
@@ -49,7 +43,7 @@ const PricePreview = () => {
         ))}
       </div>
       <div className="relative mt-3 h-1 w-full rounded-full bg-muted overflow-hidden">
-        <div className="h-full rounded-full bg-gradient-to-r from-rose-400 to-rose-500 animate-preview-bar-loop" />
+        <div className="h-full w-[85%] rounded-full bg-gradient-to-r from-rose-400 to-rose-500" />
       </div>
     </div>
   );
