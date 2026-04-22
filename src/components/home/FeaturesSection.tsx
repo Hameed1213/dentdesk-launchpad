@@ -7,9 +7,9 @@ import { CreditCard, Settings, CalendarX, Check, Bell, Banknote, Landmark } from
 
 const TOAST_INTERVAL_MS = 3000;
 const STACK_POSITIONS = [
-  { y: 0, scale: 1, opacity: 1, zIndex: 30 },
-  { y: -14, scale: 0.94, opacity: 0.82, zIndex: 20 },
-  { y: -28, scale: 0.88, opacity: 0.56, zIndex: 10 },
+  { y: 16, scale: 1, opacity: 1, zIndex: 30 },
+  { y: 0, scale: 0.94, opacity: 0.82, zIndex: 20 },
+  { y: -16, scale: 0.88, opacity: 0.56, zIndex: 10 },
 ] as const;
 
 type PriceCharge = {
@@ -53,7 +53,7 @@ const PricePreview = () => {
 
   return (
     <div className="relative rounded-xl border border-border bg-gradient-to-br from-slate-100 to-slate-200 p-4 shadow-sm overflow-hidden min-h-[168px]">
-      <div className="pointer-events-none absolute inset-x-4 top-1/2 -translate-y-1/2 h-[78px]">
+      <div className="pointer-events-none absolute inset-x-4 top-1/2 h-[78px] -translate-y-1/2">
         <AnimatePresence initial={false}>
           {stack.map((item, index) => {
             const position = STACK_POSITIONS[index];
@@ -61,10 +61,11 @@ const PricePreview = () => {
             return (
               <motion.div
                 key={item.id}
-                initial={{ y: 42, scale: 1, opacity: 0, zIndex: 40 }}
+                initial={{ y: 58, scale: 1, opacity: 0, zIndex: 40 }}
                 animate={position}
-                exit={{ y: -42, scale: 0.84, opacity: 0, zIndex: 0 }}
+                exit={{ y: -40, scale: 0.84, opacity: 0, zIndex: 0 }}
                 transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
+                style={{ zIndex: position.zIndex }}
                 className="absolute inset-0 rounded-2xl bg-white/95 backdrop-blur-md border border-white shadow-md px-3.5 py-3 will-change-transform"
               >
                 <div className="flex items-center justify-between text-[10px] font-semibold text-muted-foreground uppercase tracking-wide">
