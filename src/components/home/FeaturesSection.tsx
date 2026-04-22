@@ -162,8 +162,15 @@ const problems = [
 
 export default function FeaturesSection() {
   return (
-    <section className="bg-background py-20 md:py-32 px-6 md:px-8">
-      <div className="mx-auto max-w-6xl">
+    <section className="relative bg-background py-20 md:py-32 px-6 md:px-8 overflow-hidden">
+      {/* Ambient color blobs to give the glass something to refract */}
+      <div aria-hidden className="pointer-events-none absolute inset-0 -z-0">
+        <div className="absolute top-10 -left-20 w-[420px] h-[420px] rounded-full bg-rose-300/30 blur-3xl" />
+        <div className="absolute top-40 left-1/2 -translate-x-1/2 w-[500px] h-[500px] rounded-full bg-amber-200/30 blur-3xl" />
+        <div className="absolute bottom-0 right-0 w-[460px] h-[460px] rounded-full bg-blue-300/30 blur-3xl" />
+      </div>
+
+      <div className="relative mx-auto max-w-6xl">
         {/* Section heading */}
         <div className="mx-auto max-w-2xl text-center mb-14 md:mb-20">
           <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-foreground leading-[1.1]">
@@ -183,20 +190,26 @@ export default function FeaturesSection() {
             return (
               <Card
                 key={i}
-                className="border-border bg-card p-8 flex flex-col"
+                className="group relative overflow-hidden border border-white/40 bg-white/30 backdrop-blur-xl backdrop-saturate-150 p-8 flex flex-col rounded-2xl shadow-[0_8px_32px_-8px_rgba(31,38,135,0.15)] transition-all duration-300 hover:bg-white/40 hover:-translate-y-1 hover:shadow-[0_12px_40px_-8px_rgba(31,38,135,0.25)]"
               >
-                <Icon
-                  className="w-5 h-5 text-[#2563EB] mb-6"
-                  strokeWidth={1.75}
-                />
-                <h3 className="text-[17px] font-semibold text-foreground tracking-tight leading-snug">
-                  {problem.headline}
-                </h3>
-                <p className="mt-3 text-[14px] text-muted-foreground leading-relaxed">
-                  {problem.body}
-                </p>
-                <div className="mt-6 flex-1 flex items-end">
-                  <div className="w-full">{problem.preview}</div>
+                {/* Glossy top highlight */}
+                <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/80 to-transparent" />
+                {/* Soft inner glow */}
+                <div aria-hidden className="pointer-events-none absolute -top-20 -right-20 w-48 h-48 rounded-full bg-white/40 blur-2xl" />
+
+                <div className="relative flex flex-col h-full">
+                  <div className="w-11 h-11 rounded-xl bg-white/50 border border-white/60 backdrop-blur-md flex items-center justify-center mb-6 shadow-sm">
+                    <Icon className="w-5 h-5 text-[#2563EB]" strokeWidth={1.75} />
+                  </div>
+                  <h3 className="text-[17px] font-semibold text-foreground tracking-tight leading-snug">
+                    {problem.headline}
+                  </h3>
+                  <p className="mt-3 text-[14px] text-muted-foreground leading-relaxed">
+                    {problem.body}
+                  </p>
+                  <div className="mt-6 flex-1 flex items-end">
+                    <div className="w-full">{problem.preview}</div>
+                  </div>
                 </div>
               </Card>
             );
