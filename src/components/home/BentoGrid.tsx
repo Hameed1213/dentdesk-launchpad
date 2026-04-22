@@ -283,13 +283,7 @@ const StaffVisual = () => {
 };
 
 const PortalVisual = () => (
-  <div
-    className="w-full h-full relative"
-    style={{
-      filter:
-        "drop-shadow(0 20px 40px rgba(0,0,0,0.15)) drop-shadow(0 4px 12px rgba(0,0,0,0.1))",
-    }}
-  >
+  <div className="w-full h-full relative">
     {/* Screen */}
     <div
       className="w-full overflow-hidden"
@@ -407,7 +401,6 @@ const PortalVisual = () => (
         borderRadius: "0 0 8px 8px",
         width: "108%",
         marginLeft: "-4%",
-        boxShadow: "0 4px 12px rgba(0,0,0,0.3)",
       }}
     />
   </div>
