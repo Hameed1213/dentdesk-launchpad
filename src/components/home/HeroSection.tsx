@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { AnimatedGroup } from "@/components/ui/animated-group";
 import DashboardAnimation from "@/components/home/DashboardAnimation";
+import { AuroraBackground } from "@/components/ui/aurora-background";
 
 const transition = {
   type: "spring" as const,
@@ -88,30 +89,10 @@ export default function HeroSection() {
       id="waitlist"
       className="relative bg-white min-h-screen flex flex-col items-center justify-center pt-40 md:pt-48 pb-16 px-6 overflow-x-clip"
     >
-      {/* Decorative background */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden -z-10">
-        <div
-          className="absolute -top-40 -left-40 w-[600px] h-[600px] rounded-full"
-          style={{
-            background:
-              "radial-gradient(ellipse, rgba(37,99,235,0.06), transparent 70%)",
-          }}
-        />
-        <div
-          className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full"
-          style={{
-            background:
-              "radial-gradient(ellipse, rgba(37,99,235,0.06), transparent 70%)",
-          }}
-        />
-        <div
-          className="absolute inset-0 opacity-[0.025]"
-          style={{
-            backgroundImage: "radial-gradient(#94a3b8 1px, transparent 1px)",
-            backgroundSize: "28px 28px",
-          }}
-        />
-      </div>
+      {/* Aurora background */}
+      <AuroraBackground className="absolute inset-0 -z-10 h-full w-full bg-white">
+        <span />
+      </AuroraBackground>
 
       {/* H1 — three lines, each animated with stagger */}
       <AnimatedGroup
