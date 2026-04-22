@@ -10,7 +10,7 @@ interface AuroraBackgroundProps extends React.HTMLProps<HTMLDivElement> {
 export const AuroraBackground = ({
   className,
   children,
-  showRadialGradient = true,
+  showRadialGradient = false,
   ...props
 }: AuroraBackgroundProps) => {
   return (
@@ -24,19 +24,19 @@ export const AuroraBackground = ({
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div
           className={cn(
-            `[--white-gradient:repeating-linear-gradient(100deg,var(--white)_0%,var(--white)_7%,var(--transparent)_10%,var(--transparent)_12%,var(--white)_16%)]
-            [--aurora:repeating-linear-gradient(100deg,var(--blue-500)_10%,var(--indigo-300)_15%,var(--blue-300)_20%,var(--violet-200)_25%,var(--blue-400)_30%)]
+            `[--white-gradient:repeating-linear-gradient(100deg,rgba(255,255,255,0.72)_0%,rgba(255,255,255,0.72)_8%,rgba(255,255,255,0)_14%,rgba(255,255,255,0)_18%,rgba(255,255,255,0.58)_24%)]
+            [--aurora:repeating-linear-gradient(100deg,var(--sky-200)_8%,var(--blue-200)_16%,var(--sky-300)_24%,var(--cyan-200)_32%,var(--blue-300)_40%,var(--sky-100)_48%)]
             [background-image:var(--white-gradient),var(--aurora)]
-            [background-size:300%,_200%]
+            [background-size:220%,_180%]
             [background-position:50%_50%,50%_50%]
-            filter blur-[10px]
+            filter blur-[22px]
             after:content-[""] after:absolute after:inset-0 after:[background-image:var(--white-gradient),var(--aurora)]
-            after:[background-size:200%,_100%]
-            after:animate-aurora after:[background-attachment:fixed] after:mix-blend-difference
+            after:[background-size:180%,_100%]
+            after:animate-aurora after:opacity-90
             pointer-events-none
-            absolute -inset-[10px] opacity-60 will-change-transform`,
+            absolute -inset-[12%] opacity-95 will-change-transform`,
             showRadialGradient &&
-              `[mask-image:radial-gradient(ellipse_at_100%_0%,black_10%,var(--transparent)_70%)]`,
+              `[mask-image:radial-gradient(ellipse_at_50%_35%,black_18%,var(--transparent)_72%)]`,
           )}
         ></div>
       </div>
