@@ -177,7 +177,31 @@
   100% { box-shadow: 0 0 0 0 transparent; }
 }
 
+@keyframes preview-bar-loop {
+  0%, 100% { width: 35%; }
+  50% { width: 92%; }
+}
+
+@keyframes preview-shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(200%); }
+}
+
+@keyframes preview-price-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
+}
+
+@keyframes preview-dot-blink {
+  0%, 100% { opacity: 0.4; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1.15); }
+}
+
 .animate-preview-bar { animation: preview-bar-grow 1.6s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+.animate-preview-bar-loop { animation: preview-bar-loop 3.4s ease-in-out infinite; }
+.animate-preview-shimmer { animation: preview-shimmer 2.4s ease-in-out infinite; }
+.animate-preview-price-bob { animation: preview-price-bob 2.2s ease-in-out infinite; }
+.animate-preview-dot-blink { animation: preview-dot-blink 1.6s ease-in-out infinite; }
 .animate-preview-typing { animation: preview-typing 1.4s ease-in-out infinite; }
 .animate-preview-tick { animation: preview-tick 8s linear infinite; }
 .animate-preview-check { animation: preview-check 0.6s ease-out forwards; stroke-dasharray: 20; }
