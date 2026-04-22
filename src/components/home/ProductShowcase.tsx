@@ -1134,7 +1134,7 @@ export default function ProductShowcase() {
   const content = tabContent[activeTab];
 
   return (
-    <section ref={sectionRef} className="bg-[#e2e8f0] py-24 px-6 overflow-hidden">
+    <section ref={sectionRef} className="bg-white py-24 px-6 overflow-hidden">
       <motion.div
         className="container max-w-6xl mx-auto"
         initial={{ opacity: 0, y: 24 }}
@@ -1144,10 +1144,10 @@ export default function ProductShowcase() {
       >
         {/* Header */}
         <div className="flex flex-col items-center text-center">
-          <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-white leading-[1.1] max-w-2xl">
-            Everything in <span className="text-[#60a5fa]">one place</span>
+          <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-foreground leading-[1.1] max-w-2xl">
+            Everything in <span className="text-[#2563EB]">one place</span>
           </h2>
-          <p className="text-lg text-white/40 max-w-xl leading-relaxed mt-4">
+          <p className="text-lg text-neutral-500 max-w-xl leading-relaxed mt-4">
             One platform for every part of your practice, from first booking to last recall.
           </p>
         </div>
@@ -1155,7 +1155,7 @@ export default function ProductShowcase() {
         {/* Tab segmented control — individual pills on mobile, grouped pill on tablet/desktop */}
         <div className="mt-12 -mx-6 sm:mx-0 flex sm:justify-center">
           <div className="overflow-x-auto scrollbar-hide px-6 sm:px-0 sm:overflow-visible w-full sm:w-auto">
-            <div className="inline-flex flex-nowrap lg:flex-wrap justify-start lg:justify-center gap-2 sm:gap-1 sm:rounded-2xl sm:border sm:border-white/[0.08] sm:bg-white/[0.04] sm:p-1.5 sm:shadow-sm mx-auto">
+            <div className="inline-flex flex-nowrap lg:flex-wrap justify-start lg:justify-center gap-2 sm:gap-1 sm:rounded-2xl sm:border sm:border-neutral-200 sm:bg-white sm:p-1.5 sm:shadow-sm mx-auto">
               {tabs.map((tab, i) => {
                 const Icon = tabIcons[i];
                 const active = activeTab === i;
@@ -1169,7 +1169,7 @@ export default function ProductShowcase() {
                     className={`relative inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold transition-all duration-200 overflow-hidden whitespace-nowrap shrink-0 border sm:border-0 ${
                       active
                         ? "bg-[#2563EB] text-white border-[#2563EB] shadow-sm"
-                        : "text-white/50 bg-white/[0.04] border-white/[0.08] hover:bg-white/[0.08] hover:text-white sm:bg-transparent sm:border-0"
+                        : "text-neutral-600 bg-white border-neutral-200 hover:bg-neutral-100 hover:text-neutral-900 sm:bg-transparent"
                     }`}
                   >
                     <Icon size={15} className="shrink-0" />
@@ -1177,7 +1177,7 @@ export default function ProductShowcase() {
                     {active && !paused && inView && (
                       <motion.span
                         key={`progress-${activeTab}-${paused}`}
-                        className="absolute bottom-0 left-0 h-[2px] bg-[#60a5fa] origin-left"
+                        className="absolute bottom-0 left-0 h-[2px] bg-white/80 origin-left"
                         initial={{ scaleX: 0 }}
                         animate={{ scaleX: 1 }}
                         transition={{ duration: 20, ease: "linear" }}
@@ -1205,12 +1205,12 @@ export default function ProductShowcase() {
               {/* Left — copy */}
               <div className="flex flex-col items-start w-full lg:max-w-[440px]">
                 <h3
-                  className="text-3xl md:text-4xl text-white tracking-[-0.02em] leading-[1.15]"
+                  className="text-3xl md:text-4xl text-neutral-900 tracking-[-0.02em] leading-[1.15]"
                   style={{ fontWeight: 500 }}
                 >
                   {content.title}
                 </h3>
-                <p className="mt-4 text-base md:text-lg text-white/40 leading-relaxed">
+                <p className="mt-4 text-base md:text-lg text-neutral-500 leading-relaxed">
                   {content.description}
                 </p>
                 <button className="mt-6 inline-flex items-center gap-2 bg-[#2563EB] text-white text-sm font-semibold px-5 py-3 rounded-xl hover:bg-[#1d4fd8] transition-colors shadow-sm shadow-[#2563EB]/20">
@@ -1220,20 +1220,20 @@ export default function ProductShowcase() {
               </div>
 
               {/* Right — mockup */}
-              <div className="rounded-2xl overflow-hidden border border-white/[0.08] shadow-2xl shadow-black/40">
+              <div className="rounded-2xl overflow-hidden border border-neutral-200 shadow-2xl shadow-neutral-200/60">
                 {/* Browser chrome */}
-                <div className="h-9 bg-[#1e293b] border-b border-white/[0.06] flex items-center px-4 gap-2 flex-shrink-0">
+                <div className="h-9 bg-neutral-100 border-b border-neutral-200 flex items-center px-4 gap-2 flex-shrink-0">
                   <div className="flex gap-1.5">
                     <div className="w-2.5 h-2.5 rounded-full bg-[#ff5f57]" />
                     <div className="w-2.5 h-2.5 rounded-full bg-[#febc2e]" />
                     <div className="w-2.5 h-2.5 rounded-full bg-[#28c840]" />
                   </div>
-                  <div className="flex-1 bg-white/[0.06] rounded-md mx-4 px-3 py-1 text-[11px] text-white/30 text-center font-mono truncate">
+                  <div className="flex-1 bg-white rounded-md mx-4 px-3 py-1 text-[11px] text-neutral-400 text-center font-mono truncate">
                     {tabUrls[activeTab]}
                   </div>
                 </div>
                 {/* Mockup */}
-                <div className="h-[460px] overflow-hidden relative bg-[#0f172a] pointer-events-none">
+                <div className="h-[460px] overflow-hidden relative bg-[#F8FAFC] pointer-events-none">
                   <ActiveMockup />
                 </div>
               </div>
