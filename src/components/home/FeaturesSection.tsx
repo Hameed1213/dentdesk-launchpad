@@ -1,13 +1,13 @@
 import { Card } from "@/components/ui/card";
-import { CreditCard, Settings, CalendarX, Check, Bell, Banknote, TrendingUp, Landmark } from "lucide-react";
+import { CreditCard, Settings, CalendarX, Check, Bell, Banknote, Landmark } from "lucide-react";
 
 /* ---------- Mini preview cards (bottom of each card) ---------- */
 
 const PricePreview = () => {
   const charges = [
-    { app: "BARCLAYS", title: "Payment · Practice PM", amount: "−£120", time: "now" },
-    { app: "BARCLAYS", title: "Payment · Reminders", amount: "−£45", time: "1m ago" },
-    { app: "BARCLAYS", title: "Payment · Payments", amount: "−£35", time: "2m ago" },
+    { app: "BANK", title: "Payment · Practice PM", amount: "−£120", time: "now" },
+    { app: "BANK", title: "Payment · Reminders", amount: "−£45", time: "1m ago" },
+    { app: "BANK", title: "Payment · Payments", amount: "−£35", time: "2m ago" },
   ];
   return (
     <div className="relative rounded-xl border border-border bg-gradient-to-br from-slate-100 to-slate-200 p-4 shadow-sm overflow-hidden min-h-[168px]">
@@ -28,8 +28,7 @@ const PricePreview = () => {
           </div>
           <div className="mt-1.5 flex items-center justify-between gap-2">
             <div className="text-[13px] font-semibold text-foreground truncate">{c.title}</div>
-            <div className="text-[13px] font-bold tabular-nums text-rose-500 shrink-0 flex items-center gap-0.5">
-              <TrendingUp className="w-3 h-3 rotate-180" />
+            <div className="text-[13px] font-bold tabular-nums text-rose-500 shrink-0">
               {c.amount}
             </div>
           </div>
