@@ -290,12 +290,10 @@ const PortalVisual = () => (
         "drop-shadow(0 20px 40px rgba(0,0,0,0.15)) drop-shadow(0 4px 12px rgba(0,0,0,0.1))",
     }}
   >
-    {/* Screen bezel */}
+    {/* Screen */}
     <div
       className="w-full overflow-hidden"
       style={{
-        background: "#1a1a1a",
-        padding: "8px 8px 0 8px",
         borderRadius: "12px 12px 0 0",
       }}
     >
@@ -566,7 +564,7 @@ export default function BentoGrid() {
                     </div>
                     {cell.popOut ? (
                       <div
-                        className="absolute right-0 left-[36%] top-[10%] pointer-events-none"
+                        className="absolute right-0 left-[32%] top-[4%] pointer-events-none"
                       >
                         {cell.visual}
                       </div>
