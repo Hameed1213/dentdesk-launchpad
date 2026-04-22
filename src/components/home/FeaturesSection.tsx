@@ -10,12 +10,12 @@ const PricePreview = () => {
     { app: "BARCLAYS", title: "Payment sent · Payments", amount: "−£35.00", time: "2m ago" },
   ];
   return (
-    <div className="relative rounded-xl border border-border bg-gradient-to-br from-slate-100 to-slate-200 p-3 shadow-sm overflow-hidden min-h-[168px] flex flex-col justify-end gap-1.5">
+    <div className="relative rounded-xl border border-border bg-gradient-to-br from-slate-100 to-slate-200 p-3 shadow-sm overflow-hidden min-h-[168px]">
       {charges.map((c, i) => (
         <div
           key={i}
-          className="animate-toast-slide rounded-xl bg-white/90 backdrop-blur-md border border-white shadow-sm px-2.5 py-2"
-          style={{ animationDelay: `${i * 1.5}s` }}
+          className="animate-toast-cycle absolute left-3 right-3 bottom-3 rounded-xl bg-white/95 backdrop-blur-md border border-white shadow-md px-2.5 py-2 opacity-0"
+          style={{ animationDelay: `${i * 2}s` }}
         >
           <div className="flex items-center justify-between text-[9px] font-semibold text-muted-foreground uppercase tracking-wide">
             <div className="flex items-center gap-1.5">
