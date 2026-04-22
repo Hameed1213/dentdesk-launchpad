@@ -193,28 +193,26 @@ export default function FeaturesSection() {
                 key={i}
                 className="group relative overflow-hidden border border-neutral-200 bg-white/30 backdrop-blur-xl backdrop-saturate-150 p-8 flex flex-col rounded-2xl shadow-none transition-all duration-300 hover:bg-white/40 hover:-translate-y-1 hover:border-neutral-300"
               >
-                {/* Tiny dot pattern */}
+                {/* Subtle grid background */}
                 <div
                   aria-hidden
                   className="pointer-events-none absolute inset-0 rounded-2xl opacity-[0.35]"
                   style={{
                     backgroundImage:
-                      "radial-gradient(circle, rgba(0,0,0,0.18) 0.5px, transparent 0.5px)",
-                    backgroundSize: "10px 10px",
+                      "linear-gradient(to right, rgba(0,0,0,0.06) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,0,0,0.06) 1px, transparent 1px)",
+                    backgroundSize: "22px 22px",
                   }}
                 />
-                {/* Soft cloud shapes */}
-                {problem.clouds}
-                {/* Per-card decorative line pattern */}
-                {problem.pattern}
+                {/* Soft colored orb behind the grid */}
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute left-1/2 top-[38%] -translate-x-1/2 -translate-y-1/2 w-[80%] h-[55%] rounded-full blur-3xl"
+                  style={{
+                    background: `radial-gradient(circle, rgba(${problem.rgb},0.30) 0%, rgba(${problem.rgb},0.12) 45%, transparent 75%)`,
+                  }}
+                />
                 {/* Glossy top highlight */}
                 <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/80 to-transparent" />
-                {/* Per-card colored orbs */}
-                <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden rounded-2xl">
-                  {problem.orbs.map((cls, idx) => (
-                    <div key={idx} className={cls} />
-                  ))}
-                </div>
 
                 <div className="relative flex flex-col h-full">
                   <div className="w-11 h-11 rounded-xl bg-white/50 border border-white/60 backdrop-blur-md flex items-center justify-center mb-6 shadow-sm">
