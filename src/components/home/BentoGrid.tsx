@@ -430,11 +430,12 @@ const cells = [
     span: "md:col-span-2 md:row-span-2",
   },
   {
-    Icon: Smartphone,
+    Icon: Monitor,
     title: "Patients manage themselves.",
     visual: <PortalVisual />,
     span: "md:col-span-4 md:row-span-1",
     layout: "side" as const,
+    popOut: true,
   },
   {
     Icon: Users,
