@@ -12,14 +12,26 @@ const STACK_POSITIONS = [
   { y: -28, scale: 0.88, opacity: 0.56, zIndex: 10 },
 ] as const;
 
+type PriceCharge = {
+  app: string;
+  title: string;
+  amount: string;
+  time: string;
+};
+
+type PriceToast = {
+  id: number;
+  charge: PriceCharge;
+};
+
 const PricePreview = () => {
-  const charges = [
+  const charges: PriceCharge[] = [
     { app: "BANK", title: "Payment · Practice PM", amount: "−£120", time: "now" },
     { app: "BANK", title: "Payment · Reminders", amount: "−£45", time: "1m ago" },
     { app: "BANK", title: "Payment · Payments", amount: "−£35", time: "2m ago" },
-  ] as const;
+  ];
 
-  const [stack, setStack] = useState(() => [
+  const [stack, setStack] = useState<PriceToast[]>([
     { id: 0, charge: charges[0] },
     { id: 1, charge: charges[1] },
     { id: 2, charge: charges[2] },
@@ -37,7 +49,7 @@ const PricePreview = () => {
     }, TOAST_INTERVAL_MS);
 
     return () => window.clearInterval(interval);
-  }, [charges]);
+  }, []);
 
   return (
     <div className="relative rounded-xl border border-border bg-gradient-to-br from-slate-100 to-slate-200 p-4 shadow-sm overflow-hidden min-h-[168px]">
