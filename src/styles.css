@@ -209,23 +209,30 @@
 .animate-preview-pulse-ring { animation: preview-pulse-ring 2s ease-out infinite; }
 
 /* Stacked toast — enters at center, slides back as new ones arrive, exits off
-   the top. Element is anchored with `top-1/2`; the keyframes use
-   translateY(calc(-50% + Xpx)) so the front position is vertically centered
-   in the container. Total cycle 9s, stagger 3s. */
+   the top. Element is anchored with `top-1/2`. The keyframes use
+   translateY(calc(-50% + Xpx)) so the visual stack is balanced around the
+   container's vertical center (front toast sits ~13px below center, with the
+   back toasts extending up to center it visually).
+   z-index is bumped to 40 during the entering phase so a fresh toast always
+   covers the older toast that's still at the front position before sliding
+   back. Total cycle 9s, stagger 3s. */
 @keyframes toast-stack {
-  /* Enter from below */
-  0%   { opacity: 0; transform: translateY(calc(-50% + 40px)) scale(1); z-index: 30; }
-  6%   { opacity: 1; transform: translateY(-50%) scale(1); z-index: 30; }
-  /* Hold at front (centered) */
-  33%  { opacity: 1; transform: translateY(-50%) scale(1); z-index: 30; }
-  /* Shift to middle position */
-  39%  { opacity: 0.85; transform: translateY(calc(-50% - 14px)) scale(0.94); z-index: 20; }
-  66%  { opacity: 0.85; transform: translateY(calc(-50% - 14px)) scale(0.94); z-index: 20; }
+  /* Enter from below — highest z so it covers the previous front toast */
+  0%   { opacity: 0; transform: translateY(calc(-50% + 53px)) scale(1); z-index: 40; }
+  6%   { opacity: 1; transform: translateY(calc(-50% + 13px)) scale(1); z-index: 40; }
+  /* Hold at front, drop z to 30 once previous front has moved away */
+  32%  { opacity: 1; transform: translateY(calc(-50% + 13px)) scale(1); z-index: 40; }
+  33%  { opacity: 1; transform: translateY(calc(-50% + 13px)) scale(1); z-index: 30; }
+  /* Shift to middle position (z drops immediately at start of move) */
+  38%  { opacity: 0.85; transform: translateY(calc(-50% + 13px)) scale(1); z-index: 20; }
+  39%  { opacity: 0.85; transform: translateY(calc(-50% - 1px)) scale(0.94); z-index: 20; }
+  66%  { opacity: 0.85; transform: translateY(calc(-50% - 1px)) scale(0.94); z-index: 20; }
   /* Shift to back position */
-  72%  { opacity: 0.6; transform: translateY(calc(-50% - 26px)) scale(0.88); z-index: 10; }
-  94%  { opacity: 0.6; transform: translateY(calc(-50% - 26px)) scale(0.88); z-index: 10; }
+  71%  { opacity: 0.6; transform: translateY(calc(-50% - 1px)) scale(0.94); z-index: 10; }
+  72%  { opacity: 0.6; transform: translateY(calc(-50% - 13px)) scale(0.88); z-index: 10; }
+  94%  { opacity: 0.6; transform: translateY(calc(-50% - 13px)) scale(0.88); z-index: 10; }
   /* Slide off the top */
-  100% { opacity: 0; transform: translateY(calc(-50% - 60px)) scale(0.85); z-index: 10; }
+  100% { opacity: 0; transform: translateY(calc(-50% - 47px)) scale(0.85); z-index: 10; }
 }
 .animate-toast-stack {
   animation: toast-stack 9s cubic-bezier(0.22, 1, 0.36, 1) infinite;
