@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import { CreditCard, Settings, CalendarX, Check, Bell, Banknote, Landmark } from "lucide-react";
@@ -143,11 +143,86 @@ const ComplexityPreview = () => (
 );
 
 const NoShowsPreview = () => {
-  const tasks = [
-    { Icon: Bell, label: "Send reminders", count: "× 38" },
-    { Icon: Banknote, label: "Chase deposits", count: "× 6" },
-    { Icon: CalendarX, label: "Rebook no-shows", count: "× 4" },
+  const targets = { c1: 38, c2: 6, c3: 4 } as const;
+  type CountKey = keyof typeof targets;
+
+  const [counts, setCounts] = useState<Record<CountKey, number>>({ c1: 0, c2: 0, c3: 0 });
+  const [checking, setChecking] = useState<number | null>(null);
+  const animRef = useRef<ReturnType<typeof setTimeout>[]>([]);
+
+  useEffect(() => {
+    const clearTimers = () => {
+      animRef.current.forEach(clearTimeout);
+      animRef.current = [];
+    };
+
+    const addTimer = (fn: () => void, delay: number) => {
+      const t = setTimeout(fn, delay);
+      animRef.current.push(t);
+      return t;
+    };
+
+    const startCheckLoop = (rowIndex: number) => {
+      setChecking(rowIndex);
+      const key = `c${rowIndex + 1}` as CountKey;
+
+      addTimer(() => {
+        setCounts((prev) => ({ ...prev, [key]: targets[key] + 1 }));
+
+        addTimer(() => {
+          setChecking(null);
+          setCounts((prev) => ({ ...prev, [key]: targets[key] }));
+
+          const nextRow = (rowIndex + 1) % 3;
+          if (nextRow === 0) {
+            addTimer(runAnimation, 1200);
+          } else {
+            addTimer(() => startCheckLoop(nextRow), 600);
+          }
+        }, 700);
+      }, 600);
+    };
+
+    const runAnimation = () => {
+      clearTimers();
+      setCounts({ c1: 0, c2: 0, c3: 0 });
+      setChecking(null);
+
+      const steps = 50;
+      const duration = 2000;
+      const interval = duration / steps;
+      let step = 0;
+
+      const tick = () => {
+        step++;
+        const p = step / steps;
+        const ease = p < 0.5 ? 2 * p * p : -1 + (4 - 2 * p) * p;
+
+        setCounts({
+          c1: Math.round(ease * targets.c1),
+          c2: Math.round(ease * targets.c2),
+          c3: Math.round(ease * targets.c3),
+        });
+
+        if (step < steps) {
+          addTimer(tick, interval);
+        } else {
+          addTimer(() => startCheckLoop(0), 800);
+        }
+      };
+      addTimer(tick, interval);
+    };
+
+    runAnimation();
+    return clearTimers;
+  }, []);
+
+  const rows = [
+    { key: "c1" as CountKey, Icon: Bell, label: "Send reminders" },
+    { key: "c2" as CountKey, Icon: Banknote, label: "Chase deposits" },
+    { key: "c3" as CountKey, Icon: CalendarX, label: "Rebook no-shows" },
   ];
+
   return (
     <div className="rounded-xl bg-white/70 backdrop-blur-md border border-white/90 shadow-sm p-4 overflow-hidden min-h-[168px] flex flex-col">
       <div className="flex items-center justify-between">
@@ -160,11 +235,12 @@ const NoShowsPreview = () => {
       </div>
 
       <div className="mt-3 space-y-1.5">
-        {tasks.map((t, i) => {
-          const TaskIcon = t.Icon;
+        {rows.map((row, i) => {
+          const TaskIcon = row.Icon;
+          const isChecking = checking === i;
           return (
             <div
-              key={t.label}
+              key={row.label}
               className="flex items-center justify-between text-[11px] rounded-md bg-orange-500/[0.04] border border-orange-500/15 px-2 py-1.5 animate-preview-fade-up"
               style={{ animationDelay: `${i * 150}ms` }}
             >
@@ -172,11 +248,16 @@ const NoShowsPreview = () => {
                 <div className="w-4 h-4 rounded flex items-center justify-center bg-orange-500/15 shrink-0">
                   <TaskIcon className="w-2.5 h-2.5 text-orange-500" />
                 </div>
-                <span className="font-medium text-foreground truncate">{t.label}</span>
+                <span className="font-medium text-foreground truncate">{row.label}</span>
               </div>
               <div className="flex items-center gap-1.5">
-                <span className="text-muted-foreground tabular-nums">{t.count}</span>
-                <Check className="w-3 h-3 text-muted-foreground/40" strokeWidth={2.5} />
+                <span className="text-muted-foreground tabular-nums">× {counts[row.key]}</span>
+                <Check
+                  className={`w-3 h-3 transition-all duration-200 ${
+                    isChecking ? "text-emerald-500 scale-110" : "text-muted-foreground/40 scale-100"
+                  }`}
+                  strokeWidth={2.5}
+                />
               </div>
             </div>
           );
