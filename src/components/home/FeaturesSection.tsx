@@ -267,19 +267,8 @@ export default function FeaturesSection() {
                     backgroundSize: "10px 10px",
                   }}
                 />
-                {/* Wavy line pattern at the bottom */}
-                <svg
-                  aria-hidden
-                  className="pointer-events-none absolute inset-x-0 bottom-0 w-full h-24 opacity-60"
-                  viewBox="0 0 400 100"
-                  preserveAspectRatio="none"
-                  fill="none"
-                >
-                  <path d="M0 70 Q 100 50 200 65 T 400 60" stroke="rgba(37,99,235,0.22)" strokeWidth="0.6" />
-                  <path d="M0 78 Q 100 60 200 74 T 400 70" stroke="rgba(37,99,235,0.18)" strokeWidth="0.6" />
-                  <path d="M0 86 Q 100 70 200 82 T 400 80" stroke="rgba(37,99,235,0.14)" strokeWidth="0.6" />
-                  <path d="M0 94 Q 100 80 200 90 T 400 90" stroke="rgba(37,99,235,0.10)" strokeWidth="0.6" />
-                </svg>
+                {/* Per-card decorative line pattern */}
+                {problem.pattern}
                 {/* Glossy top highlight */}
                 <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/80 to-transparent" />
                 {/* Per-card colored orbs */}
