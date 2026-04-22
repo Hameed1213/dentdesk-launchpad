@@ -209,8 +209,12 @@ export default function FeaturesSection() {
               >
                 {/* Glossy top highlight */}
                 <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/80 to-transparent" />
-                {/* Soft inner glow */}
-                <div aria-hidden className="pointer-events-none absolute -top-20 -right-20 w-48 h-48 rounded-full bg-white/40 blur-2xl" />
+                {/* Per-card colored orbs */}
+                <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden rounded-2xl">
+                  {problem.orbs.map((cls, idx) => (
+                    <div key={idx} className={cls} />
+                  ))}
+                </div>
 
                 <div className="relative flex flex-col h-full">
                   <div className="w-11 h-11 rounded-xl bg-white/50 border border-white/60 backdrop-blur-md flex items-center justify-center mb-6 shadow-sm">
