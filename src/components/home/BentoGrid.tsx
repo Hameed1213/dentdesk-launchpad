@@ -566,7 +566,7 @@ export default function BentoGrid() {
                     </div>
                     {cell.popOut ? (
                       <div
-                        className="absolute right-0 left-1/2 top-[10%] pointer-events-none"
+                        className="absolute right-0 left-[36%] top-[10%] pointer-events-none"
                       >
                         {cell.visual}
                       </div>
