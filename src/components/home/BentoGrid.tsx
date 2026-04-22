@@ -519,6 +519,7 @@ export default function BentoGrid() {
                   aria-hidden
                   className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/80 to-transparent"
                 />
+                </div>
 
                 {cell.layout === "side" ? (
                   <div className="relative flex h-full">
