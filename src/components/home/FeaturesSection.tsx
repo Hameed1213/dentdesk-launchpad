@@ -5,9 +5,9 @@ import { CreditCard, Settings, CalendarX, Check, Bell, Banknote, TrendingUp, Lan
 
 const PricePreview = () => {
   const charges = [
-    { app: "BARCLAYS", title: "Payment sent · Practice PM", amount: "−£120.00", time: "now" },
-    { app: "BARCLAYS", title: "Payment sent · Reminders", amount: "−£45.00", time: "1m ago" },
-    { app: "BARCLAYS", title: "Payment sent · Payments", amount: "−£35.00", time: "2m ago" },
+    { app: "BARCLAYS", title: "Payment · Practice PM", amount: "−£120", time: "now" },
+    { app: "BARCLAYS", title: "Payment · Reminders", amount: "−£45", time: "1m ago" },
+    { app: "BARCLAYS", title: "Payment · Payments", amount: "−£35", time: "2m ago" },
   ];
   return (
     <div className="relative rounded-xl border border-border bg-gradient-to-br from-slate-100 to-slate-200 p-4 shadow-sm overflow-hidden min-h-[168px]">
