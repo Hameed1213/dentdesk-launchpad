@@ -54,7 +54,7 @@ const PricePreview = () => {
 
   return (
     <div className="relative rounded-xl border border-border bg-gradient-to-br from-slate-100 to-slate-200 p-4 shadow-sm overflow-hidden min-h-[168px]">
-      <div className="pointer-events-none absolute inset-x-4 top-1/2 h-[96px] -translate-y-1/2">
+      <div className="pointer-events-none absolute inset-x-4 top-1/2 h-[84px] -translate-y-1/2">
         <AnimatePresence initial={false}>
           {stack.map((item, index) => {
             const position = STACK_POSITIONS[index];
@@ -67,7 +67,7 @@ const PricePreview = () => {
                 exit={{ y: -40, scale: 0.84, opacity: 0, zIndex: 0 }}
                 transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
                 style={{ zIndex: position.zIndex }}
-                className="absolute inset-0 rounded-2xl bg-white/95 backdrop-blur-md border border-white shadow-md px-3.5 pt-3 pb-2 will-change-transform"
+                className="absolute inset-0 rounded-2xl bg-white/95 backdrop-blur-md border border-white shadow-md px-3.5 pt-3 pb-1.5 will-change-transform"
               >
                 <div className="flex items-center justify-between text-[10px] font-semibold text-muted-foreground uppercase tracking-wide">
                   <div className="flex items-center gap-1.5">
