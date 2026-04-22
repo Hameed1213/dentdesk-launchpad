@@ -314,50 +314,79 @@ const PortalVisual = () => (
         </div>
 
         {/* Portal content */}
-        <div className="p-3 bg-white">
-          {/* Header */}
-          <div className="flex items-center justify-between mb-3">
-            <div>
-              <div className="text-[9px] text-neutral-400 font-medium">
-                Hello,
+        <div className="p-3 bg-[#f5f6fb]">
+          {/* Greeting */}
+          <div className="text-[12px] font-bold text-[#0f172a] mb-2.5">
+            Hi Sarah <span aria-hidden>👋</span>
+          </div>
+
+          {/* Tabs */}
+          <div className="flex gap-1.5 mb-2.5">
+            <div className="text-[8px] font-semibold text-white bg-[#2563EB] px-2 py-1 rounded-md flex items-center gap-1">
+              <Calendar size={8} /> Appointments
+            </div>
+            <div className="text-[8px] font-semibold text-[#475569] bg-white border border-[#e2e8f0] px-2 py-1 rounded-md">
+              Forms
+            </div>
+            <div className="text-[8px] font-semibold text-[#475569] bg-white border border-[#e2e8f0] px-2 py-1 rounded-md">
+              Payments
+            </div>
+            <div className="text-[8px] font-semibold text-[#475569] bg-white border border-[#e2e8f0] px-2 py-1 rounded-md">
+              Details
+            </div>
+          </div>
+
+          {/* Upcoming label */}
+          <div className="text-[9px] font-bold text-[#0f172a] mb-1">
+            Upcoming
+          </div>
+          {/* Upcoming appointment card */}
+          <div className="bg-white border border-[#e2e8f0] rounded-lg p-2 mb-2.5 flex items-center justify-between">
+            <div className="min-w-0">
+              <div className="text-[9px] font-bold text-[#0f172a] truncate">
+                Hygiene check
               </div>
-              <div className="text-[13px] font-bold text-[#0f172a]">Sarah</div>
+              <div className="text-[8px] text-[#64748b]">with Dr. J. Webb</div>
+              <div className="text-[8px] text-[#64748b]">
+                Thu 18 Apr · 10:30am
+              </div>
             </div>
-            <div className="text-[9px] font-semibold text-[#2563EB] bg-[#eff6ff] px-2 py-1 rounded-lg">
-              + Book appointment
-            </div>
+            <span className="text-[7px] font-semibold bg-emerald-100 text-emerald-700 px-1.5 py-0.5 rounded-full shrink-0">
+              Confirmed
+            </span>
           </div>
 
-          {/* Upcoming card */}
-          <div className="bg-gradient-to-br from-[#2563EB] to-[#1d4ed8] rounded-xl p-3 mb-2">
-            <div className="flex items-center justify-between mb-1.5">
-              <span className="text-[8px] font-semibold text-blue-100 uppercase tracking-wide">
-                Upcoming
-              </span>
-              <span className="text-[8px] font-semibold bg-emerald-400 text-emerald-950 px-1.5 py-0.5 rounded-full flex items-center gap-0.5">
-                <Check size={7} strokeWidth={3} /> Confirmed
-              </span>
-            </div>
-            <div className="text-[12px] font-bold text-white mb-1">
-              Hygiene check
-            </div>
-            <div className="text-[9px] text-blue-100 flex items-center gap-1">
-              <Calendar size={8} />
-              <span>Thu 18 Apr · 10:30</span>
-            </div>
-            <div className="text-[9px] text-blue-100/90 mt-0.5">
-              Dr. James Webb
-            </div>
-          </div>
-
-          {/* Actions */}
-          <div className="flex gap-2">
-            <button className="flex-1 text-[9px] font-semibold text-[#475569] bg-[#f8fafc] border border-[#e2e8f0] rounded-lg py-1.5 flex items-center justify-center gap-1">
-              <Calendar size={9} /> Reschedule
-            </button>
-            <button className="flex-1 text-[9px] font-semibold text-[#ef4444] bg-[#fef2f2] border border-[#fecaca] rounded-lg py-1.5 flex items-center justify-center gap-1">
-              <X size={9} /> Cancel
-            </button>
+          {/* Past label */}
+          <div className="text-[9px] font-bold text-[#0f172a] mb-1">Past</div>
+          {/* Past grid */}
+          <div className="grid grid-cols-2 gap-1.5">
+            {[
+              { svc: "New Patient Checkup", when: "Thu 16 Apr · 3:30pm" },
+              { svc: "Hygiene Appointment", when: "Thu 16 Apr · 2:30pm" },
+              { svc: "Routine Checkup", when: "Wed 15 Apr · 1:45pm" },
+              { svc: "Whitening", when: "Wed 15 Apr · 12:00pm" },
+            ].map((p) => (
+              <div
+                key={p.svc + p.when}
+                className="bg-white border border-[#e2e8f0] rounded-lg p-1.5"
+              >
+                <div className="flex items-center justify-between gap-1">
+                  <div className="text-[8px] font-bold text-[#0f172a] truncate">
+                    {p.svc}
+                  </div>
+                  <span className="text-[6px] font-semibold bg-emerald-100 text-emerald-700 px-1 py-0.5 rounded-full shrink-0">
+                    Confirmed
+                  </span>
+                </div>
+                <div className="text-[7px] text-[#64748b] mt-0.5">
+                  with Dr. Webb
+                </div>
+                <div className="text-[7px] text-[#64748b]">{p.when}</div>
+                <div className="text-[7px] font-semibold text-[#2563EB] mt-0.5">
+                  Book again →
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
