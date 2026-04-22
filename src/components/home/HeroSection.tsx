@@ -87,12 +87,10 @@ export default function HeroSection() {
   return (
     <section
       id="waitlist"
-      className="relative bg-white min-h-screen flex flex-col items-center justify-center pt-40 md:pt-48 pb-16 px-6 overflow-x-clip"
+      className="relative bg-white min-h-screen flex flex-col items-center justify-center pt-40 md:pt-48 pb-16 px-6 overflow-hidden"
     >
       {/* Aurora background */}
-      <AuroraBackground className="absolute inset-0 -z-10 h-full w-full bg-white">
-        <span />
-      </AuroraBackground>
+      <AuroraBackground className="pointer-events-none absolute inset-0 -z-10 h-full w-full" />
 
       {/* H1 — three lines, each animated with stagger */}
       <AnimatedGroup
