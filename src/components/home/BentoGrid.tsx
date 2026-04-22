@@ -535,10 +535,21 @@ export default function BentoGrid() {
                         {cell.title}
                       </h3>
                     </div>
-                    {/* Right: phone, half cropped at bottom with padding */}
-                    <div className="absolute right-6 top-4 flex items-start pointer-events-none" style={{ bottom: "-50%" }}>
-                      {cell.visual}
-                    </div>
+                    {cell.popOut ? (
+                      <div
+                        className="absolute right-[-24px] top-[-40px] w-[58%] pointer-events-none"
+                        style={{ zIndex: 20 }}
+                      >
+                        {cell.visual}
+                      </div>
+                    ) : (
+                      <div
+                        className="absolute right-6 top-4 flex items-start pointer-events-none"
+                        style={{ bottom: "-50%" }}
+                      >
+                        {cell.visual}
+                      </div>
+                    )}
                   </div>
                 ) : (
                   <div className="relative flex flex-col h-full">
