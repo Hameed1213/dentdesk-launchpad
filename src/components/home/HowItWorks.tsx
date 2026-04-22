@@ -1,58 +1,42 @@
-import { ArrowRight, Check } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function HowItWorks() {
-  const items = [
-    "Live booking page ready the moment you finish",
-    "Automations fire from your very first booking",
-    "Import patients from Dentally, EXACT and more",
-    "No payment required to complete setup",
-  ];
-
   return (
-    <section className="bg-white py-20 sm:py-28">
+    <section className="bg-white py-10 sm:py-14">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="rounded-3xl bg-[#FAFAFA] border border-[#EEEEEE] p-6 sm:p-10 lg:p-14">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
-            {/* Left — big statement */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6 }}
-            >
-              <h2 className="text-2xl sm:text-3xl md:text-5xl font-medium tracking-tight text-foreground leading-[1.1] mb-4 md:mb-5">
-                Live within <span className="text-[#2563EB]">the day</span>
-              </h2>
-              <p className="text-[15px] sm:text-[17px] leading-[1.6] text-[#475569] mb-5 md:mb-6 max-w-[480px]">
-                Sign up, add your practice details, pick your services and your booking page is ready. No implementation fees. No onboarding calls. No waiting.
-              </p>
-              <a
-                href="https://app.dentdock.co.uk/signup"
-                className="inline-flex items-center gap-2 bg-[#2563EB] text-white text-[14px] font-semibold px-6 py-3 rounded-xl hover:bg-[#1d4ed8] transition-all shadow-lg shadow-blue-500/20"
-              >
-                Start free trial <ArrowRight className="w-4 h-4" />
-              </a>
-            </motion.div>
-
-            {/* Right — checklist */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6, delay: 0.15 }}
-            >
-              <ul className="space-y-3 md:space-y-4">
-                {items.map((item, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-[#2563EB] flex-shrink-0 mt-0.5" strokeWidth={3} />
-                    <span className="text-[14px] sm:text-[16px] leading-[1.5] text-[#0F172A]">{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.5 }}
+          className="rounded-2xl bg-[#FAFAFA] border border-[#EEEEEE] px-6 sm:px-8 py-5 sm:py-6 flex flex-col md:flex-row md:items-center md:justify-between gap-5"
+        >
+          {/* Left — copy */}
+          <div className="md:max-w-[640px]">
+            <h2 className="text-xl sm:text-2xl md:text-[26px] font-semibold tracking-tight text-[#0F172A] leading-tight">
+              Get your practice live in{" "}
+              <span className="text-[#2563EB]">a single day</span>
+            </h2>
+            <p className="text-[13px] sm:text-[14px] leading-[1.5] text-[#64748b] mt-1.5">
+              Sign up, add your details, and your booking page is ready — no
+              implementation fees, no onboarding calls.
+            </p>
           </div>
-        </div>
+
+          {/* Right — CTA */}
+          <div className="flex flex-col items-start md:items-end gap-1 flex-shrink-0">
+            <a
+              href="https://app.dentdock.co.uk/signup"
+              className="inline-flex items-center gap-2 border border-[#2563EB] text-[#2563EB] text-[14px] font-semibold px-5 py-2.5 rounded-xl hover:bg-[#2563EB] hover:text-white transition-all"
+            >
+              Start free trial <ArrowRight className="w-4 h-4" />
+            </a>
+            <span className="text-[12px] text-[#94a3b8] md:pr-1">
+              no card required
+            </span>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
