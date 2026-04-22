@@ -488,7 +488,7 @@ export default function BentoGrid() {
             return (
               <Card
                 key={i}
-                className={`group relative ${cell.popOut ? "overflow-visible" : "overflow-hidden"} border border-neutral-100 bg-white/30 backdrop-blur-xl backdrop-saturate-150 p-8 flex flex-col rounded-2xl shadow-none transition-all duration-300 hover:bg-white/40 hover:-translate-y-1 hover:border-neutral-200 ${cell.span}`}
+                className={`group relative overflow-hidden border border-neutral-100 bg-white/30 backdrop-blur-xl backdrop-saturate-150 p-8 flex flex-col rounded-2xl shadow-none transition-all duration-300 hover:bg-white/40 hover:-translate-y-1 hover:border-neutral-200 ${cell.span}`}
               >
                 {/* Inner clip wrapper for background decorations only */}
                 <div aria-hidden className="absolute inset-0 rounded-2xl overflow-hidden pointer-events-none">
@@ -537,8 +537,7 @@ export default function BentoGrid() {
                     </div>
                     {cell.popOut ? (
                       <div
-                        className="absolute right-[-24px] top-[-40px] w-[58%] pointer-events-none"
-                        style={{ zIndex: 20 }}
+                        className="absolute right-0 left-1/2 top-[35%] pointer-events-none"
                       >
                         {cell.visual}
                       </div>
