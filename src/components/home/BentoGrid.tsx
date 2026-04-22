@@ -8,6 +8,7 @@ import {
   Calendar,
   Check,
   X,
+  MessageSquare,
 } from "lucide-react";
 
 const BLUE = "37,99,235"; // primary blue rgb triplet
