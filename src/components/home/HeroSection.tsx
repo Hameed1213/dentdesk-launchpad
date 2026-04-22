@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { AnimatedGroup } from "@/components/ui/animated-group";
+import { AuroraBackground } from "@/components/ui/aurora-background";
 import DashboardAnimation from "@/components/home/DashboardAnimation";
 
 const transition = {
@@ -84,107 +85,112 @@ function WaitlistForm() {
 
 export default function HeroSection() {
   return (
-    <section
-      id="waitlist"
-      className="relative bg-white min-h-screen flex flex-col items-center justify-center pt-40 md:pt-48 pb-16 px-6 overflow-x-clip"
+    <AuroraBackground
+      showRadialGradient={true}
+      className="min-h-screen pt-24 pb-0 px-6"
     >
-      {/* Decorative background */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden -z-10">
-        <div
-          className="absolute -top-40 -left-40 w-[600px] h-[600px] rounded-full"
-          style={{
-            background:
-              "radial-gradient(ellipse, rgba(37,99,235,0.06), transparent 70%)",
-          }}
-        />
-        <div
-          className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full"
-          style={{
-            background:
-              "radial-gradient(ellipse, rgba(37,99,235,0.06), transparent 70%)",
-          }}
-        />
-        <div
-          className="absolute inset-0 opacity-[0.025]"
-          style={{
-            backgroundImage: "radial-gradient(#94a3b8 1px, transparent 1px)",
-            backgroundSize: "28px 28px",
-          }}
-        />
-      </div>
-
-      {/* H1 — three lines, each animated with stagger */}
-      <AnimatedGroup
-        className="text-center max-w-3xl mx-auto"
-        variants={{
-          container: {
-            hidden: { opacity: 0 },
-            visible: {
-              opacity: 1,
-              transition: { staggerChildren: 0.1, delayChildren: 0 },
-            },
-          },
-          item: itemBlurSlide,
-        }}
+      <section
+        id="waitlist"
+        className="relative w-full min-h-screen flex flex-col items-center justify-center pt-40 md:pt-48 pb-16 px-6 overflow-x-clip"
       >
-        <h1
-          className="text-[2.5rem] md:text-[3.75rem] lg:text-[4.5rem] text-center text-neutral-900 leading-[1.15] tracking-[-0.03em] max-w-4xl mx-auto"
-          style={{ fontWeight: 600 }}
-        >
-          Dental software for{" "}
-          <span className="text-[#2563EB] whitespace-nowrap">UK private practices</span>
-        </h1>
-      </AnimatedGroup>
-
-      {/* Subheadline */}
-      <AnimatedGroup
-        variants={{ container: makeContainer(0.3), item: itemBlurSlide }}
-      >
-        <p className="text-lg text-neutral-500 max-w-xl mx-auto text-center leading-relaxed mt-5">
-          Online booking, automated reminders, payments and recalls, all in one platform.
-          Finally, software that works as hard as you do.
-        </p>
-      </AnimatedGroup>
-
-      {/* Waitlist form */}
-      <AnimatedGroup
-        className="w-full"
-        variants={{ container: makeContainer(0.4), item: itemBlurSlide }}
-      >
-        <WaitlistForm />
-      </AnimatedGroup>
-
-      {/* Trust strip */}
-      <AnimatedGroup
-        className="mt-4"
-        variants={{ container: makeContainer(0.5), item: itemBlurSlide }}
-      >
-        <div className="flex items-center justify-center gap-2 flex-wrap">
-          {["No contracts", "No setup fees", "Live within the day"].map(
-            (t, i, arr) => (
-              <span key={t} className="flex items-center gap-2">
-                <span className="text-xs text-neutral-400 font-medium">{t}</span>
-                {i < arr.length - 1 && (
-                  <span className="w-1 h-1 bg-neutral-300 rounded-full" />
-                )}
-              </span>
-            ),
-          )}
+        {/* Decorative background */}
+        <div className="pointer-events-none absolute inset-0 overflow-hidden -z-10">
+          <div
+            className="absolute -top-40 -left-40 w-[600px] h-[600px] rounded-full"
+            style={{
+              background:
+                "radial-gradient(ellipse, rgba(37,99,235,0.06), transparent 70%)",
+            }}
+          />
+          <div
+            className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full"
+            style={{
+              background:
+                "radial-gradient(ellipse, rgba(37,99,235,0.06), transparent 70%)",
+            }}
+          />
+          <div
+            className="absolute inset-0 opacity-[0.025]"
+            style={{
+              backgroundImage: "radial-gradient(#94a3b8 1px, transparent 1px)",
+              backgroundSize: "28px 28px",
+            }}
+          />
         </div>
-      </AnimatedGroup>
 
-      {/* Social proof */}
-      <AnimatedGroup
-        className="mt-4 flex justify-center"
-        variants={{ container: makeContainer(0.6), item: itemBlurSlide }}
-      >
-        <p className="text-sm text-neutral-400 text-center max-w-sm mx-auto mt-5 leading-relaxed">
-          Be one of the <span className="text-neutral-700 font-medium">first 30 practices</span>, get priority support and help shape the product from day one.
-        </p>
-      </AnimatedGroup>
+        {/* H1 — three lines, each animated with stagger */}
+        <AnimatedGroup
+          className="text-center max-w-3xl mx-auto"
+          variants={{
+            container: {
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: { staggerChildren: 0.1, delayChildren: 0 },
+              },
+            },
+            item: itemBlurSlide,
+          }}
+        >
+          <h1
+            className="text-[2.5rem] md:text-[3.75rem] lg:text-[4.5rem] text-center text-neutral-900 leading-[1.15] tracking-[-0.03em] max-w-4xl mx-auto"
+            style={{ fontWeight: 600 }}
+          >
+            Dental software for{" "}
+            <span className="text-[#2563EB] whitespace-nowrap">UK private practices</span>
+          </h1>
+        </AnimatedGroup>
 
-      {/* Dashboard animation */}
-      <DashboardAnimation />
-    </section>
+        {/* Subheadline */}
+        <AnimatedGroup
+          variants={{ container: makeContainer(0.3), item: itemBlurSlide }}
+        >
+          <p className="text-lg text-neutral-500 max-w-xl mx-auto text-center leading-relaxed mt-5">
+            Online booking, automated reminders, payments and recalls, all in one platform.
+            Finally, software that works as hard as you do.
+          </p>
+        </AnimatedGroup>
+
+        {/* Waitlist form */}
+        <AnimatedGroup
+          className="w-full"
+          variants={{ container: makeContainer(0.4), item: itemBlurSlide }}
+        >
+          <WaitlistForm />
+        </AnimatedGroup>
+
+        {/* Trust strip */}
+        <AnimatedGroup
+          className="mt-4"
+          variants={{ container: makeContainer(0.5), item: itemBlurSlide }}
+        >
+          <div className="flex items-center justify-center gap-2 flex-wrap">
+            {["No contracts", "No setup fees", "Live within the day"].map(
+              (t, i, arr) => (
+                <span key={t} className="flex items-center gap-2">
+                  <span className="text-xs text-neutral-400 font-medium">{t}</span>
+                  {i < arr.length - 1 && (
+                    <span className="w-1 h-1 bg-neutral-300 rounded-full" />
+                  )}
+                </span>
+              ),
+            )}
+          </div>
+        </AnimatedGroup>
+
+        {/* Social proof */}
+        <AnimatedGroup
+          className="mt-4 flex justify-center"
+          variants={{ container: makeContainer(0.6), item: itemBlurSlide }}
+        >
+          <p className="text-sm text-neutral-400 text-center max-w-sm mx-auto mt-5 leading-relaxed">
+            Be one of the <span className="text-neutral-700 font-medium">first 30 practices</span>, get priority support and help shape the product from day one.
+          </p>
+        </AnimatedGroup>
+
+        {/* Dashboard animation */}
+        <DashboardAnimation />
+      </section>
+    </AuroraBackground>
   );
 }
