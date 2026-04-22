@@ -290,19 +290,11 @@ const PortalVisual = () => (
         "drop-shadow(0 8px 16px rgba(0,0,0,0.06)) drop-shadow(0 2px 4px rgba(0,0,0,0.04))",
     }}
   >
-    {/* Screen bezel */}
-    <div
-      className="w-full overflow-hidden"
-      style={{
-        background: "#1a1a1a",
-        padding: "8px 8px 0 8px",
-        borderRadius: "12px 12px 0 0",
-      }}
-    >
-      {/* Browser window */}
-      <div className="bg-[#f8fafc] rounded-t-lg overflow-hidden">
-        {/* Browser chrome */}
-        <div className="flex items-center gap-2 px-3 py-2 bg-[#f1f5f9] border-b border-[#e2e8f0]">
+    {/* Browser window */}
+    <div className="bg-[#f8fafc] rounded-lg overflow-hidden border border-neutral-200">
+      {/* Browser chrome */}
+      <div className="flex items-center gap-2 px-3 py-2 bg-[#f1f5f9] border-b border-[#e2e8f0]">
+
           <div className="flex gap-1">
             <div className="w-2 h-2 rounded-full bg-[#ff5f57]" />
             <div className="w-2 h-2 rounded-full bg-[#febc2e]" />
