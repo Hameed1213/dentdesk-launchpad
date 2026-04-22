@@ -139,12 +139,67 @@ const NoShowsPreview = () => {
   );
 };
 
+/* ---------- Per-card decorative line patterns ---------- */
+
+const WavyLines = () => (
+  <svg
+    aria-hidden
+    className="pointer-events-none absolute inset-x-0 bottom-0 w-full h-24 opacity-60"
+    viewBox="0 0 400 100"
+    preserveAspectRatio="none"
+    fill="none"
+  >
+    <path d="M0 70 Q 100 50 200 65 T 400 60" stroke="rgba(37,99,235,0.22)" strokeWidth="0.6" />
+    <path d="M0 78 Q 100 60 200 74 T 400 70" stroke="rgba(37,99,235,0.18)" strokeWidth="0.6" />
+    <path d="M0 86 Q 100 70 200 82 T 400 80" stroke="rgba(37,99,235,0.14)" strokeWidth="0.6" />
+    <path d="M0 94 Q 100 80 200 90 T 400 90" stroke="rgba(37,99,235,0.10)" strokeWidth="0.6" />
+  </svg>
+);
+
+const DiagonalLines = () => (
+  <svg
+    aria-hidden
+    className="pointer-events-none absolute inset-0 w-full h-full opacity-40"
+    width="100%"
+    height="100%"
+  >
+    <defs>
+      <pattern id="diag-pattern" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+        <line x1="0" y1="0" x2="0" y2="14" stroke="rgba(37,99,235,0.25)" strokeWidth="0.6" />
+      </pattern>
+    </defs>
+    <rect width="100%" height="100%" fill="url(#diag-pattern)" />
+  </svg>
+);
+
+const ConcentricArcs = () => (
+  <svg
+    aria-hidden
+    className="pointer-events-none absolute -bottom-20 -right-20 w-64 h-64 opacity-50"
+    viewBox="0 0 200 200"
+    fill="none"
+  >
+    {[40, 60, 80, 100, 120, 140].map((r, i) => (
+      <circle
+        key={r}
+        cx="100"
+        cy="100"
+        r={r}
+        stroke="rgba(37,99,235,0.22)"
+        strokeOpacity={1 - i * 0.12}
+        strokeWidth="0.6"
+      />
+    ))}
+  </svg>
+);
+
 const problems = [
   {
     Icon: CreditCard,
     headline: "Most practices are overpaying",
     body: "The average practice spends £150–250 a month on software that still needs three tools to do what one should.",
     preview: <PricePreview />,
+    pattern: <WavyLines />,
     orbs: [
       "absolute -top-16 -left-10 w-44 h-44 rounded-full bg-blue-400/10 blur-3xl",
       "absolute top-1/3 -right-12 w-32 h-32 rounded-full bg-sky-300/15 blur-3xl",
@@ -156,6 +211,7 @@ const problems = [
     headline: "After the sale, you're on your own",
     body: "Most dental software companies sell you the product and disappear. A chatbot, a help article and a 48-hour ticket.",
     preview: <ComplexityPreview />,
+    pattern: <DiagonalLines />,
     orbs: [
       "absolute -top-10 right-8 w-40 h-40 rounded-full bg-cyan-300/12 blur-3xl",
       "absolute top-1/2 -left-16 w-36 h-36 rounded-full bg-blue-300/15 blur-3xl",
@@ -167,6 +223,7 @@ const problems = [
     headline: "Your team is doing your software's job",
     body: "Manual reminders. Chasing deposits. Sending forms one by one. Hours every week on tasks that should happen automatically.",
     preview: <NoShowsPreview />,
+    pattern: <ConcentricArcs />,
     orbs: [
       "absolute -top-14 left-1/3 w-44 h-44 rounded-full bg-sky-400/12 blur-3xl",
       "absolute top-1/4 -right-10 w-32 h-32 rounded-full bg-indigo-300/12 blur-3xl",
