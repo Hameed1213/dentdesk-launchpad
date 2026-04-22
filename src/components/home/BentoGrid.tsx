@@ -89,7 +89,7 @@ const PatientRecordVisual = () => (
 );
 
 const FormVisual = () => (
-  <div className="mx-auto w-[180px] rounded-[24px] bg-foreground/90 p-1.5 shadow-md">
+  <div className="w-[210px] rounded-[26px] bg-foreground/90 p-1.5 shadow-xl">
     <div className="rounded-[18px] bg-white overflow-hidden">
       {/* Status bar */}
       <div className="h-4 bg-[#2563EB]/5 flex items-center justify-between px-3">
