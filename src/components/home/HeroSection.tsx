@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { AnimatedGroup } from "@/components/ui/animated-group";
+import { AuroraBackground } from "@/components/ui/aurora-background";
 import DashboardAnimation from "@/components/home/DashboardAnimation";
 
 const transition = {
