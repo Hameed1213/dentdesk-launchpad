@@ -210,11 +210,11 @@
 
 /* Toast cycle — one in, holds, one out, then next */
 @keyframes toast-cycle {
-  0% { opacity: 0; transform: translateY(20px) scale(0.95); }
-  8%, 28% { opacity: 1; transform: translateY(0) scale(1); }
-  36%, 100% { opacity: 0; transform: translateY(-20px) scale(0.95); }
+  0% { opacity: 0; transform: translateY(24px) scale(0.95); }
+  6%, 30% { opacity: 1; transform: translateY(0) scale(1); }
+  36%, 100% { opacity: 0; transform: translateY(-24px) scale(0.95); }
 }
-.animate-toast-cycle { animation: toast-cycle 6s ease-in-out infinite; }
+.animate-toast-cycle { animation: toast-cycle 12s ease-in-out infinite; }
 
 
 /* Hide scrollbars while keeping scroll functionality */
