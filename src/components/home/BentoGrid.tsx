@@ -292,19 +292,6 @@ const PortalVisual = () => (
   >
     {/* Browser window */}
     <div className="bg-[#f8fafc] rounded-lg overflow-hidden border border-neutral-200">
-      {/* Browser chrome */}
-      <div className="flex items-center gap-2 px-3 py-2 bg-[#f1f5f9] border-b border-[#e2e8f0]">
-
-          <div className="flex gap-1">
-            <div className="w-2 h-2 rounded-full bg-[#ff5f57]" />
-            <div className="w-2 h-2 rounded-full bg-[#febc2e]" />
-            <div className="w-2 h-2 rounded-full bg-[#28c840]" />
-          </div>
-          <div className="flex-1 bg-white rounded px-2 py-0.5 text-[9px] text-neutral-400 font-mono text-center truncate">
-            book.dentdock.co.uk/portal
-          </div>
-        </div>
-
         {/* Portal content */}
         <div className="p-3 bg-[#f5f6fb]">
           {/* Greeting */}
@@ -536,7 +523,7 @@ export default function BentoGrid() {
                     </div>
                     {cell.popOut ? (
                       <div
-                        className="absolute right-0 left-[32%] top-[4%] pointer-events-none"
+                        className="absolute right-0 left-[32%] -top-[4%] pointer-events-none"
                       >
                         {cell.visual}
                       </div>
