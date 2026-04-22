@@ -145,18 +145,33 @@ const problems = [
     headline: "Most practices are overpaying",
     body: "The average practice spends £150–250 a month on software that still needs three tools to do what one should.",
     preview: <PricePreview />,
+    orbs: [
+      "absolute -top-16 -left-10 w-44 h-44 rounded-full bg-blue-400/25 blur-3xl",
+      "absolute top-1/3 -right-12 w-32 h-32 rounded-full bg-sky-300/30 blur-3xl",
+      "absolute bottom-10 left-1/4 w-28 h-28 rounded-full bg-indigo-300/20 blur-3xl",
+    ],
   },
   {
     Icon: Settings,
     headline: "After the sale, you're on your own",
     body: "Most dental software companies sell you the product and disappear. A chatbot, a help article and a 48-hour ticket.",
     preview: <ComplexityPreview />,
+    orbs: [
+      "absolute -top-10 right-8 w-40 h-40 rounded-full bg-cyan-300/25 blur-3xl",
+      "absolute top-1/2 -left-16 w-36 h-36 rounded-full bg-blue-300/30 blur-3xl",
+      "absolute bottom-0 right-1/3 w-32 h-32 rounded-full bg-violet-300/20 blur-3xl",
+    ],
   },
   {
     Icon: CalendarX,
     headline: "Your team is doing your software's job",
     body: "Manual reminders. Chasing deposits. Sending forms one by one. Hours every week on tasks that should happen automatically.",
     preview: <NoShowsPreview />,
+    orbs: [
+      "absolute -top-14 left-1/3 w-44 h-44 rounded-full bg-sky-400/25 blur-3xl",
+      "absolute top-1/4 -right-10 w-32 h-32 rounded-full bg-indigo-300/25 blur-3xl",
+      "absolute -bottom-10 -left-8 w-36 h-36 rounded-full bg-blue-400/20 blur-3xl",
+    ],
   },
 ];
 
