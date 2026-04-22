@@ -88,7 +88,7 @@ export default function HeroSection() {
     <AuroraBackground showRadialGradient={true} className="pt-24 pb-8 px-6">
       <section
         id="waitlist"
-        className="relative w-full min-h-screen flex flex-col items-center justify-center pt-40 md:pt-48 pb-16 px-6 overflow-x-clip"
+        className="relative w-full min-h-screen flex flex-col items-center justify-center pt-24 md:pt-28 pb-16 px-6 overflow-x-clip"
       >
         {/* H1 */}
         <AnimatedGroup
