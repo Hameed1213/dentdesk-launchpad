@@ -3,7 +3,7 @@ import Navbar from "@/components/home/Navbar";
 import HeroSection from "@/components/home/HeroSection";
 import FeaturesSection from "@/components/home/FeaturesSection";
 import ProductShowcase from "@/components/home/ProductShowcase";
-import HowItWorks from "@/components/home/HowItWorks";
+
 import FAQ from "@/components/home/FAQ";
 import PricingCTA from "@/components/home/PricingCTA";
 import Footer from "@/components/home/Footer";
@@ -54,9 +54,6 @@ function Index() {
       <HeroSection />
       <section id="features">
         <FeaturesSection />
-      </section>
-      <section id="how-it-works">
-        <HowItWorks />
       </section>
       <section id="about">
         <ProductShowcase />
