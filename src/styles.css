@@ -208,24 +208,24 @@
 .animate-preview-fade-up { animation: preview-fade-up 0.5s ease-out both; }
 .animate-preview-pulse-ring { animation: preview-pulse-ring 2s ease-out infinite; }
 
-/* Stacked toast — enters at front (centered), slides back as new ones arrive,
-   exits off the top. Total cycle 9s, stagger 3s. z-index animates so the
-   freshest toast always sits above the older ones in the stack. */
+/* Stacked toast — enters at center, slides back as new ones arrive, exits off
+   the top. Element is anchored with `top-1/2`; the keyframes use
+   translateY(calc(-50% + Xpx)) so the front position is vertically centered
+   in the container. Total cycle 9s, stagger 3s. */
 @keyframes toast-stack {
-  /* Enter from below (front position is translateY(0) = centered) */
-  0%   { opacity: 0; transform: translateY(40px) scale(1); z-index: 30; }
-  6%   { opacity: 1; transform: translateY(0) scale(1); z-index: 30; }
-  /* Hold at front (0 → 3s of cycle) */
-  33%  { opacity: 1; transform: translateY(0) scale(1); z-index: 30; }
+  /* Enter from below */
+  0%   { opacity: 0; transform: translateY(calc(-50% + 40px)) scale(1); z-index: 30; }
+  6%   { opacity: 1; transform: translateY(-50%) scale(1); z-index: 30; }
+  /* Hold at front (centered) */
+  33%  { opacity: 1; transform: translateY(-50%) scale(1); z-index: 30; }
   /* Shift to middle position */
-  39%  { opacity: 0.85; transform: translateY(-14px) scale(0.94); z-index: 20; }
-  /* Hold at middle (3 → 6s of cycle) */
-  66%  { opacity: 0.85; transform: translateY(-14px) scale(0.94); z-index: 20; }
+  39%  { opacity: 0.85; transform: translateY(calc(-50% - 14px)) scale(0.94); z-index: 20; }
+  66%  { opacity: 0.85; transform: translateY(calc(-50% - 14px)) scale(0.94); z-index: 20; }
   /* Shift to back position */
-  72%  { opacity: 0.6; transform: translateY(-26px) scale(0.88); z-index: 10; }
-  /* Hold at back, then slide off the top (6 → 9s of cycle) */
-  94%  { opacity: 0.6; transform: translateY(-26px) scale(0.88); z-index: 10; }
-  100% { opacity: 0; transform: translateY(-60px) scale(0.85); z-index: 10; }
+  72%  { opacity: 0.6; transform: translateY(calc(-50% - 26px)) scale(0.88); z-index: 10; }
+  94%  { opacity: 0.6; transform: translateY(calc(-50% - 26px)) scale(0.88); z-index: 10; }
+  /* Slide off the top */
+  100% { opacity: 0; transform: translateY(calc(-50% - 60px)) scale(0.85); z-index: 10; }
 }
 .animate-toast-stack {
   animation: toast-stack 9s cubic-bezier(0.22, 1, 0.36, 1) infinite;
