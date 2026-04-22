@@ -167,10 +167,12 @@ const NoShowsPreview = () => {
       const key = `c${rowIndex + 1}` as CountKey;
 
       addTimer(() => {
-        setCounts((prev) => ({ ...prev, [key]: targets[key] + 1 }));
+        // Tick off one task — count goes down by 1
+        setCounts((prev) => ({ ...prev, [key]: targets[key] - 1 }));
 
         addTimer(() => {
           setChecking(null);
+          // New task arrives — count returns to target
           setCounts((prev) => ({ ...prev, [key]: targets[key] }));
 
           const nextRow = (rowIndex + 1) % 3;
