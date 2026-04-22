@@ -28,8 +28,7 @@ const PricePreview = () => {
           </div>
           <div className="mt-1.5 flex items-center justify-between gap-2">
             <div className="text-[13px] font-semibold text-foreground truncate">{c.title}</div>
-            <div className="text-[13px] font-bold tabular-nums text-rose-500 shrink-0 flex items-center gap-0.5">
-              <TrendingUp className="w-3 h-3 rotate-180" />
+            <div className="text-[13px] font-bold tabular-nums text-rose-500 shrink-0">
               {c.amount}
             </div>
           </div>
