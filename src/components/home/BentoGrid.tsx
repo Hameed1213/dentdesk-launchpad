@@ -383,27 +383,6 @@ const PortalVisual = () => (
         </div>
       </div>
     </div>
-
-    {/* Laptop hinge */}
-    <div
-      style={{
-        height: "10px",
-        background: "linear-gradient(to bottom, #2a2a2a, #1a1a1a)",
-        borderRadius: "0 0 4px 4px",
-        width: "100%",
-      }}
-    />
-    {/* Laptop bottom (slightly wider) */}
-    <div
-      style={{
-        height: "6px",
-        background: "#222",
-        borderRadius: "0 0 8px 8px",
-        width: "108%",
-        marginLeft: "-4%",
-        boxShadow: "0 4px 12px rgba(0,0,0,0.3)",
-      }}
-    />
   </div>
 );
 
