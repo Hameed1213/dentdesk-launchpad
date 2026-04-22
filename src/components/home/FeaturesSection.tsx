@@ -26,9 +26,9 @@ type PriceToast = {
 
 const PricePreview = () => {
   const charges: PriceCharge[] = [
-    { app: "BANK", title: "Payment · Practice PM", amount: "−£120", time: "now" },
-    { app: "BANK", title: "Payment · Reminders", amount: "−£45", time: "1m ago" },
-    { app: "BANK", title: "Payment · Payments", amount: "−£35", time: "2m ago" },
+    { app: "BANK", title: "Practice software", amount: "−£120", time: "now" },
+    { app: "BANK", title: "SMS reminders", amount: "−£45", time: "1m ago" },
+    { app: "BANK", title: "Patient forms", amount: "−£35", time: "2m ago" },
   ];
 
   const [stack, setStack] = useState<PriceToast[]>([
