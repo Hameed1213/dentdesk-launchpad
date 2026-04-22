@@ -208,6 +208,14 @@
 .animate-preview-fade-up { animation: preview-fade-up 0.5s ease-out both; }
 .animate-preview-pulse-ring { animation: preview-pulse-ring 2s ease-out infinite; }
 
+/* Toast stack loop — slides up, fades, restacks */
+@keyframes toast-slide-in {
+  0% { opacity: 0; transform: translateY(16px) scale(0.96); }
+  8%, 92% { opacity: 1; transform: translateY(0) scale(1); }
+  100% { opacity: 0; transform: translateY(-8px) scale(0.98); }
+}
+.animate-toast-slide { animation: toast-slide-in 4.5s ease-in-out infinite; }
+
 
 /* Hide scrollbars while keeping scroll functionality */
 .scrollbar-hide {

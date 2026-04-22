@@ -1,50 +1,40 @@
 import { Card } from "@/components/ui/card";
-import { CreditCard, Settings, CalendarX, Check, Bell, Banknote, FileText, TrendingUp } from "lucide-react";
+import { CreditCard, Settings, CalendarX, Check, Bell, Banknote, TrendingUp, Landmark } from "lucide-react";
 
 /* ---------- Mini preview cards (bottom of each card) ---------- */
 
 const PricePreview = () => {
-  const tools = [
-    { name: "Practice management", price: "£120" },
-    { name: "Reminders add-on", price: "£45" },
-    { name: "Payments add-on", price: "£35" },
+  const charges = [
+    { app: "BARCLAYS", title: "Payment sent · Practice PM", amount: "−£120.00", time: "now" },
+    { app: "BARCLAYS", title: "Payment sent · Reminders", amount: "−£45.00", time: "1m ago" },
+    { app: "BARCLAYS", title: "Payment sent · Payments", amount: "−£35.00", time: "2m ago" },
   ];
   return (
-    <div className="relative rounded-xl border border-border bg-background p-4 shadow-sm overflow-hidden min-h-[168px] flex flex-col">
-      <div className="relative flex items-center justify-between">
-        <div>
-          <div className="text-sm font-semibold text-foreground">Monthly software cost</div>
-          <div className="text-xs text-muted-foreground mt-0.5">3 tools, 1 job</div>
-        </div>
-        <div className="text-right animate-preview-price-bob">
-          <div className="text-xl font-bold tabular-nums text-foreground">£200</div>
-          <div className="text-[10px] text-rose-500 font-medium flex items-center gap-0.5 justify-end">
-            <TrendingUp className="w-2.5 h-2.5" />
-            <span>/ month</span>
-          </div>
-        </div>
-      </div>
-      <div className="relative mt-3 space-y-1.5">
-        {tools.map((t, i) => (
-          <div
-            key={t.name}
-            className="flex items-center justify-between text-[11px] animate-preview-fade-up"
-            style={{ animationDelay: `${i * 120}ms` }}
-          >
-            <div className="flex items-center gap-1.5 min-w-0">
-              <span
-                className="w-1.5 h-1.5 rounded-full bg-rose-400 shrink-0 animate-preview-dot-blink"
-                style={{ animationDelay: `${i * 200}ms` }}
-              />
-              <span className="text-muted-foreground truncate">{t.name}</span>
+    <div className="relative rounded-xl border border-border bg-gradient-to-br from-slate-100 to-slate-200 p-3 shadow-sm overflow-hidden min-h-[168px] flex flex-col justify-end gap-1.5">
+      {charges.map((c, i) => (
+        <div
+          key={i}
+          className="animate-toast-slide rounded-xl bg-white/90 backdrop-blur-md border border-white shadow-sm px-2.5 py-2"
+          style={{ animationDelay: `${i * 1.5}s` }}
+        >
+          <div className="flex items-center justify-between text-[9px] font-semibold text-muted-foreground uppercase tracking-wide">
+            <div className="flex items-center gap-1.5">
+              <div className="w-3.5 h-3.5 rounded-[4px] bg-gradient-to-br from-sky-500 to-sky-700 flex items-center justify-center">
+                <Landmark className="w-2 h-2 text-white" strokeWidth={2.5} />
+              </div>
+              <span>{c.app}</span>
             </div>
-            <span className="tabular-nums font-medium text-foreground">{t.price}</span>
+            <span className="normal-case tracking-normal font-normal">{c.time}</span>
           </div>
-        ))}
-      </div>
-      <div className="relative mt-3 h-1 w-full rounded-full bg-muted overflow-hidden">
-        <div className="h-full w-[85%] rounded-full bg-gradient-to-r from-rose-400 to-rose-500" />
-      </div>
+          <div className="mt-1 flex items-center justify-between gap-2">
+            <div className="text-[11px] font-semibold text-foreground truncate">{c.title}</div>
+            <div className="text-[11px] font-bold tabular-nums text-rose-500 shrink-0 flex items-center gap-0.5">
+              <TrendingUp className="w-2.5 h-2.5 rotate-180" />
+              {c.amount}
+            </div>
+          </div>
+        </div>
+      ))}
     </div>
   );
 };
