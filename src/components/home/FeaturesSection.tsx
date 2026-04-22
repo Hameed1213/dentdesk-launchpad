@@ -300,6 +300,8 @@ export default function FeaturesSection() {
                     backgroundSize: "10px 10px",
                   }}
                 />
+                {/* Soft cloud shapes */}
+                {problem.clouds}
                 {/* Per-card decorative line pattern */}
                 {problem.pattern}
                 {/* Glossy top highlight */}
