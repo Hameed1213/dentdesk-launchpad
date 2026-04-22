@@ -375,9 +375,9 @@ const cells = [
     span: "md:col-span-2 md:row-span-2",
   },
   {
-    Icon: FileCheck,
-    title: "Paperless from day one.",
-    visual: <FormVisual />,
+    Icon: Smartphone,
+    title: "Patients manage themselves.",
+    visual: <PortalVisual />,
     span: "md:col-span-4 md:row-span-1",
     layout: "side" as const,
   },
@@ -400,9 +400,9 @@ const cells = [
     span: "md:col-span-3 md:row-span-1",
   },
   {
-    Icon: Smartphone,
-    title: "Patients manage themselves.",
-    visual: <PortalVisual />,
+    Icon: FileCheck,
+    title: "Paperless from day one.",
+    visual: <FormVisual />,
     span: "md:col-span-3 md:row-span-1",
   },
 ];
