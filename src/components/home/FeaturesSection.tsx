@@ -212,7 +212,7 @@ export default function FeaturesSection() {
                   aria-hidden
                   className="pointer-events-none absolute left-1/2 bottom-[12%] -translate-x-1/2 w-[85%] h-[40%] rounded-full blur-3xl"
                   style={{
-                    background: `radial-gradient(circle, rgba(${problem.rgb},0.35) 0%, rgba(${problem.rgb},0.15) 45%, transparent 75%)`,
+                    background: `radial-gradient(circle, rgba(${problem.rgb},0.22) 0%, rgba(${problem.rgb},0.10) 45%, transparent 75%)`,
                   }}
                 />
                 {/* Glossy top highlight */}
