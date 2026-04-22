@@ -1,5 +1,5 @@
 import { Card } from "@/components/ui/card";
-import { CreditCard, Settings, CalendarX, Check, Bell, Banknote, TrendingUp, Landmark } from "lucide-react";
+import { CreditCard, Settings, CalendarX, Check, Bell, Banknote, Landmark } from "lucide-react";
 
 /* ---------- Mini preview cards (bottom of each card) ---------- */
 
