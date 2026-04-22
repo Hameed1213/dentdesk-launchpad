@@ -317,7 +317,7 @@ const PortalVisual = () => (
         <div className="p-3 bg-[#f5f6fb]">
           {/* Greeting */}
           <div className="text-[12px] font-bold text-[#0f172a] mb-2.5">
-            Hi Sarah <span aria-hidden>👋</span>
+            Hi Sarah
           </div>
 
           {/* Tabs */}
@@ -566,7 +566,7 @@ export default function BentoGrid() {
                     </div>
                     {cell.popOut ? (
                       <div
-                        className="absolute right-0 left-1/2 top-[20%] pointer-events-none"
+                        className="absolute right-0 left-1/2 top-[10%] pointer-events-none"
                       >
                         {cell.visual}
                       </div>
