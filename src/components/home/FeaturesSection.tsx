@@ -53,7 +53,7 @@ const PricePreview = () => {
   }, []);
 
   return (
-    <div className="relative rounded-xl border border-border bg-gradient-to-br from-slate-100 to-slate-200 p-4 shadow-sm overflow-hidden min-h-[168px]">
+    <div className="relative rounded-xl p-4 overflow-hidden min-h-[168px]">
       <div className="pointer-events-none absolute inset-x-4 top-1/2 h-[84px] -translate-y-1/2">
         <AnimatePresence initial={false}>
           {stack.map((item, index) => {
