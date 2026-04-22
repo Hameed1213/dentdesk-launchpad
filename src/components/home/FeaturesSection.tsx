@@ -161,7 +161,7 @@ const problems = [
   },
   {
     Icon: CalendarX,
-    headline: "Your team is doing your software's job",
+    headline: "Your team does your software's job",
     body: "Manual reminders. Chasing deposits. Sending forms one by one. Hours every week on tasks that should happen automatically.",
     preview: <NoShowsPreview />,
     rgb: ORANGE,
