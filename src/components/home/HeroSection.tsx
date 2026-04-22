@@ -77,7 +77,7 @@ function WaitlistForm() {
         </button>
       </form>
       {error && (
-        <p className="text-sm text-red-400 text-center w-full mt-1">{error}</p>
+        <p className="text-sm text-red-500 text-center w-full mt-1">{error}</p>
       )}
     </div>
   );
