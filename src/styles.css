@@ -185,6 +185,24 @@
 .animate-preview-pulse-ring { animation: preview-pulse-ring 2s ease-out infinite; }
 
 
+/* ---------- Aurora background ---------- */
+@keyframes aurora {
+  from { background-position: 50% 50%, 50% 50%; }
+  to { background-position: 350% 50%, 350% 50%; }
+}
+.animate-aurora { animation: aurora 60s linear infinite; }
+
+:root {
+  --white: #fff;
+  --black: #000;
+  --transparent: transparent;
+  --blue-300: #93c5fd;
+  --blue-400: #60a5fa;
+  --blue-500: #3b82f6;
+  --indigo-300: #a5b4fc;
+  --violet-200: #ddd6fe;
+}
+
 /* Hide scrollbars while keeping scroll functionality */
 .scrollbar-hide {
   -ms-overflow-style: none;
