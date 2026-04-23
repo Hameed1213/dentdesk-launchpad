@@ -12,7 +12,7 @@ type Plan = {
 
 export default function PricingCTA() {
   const plans: Plan[] = [
-    { name: "Practice", price: "£49", priceSuffix: "/mo", note: "" },
+    { name: "Starter", price: "£49", priceSuffix: "/mo", note: "" },
     { name: "Multi-site", price: "Coming soon", note: "", comingSoon: true },
     { name: "Enterprise", price: "Coming soon", note: "", comingSoon: true },
   ];
