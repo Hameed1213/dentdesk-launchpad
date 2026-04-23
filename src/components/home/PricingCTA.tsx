@@ -148,7 +148,7 @@ export default function PricingCTA() {
                   <div className="text-center">
                     <div className="text-[18px] font-semibold text-foreground">Coming soon</div>
                     <div className="text-[13px] text-[#475569] mt-1 max-w-[240px]">
-                      {activePlan.name} plan is launching soon. Get started with Practice today.
+                      {activePlan.name} plan is launching soon. Get started with Starter today.
                     </div>
                   </div>
                 </div>
