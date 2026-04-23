@@ -1131,7 +1131,11 @@ export default function ProductShowcase() {
 
   return (
     <section ref={sectionRef} className="relative bg-gradient-to-br from-[#DBEAFE] via-[#EFF6FF] to-white py-24 px-6 overflow-hidden">
-      <div className="relative z-10 container max-w-6xl mx-auto">
+      {/* Top fade to white */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-white to-transparent z-10" />
+      {/* Bottom fade to white */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-white to-transparent z-10" />
+      <div className="relative z-20 container max-w-6xl mx-auto">
         {/* Header */}
         <div className="flex flex-col items-center text-center">
           <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-foreground leading-[1.1] max-w-2xl">
