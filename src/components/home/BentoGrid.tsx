@@ -850,14 +850,20 @@ export default function BentoGrid() {
     <section className="relative bg-background py-16 md:py-24 px-6 md:px-8 overflow-hidden">
       <div className="relative mx-auto max-w-6xl">
         {/* Heading */}
-        <div className="mx-auto max-w-2xl text-center mb-14 md:mb-20">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="mx-auto max-w-2xl text-center mb-14 md:mb-20"
+        >
           <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-foreground leading-[1.1]">
             More than a <span className="text-[#2563EB]">booking tool</span>
           </h2>
           <p className="mt-5 text-base md:text-lg text-muted-foreground">
             From patient records to analytics, every part of your practice is taken care of.
           </p>
-        </div>
+        </motion.div>
 
         {/* Bento grid: matches reference layout */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 lg:auto-rows-[260px] gap-5 lg:gap-6">
