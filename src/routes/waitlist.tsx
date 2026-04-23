@@ -151,7 +151,9 @@ function WaitlistPage() {
             Terms
           </Link>
           <a
-            href="mailto:hello@dentdock.co.uk"
+            href="https://wa.me/447700000000"
+            target="_blank"
+            rel="noopener noreferrer"
             className="hover:text-[#0F172A] transition-colors"
           >
             Contact
