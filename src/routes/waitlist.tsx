@@ -141,6 +141,53 @@ const EyeBall = ({
   );
 };
 
+/* ---------------- Tooth body (SVG) ---------------- */
+interface ToothBodyProps {
+  width: number;
+  height: number;
+  color: string;
+  children?: React.ReactNode;
+  style?: React.CSSProperties;
+  innerRef?: React.Ref<HTMLDivElement>;
+}
+
+const ToothBody = ({
+  width,
+  height,
+  color,
+  children,
+  style,
+  innerRef,
+}: ToothBodyProps) => {
+  // Tooth path: wide rounded crown on top, two stubby roots at the bottom.
+  // Using a 100x140 viewBox; preserveAspectRatio="none" lets it stretch.
+  const path =
+    "M50 4 C20 4 6 22 6 48 C6 70 12 84 16 96 C19 105 22 116 26 128 C29 137 36 138 40 130 L46 110 C48 104 52 104 54 110 L60 130 C64 138 71 137 74 128 C78 116 81 105 84 96 C88 84 94 70 94 48 C94 22 80 4 50 4 Z";
+  return (
+    <div
+      ref={innerRef}
+      style={{
+        position: "relative",
+        width,
+        height,
+        ...style,
+      }}
+    >
+      <svg
+        viewBox="0 0 100 140"
+        preserveAspectRatio="none"
+        width={width}
+        height={height}
+        style={{ display: "block", filter: "drop-shadow(0 6px 12px rgba(15,22,43,0.12))" }}
+      >
+        <path d={path} fill={color} />
+      </svg>
+      {/* Face layer sits above the SVG */}
+      <div style={{ position: "absolute", inset: 0 }}>{children}</div>
+    </div>
+  );
+};
+
 /* ---------------- Page ---------------- */
 function WaitlistPage() {
   const [email, setEmail] = useState("");
@@ -305,16 +352,14 @@ function WaitlistPage() {
         </div>
 
         {/* Characters — anchored bottom */}
-        <div className="relative z-10 mt-auto flex items-end justify-center gap-3 lg:gap-4 pt-12 select-none">
-          {/* Blue tall — back */}
-          <div
-            ref={blueRef}
-            className="relative"
+        <div className="relative z-10 mt-auto flex items-end justify-center gap-2 lg:gap-3 pt-12 select-none">
+          {/* Blue tooth — back, tallest */}
+          <ToothBody
+            innerRef={blueRef}
+            width={120}
+            height={isTyping ? 260 : 230}
+            color="#2563EB"
             style={{
-              width: 90,
-              height: isTyping ? 280 : 250,
-              backgroundColor: "#2563EB",
-              borderRadius: "12px 12px 0 0",
               transform: `skewX(${bluePos.bodySkew}deg)`,
               transformOrigin: "bottom center",
               transition: "all 0.3s ease-out",
@@ -322,12 +367,10 @@ function WaitlistPage() {
             }}
           >
             <div
-              className="absolute flex gap-2"
+              className="absolute flex gap-3"
               style={{
-                left: isLookingAtEachOther
-                  ? 50
-                  : 30 + bluePos.faceX,
-                top: isLookingAtEachOther ? 60 : 50 + bluePos.faceY,
+                left: isLookingAtEachOther ? 50 : 36 + bluePos.faceX,
+                top: isLookingAtEachOther ? 70 : 60 + bluePos.faceY,
                 transition: "all 0.3s ease-out",
               }}
             >
@@ -342,30 +385,29 @@ function WaitlistPage() {
                 forceLookY={isLookingAtEachOther ? 2 : undefined}
               />
             </div>
-          </div>
+          </ToothBody>
 
-          {/* Dark tall — middle */}
-          <div
-            ref={darkRef}
-            className="relative"
+          {/* Dark tooth — middle */}
+          <ToothBody
+            innerRef={darkRef}
+            width={100}
+            height={195}
+            color="#0F162B"
             style={{
-              width: 80,
-              height: 200,
-              backgroundColor: "#0F162B",
-              borderRadius: "10px 10px 0 0",
               transform: isLookingAtEachOther
                 ? `skewX(${darkPos.bodySkew + 4}deg)`
                 : `skewX(${darkPos.bodySkew}deg)`,
               transformOrigin: "bottom center",
               transition: "all 0.3s ease-out",
               zIndex: 2,
+              marginLeft: -10,
             }}
           >
             <div
-              className="absolute flex gap-1.5"
+              className="absolute flex gap-2"
               style={{
-                left: isLookingAtEachOther ? 22 : 22 + darkPos.faceX,
-                top: isLookingAtEachOther ? 30 : 35 + darkPos.faceY,
+                left: isLookingAtEachOther ? 28 : 28 + darkPos.faceX,
+                top: isLookingAtEachOther ? 50 : 55 + darkPos.faceY,
                 transition: "all 0.3s ease-out",
               }}
             >
@@ -384,58 +426,54 @@ function WaitlistPage() {
                 forceLookY={isLookingAtEachOther ? 0 : undefined}
               />
             </div>
-          </div>
+          </ToothBody>
 
-          {/* Teal semi-circle — front left */}
-          <div
-            ref={tealRef}
-            className="relative"
+          {/* Teal tooth — front left, short & chubby */}
+          <ToothBody
+            innerRef={tealRef}
+            width={120}
+            height={150}
+            color="#14B8A6"
             style={{
-              width: 110,
-              height: 110,
-              backgroundColor: "#14B8A6",
-              borderRadius: "110px 110px 0 0",
               transform: `skewX(${tealPos.bodySkew * 0.6}deg)`,
               transformOrigin: "bottom center",
               transition: "all 0.3s ease-out",
               zIndex: 3,
-              marginLeft: -8,
+              marginLeft: -14,
             }}
           >
             <div
-              className="absolute flex gap-2.5"
+              className="absolute flex gap-3"
               style={{
-                left: 28 + tealPos.faceX,
-                top: 38 + tealPos.faceY,
+                left: 36 + tealPos.faceX,
+                top: 48 + tealPos.faceY,
                 transition: "all 0.3s ease-out",
               }}
             >
               <Pupil size={10} maxDistance={4} pupilColor="#0F162B" />
               <Pupil size={10} maxDistance={4} pupilColor="#0F162B" />
             </div>
-          </div>
+          </ToothBody>
 
-          {/* Yellow short — front right */}
-          <div
-            ref={yellowRef}
-            className="relative"
+          {/* Yellow tooth — front right */}
+          <ToothBody
+            innerRef={yellowRef}
+            width={90}
+            height={170}
+            color="#FACC15"
             style={{
-              width: 70,
-              height: 130,
-              backgroundColor: "#FACC15",
-              borderRadius: "10px 10px 0 0",
               transform: `skewX(${yellowPos.bodySkew * 0.8}deg)`,
               transformOrigin: "bottom center",
               transition: "all 0.3s ease-out",
               zIndex: 3,
-              marginLeft: -6,
+              marginLeft: -10,
             }}
           >
             <div
-              className="absolute flex gap-1.5"
+              className="absolute flex gap-2"
               style={{
-                left: 18 + yellowPos.faceX,
-                top: 30 + yellowPos.faceY,
+                left: 26 + yellowPos.faceX,
+                top: 50 + yellowPos.faceY,
                 transition: "all 0.3s ease-out",
               }}
             >
@@ -446,8 +484,8 @@ function WaitlistPage() {
             <div
               className="absolute"
               style={{
-                left: 22 + yellowPos.faceX,
-                top: 60 + yellowPos.faceY,
+                left: 30 + yellowPos.faceX,
+                top: 78 + yellowPos.faceY,
                 width: 26,
                 height: 2,
                 backgroundColor: "#0F162B",
@@ -455,7 +493,7 @@ function WaitlistPage() {
                 transition: "all 0.3s ease-out",
               }}
             />
-          </div>
+          </ToothBody>
         </div>
 
         {/* Footer links */}
