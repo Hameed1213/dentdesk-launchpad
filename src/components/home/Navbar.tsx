@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 import ToothIcon from "@/components/icons/ToothIcon";
 
 const navLinks = [
-  { label: "Features", href: "#features" },
+  { label: "Features", href: "#about" },
   { label: "Pricing", href: "#pricing" },
   { label: "FAQ", href: "#faq" },
 ];
