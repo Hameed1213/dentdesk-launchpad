@@ -106,19 +106,34 @@ function WaitlistPage() {
 
         {/* Headline — vertically centered */}
         <div className="relative z-10 flex-1 flex flex-col justify-center max-w-md">
-          <div className="inline-flex w-fit items-center gap-1.5 px-3 py-1 rounded-full bg-white/80 border border-[#2563EB]/15 backdrop-blur mb-5">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: EASE, delay: 0.1 }}
+            className="inline-flex w-fit items-center gap-1.5 px-3 py-1 rounded-full bg-white/80 border border-[#2563EB]/15 backdrop-blur mb-5"
+          >
             <Sparkles className="w-3.5 h-3.5 text-[#2563EB]" />
             <span className="text-[12px] font-semibold text-[#2563EB] uppercase tracking-[0.12em]">
               Early access
             </span>
-          </div>
-          <h1 className="text-3xl lg:text-5xl font-medium tracking-tight text-[#0F172A] leading-[1.1]">
+          </motion.div>
+          <motion.h1
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: EASE, delay: 0.2 }}
+            className="text-3xl lg:text-5xl font-medium tracking-tight text-[#0F172A] leading-[1.1]"
+          >
             Practice management,{" "}
             <span className="text-[#2563EB]">finally friendly.</span>
-          </h1>
-          <p className="text-[15px] lg:text-[16px] leading-[1.6] text-[#475569] mt-4">
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: EASE, delay: 0.32 }}
+            className="text-[15px] lg:text-[16px] leading-[1.6] text-[#475569] mt-4"
+          >
             Built for UK private practices. Add your details and we'll be in touch personally when it's your turn.
-          </p>
+          </motion.p>
         </div>
 
         {/* Footer links */}
