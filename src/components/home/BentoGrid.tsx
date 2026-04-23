@@ -397,33 +397,45 @@ const PortalVisual = () => (
 /* ---------- SMS reminder visual ---------- */
 
 const SmsVisual = () => (
-  <div className="rounded-xl bg-white/80 backdrop-blur-md border border-white shadow-sm p-4 overflow-hidden">
-    {/* Contact header */}
-    <div className="flex items-center gap-2.5 pb-3 border-b border-neutral-100">
-      <div className="w-8 h-8 rounded-full bg-[#2563EB] flex items-center justify-center text-white text-[11px] font-bold shrink-0">
-        SD
-      </div>
-      <div className="min-w-0 flex-1">
-        <div className="text-[12px] font-semibold text-foreground truncate">
-          Smile Dental
+  <div
+    className="rounded-xl bg-[#f5f6fb] border border-neutral-200 p-3 overflow-hidden"
+    style={{
+      filter:
+        "drop-shadow(0 8px 16px rgba(0,0,0,0.06)) drop-shadow(0 2px 4px rgba(0,0,0,0.04))",
+    }}
+  >
+    <div className="bg-white border border-[#e2e8f0] rounded-lg p-3">
+      {/* Contact header */}
+      <div className="flex items-center gap-2.5 pb-3 border-b border-neutral-100">
+        <div className="w-8 h-8 rounded-full bg-[#2563EB] flex items-center justify-center text-white text-[11px] font-bold shrink-0">
+          SD
         </div>
-        <div className="text-[9px] text-muted-foreground">SMS · Today 09:00</div>
+        <div className="min-w-0 flex-1">
+          <div className="text-[12px] font-semibold text-foreground truncate">
+            Smile Dental
+          </div>
+          <div className="text-[9px] text-muted-foreground">
+            SMS · Today 09:00
+          </div>
+        </div>
+        <MessageSquare className="w-3.5 h-3.5 text-[#2563EB]" />
       </div>
-      <MessageSquare className="w-3.5 h-3.5 text-[#2563EB]" />
-    </div>
 
-    {/* Message bubble */}
-    <div className="mt-3 flex">
-      <div className="max-w-[85%] rounded-2xl rounded-bl-md bg-[#2563EB]/10 border border-[#2563EB]/15 px-3 py-2">
-        <p className="text-[11px] leading-snug text-foreground">
-          Hi Sarah, reminder: your appointment is tomorrow at{" "}
-          <span className="font-semibold">10:00am</span> — Smile Dental
-        </p>
+      {/* Message bubble */}
+      <div className="mt-3 flex">
+        <div className="max-w-[85%] rounded-2xl rounded-bl-md bg-[#2563EB]/10 border border-[#2563EB]/15 px-3 py-2">
+          <p className="text-[11px] leading-snug text-foreground">
+            Hi Sarah, reminder: your appointment is tomorrow at{" "}
+            <span className="font-semibold">10:00am</span> — Smile Dental
+          </p>
+        </div>
       </div>
-    </div>
-    <div className="mt-1.5 ml-1 flex items-center gap-1">
-      <Check className="w-2.5 h-2.5 text-[#2563EB]" strokeWidth={3} />
-      <span className="text-[9px] text-muted-foreground">Sent automatically</span>
+      <div className="mt-1.5 ml-1 flex items-center gap-1">
+        <Check className="w-2.5 h-2.5 text-[#2563EB]" strokeWidth={3} />
+        <span className="text-[9px] text-muted-foreground">
+          Sent automatically
+        </span>
+      </div>
     </div>
   </div>
 );
