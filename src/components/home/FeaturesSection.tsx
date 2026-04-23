@@ -3,6 +3,8 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import { CreditCard, Settings, CalendarX, Check, Bell, Banknote, Landmark } from "lucide-react";
 
+const ENTRANCE_EASE = [0.22, 1, 0.36, 1] as const;
+
 /* ---------- Mini preview cards (bottom of each card) ---------- */
 
 const TOAST_INTERVAL_MS = 3000;
@@ -302,7 +304,13 @@ export default function FeaturesSection() {
     <section className="relative bg-background py-16 md:py-24 px-6 md:px-8 overflow-hidden">
       <div className="relative mx-auto max-w-6xl">
         {/* Section heading */}
-        <div className="mx-auto max-w-2xl text-center mb-14 md:mb-20">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.6, ease: ENTRANCE_EASE }}
+          className="max-w-2xl text-center mb-14 md:mb-20 mx-auto"
+        >
           <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-foreground leading-[1.1]">
             Your software is working
             <br />
@@ -311,57 +319,68 @@ export default function FeaturesSection() {
           <p className="mt-5 text-base md:text-lg text-muted-foreground">
             Overpriced. Overcomplicated. Losing you patients every week.
           </p>
-        </div>
+        </motion.div>
 
         {/* Feature grid — single row of 3 cards */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 lg:gap-6">
           {problems.map((problem, i) => {
             const Icon = problem.Icon;
             return (
-              <Card
+              <motion.div
                 key={i}
-                className="group relative overflow-hidden border border-neutral-100 bg-white/30 backdrop-blur-xl backdrop-saturate-150 p-8 flex flex-col rounded-2xl shadow-none transition-all duration-300 hover:bg-white/40 hover:-translate-y-1 hover:border-neutral-200 px-[24px] py-[24px]"
+                initial={{ opacity: 0, y: 32 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{
+                  duration: 0.6,
+                  ease: ENTRANCE_EASE,
+                  delay: i * 0.12,
+                }}
               >
-                {/* Subtle grid background — inset with radial fade-out */}
-                <div
-                  aria-hidden
-                  className="pointer-events-none absolute inset-6 rounded-xl opacity-[0.45]"
-                  style={{
-                    backgroundImage:
-                      "linear-gradient(to right, rgba(0,0,0,0.07) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,0,0,0.07) 1px, transparent 1px)",
-                    backgroundSize: "22px 22px",
-                    WebkitMaskImage:
-                      "radial-gradient(ellipse at center, black 40%, transparent 80%)",
-                    maskImage:
-                      "radial-gradient(ellipse at center, black 40%, transparent 80%)",
-                  }}
-                />
-                {/* Soft colored orb behind the preview image */}
-                <div
-                  aria-hidden
-                  className="pointer-events-none absolute left-1/2 bottom-[12%] -translate-x-1/2 w-[85%] h-[40%] rounded-full blur-3xl"
-                  style={{
-                    background: `radial-gradient(circle, rgba(${problem.rgb},0.22) 0%, rgba(${problem.rgb},0.10) 45%, transparent 75%)`,
-                  }}
-                />
-                {/* Glossy top highlight */}
-                <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/80 to-transparent" />
+                <Card
+                  className="group relative overflow-hidden border border-neutral-100 bg-white/30 backdrop-blur-xl backdrop-saturate-150 p-8 flex flex-col rounded-2xl shadow-none transition-all duration-300 hover:bg-white/40 hover:-translate-y-1 hover:border-neutral-200 px-[24px] py-[24px] h-full"
+                >
+                  {/* Subtle grid background — inset with radial fade-out */}
+                  <div
+                    aria-hidden
+                    className="pointer-events-none absolute inset-6 rounded-xl opacity-[0.45]"
+                    style={{
+                      backgroundImage:
+                        "linear-gradient(to right, rgba(0,0,0,0.07) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,0,0,0.07) 1px, transparent 1px)",
+                      backgroundSize: "22px 22px",
+                      WebkitMaskImage:
+                        "radial-gradient(ellipse at center, black 40%, transparent 80%)",
+                      maskImage:
+                        "radial-gradient(ellipse at center, black 40%, transparent 80%)",
+                    }}
+                  />
+                  {/* Soft colored orb behind the preview image */}
+                  <div
+                    aria-hidden
+                    className="pointer-events-none absolute left-1/2 bottom-[12%] -translate-x-1/2 w-[85%] h-[40%] rounded-full blur-3xl"
+                    style={{
+                      background: `radial-gradient(circle, rgba(${problem.rgb},0.22) 0%, rgba(${problem.rgb},0.10) 45%, transparent 75%)`,
+                    }}
+                  />
+                  {/* Glossy top highlight */}
+                  <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/80 to-transparent" />
 
-                <div className="relative flex flex-col h-full">
-                  <div className="w-11 h-11 rounded-xl bg-white border border-neutral-100 flex items-center justify-center mb-6 shadow-sm">
-                    <Icon className="w-5 h-5 text-[#2563EB]" strokeWidth={1.75} />
+                  <div className="relative flex flex-col h-full">
+                    <div className="w-11 h-11 rounded-xl bg-white border border-neutral-100 flex items-center justify-center mb-6 shadow-sm">
+                      <Icon className="w-5 h-5 text-[#2563EB]" strokeWidth={1.75} />
+                    </div>
+                    <h3 className="text-[19px] font-semibold text-foreground tracking-tight leading-snug">
+                      {problem.headline}
+                    </h3>
+                    <p className="mt-3 text-[14px] text-muted-foreground leading-relaxed">
+                      {problem.body}
+                    </p>
+                    <div className="mt-6 flex-1 flex items-end">
+                      <div className="w-full">{problem.preview}</div>
+                    </div>
                   </div>
-                  <h3 className="text-[19px] font-semibold text-foreground tracking-tight leading-snug">
-                    {problem.headline}
-                  </h3>
-                  <p className="mt-3 text-[14px] text-muted-foreground leading-relaxed">
-                    {problem.body}
-                  </p>
-                  <div className="mt-6 flex-1 flex items-end">
-                    <div className="w-full">{problem.preview}</div>
-                  </div>
-                </div>
-              </Card>
+                </Card>
+              </motion.div>
             );
           })}
         </div>
