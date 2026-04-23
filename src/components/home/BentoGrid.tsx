@@ -881,11 +881,29 @@ export default function BentoGrid() {
               { left: "60%", top: "20%", w: "80%", h: "45%" },
             ];
             const v = orbVariants[i % orbVariants.length];
+            // Per-cell entrance: direction + delay
+            const cellEntrances = [
+              { initial: { opacity: 0, x: -24 }, delay: 0.05 }, // 1 patient records — left
+              { initial: { opacity: 0, x: 24 }, delay: 0.1 },  // 2 portal — right
+              { initial: { opacity: 0, x: -24 }, delay: 0.15 }, // 3 staff — left
+              { initial: { opacity: 0, x: 24 }, delay: 0.2 },  // 4 sms — right
+              { initial: { opacity: 0, y: 32 }, delay: 0.1 },  // 5 analytics — up
+              { initial: { opacity: 0, y: 32 }, delay: 0.18 }, // 6 forms — up
+            ];
+            const entrance = cellEntrances[i] ?? { initial: { opacity: 0, y: 24 }, delay: 0 };
+            const animateTo = "x" in entrance.initial ? { opacity: 1, x: 0 } : { opacity: 1, y: 0 };
             return (
-              <Card
+              <motion.div
                 key={i}
-                className={`group relative overflow-hidden border border-neutral-100 bg-white/30 backdrop-blur-xl backdrop-saturate-150 p-6 flex flex-col rounded-2xl shadow-none transition-all duration-300 hover:bg-white/40 hover:-translate-y-1 hover:border-neutral-200 ${cell.span}`}
+                className={cell.span}
+                initial={entrance.initial}
+                whileInView={animateTo}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: entrance.delay }}
               >
+                <Card
+                  className={`group relative overflow-hidden border border-neutral-100 bg-white/30 backdrop-blur-xl backdrop-saturate-150 p-6 flex flex-col rounded-2xl shadow-none transition-all duration-300 hover:bg-white/40 hover:-translate-y-1 hover:border-neutral-200 h-full ${cell.span}`}
+                >
                 {/* Inner clip wrapper for background decorations only */}
                 <div aria-hidden className="absolute inset-0 rounded-2xl overflow-hidden pointer-events-none">
                 {/* Subtle grid background */}
@@ -986,7 +1004,8 @@ export default function BentoGrid() {
                     </div>
                   </div>
                 )}
-              </Card>
+                </Card>
+              </motion.div>
             );
           })}
         </div>
