@@ -835,6 +835,7 @@ export default function BentoGrid() {
         <div className="grid grid-cols-1 md:grid-cols-6 md:auto-rows-[260px] gap-5 lg:gap-6">
           {cells.map((cell, i) => {
             const Icon = cell.Icon;
+            const orb = ("orb" in cell && cell.orb) ? cell.orb : BLUE;
             return (
               <Card
                 key={i}
@@ -861,7 +862,7 @@ export default function BentoGrid() {
                   aria-hidden
                   className="pointer-events-none absolute left-1/2 bottom-[12%] -translate-x-1/2 w-[85%] h-[40%] rounded-full blur-3xl"
                   style={{
-                    background: `radial-gradient(circle, rgba(${BLUE},0.22) 0%, rgba(${BLUE},0.10) 45%, transparent 75%)`,
+                    background: `radial-gradient(circle, rgba(${orb},0.22) 0%, rgba(${orb},0.10) 45%, transparent 75%)`,
                   }}
                 />
                 {/* Glossy top highlight */}
