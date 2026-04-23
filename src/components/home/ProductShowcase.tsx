@@ -1243,11 +1243,11 @@ export default function ProductShowcase() {
         {/* Live in a day banner — bottom */}
         <div className="mt-12 rounded-2xl bg-white border border-neutral-200 px-6 sm:px-8 py-5 sm:py-6 flex flex-col md:flex-row md:items-center md:justify-between gap-5 shadow-sm">
           <div className="md:max-w-[440px]">
-            <h3 className="text-xl sm:text-2xl md:text-[26px] font-medium tracking-tight text-[#0F172A] leading-tight">
+            <h3 className="text-2xl sm:text-3xl md:text-[32px] font-medium tracking-tight text-[#0F172A] leading-tight">
               Get your practice live in{" "}
               <span className="text-[#2563EB]">a single day</span>
             </h3>
-            <p className="text-[13px] sm:text-[14px] leading-[1.5] text-[#64748b] mt-1.5">
+            <p className="text-[15px] sm:text-[16px] leading-[1.55] text-[#64748b] mt-2">
               Sign up, add your details, and your booking page is ready, no
               implementation fees, no onboarding calls.
             </p>
