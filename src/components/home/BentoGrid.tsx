@@ -561,7 +561,7 @@ const SmsVisual = () => {
             </div>
 
             {/* Messages */}
-            <div className="flex flex-col gap-2 md:min-h-[200px] lg:min-h-0">
+            <div className="flex flex-col gap-2 min-h-[220px] md:min-h-[200px] lg:min-h-[220px]">
               {smsMessages.map(
                 (msg) =>
                   visibleMessages.includes(msg.id) && (
