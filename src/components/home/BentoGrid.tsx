@@ -887,9 +887,9 @@ export default function BentoGrid() {
                 </div>
 
                 {cell.layout === "side" ? (
-                  <div className="relative flex flex-col md:flex-row h-full gap-6 md:gap-0">
+                  <div className="relative flex flex-col lg:flex-row h-full gap-6 lg:gap-0">
                     {/* Left: icon + title */}
-                    <div className="md:flex-1 flex flex-col">
+                    <div className="lg:flex-1 flex flex-col">
                       <div className="w-11 h-11 rounded-xl bg-white border border-neutral-100 flex items-center justify-center mb-6 shadow-sm shrink-0">
                         <Icon
                           size={20}
@@ -897,22 +897,22 @@ export default function BentoGrid() {
                           className="text-[#2563EB]"
                         />
                       </div>
-                      <h3 className={`text-[19px] font-semibold text-foreground tracking-tight leading-snug whitespace-pre-line ${("titleClass" in cell && cell.titleClass) ? cell.titleClass : "md:max-w-[220px]"}`}>
+                      <h3 className={`text-[19px] font-semibold text-foreground tracking-tight leading-snug whitespace-pre-line ${("titleClass" in cell && cell.titleClass) ? cell.titleClass : "lg:max-w-[220px]"}`}>
                         {cell.title}
                       </h3>
                     </div>
                     {cell.popOut ? (
                       <>
-                        <div className="md:hidden w-full">{cell.visual}</div>
-                        <div className={`hidden md:block ${("popOutClass" in cell && cell.popOutClass) ? cell.popOutClass : "absolute right-0 left-[32%] -top-[4%] pointer-events-none"}`}>
+                        <div className="lg:hidden w-full max-w-full overflow-hidden">{cell.visual}</div>
+                        <div className={`hidden lg:block ${("popOutClass" in cell && cell.popOutClass) ? cell.popOutClass : "absolute right-0 left-[32%] -top-[4%] pointer-events-none"}`}>
                           {cell.visual}
                         </div>
                       </>
                     ) : (
                       <>
-                        <div className="md:hidden w-full">{cell.visual}</div>
+                        <div className="lg:hidden w-full max-w-full overflow-hidden">{cell.visual}</div>
                         <div
-                          className="hidden md:flex absolute right-10 top-8 left-[36%] items-start pointer-events-none"
+                          className="hidden lg:flex absolute right-10 top-8 left-[36%] items-start pointer-events-none"
                           style={{ bottom: "-50%" }}
                         >
                           {cell.visual}
@@ -920,6 +920,7 @@ export default function BentoGrid() {
                       </>
                     )}
                   </div>
+
 
                 ) : "noHeader" in cell && cell.noHeader ? (
                   <div className="relative flex flex-col h-full">
