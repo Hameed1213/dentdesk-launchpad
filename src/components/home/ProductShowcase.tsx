@@ -1136,7 +1136,7 @@ export default function ProductShowcase() {
         className="pointer-events-none absolute inset-x-0 top-0 h-72 z-10"
         style={{
           background:
-            "radial-gradient(ellipse 70% 130% at 20% 0%, white 55%, transparent 85%), radial-gradient(ellipse 80% 140% at 75% 0%, white 50%, transparent 85%), radial-gradient(ellipse 120% 100% at 50% 0%, white 35%, transparent 80%)",
+            "radial-gradient(ellipse 45% 120% at 10% 0%, white 55%, transparent 85%), radial-gradient(ellipse 40% 110% at 32% 0%, white 50%, transparent 85%), radial-gradient(ellipse 50% 130% at 55% 0%, white 55%, transparent 85%), radial-gradient(ellipse 45% 115% at 78% 0%, white 50%, transparent 85%), radial-gradient(ellipse 40% 100% at 95% 0%, white 50%, transparent 85%), radial-gradient(ellipse 130% 90% at 50% 0%, white 35%, transparent 80%)",
         }}
       />
       {/* Bottom irregular fade to white */}
