@@ -132,12 +132,12 @@ const FormsVisual = () => (
           { label: "Medications", value: "None", tabletOnly: false },
           { label: "Conditions", value: "None", tabletOnly: false },
           { label: "Pregnant?", value: "No", tabletOnly: false },
-          { label: "Smoker?", value: "No", tabletOnly: true },
-          { label: "Last visit", value: "Mar 2026", tabletOnly: true },
+          { label: "Smoker?", value: "No", hideOnTablet: true },
+          { label: "Last visit", value: "Mar 2026", hideOnTablet: true },
         ].map((f) => (
           <div
             key={f.label}
-            className={`bg-[#F3F6FD] border border-[#e2e8f0] rounded-lg p-1.5 ${f.tabletOnly ? "hidden md:block lg:hidden" : ""}`}
+            className={`bg-[#F3F6FD] border border-[#e2e8f0] rounded-lg p-1.5 ${f.hideOnTablet ? "md:hidden lg:block" : ""}`}
           >
             <div className="text-[7px] text-[#64748b] uppercase tracking-wide">
               {f.label}
