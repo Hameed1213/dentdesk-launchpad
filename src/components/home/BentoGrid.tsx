@@ -787,7 +787,7 @@ const cells = [
     visual: <SmsVisual />,
     span: "md:col-span-2 md:row-span-1",
     noHeader: true,
-    orb: "59,130,246", // bright blue
+    orb: "147,197,253", // pale powder blue
   },
   {
     Icon: TrendingUp,
