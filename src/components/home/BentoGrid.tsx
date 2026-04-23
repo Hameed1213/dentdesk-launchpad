@@ -879,7 +879,7 @@ export default function BentoGrid() {
                         <Icon
                           size={20}
                           strokeWidth={1.75}
-                          className="text-[#2563EB]"
+                          style={{ color: cell.iconColor }}
                         />
                       </div>
                       <h3 className={`text-[19px] font-semibold text-foreground tracking-tight leading-snug whitespace-pre-line ${("titleClass" in cell && cell.titleClass) ? cell.titleClass : "max-w-[220px]"}`}>
