@@ -34,7 +34,7 @@ export default function PricingCTA() {
   ];
 
   return (
-    <section className="bg-background py-20 sm:py-28">
+    <section className="bg-[#F1F3F7] py-20 sm:py-28">
       <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
         <motion.div
