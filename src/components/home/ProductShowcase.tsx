@@ -1161,13 +1161,7 @@ export default function ProductShowcase() {
           }}
         />
       </div>
-      <motion.div
-        className="relative z-10 container max-w-6xl mx-auto"
-        initial={{ opacity: 0, y: 24 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-      >
+      <div className="relative z-10 container max-w-6xl mx-auto">
         {/* Header */}
         <div className="flex flex-col items-center text-center">
           <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-foreground leading-[1.1] max-w-2xl">
