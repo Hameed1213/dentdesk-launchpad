@@ -414,9 +414,9 @@ function BookingMockup() {
         </div>
 
         {/* Practice name */}
-        <h1 className="font-extrabold text-[32px] text-[#0A0F1E] tracking-[-0.02em] text-center leading-tight">
+        <div className="font-extrabold text-[32px] text-[#0A0F1E] tracking-[-0.02em] text-center leading-tight">
           Smile Dental
-        </h1>
+        </div>
 
         {/* Divider */}
         <div className="w-[60px] h-px bg-[#E8EBF5] mx-auto my-5" />

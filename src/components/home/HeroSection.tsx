@@ -37,7 +37,7 @@ function WaitlistForm() {
     }
     setError(null);
     setSubmitted(true);
-    console.log("Waitlist signup:", trimmed);
+    void trimmed;
   };
 
   if (submitted) {

@@ -18,6 +18,9 @@ export const Route = createFileRoute("/privacy")({
           "How Dent Dock collects, stores and processes data under UK GDPR.",
       },
     ],
+    links: [
+      { rel: "canonical", href: "https://dentdock.co.uk/privacy" },
+    ],
   }),
 });
 
