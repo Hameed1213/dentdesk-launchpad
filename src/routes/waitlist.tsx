@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import { ArrowLeft, Check, Mail, Sparkles } from "lucide-react";
 import ToothIcon from "@/components/icons/ToothIcon";
 
@@ -28,166 +28,6 @@ export const Route = createFileRoute("/waitlist")({
   }),
 });
 
-/* ---------------- Pupil ---------------- */
-interface PupilProps {
-  size?: number;
-  maxDistance?: number;
-  pupilColor?: string;
-  forceLookX?: number;
-  forceLookY?: number;
-}
-
-const Pupil = ({
-  size = 12,
-  maxDistance = 5,
-  pupilColor = "black",
-  forceLookX,
-  forceLookY,
-}: PupilProps) => {
-  const [mouseX, setMouseX] = useState(0);
-  const [mouseY, setMouseY] = useState(0);
-  const pupilRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMouseX(e.clientX);
-      setMouseY(e.clientY);
-    };
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
-
-  const calc = () => {
-    if (forceLookX !== undefined && forceLookY !== undefined) {
-      return { x: forceLookX, y: forceLookY };
-    }
-    if (!pupilRef.current) return { x: 0, y: 0 };
-    const r = pupilRef.current.getBoundingClientRect();
-    const cx = r.left + r.width / 2;
-    const cy = r.top + r.height / 2;
-    const dx = mouseX - cx;
-    const dy = mouseY - cy;
-    const dist = Math.min(Math.sqrt(dx * dx + dy * dy), maxDistance);
-    const a = Math.atan2(dy, dx);
-    return { x: Math.cos(a) * dist, y: Math.sin(a) * dist };
-  };
-
-  const pos = calc();
-
-  return (
-    <div
-      ref={pupilRef}
-      style={{
-        width: size,
-        height: size,
-        borderRadius: "50%",
-        backgroundColor: pupilColor,
-        transform: `translate(${pos.x}px, ${pos.y}px)`,
-        transition: "transform 0.1s ease-out",
-      }}
-    />
-  );
-};
-
-/* ---------------- EyeBall ---------------- */
-interface EyeBallProps {
-  size?: number;
-  pupilSize?: number;
-  maxDistance?: number;
-  eyeColor?: string;
-  pupilColor?: string;
-  isBlinking?: boolean;
-  forceLookX?: number;
-  forceLookY?: number;
-}
-
-const EyeBall = ({
-  size = 28,
-  pupilSize = 12,
-  maxDistance = 6,
-  eyeColor = "white",
-  pupilColor = "black",
-  isBlinking = false,
-  forceLookX,
-  forceLookY,
-}: EyeBallProps) => {
-  const eyeRef = useRef<HTMLDivElement>(null);
-
-  return (
-    <div
-      ref={eyeRef}
-      style={{
-        width: size,
-        height: isBlinking ? 2 : size,
-        borderRadius: "50%",
-        backgroundColor: eyeColor,
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        transition: "height 0.1s ease-out",
-        overflow: "hidden",
-      }}
-    >
-      {!isBlinking && (
-        <Pupil
-          size={pupilSize}
-          maxDistance={maxDistance}
-          pupilColor={pupilColor}
-          forceLookX={forceLookX}
-          forceLookY={forceLookY}
-        />
-      )}
-    </div>
-  );
-};
-
-/* ---------------- Tooth body (SVG) ---------------- */
-interface ToothBodyProps {
-  width: number;
-  height: number;
-  color: string;
-  children?: React.ReactNode;
-  style?: React.CSSProperties;
-  innerRef?: React.Ref<HTMLDivElement>;
-}
-
-const ToothBody = ({
-  width,
-  height,
-  color,
-  children,
-  style,
-  innerRef,
-}: ToothBodyProps) => {
-  // Tooth path: wide rounded crown on top, two stubby roots at the bottom.
-  // Using a 100x140 viewBox; preserveAspectRatio="none" lets it stretch.
-  const path =
-    "M50 4 C20 4 6 22 6 48 C6 70 12 84 16 96 C19 105 22 116 26 128 C29 137 36 138 40 130 L46 110 C48 104 52 104 54 110 L60 130 C64 138 71 137 74 128 C78 116 81 105 84 96 C88 84 94 70 94 48 C94 22 80 4 50 4 Z";
-  return (
-    <div
-      ref={innerRef}
-      style={{
-        position: "relative",
-        width,
-        height,
-        ...style,
-      }}
-    >
-      <svg
-        viewBox="0 0 100 140"
-        preserveAspectRatio="none"
-        width={width}
-        height={height}
-        style={{ display: "block", filter: "drop-shadow(0 6px 12px rgba(15,22,43,0.12))" }}
-      >
-        <path d={path} fill={color} />
-      </svg>
-      {/* Face layer sits above the SVG */}
-      <div style={{ position: "absolute", inset: 0 }}>{children}</div>
-    </div>
-  );
-};
-
 /* ---------------- Page ---------------- */
 function WaitlistPage() {
   const [email, setEmail] = useState("");
@@ -197,85 +37,7 @@ function WaitlistPage() {
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  const [mouseX, setMouseX] = useState(0);
-  const [mouseY, setMouseY] = useState(0);
-  const [isBlueBlinking, setIsBlueBlinking] = useState(false);
-  const [isDarkBlinking, setIsDarkBlinking] = useState(false);
   const [isTyping, setIsTyping] = useState(false);
-  const [isLookingAtEachOther, setIsLookingAtEachOther] = useState(false);
-
-  const blueRef = useRef<HTMLDivElement>(null);
-  const darkRef = useRef<HTMLDivElement>(null);
-  const tealRef = useRef<HTMLDivElement>(null);
-  const yellowRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMouseX(e.clientX);
-      setMouseY(e.clientY);
-    };
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
-
-  // Blue blinking
-  useEffect(() => {
-    let timeout: ReturnType<typeof setTimeout>;
-    const schedule = () => {
-      timeout = setTimeout(() => {
-        setIsBlueBlinking(true);
-        setTimeout(() => {
-          setIsBlueBlinking(false);
-          schedule();
-        }, 150);
-      }, Math.random() * 4000 + 3000);
-    };
-    schedule();
-    return () => clearTimeout(timeout);
-  }, []);
-
-  // Dark blinking
-  useEffect(() => {
-    let timeout: ReturnType<typeof setTimeout>;
-    const schedule = () => {
-      timeout = setTimeout(() => {
-        setIsDarkBlinking(true);
-        setTimeout(() => {
-          setIsDarkBlinking(false);
-          schedule();
-        }, 150);
-      }, Math.random() * 4000 + 3000);
-    };
-    schedule();
-    return () => clearTimeout(timeout);
-  }, []);
-
-  // Look at each other when typing starts
-  useEffect(() => {
-    if (isTyping) {
-      setIsLookingAtEachOther(true);
-      const t = setTimeout(() => setIsLookingAtEachOther(false), 800);
-      return () => clearTimeout(t);
-    }
-  }, [isTyping]);
-
-  const calculatePosition = (ref: React.RefObject<HTMLDivElement | null>) => {
-    if (!ref.current) return { faceX: 0, faceY: 0, bodySkew: 0 };
-    const rect = ref.current.getBoundingClientRect();
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 3;
-    const dx = mouseX - centerX;
-    const dy = mouseY - centerY;
-    const faceX = Math.max(-15, Math.min(15, dx / 20));
-    const faceY = Math.max(-10, Math.min(10, dy / 30));
-    const bodySkew = Math.max(-6, Math.min(6, -dx / 120));
-    return { faceX, faceY, bodySkew };
-  };
-
-  const bluePos = calculatePosition(blueRef);
-  const darkPos = calculatePosition(darkRef);
-  const tealPos = calculatePosition(tealRef);
-  const yellowPos = calculatePosition(yellowRef);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -299,10 +61,10 @@ function WaitlistPage() {
 
   return (
     <main className="min-h-screen bg-white flex flex-col lg:flex-row">
-      {/* ===================== LEFT — characters ===================== */}
-      <section className="relative lg:w-1/2 bg-gradient-to-br from-[#EFF4FF] via-[#F5F8FF] to-[#FDF6FF] overflow-hidden flex flex-col px-8 py-10 lg:px-12 lg:py-14 min-h-[420px] lg:min-h-screen">
+      {/* ===================== LEFT — copy ===================== */}
+      <section className="relative lg:w-1/2 bg-gradient-to-br from-[#DBEAFE] via-[#EFF6FF] to-white overflow-hidden flex flex-col px-8 py-10 lg:px-12 lg:py-14 min-h-[280px] lg:min-h-screen">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2 z-20">
+        <Link to="/" className="flex items-center gap-2 z-20 relative">
           <ToothIcon size={24} color="#2563EB" />
           <span
             className="text-lg tracking-tight"
@@ -316,184 +78,46 @@ function WaitlistPage() {
           </span>
         </Link>
 
-        {/* Decorative blobs */}
+        {/* Decorative blue blobs */}
         <div className="pointer-events-none absolute inset-0 -z-0">
           <div
-            className="absolute -top-32 -left-32 w-[500px] h-[500px] rounded-full"
+            className="absolute -top-40 -left-32 w-[560px] h-[560px] rounded-full"
             style={{
               background:
-                "radial-gradient(ellipse, rgba(37,99,235,0.18), transparent 70%)",
+                "radial-gradient(ellipse, rgba(37,99,235,0.28), transparent 70%)",
             }}
           />
           <div
-            className="absolute -bottom-32 -right-20 w-[500px] h-[500px] rounded-full"
+            className="absolute top-1/3 -right-40 w-[520px] h-[520px] rounded-full"
             style={{
               background:
-                "radial-gradient(ellipse, rgba(168,85,247,0.12), transparent 70%)",
+                "radial-gradient(ellipse, rgba(96,165,250,0.30), transparent 70%)",
+            }}
+          />
+          <div
+            className="absolute -bottom-40 left-1/4 w-[500px] h-[500px] rounded-full"
+            style={{
+              background:
+                "radial-gradient(ellipse, rgba(147,197,253,0.35), transparent 70%)",
             }}
           />
         </div>
 
-        {/* Headline */}
-        <div className="relative z-10 mt-10 max-w-md">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/80 border border-[#2563EB]/15 backdrop-blur mb-4">
+        {/* Headline — vertically centered */}
+        <div className="relative z-10 flex-1 flex flex-col justify-center max-w-md">
+          <div className="inline-flex w-fit items-center gap-1.5 px-3 py-1 rounded-full bg-white/80 border border-[#2563EB]/15 backdrop-blur mb-5">
             <Sparkles className="w-3.5 h-3.5 text-[#2563EB]" />
             <span className="text-[12px] font-semibold text-[#2563EB] uppercase tracking-[0.12em]">
               Early access
             </span>
           </div>
-          <h1 className="text-3xl lg:text-4xl font-medium tracking-tight text-[#0F172A] leading-[1.1]">
+          <h1 className="text-3xl lg:text-5xl font-medium tracking-tight text-[#0F172A] leading-[1.1]">
             Practice management,{" "}
             <span className="text-[#2563EB]">finally friendly.</span>
           </h1>
-          <p className="text-[15px] leading-[1.6] text-[#475569] mt-3">
+          <p className="text-[15px] lg:text-[16px] leading-[1.6] text-[#475569] mt-4">
             Built for UK private practices. Add your details and we'll be in touch personally when it's your turn.
           </p>
-        </div>
-
-        {/* Characters — anchored bottom */}
-        <div className="relative z-10 mt-auto flex items-end justify-center gap-2 lg:gap-3 pt-12 select-none">
-          {/* Blue tooth — back, tallest */}
-          <ToothBody
-            innerRef={blueRef}
-            width={120}
-            height={isTyping ? 260 : 230}
-            color="#2563EB"
-            style={{
-              transform: `skewX(${bluePos.bodySkew}deg)`,
-              transformOrigin: "bottom center",
-              transition: "all 0.3s ease-out",
-              zIndex: 1,
-            }}
-          >
-            <div
-              className="absolute flex gap-3"
-              style={{
-                left: isLookingAtEachOther ? 50 : 36 + bluePos.faceX,
-                top: isLookingAtEachOther ? 70 : 60 + bluePos.faceY,
-                transition: "all 0.3s ease-out",
-              }}
-            >
-              <EyeBall
-                isBlinking={isBlueBlinking}
-                forceLookX={isLookingAtEachOther ? 4 : undefined}
-                forceLookY={isLookingAtEachOther ? 2 : undefined}
-              />
-              <EyeBall
-                isBlinking={isBlueBlinking}
-                forceLookX={isLookingAtEachOther ? 4 : undefined}
-                forceLookY={isLookingAtEachOther ? 2 : undefined}
-              />
-            </div>
-          </ToothBody>
-
-          {/* Dark tooth — middle */}
-          <ToothBody
-            innerRef={darkRef}
-            width={100}
-            height={195}
-            color="#0F162B"
-            style={{
-              transform: isLookingAtEachOther
-                ? `skewX(${darkPos.bodySkew + 4}deg)`
-                : `skewX(${darkPos.bodySkew}deg)`,
-              transformOrigin: "bottom center",
-              transition: "all 0.3s ease-out",
-              zIndex: 2,
-              marginLeft: -10,
-            }}
-          >
-            <div
-              className="absolute flex gap-2"
-              style={{
-                left: isLookingAtEachOther ? 28 : 28 + darkPos.faceX,
-                top: isLookingAtEachOther ? 50 : 55 + darkPos.faceY,
-                transition: "all 0.3s ease-out",
-              }}
-            >
-              <EyeBall
-                size={22}
-                pupilSize={10}
-                isBlinking={isDarkBlinking}
-                forceLookX={isLookingAtEachOther ? -4 : undefined}
-                forceLookY={isLookingAtEachOther ? 0 : undefined}
-              />
-              <EyeBall
-                size={22}
-                pupilSize={10}
-                isBlinking={isDarkBlinking}
-                forceLookX={isLookingAtEachOther ? -4 : undefined}
-                forceLookY={isLookingAtEachOther ? 0 : undefined}
-              />
-            </div>
-          </ToothBody>
-
-          {/* Teal tooth — front left, short & chubby */}
-          <ToothBody
-            innerRef={tealRef}
-            width={120}
-            height={150}
-            color="#14B8A6"
-            style={{
-              transform: `skewX(${tealPos.bodySkew * 0.6}deg)`,
-              transformOrigin: "bottom center",
-              transition: "all 0.3s ease-out",
-              zIndex: 3,
-              marginLeft: -14,
-            }}
-          >
-            <div
-              className="absolute flex gap-3"
-              style={{
-                left: 36 + tealPos.faceX,
-                top: 48 + tealPos.faceY,
-                transition: "all 0.3s ease-out",
-              }}
-            >
-              <Pupil size={10} maxDistance={4} pupilColor="#0F162B" />
-              <Pupil size={10} maxDistance={4} pupilColor="#0F162B" />
-            </div>
-          </ToothBody>
-
-          {/* Yellow tooth — front right */}
-          <ToothBody
-            innerRef={yellowRef}
-            width={90}
-            height={170}
-            color="#FACC15"
-            style={{
-              transform: `skewX(${yellowPos.bodySkew * 0.8}deg)`,
-              transformOrigin: "bottom center",
-              transition: "all 0.3s ease-out",
-              zIndex: 3,
-              marginLeft: -10,
-            }}
-          >
-            <div
-              className="absolute flex gap-2"
-              style={{
-                left: 26 + yellowPos.faceX,
-                top: 50 + yellowPos.faceY,
-                transition: "all 0.3s ease-out",
-              }}
-            >
-              <Pupil size={9} maxDistance={4} pupilColor="#0F162B" />
-              <Pupil size={9} maxDistance={4} pupilColor="#0F162B" />
-            </div>
-            {/* mouth */}
-            <div
-              className="absolute"
-              style={{
-                left: 30 + yellowPos.faceX,
-                top: 78 + yellowPos.faceY,
-                width: 26,
-                height: 2,
-                backgroundColor: "#0F162B",
-                borderRadius: 2,
-                transition: "all 0.3s ease-out",
-              }}
-            />
-          </ToothBody>
         </div>
 
         {/* Footer links */}
