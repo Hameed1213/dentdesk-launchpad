@@ -344,7 +344,7 @@ const PortalVisual = () => (
     }}
   >
     {/* Browser window */}
-    <div className="bg-white rounded-lg overflow-hidden border border-neutral-200 p-7">
+    <div className="bg-white rounded-lg overflow-hidden border border-neutral-200 p-5">
         {/* Portal content */}
         <div className="bg-white">
           {/* Greeting */}
