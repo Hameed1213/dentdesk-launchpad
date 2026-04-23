@@ -12,7 +12,6 @@ type Plan = {
 
 export default function PricingCTA() {
   const plans: Plan[] = [
-    { name: "Solo", price: "£29", priceSuffix: "/mo", note: "Coming soon", disabled: true },
     { name: "Practice", price: "£49", priceSuffix: "/mo", note: "Most popular", selected: true },
     { name: "Multi-site", price: "£99", priceSuffix: "/mo", note: "Coming soon", disabled: true },
     { name: "Enterprise", price: "Custom", note: "Talk to us", disabled: true },
@@ -38,16 +37,13 @@ export default function PricingCTA() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-14"
+          className="mx-auto max-w-2xl text-center mb-14 md:mb-20"
         >
-          <span className="inline-flex px-3 py-1 rounded-full bg-neutral-100 text-[12px] font-medium text-foreground/70 mb-5">
-            Pricing
-          </span>
-          <h2 className="text-4xl md:text-5xl font-medium tracking-tight text-foreground mb-4">
-            Simple pricing for every practice
+          <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-foreground leading-[1.1]">
+            Simple pricing for <span className="text-[#2563EB]">every practice.</span>
           </h2>
-          <p className="text-[16px] leading-[1.6] text-[#475569] max-w-xl mx-auto">
-            One plan today, more coming as DentDock grows. Start with a 30-day free trial — no card needed.
+          <p className="mt-5 text-base md:text-lg text-muted-foreground">
+            One plan today, more coming as DentDock grows. Start with a 30-day free trial.
           </p>
         </motion.div>
 
