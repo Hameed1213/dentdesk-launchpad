@@ -116,6 +116,13 @@ export default function PricingCTA() {
                 </button>
               );
             })}
+
+            <a
+              href="https://app.dentdock.co.uk/signup"
+              className="mt-2 inline-flex items-center justify-center gap-2 bg-[#2563EB] text-white text-[14px] font-semibold px-6 py-3 rounded-xl hover:bg-[#1d4ed8] transition-all shadow-lg shadow-blue-500/20"
+            >
+              Start free trial <ArrowRight className="w-4 h-4" />
+            </a>
           </motion.div>
 
           {/* Right — Includes */}
