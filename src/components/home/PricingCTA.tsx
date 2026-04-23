@@ -165,19 +165,6 @@ export default function PricingCTA() {
           </motion.div>
         </div>
 
-        {/* Footer row */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6, delay: 0.25 }}
-          className="mt-8 flex justify-center"
-        >
-          <div className="inline-flex items-center gap-2 text-[13px] text-[#475569]">
-            <span className="w-2 h-2 rounded-full bg-[#2563EB]" />
-            Billed monthly · cancel anytime
-          </div>
-        </motion.div>
       </div>
     </section>
   );
