@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Card } from "@/components/ui/card";
 import {
   User,
@@ -446,37 +447,178 @@ const PortalVisual = () => (
 
 /* ---------- SMS reminder visual ---------- */
 
-const SmsVisual = () => (
-  <div className="rounded-xl bg-white/80 backdrop-blur-md border border-white shadow-sm p-4 overflow-hidden">
-    {/* Contact header */}
-    <div className="flex items-center gap-2.5 pb-3 border-b border-neutral-100">
-      <div className="w-8 h-8 rounded-full bg-[#2563EB] flex items-center justify-center text-white text-[11px] font-bold shrink-0">
-        SD
-      </div>
-      <div className="min-w-0 flex-1">
-        <div className="text-[12px] font-semibold text-foreground truncate">
-          Smile Dental
-        </div>
-        <div className="text-[9px] text-muted-foreground">SMS · Today 09:00</div>
-      </div>
-      <MessageSquare className="w-3.5 h-3.5 text-[#2563EB]" />
-    </div>
+const smsMessages = [
+  { id: 1, type: "automated", text: "Reminder sent — tomorrow at 10:00am" },
+  {
+    id: 2,
+    type: "outbound",
+    text: "Hi Sarah, your appointment is tomorrow at 10:00am — Smile Dental 👋",
+  },
+  { id: 3, type: "inbound", text: "Thanks, see you tomorrow! 😊" },
+] as const;
 
-    {/* Message bubble */}
-    <div className="mt-3 flex">
-      <div className="max-w-[85%] rounded-2xl rounded-bl-md bg-[#2563EB]/10 border border-[#2563EB]/15 px-3 py-2">
-        <p className="text-[11px] leading-snug text-foreground">
-          Hi Sarah, reminder: your appointment is tomorrow at{" "}
-          <span className="font-semibold">10:00am</span> — Smile Dental
-        </p>
+const SmsVisual = () => {
+  const [visibleMessages, setVisibleMessages] = useState<number[]>([]);
+  const [typing, setTyping] = useState(false);
+  const [typingFor, setTypingFor] = useState<number | null>(null);
+
+  useEffect(() => {
+    const timers: ReturnType<typeof setTimeout>[] = [];
+
+    function runSequence() {
+      setVisibleMessages([]);
+      setTyping(false);
+      setTypingFor(null);
+
+      timers.push(setTimeout(() => setVisibleMessages([1]), 600));
+      timers.push(
+        setTimeout(() => {
+          setTyping(true);
+          setTypingFor(2);
+        }, 1800),
+      );
+      timers.push(
+        setTimeout(() => {
+          setTyping(false);
+          setTypingFor(null);
+          setVisibleMessages((prev) => [...prev, 2]);
+        }, 3200),
+      );
+      timers.push(
+        setTimeout(() => {
+          setTyping(true);
+          setTypingFor(3);
+        }, 4400),
+      );
+      timers.push(
+        setTimeout(() => {
+          setTyping(false);
+          setTypingFor(null);
+          setVisibleMessages((prev) => [...prev, 3]);
+        }, 5600),
+      );
+      timers.push(setTimeout(runSequence, 8000));
+    }
+
+    runSequence();
+    return () => timers.forEach(clearTimeout);
+  }, []);
+
+  return (
+    <div className="rounded-xl bg-white/80 backdrop-blur-md border border-white shadow-sm p-4 overflow-hidden">
+      {/* SMS Header */}
+      <div className="flex items-center gap-3 pb-3 border-b border-[#e2e8f0] mb-3">
+        <div className="w-9 h-9 rounded-full bg-[#2563EB] flex items-center justify-center text-white text-[12px] font-bold flex-shrink-0">
+          SD
+        </div>
+        <div>
+          <div className="text-[13px] font-semibold text-[#0f172a]">
+            Smile Dental
+          </div>
+          <div className="text-[11px] text-neutral-400">SMS · Today 09:00</div>
+        </div>
+      </div>
+
+      {/* Messages */}
+      <div className="flex flex-col gap-2">
+        {smsMessages.map(
+          (msg) =>
+            visibleMessages.includes(msg.id) && (
+              <div
+                key={msg.id}
+                style={{
+                  animation:
+                    "msgSlideIn 0.35s cubic-bezier(0.34,1.2,0.64,1) forwards",
+                }}
+              >
+                {msg.type === "automated" && (
+                  <div className="flex justify-center">
+                    <div className="bg-[#f1f5f9] border border-dashed border-[#e2e8f0] rounded-xl px-3 py-1.5 text-[11px] text-neutral-400 italic text-center">
+                      {msg.text}
+                    </div>
+                  </div>
+                )}
+                {msg.type === "outbound" && (
+                  <div className="flex justify-end">
+                    <div className="bg-[#2563EB] rounded-2xl rounded-br-sm px-3 py-2 max-w-[85%]">
+                      <p className="text-[12px] text-white leading-relaxed">
+                        {msg.text}
+                      </p>
+                    </div>
+                  </div>
+                )}
+                {msg.type === "inbound" && (
+                  <div className="flex justify-start">
+                    <div className="bg-white border border-[#e2e8f0] rounded-2xl rounded-bl-sm px-3 py-2 max-w-[85%] shadow-sm">
+                      <p className="text-[12px] text-[#0f172a] leading-relaxed">
+                        {msg.text}
+                      </p>
+                    </div>
+                  </div>
+                )}
+              </div>
+            ),
+        )}
+
+        {typing && (
+          <div style={{ animation: "msgSlideIn 0.3s ease forwards" }}>
+            {typingFor === 3 ? (
+              <div className="flex justify-start">
+                <div className="bg-white border border-[#e2e8f0] rounded-2xl rounded-bl-sm px-3 py-2.5 shadow-sm">
+                  <div className="flex gap-1 items-center">
+                    <span
+                      className="w-1.5 h-1.5 rounded-full bg-neutral-300"
+                      style={{ animation: "typingDot 1.2s ease-in-out infinite" }}
+                    />
+                    <span
+                      className="w-1.5 h-1.5 rounded-full bg-neutral-300"
+                      style={{
+                        animation:
+                          "typingDot 1.2s ease-in-out 0.2s infinite",
+                      }}
+                    />
+                    <span
+                      className="w-1.5 h-1.5 rounded-full bg-neutral-300"
+                      style={{
+                        animation:
+                          "typingDot 1.2s ease-in-out 0.4s infinite",
+                      }}
+                    />
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <div className="flex justify-end">
+                <div className="bg-[#2563EB] rounded-2xl rounded-br-sm px-3 py-2.5">
+                  <div className="flex gap-1 items-center">
+                    <span
+                      className="w-1.5 h-1.5 rounded-full bg-white/50"
+                      style={{ animation: "typingDot 1.2s ease-in-out infinite" }}
+                    />
+                    <span
+                      className="w-1.5 h-1.5 rounded-full bg-white/50"
+                      style={{
+                        animation:
+                          "typingDot 1.2s ease-in-out 0.2s infinite",
+                      }}
+                    />
+                    <span
+                      className="w-1.5 h-1.5 rounded-full bg-white/50"
+                      style={{
+                        animation:
+                          "typingDot 1.2s ease-in-out 0.4s infinite",
+                      }}
+                    />
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+        )}
       </div>
     </div>
-    <div className="mt-1.5 ml-1 flex items-center gap-1">
-      <Check className="w-2.5 h-2.5 text-[#2563EB]" strokeWidth={3} />
-      <span className="text-[9px] text-muted-foreground">Sent automatically</span>
-    </div>
-  </div>
-);
+  );
+};
 
 /* ---------- Cell config ---------- */
 
