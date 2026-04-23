@@ -1130,37 +1130,7 @@ export default function ProductShowcase() {
   const content = tabContent[activeTab];
 
   return (
-    <section ref={sectionRef} className="relative bg-white py-24 px-6 overflow-hidden">
-      <div
-        className="pointer-events-none absolute inset-0"
-        style={{
-          background:
-            "linear-gradient(180deg, rgba(255,255,255,0.95) 0%, rgba(219,234,254,0.75) 14%, rgba(191,219,254,0.9) 50%, rgba(219,234,254,0.75) 86%, rgba(255,255,255,0.95) 100%)",
-        }}
-      />
-      <div className="pointer-events-none absolute inset-0">
-        <div
-          className="absolute -top-40 -left-32 h-[560px] w-[560px] rounded-full"
-          style={{
-            background:
-              "radial-gradient(ellipse, rgba(37,99,235,0.18), transparent 72%)",
-          }}
-        />
-        <div
-          className="absolute top-1/3 -right-40 h-[520px] w-[520px] rounded-full"
-          style={{
-            background:
-              "radial-gradient(ellipse, rgba(96,165,250,0.22), transparent 72%)",
-          }}
-        />
-        <div
-          className="absolute -bottom-40 left-1/4 h-[500px] w-[500px] rounded-full"
-          style={{
-            background:
-              "radial-gradient(ellipse, rgba(147,197,253,0.22), transparent 72%)",
-          }}
-        />
-      </div>
+    <section ref={sectionRef} className="relative bg-[#F1F3F7] py-24 px-6 overflow-hidden">
       <div className="relative z-10 container max-w-6xl mx-auto">
         {/* Header */}
         <div className="flex flex-col items-center text-center">
