@@ -138,7 +138,7 @@ function WaitlistPage() {
             transition={{ duration: 0.6, ease: EASE, delay: 0.32 }}
             className="text-[15px] lg:text-[16px] leading-[1.6] text-[#475569] mt-4"
           >
-            Built for UK private practices. Add your details and we'll be in touch personally when it's your turn.
+            Built for UK private practices. Add your email and our team will reach out directly.
           </motion.p>
         </div>
 
