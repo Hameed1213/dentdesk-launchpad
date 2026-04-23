@@ -304,13 +304,13 @@ const PortalVisual = () => (
             <div className="text-[8px] font-semibold text-white bg-[#2563EB] px-2 py-1 rounded-md flex items-center gap-1">
               <Calendar size={8} /> Appointments
             </div>
-            <div className="text-[8px] font-semibold text-[#475569] bg-white border border-[#e2e8f0] px-2 py-1 rounded-md">
+            <div className="text-[8px] font-semibold text-[#475569] bg-[#f1f5f9] border border-[#e2e8f0] px-2 py-1 rounded-md">
               Forms
             </div>
-            <div className="text-[8px] font-semibold text-[#475569] bg-white border border-[#e2e8f0] px-2 py-1 rounded-md">
+            <div className="text-[8px] font-semibold text-[#475569] bg-[#f1f5f9] border border-[#e2e8f0] px-2 py-1 rounded-md">
               Payments
             </div>
-            <div className="text-[8px] font-semibold text-[#475569] bg-white border border-[#e2e8f0] px-2 py-1 rounded-md">
+            <div className="text-[8px] font-semibold text-[#475569] bg-[#f1f5f9] border border-[#e2e8f0] px-2 py-1 rounded-md">
               Details
             </div>
           </div>
