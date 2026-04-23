@@ -1130,7 +1130,7 @@ export default function ProductShowcase() {
   const content = tabContent[activeTab];
 
   return (
-    <section ref={sectionRef} className="relative bg-[#F1F3F7] py-24 px-6 overflow-hidden">
+    <section ref={sectionRef} className="relative bg-gradient-to-br from-[#DBEAFE] via-[#EFF6FF] to-white py-24 px-6 overflow-hidden">
       <div className="relative z-10 container max-w-6xl mx-auto">
         {/* Header */}
         <div className="flex flex-col items-center text-center">
