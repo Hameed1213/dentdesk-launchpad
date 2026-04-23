@@ -96,7 +96,12 @@ export default function PricingCTA() {
                     </div>
                   </div>
                   <div className="text-right">
-                    <span className={`text-2xl font-medium ${isSelected ? "text-white" : "text-foreground"}`}>
+                    <span
+                      className={[
+                        plan.priceSuffix ? "text-2xl font-medium" : "text-sm font-medium",
+                        isSelected ? "text-white" : plan.disabled ? "text-[#94A3B8]" : "text-foreground",
+                      ].join(" ")}
+                    >
                       {plan.price}
                     </span>
                     {plan.priceSuffix && (
