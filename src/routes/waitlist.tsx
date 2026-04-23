@@ -357,6 +357,30 @@ function WaitlistPage() {
           </div>
         </div>
       </section>
+
+      {/* Tablet-only: bottom legal/contact strip */}
+      <div className="hidden md:max-lg:flex justify-center gap-6 px-6 py-6 border-t border-neutral-100">
+        <Link
+          to="/privacy"
+          className="text-[12px] text-neutral-400 hover:text-neutral-600 transition-colors"
+        >
+          Privacy
+        </Link>
+        <Link
+          to="/terms"
+          className="text-[12px] text-neutral-400 hover:text-neutral-600 transition-colors"
+        >
+          Terms
+        </Link>
+        <a
+          href="https://wa.me/447700000000"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-[12px] text-neutral-400 hover:text-neutral-600 transition-colors"
+        >
+          Contact
+        </a>
+      </div>
     </main>
   );
 }
