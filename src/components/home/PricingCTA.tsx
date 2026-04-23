@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ArrowRight, Check, Circle, CheckCircle2, Lock } from "lucide-react";
+import { ArrowRight, Check, Circle, CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
 
 type Plan = {
