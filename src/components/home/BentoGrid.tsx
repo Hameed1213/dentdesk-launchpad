@@ -7,6 +7,8 @@ import {
   Users,
   Monitor,
   Calendar,
+  CalendarDays,
+  MapPin,
   Check,
   X,
   MessageSquare,
