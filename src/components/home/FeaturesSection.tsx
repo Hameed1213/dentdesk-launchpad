@@ -284,7 +284,7 @@ const problems = [
   {
     Icon: Settings,
     headline: "After the sale, you're on your own",
-    body: "Most dental software companies sell you the product and disappear. A chatbot, a help article and a 48-hour ticket.",
+    body: "Most dental software companies sell you the product and disappear. A chatbot, a help article and a 72-hour ticket.",
     preview: <ComplexityPreview />,
     rgb: AMBER,
   },
