@@ -1,38 +1,30 @@
 
-## Stacked Toast Notifications
 
-Restyle the "Most practices are overpaying" preview so toasts stack on top of each other (like the iOS notification stack in the reference), instead of one replacing another.
+## Match "Know your numbers." card to the "Patients manage themselves." layout
 
-### Behaviour
-- A new toast slides in from the bottom every ~2.5s.
-- Previously shown toasts stay visible and shift upward + scale down slightly, creating a layered stack (newest in front, oldest behind).
-- Once 3 toasts are stacked, the whole stack fades out and the loop restarts — giving a continuous "money keeps coming out" feel.
+Two adjustments to the Analytics cell in `src/components/home/BentoGrid.tsx`:
 
-### Visual stack
-```text
-┌──────────────────────────┐  ← oldest, smallest, most faded
-│  ┌────────────────────┐  │
-│  │  ┌──────────────┐  │  │  ← newest, full size, in front
-│  │  │ BARCLAYS  now│  │  │
-│  │  │ −£120         │  │  │
-└──┴──┴──────────────┴──┴──┘
+### 1. Image position — center-bottom, slightly cut off
+Today both `popOut` cards share the same offset (`left-[32%] -top-[4%]`). On the wider 4-col Portal card this looks centered and bleeds off the bottom; on the narrower 3-col Analytics card it looks shoved up and to the right.
+
+Fix by giving the Analytics card its own popOut positioning:
+- Horizontally center the image inside the right-hand area (instead of left-aligning it at 32%).
+- Push it **down** so the bottom is clipped by the card edge, matching the Portal visual.
+
+Implementation: render the popOut wrapper conditionally. For the Analytics cell use:
 ```
+absolute right-4 left-[38%] top-[18%] pointer-events-none
+```
+(Portal keeps its current `left-[32%] -top-[4%]`.)
 
-### Technical changes
+The simplest way is to add an optional `popOutClass` field on the cell config and fall back to the current Portal positioning when it isn't set.
 
-**`src/styles.css`**
-- Remove `toast-cycle` keyframes (single-toast swap).
-- Add 3 new keyframe sets, one per stack position:
-  - `toast-stack-1` (front): slides up from below, stays at `translateY(0) scale(1)`, fades out at end.
-  - `toast-stack-2` (middle): starts at front position, then shifts to `translateY(-14px) scale(0.94)` with reduced opacity when toast 2 arrives.
-  - `toast-stack-3` (back): goes through front → middle → back (`translateY(-26px) scale(0.88)`, more faded), then exits.
-- All three share the same total duration (~9s) so they loop in sync.
+### 2. Title on two lines
+Tighten the title's max width on the Analytics card so "Know your numbers." breaks naturally into two lines:
+- Add `max-w-[140px]` (or similar) to the `<h3>` for the Analytics cell only, via an optional `titleClass` field on the cell config.
 
-**`src/components/home/FeaturesSection.tsx` — `PricePreview`**
-- Keep the 3 charges array.
-- Replace `animate-toast-cycle` + `animationDelay` with per-index animation classes (`animate-toast-stack-1/2/3`).
-- Use `bottom-4` anchor so stack grows upward.
-- Add `transform-gpu` and `will-change-transform` for smoother motion.
-- Keep `min-h-[168px]` on the container so card height stays aligned with the others.
+### Files
+- `src/components/home/BentoGrid.tsx` — add `popOutClass` and `titleClass` optional fields, apply them in the `cell.layout === "side"` branch, and set them on the `TrendingUp` (Know your numbers) cell entry.
 
-No other components or files are affected.
+No other components or styles change.
+
