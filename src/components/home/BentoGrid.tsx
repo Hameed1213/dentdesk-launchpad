@@ -499,7 +499,34 @@ const SmsVisual = () => {
           setVisibleMessages((prev) => [...prev, 3]);
         }, 5600),
       );
-      timers.push(setTimeout(runSequence, 8000));
+      // After SMS completes — crossfade to email
+      timers.push(
+        setTimeout(() => {
+          setChannelVisible(false);
+          timers.push(
+            setTimeout(() => {
+              setChannel("email");
+              setChannelVisible(true);
+
+              timers.push(
+                setTimeout(() => {
+                  setChannelVisible(false);
+                  timers.push(
+                    setTimeout(() => {
+                      setChannel("sms");
+                      setChannelVisible(true);
+                      setVisibleMessages([]);
+                      setTyping(false);
+                      setTypingFor(null);
+                      timers.push(setTimeout(runSequence, 400));
+                    }, 400),
+                  );
+                }, 5000),
+              );
+            }, 400),
+          );
+        }, 8000),
+      );
     }
 
     runSequence();
