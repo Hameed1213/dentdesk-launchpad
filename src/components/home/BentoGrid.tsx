@@ -347,7 +347,7 @@ const PortalVisual = () => (
             ].map((p) => (
               <div
                 key={p.svc + p.when}
-                className="bg-white border border-[#e2e8f0] rounded-lg p-1.5"
+                className="bg-[#f1f5f9] border border-[#e2e8f0] rounded-lg p-1.5"
               >
                 <div className="flex items-center justify-between gap-1">
                   <div className="text-[8px] font-bold text-[#0f172a] truncate">
