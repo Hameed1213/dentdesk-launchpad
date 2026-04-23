@@ -57,6 +57,10 @@ export default function Footer() {
                       if (el) {
                         e.preventDefault();
                         el.scrollIntoView({ behavior: "smooth", block: "start" });
+                      } else {
+                        // Element not on current page — navigate to home with hash
+                        e.preventDefault();
+                        window.location.href = `/#${id}`;
                       }
                     }}
                     className="text-[14px] text-white/70 hover:text-white transition-colors"
