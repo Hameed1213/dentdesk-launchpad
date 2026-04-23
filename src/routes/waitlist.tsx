@@ -1,7 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
+import { motion } from "framer-motion";
 import { ArrowLeft, Check, Mail, Sparkles } from "lucide-react";
 import ToothIcon from "@/components/icons/ToothIcon";
+
+const EASE = [0.22, 1, 0.36, 1] as const;
 
 export const Route = createFileRoute("/waitlist")({
   component: WaitlistPage,
