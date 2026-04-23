@@ -902,14 +902,12 @@ export default function BentoGrid() {
                       </h3>
                     </div>
                     {cell.popOut ? (
-                      <div
-                        className={`relative w-full md:${(("popOutClass" in cell && cell.popOutClass) ? cell.popOutClass : "absolute right-0 left-[32%] -top-[4%] pointer-events-none")}`}
-                      >
+                      <>
                         <div className="md:hidden w-full">{cell.visual}</div>
                         <div className={`hidden md:block ${("popOutClass" in cell && cell.popOutClass) ? cell.popOutClass : "absolute right-0 left-[32%] -top-[4%] pointer-events-none"}`}>
                           {cell.visual}
                         </div>
-                      </div>
+                      </>
                     ) : (
                       <>
                         <div className="md:hidden w-full">{cell.visual}</div>
