@@ -450,6 +450,8 @@ const cells = [
     span: "md:col-span-3 md:row-span-1",
     layout: "side" as const,
     popOut: true,
+    titleClass: "max-w-[140px]",
+    popOutClass: "absolute right-4 left-[38%] top-[18%] pointer-events-none",
   },
   {
     Icon: FileCheck,
