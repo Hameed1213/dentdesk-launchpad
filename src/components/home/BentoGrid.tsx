@@ -7,6 +7,8 @@ import {
   Users,
   Monitor,
   Calendar,
+  CalendarDays,
+  MapPin,
   Check,
   X,
   MessageSquare,
@@ -680,50 +682,72 @@ function EmailView() {
 
       {/* Email card */}
       <div
-        className="bg-white border border-[#e2e8f0] rounded-xl overflow-hidden"
+        className="bg-white border border-[#e2e8f0] rounded-xl overflow-hidden shadow-sm"
         style={{ animation: "msgSlideIn 0.4s ease forwards" }}
       >
-        {/* Email header bar */}
-        <div className="bg-[#2563EB] px-4 py-3">
-          <div className="text-[10px] font-semibold text-blue-200 uppercase tracking-wider mb-0.5">
-            Appointment confirmed
+        {/* Subject line */}
+        <div className="px-4 pt-3 pb-2 border-b border-[#f1f5f9]">
+          <div className="text-[10px] font-semibold text-neutral-400 uppercase tracking-wider mb-0.5">
+            Subject
           </div>
-          <div className="text-[13px] font-bold text-white leading-snug">
-            Your appointment at Smile Dental
+          <div className="text-[13px] font-semibold text-[#0f172a]">
+            Your appointment is confirmed
           </div>
         </div>
 
         {/* Email body */}
         <div className="px-4 py-3">
           <p className="text-[12px] text-neutral-500 mb-3 leading-relaxed">
-            Hi Sarah, your appointment is confirmed:
+            Hi Sarah, here are the details for your upcoming appointment.
           </p>
 
-          {/* Appointment detail card */}
-          <div className="bg-[#f8fafc] border border-[#e2e8f0] rounded-lg px-3 py-2.5 mb-3">
-            <div className="text-[13px] font-bold text-[#0f172a] mb-1">
+          {/* Appointment detail block */}
+          <div className="bg-[#f8fafc] border border-[#e2e8f0] rounded-lg px-3 py-3 mb-3">
+            <div className="text-[13px] font-bold text-[#0f172a] mb-2">
               Hygiene check
             </div>
-            <div className="text-[11px] text-neutral-400 flex items-center gap-1 mb-0.5">
-              📅 Thu 18 Apr · 10:30am
+            <div className="flex flex-col gap-1">
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 flex-shrink-0">
+                  <CalendarDays size={11} className="text-neutral-400" />
+                </div>
+                <span className="text-[11px] text-neutral-500">
+                  Thu 18 Apr · 10:30am
+                </span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 flex-shrink-0">
+                  <User size={11} className="text-neutral-400" />
+                </div>
+                <span className="text-[11px] text-neutral-500">
+                  Dr. James Webb
+                </span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 flex-shrink-0">
+                  <MapPin size={11} className="text-neutral-400" />
+                </div>
+                <span className="text-[11px] text-neutral-500">
+                  Smile Dental, London
+                </span>
+              </div>
             </div>
-            <div className="text-[11px] text-neutral-400">👤 Dr. James Webb</div>
           </div>
 
-          {/* CTA button */}
-          <div className="bg-[#2563EB] rounded-lg px-3 py-2 text-center mb-3">
-            <span className="text-[12px] font-semibold text-white">
-              Add to calendar →
+          {/* CTA */}
+          <div className="bg-[#2563EB] rounded-lg py-2 text-center">
+            <span className="text-[12px] font-semibold text-white tracking-[-0.01em]">
+              Add to calendar
             </span>
           </div>
         </div>
 
         {/* Footer */}
-        <div className="border-t border-[#e2e8f0] px-4 py-2 flex items-center justify-between">
-          <span className="text-[10px] text-neutral-300">Sent automatically</span>
-          <span className="text-[10px] font-semibold text-neutral-400">
-            Dent Dock
+        <div className="border-t border-[#f1f5f9] px-4 py-2 flex items-center justify-between bg-[#fafafa]">
+          <span className="text-[10px] text-neutral-300 font-medium">
+            Sent automatically by Dent Dock
           </span>
+          <div className="w-2 h-2 rounded-full bg-[#22c55e]" />
         </div>
       </div>
     </>
