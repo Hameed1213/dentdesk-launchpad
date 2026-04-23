@@ -136,7 +136,7 @@ function WaitlistPage() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: EASE, delay: 0.2 }}
-            className="text-3xl lg:text-5xl font-medium tracking-tight text-[#0F172A] leading-[1.1]"
+            className="text-3xl md:max-lg:text-4xl lg:text-5xl font-medium tracking-tight text-[#0F172A] leading-[1.1]"
           >
             Practice management,{" "}
             <span className="text-[#2563EB]">finally friendly</span>
