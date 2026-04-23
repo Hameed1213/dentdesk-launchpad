@@ -545,11 +545,6 @@ function PaymentsMockup() {
       value: "↑ 18%",
       color: "text-[#16a34a]",
     },
-    {
-      label: "TOTAL TXNS",
-      value: "47",
-      color: "text-[#0F172A]",
-    },
   ];
 
   return (
