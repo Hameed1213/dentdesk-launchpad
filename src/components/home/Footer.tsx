@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import ToothIcon from "@/components/icons/ToothIcon";
 
 const productLinks = [
@@ -35,15 +34,9 @@ export default function Footer() {
                 Dent Dock
               </span>
             </a>
-            <motion.p
-              initial={{ opacity: 0, x: 32 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-              className="mt-4 text-[14px] leading-[1.6] text-white/60 max-w-[200px]"
-            >
+            <p className="mt-4 text-[14px] leading-[1.6] text-white/60 max-w-[200px]">
               Practice management software built for independent UK private practices.
-            </motion.p>
+            </p>
           </div>
 
           {/* Product */}
