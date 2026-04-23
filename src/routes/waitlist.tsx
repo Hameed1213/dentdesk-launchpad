@@ -61,9 +61,18 @@ function WaitlistPage() {
   };
 
   return (
-    <main className="min-h-screen bg-white flex flex-col lg:flex-row">
+    <main className="min-h-screen bg-white flex flex-col lg:flex-row relative">
+      {/* Tablet-only: Back to home pinned top-right */}
+      <Link
+        to="/"
+        className="hidden md:max-lg:inline-flex absolute top-6 right-6 z-30 items-center gap-1.5 text-[13px] font-medium text-neutral-500 hover:text-neutral-800 transition-colors"
+      >
+        <ArrowLeft className="w-4 h-4" />
+        Back to home
+      </Link>
+
       {/* ===================== LEFT — copy ===================== */}
-      <section className="relative lg:w-1/2 bg-gradient-to-br from-[#DBEAFE] via-[#EFF6FF] to-white overflow-hidden flex flex-col px-8 py-10 lg:px-12 lg:py-14 min-h-[280px] lg:min-h-screen">
+      <section className="relative lg:w-1/2 bg-gradient-to-br from-[#DBEAFE] via-[#EFF6FF] to-white overflow-hidden flex flex-col px-8 py-10 lg:px-12 lg:py-14 min-h-[280px] md:max-lg:min-h-0 md:max-lg:py-8 lg:min-h-screen">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2 z-20 relative">
           <ToothIcon size={24} color="#2563EB" />
@@ -142,8 +151,8 @@ function WaitlistPage() {
           </motion.p>
         </div>
 
-        {/* Footer links */}
-        <div className="relative z-10 mt-8 flex items-center gap-5 text-[13px] text-[#475569]">
+        {/* Footer links — hidden on tablet (rendered at page bottom instead) */}
+        <div className="relative z-10 mt-8 flex md:max-lg:hidden items-center gap-5 text-[13px] text-[#475569]">
           <Link to="/privacy" className="hover:text-[#0F172A] transition-colors">
             Privacy
           </Link>
@@ -163,7 +172,8 @@ function WaitlistPage() {
 
       {/* ===================== RIGHT — form ===================== */}
       <section className="lg:w-1/2 flex flex-col px-6 sm:px-10 lg:px-16 py-10 lg:py-14 relative">
-        <div className="flex justify-end">
+        {/* "Back to home" — hidden on tablet (now pinned to page top-right) */}
+        <div className="flex justify-end md:max-lg:hidden">
           <Link
             to="/"
             className="inline-flex items-center gap-1.5 text-sm font-medium text-neutral-600 hover:text-neutral-900 transition-colors"
@@ -173,7 +183,7 @@ function WaitlistPage() {
         </div>
 
         <div className="flex-1 flex items-center justify-center">
-          <div className="w-full max-w-md py-10">
+          <div className="w-full max-w-md md:max-lg:max-w-none py-10">
             {submitted ? (
               <motion.div
                 initial={{ opacity: 0, scale: 0.96, y: 12 }}
@@ -347,6 +357,30 @@ function WaitlistPage() {
           </div>
         </div>
       </section>
+
+      {/* Tablet-only: bottom legal/contact strip */}
+      <div className="hidden md:max-lg:flex justify-center gap-6 px-6 py-6 border-t border-neutral-100">
+        <Link
+          to="/privacy"
+          className="text-[12px] text-neutral-400 hover:text-neutral-600 transition-colors"
+        >
+          Privacy
+        </Link>
+        <Link
+          to="/terms"
+          className="text-[12px] text-neutral-400 hover:text-neutral-600 transition-colors"
+        >
+          Terms
+        </Link>
+        <a
+          href="https://wa.me/447700000000"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-[12px] text-neutral-400 hover:text-neutral-600 transition-colors"
+        >
+          Contact
+        </a>
+      </div>
     </main>
   );
 }
