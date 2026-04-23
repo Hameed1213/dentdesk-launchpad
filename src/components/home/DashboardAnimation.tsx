@@ -854,7 +854,7 @@ export default function DashboardAnimation() {
 
       {/* MOBILE — simple clean card, fade up on scroll */}
       <motion.div
-        className="block md:hidden mt-8 mx-4 pb-12"
+        className="hidden mt-8 mx-4 pb-12"
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
