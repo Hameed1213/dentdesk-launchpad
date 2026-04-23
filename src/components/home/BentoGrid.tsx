@@ -515,7 +515,7 @@ const SmsVisual = () => {
           <div className="text-[13px] font-semibold text-[#0f172a]">
             Smile Dental
           </div>
-          <div className="text-[11px] text-neutral-400">SMS · Today 09:00</div>
+          <div className="text-[11px] text-neutral-400">SMS</div>
         </div>
       </div>
 
