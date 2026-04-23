@@ -869,10 +869,11 @@ export default function BentoGrid() {
                   <div className="relative flex h-full">
                     {/* Left: icon + title */}
                     <div className="flex-1 flex flex-col">
-                      <div className="w-11 h-11 rounded-xl bg-white border border-neutral-100 flex items-center justify-center mb-6 shadow-sm">
+                      <div className="w-11 h-11 rounded-xl bg-white border border-neutral-100 flex items-center justify-center mb-6 shadow-sm shrink-0">
                         <Icon
-                          className="w-5 h-5 text-[#2563EB]"
+                          size={20}
                           strokeWidth={1.75}
+                          className="text-[#2563EB]"
                         />
                       </div>
                       <h3 className={`text-[19px] font-semibold text-foreground tracking-tight leading-snug ${("titleClass" in cell && cell.titleClass) ? cell.titleClass : "max-w-[220px]"}`}>
@@ -902,10 +903,11 @@ export default function BentoGrid() {
                   </div>
                 ) : (
                   <div className="relative flex flex-col h-full">
-                    <div className="w-11 h-11 rounded-xl bg-white border border-neutral-100 flex items-center justify-center mb-6 shadow-sm">
+                    <div className="w-11 h-11 rounded-xl bg-white border border-neutral-100 flex items-center justify-center mb-6 shadow-sm shrink-0">
                       <Icon
-                        className="w-5 h-5 text-[#2563EB]"
+                        size={20}
                         strokeWidth={1.75}
+                        className="text-[#2563EB]"
                       />
                     </div>
                     <h3 className="text-[19px] font-semibold text-foreground tracking-tight leading-snug">
