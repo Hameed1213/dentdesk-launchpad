@@ -387,7 +387,7 @@ const PortalVisual = () => (
             <div className="text-[8px] font-semibold text-[#475569] bg-[#F3F6FD] border border-[#e2e8f0] px-2 py-1 rounded-md">
               Payments
             </div>
-            <div className="text-[8px] font-semibold text-[#475569] bg-[#F3F6FD] border border-[#e2e8f0] px-2 py-1 rounded-md">
+            <div className="hidden sm:block text-[8px] font-semibold text-[#475569] bg-[#F3F6FD] border border-[#e2e8f0] px-2 py-1 rounded-md">
               Details
             </div>
           </div>
@@ -399,15 +399,15 @@ const PortalVisual = () => (
           {/* Upcoming appointment card */}
           <div className="bg-[#F3F6FD] border border-[#e2e8f0] rounded-lg p-2 mb-2.5 flex items-center justify-between">
             <div className="min-w-0">
-              <div className="text-[9px] font-bold text-[#0f172a] truncate">
+              <div className="text-[10px] sm:text-[9px] font-bold text-[#0f172a] truncate">
                 Hygiene check
               </div>
-              <div className="text-[8px] text-[#64748b]">with Dr. J. Webb</div>
-              <div className="text-[8px] text-[#64748b]">
+              <div className="text-[9px] sm:text-[8px] text-[#64748b]">with Dr. J. Webb</div>
+              <div className="text-[9px] sm:text-[8px] text-[#64748b]">
                 Thu 18 Apr · 10:30am
               </div>
             </div>
-            <span className="text-[7px] font-semibold bg-emerald-100 text-emerald-700 px-1.5 py-0.5 rounded-full shrink-0">
+            <span className="text-[8px] sm:text-[7px] font-semibold bg-emerald-100 text-emerald-700 px-1.5 py-0.5 rounded-full shrink-0">
               Confirmed
             </span>
           </div>
@@ -415,30 +415,30 @@ const PortalVisual = () => (
           {/* Past label */}
           <div className="text-[9px] font-bold text-[#0f172a] mb-1">Past</div>
           {/* Past grid */}
-          <div className="grid grid-cols-2 gap-1.5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
             {[
               { svc: "New Patient Checkup", when: "Thu 16 Apr · 3:30pm" },
               { svc: "Hygiene Appointment", when: "Thu 16 Apr · 2:30pm" },
               { svc: "Routine Checkup", when: "Wed 15 Apr · 1:45pm" },
               { svc: "Whitening", when: "Wed 15 Apr · 12:00pm" },
-            ].map((p) => (
+            ].map((p, idx) => (
               <div
                 key={p.svc + p.when}
-                className="bg-[#F3F6FD] border border-[#e2e8f0] rounded-lg p-1.5"
+                className={`bg-[#F3F6FD] border border-[#e2e8f0] rounded-lg p-1.5 ${idx >= 2 ? "hidden sm:block" : ""}`}
               >
                 <div className="flex items-center justify-between gap-1">
-                  <div className="text-[8px] font-bold text-[#0f172a] truncate">
+                  <div className="text-[10px] sm:text-[8px] font-bold text-[#0f172a] truncate">
                     {p.svc}
                   </div>
-                  <span className="text-[6px] font-semibold bg-emerald-100 text-emerald-700 px-1 py-0.5 rounded-full shrink-0">
+                  <span className="text-[8px] sm:text-[6px] font-semibold bg-emerald-100 text-emerald-700 px-1.5 sm:px-1 py-0.5 rounded-full shrink-0">
                     Confirmed
                   </span>
                 </div>
-                <div className="text-[7px] text-[#64748b] mt-0.5">
+                <div className="text-[9px] sm:text-[7px] text-[#64748b] mt-0.5">
                   with Dr. Webb
                 </div>
-                <div className="text-[7px] text-[#64748b]">{p.when}</div>
-                <div className="text-[7px] font-semibold text-[#2563EB] mt-0.5">
+                <div className="text-[9px] sm:text-[7px] text-[#64748b]">{p.when}</div>
+                <div className="text-[9px] sm:text-[7px] font-semibold text-[#2563EB] mt-0.5">
                   Book again →
                 </div>
               </div>
