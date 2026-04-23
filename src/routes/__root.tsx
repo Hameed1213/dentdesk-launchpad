@@ -29,59 +29,23 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { name: "author", content: "Dent Dock" },
-      { title: "Dent Dock — Dental Practice Management Software" },
-      {
-        name: "description",
-        content:
-          "Online booking, automated reminders, payments and recalls for UK private dental practices. Set up in under 10 minutes. From £49/month.",
-      },
-      { property: "og:title", content: "Dent Dock — Dental Practice Management Software" },
-      {
-        property: "og:description",
-        content:
-          "Online booking, automated reminders, payments and recalls for UK private dental practices. Set up in under 10 minutes. From £49/month.",
-      },
+      { title: "Dent Dock" },
+      { name: "description", content: "Dental practice management software for UK private practices. Online booking, automated reminders, payments and recalls." },
+      { name: "author", content: "Lovable" },
+      { property: "og:title", content: "Dent Dock" },
+      { property: "og:description", content: "Dental practice management software for UK private practices. Online booking, automated reminders, payments and recalls." },
       { property: "og:type", content: "website" },
-      { property: "og:site_name", content: "Dent Dock" },
-      { property: "og:locale", content: "en_GB" },
-      { property: "og:image", content: "https://dentdock.co.uk/og-image.png" },
-      { property: "og:image:width", content: "1200" },
-      { property: "og:image:height", content: "630" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@dentdock" },
-      { name: "twitter:title", content: "Dent Dock — Dental Practice Management Software" },
-      {
-        name: "twitter:description",
-        content:
-          "Online booking, automated reminders, payments and recalls for UK private dental practices. From £49/month.",
-      },
-      { name: "twitter:image", content: "https://dentdock.co.uk/og-image.png" },
-      { name: "theme-color", content: "#2563EB" },
+      { name: "twitter:card", content: "summary" },
+      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "Dent Dock" },
+      { name: "twitter:description", content: "Dental practice management software for UK private practices. Online booking, automated reminders, payments and recalls." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/2gylzXc6BRPR8iug7rZHBUuq8Du1/social-images/social-1776969334430-Social_Media.webp" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/2gylzXc6BRPR8iug7rZHBUuq8Du1/social-images/social-1776969334430-Social_Media.webp" },
     ],
     links: [
       {
         rel: "stylesheet",
         href: appCss,
-      },
-      { rel: "manifest", href: "/manifest.webmanifest" },
-    ],
-    scripts: [
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "Organization",
-          name: "Dent Dock",
-          url: "https://dentdock.co.uk",
-          logo: "https://dentdock.co.uk/icon-512.png",
-          contactPoint: {
-            "@type": "ContactPoint",
-            contactType: "customer support",
-            email: "hello@dentdock.co.uk",
-          },
-          sameAs: [],
-        }),
       },
     ],
   }),
