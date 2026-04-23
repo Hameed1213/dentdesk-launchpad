@@ -17,7 +17,7 @@ export default function PricingCTA() {
     { name: "Enterprise", price: "Coming soon", note: "", comingSoon: true },
   ];
 
-  const [selected, setSelected] = useState<string>("Practice");
+  const [selected, setSelected] = useState<string>("Starter");
   const activePlan = plans.find((p) => p.name === selected) ?? plans[0];
   const isComingSoon = !!activePlan.comingSoon;
 
