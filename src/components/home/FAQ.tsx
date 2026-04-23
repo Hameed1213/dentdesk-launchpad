@@ -42,7 +42,7 @@ export default function FAQ() {
   ];
 
   return (
-    <section className="bg-white py-20 sm:py-28">
+    <section className="bg-white py-16 md:py-24">
       <div className="max-w-3xl mx-auto px-6">
         {/* Header */}
         <motion.div
