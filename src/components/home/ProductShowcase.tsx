@@ -1229,7 +1229,7 @@ export default function ProductShowcase() {
                 </p>
                 <Link
                   to="/waitlist"
-                  className="mt-6 inline-flex items-center gap-2 bg-[#2563EB] text-white text-sm font-semibold px-5 py-3 rounded-xl hover:bg-[#1d4fd8] transition-colors shadow-sm shadow-[#2563EB]/20"
+                  className="mt-6 w-full sm:w-auto inline-flex items-center justify-center sm:justify-start gap-2 bg-[#2563EB] text-white text-sm font-semibold px-5 py-3 rounded-xl hover:bg-[#1d4fd8] transition-colors shadow-sm shadow-[#2563EB]/20"
                 >
                   <span>{content.buttonText}</span>
                   <ArrowRight size={15} />
@@ -1270,10 +1270,10 @@ export default function ProductShowcase() {
               implementation fees, no onboarding calls.
             </p>
           </div>
-          <div className="flex flex-col items-start md:items-end gap-1 flex-shrink-0">
+          <div className="flex flex-col items-stretch md:items-end gap-1 flex-shrink-0 w-full md:w-auto">
             <a
               href="https://app.dentdock.co.uk/signup"
-              className="inline-flex items-center gap-2 border border-[#2563EB] text-[#2563EB] text-[14px] font-semibold px-5 py-2.5 rounded-xl hover:bg-[#2563EB] hover:text-white transition-all"
+              className="w-full md:w-auto inline-flex items-center justify-center gap-2 border border-[#2563EB] text-[#2563EB] text-[14px] font-semibold px-5 py-2.5 rounded-xl hover:bg-[#2563EB] hover:text-white transition-all"
             >
               Join the waitlist <ArrowRight className="w-4 h-4" />
             </a>
