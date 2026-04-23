@@ -167,7 +167,12 @@ function WaitlistPage() {
         <div className="flex-1 flex items-center justify-center">
           <div className="w-full max-w-md py-10">
             {submitted ? (
-              <div className="text-center py-8">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.96, y: 12 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                transition={{ duration: 0.5, ease: EASE }}
+                className="text-center py-8"
+              >
                 <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-full bg-[#dcfce7]">
                   <Check className="w-7 h-7 text-[#16a34a]" strokeWidth={3} />
                 </div>
@@ -184,7 +189,7 @@ function WaitlistPage() {
                 >
                   <ArrowLeft className="w-4 h-4" /> Back to home
                 </Link>
-              </div>
+              </motion.div>
             ) : (
               <>
                 <motion.div
