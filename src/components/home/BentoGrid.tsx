@@ -529,7 +529,7 @@ export default function BentoGrid() {
                           strokeWidth={1.75}
                         />
                       </div>
-                      <h3 className={`text-[19px] font-semibold text-foreground tracking-tight leading-snug max-w-[220px] ${("titleClass" in cell && cell.titleClass) ? cell.titleClass : ""}`}>
+                      <h3 className={`text-[19px] font-semibold text-foreground tracking-tight leading-snug ${("titleClass" in cell && cell.titleClass) ? cell.titleClass : "max-w-[220px]"}`}>
                         {cell.title}
                       </h3>
                     </div>
