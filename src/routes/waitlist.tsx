@@ -141,6 +141,53 @@ const EyeBall = ({
   );
 };
 
+/* ---------------- Tooth body (SVG) ---------------- */
+interface ToothBodyProps {
+  width: number;
+  height: number;
+  color: string;
+  children?: React.ReactNode;
+  style?: React.CSSProperties;
+  innerRef?: React.Ref<HTMLDivElement>;
+}
+
+const ToothBody = ({
+  width,
+  height,
+  color,
+  children,
+  style,
+  innerRef,
+}: ToothBodyProps) => {
+  // Tooth path: wide rounded crown on top, two stubby roots at the bottom.
+  // Using a 100x140 viewBox; preserveAspectRatio="none" lets it stretch.
+  const path =
+    "M50 4 C20 4 6 22 6 48 C6 70 12 84 16 96 C19 105 22 116 26 128 C29 137 36 138 40 130 L46 110 C48 104 52 104 54 110 L60 130 C64 138 71 137 74 128 C78 116 81 105 84 96 C88 84 94 70 94 48 C94 22 80 4 50 4 Z";
+  return (
+    <div
+      ref={innerRef}
+      style={{
+        position: "relative",
+        width,
+        height,
+        ...style,
+      }}
+    >
+      <svg
+        viewBox="0 0 100 140"
+        preserveAspectRatio="none"
+        width={width}
+        height={height}
+        style={{ display: "block", filter: "drop-shadow(0 6px 12px rgba(15,22,43,0.12))" }}
+      >
+        <path d={path} fill={color} />
+      </svg>
+      {/* Face layer sits above the SVG */}
+      <div style={{ position: "absolute", inset: 0 }}>{children}</div>
+    </div>
+  );
+};
+
 /* ---------------- Page ---------------- */
 function WaitlistPage() {
   const [email, setEmail] = useState("");
