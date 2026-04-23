@@ -1,39 +1,80 @@
 
 
-## Make "Paperless from day one." match "Patients manage themselves." style
+## Redesign Pricing section to match reference
 
-The "Paperless from day one." cell currently uses the default vertical layout with a narrow phone-shaped form mockup. The user wants the same overall bento layout (it stays a 3-col cell, icon + title on the left), but the visual on the right should be a **wide** browser/desktop-style mockup that **bleeds off** the card edge — exactly like the Portal screenshot in the "Patients manage themselves." cell.
+I'll rebuild `src/components/home/PricingCTA.tsx` to mirror the screenshot: a centered header, then a two-column layout with **stacked selectable plan cards on the left** and a **single "Includes" card on the right**.
 
-### Changes (single file: `src/components/home/BentoGrid.tsx`)
+### Layout
 
-**1. Replace `FormVisual` with a new wide `FormsVisual`**
+```text
+                    ┌─────────┐
+                    │ Pricing │      <- small pill
+                    └─────────┘
 
-A wide white "card" mockup styled like `PortalVisual`:
-- Same outer wrapper: `w-full h-full relative` with the soft drop-shadow filter.
-- Inner: `bg-white rounded-lg border border-neutral-200 p-5 overflow-hidden`.
-- Content represents a digital medical-history form filled in by a patient:
-  - Header row: "Medical history form" title + "Sarah Mitchell" subtext on the left, a green "Signed" pill on the right.
-  - Progress bar showing 100% complete.
-  - A 2-column grid of completed fields (Allergies → "Penicillin", Medications → "None", Conditions → "None", Pregnant? → "No"), each rendered as a small `bg-[#F3F6FD]` card with label + value, so the screenshot reads as wide and content-rich.
-  - A signature block at the bottom with a script-style signature line and a date.
-  - A faint "Submitted 14 Apr 2026" footer.
+           Simple pricing for every practice    <- big H2 (Inter medium, tight)
 
-This mirrors `PortalVisual`'s visual density and aspect ratio so it looks like a real software screenshot, not a phone.
+      One plan today, more coming as DentDock grows.
+        Start with a 30-day free trial — no card needed.
 
-**2. Update the cell config** for the "Paperless from day one." entry:
-- Change `span` to keep `md:col-span-3 md:row-span-1` (same width as today).
-- Add `layout: "side" as const`.
-- Add `popOut: true`.
-- Add `titleClass: "max-w-[140px]"` so "Paperless from day one." breaks into two lines like "Know your numbers." does.
-- Add `popOutClass: "absolute -right-2 left-[30%] top-[5%] pointer-events-none"` — same positioning recipe used by the Analytics cell so the wide screenshot sits to the right of the title and clips off the bottom/right edge of the card.
+  ┌────────────────────────────────┐   ┌────────────────────────────────┐
+  │ ◯  Solo                        │   │ Includes:                       │
+  │    Coming soon         £29/mo  │   │                                 │
+  ├────────────────────────────────┤   │  Unlimited dentists & staff  ✓  │
+  │ ◉  Practice  ★ Most popular   │   │  Online booking & scheduling ✓  │
+  │    Save 20%            £49/mo  │   │  Patient records & notes     ✓  │
+  ├────────────────────────────────┤   │  Automated reminders & recall✓  │
+  │ ◯  Multi-site                  │   │  Payments, deposits & forms  ✓  │
+  │    Coming soon         £99/mo  │   │  SMS reminders included      ✓  │
+  ├────────────────────────────────┤   │  Custom forms                ✓  │
+  │ ◯  Enterprise                  │   │  30-day free trial           ✓  │
+  │    Talk to us         Custom   │   │                                 │
+  └────────────────────────────────┘   └────────────────────────────────┘
 
-**3. Remove the now-unused `FormVisual`** (or keep it if simpler; final pass will delete it to avoid dead code).
+   ┌──────────────┐                    ◉ Billed monthly · cancel anytime
+   │ Start trial →│
+   └──────────────┘
+```
 
-No other cells, no global layout, and no styles outside this file change.
+### Plan card details (left column)
 
-### Result
+Four stacked cards, each in its own rounded `border border-neutral-200 bg-white` row, vertical gap ~12px:
 
-The "Paperless from day one." cell will look structurally identical to the Portal cell:
-- Icon + two-line title pinned to the left.
-- A wide, software-style screenshot of a completed digital form on the right, slightly clipped by the card's edges, giving the same "peeking into the product" feel as "Patients manage themselves."
+| Plan | State | Price | Note |
+|---|---|---|---|
+| Solo | unselected | £29/month | "Coming soon" pill |
+| **Practice** | **selected (filled `#2563EB`, white text)** | £49/month | "Most popular" pill |
+| Multi-site | unselected | £99/month | "Coming soon" pill |
+| Enterprise | unselected | Custom | "Talk to us" pill |
+
+- Each row: radio-style circle on the left (filled white check on the selected card, hollow on others), plan name + small note pill stacked, price right-aligned in `text-2xl font-medium`.
+- Selected card uses `bg-[#2563EB] text-white` with subtle inner shadow; pill becomes `bg-white/20 text-white`.
+- Only the Practice card is interactive for now (others marked `aria-disabled`, muted look). Selection is purely visual — no toggling logic needed since one plan is live.
+
+### Includes card (right column)
+
+- Same `rounded-2xl border border-neutral-200 bg-white p-8` container as the left stack's outer height.
+- Heading: "Includes:" in `text-[15px] font-semibold text-foreground`, small bottom border separator.
+- Features list: same items already in the file, each row = label on the left, blue `Check` icon on the right (matching screenshot's right-aligned checks), divided by a faint `divide-y divide-neutral-100`.
+
+### Footer row (below the two columns)
+
+- Left: primary CTA `Start free trial →` (existing button styles, `#2563EB`).
+- Right: small toggle-style indicator `● Billed monthly · cancel anytime` (purely decorative — visual nod to the "Renewed at..." pill in the reference, no real toggle since there's only one plan).
+
+### Section header
+
+- Centered "Pricing" pill: `inline-flex px-3 py-1 rounded-full bg-neutral-100 text-[12px] text-foreground/70`.
+- H2: `text-4xl md:text-5xl font-medium tracking-tight` — "Simple pricing for every practice."
+- Subtitle: muted-foreground, max-w-xl, centered.
+
+### Files touched
+
+- `src/components/home/PricingCTA.tsx` — full rewrite of the card body. No new dependencies (Check, ArrowRight already imported; will add `Circle` / `CheckCircle2` from lucide-react for the radio dots).
+- No other files change.
+
+### Out of scope
+
+- No real plan switching / billing-period toggle logic (single live plan).
+- No copy changes to the £49 price or feature list.
+- No changes to BentoGrid, FAQ, routes, or section order.
 
