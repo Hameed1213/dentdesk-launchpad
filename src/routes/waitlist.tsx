@@ -37,8 +37,6 @@ function WaitlistPage() {
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  const [isTyping, setIsTyping] = useState(false);
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const trimmedEmail = email.trim();
@@ -199,8 +197,6 @@ function WaitlistPage() {
                         type="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        onFocus={() => setIsTyping(true)}
-                        onBlur={() => setIsTyping(false)}
                         placeholder="you@practice.com"
                         maxLength={255}
                         autoComplete="email"
@@ -228,8 +224,6 @@ function WaitlistPage() {
                       type="text"
                       value={practice}
                       onChange={(e) => setPractice(e.target.value)}
-                      onFocus={() => setIsTyping(true)}
-                      onBlur={() => setIsTyping(false)}
                       placeholder="Smile Dental Clinic"
                       maxLength={120}
                       required
