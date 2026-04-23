@@ -72,7 +72,7 @@ function WaitlistPage() {
       </Link>
 
       {/* ===================== LEFT — copy ===================== */}
-      <section className="relative lg:w-1/2 bg-gradient-to-br from-[#DBEAFE] via-[#EFF6FF] to-white overflow-hidden flex flex-col px-8 py-10 lg:px-12 lg:py-14 min-h-[280px] md:max-lg:min-h-0 md:max-lg:py-8 lg:min-h-screen">
+      <section className="relative lg:w-1/2 bg-gradient-to-br from-[#DBEAFE] via-[#EFF6FF] to-white overflow-hidden flex flex-col px-8 py-10 lg:px-12 lg:py-14 min-h-[280px] md:max-lg:min-h-0 md:max-lg:py-12 lg:min-h-screen">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2 z-20 relative">
           <ToothIcon size={24} color="#2563EB" />
