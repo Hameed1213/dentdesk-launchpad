@@ -491,6 +491,7 @@ const cells = [
   {
     Icon: Monitor,
     title: "Patients manage themselves.",
+    description: "Book, reschedule, view history and fill forms, all without calling the practice.",
     visual: <PortalVisual />,
     span: "md:col-span-4 md:row-span-1",
     layout: "side" as const,
