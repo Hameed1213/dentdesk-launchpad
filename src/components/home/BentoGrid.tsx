@@ -866,14 +866,19 @@ export default function BentoGrid() {
                       "radial-gradient(ellipse at center, black 40%, transparent 80%)",
                   }}
                 />
-                {/* Soft blue orb behind visual */}
+                {/* Soft blue orb behind visual — varies per card */}
                 <div
                   aria-hidden
-                  className="pointer-events-none absolute left-1/2 bottom-[12%] -translate-x-1/2 w-[85%] h-[40%] rounded-full blur-3xl"
+                  className="pointer-events-none absolute -translate-x-1/2 -translate-y-1/2 rounded-full blur-3xl"
                   style={{
+                    left: v.left,
+                    top: v.top,
+                    width: v.w,
+                    height: v.h,
                     background: `radial-gradient(circle, rgba(${orb},0.22) 0%, rgba(${orb},0.10) 45%, transparent 75%)`,
                   }}
                 />
+
                 {/* Glossy top highlight */}
                 <div
                   aria-hidden
