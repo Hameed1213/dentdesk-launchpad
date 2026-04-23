@@ -101,7 +101,7 @@ export default function PricingCTA() {
                   <div className="text-right">
                     <span
                       className={[
-                        plan.priceSuffix ? "text-2xl font-medium" : "text-sm font-medium",
+                        plan.priceSuffix ? "text-xl font-medium" : "text-sm font-medium",
                         isSelected ? "text-white" : plan.comingSoon ? "text-[#94A3B8]" : "text-foreground",
                       ].join(" ")}
                     >
