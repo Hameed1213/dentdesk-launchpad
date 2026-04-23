@@ -79,28 +79,34 @@ function WaitlistPage() {
           </span>
         </Link>
 
-        {/* Decorative blue blobs */}
+        {/* Decorative blue blobs — slow drifting */}
         <div className="pointer-events-none absolute inset-0 -z-0">
-          <div
+          <motion.div
             className="absolute -top-40 -left-32 w-[560px] h-[560px] rounded-full"
             style={{
               background:
                 "radial-gradient(ellipse, rgba(37,99,235,0.28), transparent 70%)",
             }}
+            animate={{ x: [0, 40, -20, 0], y: [0, -30, 25, 0] }}
+            transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
           />
-          <div
+          <motion.div
             className="absolute top-1/3 -right-40 w-[520px] h-[520px] rounded-full"
             style={{
               background:
                 "radial-gradient(ellipse, rgba(96,165,250,0.30), transparent 70%)",
             }}
+            animate={{ x: [0, -35, 20, 0], y: [0, 30, -20, 0] }}
+            transition={{ duration: 26, repeat: Infinity, ease: "easeInOut" }}
           />
-          <div
+          <motion.div
             className="absolute -bottom-40 left-1/4 w-[500px] h-[500px] rounded-full"
             style={{
               background:
                 "radial-gradient(ellipse, rgba(147,197,253,0.35), transparent 70%)",
             }}
+            animate={{ x: [0, 30, -25, 0], y: [0, -20, 30, 0] }}
+            transition={{ duration: 30, repeat: Infinity, ease: "easeInOut" }}
           />
         </div>
 
