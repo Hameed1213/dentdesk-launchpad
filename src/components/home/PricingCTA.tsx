@@ -28,7 +28,6 @@ export default function PricingCTA() {
     "Automated reminders and recalls",
     "Payments, deposits and forms",
     "Custom forms",
-    "Custom forms",
     "30-day free trial",
   ];
 
