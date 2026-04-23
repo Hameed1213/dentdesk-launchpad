@@ -16,28 +16,36 @@ const BLUE = "37,99,235"; // primary blue rgb triplet
 /* ---------- Cell visuals ---------- */
 
 const PatientRecordVisual = () => (
-  <div className="rounded-xl bg-white/80 backdrop-blur-md border border-white shadow-sm p-5 overflow-hidden mx-auto w-full max-w-[300px]">
-    {/* Header */}
-    <div className="flex items-center gap-3">
-      <div className="w-11 h-11 rounded-full bg-[#2563EB] flex items-center justify-center text-white text-[14px] font-bold shrink-0">
-        SM
-      </div>
-      <div className="min-w-0 flex-1">
-        <div className="text-[14px] font-semibold text-foreground truncate">
-          Sarah Mitchell
+  <div
+    className="rounded-xl bg-[#f5f6fb] border border-neutral-200 p-3 overflow-hidden mx-auto w-full max-w-[300px] space-y-2"
+    style={{
+      filter:
+        "drop-shadow(0 8px 16px rgba(0,0,0,0.06)) drop-shadow(0 2px 4px rgba(0,0,0,0.04))",
+    }}
+  >
+    {/* Header card */}
+    <div className="bg-white border border-[#e2e8f0] rounded-lg p-2.5">
+      <div className="flex items-center gap-3">
+        <div className="w-10 h-10 rounded-full bg-[#2563EB] flex items-center justify-center text-white text-[13px] font-bold shrink-0">
+          SM
         </div>
-        <div className="text-[10px] text-muted-foreground">
-          DOB · 14 Mar 1989
+        <div className="min-w-0 flex-1">
+          <div className="text-[13px] font-semibold text-foreground truncate">
+            Sarah Mitchell
+          </div>
+          <div className="text-[10px] text-muted-foreground">
+            DOB · 14 Mar 1989
+          </div>
         </div>
+        <span className="text-[9px] font-semibold text-[#2563EB] bg-[#2563EB]/10 rounded-full px-2 py-0.5">
+          Active
+        </span>
       </div>
-      <span className="text-[9px] font-semibold text-[#2563EB] bg-[#2563EB]/10 rounded-full px-2 py-0.5">
-        Active
-      </span>
     </div>
 
-    {/* Meta rows */}
-    <div className="mt-4 grid grid-cols-2 gap-2">
-      <div className="rounded-md bg-[#2563EB]/5 px-2.5 py-2">
+    {/* Meta cards */}
+    <div className="grid grid-cols-2 gap-2">
+      <div className="bg-white border border-[#e2e8f0] rounded-lg px-2.5 py-2">
         <div className="text-[9px] text-muted-foreground uppercase tracking-wide">
           Last visit
         </div>
@@ -45,7 +53,7 @@ const PatientRecordVisual = () => (
           02 Apr 2026
         </div>
       </div>
-      <div className="rounded-md bg-[#2563EB]/5 px-2.5 py-2">
+      <div className="bg-white border border-[#e2e8f0] rounded-lg px-2.5 py-2">
         <div className="text-[9px] text-muted-foreground uppercase tracking-wide">
           Next appt
         </div>
@@ -55,8 +63,8 @@ const PatientRecordVisual = () => (
       </div>
     </div>
 
-    {/* History */}
-    <div className="mt-4">
+    {/* History card */}
+    <div className="bg-white border border-[#e2e8f0] rounded-lg p-2.5">
       <div className="text-[9px] text-muted-foreground uppercase tracking-wide mb-1.5">
         Appointment history
       </div>
