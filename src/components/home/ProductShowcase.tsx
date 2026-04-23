@@ -1285,7 +1285,7 @@ export default function ProductShowcase() {
             </a>
           </div>
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 }
