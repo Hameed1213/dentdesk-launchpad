@@ -87,8 +87,8 @@ function WaitlistPage() {
               background:
                 "radial-gradient(ellipse, rgba(37,99,235,0.28), transparent 70%)",
             }}
-            animate={{ x: [0, 40, -20, 0], y: [0, -30, 25, 0] }}
-            transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
+            animate={{ x: [0, 120, -80, 0], y: [0, -90, 70, 0] }}
+            transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
           />
           <motion.div
             className="absolute top-1/3 -right-40 w-[520px] h-[520px] rounded-full"
@@ -96,8 +96,8 @@ function WaitlistPage() {
               background:
                 "radial-gradient(ellipse, rgba(96,165,250,0.30), transparent 70%)",
             }}
-            animate={{ x: [0, -35, 20, 0], y: [0, 30, -20, 0] }}
-            transition={{ duration: 26, repeat: Infinity, ease: "easeInOut" }}
+            animate={{ x: [0, -110, 70, 0], y: [0, 90, -70, 0] }}
+            transition={{ duration: 11, repeat: Infinity, ease: "easeInOut" }}
           />
           <motion.div
             className="absolute -bottom-40 left-1/4 w-[500px] h-[500px] rounded-full"
@@ -105,8 +105,8 @@ function WaitlistPage() {
               background:
                 "radial-gradient(ellipse, rgba(147,197,253,0.35), transparent 70%)",
             }}
-            animate={{ x: [0, 30, -25, 0], y: [0, -20, 30, 0] }}
-            transition={{ duration: 30, repeat: Infinity, ease: "easeInOut" }}
+            animate={{ x: [0, 100, -90, 0], y: [0, -70, 100, 0] }}
+            transition={{ duration: 13, repeat: Infinity, ease: "easeInOut" }}
           />
         </div>
 
