@@ -440,6 +440,8 @@ const cells = [
     title: "Know your numbers.",
     visual: <AnalyticsVisual />,
     span: "md:col-span-3 md:row-span-1",
+    layout: "side" as const,
+    popOut: true,
   },
   {
     Icon: FileCheck,
