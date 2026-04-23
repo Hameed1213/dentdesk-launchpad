@@ -602,6 +602,11 @@ export default function BentoGrid() {
                       <h3 className={`text-[19px] font-semibold text-foreground tracking-tight leading-snug ${("titleClass" in cell && cell.titleClass) ? cell.titleClass : "max-w-[220px]"}`}>
                         {cell.title}
                       </h3>
+                      {"description" in cell && cell.description && (
+                        <p className="mt-2 text-sm text-muted-foreground leading-snug max-w-[260px]">
+                          {cell.description}
+                        </p>
+                      )}
                     </div>
                     {cell.popOut ? (
                       <div
