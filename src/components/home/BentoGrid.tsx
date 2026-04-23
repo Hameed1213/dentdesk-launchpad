@@ -267,7 +267,7 @@ const AnalyticsVisual = () => {
             <path
               d={path}
               stroke="#2563EB"
-              strokeWidth="2"
+              strokeWidth="1"
               fill="none"
               strokeLinecap="round"
               strokeLinejoin="round"
