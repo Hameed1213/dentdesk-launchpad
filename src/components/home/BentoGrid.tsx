@@ -461,6 +461,8 @@ const SmsVisual = () => {
   const [visibleMessages, setVisibleMessages] = useState<number[]>([]);
   const [typing, setTyping] = useState(false);
   const [typingFor, setTypingFor] = useState<number | null>(null);
+  const [channel, setChannel] = useState<"sms" | "email">("sms");
+  const [channelVisible, setChannelVisible] = useState(true);
 
   useEffect(() => {
     const timers: ReturnType<typeof setTimeout>[] = [];
@@ -497,7 +499,34 @@ const SmsVisual = () => {
           setVisibleMessages((prev) => [...prev, 3]);
         }, 5600),
       );
-      timers.push(setTimeout(runSequence, 8000));
+      // After SMS completes — crossfade to email
+      timers.push(
+        setTimeout(() => {
+          setChannelVisible(false);
+          timers.push(
+            setTimeout(() => {
+              setChannel("email");
+              setChannelVisible(true);
+
+              timers.push(
+                setTimeout(() => {
+                  setChannelVisible(false);
+                  timers.push(
+                    setTimeout(() => {
+                      setChannel("sms");
+                      setChannelVisible(true);
+                      setVisibleMessages([]);
+                      setTyping(false);
+                      setTypingFor(null);
+                      timers.push(setTimeout(runSequence, 400));
+                    }, 400),
+                  );
+                }, 5000),
+              );
+            }, 400),
+          );
+        }, 8000),
+      );
     }
 
     runSequence();
@@ -506,7 +535,137 @@ const SmsVisual = () => {
 
   return (
     <div className="h-full w-full">
-      {/* SMS Header */}
+      <div
+        style={{
+          opacity: channelVisible ? 1 : 0,
+          transition: "opacity 0.4s ease",
+        }}
+      >
+        {channel === "sms" ? (
+          <>
+            {/* SMS Header */}
+            <div className="flex items-center gap-3 pb-3 border-b border-[#e2e8f0] mb-3">
+              <div className="w-9 h-9 rounded-full bg-[#2563EB] flex items-center justify-center text-white text-[12px] font-bold flex-shrink-0">
+                SD
+              </div>
+              <div>
+                <div className="text-[13px] font-semibold text-[#0f172a]">
+                  Smile Dental
+                </div>
+                <div className="text-[11px] text-neutral-400">SMS</div>
+              </div>
+            </div>
+
+            {/* Messages */}
+            <div className="flex flex-col gap-2">
+              {smsMessages.map(
+                (msg) =>
+                  visibleMessages.includes(msg.id) && (
+                    <div
+                      key={msg.id}
+                      style={{
+                        animation:
+                          "msgSlideIn 0.35s cubic-bezier(0.34,1.2,0.64,1) forwards",
+                      }}
+                    >
+                      {msg.type === "automated" && (
+                        <div className="flex justify-center">
+                          <div className="bg-[#f1f5f9] border border-dashed border-[#e2e8f0] rounded-xl px-3 py-1.5 text-[11px] text-neutral-400 italic text-center">
+                            {msg.text}
+                          </div>
+                        </div>
+                      )}
+                      {msg.type === "outbound" && (
+                        <div className="flex justify-end">
+                          <div className="bg-[#2563EB] rounded-2xl rounded-br-sm px-3 py-2 max-w-[85%]">
+                            <p className="text-[12px] text-white leading-relaxed">
+                              {msg.text}
+                            </p>
+                          </div>
+                        </div>
+                      )}
+                      {msg.type === "inbound" && (
+                        <div className="flex justify-start">
+                          <div className="bg-white border border-[#e2e8f0] rounded-2xl rounded-bl-sm px-3 py-2 max-w-[85%] shadow-sm">
+                            <p className="text-[12px] text-[#0f172a] leading-relaxed">
+                              {msg.text}
+                            </p>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  ),
+              )}
+
+              {typing && (
+                <div style={{ animation: "msgSlideIn 0.3s ease forwards" }}>
+                  {typingFor === 3 ? (
+                    <div className="flex justify-start">
+                      <div className="bg-white border border-[#e2e8f0] rounded-2xl rounded-bl-sm px-3 py-2.5 shadow-sm">
+                        <div className="flex gap-1 items-center">
+                          <span
+                            className="w-1.5 h-1.5 rounded-full bg-neutral-300"
+                            style={{ animation: "typingDot 1.2s ease-in-out infinite" }}
+                          />
+                          <span
+                            className="w-1.5 h-1.5 rounded-full bg-neutral-300"
+                            style={{
+                              animation:
+                                "typingDot 1.2s ease-in-out 0.2s infinite",
+                            }}
+                          />
+                          <span
+                            className="w-1.5 h-1.5 rounded-full bg-neutral-300"
+                            style={{
+                              animation:
+                                "typingDot 1.2s ease-in-out 0.4s infinite",
+                            }}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="flex justify-end">
+                      <div className="bg-[#2563EB] rounded-2xl rounded-br-sm px-3 py-2.5">
+                        <div className="flex gap-1 items-center">
+                          <span
+                            className="w-1.5 h-1.5 rounded-full bg-white/50"
+                            style={{ animation: "typingDot 1.2s ease-in-out infinite" }}
+                          />
+                          <span
+                            className="w-1.5 h-1.5 rounded-full bg-white/50"
+                            style={{
+                              animation:
+                                "typingDot 1.2s ease-in-out 0.2s infinite",
+                            }}
+                          />
+                          <span
+                            className="w-1.5 h-1.5 rounded-full bg-white/50"
+                            style={{
+                              animation:
+                                "typingDot 1.2s ease-in-out 0.4s infinite",
+                            }}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+          </>
+        ) : (
+          <EmailView />
+        )}
+      </div>
+    </div>
+  );
+};
+
+function EmailView() {
+  return (
+    <>
+      {/* Email Header — same style as SMS header */}
       <div className="flex items-center gap-3 pb-3 border-b border-[#e2e8f0] mb-3">
         <div className="w-9 h-9 rounded-full bg-[#2563EB] flex items-center justify-center text-white text-[12px] font-bold flex-shrink-0">
           SD
@@ -515,110 +674,61 @@ const SmsVisual = () => {
           <div className="text-[13px] font-semibold text-[#0f172a]">
             Smile Dental
           </div>
-          <div className="text-[11px] text-neutral-400">SMS</div>
+          <div className="text-[11px] text-neutral-400">Email · Today 09:01</div>
         </div>
       </div>
 
-      {/* Messages */}
-      <div className="flex flex-col gap-2">
-        {smsMessages.map(
-          (msg) =>
-            visibleMessages.includes(msg.id) && (
-              <div
-                key={msg.id}
-                style={{
-                  animation:
-                    "msgSlideIn 0.35s cubic-bezier(0.34,1.2,0.64,1) forwards",
-                }}
-              >
-                {msg.type === "automated" && (
-                  <div className="flex justify-center">
-                    <div className="bg-[#f1f5f9] border border-dashed border-[#e2e8f0] rounded-xl px-3 py-1.5 text-[11px] text-neutral-400 italic text-center">
-                      {msg.text}
-                    </div>
-                  </div>
-                )}
-                {msg.type === "outbound" && (
-                  <div className="flex justify-end">
-                    <div className="bg-[#2563EB] rounded-2xl rounded-br-sm px-3 py-2 max-w-[85%]">
-                      <p className="text-[12px] text-white leading-relaxed">
-                        {msg.text}
-                      </p>
-                    </div>
-                  </div>
-                )}
-                {msg.type === "inbound" && (
-                  <div className="flex justify-start">
-                    <div className="bg-white border border-[#e2e8f0] rounded-2xl rounded-bl-sm px-3 py-2 max-w-[85%] shadow-sm">
-                      <p className="text-[12px] text-[#0f172a] leading-relaxed">
-                        {msg.text}
-                      </p>
-                    </div>
-                  </div>
-                )}
-              </div>
-            ),
-        )}
-
-        {typing && (
-          <div style={{ animation: "msgSlideIn 0.3s ease forwards" }}>
-            {typingFor === 3 ? (
-              <div className="flex justify-start">
-                <div className="bg-white border border-[#e2e8f0] rounded-2xl rounded-bl-sm px-3 py-2.5 shadow-sm">
-                  <div className="flex gap-1 items-center">
-                    <span
-                      className="w-1.5 h-1.5 rounded-full bg-neutral-300"
-                      style={{ animation: "typingDot 1.2s ease-in-out infinite" }}
-                    />
-                    <span
-                      className="w-1.5 h-1.5 rounded-full bg-neutral-300"
-                      style={{
-                        animation:
-                          "typingDot 1.2s ease-in-out 0.2s infinite",
-                      }}
-                    />
-                    <span
-                      className="w-1.5 h-1.5 rounded-full bg-neutral-300"
-                      style={{
-                        animation:
-                          "typingDot 1.2s ease-in-out 0.4s infinite",
-                      }}
-                    />
-                  </div>
-                </div>
-              </div>
-            ) : (
-              <div className="flex justify-end">
-                <div className="bg-[#2563EB] rounded-2xl rounded-br-sm px-3 py-2.5">
-                  <div className="flex gap-1 items-center">
-                    <span
-                      className="w-1.5 h-1.5 rounded-full bg-white/50"
-                      style={{ animation: "typingDot 1.2s ease-in-out infinite" }}
-                    />
-                    <span
-                      className="w-1.5 h-1.5 rounded-full bg-white/50"
-                      style={{
-                        animation:
-                          "typingDot 1.2s ease-in-out 0.2s infinite",
-                      }}
-                    />
-                    <span
-                      className="w-1.5 h-1.5 rounded-full bg-white/50"
-                      style={{
-                        animation:
-                          "typingDot 1.2s ease-in-out 0.4s infinite",
-                      }}
-                    />
-                  </div>
-                </div>
-              </div>
-            )}
+      {/* Email card */}
+      <div
+        className="bg-white border border-[#e2e8f0] rounded-xl overflow-hidden"
+        style={{ animation: "msgSlideIn 0.4s ease forwards" }}
+      >
+        {/* Email header bar */}
+        <div className="bg-[#2563EB] px-4 py-3">
+          <div className="text-[10px] font-semibold text-blue-200 uppercase tracking-wider mb-0.5">
+            Appointment confirmed
           </div>
-        )}
+          <div className="text-[13px] font-bold text-white leading-snug">
+            Your appointment at Smile Dental
+          </div>
+        </div>
+
+        {/* Email body */}
+        <div className="px-4 py-3">
+          <p className="text-[12px] text-neutral-500 mb-3 leading-relaxed">
+            Hi Sarah, your appointment is confirmed:
+          </p>
+
+          {/* Appointment detail card */}
+          <div className="bg-[#f8fafc] border border-[#e2e8f0] rounded-lg px-3 py-2.5 mb-3">
+            <div className="text-[13px] font-bold text-[#0f172a] mb-1">
+              Hygiene check
+            </div>
+            <div className="text-[11px] text-neutral-400 flex items-center gap-1 mb-0.5">
+              📅 Thu 18 Apr · 10:30am
+            </div>
+            <div className="text-[11px] text-neutral-400">👤 Dr. James Webb</div>
+          </div>
+
+          {/* CTA button */}
+          <div className="bg-[#2563EB] rounded-lg px-3 py-2 text-center mb-3">
+            <span className="text-[12px] font-semibold text-white">
+              Add to calendar →
+            </span>
+          </div>
+        </div>
+
+        {/* Footer */}
+        <div className="border-t border-[#e2e8f0] px-4 py-2 flex items-center justify-between">
+          <span className="text-[10px] text-neutral-300">Sent automatically</span>
+          <span className="text-[10px] font-semibold text-neutral-400">
+            Dent Dock
+          </span>
+        </div>
       </div>
-    </div>
+    </>
   );
-};
+}
 
 /* ---------- Cell config ---------- */
 
