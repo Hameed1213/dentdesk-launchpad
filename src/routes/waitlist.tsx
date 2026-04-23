@@ -130,7 +130,7 @@ function WaitlistPage() {
             className="text-3xl lg:text-5xl font-medium tracking-tight text-[#0F172A] leading-[1.1]"
           >
             Practice management,{" "}
-            <span className="text-[#2563EB]">finally friendly.</span>
+            <span className="text-[#2563EB]">finally friendly</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 24 }}
