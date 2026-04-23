@@ -1,7 +1,7 @@
 import ToothIcon from "@/components/icons/ToothIcon";
 
 const productLinks = [
-  { label: "Features", href: "/#everything" },
+  { label: "Features", href: "/#about" },
   { label: "Pricing", href: "/#pricing" },
   { label: "FAQ", href: "/#faq" },
 ];
