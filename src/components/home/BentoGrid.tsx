@@ -763,7 +763,7 @@ const cells = [
     description: "Records, history and appointments, all in one profile.",
     visual: <PatientRecordVisual />,
     span: "md:col-span-2 md:row-span-2",
-    orb: "37,99,235", // primary blue
+    orb: "37,99,235", // primary royal blue
   },
   {
     Icon: Monitor,
@@ -772,14 +772,14 @@ const cells = [
     span: "md:col-span-4 md:row-span-1",
     layout: "side" as const,
     popOut: true,
-    orb: "96,165,250", // sky blue
+    orb: "56,189,248", // light sky blue
   },
   {
     Icon: Users,
     title: "Your whole team. One platform.",
     visual: <StaffVisual />,
     span: "md:col-span-2 md:row-span-1",
-    orb: "29,78,216", // deep indigo blue
+    orb: "30,64,175", // deep navy blue
   },
   {
     Icon: MessageSquare,
@@ -787,7 +787,7 @@ const cells = [
     visual: <SmsVisual />,
     span: "md:col-span-2 md:row-span-1",
     noHeader: true,
-    orb: "59,130,246", // bright blue
+    orb: "147,197,253", // pale powder blue
   },
   {
     Icon: TrendingUp,
