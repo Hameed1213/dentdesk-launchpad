@@ -1,4 +1,5 @@
-import { ArrowRight, Check, Circle, CheckCircle2 } from "lucide-react";
+import { useState } from "react";
+import { ArrowRight, Check, Circle, CheckCircle2, Lock } from "lucide-react";
 import { motion } from "framer-motion";
 
 type Plan = {
@@ -6,16 +7,19 @@ type Plan = {
   price: string;
   priceSuffix?: string;
   note: string;
-  selected?: boolean;
-  disabled?: boolean;
+  comingSoon?: boolean;
 };
 
 export default function PricingCTA() {
   const plans: Plan[] = [
-    { name: "Practice", price: "£49", priceSuffix: "/mo", note: "", selected: true },
-    { name: "Multi-site", price: "Coming soon", note: "", disabled: true },
-    { name: "Enterprise", price: "Coming soon", note: "", disabled: true },
+    { name: "Practice", price: "£49", priceSuffix: "/mo", note: "" },
+    { name: "Multi-site", price: "Coming soon", note: "", comingSoon: true },
+    { name: "Enterprise", price: "Coming soon", note: "", comingSoon: true },
   ];
+
+  const [selected, setSelected] = useState<string>("Practice");
+  const activePlan = plans.find((p) => p.name === selected) ?? plans[0];
+  const isComingSoon = !!activePlan.comingSoon;
 
   const features = [
     "Unlimited dentists and staff",
@@ -58,17 +62,17 @@ export default function PricingCTA() {
             className="flex flex-col gap-3"
           >
             {plans.map((plan) => {
-              const isSelected = plan.selected;
+              const isSelected = plan.name === selected;
               return (
-                <div
+                <button
                   key={plan.name}
-                  aria-disabled={plan.disabled}
+                  type="button"
+                  onClick={() => setSelected(plan.name)}
                   className={[
-                    "rounded-2xl border p-5 flex items-center justify-between transition-all",
+                    "text-left rounded-2xl border p-5 flex items-center justify-between transition-all cursor-pointer",
                     isSelected
                       ? "bg-[#2563EB] text-white border-[#2563EB] shadow-lg shadow-blue-500/20"
-                      : "bg-white border-neutral-200 text-foreground",
-                    plan.disabled ? "opacity-80" : "",
+                      : "bg-white border-neutral-200 text-foreground hover:border-neutral-300 hover:shadow-sm",
                   ].join(" ")}
                 >
                   <div className="flex items-center gap-4">
@@ -85,9 +89,7 @@ export default function PricingCTA() {
                         <span
                           className={[
                             "text-[11px] font-medium px-2 py-0.5 rounded-full inline-block w-fit",
-                            isSelected
-                              ? "bg-white/20 text-white"
-                              : "bg-neutral-100 text-[#475569]",
+                            isSelected ? "bg-white/20 text-white" : "bg-neutral-100 text-[#475569]",
                           ].join(" ")}
                         >
                           {plan.note}
@@ -99,7 +101,7 @@ export default function PricingCTA() {
                     <span
                       className={[
                         plan.priceSuffix ? "text-2xl font-medium" : "text-sm font-medium",
-                        isSelected ? "text-white" : plan.disabled ? "text-[#94A3B8]" : "text-foreground",
+                        isSelected ? "text-white" : plan.comingSoon ? "text-[#94A3B8]" : "text-foreground",
                       ].join(" ")}
                     >
                       {plan.price}
@@ -110,7 +112,7 @@ export default function PricingCTA() {
                       </span>
                     )}
                   </div>
-                </div>
+                </button>
               );
             })}
           </motion.div>
@@ -121,19 +123,37 @@ export default function PricingCTA() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, delay: 0.15 }}
-            className="rounded-2xl border border-neutral-200 bg-white p-8"
+            className="relative rounded-2xl border border-neutral-200 bg-white p-8 overflow-hidden"
           >
-            <div className="pb-4 mb-2 border-b border-neutral-100">
-              <h3 className="text-[15px] font-semibold text-foreground">Includes:</h3>
+            <div className={isComingSoon ? "blur-md select-none pointer-events-none" : ""}>
+              <div className="pb-4 mb-2 border-b border-neutral-100">
+                <h3 className="text-[15px] font-semibold text-foreground">Includes:</h3>
+              </div>
+              <ul className="divide-y divide-neutral-100">
+                {features.map((feature, i) => (
+                  <li key={i} className="flex items-center justify-between py-3">
+                    <span className="text-[15px] leading-[1.5] text-[#0F172A]">{feature}</span>
+                    <Check className="w-4 h-4 text-[#2563EB] flex-shrink-0" strokeWidth={3} />
+                  </li>
+                ))}
+              </ul>
             </div>
-            <ul className="divide-y divide-neutral-100">
-              {features.map((feature, i) => (
-                <li key={i} className="flex items-center justify-between py-3">
-                  <span className="text-[15px] leading-[1.5] text-[#0F172A]">{feature}</span>
-                  <Check className="w-4 h-4 text-[#2563EB] flex-shrink-0" strokeWidth={3} />
-                </li>
-              ))}
-            </ul>
+
+            {isComingSoon && (
+              <div className="absolute inset-0 flex flex-col items-center justify-center bg-white/40 backdrop-blur-[2px]">
+                <div className="flex flex-col items-center gap-3 px-6 py-5 rounded-2xl bg-white/90 border border-neutral-200 shadow-lg">
+                  <div className="w-11 h-11 rounded-xl bg-[#2563EB]/10 flex items-center justify-center">
+                    <Lock className="w-5 h-5 text-[#2563EB]" strokeWidth={2.5} />
+                  </div>
+                  <div className="text-center">
+                    <div className="text-[18px] font-semibold text-foreground">Coming soon</div>
+                    <div className="text-[13px] text-[#475569] mt-1 max-w-[240px]">
+                      {activePlan.name} plan is launching soon. Get started with Practice today.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
           </motion.div>
         </div>
 
