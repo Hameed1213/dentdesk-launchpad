@@ -469,6 +469,7 @@ function ScheduleRows({
 
 // ---------- DESKTOP MOCKUP ----------
 function DesktopDashboardMockup() {
+  const rootRef = useRef<HTMLDivElement>(null);
   const {
     started,
     countToday,
@@ -476,7 +477,7 @@ function DesktopDashboardMockup() {
     countCapacity,
     capacityBarWidth,
     visibleRows,
-  } = useDashboardCounters();
+  } = useDashboardCounters(rootRef);
 
   const statCards = [
     {
@@ -526,7 +527,7 @@ function DesktopDashboardMockup() {
   ];
 
   return (
-    <div className="w-full h-full bg-[#F8FAFC] flex overflow-hidden rounded-[8px] relative select-none">
+    <div ref={rootRef} className="w-full h-full bg-[#F8FAFC] flex overflow-hidden rounded-[8px] relative select-none">
       <SidebarIconOnly />
       <div className="flex-1 min-h-0 flex flex-col overflow-hidden relative">
         <TopBar />
@@ -589,6 +590,7 @@ function DesktopDashboardMockup() {
 
 // ---------- TABLET MOCKUP ----------
 function TabletDashboardMockup() {
+  const rootRef = useRef<HTMLDivElement>(null);
   const {
     started,
     countToday,
@@ -596,10 +598,10 @@ function TabletDashboardMockup() {
     countCapacity,
     capacityBarWidth,
     visibleRows,
-  } = useDashboardCounters();
+  } = useDashboardCounters(rootRef);
 
   return (
-    <div className="w-full h-full bg-[#F8FAFC] flex flex-col overflow-hidden rounded-[20px] relative select-none">
+    <div ref={rootRef} className="w-full h-full bg-[#F8FAFC] flex flex-col overflow-hidden rounded-[20px] relative select-none">
       {/* Top bar */}
       <div className="h-[52px] bg-white border-b border-[#E2E8F0] flex items-center justify-between px-4 flex-shrink-0">
         <div className="flex items-center gap-2">
@@ -700,6 +702,7 @@ function TabletDashboardMockup() {
 
 // ---------- MOBILE MOCKUP ----------
 function MobileDashboardMockup() {
+  const rootRef = useRef<HTMLDivElement>(null);
   const {
     started,
     countToday,
@@ -707,7 +710,7 @@ function MobileDashboardMockup() {
     countCapacity,
     capacityBarWidth,
     visibleRows,
-  } = useDashboardCounters();
+  } = useDashboardCounters(rootRef);
 
   const tabs = [
     { Icon: LayoutDashboard, label: "Dashboard", active: true },
@@ -718,7 +721,7 @@ function MobileDashboardMockup() {
   ];
 
   return (
-    <div className="w-full h-full bg-[#F8FAFC] flex flex-col overflow-hidden rounded-[28px] relative select-none">
+    <div ref={rootRef} className="w-full h-full bg-[#F8FAFC] flex flex-col overflow-hidden rounded-[28px] relative select-none">
       {/* Top bar */}
       <div className="h-[48px] bg-white border-b border-[#E2E8F0] flex items-center justify-between px-3.5 flex-shrink-0">
         <div className="flex items-center gap-1.5">
