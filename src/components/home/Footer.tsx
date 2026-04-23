@@ -1,13 +1,13 @@
 import ToothIcon from "@/components/icons/ToothIcon";
 
 const productLinks = [
-  { label: "Features", href: "/#features" },
+  { label: "Features", href: "/#everything" },
   { label: "Pricing", href: "/#pricing" },
   { label: "FAQ", href: "/#faq" },
 ];
 
 const companyLinks = [
-  { label: "Contact", href: "mailto:hello@dentdock.co.uk" },
+  { label: "Contact", href: "https://wa.me/447700000000" },
   { label: "Log in", href: "https://app.dentdock.co.uk" },
   { label: "Join the waitlist", href: "/waitlist" },
 ];
