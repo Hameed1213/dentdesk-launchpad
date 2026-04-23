@@ -1,80 +1,20 @@
 
+## Fix SMS Bento Card Height Jump on Tablet
 
-## Redesign Pricing section to match reference
+**Problem**: The "Every patient message in one inbox" SMS bento card changes height during its animation on tablet view. Messages appear/animate in, causing the card to grow/shrink as content loads.
 
-I'll rebuild `src/components/home/PricingCTA.tsx` to mirror the screenshot: a centered header, then a two-column layout with **stacked selectable plan cards on the left** and a **single "Includes" card on the right**.
+**Goal**: Lock the card's visual area to the height of the animation's **starting state** so it stays constant throughout the animation cycle. Tablet only — desktop and mobile unchanged.
 
-### Layout
+### Approach
 
-```text
-                    ┌─────────┐
-                    │ Pricing │      <- small pill
-                    └─────────┘
+1. Inspect `BentoGrid.tsx` to locate the SMS/inbox cell's visual component and identify which element animates (likely a list of messages with staggered enter/exit).
+2. Measure or determine the starting-state height of the message stack (the height when the animation first begins, before any messages enter).
+3. Apply a fixed `md:h-[Xpx]` (tablet-only) min-height/height constraint on the visual wrapper inside the SMS cell, with `overflow-hidden` so animated messages don't push the container.
+4. Leave `lg:` (desktop) and base (mobile) sizing untouched.
 
-           Simple pricing for every practice    <- big H2 (Inter medium, tight)
+### Files to change
+- `src/components/home/BentoGrid.tsx` — add a tablet-only fixed height to the SMS card's visual wrapper.
 
-      One plan today, more coming as DentDock grows.
-        Start with a 30-day free trial — no card needed.
-
-  ┌────────────────────────────────┐   ┌────────────────────────────────┐
-  │ ◯  Solo                        │   │ Includes:                       │
-  │    Coming soon         £29/mo  │   │                                 │
-  ├────────────────────────────────┤   │  Unlimited dentists & staff  ✓  │
-  │ ◉  Practice  ★ Most popular   │   │  Online booking & scheduling ✓  │
-  │    Save 20%            £49/mo  │   │  Patient records & notes     ✓  │
-  ├────────────────────────────────┤   │  Automated reminders & recall✓  │
-  │ ◯  Multi-site                  │   │  Payments, deposits & forms  ✓  │
-  │    Coming soon         £99/mo  │   │  SMS reminders included      ✓  │
-  ├────────────────────────────────┤   │  Custom forms                ✓  │
-  │ ◯  Enterprise                  │   │  30-day free trial           ✓  │
-  │    Talk to us         Custom   │   │                                 │
-  └────────────────────────────────┘   └────────────────────────────────┘
-
-   ┌──────────────┐                    ◉ Billed monthly · cancel anytime
-   │ Start trial →│
-   └──────────────┘
-```
-
-### Plan card details (left column)
-
-Four stacked cards, each in its own rounded `border border-neutral-200 bg-white` row, vertical gap ~12px:
-
-| Plan | State | Price | Note |
-|---|---|---|---|
-| Solo | unselected | £29/month | "Coming soon" pill |
-| **Practice** | **selected (filled `#2563EB`, white text)** | £49/month | "Most popular" pill |
-| Multi-site | unselected | £99/month | "Coming soon" pill |
-| Enterprise | unselected | Custom | "Talk to us" pill |
-
-- Each row: radio-style circle on the left (filled white check on the selected card, hollow on others), plan name + small note pill stacked, price right-aligned in `text-2xl font-medium`.
-- Selected card uses `bg-[#2563EB] text-white` with subtle inner shadow; pill becomes `bg-white/20 text-white`.
-- Only the Practice card is interactive for now (others marked `aria-disabled`, muted look). Selection is purely visual — no toggling logic needed since one plan is live.
-
-### Includes card (right column)
-
-- Same `rounded-2xl border border-neutral-200 bg-white p-8` container as the left stack's outer height.
-- Heading: "Includes:" in `text-[15px] font-semibold text-foreground`, small bottom border separator.
-- Features list: same items already in the file, each row = label on the left, blue `Check` icon on the right (matching screenshot's right-aligned checks), divided by a faint `divide-y divide-neutral-100`.
-
-### Footer row (below the two columns)
-
-- Left: primary CTA `Start free trial →` (existing button styles, `#2563EB`).
-- Right: small toggle-style indicator `● Billed monthly · cancel anytime` (purely decorative — visual nod to the "Renewed at..." pill in the reference, no real toggle since there's only one plan).
-
-### Section header
-
-- Centered "Pricing" pill: `inline-flex px-3 py-1 rounded-full bg-neutral-100 text-[12px] text-foreground/70`.
-- H2: `text-4xl md:text-5xl font-medium tracking-tight` — "Simple pricing for every practice."
-- Subtitle: muted-foreground, max-w-xl, centered.
-
-### Files touched
-
-- `src/components/home/PricingCTA.tsx` — full rewrite of the card body. No new dependencies (Check, ArrowRight already imported; will add `Circle` / `CheckCircle2` from lucide-react for the radio dots).
-- No other files change.
-
-### Out of scope
-
-- No real plan switching / billing-period toggle logic (single live plan).
-- No copy changes to the £49 price or feature list.
-- No changes to BentoGrid, FAQ, routes, or section order.
-
+### Notes
+- No content, copy, or desktop layout changes.
+- Will verify by checking the rendered card at 768px viewport after the fix.
