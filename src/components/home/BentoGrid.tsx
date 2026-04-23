@@ -548,7 +548,15 @@ export default function BentoGrid() {
                       {cell.title}
                     </h3>
                     <div className="mt-6 flex-1 flex items-end">
-                      <div className="w-full">{cell.visual}</div>
+                      <div
+                        className="w-full rounded-lg overflow-hidden border border-neutral-200 bg-[#f5f6fb] p-3"
+                        style={{
+                          filter:
+                            "drop-shadow(0 8px 16px rgba(0,0,0,0.06)) drop-shadow(0 2px 4px rgba(0,0,0,0.04))",
+                        }}
+                      >
+                        {cell.visual}
+                      </div>
                     </div>
                   </div>
                 )}
