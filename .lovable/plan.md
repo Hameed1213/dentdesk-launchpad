@@ -1,38 +1,38 @@
 
-## Stacked Toast Notifications
 
-Restyle the "Most practices are overpaying" preview so toasts stack on top of each other (like the iOS notification stack in the reference), instead of one replacing another.
+## Match the portal style across all bento visuals
 
-### Behaviour
-- A new toast slides in from the bottom every ~2.5s.
-- Previously shown toasts stay visible and shift upward + scale down slightly, creating a layered stack (newest in front, oldest behind).
-- Once 3 toasts are stacked, the whole stack fades out and the loop restarts — giving a continuous "money keeps coming out" feel.
+Right now I wrapped the other software mockups in a grey outer frame, but each mockup is itself one big white panel — so the result is "white box inside grey frame" (your screenshots 2–4), not the portal's "grey panel with white sub-cards floating on it" (screenshot 1).
 
-### Visual stack
-```text
-┌──────────────────────────┐  ← oldest, smallest, most faded
-│  ┌────────────────────┐  │
-│  │  ┌──────────────┐  │  │  ← newest, full size, in front
-│  │  │ BARCLAYS  now│  │  │
-│  │  │ −£120         │  │  │
-└──┴──┴──────────────┴──┴──┘
-```
+I'll fix this by changing each visual's own background to grey and converting its inner sections into individual white cards, matching the portal pattern exactly.
 
-### Technical changes
+### Changes to `src/components/home/BentoGrid.tsx`
 
-**`src/styles.css`**
-- Remove `toast-cycle` keyframes (single-toast swap).
-- Add 3 new keyframe sets, one per stack position:
-  - `toast-stack-1` (front): slides up from below, stays at `translateY(0) scale(1)`, fades out at end.
-  - `toast-stack-2` (middle): starts at front position, then shifts to `translateY(-14px) scale(0.94)` with reduced opacity when toast 2 arrives.
-  - `toast-stack-3` (back): goes through front → middle → back (`translateY(-26px) scale(0.88)`, more faded), then exits.
-- All three share the same total duration (~9s) so they loop in sync.
+**1. Remove the grey wrapper I added**
+In the standard (non-side) layout branch, drop the grey `bg-[#f5f6fb] p-3 border` wrapper around `cell.visual` and render `{cell.visual}` directly inside `mt-6 flex-1 flex items-end`. Each visual will now own its background.
 
-**`src/components/home/FeaturesSection.tsx` — `PricePreview`**
-- Keep the 3 charges array.
-- Replace `animate-toast-cycle` + `animationDelay` with per-index animation classes (`animate-toast-stack-1/2/3`).
-- Use `bottom-4` anchor so stack grows upward.
-- Add `transform-gpu` and `will-change-transform` for smoother motion.
-- Keep `min-h-[168px]` on the container so card height stays aligned with the others.
+**2. Update each visual's outer container** — change from `bg-white/80 backdrop-blur-md border border-white shadow-sm` to `bg-[#f5f6fb] border border-neutral-200` with the soft drop-shadow filter (matching PortalVisual).
 
-No other components or files are affected.
+**3. Convert inner sections to white cards** for each visual:
+
+- **PatientRecordVisual** — split into stacked white cards on grey:
+  - Card 1: header (avatar + name + Active badge)
+  - Card 2: Last visit / Next appt grid
+  - Card 3: Appointment history list
+  - Each card: `bg-white border border-[#e2e8f0] rounded-lg p-2.5`
+
+- **AnalyticsVisual** — replace the inner `bg-[#2563EB]/5` tinted boxes with `bg-white border border-[#e2e8f0]` cards:
+  - Two white KPI cards (Revenue, Bookings) on grey
+  - One white chart card containing the SVG line chart
+
+- **StaffVisual** — wrap the team list in a single white card on the grey panel (matches your screenshot 3 where the staff list is one rounded white container on grey).
+
+- **SmsVisual** — convert into a white "conversation" card sitting on grey (matches screenshot 4):
+  - White card with header (avatar, Smile Dental, SMS · Today 09:00, message icon)
+  - The message bubble below stays as-is
+
+- **FormVisual** — keep the phone-frame mockup as-is (it's already a device frame, not a flat panel — leaves it consistent with how a phone naturally looks against grey).
+
+### Result
+All bento visuals will share the portal's signature look: a soft grey `#f5f6fb` panel with crisp white sub-cards (`#e2e8f0` borders) floating on top — matching screenshot 1 exactly.
+
