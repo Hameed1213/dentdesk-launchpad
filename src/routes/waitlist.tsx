@@ -62,10 +62,10 @@ function WaitlistPage() {
 
   return (
     <main className="min-h-screen bg-white flex flex-col lg:flex-row relative">
-      {/* Tablet-only: Back to home pinned top-right */}
+      {/* Tablet-only: Back to home pinned top-right, aligned with logo */}
       <Link
         to="/"
-        className="hidden md:max-lg:inline-flex absolute top-6 right-6 z-30 items-center gap-1.5 text-[13px] font-medium text-neutral-500 hover:text-neutral-800 transition-colors"
+        className="hidden md:max-lg:inline-flex absolute top-12 right-8 z-30 items-center gap-1.5 text-[13px] font-medium text-neutral-500 hover:text-neutral-800 transition-colors"
       >
         <ArrowLeft className="w-4 h-4" />
         Back to home
