@@ -27,7 +27,6 @@ export default function PricingCTA() {
     "Patient records and notes",
     "Automated reminders and recalls",
     "Payments, deposits and forms",
-    "SMS reminders included",
     "Custom forms",
     "30-day free trial",
   ];
