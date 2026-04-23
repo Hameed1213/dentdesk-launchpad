@@ -143,7 +143,7 @@ export default function PricingCTA() {
 
             <a
               href="/waitlist"
-              className="mt-2 self-start hidden lg:inline-flex items-center gap-2 bg-[#2563EB] text-white text-[14px] font-semibold px-6 py-3 rounded-xl hover:bg-[#1d4ed8] transition-all shadow-lg shadow-blue-500/20"
+              className="mt-2 self-start inline-flex items-center gap-2 bg-[#2563EB] text-white text-[14px] font-semibold px-6 py-3 rounded-xl hover:bg-[#1d4ed8] transition-all shadow-lg shadow-blue-500/20"
             >
               Start free trial <ArrowRight className="w-4 h-4" />
             </a>
@@ -184,16 +184,6 @@ export default function PricingCTA() {
               </div>
             )}
           </motion.div>
-        </div>
-
-        {/* Tablet/mobile-only CTA below Includes card */}
-        <div className="lg:hidden mt-5 flex">
-          <a
-            href="/waitlist"
-            className="inline-flex items-center gap-2 bg-[#2563EB] text-white text-[14px] font-semibold px-6 py-3 rounded-xl hover:bg-[#1d4ed8] transition-all shadow-lg shadow-blue-500/20"
-          >
-            Start free trial <ArrowRight className="w-4 h-4" />
-          </a>
         </div>
 
       </div>
