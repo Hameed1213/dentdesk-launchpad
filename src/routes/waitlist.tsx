@@ -37,8 +37,6 @@ function WaitlistPage() {
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  const [isTyping, setIsTyping] = useState(false);
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const trimmedEmail = email.trim();
