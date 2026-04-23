@@ -40,7 +40,22 @@ const PricePreview = () => {
     { id: 2, charge: charges[2] },
   ]);
 
+  const previewRef = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
   useEffect(() => {
+    const el = previewRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsVisible(entry.isIntersecting),
+      { threshold: 0.1 },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!isVisible) return;
     let nextId = 3;
     let nextChargeIndex = 0;
 
@@ -52,10 +67,10 @@ const PricePreview = () => {
     }, TOAST_INTERVAL_MS);
 
     return () => window.clearInterval(interval);
-  }, []);
+  }, [isVisible]);
 
   return (
-    <div className="relative rounded-xl p-4 overflow-hidden min-h-[168px]">
+    <div ref={previewRef} className="relative rounded-xl p-4 overflow-hidden min-h-[168px]">
       <div className="pointer-events-none absolute inset-x-4 top-1/2 h-[84px] -translate-y-1/2">
         <AnimatePresence initial={false}>
           {stack.map((item, index) => {
@@ -152,7 +167,22 @@ const NoShowsPreview = () => {
   const [checking, setChecking] = useState<number | null>(null);
   const animRef = useRef<ReturnType<typeof setTimeout>[]>([]);
 
+  const previewRef = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
   useEffect(() => {
+    const el = previewRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsVisible(entry.isIntersecting),
+      { threshold: 0.1 },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!isVisible) return;
     const clearTimers = () => {
       animRef.current.forEach(clearTimeout);
       animRef.current = [];
@@ -218,7 +248,7 @@ const NoShowsPreview = () => {
 
     runAnimation();
     return clearTimers;
-  }, []);
+  }, [isVisible]);
 
   const rows = [
     { key: "c1" as CountKey, Icon: Bell, label: "Send reminders" },
@@ -227,7 +257,7 @@ const NoShowsPreview = () => {
   ];
 
   return (
-    <div className="rounded-xl bg-white/70 backdrop-blur-md border border-white/90 shadow-sm p-4 overflow-hidden min-h-[168px] flex flex-col">
+    <div ref={previewRef} className="rounded-xl bg-white/70 backdrop-blur-md border border-white/90 shadow-sm p-4 overflow-hidden min-h-[168px] flex flex-col">
       <div className="flex items-center justify-between">
         <div>
           <div className="text-sm font-semibold text-foreground">Reception to-do</div>
