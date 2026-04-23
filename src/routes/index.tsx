@@ -3,6 +3,7 @@ import Navbar from "@/components/home/Navbar";
 import HeroSection from "@/components/home/HeroSection";
 import FeaturesSection from "@/components/home/FeaturesSection";
 import ProductShowcase from "@/components/home/ProductShowcase";
+import HowItWorks from "@/components/home/HowItWorks";
 
 import BentoGrid from "@/components/home/BentoGrid";
 import FAQ from "@/components/home/FAQ";
@@ -59,6 +60,7 @@ function Index() {
       <section id="about">
         <ProductShowcase />
       </section>
+      <HowItWorks />
       <BentoGrid />
       <section id="pricing">
         <PricingCTA />

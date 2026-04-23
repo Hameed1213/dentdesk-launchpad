@@ -299,7 +299,7 @@ const problems = [
 
 export default function FeaturesSection() {
   return (
-    <section className="relative bg-background py-20 md:py-32 px-6 md:px-8 overflow-hidden">
+    <section className="relative bg-background py-16 md:py-24 px-6 md:px-8 overflow-hidden">
       <div className="relative mx-auto max-w-6xl">
         {/* Section heading */}
         <div className="mx-auto max-w-2xl text-center mb-14 md:mb-20">

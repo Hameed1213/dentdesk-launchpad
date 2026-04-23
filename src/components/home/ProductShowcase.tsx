@@ -1130,7 +1130,7 @@ export default function ProductShowcase() {
   const content = tabContent[activeTab];
 
   return (
-    <section ref={sectionRef} className="relative bg-gradient-to-br from-[#DBEAFE] via-[#EFF6FF] to-white py-24 px-6 overflow-hidden">
+    <section ref={sectionRef} className="relative bg-gradient-to-br from-[#DBEAFE] via-[#EFF6FF] to-white py-16 md:py-24 px-6 overflow-hidden">
       {/* Top irregular fade to white */}
       <div
         className="pointer-events-none absolute inset-x-0 top-0 h-72 z-10"
