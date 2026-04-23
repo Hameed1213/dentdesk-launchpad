@@ -23,17 +23,14 @@ export default function PricingCTA() {
 
   const features = [
     "1 location",
-    "Unlimited dentists & users",
+    "Unlimited dentists & Staff permissions",
     "Online booking page",
-    "Calendar & scheduling",
     "Patient records & notes",
     "Automated reminders & recalls",
     "Payments & deposits",
     "Forms & questionnaires",
     "Advanced analytics & reports",
-    "Staff permissions & roles",
     "Priority WhatsApp support",
-    "Email support",
   ];
 
   return (
