@@ -763,7 +763,7 @@ const cells = [
     description: "Records, history and appointments, all in one profile.",
     visual: <PatientRecordVisual />,
     span: "md:col-span-2 md:row-span-2",
-    orb: "37,99,235", // primary blue
+    orb: "37,99,235", // primary royal blue
   },
   {
     Icon: Monitor,
