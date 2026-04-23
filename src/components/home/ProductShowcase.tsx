@@ -1130,7 +1130,31 @@ export default function ProductShowcase() {
   const content = tabContent[activeTab];
 
   return (
-    <section ref={sectionRef} className="bg-[#f1f3f7] py-24 px-6 overflow-hidden">
+    <section ref={sectionRef} className="relative bg-gradient-to-br from-[#DBEAFE] via-[#EFF6FF] to-white py-24 px-6 overflow-hidden">
+      {/* Decorative blue blobs */}
+      <div className="pointer-events-none absolute inset-0 -z-0">
+        <div
+          className="absolute -top-40 -left-32 w-[560px] h-[560px] rounded-full"
+          style={{
+            background:
+              "radial-gradient(ellipse, rgba(37,99,235,0.22), transparent 70%)",
+          }}
+        />
+        <div
+          className="absolute top-1/3 -right-40 w-[520px] h-[520px] rounded-full"
+          style={{
+            background:
+              "radial-gradient(ellipse, rgba(96,165,250,0.25), transparent 70%)",
+          }}
+        />
+        <div
+          className="absolute -bottom-40 left-1/4 w-[500px] h-[500px] rounded-full"
+          style={{
+            background:
+              "radial-gradient(ellipse, rgba(147,197,253,0.30), transparent 70%)",
+          }}
+        />
+      </div>
       <motion.div
         className="container max-w-6xl mx-auto"
         initial={{ opacity: 0, y: 24 }}
