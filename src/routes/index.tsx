@@ -60,11 +60,11 @@ function Index() {
         <ProductShowcase />
       </section>
       <BentoGrid />
-      <section id="faq">
-        <FAQ />
-      </section>
       <section id="pricing">
         <PricingCTA />
+      </section>
+      <section id="faq">
+        <FAQ />
       </section>
       <Footer />
     </main>
