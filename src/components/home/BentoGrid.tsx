@@ -320,7 +320,7 @@ const PortalVisual = () => (
             Upcoming
           </div>
           {/* Upcoming appointment card */}
-          <div className="bg-white border border-[#e2e8f0] rounded-lg p-2 mb-2.5 flex items-center justify-between">
+          <div className="bg-[#f1f5f9] border border-[#e2e8f0] rounded-lg p-2 mb-2.5 flex items-center justify-between">
             <div className="min-w-0">
               <div className="text-[9px] font-bold text-[#0f172a] truncate">
                 Hygiene check
