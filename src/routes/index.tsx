@@ -8,6 +8,7 @@ import BentoGrid from "@/components/home/BentoGrid";
 import FAQ from "@/components/home/FAQ";
 import PricingCTA from "@/components/home/PricingCTA";
 import Footer from "@/components/home/Footer";
+import WhatsAppButton from "@/components/home/WhatsAppButton";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -67,6 +68,7 @@ function Index() {
         <FAQ />
       </section>
       <Footer />
+      <WhatsAppButton />
     </main>
   );
 }
