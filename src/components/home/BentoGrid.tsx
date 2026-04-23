@@ -797,7 +797,7 @@ const cells = [
   },
   {
     Icon: FileCheck,
-    title: "Paperless from day one.",
+    title: "Custom forms",
     visual: <FormsVisual />,
     span: "md:col-span-3 md:row-span-1",
     layout: "side" as const,
