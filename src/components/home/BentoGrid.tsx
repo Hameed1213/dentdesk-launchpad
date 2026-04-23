@@ -536,7 +536,7 @@ const SmsVisual = () => {
   }, []);
 
   return (
-    <div className="h-full w-full">
+    <div className="h-full w-full md:max-h-[280px] md:overflow-hidden lg:max-h-none lg:overflow-visible">
       <div
         style={{
           opacity: channelVisible ? 1 : 0,
