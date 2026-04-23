@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Card } from "@/components/ui/card";
 import {
   User,
@@ -6,24 +7,17 @@ import {
   Users,
   Monitor,
   Calendar,
+  CalendarDays,
+  MapPin,
   Check,
   X,
   MessageSquare,
 } from "lucide-react";
 
-const BLUE = "37,99,235"; // primary blue rgb triplet (kept for fallback)
-
-// Distinct shades of blue per cell (rgb triplets)
-const BLUE_SHADES = [
-  "37,99,235",   // primary blue   #2563EB
-  "59,130,246",  // bright blue    #3B82F6
-  "29,78,216",   // deep indigo-blue #1D4ED8
-  "14,165,233",  // sky blue       #0EA5E9
-  "99,102,241",  // indigo         #6366F1
-  "30,64,175",   // navy           #1E40AF
-];
+const BLUE = "37,99,235"; // primary blue rgb triplet
 
 /* ---------- Cell visuals ---------- */
+
 
 const PatientRecordVisual = () => (
   <div className="rounded-xl bg-white/80 backdrop-blur-md border border-white shadow-sm p-5 overflow-hidden mx-auto w-full max-w-[300px]">
@@ -98,69 +92,87 @@ const PatientRecordVisual = () => (
   </div>
 );
 
-const FormVisual = () => (
-  <div className="w-[210px] rounded-[26px] bg-foreground/90 p-1.5 shadow-xl">
-    <div className="rounded-[18px] bg-white overflow-hidden">
-      {/* Status bar */}
-      <div className="h-4 bg-[#2563EB]/5 flex items-center justify-between px-3">
-        <span className="text-[7px] font-semibold text-foreground">9:41</span>
-        <div className="flex items-center gap-0.5">
-          <div className="w-1 h-1 rounded-full bg-foreground/60" />
-          <div className="w-1 h-1 rounded-full bg-foreground/60" />
-          <div className="w-1 h-1 rounded-full bg-foreground/60" />
+const FormsVisual = () => (
+  <div
+    className="w-full h-full relative"
+    style={{
+      filter:
+        "drop-shadow(0 8px 16px rgba(0,0,0,0.06)) drop-shadow(0 2px 4px rgba(0,0,0,0.04))",
+    }}
+  >
+    <div className="bg-white rounded-lg overflow-hidden border border-neutral-200 p-5">
+      {/* Header */}
+      <div className="flex items-start justify-between mb-3">
+        <div className="min-w-0">
+          <div className="text-[12px] font-bold text-[#0f172a]">
+            Medical history form
+          </div>
+          <div className="text-[9px] text-[#64748b] mt-0.5">Sarah Mitchell</div>
         </div>
+        <span className="text-[8px] font-semibold bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-full shrink-0 flex items-center gap-1">
+          <Check className="w-2 h-2" strokeWidth={3} /> Signed
+        </span>
       </div>
+
       {/* Progress */}
-      <div className="px-3 pt-3">
-        <div className="flex items-center justify-between text-[7px] mb-1">
-          <span className="text-muted-foreground">Step 2 of 4</span>
-          <span className="font-semibold text-[#2563EB]">50%</span>
+      <div className="mb-3">
+        <div className="flex items-center justify-between text-[8px] mb-1">
+          <span className="text-[#64748b]">Completed</span>
+          <span className="font-semibold text-[#2563EB]">100%</span>
         </div>
-        <div className="h-1 rounded-full bg-[#2563EB]/10 overflow-hidden">
-          <div className="h-full w-1/2 bg-[#2563EB] rounded-full" />
-        </div>
-      </div>
-      {/* Title */}
-      <div className="px-3 pt-3 pb-2">
-        <div className="text-[10px] font-bold text-foreground">
-          Medical history
+        <div className="h-1 rounded-full bg-[#F3F6FD] overflow-hidden">
+          <div className="h-full w-full bg-[#2563EB] rounded-full" />
         </div>
       </div>
-      {/* Fields */}
-      <div className="px-3 space-y-2 pb-3">
-        <div>
-          <div className="text-[7px] text-muted-foreground mb-0.5">
-            Allergies
-          </div>
-          <div className="h-5 rounded-md border border-[#2563EB]/30 bg-[#2563EB]/5 flex items-center px-1.5">
-            <span className="text-[8px] text-foreground">Penicillin</span>
-          </div>
-        </div>
-        <div>
-          <div className="text-[7px] text-muted-foreground mb-0.5">
-            Medications
-          </div>
-          <div className="h-5 rounded-md border border-neutral-200 bg-white flex items-center px-1.5">
-            <span className="text-[8px] text-muted-foreground">None</span>
-          </div>
-        </div>
-        <div>
-          <div className="text-[7px] text-muted-foreground mb-0.5">
-            Pregnant?
-          </div>
-          <div className="flex gap-1">
-            <div className="flex-1 h-5 rounded-md border border-neutral-200 bg-white flex items-center justify-center text-[8px] text-muted-foreground">
-              Yes
+
+      {/* Fields grid */}
+      <div className="grid grid-cols-2 gap-1.5 mb-3">
+        {[
+          { label: "Allergies", value: "Penicillin" },
+          { label: "Medications", value: "None" },
+          { label: "Conditions", value: "None" },
+          { label: "Pregnant?", value: "No" },
+        ].map((f) => (
+          <div
+            key={f.label}
+            className="bg-[#F3F6FD] border border-[#e2e8f0] rounded-lg p-1.5"
+          >
+            <div className="text-[7px] text-[#64748b] uppercase tracking-wide">
+              {f.label}
             </div>
-            <div className="flex-1 h-5 rounded-md border border-[#2563EB] bg-[#2563EB]/10 flex items-center justify-center text-[8px] font-semibold text-[#2563EB]">
-              No
+            <div className="text-[9px] font-semibold text-[#0f172a] mt-0.5">
+              {f.value}
             </div>
           </div>
+        ))}
+      </div>
+
+      {/* Signature block */}
+      <div className="bg-[#F3F6FD] border border-[#e2e8f0] rounded-lg p-2 flex items-end justify-between">
+        <div className="min-w-0">
+          <div className="text-[7px] text-[#64748b] uppercase tracking-wide mb-0.5">
+            Signature
+          </div>
+          <div
+            className="text-[14px] text-[#0f172a] leading-none"
+            style={{ fontFamily: "'Brush Script MT', cursive" }}
+          >
+            Sarah Mitchell
+          </div>
         </div>
-        {/* Submit */}
-        <button className="w-full h-6 rounded-md bg-[#2563EB] text-white text-[8px] font-semibold mt-1">
-          Continue
-        </button>
+        <div className="text-right shrink-0">
+          <div className="text-[7px] text-[#64748b] uppercase tracking-wide mb-0.5">
+            Date
+          </div>
+          <div className="text-[9px] font-semibold text-[#0f172a]">
+            14 Apr 2026
+          </div>
+        </div>
+      </div>
+
+      {/* Footer */}
+      <div className="text-[7px] text-[#94a3b8] mt-2">
+        Submitted 14 Apr 2026 · 09:42
       </div>
     </div>
   </div>
@@ -354,7 +366,7 @@ const PortalVisual = () => (
     }}
   >
     {/* Browser window */}
-    <div className="bg-white rounded-lg overflow-hidden border border-neutral-200 p-7">
+    <div className="bg-white rounded-lg overflow-hidden border border-neutral-200 p-5">
         {/* Portal content */}
         <div className="bg-white">
           {/* Greeting */}
@@ -437,46 +449,321 @@ const PortalVisual = () => (
 
 /* ---------- SMS reminder visual ---------- */
 
-const SmsVisual = () => (
-  <div className="rounded-xl bg-white/80 backdrop-blur-md border border-white shadow-sm p-4 overflow-hidden">
-    {/* Contact header */}
-    <div className="flex items-center gap-2.5 pb-3 border-b border-neutral-100">
-      <div className="w-8 h-8 rounded-full bg-[#2563EB] flex items-center justify-center text-white text-[11px] font-bold shrink-0">
-        SD
-      </div>
-      <div className="min-w-0 flex-1">
-        <div className="text-[12px] font-semibold text-foreground truncate">
-          Smile Dental
-        </div>
-        <div className="text-[9px] text-muted-foreground">SMS · Today 09:00</div>
-      </div>
-      <MessageSquare className="w-3.5 h-3.5 text-[#2563EB]" />
-    </div>
+const smsMessages = [
+  { id: 1, type: "automated", text: "Reminder sent — tomorrow at 10:00am" },
+  {
+    id: 2,
+    type: "outbound",
+    text: "Hi Sarah, your appointment is tomorrow at 10:00am — Smile Dental 👋",
+  },
+  { id: 3, type: "inbound", text: "Thanks, see you tomorrow! 😊" },
+] as const;
 
-    {/* Message bubble */}
-    <div className="mt-3 flex">
-      <div className="max-w-[85%] rounded-2xl rounded-bl-md bg-[#2563EB]/10 border border-[#2563EB]/15 px-3 py-2">
-        <p className="text-[11px] leading-snug text-foreground">
-          Hi Sarah, reminder: your appointment is tomorrow at{" "}
-          <span className="font-semibold">10:00am</span> — Smile Dental
-        </p>
+const SmsVisual = () => {
+  const [visibleMessages, setVisibleMessages] = useState<number[]>([]);
+  const [typing, setTyping] = useState(false);
+  const [typingFor, setTypingFor] = useState<number | null>(null);
+  const [channel, setChannel] = useState<"sms" | "email">("sms");
+  const [channelVisible, setChannelVisible] = useState(true);
+
+  useEffect(() => {
+    const timers: ReturnType<typeof setTimeout>[] = [];
+
+    function runSequence() {
+      setVisibleMessages([]);
+      setTyping(false);
+      setTypingFor(null);
+
+      timers.push(setTimeout(() => setVisibleMessages([1]), 600));
+      timers.push(
+        setTimeout(() => {
+          setTyping(true);
+          setTypingFor(2);
+        }, 1800),
+      );
+      timers.push(
+        setTimeout(() => {
+          setTyping(false);
+          setTypingFor(null);
+          setVisibleMessages((prev) => [...prev, 2]);
+        }, 3200),
+      );
+      timers.push(
+        setTimeout(() => {
+          setTyping(true);
+          setTypingFor(3);
+        }, 4400),
+      );
+      timers.push(
+        setTimeout(() => {
+          setTyping(false);
+          setTypingFor(null);
+          setVisibleMessages((prev) => [...prev, 3]);
+        }, 5600),
+      );
+      // After SMS completes — crossfade to email
+      timers.push(
+        setTimeout(() => {
+          setChannelVisible(false);
+          timers.push(
+            setTimeout(() => {
+              setChannel("email");
+              setChannelVisible(true);
+
+              timers.push(
+                setTimeout(() => {
+                  setChannelVisible(false);
+                  timers.push(
+                    setTimeout(() => {
+                      setChannel("sms");
+                      setChannelVisible(true);
+                      setVisibleMessages([]);
+                      setTyping(false);
+                      setTypingFor(null);
+                      timers.push(setTimeout(runSequence, 400));
+                    }, 400),
+                  );
+                }, 5000),
+              );
+            }, 400),
+          );
+        }, 8000),
+      );
+    }
+
+    runSequence();
+    return () => timers.forEach(clearTimeout);
+  }, []);
+
+  return (
+    <div className="h-full w-full">
+      <div
+        style={{
+          opacity: channelVisible ? 1 : 0,
+          transition: "opacity 0.4s ease",
+        }}
+      >
+        {channel === "sms" ? (
+          <>
+            {/* SMS Header */}
+            <div className="flex items-center gap-3 pb-3 border-b border-[#e2e8f0] mb-3">
+              <div className="w-9 h-9 rounded-full bg-[#2563EB] flex items-center justify-center text-white text-[12px] font-bold flex-shrink-0">
+                SD
+              </div>
+              <div>
+                <div className="text-[13px] font-semibold text-[#0f172a]">
+                  Smile Dental
+                </div>
+                <div className="text-[11px] text-neutral-400">SMS</div>
+              </div>
+            </div>
+
+            {/* Messages */}
+            <div className="flex flex-col gap-2">
+              {smsMessages.map(
+                (msg) =>
+                  visibleMessages.includes(msg.id) && (
+                    <div
+                      key={msg.id}
+                      style={{
+                        animation:
+                          "msgSlideIn 0.35s cubic-bezier(0.34,1.2,0.64,1) forwards",
+                      }}
+                    >
+                      {msg.type === "automated" && (
+                        <div className="flex justify-center">
+                          <div className="bg-[#f1f5f9] border border-dashed border-[#e2e8f0] rounded-xl px-3 py-1.5 text-[11px] text-neutral-400 italic text-center">
+                            {msg.text}
+                          </div>
+                        </div>
+                      )}
+                      {msg.type === "outbound" && (
+                        <div className="flex justify-end">
+                          <div className="bg-[#2563EB] rounded-2xl rounded-br-sm px-3 py-2 max-w-[85%]">
+                            <p className="text-[12px] text-white leading-relaxed">
+                              {msg.text}
+                            </p>
+                          </div>
+                        </div>
+                      )}
+                      {msg.type === "inbound" && (
+                        <div className="flex justify-start">
+                          <div className="bg-white border border-[#e2e8f0] rounded-2xl rounded-bl-sm px-3 py-2 max-w-[85%] shadow-sm">
+                            <p className="text-[12px] text-[#0f172a] leading-relaxed">
+                              {msg.text}
+                            </p>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  ),
+              )}
+
+              {typing && (
+                <div style={{ animation: "msgSlideIn 0.3s ease forwards" }}>
+                  {typingFor === 3 ? (
+                    <div className="flex justify-start">
+                      <div className="bg-white border border-[#e2e8f0] rounded-2xl rounded-bl-sm px-3 py-2.5 shadow-sm">
+                        <div className="flex gap-1 items-center">
+                          <span
+                            className="w-1.5 h-1.5 rounded-full bg-neutral-300"
+                            style={{ animation: "typingDot 1.2s ease-in-out infinite" }}
+                          />
+                          <span
+                            className="w-1.5 h-1.5 rounded-full bg-neutral-300"
+                            style={{
+                              animation:
+                                "typingDot 1.2s ease-in-out 0.2s infinite",
+                            }}
+                          />
+                          <span
+                            className="w-1.5 h-1.5 rounded-full bg-neutral-300"
+                            style={{
+                              animation:
+                                "typingDot 1.2s ease-in-out 0.4s infinite",
+                            }}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="flex justify-end">
+                      <div className="bg-[#2563EB] rounded-2xl rounded-br-sm px-3 py-2.5">
+                        <div className="flex gap-1 items-center">
+                          <span
+                            className="w-1.5 h-1.5 rounded-full bg-white/50"
+                            style={{ animation: "typingDot 1.2s ease-in-out infinite" }}
+                          />
+                          <span
+                            className="w-1.5 h-1.5 rounded-full bg-white/50"
+                            style={{
+                              animation:
+                                "typingDot 1.2s ease-in-out 0.2s infinite",
+                            }}
+                          />
+                          <span
+                            className="w-1.5 h-1.5 rounded-full bg-white/50"
+                            style={{
+                              animation:
+                                "typingDot 1.2s ease-in-out 0.4s infinite",
+                            }}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+          </>
+        ) : (
+          <EmailView />
+        )}
       </div>
     </div>
-    <div className="mt-1.5 ml-1 flex items-center gap-1">
-      <Check className="w-2.5 h-2.5 text-[#2563EB]" strokeWidth={3} />
-      <span className="text-[9px] text-muted-foreground">Sent automatically</span>
-    </div>
-  </div>
-);
+  );
+};
+
+function EmailView() {
+  return (
+    <>
+      {/* Email Header — same style as SMS header */}
+      <div className="flex items-center gap-3 pb-3 border-b border-[#e2e8f0] mb-3">
+        <div className="w-9 h-9 rounded-full bg-[#2563EB] flex items-center justify-center text-white text-[12px] font-bold flex-shrink-0">
+          SD
+        </div>
+        <div>
+          <div className="text-[13px] font-semibold text-[#0f172a]">
+            Smile Dental
+          </div>
+          <div className="text-[11px] text-neutral-400">Email</div>
+        </div>
+      </div>
+
+      {/* Email card */}
+      <div
+        className="bg-white border border-[#e2e8f0] rounded-xl overflow-hidden shadow-sm"
+        style={{ animation: "msgSlideIn 0.4s ease forwards" }}
+      >
+        {/* Subject line */}
+        <div className="px-4 pt-3 pb-2 border-b border-[#f1f5f9]">
+          <div className="text-[10px] font-semibold text-neutral-400 uppercase tracking-wider mb-0.5">
+            Subject
+          </div>
+          <div className="text-[13px] font-semibold text-[#0f172a]">
+            Your appointment is confirmed
+          </div>
+        </div>
+
+        {/* Email body */}
+        <div className="px-4 py-3">
+          <p className="text-[12px] text-neutral-500 mb-3 leading-relaxed">
+            Hi Sarah, here are the details for your upcoming appointment.
+          </p>
+
+          {/* Appointment detail block */}
+          <div className="bg-[#f8fafc] border border-[#e2e8f0] rounded-lg px-3 py-3 mb-3">
+            <div className="text-[13px] font-bold text-[#0f172a] mb-2">
+              Hygiene check
+            </div>
+            <div className="flex flex-col gap-1">
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 flex-shrink-0">
+                  <CalendarDays size={11} className="text-neutral-400" />
+                </div>
+                <span className="text-[11px] text-neutral-500">
+                  Thu 18 Apr · 10:30am
+                </span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 flex-shrink-0">
+                  <User size={11} className="text-neutral-400" />
+                </div>
+                <span className="text-[11px] text-neutral-500">
+                  Dr. James Webb
+                </span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 flex-shrink-0">
+                  <MapPin size={11} className="text-neutral-400" />
+                </div>
+                <span className="text-[11px] text-neutral-500">
+                  Smile Dental, London
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* CTA */}
+          <div className="bg-[#2563EB] rounded-lg py-2 text-center">
+            <span className="text-[12px] font-semibold text-white tracking-[-0.01em]">
+              Add to calendar
+            </span>
+          </div>
+        </div>
+
+        {/* Footer */}
+        <div className="border-t border-[#f1f5f9] px-4 py-2 flex items-center justify-between bg-[#fafafa]">
+          <span className="text-[10px] text-neutral-300 font-medium">
+            Sent automatically by Dent Dock
+          </span>
+          <div className="w-2 h-2 rounded-full bg-[#22c55e]" />
+        </div>
+      </div>
+    </>
+  );
+}
 
 /* ---------- Cell config ---------- */
 
 const cells = [
   {
     Icon: User,
-    title: "Every patient. Every detail.",
+    title: "Complete patient history",
+    description: "Records, history and appointments, all in one profile.",
     visual: <PatientRecordVisual />,
     span: "md:col-span-2 md:row-span-2",
+    orb: "37,99,235", // primary blue
   },
   {
     Icon: Monitor,
@@ -485,18 +772,22 @@ const cells = [
     span: "md:col-span-4 md:row-span-1",
     layout: "side" as const,
     popOut: true,
+    orb: "96,165,250", // sky blue
   },
   {
     Icon: Users,
     title: "Your whole team. One platform.",
     visual: <StaffVisual />,
     span: "md:col-span-2 md:row-span-1",
+    orb: "29,78,216", // deep indigo blue
   },
   {
     Icon: MessageSquare,
     title: "Patients never miss an appointment.",
     visual: <SmsVisual />,
     span: "md:col-span-2 md:row-span-1",
+    noHeader: true,
+    orb: "59,130,246", // bright blue
   },
   {
     Icon: TrendingUp,
@@ -507,12 +798,18 @@ const cells = [
     popOut: true,
     titleClass: "max-w-[110px]",
     popOutClass: "absolute -right-2 left-[30%] top-[5%] pointer-events-none",
+    orb: "14,165,233", // cyan-leaning blue
   },
   {
     Icon: FileCheck,
-    title: "Paperless from day one.",
-    visual: <FormVisual />,
+    title: "Custom\nforms",
+    visual: <FormsVisual />,
     span: "md:col-span-3 md:row-span-1",
+    layout: "side" as const,
+    popOut: true,
+    titleClass: "max-w-[140px]",
+    popOutClass: "absolute -right-2 left-[30%] top-[5%] pointer-events-none",
+    orb: "129,140,248", // indigo / periwinkle
   },
 ];
 
@@ -538,7 +835,7 @@ export default function BentoGrid() {
         <div className="grid grid-cols-1 md:grid-cols-6 md:auto-rows-[260px] gap-5 lg:gap-6">
           {cells.map((cell, i) => {
             const Icon = cell.Icon;
-            const tint = BLUE_SHADES[i % BLUE_SHADES.length];
+            const orb = ("orb" in cell && cell.orb) ? cell.orb : BLUE;
             return (
               <Card
                 key={i}
@@ -560,12 +857,12 @@ export default function BentoGrid() {
                       "radial-gradient(ellipse at center, black 40%, transparent 80%)",
                   }}
                 />
-                {/* Soft blue orb behind visual — distinct shade per cell */}
+                {/* Soft blue orb behind visual */}
                 <div
                   aria-hidden
                   className="pointer-events-none absolute left-1/2 bottom-[12%] -translate-x-1/2 w-[85%] h-[40%] rounded-full blur-3xl"
                   style={{
-                    background: `radial-gradient(circle, rgba(${tint},0.28) 0%, rgba(${tint},0.12) 45%, transparent 75%)`,
+                    background: `radial-gradient(circle, rgba(${orb},0.22) 0%, rgba(${orb},0.10) 45%, transparent 75%)`,
                   }}
                 />
                 {/* Glossy top highlight */}
@@ -579,13 +876,14 @@ export default function BentoGrid() {
                   <div className="relative flex h-full">
                     {/* Left: icon + title */}
                     <div className="flex-1 flex flex-col">
-                      <div className="w-11 h-11 rounded-xl bg-white border border-neutral-100 flex items-center justify-center mb-6 shadow-sm">
+                      <div className="w-11 h-11 rounded-xl bg-white border border-neutral-100 flex items-center justify-center mb-6 shadow-sm shrink-0">
                         <Icon
-                          className="w-5 h-5 text-[#2563EB]"
+                          size={20}
                           strokeWidth={1.75}
+                          className="text-[#2563EB]"
                         />
                       </div>
-                      <h3 className={`text-[19px] font-semibold text-foreground tracking-tight leading-snug ${("titleClass" in cell && cell.titleClass) ? cell.titleClass : "max-w-[220px]"}`}>
+                      <h3 className={`text-[19px] font-semibold text-foreground tracking-tight leading-snug whitespace-pre-line ${("titleClass" in cell && cell.titleClass) ? cell.titleClass : "max-w-[220px]"}`}>
                         {cell.title}
                       </h3>
                     </div>
@@ -604,17 +902,29 @@ export default function BentoGrid() {
                       </div>
                     )}
                   </div>
+                ) : "noHeader" in cell && cell.noHeader ? (
+                  <div className="relative flex flex-col h-full">
+                    <div className="flex-1 flex items-stretch">
+                      <div className="w-full">{cell.visual}</div>
+                    </div>
+                  </div>
                 ) : (
                   <div className="relative flex flex-col h-full">
-                    <div className="w-11 h-11 rounded-xl bg-white border border-neutral-100 flex items-center justify-center mb-6 shadow-sm">
+                    <div className="w-11 h-11 rounded-xl bg-white border border-neutral-100 flex items-center justify-center mb-6 shadow-sm shrink-0">
                       <Icon
-                        className="w-5 h-5 text-[#2563EB]"
+                        size={20}
                         strokeWidth={1.75}
+                        className="text-[#2563EB]"
                       />
                     </div>
                     <h3 className="text-[19px] font-semibold text-foreground tracking-tight leading-snug">
                       {cell.title}
                     </h3>
+                    {"description" in cell && cell.description && (
+                      <p className="mt-2 text-sm text-muted-foreground leading-snug max-w-[260px]">
+                        {cell.description}
+                      </p>
+                    )}
                     <div className="mt-6 flex-1 flex items-end">
                       <div className="w-full">{cell.visual}</div>
                     </div>
