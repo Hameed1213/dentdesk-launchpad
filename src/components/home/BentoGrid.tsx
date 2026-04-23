@@ -889,7 +889,7 @@ export default function BentoGrid() {
                 {cell.layout === "side" ? (
                   <div className="relative flex flex-col lg:flex-row h-full gap-6 lg:gap-0">
                     {/* Left: icon + title */}
-                    <div className="lg:flex-1 flex flex-col">
+                    <div className="lg:flex-1 flex flex-col shrink-0">
                       <div className="w-11 h-11 rounded-xl bg-white border border-neutral-100 flex items-center justify-center mb-6 shadow-sm shrink-0">
                         <Icon
                           size={20}
@@ -903,14 +903,14 @@ export default function BentoGrid() {
                     </div>
                     {cell.popOut ? (
                       <>
-                        <div className="lg:hidden w-full max-w-full overflow-hidden">{cell.visual}</div>
+                        <div className="lg:hidden w-full max-w-full overflow-hidden flex-1 flex flex-col">{cell.visual}</div>
                         <div className={`hidden lg:block ${("popOutClass" in cell && cell.popOutClass) ? cell.popOutClass : "absolute right-0 left-[32%] -top-[4%] pointer-events-none"}`}>
                           {cell.visual}
                         </div>
                       </>
                     ) : (
                       <>
-                        <div className="lg:hidden w-full max-w-full overflow-hidden">{cell.visual}</div>
+                        <div className="lg:hidden w-full max-w-full overflow-hidden flex-1 flex flex-col">{cell.visual}</div>
                         <div
                           className="hidden lg:flex absolute right-10 top-8 left-[36%] items-start pointer-events-none"
                           style={{ bottom: "-50%" }}
