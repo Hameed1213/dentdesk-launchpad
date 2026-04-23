@@ -1275,7 +1275,7 @@ export default function ProductShowcase() {
               href="https://app.dentdock.co.uk/signup"
               className="inline-flex items-center gap-2 border border-[#2563EB] text-[#2563EB] text-[14px] font-semibold px-5 py-2.5 rounded-xl hover:bg-[#2563EB] hover:text-white transition-all"
             >
-              Start free trial <ArrowRight className="w-4 h-4" />
+              Join the waitlist <ArrowRight className="w-4 h-4" />
             </a>
           </div>
         </div>
