@@ -57,11 +57,31 @@ export const Route = createRootRoute({
           "Online booking, automated reminders, payments and recalls for UK private dental practices. From £49/month.",
       },
       { name: "twitter:image", content: "https://dentdock.co.uk/og-image.png" },
+      { name: "theme-color", content: "#2563EB" },
     ],
     links: [
       {
         rel: "stylesheet",
         href: appCss,
+      },
+      { rel: "manifest", href: "/manifest.webmanifest" },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          name: "Dent Dock",
+          url: "https://dentdock.co.uk",
+          logo: "https://dentdock.co.uk/icon-512.png",
+          contactPoint: {
+            "@type": "ContactPoint",
+            contactType: "customer support",
+            email: "hello@dentdock.co.uk",
+          },
+          sameAs: [],
+        }),
       },
     ],
   }),
