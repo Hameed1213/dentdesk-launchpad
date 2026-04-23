@@ -65,7 +65,7 @@ function WaitlistPage() {
       {/* Mobile + Tablet: Back to home pinned top-right, aligned with logo */}
       <Link
         to="/"
-        className="lg:hidden inline-flex absolute top-10 right-6 md:top-12 md:right-8 z-30 items-center gap-1.5 text-[13px] font-medium text-neutral-500 hover:text-neutral-800 transition-colors"
+        className="lg:hidden inline-flex absolute top-[42px] right-8 md:top-12 z-30 items-center gap-1.5 text-[13px] font-medium text-neutral-500 hover:text-neutral-800 transition-colors"
       >
         <ArrowLeft className="w-4 h-4" />
         Back to home
