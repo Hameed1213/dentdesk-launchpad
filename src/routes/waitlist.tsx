@@ -62,17 +62,17 @@ function WaitlistPage() {
 
   return (
     <main className="min-h-screen bg-white flex flex-col lg:flex-row relative">
-      {/* Tablet-only: Back to home pinned top-right, aligned with logo */}
+      {/* Mobile + Tablet: Back to home pinned top-right, aligned with logo */}
       <Link
         to="/"
-        className="hidden md:max-lg:inline-flex absolute top-12 right-8 z-30 items-center gap-1.5 text-[13px] font-medium text-neutral-500 hover:text-neutral-800 transition-colors"
+        className="lg:hidden inline-flex absolute top-10 right-6 md:top-12 md:right-8 z-30 items-center gap-1.5 text-[13px] font-medium text-neutral-500 hover:text-neutral-800 transition-colors"
       >
         <ArrowLeft className="w-4 h-4" />
         Back to home
       </Link>
 
       {/* ===================== LEFT — copy ===================== */}
-      <section className="relative lg:w-1/2 bg-gradient-to-br from-[#DBEAFE] via-[#EFF6FF] to-white overflow-hidden flex flex-col px-8 py-10 lg:px-12 lg:py-14 min-h-[280px] md:max-lg:min-h-0 md:max-lg:py-12 lg:min-h-screen">
+      <section className="relative lg:w-1/2 bg-gradient-to-br from-[#DBEAFE] via-[#EFF6FF] to-white overflow-hidden flex flex-col px-8 py-10 lg:px-12 lg:py-14 min-h-[280px] max-lg:min-h-0 max-lg:py-12 lg:min-h-screen">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2 z-20 relative">
           <ToothIcon size={24} color="#2563EB" />
