@@ -519,8 +519,12 @@ const cells = [
   {
     Icon: FileCheck,
     title: "Paperless from day one.",
-    visual: <FormVisual />,
+    visual: <FormsVisual />,
     span: "md:col-span-3 md:row-span-1",
+    layout: "side" as const,
+    popOut: true,
+    titleClass: "max-w-[140px]",
+    popOutClass: "absolute -right-2 left-[30%] top-[5%] pointer-events-none",
   },
 ];
 
