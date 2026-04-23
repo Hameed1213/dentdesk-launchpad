@@ -876,7 +876,7 @@ export default function BentoGrid() {
                           className="text-[#2563EB]"
                         />
                       </div>
-                      <h3 className={`text-[19px] font-semibold text-foreground tracking-tight leading-snug ${("titleClass" in cell && cell.titleClass) ? cell.titleClass : "max-w-[220px]"}`}>
+                      <h3 className={`text-[19px] font-semibold text-foreground tracking-tight leading-snug whitespace-pre-line ${("titleClass" in cell && cell.titleClass) ? cell.titleClass : "max-w-[220px]"}`}>
                         {cell.title}
                       </h3>
                     </div>
