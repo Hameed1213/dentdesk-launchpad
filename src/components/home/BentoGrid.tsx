@@ -94,13 +94,13 @@ const PatientRecordVisual = () => (
 
 const FormsVisual = () => (
   <div
-    className="w-full h-full relative"
+    className="w-full h-full relative md:flex md:flex-col"
     style={{
       filter:
         "drop-shadow(0 8px 16px rgba(0,0,0,0.06)) drop-shadow(0 2px 4px rgba(0,0,0,0.04))",
     }}
   >
-    <div className="bg-white rounded-lg overflow-hidden border border-neutral-200 p-5">
+    <div className="bg-white rounded-lg overflow-hidden border border-neutral-200 p-5 md:flex-1">
       {/* Header */}
       <div className="flex items-start justify-between mb-3">
         <div className="min-w-0">
