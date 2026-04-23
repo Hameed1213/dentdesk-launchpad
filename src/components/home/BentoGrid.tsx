@@ -11,7 +11,17 @@ import {
   MessageSquare,
 } from "lucide-react";
 
-const BLUE = "37,99,235"; // primary blue rgb triplet
+const BLUE = "37,99,235"; // primary blue rgb triplet (kept for fallback)
+
+// Distinct shades of blue per cell (rgb triplets)
+const BLUE_SHADES = [
+  "37,99,235",   // primary blue   #2563EB
+  "59,130,246",  // bright blue    #3B82F6
+  "29,78,216",   // deep indigo-blue #1D4ED8
+  "14,165,233",  // sky blue       #0EA5E9
+  "99,102,241",  // indigo         #6366F1
+  "30,64,175",   // navy           #1E40AF
+];
 
 /* ---------- Cell visuals ---------- */
 
@@ -528,6 +538,7 @@ export default function BentoGrid() {
         <div className="grid grid-cols-1 md:grid-cols-6 md:auto-rows-[260px] gap-5 lg:gap-6">
           {cells.map((cell, i) => {
             const Icon = cell.Icon;
+            const tint = BLUE_SHADES[i % BLUE_SHADES.length];
             return (
               <Card
                 key={i}
@@ -549,12 +560,12 @@ export default function BentoGrid() {
                       "radial-gradient(ellipse at center, black 40%, transparent 80%)",
                   }}
                 />
-                {/* Soft blue orb behind visual */}
+                {/* Soft blue orb behind visual — distinct shade per cell */}
                 <div
                   aria-hidden
                   className="pointer-events-none absolute left-1/2 bottom-[12%] -translate-x-1/2 w-[85%] h-[40%] rounded-full blur-3xl"
                   style={{
-                    background: `radial-gradient(circle, rgba(${BLUE},0.22) 0%, rgba(${BLUE},0.10) 45%, transparent 75%)`,
+                    background: `radial-gradient(circle, rgba(${tint},0.28) 0%, rgba(${tint},0.12) 45%, transparent 75%)`,
                   }}
                 />
                 {/* Glossy top highlight */}
