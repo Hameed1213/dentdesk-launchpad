@@ -59,7 +59,6 @@ function Index() {
       <section id="about">
         <ProductShowcase />
       </section>
-      <HowItWorks />
       <BentoGrid />
       <section id="pricing">
         <PricingCTA />
