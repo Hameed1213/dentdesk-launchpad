@@ -1130,31 +1130,46 @@ export default function ProductShowcase() {
   const content = tabContent[activeTab];
 
   return (
-    <section ref={sectionRef} className="relative bg-gradient-to-br from-[#DBEAFE] via-[#EFF6FF] to-white py-24 px-6 overflow-hidden">
-      {/* Decorative blue blobs */}
-      <div className="pointer-events-none absolute inset-0 -z-0">
+    <section ref={sectionRef} className="relative bg-white py-24 px-6 overflow-hidden">
+      {/* Soft blue gradient base with faded top/bottom edges */}
+      <div
+        className="pointer-events-none absolute inset-0 -z-10"
+        style={{
+          background:
+            "linear-gradient(135deg, rgba(219,234,254,0.55), rgba(239,246,255,0.45) 55%, rgba(255,255,255,0) 100%)",
+          maskImage:
+            "linear-gradient(to bottom, transparent 0%, black 18%, black 82%, transparent 100%)",
+          WebkitMaskImage:
+            "linear-gradient(to bottom, transparent 0%, black 18%, black 82%, transparent 100%)",
+        }}
+      />
+      {/* Decorative blue blobs (lower opacity) */}
+      <div className="pointer-events-none absolute inset-0 -z-10">
         <div
           className="absolute -top-40 -left-32 w-[560px] h-[560px] rounded-full"
           style={{
             background:
-              "radial-gradient(ellipse, rgba(37,99,235,0.22), transparent 70%)",
+              "radial-gradient(ellipse, rgba(37,99,235,0.10), transparent 70%)",
           }}
         />
         <div
           className="absolute top-1/3 -right-40 w-[520px] h-[520px] rounded-full"
           style={{
             background:
-              "radial-gradient(ellipse, rgba(96,165,250,0.25), transparent 70%)",
+              "radial-gradient(ellipse, rgba(96,165,250,0.12), transparent 70%)",
           }}
         />
         <div
           className="absolute -bottom-40 left-1/4 w-[500px] h-[500px] rounded-full"
           style={{
             background:
-              "radial-gradient(ellipse, rgba(147,197,253,0.30), transparent 70%)",
+              "radial-gradient(ellipse, rgba(147,197,253,0.14), transparent 70%)",
           }}
         />
       </div>
+      {/* Top + bottom white fade for soft edge */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-white to-transparent -z-10" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-white to-transparent -z-10" />
       <motion.div
         className="container max-w-6xl mx-auto"
         initial={{ opacity: 0, y: 24 }}
