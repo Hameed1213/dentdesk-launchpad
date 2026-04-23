@@ -72,7 +72,7 @@ function WaitlistPage() {
       </Link>
 
       {/* ===================== LEFT — copy ===================== */}
-      <section className="relative lg:w-1/2 bg-gradient-to-br from-[#DBEAFE] via-[#EFF6FF] to-white overflow-hidden flex flex-col px-8 py-10 lg:px-12 lg:py-14 min-h-[280px] md:max-lg:min-h-0 md:max-lg:py-8 lg:min-h-screen">
+      <section className="relative lg:w-1/2 bg-gradient-to-br from-[#DBEAFE] via-[#EFF6FF] to-white overflow-hidden flex flex-col px-8 py-10 lg:px-12 lg:py-14 min-h-[280px] md:max-lg:min-h-0 md:max-lg:py-12 lg:min-h-screen">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2 z-20 relative">
           <ToothIcon size={24} color="#2563EB" />
@@ -120,7 +120,7 @@ function WaitlistPage() {
         </div>
 
         {/* Headline — vertically centered */}
-        <div className="relative z-10 flex-1 flex flex-col justify-center max-w-md">
+        <div className="relative z-10 flex-1 flex flex-col justify-center max-w-md md:max-lg:max-w-2xl md:max-lg:mt-10">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
@@ -136,7 +136,7 @@ function WaitlistPage() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: EASE, delay: 0.2 }}
-            className="text-3xl lg:text-5xl font-medium tracking-tight text-[#0F172A] leading-[1.1]"
+            className="text-3xl md:max-lg:text-4xl lg:text-5xl font-medium tracking-tight text-[#0F172A] leading-[1.1]"
           >
             Practice management,{" "}
             <span className="text-[#2563EB]">finally friendly</span>
