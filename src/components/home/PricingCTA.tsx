@@ -86,9 +86,10 @@ export default function PricingCTA() {
             transition={{ duration: 0.6 }}
             className="flex flex-col gap-3"
           >
-            {plans.map((plan) => {
+            {plans.map((plan, idx) => {
               const isSelected = plan.name === selected;
               return (
+                <>
                 <button
                   key={plan.name}
                   type="button"
