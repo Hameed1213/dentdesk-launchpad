@@ -152,7 +152,7 @@ function WaitlistPage() {
         </div>
 
         {/* Footer links — hidden on tablet (rendered at page bottom instead) */}
-        <div className="relative z-10 mt-8 flex md:max-lg:hidden items-center gap-5 text-[13px] text-[#475569]">
+        <div className="relative z-10 mt-8 hidden lg:flex items-center gap-5 text-[13px] text-[#475569]">
           <Link to="/privacy" className="hover:text-[#0F172A] transition-colors">
             Privacy
           </Link>
