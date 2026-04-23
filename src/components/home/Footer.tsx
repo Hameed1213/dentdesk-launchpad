@@ -49,6 +49,16 @@ export default function Footer() {
                 <li key={l.label}>
                   <a
                     href={l.href}
+                    onClick={(e) => {
+                      const hashIdx = l.href.indexOf("#");
+                      if (hashIdx === -1) return;
+                      const id = l.href.slice(hashIdx + 1);
+                      const el = document.getElementById(id);
+                      if (el) {
+                        e.preventDefault();
+                        el.scrollIntoView({ behavior: "smooth", block: "start" });
+                      }
+                    }}
                     className="text-[14px] text-white/70 hover:text-white transition-colors"
                   >
                     {l.label}
