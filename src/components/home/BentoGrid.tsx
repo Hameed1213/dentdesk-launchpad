@@ -450,6 +450,8 @@ const cells = [
     span: "md:col-span-3 md:row-span-1",
     layout: "side" as const,
     popOut: true,
+    titleClass: "max-w-[140px]",
+    popOutClass: "absolute right-4 left-[38%] top-[18%] pointer-events-none",
   },
   {
     Icon: FileCheck,
@@ -527,13 +529,13 @@ export default function BentoGrid() {
                           strokeWidth={1.75}
                         />
                       </div>
-                      <h3 className="text-[19px] font-semibold text-foreground tracking-tight leading-snug max-w-[220px]">
+                      <h3 className={`text-[19px] font-semibold text-foreground tracking-tight leading-snug max-w-[220px] ${("titleClass" in cell && cell.titleClass) ? cell.titleClass : ""}`}>
                         {cell.title}
                       </h3>
                     </div>
                     {cell.popOut ? (
                       <div
-                        className="absolute right-0 left-[32%] -top-[4%] pointer-events-none"
+                        className={("popOutClass" in cell && cell.popOutClass) ? cell.popOutClass : "absolute right-0 left-[32%] -top-[4%] pointer-events-none"}
                       >
                         {cell.visual}
                       </div>
