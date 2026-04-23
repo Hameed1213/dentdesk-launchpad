@@ -173,7 +173,7 @@ function WaitlistPage() {
       {/* ===================== RIGHT — form ===================== */}
       <section className="lg:w-1/2 flex flex-col px-6 sm:px-10 lg:px-16 py-10 lg:py-14 relative">
         {/* "Back to home" — hidden on tablet (now pinned to page top-right) */}
-        <div className="flex justify-end md:max-lg:hidden">
+        <div className="hidden lg:flex justify-end">
           <Link
             to="/"
             className="inline-flex items-center gap-1.5 text-sm font-medium text-neutral-600 hover:text-neutral-900 transition-colors"
