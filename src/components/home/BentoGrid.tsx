@@ -11,7 +11,17 @@ import {
   MessageSquare,
 } from "lucide-react";
 
-const BLUE = "37,99,235"; // primary blue rgb triplet
+const BLUE = "37,99,235"; // primary blue rgb triplet (kept for fallback)
+
+// Distinct shades of blue per cell (rgb triplets)
+const BLUE_SHADES = [
+  "37,99,235",   // primary blue   #2563EB
+  "59,130,246",  // bright blue    #3B82F6
+  "29,78,216",   // deep indigo-blue #1D4ED8
+  "14,165,233",  // sky blue       #0EA5E9
+  "99,102,241",  // indigo         #6366F1
+  "30,64,175",   // navy           #1E40AF
+];
 
 /* ---------- Cell visuals ---------- */
 
