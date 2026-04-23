@@ -120,7 +120,7 @@ function WaitlistPage() {
         </div>
 
         {/* Headline — vertically centered */}
-        <div className="relative z-10 flex-1 flex flex-col justify-center max-w-md">
+        <div className="relative z-10 flex-1 flex flex-col justify-center max-w-md md:max-lg:max-w-2xl md:max-lg:mt-10">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
