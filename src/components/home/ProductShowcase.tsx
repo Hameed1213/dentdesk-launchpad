@@ -1266,8 +1266,7 @@ export default function ProductShowcase() {
               <span className="text-[#2563EB]">a single day</span>
             </h3>
             <p className="text-[15px] sm:text-[16px] leading-[1.55] text-[#64748b] mt-2">
-              Sign up, add your details, and your booking page is ready, no
-              implementation fees, no onboarding calls.
+              Sign up, add your details and go live. No fees. No calls.
             </p>
           </div>
           <div className="flex flex-col items-stretch md:items-end gap-1 flex-shrink-0 w-full md:w-auto">
