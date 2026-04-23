@@ -212,7 +212,7 @@ function WaitlistPage() {
     }
   }, [isTyping]);
 
-  const calculatePosition = (ref: React.RefObject<HTMLDivElement>) => {
+  const calculatePosition = (ref: React.RefObject<HTMLDivElement | null>) => {
     if (!ref.current) return { faceX: 0, faceY: 0, bodySkew: 0 };
     const rect = ref.current.getBoundingClientRect();
     const centerX = rect.left + rect.width / 2;
