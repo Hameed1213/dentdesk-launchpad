@@ -430,15 +430,15 @@ const cells = [
     span: "md:col-span-2 md:row-span-1",
   },
   {
-    Icon: TrendingUp,
-    title: "Know your numbers.",
-    visual: <AnalyticsVisual />,
-    span: "md:col-span-2 md:row-span-1",
-  },
-  {
     Icon: MessageSquare,
     title: "Patients never miss an appointment.",
     visual: <SmsVisual />,
+    span: "md:col-span-2 md:row-span-1",
+  },
+  {
+    Icon: TrendingUp,
+    title: "Know your numbers.",
+    visual: <AnalyticsVisual />,
     span: "md:col-span-3 md:row-span-1",
   },
   {
