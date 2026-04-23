@@ -760,6 +760,12 @@ export default function BentoGrid() {
                       </div>
                     )}
                   </div>
+                ) : "noHeader" in cell && cell.noHeader ? (
+                  <div className="relative flex flex-col h-full">
+                    <div className="flex-1 flex items-stretch">
+                      <div className="w-full">{cell.visual}</div>
+                    </div>
+                  </div>
                 ) : (
                   <div className="relative flex flex-col h-full">
                     <div className="w-11 h-11 rounded-xl bg-white border border-neutral-100 flex items-center justify-center mb-6 shadow-sm">
