@@ -17,6 +17,9 @@ export const Route = createFileRoute("/terms")({
         content: "The terms governing your use of Dent Dock.",
       },
     ],
+    links: [
+      { rel: "canonical", href: "https://dentdock.co.uk/terms" },
+    ],
   }),
 });
 

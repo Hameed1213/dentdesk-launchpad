@@ -16,35 +16,26 @@ export const Route = createFileRoute("/")({
     meta: [
       {
         title:
-          "Dent Dock — Dental Practice Management Software for UK Private Practices",
+          "Dent Dock — Dental Practice Management Software for UK Practices",
       },
       {
         name: "description",
         content:
-          "Dent Dock is dental practice management software built for independent UK private practices. Online booking, automated reminders, Stripe payments and recalls — all in one platform.",
+          "Online booking, automated reminders, payments and recalls for UK private dental practices. Set up in under 10 minutes. From £49/month. No contracts.",
       },
-      {
-        property: "og:title",
-        content:
-          "Dent Dock — Dental Practice Management Software for UK Private Practices",
-      },
+      { property: "og:url", content: "https://dentdock.co.uk" },
+      { property: "og:title", content: "Dent Dock — Dental Practice Management Software" },
       {
         property: "og:description",
         content:
-          "Online booking, automated reminders, Stripe payments and recalls — built for independent UK private practices.",
+          "Online booking, automated reminders, payments and recalls for UK private dental practices. From £49/month.",
       },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-      {
-        name: "twitter:title",
-        content:
-          "Dent Dock — Dental Practice Management Software for UK Private Practices",
-      },
-      {
-        name: "twitter:description",
-        content:
-          "Online booking, automated reminders, Stripe payments and recalls — built for independent UK private practices.",
-      },
+      { property: "og:image", content: "https://dentdock.co.uk/og-image.png" },
+      { name: "twitter:image", content: "https://dentdock.co.uk/og-image.png" },
+      { name: "twitter:site", content: "@dentdock" },
+    ],
+    links: [
+      { rel: "canonical", href: "https://dentdock.co.uk" },
     ],
   }),
 });

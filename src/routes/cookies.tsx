@@ -18,6 +18,9 @@ export const Route = createFileRoute("/cookies")({
           "Minimal essential cookies only. No tracking or advertising cookies.",
       },
     ],
+    links: [
+      { rel: "canonical", href: "https://dentdock.co.uk/cookies" },
+    ],
   }),
 });
 

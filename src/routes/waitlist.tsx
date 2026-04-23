@@ -10,23 +10,25 @@ export const Route = createFileRoute("/waitlist")({
   component: WaitlistPage,
   head: () => ({
     meta: [
-      {
-        title:
-          "Join the waitlist — Dent Dock | Dental Practice Management Software",
-      },
+      { title: "Join the Waitlist — Dent Dock" },
       {
         name: "description",
         content:
-          "Be among the first UK private practices to get Dent Dock. Priority support and early access pricing locked in.",
+          "Be among the first UK private practices to get early access to Dent Dock. Priority support and early access pricing locked in.",
       },
-      { property: "og:title", content: "Join the Dent Dock waitlist" },
+      { property: "og:url", content: "https://dentdock.co.uk/waitlist" },
+      { property: "og:title", content: "Join the Waitlist — Dent Dock" },
       {
         property: "og:description",
         content:
-          "Be among the first UK private practices to get Dent Dock. Priority support and early access pricing locked in.",
+          "Be among the first UK private practices to get early access to Dent Dock.",
       },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:image", content: "https://dentdock.co.uk/og-image.png" },
+      { name: "twitter:image", content: "https://dentdock.co.uk/og-image.png" },
+      { name: "twitter:site", content: "@dentdock" },
+    ],
+    links: [
+      { rel: "canonical", href: "https://dentdock.co.uk/waitlist" },
     ],
   }),
 });

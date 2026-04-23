@@ -29,14 +29,34 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { name: "author", content: "Dent Dock" },
+      { title: "Dent Dock — Dental Practice Management Software" },
+      {
+        name: "description",
+        content:
+          "Online booking, automated reminders, payments and recalls for UK private dental practices. Set up in under 10 minutes. From £49/month.",
+      },
+      { property: "og:title", content: "Dent Dock — Dental Practice Management Software" },
+      {
+        property: "og:description",
+        content:
+          "Online booking, automated reminders, payments and recalls for UK private dental practices. Set up in under 10 minutes. From £49/month.",
+      },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
+      { property: "og:site_name", content: "Dent Dock" },
+      { property: "og:locale", content: "en_GB" },
+      { property: "og:image", content: "https://dentdock.co.uk/og-image.png" },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:site", content: "@dentdock" },
+      { name: "twitter:title", content: "Dent Dock — Dental Practice Management Software" },
+      {
+        name: "twitter:description",
+        content:
+          "Online booking, automated reminders, payments and recalls for UK private dental practices. From £49/month.",
+      },
+      { name: "twitter:image", content: "https://dentdock.co.uk/og-image.png" },
     ],
     links: [
       {
