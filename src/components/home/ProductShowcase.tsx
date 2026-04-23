@@ -1157,17 +1157,29 @@ export default function ProductShowcase() {
       />
       <div className="relative z-20 container max-w-6xl mx-auto">
         {/* Header */}
-        <div className="flex flex-col items-center text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="flex flex-col items-center text-center"
+        >
           <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-foreground leading-[1.1] max-w-2xl">
             Everything in <span className="text-[#2563EB]">one place</span>
           </h2>
           <p className="text-lg text-neutral-500 max-w-xl leading-relaxed mt-4">
             One platform for every part of your practice, from first booking to last recall.
           </p>
-        </div>
+        </motion.div>
 
         {/* Tab segmented control — individual pills on mobile, grouped pill on tablet/desktop */}
-        <div className="mt-12 -mx-6 sm:mx-0 flex sm:justify-center">
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
+          className="mt-12 -mx-6 sm:mx-0 flex sm:justify-center"
+        >
           <div className="overflow-x-auto scrollbar-hide px-6 sm:px-0 sm:overflow-visible w-full sm:w-auto">
             <div className="inline-flex flex-nowrap lg:flex-wrap justify-start lg:justify-center gap-2 sm:gap-1 sm:rounded-2xl sm:border sm:border-neutral-200 sm:bg-white sm:p-1.5 sm:shadow-sm mx-auto">
               {tabs.map((tab, i) => {
@@ -1203,7 +1215,7 @@ export default function ProductShowcase() {
               })}
             </div>
           </div>
-        </div>
+        </motion.div>
         {/* Tab content — 2 column */}
         <div className="mt-10 lg:mt-14">
 
@@ -1217,7 +1229,13 @@ export default function ProductShowcase() {
               className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center"
             >
               {/* Left — copy */}
-              <div className="flex flex-col items-start w-full lg:max-w-[440px]">
+              <motion.div
+                initial={{ opacity: 0, x: -24 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
+                className="flex flex-col items-start w-full lg:max-w-[440px]"
+              >
                 <h3
                   className="text-3xl md:text-4xl text-neutral-900 tracking-[-0.02em] leading-[1.15]"
                   style={{ fontWeight: 500 }}
@@ -1234,10 +1252,16 @@ export default function ProductShowcase() {
                   <span>{content.buttonText}</span>
                   <ArrowRight size={15} />
                 </Link>
-              </div>
+              </motion.div>
 
               {/* Right — mockup */}
-              <div className="rounded-2xl overflow-hidden border border-neutral-200 shadow-2xl shadow-neutral-200/60">
+              <motion.div
+                initial={{ opacity: 0, x: 24 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+                className="rounded-2xl overflow-hidden border border-neutral-200 shadow-2xl shadow-neutral-200/60"
+              >
                 {/* Browser chrome */}
                 <div className="h-9 bg-neutral-100 border-b border-neutral-200 flex items-center px-4 gap-2 flex-shrink-0">
                   <div className="flex gap-1.5">
@@ -1253,13 +1277,19 @@ export default function ProductShowcase() {
                 <div className="h-[460px] overflow-hidden relative bg-[#F8FAFC] pointer-events-none">
                   <ActiveMockup />
                 </div>
-              </div>
+              </motion.div>
             </motion.div>
           </AnimatePresence>
         </div>
 
         {/* Live in a day banner — bottom */}
-        <div className="mt-12 rounded-2xl bg-white border border-neutral-200 px-6 sm:px-8 py-5 sm:py-6 flex flex-col md:flex-row md:items-center md:justify-between gap-5 shadow-sm">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
+          className="mt-12 rounded-2xl bg-white border border-neutral-200 px-6 sm:px-8 py-5 sm:py-6 flex flex-col md:flex-row md:items-center md:justify-between gap-5 shadow-sm"
+        >
           <div className="md:max-w-none">
             <h3 className="text-2xl sm:text-3xl md:text-[30px] font-medium tracking-tight text-[#0F172A] leading-tight md:whitespace-nowrap">
               Get your practice live in{" "}
@@ -1277,7 +1307,7 @@ export default function ProductShowcase() {
               Join the waitlist <ArrowRight className="w-4 h-4" />
             </a>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
