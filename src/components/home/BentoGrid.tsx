@@ -128,14 +128,16 @@ const FormsVisual = () => (
       {/* Fields grid */}
       <div className="grid grid-cols-2 gap-1.5 mb-3">
         {[
-          { label: "Allergies", value: "Penicillin" },
-          { label: "Medications", value: "None" },
-          { label: "Conditions", value: "None" },
-          { label: "Pregnant?", value: "No" },
+          { label: "Allergies", value: "Penicillin", tabletOnly: false },
+          { label: "Medications", value: "None", tabletOnly: false },
+          { label: "Conditions", value: "None", tabletOnly: false },
+          { label: "Pregnant?", value: "No", tabletOnly: false },
+          { label: "Smoker?", value: "No", tabletOnly: true },
+          { label: "Last visit", value: "Mar 2026", tabletOnly: true },
         ].map((f) => (
           <div
             key={f.label}
-            className="bg-[#F3F6FD] border border-[#e2e8f0] rounded-lg p-1.5"
+            className={`bg-[#F3F6FD] border border-[#e2e8f0] rounded-lg p-1.5 ${f.tabletOnly ? "hidden md:block lg:hidden" : ""}`}
           >
             <div className="text-[7px] text-[#64748b] uppercase tracking-wide">
               {f.label}
