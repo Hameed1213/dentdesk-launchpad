@@ -797,7 +797,7 @@ const cells = [
   },
   {
     Icon: FileCheck,
-    title: "Custom forms",
+    title: "Custom\nforms",
     visual: <FormsVisual />,
     span: "md:col-span-3 md:row-span-1",
     layout: "side" as const,
