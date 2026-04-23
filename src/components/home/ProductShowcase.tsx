@@ -1133,18 +1133,18 @@ export default function ProductShowcase() {
     <section ref={sectionRef} className="relative bg-gradient-to-br from-[#DBEAFE] via-[#EFF6FF] to-white py-24 px-6 overflow-hidden">
       {/* Top irregular fade to white */}
       <div
-        className="pointer-events-none absolute inset-x-0 top-0 h-48 z-10"
+        className="pointer-events-none absolute inset-x-0 top-0 h-72 z-10"
         style={{
           background:
-            "radial-gradient(ellipse 60% 100% at 20% 0%, white 30%, transparent 70%), radial-gradient(ellipse 70% 120% at 75% 0%, white 25%, transparent 75%), radial-gradient(ellipse 100% 80% at 50% 0%, white 10%, transparent 60%)",
+            "radial-gradient(ellipse 70% 130% at 20% 0%, white 55%, transparent 85%), radial-gradient(ellipse 80% 140% at 75% 0%, white 50%, transparent 85%), radial-gradient(ellipse 120% 100% at 50% 0%, white 35%, transparent 80%)",
         }}
       />
       {/* Bottom irregular fade to white */}
       <div
-        className="pointer-events-none absolute inset-x-0 bottom-0 h-48 z-10"
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-72 z-10"
         style={{
           background:
-            "radial-gradient(ellipse 65% 110% at 30% 100%, white 30%, transparent 70%), radial-gradient(ellipse 55% 90% at 80% 100%, white 25%, transparent 75%), radial-gradient(ellipse 100% 70% at 50% 100%, white 10%, transparent 60%)",
+            "radial-gradient(ellipse 75% 130% at 30% 100%, white 55%, transparent 85%), radial-gradient(ellipse 65% 110% at 80% 100%, white 50%, transparent 85%), radial-gradient(ellipse 120% 90% at 50% 100%, white 35%, transparent 80%)",
         }}
       />
       <div className="relative z-20 container max-w-6xl mx-auto">
