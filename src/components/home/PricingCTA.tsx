@@ -119,7 +119,7 @@ export default function PricingCTA() {
 
             <a
               href="https://app.dentdock.co.uk/signup"
-              className="mt-2 inline-flex items-center justify-center gap-2 bg-[#2563EB] text-white text-[14px] font-semibold px-6 py-3 rounded-xl hover:bg-[#1d4ed8] transition-all shadow-lg shadow-blue-500/20"
+              className="mt-2 self-start inline-flex items-center gap-2 bg-[#2563EB] text-white text-[14px] font-semibold px-6 py-3 rounded-xl hover:bg-[#1d4ed8] transition-all shadow-lg shadow-blue-500/20"
             >
               Start free trial <ArrowRight className="w-4 h-4" />
             </a>
@@ -165,19 +165,6 @@ export default function PricingCTA() {
           </motion.div>
         </div>
 
-        {/* Footer row */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6, delay: 0.25 }}
-          className="mt-8 flex justify-center"
-        >
-          <div className="inline-flex items-center gap-2 text-[13px] text-[#475569]">
-            <span className="w-2 h-2 rounded-full bg-[#2563EB]" />
-            Billed monthly · cancel anytime
-          </div>
-        </motion.div>
       </div>
     </section>
   );
