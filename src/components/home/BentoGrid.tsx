@@ -496,7 +496,7 @@ const cells = [
     layout: "side" as const,
     popOut: true,
     titleClass: "max-w-[110px]",
-    popOutClass: "absolute -right-2 left-[30%] top-[35%] pointer-events-none",
+    popOutClass: "absolute -right-2 left-[30%] top-[5%] pointer-events-none",
   },
   {
     Icon: FileCheck,
