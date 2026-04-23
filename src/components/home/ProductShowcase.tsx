@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "@tanstack/react-router";
 import {
   CalendarDays,
   Globe,
@@ -1213,10 +1214,13 @@ export default function ProductShowcase() {
                 <p className="mt-4 text-base md:text-lg text-neutral-500 leading-relaxed">
                   {content.description}
                 </p>
-                <button className="mt-6 inline-flex items-center gap-2 bg-[#2563EB] text-white text-sm font-semibold px-5 py-3 rounded-xl hover:bg-[#1d4fd8] transition-colors shadow-sm shadow-[#2563EB]/20">
+                <Link
+                  to="/waitlist"
+                  className="mt-6 inline-flex items-center gap-2 bg-[#2563EB] text-white text-sm font-semibold px-5 py-3 rounded-xl hover:bg-[#1d4fd8] transition-colors shadow-sm shadow-[#2563EB]/20"
+                >
                   <span>{content.buttonText}</span>
                   <ArrowRight size={15} />
-                </button>
+                </Link>
               </div>
 
               {/* Right — mockup */}
