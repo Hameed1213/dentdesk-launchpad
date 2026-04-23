@@ -772,7 +772,7 @@ const cells = [
     span: "md:col-span-4 md:row-span-1",
     layout: "side" as const,
     popOut: true,
-    orb: "96,165,250", // sky blue
+    orb: "56,189,248", // light sky blue
   },
   {
     Icon: Users,
