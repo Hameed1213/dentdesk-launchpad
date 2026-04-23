@@ -199,8 +199,6 @@ function WaitlistPage() {
                         type="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        onFocus={() => setIsTyping(true)}
-                        onBlur={() => setIsTyping(false)}
                         placeholder="you@practice.com"
                         maxLength={255}
                         autoComplete="email"
@@ -228,8 +226,6 @@ function WaitlistPage() {
                       type="text"
                       value={practice}
                       onChange={(e) => setPractice(e.target.value)}
-                      onFocus={() => setIsTyping(true)}
-                      onBlur={() => setIsTyping(false)}
                       placeholder="Smile Dental Clinic"
                       maxLength={120}
                       required
