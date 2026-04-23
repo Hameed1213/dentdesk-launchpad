@@ -538,7 +538,7 @@ const SmsVisual = () => {
   }, []);
 
   return (
-    <div className="h-full w-full md:max-h-[280px] md:overflow-hidden lg:max-h-none lg:overflow-visible">
+    <div className="h-full w-full min-h-[360px] md:min-h-[280px] md:max-h-[280px] md:overflow-hidden lg:max-h-none lg:overflow-visible lg:min-h-[420px]">
       <div
         style={{
           opacity: channelVisible ? 1 : 0,
@@ -561,7 +561,7 @@ const SmsVisual = () => {
             </div>
 
             {/* Messages */}
-            <div className="flex flex-col gap-2 min-h-[220px] md:min-h-[200px] lg:min-h-[220px]">
+            <div className="flex flex-col gap-2">
               {smsMessages.map(
                 (msg) =>
                   visibleMessages.includes(msg.id) && (
