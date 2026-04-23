@@ -209,7 +209,7 @@ const AnalyticsVisual = () => {
         </div>
 
         {/* Stat cards */}
-        <div className="grid grid-cols-3 gap-2 mb-3">
+        <div className="grid grid-cols-2 gap-2 mb-3">
           <div className="rounded-lg bg-[#F3F6FD] px-2.5 py-2">
             <div className="text-[9px] text-muted-foreground uppercase tracking-wide">
               Revenue
@@ -230,17 +230,6 @@ const AnalyticsVisual = () => {
             </div>
             <div className="text-[9px] font-semibold text-emerald-600 mt-0.5">
               ↑ 12% vs last month
-            </div>
-          </div>
-          <div className="rounded-lg bg-[#F3F6FD] px-2.5 py-2">
-            <div className="text-[9px] text-muted-foreground uppercase tracking-wide">
-              Capacity
-            </div>
-            <div className="text-[15px] font-bold text-foreground tabular-nums">
-              78%
-            </div>
-            <div className="text-[9px] font-semibold text-emerald-600 mt-0.5">
-              ↑ 5% vs last month
             </div>
           </div>
         </div>
