@@ -20,7 +20,7 @@ const BLUE = "37,99,235"; // primary blue rgb triplet
 
 
 const PatientRecordVisual = () => (
-  <div className="rounded-xl bg-white/80 backdrop-blur-md border border-white shadow-sm p-5 overflow-hidden mx-auto w-full max-w-[300px]">
+  <div className="rounded-xl bg-white/80 backdrop-blur-md border border-white shadow-sm p-5 overflow-hidden mx-auto w-full max-w-[420px] md:max-w-none lg:max-w-[300px]">
     {/* Header */}
     <div className="flex items-center gap-3">
       <div className="w-11 h-11 rounded-full bg-[#2563EB] flex items-center justify-center text-white text-[14px] font-bold shrink-0">
