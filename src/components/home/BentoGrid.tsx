@@ -491,7 +491,6 @@ const cells = [
   {
     Icon: Monitor,
     title: "Patients manage themselves.",
-    description: "Book, reschedule, view history and fill forms, all without calling the practice.",
     visual: <PortalVisual />,
     span: "md:col-span-4 md:row-span-1",
     layout: "side" as const,
@@ -602,11 +601,6 @@ export default function BentoGrid() {
                       <h3 className={`text-[19px] font-semibold text-foreground tracking-tight leading-snug ${("titleClass" in cell && cell.titleClass) ? cell.titleClass : "max-w-[220px]"}`}>
                         {cell.title}
                       </h3>
-                      {"description" in cell && cell.description && (
-                        <p className="mt-2 text-sm text-muted-foreground leading-snug max-w-[260px]">
-                          {cell.description}
-                        </p>
-                      )}
                     </div>
                     {cell.popOut ? (
                       <div
