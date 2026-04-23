@@ -461,6 +461,8 @@ const SmsVisual = () => {
   const [visibleMessages, setVisibleMessages] = useState<number[]>([]);
   const [typing, setTyping] = useState(false);
   const [typingFor, setTypingFor] = useState<number | null>(null);
+  const [channel, setChannel] = useState<"sms" | "email">("sms");
+  const [channelVisible, setChannelVisible] = useState(true);
 
   useEffect(() => {
     const timers: ReturnType<typeof setTimeout>[] = [];
