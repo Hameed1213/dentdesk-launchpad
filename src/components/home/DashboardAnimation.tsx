@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState, type RefObject } from "react";
 import { motion } from "framer-motion";
 import {
   LayoutDashboard,
@@ -24,15 +24,30 @@ import ToothIcon from "@/components/icons/ToothIcon";
 import { ContainerScroll } from "@/components/ui/container-scroll-animation";
 
 // ---------- SHARED COUNTER HOOK ----------
-function useDashboardCounters() {
+function useDashboardCounters(targetRef: RefObject<HTMLElement | null>) {
   const [started, setStarted] = useState(false);
   const [countToday, setCountToday] = useState(0);
   const [countRevenue, setCountRevenue] = useState(0);
   const [countCapacity, setCountCapacity] = useState(0);
   const [capacityBarWidth, setCapacityBarWidth] = useState(0);
   const [visibleRows, setVisibleRows] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
+
+  // Visibility gate — only animate when on screen
+  useEffect(() => {
+    const el = targetRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsVisible(entry.isIntersecting),
+      { threshold: 0.1 },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [targetRef]);
 
   useEffect(() => {
+    if (!isVisible) return;
+
     const timeouts: ReturnType<typeof setTimeout>[] = [];
     const rafs: number[] = [];
 
@@ -101,7 +116,7 @@ function useDashboardCounters() {
       timeouts.forEach(clearTimeout);
       rafs.forEach(cancelAnimationFrame);
     };
-  }, []);
+  }, [isVisible]);
 
   return {
     started,
