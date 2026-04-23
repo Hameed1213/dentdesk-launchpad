@@ -183,7 +183,7 @@ function WaitlistPage() {
         </div>
 
         <div className="flex-1 flex items-center justify-center">
-          <div className="w-full max-w-md py-10">
+          <div className="w-full max-w-md md:max-lg:max-w-none py-10">
             {submitted ? (
               <motion.div
                 initial={{ opacity: 0, scale: 0.96, y: 12 }}
