@@ -174,56 +174,64 @@ const AnalyticsVisual = () => {
   const area = `${path} L240,80 L0,80 Z`;
 
   return (
-    <div className="rounded-xl bg-white/80 backdrop-blur-md border border-white shadow-sm p-4 overflow-hidden">
-      <div className="grid grid-cols-2 gap-2 mb-3">
-        <div className="rounded-lg bg-[#2563EB]/5 px-2.5 py-2">
-          <div className="text-[9px] text-muted-foreground uppercase tracking-wide">
-            Revenue
+    <div
+      className="w-full h-full relative"
+      style={{
+        filter:
+          "drop-shadow(0 8px 16px rgba(0,0,0,0.06)) drop-shadow(0 2px 4px rgba(0,0,0,0.04))",
+      }}
+    >
+      <div className="rounded-xl bg-white border border-neutral-200 p-4 overflow-hidden">
+        <div className="grid grid-cols-2 gap-2 mb-3">
+          <div className="rounded-lg bg-[#F3F6FD] px-2.5 py-2">
+            <div className="text-[9px] text-muted-foreground uppercase tracking-wide">
+              Revenue
+            </div>
+            <div className="text-[15px] font-bold text-foreground tabular-nums">
+              £12,840
+            </div>
+            <div className="text-[9px] font-semibold text-emerald-600 mt-0.5">
+              ↑ 18% vs last month
+            </div>
           </div>
-          <div className="text-[15px] font-bold text-foreground tabular-nums">
-            £12,840
-          </div>
-          <div className="text-[9px] font-semibold text-emerald-600 mt-0.5">
-            ↑ 18% vs last month
+          <div className="rounded-lg bg-[#F3F6FD] px-2.5 py-2">
+            <div className="text-[9px] text-muted-foreground uppercase tracking-wide">
+              Bookings
+            </div>
+            <div className="text-[15px] font-bold text-foreground tabular-nums">
+              148
+            </div>
+            <div className="text-[9px] font-semibold text-emerald-600 mt-0.5">
+              ↑ 12% vs last month
+            </div>
           </div>
         </div>
-        <div className="rounded-lg bg-[#2563EB]/5 px-2.5 py-2">
-          <div className="text-[9px] text-muted-foreground uppercase tracking-wide">
-            Bookings
-          </div>
-          <div className="text-[15px] font-bold text-foreground tabular-nums">
-            148
-          </div>
-          <div className="text-[9px] font-semibold text-emerald-600 mt-0.5">
-            ↑ 12% vs last month
-          </div>
+        <div className="rounded-lg bg-[#F3F6FD] p-2">
+          <svg
+            viewBox="0 0 240 80"
+            className="w-full h-[60px]"
+            preserveAspectRatio="none"
+          >
+            <defs>
+              <linearGradient id="bentoFill" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#2563EB" stopOpacity="0.35" />
+                <stop offset="100%" stopColor="#2563EB" stopOpacity="0" />
+              </linearGradient>
+            </defs>
+            <path d={area} fill="url(#bentoFill)" />
+            <path
+              d={path}
+              stroke="#2563EB"
+              strokeWidth="2"
+              fill="none"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            {points.map((p, i) => (
+              <circle key={i} cx={p.x} cy={p.y} r="2" fill="#2563EB" />
+            ))}
+          </svg>
         </div>
-      </div>
-      <div className="rounded-lg bg-[#2563EB]/5 p-2">
-        <svg
-          viewBox="0 0 240 80"
-          className="w-full h-[60px]"
-          preserveAspectRatio="none"
-        >
-          <defs>
-            <linearGradient id="bentoFill" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#2563EB" stopOpacity="0.35" />
-              <stop offset="100%" stopColor="#2563EB" stopOpacity="0" />
-            </linearGradient>
-          </defs>
-          <path d={area} fill="url(#bentoFill)" />
-          <path
-            d={path}
-            stroke="#2563EB"
-            strokeWidth="2"
-            fill="none"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-          {points.map((p, i) => (
-            <circle key={i} cx={p.x} cy={p.y} r="2" fill="#2563EB" />
-          ))}
-        </svg>
       </div>
     </div>
   );
