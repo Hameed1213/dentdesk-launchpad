@@ -182,9 +182,15 @@ const AnalyticsVisual = () => {
   const area = `${path} L240,80 L0,80 Z`;
 
   return (
-    <div className="rounded-xl bg-white/80 backdrop-blur-md border border-white shadow-sm p-4 overflow-hidden">
-      <div className="grid grid-cols-2 gap-2 mb-3">
-        <div className="rounded-lg bg-[#2563EB]/5 px-2.5 py-2">
+    <div
+      className="rounded-xl bg-[#f5f6fb] border border-neutral-200 p-3 overflow-hidden"
+      style={{
+        filter:
+          "drop-shadow(0 8px 16px rgba(0,0,0,0.06)) drop-shadow(0 2px 4px rgba(0,0,0,0.04))",
+      }}
+    >
+      <div className="grid grid-cols-2 gap-2 mb-2">
+        <div className="bg-white border border-[#e2e8f0] rounded-lg px-2.5 py-2">
           <div className="text-[9px] text-muted-foreground uppercase tracking-wide">
             Revenue
           </div>
@@ -195,7 +201,7 @@ const AnalyticsVisual = () => {
             ↑ 18% vs last month
           </div>
         </div>
-        <div className="rounded-lg bg-[#2563EB]/5 px-2.5 py-2">
+        <div className="bg-white border border-[#e2e8f0] rounded-lg px-2.5 py-2">
           <div className="text-[9px] text-muted-foreground uppercase tracking-wide">
             Bookings
           </div>
@@ -207,7 +213,7 @@ const AnalyticsVisual = () => {
           </div>
         </div>
       </div>
-      <div className="rounded-lg bg-[#2563EB]/5 p-2">
+      <div className="bg-white border border-[#e2e8f0] rounded-lg p-2">
         <svg
           viewBox="0 0 240 80"
           className="w-full h-[60px]"
