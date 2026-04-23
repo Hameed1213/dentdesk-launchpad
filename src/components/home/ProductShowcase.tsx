@@ -545,19 +545,14 @@ function PaymentsMockup() {
       value: "↑ 18%",
       color: "text-[#16a34a]",
     },
-    {
-      label: "TOTAL TXNS",
-      value: "47",
-      color: "text-[#0F172A]",
-    },
   ];
 
   return (
     <div className="bg-[#F8FAFC] h-full flex flex-col">
       <MockTopBar title="Payments" showSearch={false} />
       <div className="p-3 sm:p-5 flex-1 overflow-hidden flex flex-col gap-3 sm:gap-4">
-        {/* KPI cards — 2 on mobile, 4 on sm+ */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        {/* KPI cards — 2 on mobile, 3 on sm+ */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
           {stats.map((s, i) => (
             <div
               key={s.label}
