@@ -12,7 +12,6 @@ type Plan = {
 
 export default function PricingCTA() {
   const plans: Plan[] = [
-    { name: "Solo", price: "£29", priceSuffix: "/mo", note: "Coming soon", disabled: true },
     { name: "Practice", price: "£49", priceSuffix: "/mo", note: "Most popular", selected: true },
     { name: "Multi-site", price: "£99", priceSuffix: "/mo", note: "Coming soon", disabled: true },
     { name: "Enterprise", price: "Custom", note: "Talk to us", disabled: true },
