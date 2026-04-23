@@ -941,7 +941,7 @@ export default function BentoGrid() {
                       {cell.title}
                     </h3>
                     {"description" in cell && cell.description && (
-                      <p className="mt-2 text-sm text-muted-foreground leading-snug max-w-[260px]">
+                      <p className="mt-2 text-sm text-muted-foreground leading-snug max-w-none lg:max-w-[260px]">
                         {cell.description}
                       </p>
                     )}
