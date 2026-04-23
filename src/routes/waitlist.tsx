@@ -1,7 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
+import { motion } from "framer-motion";
 import { ArrowLeft, Check, Mail, Sparkles } from "lucide-react";
 import ToothIcon from "@/components/icons/ToothIcon";
+
+const EASE = [0.22, 1, 0.36, 1] as const;
 
 export const Route = createFileRoute("/waitlist")({
   component: WaitlistPage,
@@ -103,19 +106,34 @@ function WaitlistPage() {
 
         {/* Headline — vertically centered */}
         <div className="relative z-10 flex-1 flex flex-col justify-center max-w-md">
-          <div className="inline-flex w-fit items-center gap-1.5 px-3 py-1 rounded-full bg-white/80 border border-[#2563EB]/15 backdrop-blur mb-5">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: EASE, delay: 0.1 }}
+            className="inline-flex w-fit items-center gap-1.5 px-3 py-1 rounded-full bg-white/80 border border-[#2563EB]/15 backdrop-blur mb-5"
+          >
             <Sparkles className="w-3.5 h-3.5 text-[#2563EB]" />
             <span className="text-[12px] font-semibold text-[#2563EB] uppercase tracking-[0.12em]">
               Early access
             </span>
-          </div>
-          <h1 className="text-3xl lg:text-5xl font-medium tracking-tight text-[#0F172A] leading-[1.1]">
+          </motion.div>
+          <motion.h1
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: EASE, delay: 0.2 }}
+            className="text-3xl lg:text-5xl font-medium tracking-tight text-[#0F172A] leading-[1.1]"
+          >
             Practice management,{" "}
             <span className="text-[#2563EB]">finally friendly.</span>
-          </h1>
-          <p className="text-[15px] lg:text-[16px] leading-[1.6] text-[#475569] mt-4">
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: EASE, delay: 0.32 }}
+            className="text-[15px] lg:text-[16px] leading-[1.6] text-[#475569] mt-4"
+          >
             Built for UK private practices. Add your details and we'll be in touch personally when it's your turn.
-          </p>
+          </motion.p>
         </div>
 
         {/* Footer links */}
@@ -149,7 +167,12 @@ function WaitlistPage() {
         <div className="flex-1 flex items-center justify-center">
           <div className="w-full max-w-md py-10">
             {submitted ? (
-              <div className="text-center py-8">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.96, y: 12 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                transition={{ duration: 0.5, ease: EASE }}
+                className="text-center py-8"
+              >
                 <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-full bg-[#dcfce7]">
                   <Check className="w-7 h-7 text-[#16a34a]" strokeWidth={3} />
                 </div>
@@ -166,24 +189,33 @@ function WaitlistPage() {
                 >
                   <ArrowLeft className="w-4 h-4" /> Back to home
                 </Link>
-              </div>
+              </motion.div>
             ) : (
               <>
-                <div className="mb-8">
+                <motion.div
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, ease: EASE, delay: 0.15 }}
+                  className="mb-8"
+                >
                   <h2 className="text-3xl font-medium tracking-tight text-[#0F172A] mb-2">
                     Join the waitlist
                   </h2>
                   <p className="text-[15px] leading-[1.5] text-[#475569]">
                     Be among the first UK private practices to get Dent Dock.
                   </p>
-                </div>
+                </motion.div>
 
                 <form
                   onSubmit={handleSubmit}
                   noValidate
                   className="space-y-4"
                 >
-                  <div>
+                  <motion.div
+                    initial={{ opacity: 0, y: 16 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, ease: EASE, delay: 0.25 }}
+                  >
                     <label
                       htmlFor="email"
                       className="block text-[13px] font-medium text-[#0F172A] mb-1.5"
@@ -210,9 +242,13 @@ function WaitlistPage() {
                         }
                       />
                     </div>
-                  </div>
+                  </motion.div>
 
-                  <div>
+                  <motion.div
+                    initial={{ opacity: 0, y: 16 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, ease: EASE, delay: 0.33 }}
+                  >
                     <label
                       htmlFor="practice"
                       className="block text-[13px] font-medium text-[#0F172A] mb-1.5"
@@ -235,9 +271,13 @@ function WaitlistPage() {
                         } as React.CSSProperties
                       }
                     />
-                  </div>
+                  </motion.div>
 
-                  <div>
+                  <motion.div
+                    initial={{ opacity: 0, y: 16 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, ease: EASE, delay: 0.41 }}
+                  >
                     <label
                       htmlFor="role"
                       className="block text-[13px] font-medium text-[#0F172A] mb-1.5"
@@ -268,23 +308,31 @@ function WaitlistPage() {
                       <option value="reception">Reception / Admin</option>
                       <option value="other">Other</option>
                     </select>
-                  </div>
+                  </motion.div>
 
                   {error && (
                     <p className="text-sm text-red-500">{error}</p>
                   )}
 
-                  <button
+                  <motion.button
                     type="submit"
                     disabled={isLoading}
+                    initial={{ opacity: 0, y: 16 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, ease: EASE, delay: 0.5 }}
                     className="w-full bg-[#2563EB] text-white text-[14px] font-semibold px-6 py-3 rounded-xl hover:bg-[#1d4ed8] transition-all shadow-lg shadow-blue-500/20 disabled:opacity-60"
                   >
                     {isLoading ? "Joining..." : "Join the waitlist"}
-                  </button>
+                  </motion.button>
 
-                  <p className="text-[12px] text-[#94A3B8] text-center">
+                  <motion.p
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.5, ease: EASE, delay: 0.6 }}
+                    className="text-[12px] text-[#94A3B8] text-center"
+                  >
                     No spam. We'll only email you about Dent Dock.
-                  </p>
+                  </motion.p>
                 </form>
               </>
             )}
