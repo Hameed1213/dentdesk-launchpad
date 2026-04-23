@@ -779,7 +779,7 @@ const cells = [
     title: "Your whole team. One platform.",
     visual: <StaffVisual />,
     span: "md:col-span-2 md:row-span-1",
-    orb: "29,78,216", // deep indigo blue
+    orb: "30,64,175", // deep navy blue
   },
   {
     Icon: MessageSquare,
