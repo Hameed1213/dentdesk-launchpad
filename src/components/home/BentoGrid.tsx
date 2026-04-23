@@ -763,6 +763,7 @@ const cells = [
     description: "Records, history and appointments, all in one profile.",
     visual: <PatientRecordVisual />,
     span: "md:col-span-2 md:row-span-2",
+    orb: "37,99,235", // primary blue
   },
   {
     Icon: Monitor,
@@ -771,12 +772,14 @@ const cells = [
     span: "md:col-span-4 md:row-span-1",
     layout: "side" as const,
     popOut: true,
+    orb: "96,165,250", // sky blue
   },
   {
     Icon: Users,
     title: "Your whole team. One platform.",
     visual: <StaffVisual />,
     span: "md:col-span-2 md:row-span-1",
+    orb: "29,78,216", // deep indigo blue
   },
   {
     Icon: MessageSquare,
@@ -784,6 +787,7 @@ const cells = [
     visual: <SmsVisual />,
     span: "md:col-span-2 md:row-span-1",
     noHeader: true,
+    orb: "59,130,246", // bright blue
   },
   {
     Icon: TrendingUp,
@@ -794,6 +798,7 @@ const cells = [
     popOut: true,
     titleClass: "max-w-[110px]",
     popOutClass: "absolute -right-2 left-[30%] top-[5%] pointer-events-none",
+    orb: "14,165,233", // cyan-leaning blue
   },
   {
     Icon: FileCheck,
@@ -804,6 +809,7 @@ const cells = [
     popOut: true,
     titleClass: "max-w-[140px]",
     popOutClass: "absolute -right-2 left-[30%] top-[5%] pointer-events-none",
+    orb: "129,140,248", // indigo / periwinkle
   },
 ];
 
@@ -829,6 +835,7 @@ export default function BentoGrid() {
         <div className="grid grid-cols-1 md:grid-cols-6 md:auto-rows-[260px] gap-5 lg:gap-6">
           {cells.map((cell, i) => {
             const Icon = cell.Icon;
+            const orb = ("orb" in cell && cell.orb) ? cell.orb : BLUE;
             return (
               <Card
                 key={i}
@@ -855,7 +862,7 @@ export default function BentoGrid() {
                   aria-hidden
                   className="pointer-events-none absolute left-1/2 bottom-[12%] -translate-x-1/2 w-[85%] h-[40%] rounded-full blur-3xl"
                   style={{
-                    background: `radial-gradient(circle, rgba(${BLUE},0.22) 0%, rgba(${BLUE},0.10) 45%, transparent 75%)`,
+                    background: `radial-gradient(circle, rgba(${orb},0.22) 0%, rgba(${orb},0.10) 45%, transparent 75%)`,
                   }}
                 />
                 {/* Glossy top highlight */}
