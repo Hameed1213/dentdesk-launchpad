@@ -181,8 +181,35 @@ const AnalyticsVisual = () => {
           "drop-shadow(0 8px 16px rgba(0,0,0,0.06)) drop-shadow(0 2px 4px rgba(0,0,0,0.04))",
       }}
     >
-      <div className="rounded-xl bg-white border border-neutral-200 p-4 overflow-hidden">
-        <div className="grid grid-cols-2 gap-2 mb-3">
+      <div className="rounded-xl bg-white border border-neutral-200 p-4 overflow-hidden min-h-[280px]">
+        {/* Header */}
+        <div className="flex items-center justify-between mb-4">
+          <div>
+            <div className="text-[11px] font-semibold text-neutral-400 uppercase tracking-wider mb-0.5">
+              Analytics
+            </div>
+            <div className="text-[13px] font-semibold text-[#0f172a]">
+              April 2026
+            </div>
+          </div>
+          <div className="flex items-center gap-1">
+            {["7d", "30d", "90d"].map((period) => (
+              <button
+                key={period}
+                className={`text-[11px] font-semibold px-2.5 py-1 rounded-lg transition-all ${
+                  period === "30d"
+                    ? "bg-[#2563EB] text-white"
+                    : "text-neutral-400 hover:text-neutral-600"
+                }`}
+              >
+                {period}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Stat cards */}
+        <div className="grid grid-cols-3 gap-2 mb-3">
           <div className="rounded-lg bg-[#F3F6FD] px-2.5 py-2">
             <div className="text-[9px] text-muted-foreground uppercase tracking-wide">
               Revenue
@@ -205,11 +232,40 @@ const AnalyticsVisual = () => {
               ↑ 12% vs last month
             </div>
           </div>
+          <div className="rounded-lg bg-[#F3F6FD] px-2.5 py-2">
+            <div className="text-[9px] text-muted-foreground uppercase tracking-wide">
+              Capacity
+            </div>
+            <div className="text-[15px] font-bold text-foreground tabular-nums">
+              78%
+            </div>
+            <div className="text-[9px] font-semibold text-emerald-600 mt-0.5">
+              ↑ 5% vs last month
+            </div>
+          </div>
         </div>
+
+        {/* Legend */}
+        <div className="flex items-center gap-4 mb-3 mt-4">
+          <div className="flex items-center gap-1.5">
+            <div className="w-3 h-[2px] bg-[#2563EB] rounded-full" />
+            <span className="text-[11px] font-medium text-neutral-400">
+              Revenue
+            </span>
+          </div>
+          <div className="flex items-center gap-1.5">
+            <div className="w-3 h-[2px] bg-[#93c5fd] rounded-full" />
+            <span className="text-[11px] font-medium text-neutral-400">
+              Bookings
+            </span>
+          </div>
+        </div>
+
+        {/* Chart */}
         <div className="rounded-lg bg-[#F3F6FD] p-2">
           <svg
             viewBox="0 0 240 80"
-            className="w-full h-[60px]"
+            className="w-full h-[120px]"
             preserveAspectRatio="none"
           >
             <defs>
