@@ -763,6 +763,7 @@ const cells = [
     description: "Records, history and appointments, all in one profile.",
     visual: <PatientRecordVisual />,
     span: "md:col-span-2 md:row-span-2",
+    iconColor: "#1E3A8A", // deep navy blue
   },
   {
     Icon: Monitor,
@@ -771,12 +772,14 @@ const cells = [
     span: "md:col-span-4 md:row-span-1",
     layout: "side" as const,
     popOut: true,
+    iconColor: "#2563EB", // primary blue
   },
   {
     Icon: Users,
     title: "Your whole team. One platform.",
     visual: <StaffVisual />,
     span: "md:col-span-2 md:row-span-1",
+    iconColor: "#0EA5E9", // sky blue
   },
   {
     Icon: MessageSquare,
@@ -784,6 +787,7 @@ const cells = [
     visual: <SmsVisual />,
     span: "md:col-span-2 md:row-span-1",
     noHeader: true,
+    iconColor: "#3B82F6",
   },
   {
     Icon: TrendingUp,
@@ -794,6 +798,7 @@ const cells = [
     popOut: true,
     titleClass: "max-w-[110px]",
     popOutClass: "absolute -right-2 left-[30%] top-[5%] pointer-events-none",
+    iconColor: "#1D4ED8", // royal blue
   },
   {
     Icon: FileCheck,
@@ -804,6 +809,7 @@ const cells = [
     popOut: true,
     titleClass: "max-w-[140px]",
     popOutClass: "absolute -right-2 left-[30%] top-[5%] pointer-events-none",
+    iconColor: "#0284C7", // ocean blue
   },
 ];
 
