@@ -5,9 +5,9 @@ import { cn } from "@/lib/utils";
 import ToothIcon from "@/components/icons/ToothIcon";
 
 const navLinks = [
-  { label: "Features", href: "#about" },
-  { label: "Pricing", href: "#pricing" },
-  { label: "FAQ", href: "#faq" },
+  { label: "Features", href: "/#about" },
+  { label: "Pricing", href: "/#pricing" },
+  { label: "FAQ", href: "/#faq" },
 ];
 
 const LOGIN_URL = "https://app.dentdock.co.uk";
@@ -27,13 +27,15 @@ function Logo() {
 }
 
 function smoothScrollTo(e: React.MouseEvent<HTMLAnchorElement>, href: string) {
-  if (!href.startsWith("#")) return;
-  const id = href.slice(1);
+  const hashIdx = href.indexOf("#");
+  if (hashIdx === -1) return;
+  const id = href.slice(hashIdx + 1);
   const el = document.getElementById(id);
   if (el) {
     e.preventDefault();
     el.scrollIntoView({ behavior: "smooth", block: "start" });
   }
+  // If element not on current page, fall through to default <a> nav (e.g. /#about)
 }
 
 function scrollToWaitlist(e: React.MouseEvent) {

@@ -1,14 +1,15 @@
+import { lazy, Suspense } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import Navbar from "@/components/home/Navbar";
 import HeroSection from "@/components/home/HeroSection";
 import FeaturesSection from "@/components/home/FeaturesSection";
-import ProductShowcase from "@/components/home/ProductShowcase";
 
-import BentoGrid from "@/components/home/BentoGrid";
-import FAQ from "@/components/home/FAQ";
-import PricingCTA from "@/components/home/PricingCTA";
-import Footer from "@/components/home/Footer";
-import WhatsAppButton from "@/components/home/WhatsAppButton";
+const ProductShowcase = lazy(() => import("@/components/home/ProductShowcase"));
+const BentoGrid = lazy(() => import("@/components/home/BentoGrid"));
+const PricingCTA = lazy(() => import("@/components/home/PricingCTA"));
+const FAQ = lazy(() => import("@/components/home/FAQ"));
+const Footer = lazy(() => import("@/components/home/Footer"));
+const WhatsAppButton = lazy(() => import("@/components/home/WhatsAppButton"));
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -37,6 +38,92 @@ export const Route = createFileRoute("/")({
     links: [
       { rel: "canonical", href: "https://dentdock.co.uk" },
     ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "SoftwareApplication",
+          name: "Dent Dock",
+          applicationCategory: "BusinessApplication",
+          operatingSystem: "Web",
+          url: "https://dentdock.co.uk",
+          description:
+            "Dental practice management software for UK private practices. Online booking, automated reminders, payments and recalls.",
+          offers: {
+            "@type": "Offer",
+            price: "49",
+            priceCurrency: "GBP",
+            priceSpecification: {
+              "@type": "RecurringCharge",
+              billingDuration: "P1M",
+            },
+          },
+          provider: {
+            "@type": "Organization",
+            name: "Dent Dock",
+            url: "https://dentdock.co.uk",
+          },
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: [
+            {
+              "@type": "Question",
+              name: "When is Dent Dock launching?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "We're currently in early access with our first practices. Join the waitlist and you'll be among the first to get access — with priority support and early access pricing locked in.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Can I import my existing patients?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Yes. We support direct imports from Dentally, Software of Excellence (EXACT), Curve Dental, Carestream R4 and Practiceworks. Upload a CSV and we handle the rest automatically.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Does it work for mixed NHS and private practices?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Dent Dock is built for private and mixed practices. It doesn't include NHS UDA management or claim processing — if you need those, it may not be the right fit. If you're going private or already there, it's built for you.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "How long does setup actually take?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Most practices are fully configured and live in under 10 minutes. Your opening hours, services and SMS automations all have smart defaults pre-filled — you just confirm and go.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "What happens after I join the waitlist?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "You'll get an email from us personally — not an automated sequence. We'll walk you through early access, answer any questions and get you set up when you're ready.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Is there a contract or minimum term?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "No contracts. No setup fees. Cancel any time. We believe you should stay because the software is good, not because you're locked in.",
+              },
+            },
+          ],
+        }),
+      },
+    ],
   }),
 });
 
@@ -49,19 +136,31 @@ function Index() {
         <FeaturesSection />
       </section>
       <section id="about">
-        <ProductShowcase />
+        <Suspense fallback={null}>
+          <ProductShowcase />
+        </Suspense>
       </section>
       <section id="everything">
-        <BentoGrid />
+        <Suspense fallback={null}>
+          <BentoGrid />
+        </Suspense>
       </section>
       <section id="pricing">
-        <PricingCTA />
+        <Suspense fallback={null}>
+          <PricingCTA />
+        </Suspense>
       </section>
       <section id="faq">
-        <FAQ />
+        <Suspense fallback={null}>
+          <FAQ />
+        </Suspense>
       </section>
-      <Footer />
-      <WhatsAppButton />
+      <Suspense fallback={null}>
+        <Footer />
+      </Suspense>
+      <Suspense fallback={null}>
+        <WhatsAppButton />
+      </Suspense>
     </main>
   );
 }
