@@ -1,17 +1,28 @@
+import { motion } from "framer-motion";
+
 export default function WhatsAppButton() {
   return (
-    <a
+    <motion.a
       href="https://wa.me/447700000000"
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat with us on WhatsApp"
       className="fixed bottom-6 right-6 z-50 group"
+      initial={{ opacity: 0, scale: 0.5, y: 16 }}
+      animate={{ opacity: 1, scale: 1, y: 0 }}
+      transition={{
+        duration: 0.5,
+        ease: [0.34, 1.2, 0.64, 1],
+        delay: 1.5,
+      }}
+      whileHover={{ scale: 1.08 }}
+      whileTap={{ scale: 0.95 }}
     >
       {/* Outer glow ring */}
       <span className="absolute inset-0 rounded-full bg-[#25D366] opacity-30 blur-xl group-hover:opacity-50 transition-opacity" />
 
       {/* Button */}
-      <span className="relative flex items-center justify-center w-14 h-14 rounded-full bg-[#25D366] shadow-lg shadow-[#25D366]/30 hover:bg-[#1ebe57] transition-all hover:-translate-y-0.5">
+      <span className="relative flex items-center justify-center w-14 h-14 rounded-full bg-[#25D366] shadow-lg shadow-[#25D366]/30 hover:bg-[#1ebe57]">
         {/* WhatsApp SVG icon */}
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -30,6 +41,6 @@ export default function WhatsAppButton() {
         {/* Tooltip arrow */}
         <span className="absolute left-full top-1/2 -translate-y-1/2 border-4 border-transparent border-l-[#0F172A]" />
       </span>
-    </a>
+    </motion.a>
   );
 }
