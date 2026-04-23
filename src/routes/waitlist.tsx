@@ -187,21 +187,30 @@ function WaitlistPage() {
               </div>
             ) : (
               <>
-                <div className="mb-8">
+                <motion.div
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, ease: EASE, delay: 0.15 }}
+                  className="mb-8"
+                >
                   <h2 className="text-3xl font-medium tracking-tight text-[#0F172A] mb-2">
                     Join the waitlist
                   </h2>
                   <p className="text-[15px] leading-[1.5] text-[#475569]">
                     Be among the first UK private practices to get Dent Dock.
                   </p>
-                </div>
+                </motion.div>
 
                 <form
                   onSubmit={handleSubmit}
                   noValidate
                   className="space-y-4"
                 >
-                  <div>
+                  <motion.div
+                    initial={{ opacity: 0, y: 16 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, ease: EASE, delay: 0.25 }}
+                  >
                     <label
                       htmlFor="email"
                       className="block text-[13px] font-medium text-[#0F172A] mb-1.5"
@@ -228,9 +237,13 @@ function WaitlistPage() {
                         }
                       />
                     </div>
-                  </div>
+                  </motion.div>
 
-                  <div>
+                  <motion.div
+                    initial={{ opacity: 0, y: 16 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, ease: EASE, delay: 0.33 }}
+                  >
                     <label
                       htmlFor="practice"
                       className="block text-[13px] font-medium text-[#0F172A] mb-1.5"
@@ -253,9 +266,13 @@ function WaitlistPage() {
                         } as React.CSSProperties
                       }
                     />
-                  </div>
+                  </motion.div>
 
-                  <div>
+                  <motion.div
+                    initial={{ opacity: 0, y: 16 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, ease: EASE, delay: 0.41 }}
+                  >
                     <label
                       htmlFor="role"
                       className="block text-[13px] font-medium text-[#0F172A] mb-1.5"
@@ -286,23 +303,31 @@ function WaitlistPage() {
                       <option value="reception">Reception / Admin</option>
                       <option value="other">Other</option>
                     </select>
-                  </div>
+                  </motion.div>
 
                   {error && (
                     <p className="text-sm text-red-500">{error}</p>
                   )}
 
-                  <button
+                  <motion.button
                     type="submit"
                     disabled={isLoading}
+                    initial={{ opacity: 0, y: 16 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, ease: EASE, delay: 0.5 }}
                     className="w-full bg-[#2563EB] text-white text-[14px] font-semibold px-6 py-3 rounded-xl hover:bg-[#1d4ed8] transition-all shadow-lg shadow-blue-500/20 disabled:opacity-60"
                   >
                     {isLoading ? "Joining..." : "Join the waitlist"}
-                  </button>
+                  </motion.button>
 
-                  <p className="text-[12px] text-[#94A3B8] text-center">
+                  <motion.p
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.5, ease: EASE, delay: 0.6 }}
+                    className="text-[12px] text-[#94A3B8] text-center"
+                  >
                     No spam. We'll only email you about Dent Dock.
-                  </p>
+                  </motion.p>
                 </form>
               </>
             )}
