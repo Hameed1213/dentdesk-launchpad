@@ -1,3 +1,4 @@
+import { Link } from "@tanstack/react-router";
 import ToothIcon from "@/components/icons/ToothIcon";
 
 const productLinks = [
@@ -6,16 +7,23 @@ const productLinks = [
   { label: "FAQ", href: "/#faq" },
 ];
 
-const companyLinks = [
-  { label: "Contact", href: "https://wa.me/447700000000" },
-  { label: "Log in", href: "https://app.dentdock.co.uk" },
-  { label: "Join the waitlist", href: "/waitlist" },
+type CompanyLink = {
+  label: string;
+  href: string;
+  external?: boolean;
+  internal?: boolean;
+};
+
+const companyLinks: CompanyLink[] = [
+  { label: "Contact", href: "https://wa.me/447700000000", external: true },
+  { label: "Log in", href: "https://app.dentdock.co.uk", external: true },
+  { label: "Join the waitlist", href: "/waitlist", internal: true },
 ];
 
 const legalLinks = [
-  { label: "Privacy", href: "/privacy" },
-  { label: "Terms", href: "/terms" },
-  { label: "Cookies", href: "/cookies" },
+  { label: "Privacy", href: "/privacy" as const },
+  { label: "Terms", href: "/terms" as const },
+  { label: "Cookies", href: "/cookies" as const },
 ];
 
 export default function Footer() {
@@ -25,7 +33,7 @@ export default function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-8">
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
-            <a href="/" className="flex items-center gap-2">
+            <Link to="/" aria-label="Dent Dock — go to homepage" className="flex items-center gap-2">
               <ToothIcon size={22} color="#60A5FA" />
               <span
                 className="text-lg tracking-tight"
@@ -33,7 +41,7 @@ export default function Footer() {
               >
                 Dent Dock
               </span>
-            </a>
+            </Link>
             <p className="mt-4 text-[14px] leading-[1.6] text-white/60 max-w-[200px]">
               Practice management software built for independent UK private practices.
             </p>
@@ -78,16 +86,29 @@ export default function Footer() {
               Company
             </p>
             <ul className="space-y-2.5">
-              {companyLinks.map((l) => (
-                <li key={l.label}>
-                  <a
-                    href={l.href}
-                    className="text-[14px] text-white/70 hover:text-white transition-colors"
-                  >
-                    {l.label}
-                  </a>
-                </li>
-              ))}
+              {companyLinks.map((l) =>
+                l.internal ? (
+                  <li key={l.label}>
+                    <Link
+                      to="/waitlist"
+                      className="text-[14px] text-white/70 hover:text-white transition-colors"
+                    >
+                      {l.label}
+                    </Link>
+                  </li>
+                ) : (
+                  <li key={l.label}>
+                    <a
+                      href={l.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[14px] text-white/70 hover:text-white transition-colors"
+                    >
+                      {l.label}
+                    </a>
+                  </li>
+                ),
+              )}
             </ul>
           </div>
 
@@ -99,12 +120,12 @@ export default function Footer() {
             <ul className="space-y-2.5">
               {legalLinks.map((l) => (
                 <li key={l.label}>
-                  <a
-                    href={l.href}
+                  <Link
+                    to={l.href}
                     className="text-[14px] text-white/70 hover:text-white transition-colors"
                   >
                     {l.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

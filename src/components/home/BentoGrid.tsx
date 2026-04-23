@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import {
@@ -463,13 +463,29 @@ const smsMessages = [
 ] as const;
 
 const SmsVisual = () => {
+  const rootRef = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
   const [visibleMessages, setVisibleMessages] = useState<number[]>([]);
   const [typing, setTyping] = useState(false);
   const [typingFor, setTypingFor] = useState<number | null>(null);
   const [channel, setChannel] = useState<"sms" | "email">("sms");
   const [channelVisible, setChannelVisible] = useState(true);
 
+  // Visibility gate — only animate when on screen
   useEffect(() => {
+    const el = rootRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsVisible(entry.isIntersecting),
+      { threshold: 0.1 },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!isVisible) return;
+
     const timers: ReturnType<typeof setTimeout>[] = [];
 
     function runSequence() {
@@ -536,10 +552,10 @@ const SmsVisual = () => {
 
     runSequence();
     return () => timers.forEach(clearTimeout);
-  }, []);
+  }, [isVisible]);
 
   return (
-    <div className="h-full w-full min-h-[360px] md:min-h-[280px] md:max-h-[280px] md:overflow-hidden lg:max-h-none lg:overflow-visible lg:min-h-[420px]">
+    <div ref={rootRef} className="h-full w-full min-h-[360px] md:min-h-[280px] md:max-h-[280px] md:overflow-hidden lg:max-h-none lg:overflow-visible lg:min-h-[420px]">
       <div
         style={{
           opacity: channelVisible ? 1 : 0,

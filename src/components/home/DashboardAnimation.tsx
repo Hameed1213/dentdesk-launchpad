@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState, type RefObject } from "react";
 import { motion } from "framer-motion";
 import {
   LayoutDashboard,
@@ -24,15 +24,30 @@ import ToothIcon from "@/components/icons/ToothIcon";
 import { ContainerScroll } from "@/components/ui/container-scroll-animation";
 
 // ---------- SHARED COUNTER HOOK ----------
-function useDashboardCounters() {
+function useDashboardCounters(targetRef: RefObject<HTMLElement | null>) {
   const [started, setStarted] = useState(false);
   const [countToday, setCountToday] = useState(0);
   const [countRevenue, setCountRevenue] = useState(0);
   const [countCapacity, setCountCapacity] = useState(0);
   const [capacityBarWidth, setCapacityBarWidth] = useState(0);
   const [visibleRows, setVisibleRows] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
+
+  // Visibility gate — only animate when on screen
+  useEffect(() => {
+    const el = targetRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsVisible(entry.isIntersecting),
+      { threshold: 0.1 },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [targetRef]);
 
   useEffect(() => {
+    if (!isVisible) return;
+
     const timeouts: ReturnType<typeof setTimeout>[] = [];
     const rafs: number[] = [];
 
@@ -101,7 +116,7 @@ function useDashboardCounters() {
       timeouts.forEach(clearTimeout);
       rafs.forEach(cancelAnimationFrame);
     };
-  }, []);
+  }, [isVisible]);
 
   return {
     started,
@@ -454,6 +469,7 @@ function ScheduleRows({
 
 // ---------- DESKTOP MOCKUP ----------
 function DesktopDashboardMockup() {
+  const rootRef = useRef<HTMLDivElement>(null);
   const {
     started,
     countToday,
@@ -461,7 +477,7 @@ function DesktopDashboardMockup() {
     countCapacity,
     capacityBarWidth,
     visibleRows,
-  } = useDashboardCounters();
+  } = useDashboardCounters(rootRef);
 
   const statCards = [
     {
@@ -511,7 +527,7 @@ function DesktopDashboardMockup() {
   ];
 
   return (
-    <div className="w-full h-full bg-[#F8FAFC] flex overflow-hidden rounded-[8px] relative select-none">
+    <div ref={rootRef} className="w-full h-full bg-[#F8FAFC] flex overflow-hidden rounded-[8px] relative select-none">
       <SidebarIconOnly />
       <div className="flex-1 min-h-0 flex flex-col overflow-hidden relative">
         <TopBar />
@@ -574,6 +590,7 @@ function DesktopDashboardMockup() {
 
 // ---------- TABLET MOCKUP ----------
 function TabletDashboardMockup() {
+  const rootRef = useRef<HTMLDivElement>(null);
   const {
     started,
     countToday,
@@ -581,10 +598,10 @@ function TabletDashboardMockup() {
     countCapacity,
     capacityBarWidth,
     visibleRows,
-  } = useDashboardCounters();
+  } = useDashboardCounters(rootRef);
 
   return (
-    <div className="w-full h-full bg-[#F8FAFC] flex flex-col overflow-hidden rounded-[20px] relative select-none">
+    <div ref={rootRef} className="w-full h-full bg-[#F8FAFC] flex flex-col overflow-hidden rounded-[20px] relative select-none">
       {/* Top bar */}
       <div className="h-[52px] bg-white border-b border-[#E2E8F0] flex items-center justify-between px-4 flex-shrink-0">
         <div className="flex items-center gap-2">
@@ -685,6 +702,7 @@ function TabletDashboardMockup() {
 
 // ---------- MOBILE MOCKUP ----------
 function MobileDashboardMockup() {
+  const rootRef = useRef<HTMLDivElement>(null);
   const {
     started,
     countToday,
@@ -692,7 +710,7 @@ function MobileDashboardMockup() {
     countCapacity,
     capacityBarWidth,
     visibleRows,
-  } = useDashboardCounters();
+  } = useDashboardCounters(rootRef);
 
   const tabs = [
     { Icon: LayoutDashboard, label: "Dashboard", active: true },
@@ -703,7 +721,7 @@ function MobileDashboardMockup() {
   ];
 
   return (
-    <div className="w-full h-full bg-[#F8FAFC] flex flex-col overflow-hidden rounded-[28px] relative select-none">
+    <div ref={rootRef} className="w-full h-full bg-[#F8FAFC] flex flex-col overflow-hidden rounded-[28px] relative select-none">
       {/* Top bar */}
       <div className="h-[48px] bg-white border-b border-[#E2E8F0] flex items-center justify-between px-3.5 flex-shrink-0">
         <div className="flex items-center gap-1.5">

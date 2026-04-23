@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "@tanstack/react-router";
 import { ArrowRight, Check, Circle, CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -142,12 +143,12 @@ export default function PricingCTA() {
             })}
 
             {/* Desktop-only CTA under Enterprise */}
-            <a
-              href="/waitlist"
+            <Link
+              to="/waitlist"
               className="hidden lg:inline-flex self-start items-center justify-center gap-2 bg-[#2563EB] text-white text-[14px] font-semibold px-6 py-3 rounded-xl hover:bg-[#1d4ed8] transition-all shadow-lg shadow-blue-500/20 mt-2"
             >
               Join the waitlist <ArrowRight className="w-4 h-4" />
-            </a>
+            </Link>
           </motion.div>
 
           {/* Right — Includes */}
@@ -188,12 +189,12 @@ export default function PricingCTA() {
         </div>
 
         <div className="mt-8 flex justify-center lg:hidden">
-          <a
-            href="/waitlist"
+          <Link
+            to="/waitlist"
             className="w-full inline-flex items-center justify-center gap-2 bg-[#2563EB] text-white text-[14px] font-semibold px-6 py-3 rounded-xl hover:bg-[#1d4ed8] transition-all shadow-lg shadow-blue-500/20"
           >
             Join the waitlist <ArrowRight className="w-4 h-4" />
-          </a>
+          </Link>
         </div>
 
       </div>
