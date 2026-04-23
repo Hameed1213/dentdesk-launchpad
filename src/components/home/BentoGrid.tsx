@@ -676,7 +676,7 @@ function EmailView() {
           <div className="text-[13px] font-semibold text-[#0f172a]">
             Smile Dental
           </div>
-          <div className="text-[11px] text-neutral-400">Email · Today 09:01</div>
+          <div className="text-[11px] text-neutral-400">Email</div>
         </div>
       </div>
 
