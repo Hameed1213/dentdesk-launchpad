@@ -1176,7 +1176,7 @@ export default function ProductShowcase() {
                         className="absolute bottom-0 left-0 h-[2px] bg-white/80 origin-left"
                         initial={{ scaleX: 0 }}
                         animate={{ scaleX: 1 }}
-                        transition={{ duration: 20, ease: "linear" }}
+                        transition={{ duration: 35, ease: "linear" }}
                         style={{ width: "100%" }}
                       />
                     )}
