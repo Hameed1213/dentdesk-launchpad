@@ -1102,12 +1102,12 @@ export default function ProductShowcase() {
     return () => observer.disconnect();
   }, []);
 
-  // Auto-advance every 20s — only when in view and not paused
+  // Auto-advance every 35s — only when in view and not paused
   useEffect(() => {
     if (paused || !inView) return;
     intervalRef.current = setInterval(() => {
       setActiveTab((prev) => (prev + 1) % tabs.length);
-    }, 20000);
+    }, 35000);
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current);
     };
@@ -1176,7 +1176,7 @@ export default function ProductShowcase() {
                         className="absolute bottom-0 left-0 h-[2px] bg-white/80 origin-left"
                         initial={{ scaleX: 0 }}
                         animate={{ scaleX: 1 }}
-                        transition={{ duration: 20, ease: "linear" }}
+                        transition={{ duration: 35, ease: "linear" }}
                         style={{ width: "100%" }}
                       />
                     )}
