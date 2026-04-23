@@ -278,8 +278,8 @@ const AnalyticsVisual = () => {
         <div className="rounded-lg bg-[#F3F6FD] p-2">
           <svg
             viewBox="0 0 240 80"
-            className="w-full h-[120px]"
-            preserveAspectRatio="none"
+            className="w-full h-auto"
+            preserveAspectRatio="xMidYMid meet"
           >
             <defs>
               <linearGradient id="bentoFill" x1="0" y1="0" x2="0" y2="1">
