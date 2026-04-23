@@ -88,69 +88,87 @@ const PatientRecordVisual = () => (
   </div>
 );
 
-const FormVisual = () => (
-  <div className="w-[210px] rounded-[26px] bg-foreground/90 p-1.5 shadow-xl">
-    <div className="rounded-[18px] bg-white overflow-hidden">
-      {/* Status bar */}
-      <div className="h-4 bg-[#2563EB]/5 flex items-center justify-between px-3">
-        <span className="text-[7px] font-semibold text-foreground">9:41</span>
-        <div className="flex items-center gap-0.5">
-          <div className="w-1 h-1 rounded-full bg-foreground/60" />
-          <div className="w-1 h-1 rounded-full bg-foreground/60" />
-          <div className="w-1 h-1 rounded-full bg-foreground/60" />
+const FormsVisual = () => (
+  <div
+    className="w-full h-full relative"
+    style={{
+      filter:
+        "drop-shadow(0 8px 16px rgba(0,0,0,0.06)) drop-shadow(0 2px 4px rgba(0,0,0,0.04))",
+    }}
+  >
+    <div className="bg-white rounded-lg overflow-hidden border border-neutral-200 p-5">
+      {/* Header */}
+      <div className="flex items-start justify-between mb-3">
+        <div className="min-w-0">
+          <div className="text-[12px] font-bold text-[#0f172a]">
+            Medical history form
+          </div>
+          <div className="text-[9px] text-[#64748b] mt-0.5">Sarah Mitchell</div>
         </div>
+        <span className="text-[8px] font-semibold bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-full shrink-0 flex items-center gap-1">
+          <Check className="w-2 h-2" strokeWidth={3} /> Signed
+        </span>
       </div>
+
       {/* Progress */}
-      <div className="px-3 pt-3">
-        <div className="flex items-center justify-between text-[7px] mb-1">
-          <span className="text-muted-foreground">Step 2 of 4</span>
-          <span className="font-semibold text-[#2563EB]">50%</span>
+      <div className="mb-3">
+        <div className="flex items-center justify-between text-[8px] mb-1">
+          <span className="text-[#64748b]">Completed</span>
+          <span className="font-semibold text-[#2563EB]">100%</span>
         </div>
-        <div className="h-1 rounded-full bg-[#2563EB]/10 overflow-hidden">
-          <div className="h-full w-1/2 bg-[#2563EB] rounded-full" />
-        </div>
-      </div>
-      {/* Title */}
-      <div className="px-3 pt-3 pb-2">
-        <div className="text-[10px] font-bold text-foreground">
-          Medical history
+        <div className="h-1 rounded-full bg-[#F3F6FD] overflow-hidden">
+          <div className="h-full w-full bg-[#2563EB] rounded-full" />
         </div>
       </div>
-      {/* Fields */}
-      <div className="px-3 space-y-2 pb-3">
-        <div>
-          <div className="text-[7px] text-muted-foreground mb-0.5">
-            Allergies
-          </div>
-          <div className="h-5 rounded-md border border-[#2563EB]/30 bg-[#2563EB]/5 flex items-center px-1.5">
-            <span className="text-[8px] text-foreground">Penicillin</span>
-          </div>
-        </div>
-        <div>
-          <div className="text-[7px] text-muted-foreground mb-0.5">
-            Medications
-          </div>
-          <div className="h-5 rounded-md border border-neutral-200 bg-white flex items-center px-1.5">
-            <span className="text-[8px] text-muted-foreground">None</span>
-          </div>
-        </div>
-        <div>
-          <div className="text-[7px] text-muted-foreground mb-0.5">
-            Pregnant?
-          </div>
-          <div className="flex gap-1">
-            <div className="flex-1 h-5 rounded-md border border-neutral-200 bg-white flex items-center justify-center text-[8px] text-muted-foreground">
-              Yes
+
+      {/* Fields grid */}
+      <div className="grid grid-cols-2 gap-1.5 mb-3">
+        {[
+          { label: "Allergies", value: "Penicillin" },
+          { label: "Medications", value: "None" },
+          { label: "Conditions", value: "None" },
+          { label: "Pregnant?", value: "No" },
+        ].map((f) => (
+          <div
+            key={f.label}
+            className="bg-[#F3F6FD] border border-[#e2e8f0] rounded-lg p-1.5"
+          >
+            <div className="text-[7px] text-[#64748b] uppercase tracking-wide">
+              {f.label}
             </div>
-            <div className="flex-1 h-5 rounded-md border border-[#2563EB] bg-[#2563EB]/10 flex items-center justify-center text-[8px] font-semibold text-[#2563EB]">
-              No
+            <div className="text-[9px] font-semibold text-[#0f172a] mt-0.5">
+              {f.value}
             </div>
           </div>
+        ))}
+      </div>
+
+      {/* Signature block */}
+      <div className="bg-[#F3F6FD] border border-[#e2e8f0] rounded-lg p-2 flex items-end justify-between">
+        <div className="min-w-0">
+          <div className="text-[7px] text-[#64748b] uppercase tracking-wide mb-0.5">
+            Signature
+          </div>
+          <div
+            className="text-[14px] text-[#0f172a] leading-none"
+            style={{ fontFamily: "'Brush Script MT', cursive" }}
+          >
+            Sarah Mitchell
+          </div>
         </div>
-        {/* Submit */}
-        <button className="w-full h-6 rounded-md bg-[#2563EB] text-white text-[8px] font-semibold mt-1">
-          Continue
-        </button>
+        <div className="text-right shrink-0">
+          <div className="text-[7px] text-[#64748b] uppercase tracking-wide mb-0.5">
+            Date
+          </div>
+          <div className="text-[9px] font-semibold text-[#0f172a]">
+            14 Apr 2026
+          </div>
+        </div>
+      </div>
+
+      {/* Footer */}
+      <div className="text-[7px] text-[#94a3b8] mt-2">
+        Submitted 14 Apr 2026 · 09:42
       </div>
     </div>
   </div>
@@ -501,8 +519,12 @@ const cells = [
   {
     Icon: FileCheck,
     title: "Paperless from day one.",
-    visual: <FormVisual />,
+    visual: <FormsVisual />,
     span: "md:col-span-3 md:row-span-1",
+    layout: "side" as const,
+    popOut: true,
+    titleClass: "max-w-[140px]",
+    popOutClass: "absolute -right-2 left-[30%] top-[5%] pointer-events-none",
   },
 ];
 
