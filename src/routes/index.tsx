@@ -53,13 +53,13 @@ function Index() {
     <main>
       <Navbar />
       <HeroSection />
-      <section id="features">
-        <FeaturesSection />
-      </section>
       <section id="about">
         <ProductShowcase />
       </section>
-      <BentoGrid />
+      <FeaturesSection />
+      <section id="features">
+        <BentoGrid />
+      </section>
       <section id="pricing">
         <PricingCTA />
       </section>
