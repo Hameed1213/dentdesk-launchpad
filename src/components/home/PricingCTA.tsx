@@ -13,8 +13,8 @@ type Plan = {
 export default function PricingCTA() {
   const plans: Plan[] = [
     { name: "Practice", price: "£49", priceSuffix: "/mo", note: "Most popular", selected: true },
-    { name: "Multi-site", price: "££", priceSuffix: "/mo", note: "Coming soon", disabled: true },
-    { name: "Enterprise", price: "££", priceSuffix: "/mo", note: "Talk to us", disabled: true },
+    { name: "Multi-site", price: "££", priceSuffix: "/mo", note: "", disabled: true },
+    { name: "Enterprise", price: "££", priceSuffix: "/mo", note: "", disabled: true },
   ];
 
   const features = [
@@ -81,16 +81,18 @@ export default function PricingCTA() {
                       <div className={`text-[17px] font-semibold ${isSelected ? "text-white" : "text-foreground"}`}>
                         {plan.name}
                       </div>
-                      <span
-                        className={[
-                          "text-[11px] font-medium px-2 py-0.5 rounded-full inline-block w-fit",
-                          isSelected
-                            ? "bg-white/20 text-white"
-                            : "bg-neutral-100 text-[#475569]",
-                        ].join(" ")}
-                      >
-                        {plan.note}
-                      </span>
+                      {plan.note && (
+                        <span
+                          className={[
+                            "text-[11px] font-medium px-2 py-0.5 rounded-full inline-block w-fit",
+                            isSelected
+                              ? "bg-white/20 text-white"
+                              : "bg-neutral-100 text-[#475569]",
+                          ].join(" ")}
+                        >
+                          {plan.note}
+                        </span>
+                      )}
                     </div>
                   </div>
                   <div className="text-right">
