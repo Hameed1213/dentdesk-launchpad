@@ -62,31 +62,33 @@ function WaitlistPage() {
 
   return (
     <main className="min-h-screen bg-white flex flex-col lg:flex-row relative">
-      {/* Mobile + Tablet: Back to home pinned top-right, aligned with logo */}
-      <Link
-        to="/"
-        className="lg:hidden inline-flex absolute top-[42px] right-8 md:top-12 z-30 items-center gap-1.5 text-[13px] font-medium text-neutral-500 hover:text-neutral-800 transition-colors"
-      >
-        <ArrowLeft className="w-4 h-4" />
-        Back to home
-      </Link>
-
       {/* ===================== LEFT — copy ===================== */}
       <section className="relative lg:w-1/2 bg-gradient-to-br from-[#DBEAFE] via-[#EFF6FF] to-white overflow-hidden flex flex-col px-8 py-10 lg:px-12 lg:py-14 min-h-[280px] max-lg:min-h-0 max-lg:py-12 lg:min-h-screen">
-        {/* Logo */}
-        <Link to="/" className="flex items-center gap-2 z-20 relative">
-          <ToothIcon size={24} color="#2563EB" />
-          <span
-            className="text-lg tracking-tight"
-            style={{
-              color: "#2563EB",
-              fontWeight: 700,
-              letterSpacing: "-0.02em",
-            }}
+        <div className="relative z-20 flex items-center justify-between gap-4">
+          {/* Logo */}
+          <Link to="/" className="flex items-center gap-2">
+            <ToothIcon size={24} color="#2563EB" />
+            <span
+              className="text-lg tracking-tight"
+              style={{
+                color: "#2563EB",
+                fontWeight: 700,
+                letterSpacing: "-0.02em",
+              }}
+            >
+              Dent Dock
+            </span>
+          </Link>
+
+          {/* Mobile + Tablet: Back to home inline with logo */}
+          <Link
+            to="/"
+            className="lg:hidden inline-flex items-center gap-1.5 text-[13px] font-medium text-neutral-500 hover:text-neutral-800 transition-colors"
           >
-            Dent Dock
-          </span>
-        </Link>
+            <ArrowLeft className="w-4 h-4" />
+            Back to home
+          </Link>
+        </div>
 
         {/* Decorative blue blobs — slow drifting */}
         <div className="pointer-events-none absolute inset-0 -z-0">
