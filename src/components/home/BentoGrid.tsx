@@ -649,6 +649,7 @@ const cells = [
     title: "Patients never miss an appointment.",
     visual: <SmsVisual />,
     span: "md:col-span-2 md:row-span-1",
+    noHeader: true,
   },
   {
     Icon: TrendingUp,
