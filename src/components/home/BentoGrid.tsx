@@ -771,7 +771,16 @@ const cells = [
   {
     Icon: Monitor,
     title: "Patients manage themselves.",
-    visual: <PortalVisual />,
+    visual: (
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-40px" }}
+        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.25 }}
+      >
+        <PortalVisual />
+      </motion.div>
+    ),
     span: "md:col-span-2 lg:col-span-4 lg:row-span-1",
     layout: "side" as const,
     popOut: true,
@@ -795,7 +804,16 @@ const cells = [
   {
     Icon: TrendingUp,
     title: "Know your numbers.",
-    visual: <AnalyticsVisual />,
+    visual: (
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-40px" }}
+        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+      >
+        <AnalyticsVisual />
+      </motion.div>
+    ),
     span: "md:col-span-1 lg:col-span-3 lg:row-span-1",
     layout: "side" as const,
     popOut: true,
@@ -806,7 +824,16 @@ const cells = [
   {
     Icon: FileCheck,
     title: "Custom forms",
-    visual: <FormsVisual />,
+    visual: (
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-40px" }}
+        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+      >
+        <FormsVisual />
+      </motion.div>
+    ),
     span: "md:col-span-1 lg:col-span-3 lg:row-span-1",
     layout: "side" as const,
     popOut: true,
