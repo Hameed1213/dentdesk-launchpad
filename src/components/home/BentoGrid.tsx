@@ -15,6 +15,7 @@ const BLUE = "37,99,235"; // primary blue rgb triplet
 
 /* ---------- Cell visuals ---------- */
 
+
 const PatientRecordVisual = () => (
   <div className="rounded-xl bg-white/80 backdrop-blur-md border border-white shadow-sm p-5 overflow-hidden mx-auto w-full max-w-[300px]">
     {/* Header */}
