@@ -586,7 +586,7 @@ export default function BentoGrid() {
                       </div>
                     ) : (
                       <div
-                        className="absolute right-6 top-4 flex items-start pointer-events-none"
+                        className="absolute right-10 top-8 left-[36%] flex items-start pointer-events-none"
                         style={{ bottom: "-50%" }}
                       >
                         {cell.visual}
