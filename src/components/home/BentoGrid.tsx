@@ -271,27 +271,35 @@ const StaffVisual = () => {
     },
   ];
   return (
-    <div className="rounded-xl bg-white/80 backdrop-blur-md border border-white shadow-sm p-4 overflow-hidden space-y-1.5">
-      {team.map((m) => (
-        <div
-          key={m.initials}
-          className="flex items-center gap-2.5 rounded-md px-1.5 py-1"
-        >
-          <div className="w-7 h-7 rounded-full bg-gradient-to-br from-[#2563EB] to-[#1d4ed8] flex items-center justify-center text-white text-[10px] font-bold shrink-0">
-            {m.initials}
-          </div>
-          <div className="min-w-0 flex-1">
-            <div className="text-[11px] font-semibold text-foreground truncate">
-              {m.name}
-            </div>
-          </div>
-          <span
-            className={`text-[9px] font-semibold rounded-full px-2 py-0.5 ${m.badge}`}
+    <div
+      className="rounded-xl bg-[#f5f6fb] border border-neutral-200 p-3 overflow-hidden"
+      style={{
+        filter:
+          "drop-shadow(0 8px 16px rgba(0,0,0,0.06)) drop-shadow(0 2px 4px rgba(0,0,0,0.04))",
+      }}
+    >
+      <div className="bg-white border border-[#e2e8f0] rounded-lg p-2 space-y-1">
+        {team.map((m) => (
+          <div
+            key={m.initials}
+            className="flex items-center gap-2.5 rounded-md px-1.5 py-1"
           >
-            {m.role}
-          </span>
-        </div>
-      ))}
+            <div className="w-7 h-7 rounded-full bg-gradient-to-br from-[#2563EB] to-[#1d4ed8] flex items-center justify-center text-white text-[10px] font-bold shrink-0">
+              {m.initials}
+            </div>
+            <div className="min-w-0 flex-1">
+              <div className="text-[11px] font-semibold text-foreground truncate">
+                {m.name}
+              </div>
+            </div>
+            <span
+              className={`text-[9px] font-semibold rounded-full px-2 py-0.5 ${m.badge}`}
+            >
+              {m.role}
+            </span>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
