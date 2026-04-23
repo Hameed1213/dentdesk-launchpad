@@ -22,12 +22,18 @@ export default function PricingCTA() {
   const isComingSoon = !!activePlan.comingSoon;
 
   const features = [
-    "Unlimited dentists and staff",
-    "Online booking and scheduling",
-    "Patient records and notes",
-    "Automated reminders and recalls",
-    "Payments, deposits and forms",
-    "Custom forms",
+    "1 location",
+    "Unlimited dentists & users",
+    "Online booking page",
+    "Calendar & scheduling",
+    "Patient records & notes",
+    "Automated reminders & recalls",
+    "Payments & deposits",
+    "Forms & questionnaires",
+    "Advanced analytics & reports",
+    "Staff permissions & roles",
+    "Priority WhatsApp support",
+    "Email support",
   ];
 
   return (
