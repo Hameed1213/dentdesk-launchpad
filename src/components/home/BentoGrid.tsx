@@ -450,7 +450,7 @@ const cells = [
     span: "md:col-span-3 md:row-span-1",
     layout: "side" as const,
     popOut: true,
-    titleClass: "max-w-[140px]",
+    titleClass: "max-w-[110px]",
     popOutClass: "absolute -right-2 left-[30%] top-[35%] pointer-events-none",
   },
   {
