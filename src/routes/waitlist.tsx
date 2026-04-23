@@ -299,10 +299,10 @@ function WaitlistPage() {
 
   return (
     <main className="min-h-screen bg-white flex flex-col lg:flex-row">
-      {/* ===================== LEFT — characters ===================== */}
-      <section className="relative lg:w-1/2 bg-gradient-to-br from-[#EFF4FF] via-[#F5F8FF] to-[#FDF6FF] overflow-hidden flex flex-col px-8 py-10 lg:px-12 lg:py-14 min-h-[420px] lg:min-h-screen">
+      {/* ===================== LEFT — copy ===================== */}
+      <section className="relative lg:w-1/2 bg-gradient-to-br from-[#DBEAFE] via-[#EFF6FF] to-white overflow-hidden flex flex-col px-8 py-10 lg:px-12 lg:py-14 min-h-[280px] lg:min-h-screen">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2 z-20">
+        <Link to="/" className="flex items-center gap-2 z-20 relative">
           <ToothIcon size={24} color="#2563EB" />
           <span
             className="text-lg tracking-tight"
@@ -316,184 +316,46 @@ function WaitlistPage() {
           </span>
         </Link>
 
-        {/* Decorative blobs */}
+        {/* Decorative blue blobs */}
         <div className="pointer-events-none absolute inset-0 -z-0">
           <div
-            className="absolute -top-32 -left-32 w-[500px] h-[500px] rounded-full"
+            className="absolute -top-40 -left-32 w-[560px] h-[560px] rounded-full"
             style={{
               background:
-                "radial-gradient(ellipse, rgba(37,99,235,0.18), transparent 70%)",
+                "radial-gradient(ellipse, rgba(37,99,235,0.28), transparent 70%)",
             }}
           />
           <div
-            className="absolute -bottom-32 -right-20 w-[500px] h-[500px] rounded-full"
+            className="absolute top-1/3 -right-40 w-[520px] h-[520px] rounded-full"
             style={{
               background:
-                "radial-gradient(ellipse, rgba(168,85,247,0.12), transparent 70%)",
+                "radial-gradient(ellipse, rgba(96,165,250,0.30), transparent 70%)",
+            }}
+          />
+          <div
+            className="absolute -bottom-40 left-1/4 w-[500px] h-[500px] rounded-full"
+            style={{
+              background:
+                "radial-gradient(ellipse, rgba(147,197,253,0.35), transparent 70%)",
             }}
           />
         </div>
 
-        {/* Headline */}
-        <div className="relative z-10 mt-10 max-w-md">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/80 border border-[#2563EB]/15 backdrop-blur mb-4">
+        {/* Headline — vertically centered */}
+        <div className="relative z-10 flex-1 flex flex-col justify-center max-w-md">
+          <div className="inline-flex w-fit items-center gap-1.5 px-3 py-1 rounded-full bg-white/80 border border-[#2563EB]/15 backdrop-blur mb-5">
             <Sparkles className="w-3.5 h-3.5 text-[#2563EB]" />
             <span className="text-[12px] font-semibold text-[#2563EB] uppercase tracking-[0.12em]">
               Early access
             </span>
           </div>
-          <h1 className="text-3xl lg:text-4xl font-medium tracking-tight text-[#0F172A] leading-[1.1]">
+          <h1 className="text-3xl lg:text-5xl font-medium tracking-tight text-[#0F172A] leading-[1.1]">
             Practice management,{" "}
             <span className="text-[#2563EB]">finally friendly.</span>
           </h1>
-          <p className="text-[15px] leading-[1.6] text-[#475569] mt-3">
+          <p className="text-[15px] lg:text-[16px] leading-[1.6] text-[#475569] mt-4">
             Built for UK private practices. Add your details and we'll be in touch personally when it's your turn.
           </p>
-        </div>
-
-        {/* Characters — anchored bottom */}
-        <div className="relative z-10 mt-auto flex items-end justify-center gap-2 lg:gap-3 pt-12 select-none">
-          {/* Blue tooth — back, tallest */}
-          <ToothBody
-            innerRef={blueRef}
-            width={120}
-            height={isTyping ? 260 : 230}
-            color="#2563EB"
-            style={{
-              transform: `skewX(${bluePos.bodySkew}deg)`,
-              transformOrigin: "bottom center",
-              transition: "all 0.3s ease-out",
-              zIndex: 1,
-            }}
-          >
-            <div
-              className="absolute flex gap-3"
-              style={{
-                left: isLookingAtEachOther ? 50 : 36 + bluePos.faceX,
-                top: isLookingAtEachOther ? 70 : 60 + bluePos.faceY,
-                transition: "all 0.3s ease-out",
-              }}
-            >
-              <EyeBall
-                isBlinking={isBlueBlinking}
-                forceLookX={isLookingAtEachOther ? 4 : undefined}
-                forceLookY={isLookingAtEachOther ? 2 : undefined}
-              />
-              <EyeBall
-                isBlinking={isBlueBlinking}
-                forceLookX={isLookingAtEachOther ? 4 : undefined}
-                forceLookY={isLookingAtEachOther ? 2 : undefined}
-              />
-            </div>
-          </ToothBody>
-
-          {/* Dark tooth — middle */}
-          <ToothBody
-            innerRef={darkRef}
-            width={100}
-            height={195}
-            color="#0F162B"
-            style={{
-              transform: isLookingAtEachOther
-                ? `skewX(${darkPos.bodySkew + 4}deg)`
-                : `skewX(${darkPos.bodySkew}deg)`,
-              transformOrigin: "bottom center",
-              transition: "all 0.3s ease-out",
-              zIndex: 2,
-              marginLeft: -10,
-            }}
-          >
-            <div
-              className="absolute flex gap-2"
-              style={{
-                left: isLookingAtEachOther ? 28 : 28 + darkPos.faceX,
-                top: isLookingAtEachOther ? 50 : 55 + darkPos.faceY,
-                transition: "all 0.3s ease-out",
-              }}
-            >
-              <EyeBall
-                size={22}
-                pupilSize={10}
-                isBlinking={isDarkBlinking}
-                forceLookX={isLookingAtEachOther ? -4 : undefined}
-                forceLookY={isLookingAtEachOther ? 0 : undefined}
-              />
-              <EyeBall
-                size={22}
-                pupilSize={10}
-                isBlinking={isDarkBlinking}
-                forceLookX={isLookingAtEachOther ? -4 : undefined}
-                forceLookY={isLookingAtEachOther ? 0 : undefined}
-              />
-            </div>
-          </ToothBody>
-
-          {/* Teal tooth — front left, short & chubby */}
-          <ToothBody
-            innerRef={tealRef}
-            width={120}
-            height={150}
-            color="#14B8A6"
-            style={{
-              transform: `skewX(${tealPos.bodySkew * 0.6}deg)`,
-              transformOrigin: "bottom center",
-              transition: "all 0.3s ease-out",
-              zIndex: 3,
-              marginLeft: -14,
-            }}
-          >
-            <div
-              className="absolute flex gap-3"
-              style={{
-                left: 36 + tealPos.faceX,
-                top: 48 + tealPos.faceY,
-                transition: "all 0.3s ease-out",
-              }}
-            >
-              <Pupil size={10} maxDistance={4} pupilColor="#0F162B" />
-              <Pupil size={10} maxDistance={4} pupilColor="#0F162B" />
-            </div>
-          </ToothBody>
-
-          {/* Yellow tooth — front right */}
-          <ToothBody
-            innerRef={yellowRef}
-            width={90}
-            height={170}
-            color="#FACC15"
-            style={{
-              transform: `skewX(${yellowPos.bodySkew * 0.8}deg)`,
-              transformOrigin: "bottom center",
-              transition: "all 0.3s ease-out",
-              zIndex: 3,
-              marginLeft: -10,
-            }}
-          >
-            <div
-              className="absolute flex gap-2"
-              style={{
-                left: 26 + yellowPos.faceX,
-                top: 50 + yellowPos.faceY,
-                transition: "all 0.3s ease-out",
-              }}
-            >
-              <Pupil size={9} maxDistance={4} pupilColor="#0F162B" />
-              <Pupil size={9} maxDistance={4} pupilColor="#0F162B" />
-            </div>
-            {/* mouth */}
-            <div
-              className="absolute"
-              style={{
-                left: 30 + yellowPos.faceX,
-                top: 78 + yellowPos.faceY,
-                width: 26,
-                height: 2,
-                backgroundColor: "#0F162B",
-                borderRadius: 2,
-                transition: "all 0.3s ease-out",
-              }}
-            />
-          </ToothBody>
         </div>
 
         {/* Footer links */}
