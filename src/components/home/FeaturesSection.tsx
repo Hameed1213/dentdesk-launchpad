@@ -121,7 +121,7 @@ const ComplexityPreview = () => (
 
     <div className="mt-3 flex items-center justify-between">
       <div>
-        <div className="text-xl font-bold tabular-nums text-foreground">48h</div>
+        <div className="text-xl font-bold tabular-nums text-foreground">72h</div>
         <div className="text-[10px] text-muted-foreground">Average reply time</div>
       </div>
       <svg className="w-9 h-9 text-amber-500" viewBox="0 0 36 36" fill="none">
