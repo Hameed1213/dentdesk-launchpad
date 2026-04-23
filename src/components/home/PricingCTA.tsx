@@ -144,7 +144,7 @@ export default function PricingCTA() {
             {/* Desktop-only CTA under Enterprise */}
             <a
               href="/waitlist"
-              className="hidden lg:inline-flex items-center justify-center gap-2 bg-[#2563EB] text-white text-[14px] font-semibold px-6 py-3 rounded-xl hover:bg-[#1d4ed8] transition-all shadow-lg shadow-blue-500/20 mt-2"
+              className="hidden lg:inline-flex self-start items-center justify-center gap-2 bg-[#2563EB] text-white text-[14px] font-semibold px-6 py-3 rounded-xl hover:bg-[#1d4ed8] transition-all shadow-lg shadow-blue-500/20 mt-2"
             >
               Join the waitlist <ArrowRight className="w-4 h-4" />
             </a>
