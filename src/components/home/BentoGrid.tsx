@@ -822,7 +822,7 @@ export default function BentoGrid() {
         {/* Heading */}
         <div className="mx-auto max-w-2xl text-center mb-14 md:mb-20">
           <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-foreground leading-[1.1]">
-            More than a <span className="text-[#2563EB]">booking tool.</span>
+            More than a <span className="text-[#2563EB]">booking tool</span>
           </h2>
           <p className="mt-5 text-base md:text-lg text-muted-foreground">
             From patient records to analytics, every part of your practice is taken care of.
