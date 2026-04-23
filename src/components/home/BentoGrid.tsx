@@ -505,7 +505,7 @@ const SmsVisual = () => {
   }, []);
 
   return (
-    <div className="rounded-xl bg-white/80 backdrop-blur-md border border-white shadow-sm p-4 overflow-hidden">
+    <div className="h-full w-full">
       {/* SMS Header */}
       <div className="flex items-center gap-3 pb-3 border-b border-[#e2e8f0] mb-3">
         <div className="w-9 h-9 rounded-full bg-[#2563EB] flex items-center justify-center text-white text-[12px] font-bold flex-shrink-0">
