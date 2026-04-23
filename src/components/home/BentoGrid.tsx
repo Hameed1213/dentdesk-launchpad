@@ -304,13 +304,13 @@ const PortalVisual = () => (
             <div className="text-[8px] font-semibold text-white bg-[#2563EB] px-2 py-1 rounded-md flex items-center gap-1">
               <Calendar size={8} /> Appointments
             </div>
-            <div className="text-[8px] font-semibold text-[#475569] bg-[#f1f5f9] border border-[#e2e8f0] px-2 py-1 rounded-md">
+            <div className="text-[8px] font-semibold text-[#475569] bg-[#F3F6FD] border border-[#e2e8f0] px-2 py-1 rounded-md">
               Forms
             </div>
-            <div className="text-[8px] font-semibold text-[#475569] bg-[#f1f5f9] border border-[#e2e8f0] px-2 py-1 rounded-md">
+            <div className="text-[8px] font-semibold text-[#475569] bg-[#F3F6FD] border border-[#e2e8f0] px-2 py-1 rounded-md">
               Payments
             </div>
-            <div className="text-[8px] font-semibold text-[#475569] bg-[#f1f5f9] border border-[#e2e8f0] px-2 py-1 rounded-md">
+            <div className="text-[8px] font-semibold text-[#475569] bg-[#F3F6FD] border border-[#e2e8f0] px-2 py-1 rounded-md">
               Details
             </div>
           </div>
@@ -320,7 +320,7 @@ const PortalVisual = () => (
             Upcoming
           </div>
           {/* Upcoming appointment card */}
-          <div className="bg-[#f1f5f9] border border-[#e2e8f0] rounded-lg p-2 mb-2.5 flex items-center justify-between">
+          <div className="bg-[#F3F6FD] border border-[#e2e8f0] rounded-lg p-2 mb-2.5 flex items-center justify-between">
             <div className="min-w-0">
               <div className="text-[9px] font-bold text-[#0f172a] truncate">
                 Hygiene check
@@ -347,7 +347,7 @@ const PortalVisual = () => (
             ].map((p) => (
               <div
                 key={p.svc + p.when}
-                className="bg-[#f1f5f9] border border-[#e2e8f0] rounded-lg p-1.5"
+                className="bg-[#F3F6FD] border border-[#e2e8f0] rounded-lg p-1.5"
               >
                 <div className="flex items-center justify-between gap-1">
                   <div className="text-[8px] font-bold text-[#0f172a] truncate">
