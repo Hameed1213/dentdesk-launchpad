@@ -69,7 +69,7 @@ export default function PricingCTA() {
           className="mx-auto max-w-2xl text-center mb-14 md:mb-20"
         >
           <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-foreground leading-[1.1]">
-            Simple pricing for <span className="text-[#2563EB]">every practice.</span>
+            Simple pricing for <span className="text-[#2563EB]">every practice</span>
           </h2>
           <p className="mt-5 text-base md:text-lg text-muted-foreground">
             One plan today, more coming as DentDock grows. Start with a 30-day free trial.

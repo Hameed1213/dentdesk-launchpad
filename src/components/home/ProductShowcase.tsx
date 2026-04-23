@@ -1018,35 +1018,35 @@ function InboxMockup() {
 const tabContent = [
   {
     badge: "Smart Scheduling",
-    title: "A calendar that runs your day for you.",
+    title: "A calendar that runs your day for you",
     description:
       "Drag and drop appointments, see your whole team at a glance, and let Dent Dock handle reminders, deposits and confirmations automatically.",
     buttonText: "See the calendar",
   },
   {
     badge: "Patient-Facing",
-    title: "A booking page patients actually want to use.",
+    title: "A booking page patients actually want to use",
     description:
       "Branded to your practice, mobile-first and live 24/7. Patients book in seconds, pay deposits instantly and manage their appointments through their own patient portal.",
     buttonText: "See booking pages",
   },
   {
     badge: "Get Paid Faster",
-    title: "Payments, deposits and links. All built in.",
+    title: "Payments, deposits and links. All built in",
     description:
       "Take deposits, track every transaction and see your monthly revenue at a glance. No chasing. No guessing.",
     buttonText: "See payments",
   },
   {
     badge: "Set And Forget",
-    title: "Recalls and automations that run themselves.",
+    title: "Recalls and automations that run themselves",
     description:
       "Six-month recalls, no-show follow-ups, post-treatment check-ins, all pre-built and ready to switch on. No setup. Just toggle and go.",
     buttonText: "See automations",
   },
   {
     badge: "One Conversation",
-    title: "Every patient message in one inbox.",
+    title: "Every patient message in one inbox",
     description:
       "Every patient SMS message in one place. Reply, send payment links and forms, with full patient history one tap away.",
     buttonText: "See the inbox",
