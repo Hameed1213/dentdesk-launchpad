@@ -14,7 +14,7 @@ const LOGIN_URL = "https://app.dentdock.co.uk";
 
 function Logo() {
   return (
-    <a href="/" className="flex items-center gap-2 shrink-0">
+    <Link to="/" aria-label="Dent Dock — go to homepage" className="flex items-center gap-2 shrink-0">
       <ToothIcon size={22} color="#2563EB" />
       <span
         className="text-lg tracking-tight"
@@ -22,7 +22,7 @@ function Logo() {
       >
         Dent Dock
       </span>
-    </a>
+    </Link>
   );
 }
 
@@ -89,6 +89,8 @@ export default function Navbar() {
           <div className="hidden lg:flex items-center gap-5">
             <a
               href={LOGIN_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-sm font-medium text-neutral-600 hover:text-neutral-900 transition-colors"
             >
               Log in
@@ -142,6 +144,8 @@ export default function Navbar() {
           <div className="h-px bg-neutral-200 my-2" />
           <a
             href={LOGIN_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             className="text-sm font-medium text-neutral-700 hover:text-neutral-900 px-3 py-2.5 rounded-lg hover:bg-neutral-100"
           >
             Log in
