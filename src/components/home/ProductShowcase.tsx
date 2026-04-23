@@ -1136,34 +1136,34 @@ export default function ProductShowcase() {
         className="pointer-events-none absolute inset-0 -z-10"
         style={{
           background:
-            "linear-gradient(135deg, rgba(219,234,254,0.55), rgba(239,246,255,0.45) 55%, rgba(255,255,255,0) 100%)",
+            "linear-gradient(135deg, rgba(191,219,254,0.85), rgba(219,234,254,0.7) 55%, rgba(239,246,255,0.4) 100%)",
           maskImage:
             "linear-gradient(to bottom, transparent 0%, black 18%, black 82%, transparent 100%)",
           WebkitMaskImage:
             "linear-gradient(to bottom, transparent 0%, black 18%, black 82%, transparent 100%)",
         }}
       />
-      {/* Decorative blue blobs (lower opacity) */}
+      {/* Decorative blue blobs */}
       <div className="pointer-events-none absolute inset-0 -z-10">
         <div
           className="absolute -top-40 -left-32 w-[560px] h-[560px] rounded-full"
           style={{
             background:
-              "radial-gradient(ellipse, rgba(37,99,235,0.10), transparent 70%)",
+              "radial-gradient(ellipse, rgba(37,99,235,0.22), transparent 70%)",
           }}
         />
         <div
           className="absolute top-1/3 -right-40 w-[520px] h-[520px] rounded-full"
           style={{
             background:
-              "radial-gradient(ellipse, rgba(96,165,250,0.12), transparent 70%)",
+              "radial-gradient(ellipse, rgba(96,165,250,0.26), transparent 70%)",
           }}
         />
         <div
           className="absolute -bottom-40 left-1/4 w-[500px] h-[500px] rounded-full"
           style={{
             background:
-              "radial-gradient(ellipse, rgba(147,197,253,0.14), transparent 70%)",
+              "radial-gradient(ellipse, rgba(147,197,253,0.30), transparent 70%)",
           }}
         />
       </div>
