@@ -834,6 +834,17 @@ export default function BentoGrid() {
           {cells.map((cell, i) => {
             const Icon = cell.Icon;
             const orb = ("orb" in cell && cell.orb) ? cell.orb : BLUE;
+            // Vary orb position/size per card so they don't all look identical
+            const orbVariants = [
+              { left: "20%", top: "65%", w: "70%", h: "45%" },
+              { left: "75%", top: "30%", w: "60%", h: "55%" },
+              { left: "55%", top: "75%", w: "90%", h: "35%" },
+              { left: "30%", top: "25%", w: "65%", h: "50%" },
+              { left: "80%", top: "70%", w: "75%", h: "40%" },
+              { left: "15%", top: "40%", w: "55%", h: "60%" },
+              { left: "60%", top: "20%", w: "80%", h: "45%" },
+            ];
+            const v = orbVariants[i % orbVariants.length];
             return (
               <Card
                 key={i}
@@ -855,14 +866,19 @@ export default function BentoGrid() {
                       "radial-gradient(ellipse at center, black 40%, transparent 80%)",
                   }}
                 />
-                {/* Soft blue orb behind visual */}
+                {/* Soft blue orb behind visual — varies per card */}
                 <div
                   aria-hidden
-                  className="pointer-events-none absolute left-1/2 bottom-[12%] -translate-x-1/2 w-[85%] h-[40%] rounded-full blur-3xl"
+                  className="pointer-events-none absolute -translate-x-1/2 -translate-y-1/2 rounded-full blur-3xl"
                   style={{
+                    left: v.left,
+                    top: v.top,
+                    width: v.w,
+                    height: v.h,
                     background: `radial-gradient(circle, rgba(${orb},0.22) 0%, rgba(${orb},0.10) 45%, transparent 75%)`,
                   }}
                 />
+
                 {/* Glossy top highlight */}
                 <div
                   aria-hidden
