@@ -16,28 +16,36 @@ const BLUE = "37,99,235"; // primary blue rgb triplet
 /* ---------- Cell visuals ---------- */
 
 const PatientRecordVisual = () => (
-  <div className="rounded-xl bg-white/80 backdrop-blur-md border border-white shadow-sm p-5 overflow-hidden mx-auto w-full max-w-[300px]">
-    {/* Header */}
-    <div className="flex items-center gap-3">
-      <div className="w-11 h-11 rounded-full bg-[#2563EB] flex items-center justify-center text-white text-[14px] font-bold shrink-0">
-        SM
-      </div>
-      <div className="min-w-0 flex-1">
-        <div className="text-[14px] font-semibold text-foreground truncate">
-          Sarah Mitchell
+  <div
+    className="rounded-xl bg-[#f5f6fb] border border-neutral-200 p-3 overflow-hidden mx-auto w-full max-w-[300px] space-y-2"
+    style={{
+      filter:
+        "drop-shadow(0 8px 16px rgba(0,0,0,0.06)) drop-shadow(0 2px 4px rgba(0,0,0,0.04))",
+    }}
+  >
+    {/* Header card */}
+    <div className="bg-white border border-[#e2e8f0] rounded-lg p-2.5">
+      <div className="flex items-center gap-3">
+        <div className="w-10 h-10 rounded-full bg-[#2563EB] flex items-center justify-center text-white text-[13px] font-bold shrink-0">
+          SM
         </div>
-        <div className="text-[10px] text-muted-foreground">
-          DOB · 14 Mar 1989
+        <div className="min-w-0 flex-1">
+          <div className="text-[13px] font-semibold text-foreground truncate">
+            Sarah Mitchell
+          </div>
+          <div className="text-[10px] text-muted-foreground">
+            DOB · 14 Mar 1989
+          </div>
         </div>
+        <span className="text-[9px] font-semibold text-[#2563EB] bg-[#2563EB]/10 rounded-full px-2 py-0.5">
+          Active
+        </span>
       </div>
-      <span className="text-[9px] font-semibold text-[#2563EB] bg-[#2563EB]/10 rounded-full px-2 py-0.5">
-        Active
-      </span>
     </div>
 
-    {/* Meta rows */}
-    <div className="mt-4 grid grid-cols-2 gap-2">
-      <div className="rounded-md bg-[#2563EB]/5 px-2.5 py-2">
+    {/* Meta cards */}
+    <div className="grid grid-cols-2 gap-2">
+      <div className="bg-white border border-[#e2e8f0] rounded-lg px-2.5 py-2">
         <div className="text-[9px] text-muted-foreground uppercase tracking-wide">
           Last visit
         </div>
@@ -45,7 +53,7 @@ const PatientRecordVisual = () => (
           02 Apr 2026
         </div>
       </div>
-      <div className="rounded-md bg-[#2563EB]/5 px-2.5 py-2">
+      <div className="bg-white border border-[#e2e8f0] rounded-lg px-2.5 py-2">
         <div className="text-[9px] text-muted-foreground uppercase tracking-wide">
           Next appt
         </div>
@@ -55,8 +63,8 @@ const PatientRecordVisual = () => (
       </div>
     </div>
 
-    {/* History */}
-    <div className="mt-4">
+    {/* History card */}
+    <div className="bg-white border border-[#e2e8f0] rounded-lg p-2.5">
       <div className="text-[9px] text-muted-foreground uppercase tracking-wide mb-1.5">
         Appointment history
       </div>
@@ -174,9 +182,15 @@ const AnalyticsVisual = () => {
   const area = `${path} L240,80 L0,80 Z`;
 
   return (
-    <div className="rounded-xl bg-white/80 backdrop-blur-md border border-white shadow-sm p-4 overflow-hidden">
-      <div className="grid grid-cols-2 gap-2 mb-3">
-        <div className="rounded-lg bg-[#2563EB]/5 px-2.5 py-2">
+    <div
+      className="rounded-xl bg-[#f5f6fb] border border-neutral-200 p-3 overflow-hidden"
+      style={{
+        filter:
+          "drop-shadow(0 8px 16px rgba(0,0,0,0.06)) drop-shadow(0 2px 4px rgba(0,0,0,0.04))",
+      }}
+    >
+      <div className="grid grid-cols-2 gap-2 mb-2">
+        <div className="bg-white border border-[#e2e8f0] rounded-lg px-2.5 py-2">
           <div className="text-[9px] text-muted-foreground uppercase tracking-wide">
             Revenue
           </div>
@@ -187,7 +201,7 @@ const AnalyticsVisual = () => {
             ↑ 18% vs last month
           </div>
         </div>
-        <div className="rounded-lg bg-[#2563EB]/5 px-2.5 py-2">
+        <div className="bg-white border border-[#e2e8f0] rounded-lg px-2.5 py-2">
           <div className="text-[9px] text-muted-foreground uppercase tracking-wide">
             Bookings
           </div>
@@ -199,7 +213,7 @@ const AnalyticsVisual = () => {
           </div>
         </div>
       </div>
-      <div className="rounded-lg bg-[#2563EB]/5 p-2">
+      <div className="bg-white border border-[#e2e8f0] rounded-lg p-2">
         <svg
           viewBox="0 0 240 80"
           className="w-full h-[60px]"
@@ -257,27 +271,35 @@ const StaffVisual = () => {
     },
   ];
   return (
-    <div className="rounded-xl bg-white/80 backdrop-blur-md border border-white shadow-sm p-4 overflow-hidden space-y-1.5">
-      {team.map((m) => (
-        <div
-          key={m.initials}
-          className="flex items-center gap-2.5 rounded-md px-1.5 py-1"
-        >
-          <div className="w-7 h-7 rounded-full bg-gradient-to-br from-[#2563EB] to-[#1d4ed8] flex items-center justify-center text-white text-[10px] font-bold shrink-0">
-            {m.initials}
-          </div>
-          <div className="min-w-0 flex-1">
-            <div className="text-[11px] font-semibold text-foreground truncate">
-              {m.name}
-            </div>
-          </div>
-          <span
-            className={`text-[9px] font-semibold rounded-full px-2 py-0.5 ${m.badge}`}
+    <div
+      className="rounded-xl bg-[#f5f6fb] border border-neutral-200 p-3 overflow-hidden"
+      style={{
+        filter:
+          "drop-shadow(0 8px 16px rgba(0,0,0,0.06)) drop-shadow(0 2px 4px rgba(0,0,0,0.04))",
+      }}
+    >
+      <div className="bg-white border border-[#e2e8f0] rounded-lg p-2 space-y-1">
+        {team.map((m) => (
+          <div
+            key={m.initials}
+            className="flex items-center gap-2.5 rounded-md px-1.5 py-1"
           >
-            {m.role}
-          </span>
-        </div>
-      ))}
+            <div className="w-7 h-7 rounded-full bg-gradient-to-br from-[#2563EB] to-[#1d4ed8] flex items-center justify-center text-white text-[10px] font-bold shrink-0">
+              {m.initials}
+            </div>
+            <div className="min-w-0 flex-1">
+              <div className="text-[11px] font-semibold text-foreground truncate">
+                {m.name}
+              </div>
+            </div>
+            <span
+              className={`text-[9px] font-semibold rounded-full px-2 py-0.5 ${m.badge}`}
+            >
+              {m.role}
+            </span>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
@@ -375,33 +397,45 @@ const PortalVisual = () => (
 /* ---------- SMS reminder visual ---------- */
 
 const SmsVisual = () => (
-  <div className="rounded-xl bg-white/80 backdrop-blur-md border border-white shadow-sm p-4 overflow-hidden">
-    {/* Contact header */}
-    <div className="flex items-center gap-2.5 pb-3 border-b border-neutral-100">
-      <div className="w-8 h-8 rounded-full bg-[#2563EB] flex items-center justify-center text-white text-[11px] font-bold shrink-0">
-        SD
-      </div>
-      <div className="min-w-0 flex-1">
-        <div className="text-[12px] font-semibold text-foreground truncate">
-          Smile Dental
+  <div
+    className="rounded-xl bg-[#f5f6fb] border border-neutral-200 p-3 overflow-hidden"
+    style={{
+      filter:
+        "drop-shadow(0 8px 16px rgba(0,0,0,0.06)) drop-shadow(0 2px 4px rgba(0,0,0,0.04))",
+    }}
+  >
+    <div className="bg-white border border-[#e2e8f0] rounded-lg p-3">
+      {/* Contact header */}
+      <div className="flex items-center gap-2.5 pb-3 border-b border-neutral-100">
+        <div className="w-8 h-8 rounded-full bg-[#2563EB] flex items-center justify-center text-white text-[11px] font-bold shrink-0">
+          SD
         </div>
-        <div className="text-[9px] text-muted-foreground">SMS · Today 09:00</div>
+        <div className="min-w-0 flex-1">
+          <div className="text-[12px] font-semibold text-foreground truncate">
+            Smile Dental
+          </div>
+          <div className="text-[9px] text-muted-foreground">
+            SMS · Today 09:00
+          </div>
+        </div>
+        <MessageSquare className="w-3.5 h-3.5 text-[#2563EB]" />
       </div>
-      <MessageSquare className="w-3.5 h-3.5 text-[#2563EB]" />
-    </div>
 
-    {/* Message bubble */}
-    <div className="mt-3 flex">
-      <div className="max-w-[85%] rounded-2xl rounded-bl-md bg-[#2563EB]/10 border border-[#2563EB]/15 px-3 py-2">
-        <p className="text-[11px] leading-snug text-foreground">
-          Hi Sarah, reminder: your appointment is tomorrow at{" "}
-          <span className="font-semibold">10:00am</span> — Smile Dental
-        </p>
+      {/* Message bubble */}
+      <div className="mt-3 flex">
+        <div className="max-w-[85%] rounded-2xl rounded-bl-md bg-[#2563EB]/10 border border-[#2563EB]/15 px-3 py-2">
+          <p className="text-[11px] leading-snug text-foreground">
+            Hi Sarah, reminder: your appointment is tomorrow at{" "}
+            <span className="font-semibold">10:00am</span> — Smile Dental
+          </p>
+        </div>
       </div>
-    </div>
-    <div className="mt-1.5 ml-1 flex items-center gap-1">
-      <Check className="w-2.5 h-2.5 text-[#2563EB]" strokeWidth={3} />
-      <span className="text-[9px] text-muted-foreground">Sent automatically</span>
+      <div className="mt-1.5 ml-1 flex items-center gap-1">
+        <Check className="w-2.5 h-2.5 text-[#2563EB]" strokeWidth={3} />
+        <span className="text-[9px] text-muted-foreground">
+          Sent automatically
+        </span>
+      </div>
     </div>
   </div>
 );
@@ -548,15 +582,7 @@ export default function BentoGrid() {
                       {cell.title}
                     </h3>
                     <div className="mt-6 flex-1 flex items-end">
-                      <div
-                        className="w-full rounded-lg overflow-hidden border border-neutral-200 bg-[#f5f6fb] p-3"
-                        style={{
-                          filter:
-                            "drop-shadow(0 8px 16px rgba(0,0,0,0.06)) drop-shadow(0 2px 4px rgba(0,0,0,0.04))",
-                        }}
-                      >
-                        {cell.visual}
-                      </div>
+                      <div className="w-full">{cell.visual}</div>
                     </div>
                   </div>
                 )}
