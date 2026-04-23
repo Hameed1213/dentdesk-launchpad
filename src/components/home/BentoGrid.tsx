@@ -483,7 +483,8 @@ const SmsVisual = () => (
 const cells = [
   {
     Icon: User,
-    title: "Every patient. Every detail.",
+    title: "Complete patient history",
+    description: "Records, history and appointments, all in one profile.",
     visual: <PatientRecordVisual />,
     span: "md:col-span-2 md:row-span-2",
   },
@@ -627,6 +628,11 @@ export default function BentoGrid() {
                     <h3 className="text-[19px] font-semibold text-foreground tracking-tight leading-snug">
                       {cell.title}
                     </h3>
+                    {"description" in cell && cell.description && (
+                      <p className="mt-2 text-sm text-muted-foreground leading-snug max-w-[260px]">
+                        {cell.description}
+                      </p>
+                    )}
                     <div className="mt-6 flex-1 flex items-end">
                       <div className="w-full">{cell.visual}</div>
                     </div>
