@@ -1242,8 +1242,8 @@ export default function ProductShowcase() {
 
         {/* Live in a day banner — bottom */}
         <div className="mt-12 rounded-2xl bg-white border border-neutral-200 px-6 sm:px-8 py-5 sm:py-6 flex flex-col md:flex-row md:items-center md:justify-between gap-5 shadow-sm">
-          <div className="md:max-w-[440px]">
-            <h3 className="text-2xl sm:text-3xl md:text-[32px] font-medium tracking-tight text-[#0F172A] leading-tight">
+          <div className="md:max-w-none">
+            <h3 className="text-2xl sm:text-3xl md:text-[30px] font-medium tracking-tight text-[#0F172A] leading-tight md:whitespace-nowrap">
               Get your practice live in{" "}
               <span className="text-[#2563EB]">a single day</span>
             </h3>
