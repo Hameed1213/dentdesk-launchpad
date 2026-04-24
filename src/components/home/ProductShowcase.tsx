@@ -1068,22 +1068,12 @@ export default function ProductShowcase() {
   const [activeTab, setActiveTab] = useState(0);
   const [paused, setPaused] = useState(false);
   const [inView, setInView] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
+  
   const sectionRef = useRef<HTMLElement | null>(null);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const pauseTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
-
-  // Track the `sm` breakpoint (Tailwind's 640px) so we apply the
-  // "scroll-active-to-left-edge" behaviour on mobile only.
-  useEffect(() => {
-    const mql = window.matchMedia("(max-width: 639px)");
-    const update = () => setIsMobile(mql.matches);
-    update();
-    mql.addEventListener("change", update);
-    return () => mql.removeEventListener("change", update);
-  }, []);
 
   // Scroll the horizontal tab strip so the active tab sits at the left edge.
   // On desktop the container doesn't overflow, so scrollTo is a no-op.
