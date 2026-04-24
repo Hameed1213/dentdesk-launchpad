@@ -118,8 +118,7 @@ export default function HeroSection() {
           variants={{ container: makeContainer(0.3), item: itemBlurSlide }}
         >
           <p className="text-lg text-neutral-500 max-w-xl mx-auto text-center leading-relaxed mt-5">
-            Online booking, automated reminders, payments and recalls, all in one platform.
-            Finally, software that works as hard as you do.
+            Online booking, automated reminders, payments and recalls. Built for UK private practices.
           </p>
         </AnimatedGroup>
 
