@@ -1068,34 +1068,24 @@ export default function ProductShowcase() {
   const [activeTab, setActiveTab] = useState(0);
   const [paused, setPaused] = useState(false);
   const [inView, setInView] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
+  
   const sectionRef = useRef<HTMLElement | null>(null);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const pauseTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
-  // Track the `sm` breakpoint (Tailwind's 640px) so we apply the
-  // "scroll-active-to-left-edge" behaviour on mobile only.
+  // Scroll the horizontal tab strip so the active tab sits at the left edge.
+  // On desktop the container doesn't overflow, so scrollTo is a no-op.
   useEffect(() => {
-    const mql = window.matchMedia("(max-width: 639px)");
-    const update = () => setIsMobile(mql.matches);
-    update();
-    mql.addEventListener("change", update);
-    return () => mql.removeEventListener("change", update);
-  }, []);
-
-  // On mobile, scroll the horizontal tab strip so the active tab sits at the
-  // left edge (with a small inset) — order of tabs never changes.
-  useEffect(() => {
-    if (!isMobile) return;
     const btn = tabRefs.current[activeTab];
-    const container = btn?.parentElement;
+    const container = scrollContainerRef.current;
     if (!btn || !container) return;
     if (container.scrollWidth <= container.clientWidth) return;
-    const inset = 24; // matches px-6 padding so the pill clears the edge
+    const inset = 24; // matches px-6 padding
     const target = Math.max(0, btn.offsetLeft - inset);
     container.scrollTo({ left: target, behavior: "smooth" });
-  }, [activeTab, isMobile]);
+  }, [activeTab]);
 
   // Observe when the section enters the viewport
   useEffect(() => {
@@ -1178,7 +1168,7 @@ export default function ProductShowcase() {
 
         {/* Tab segmented control — individual pills on mobile, grouped pill on tablet/desktop */}
         <div className="mt-12 -mx-6 sm:mx-0 flex sm:justify-center">
-          <div className="overflow-x-auto scrollbar-hide px-6 sm:px-0 sm:overflow-visible w-full sm:w-auto">
+          <div ref={scrollContainerRef} className="overflow-x-auto scrollbar-hide px-6 sm:px-0 sm:overflow-visible w-full sm:w-auto">
             <div className="inline-flex flex-nowrap lg:flex-wrap justify-start lg:justify-center gap-2 sm:gap-1 sm:rounded-2xl sm:border sm:border-neutral-200 sm:bg-white sm:p-1.5 sm:shadow-sm mx-auto">
               {tabs.map((tab, i) => {
                 const Icon = tabIcons[i];
