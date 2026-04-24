@@ -255,7 +255,7 @@ function WaitlistPage() {
                         maxLength={255}
                         autoComplete="email"
                         required
-                        className="w-full pl-10 pr-4 py-3 rounded-xl border border-neutral-200 bg-white text-sm text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:border-[#2563EB] transition-all"
+                        className="w-full pl-10 pr-4 py-3 rounded-xl border border-neutral-200 bg-white text-base sm:text-sm text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:border-[#2563EB] transition-all"
                         style={
                           {
                             ["--tw-ring-color" as string]:
@@ -285,7 +285,7 @@ function WaitlistPage() {
                       placeholder="Smile Dental Clinic"
                       maxLength={120}
                       required
-                      className="w-full px-4 py-3 rounded-xl border border-neutral-200 bg-white text-sm text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:border-[#2563EB] transition-all"
+                      className="w-full px-4 py-3 rounded-xl border border-neutral-200 bg-white text-base sm:text-sm text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:border-[#2563EB] transition-all"
                       style={
                         {
                           ["--tw-ring-color" as string]:
@@ -313,7 +313,7 @@ function WaitlistPage() {
                       id="role"
                       value={role}
                       onChange={(e) => setRole(e.target.value)}
-                      className="w-full px-4 py-3 rounded-xl border border-neutral-200 bg-white text-sm text-neutral-900 focus:outline-none focus:ring-2 focus:border-[#2563EB] transition-all"
+                      className="w-full px-4 py-3 rounded-xl border border-neutral-200 bg-white text-base sm:text-sm text-neutral-900 focus:outline-none focus:ring-2 focus:border-[#2563EB] transition-all"
                       style={
                         {
                           ["--tw-ring-color" as string]:
