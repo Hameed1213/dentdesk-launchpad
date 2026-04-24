@@ -101,7 +101,7 @@ function WaitlistPage() {
           {/* Mobile + Tablet: Back to home inline with logo */}
           <Link
             to="/"
-            className="lg:hidden inline-flex items-center gap-1.5 text-[13px] font-medium text-neutral-500 hover:text-neutral-800 transition-colors"
+            className="lg:hidden inline-flex items-center gap-1.5 text-[13px] font-medium text-[#2563EB] hover:text-[#1d4ed8] transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
             Back to home
