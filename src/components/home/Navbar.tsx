@@ -10,7 +10,7 @@ const navLinks = [
   { label: "FAQ", href: "/#faq" },
 ];
 
-const LOGIN_URL = "https://app.dentdock.co.uk";
+
 
 function Logo() {
   return (
