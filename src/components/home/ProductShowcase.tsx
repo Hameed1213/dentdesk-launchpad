@@ -1068,25 +1068,21 @@ export default function ProductShowcase() {
   const [activeTab, setActiveTab] = useState(0);
   const [paused, setPaused] = useState(false);
   const [inView, setInView] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const sectionRef = useRef<HTMLElement | null>(null);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const pauseTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
 
-  // Scroll active tab into view horizontally (mobile tab strip only).
-  // We manually scroll the parent container so we don't hijack the page's
-  // vertical scroll position when tabs auto-advance.
+  // Track the `sm` breakpoint (Tailwind's 640px) so we can reorder tabs on
+  // mobile only — putting the active tab first in the horizontal strip.
   useEffect(() => {
-    const btn = tabRefs.current[activeTab];
-    if (!btn) return;
-    const container = btn.parentElement;
-    if (!container) return;
-    // Only scroll if the tab strip actually overflows horizontally
-    if (container.scrollWidth <= container.clientWidth) return;
-    const offset =
-      btn.offsetLeft - container.clientWidth / 2 + btn.offsetWidth / 2;
-    container.scrollTo({ left: offset, behavior: "smooth" });
-  }, [activeTab]);
+    const mql = window.matchMedia("(max-width: 639px)");
+    const update = () => setIsMobile(mql.matches);
+    update();
+    mql.addEventListener("change", update);
+    return () => mql.removeEventListener("change", update);
+  }, []);
 
   // Observe when the section enters the viewport
   useEffect(() => {
