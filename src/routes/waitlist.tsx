@@ -218,8 +218,7 @@ function WaitlistPage() {
                   You're on the list
                 </h2>
                 <p className="text-[15px] leading-[1.6] text-[#475569] max-w-sm mx-auto">
-                  Thanks for joining. We'll email you personally when it's your
-                  turn — no automated sequence, promise.
+                  Thanks for joining. We'll email you personally when early access opens.
                 </p>
                 <Link
                   to="/"
