@@ -2,6 +2,7 @@ import { useState } from "react";
 import { AnimatedGroup } from "@/components/ui/animated-group";
 import { AuroraBackground } from "@/components/ui/aurora-background";
 import DashboardAnimation from "@/components/home/DashboardAnimation";
+import { supabase } from "@/lib/supabase";
 
 const transition = {
   type: "spring" as const,
@@ -26,8 +27,9 @@ function WaitlistForm() {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const trimmed = email.trim();
     const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmed);
@@ -36,8 +38,20 @@ function WaitlistForm() {
       return;
     }
     setError(null);
+    setIsLoading(true);
+
+    const { error: insertError } = await supabase
+      .from("marketing_waitlist")
+      .insert({ email: trimmed, source: "hero" });
+
+    setIsLoading(false);
+
+    if (insertError && insertError.code !== "23505") {
+      setError("Something went wrong. Please try again.");
+      return;
+    }
+
     setSubmitted(true);
-    void trimmed;
   };
 
   if (submitted) {
