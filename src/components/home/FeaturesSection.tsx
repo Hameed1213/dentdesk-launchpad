@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
-import { CreditCard, Settings, CalendarX, Check, Bell, Banknote, Landmark, HeadphonesOff } from "lucide-react";
+import { CreditCard, Settings, CalendarX, Check, Bell, Banknote, Landmark, HeadphoneOff } from "lucide-react";
 
 const ENTRANCE_EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -314,7 +314,7 @@ const problems = [
     rgb: ROSE,
   },
   {
-    Icon: HeadphonesOff,
+    Icon: HeadphoneOff,
     headline: "After the sale, you're on your own",
     body: "Most dental software companies sell you the product and disappear. A chatbot, a help article and a 72-hour ticket.",
     preview: <ComplexityPreview />,
