@@ -30,7 +30,7 @@ export const Route = createRootRoute({
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Dent Dock" },
-      { name: "description", content: "Dental practice management software for UK private practices. Online booking, automated reminders, payments and recalls." },
+      { name: "description", content: "Online booking, automated reminders, payments and recalls for UK private dental practices. Set up in under 10 minutes. No contracts." },
       { name: "author", content: "Lovable" },
       { property: "og:title", content: "Dent Dock" },
       { property: "og:description", content: "Dental practice management software for UK private practices. Online booking, automated reminders, payments and recalls." },
@@ -47,6 +47,9 @@ export const Route = createRootRoute({
         rel: "stylesheet",
         href: appCss,
       },
+      { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
+      { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+      { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
     ],
     scripts: [
       {
