@@ -97,7 +97,9 @@ export default function FAQ() {
         >
           Can't find what you're looking for?{" "}
           <a
-            href="mailto:hello@dentdock.co.uk"
+            href="https://wa.me/447404488089"
+            target="_blank"
+            rel="noopener noreferrer"
             className="text-[#2563EB] font-medium hover:underline"
           >
             Get in touch with us directly
