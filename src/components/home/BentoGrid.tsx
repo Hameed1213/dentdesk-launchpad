@@ -853,7 +853,7 @@ const cells = [
     span: "md:col-span-1 lg:col-span-3 lg:row-span-1",
     layout: "side" as const,
     popOut: true,
-    titleClass: "max-w-none lg:max-w-[140px]",
+    titleClass: "max-w-none lg:max-w-[80px]",
     popOutClass: "absolute -right-2 left-[30%] top-[5%] pointer-events-none",
     orb: "129,140,248", // indigo / periwinkle
   },
