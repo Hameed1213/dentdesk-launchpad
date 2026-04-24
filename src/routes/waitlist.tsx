@@ -3,6 +3,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowLeft, Check, Mail, Sparkles } from "lucide-react";
 import ToothIcon from "@/components/icons/ToothIcon";
+import { supabase } from "@/lib/supabase";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -57,8 +58,23 @@ function WaitlistPage() {
     }
     setError(null);
     setIsLoading(true);
-    await new Promise((r) => setTimeout(r, 400));
+
+    const { error: insertError } = await supabase
+      .from("marketing_waitlist")
+      .insert({
+        email: trimmedEmail,
+        practice_name: trimmedPractice,
+        role: role || null,
+        source: "waitlist_page",
+      });
+
     setIsLoading(false);
+
+    if (insertError && insertError.code !== "23505") {
+      setError("Something went wrong. Please try again.");
+      return;
+    }
+
     setSubmitted(true);
   };
 
