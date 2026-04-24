@@ -87,14 +87,6 @@ export default function Navbar() {
           </nav>
 
           <div className="hidden lg:flex items-center gap-5">
-            <a
-              href={LOGIN_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm font-medium text-neutral-600 hover:text-neutral-900 transition-colors"
-            >
-              Log in
-            </a>
             <Link
               to="/waitlist"
               className="text-sm font-semibold text-white px-5 py-2.5 rounded-xl transition-all hover:-translate-y-px"
@@ -142,14 +134,6 @@ export default function Navbar() {
             </a>
           ))}
           <div className="h-px bg-neutral-200 my-2" />
-          <a
-            href={LOGIN_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm font-medium text-neutral-700 hover:text-neutral-900 px-3 py-2.5 rounded-lg hover:bg-neutral-100"
-          >
-            Log in
-          </a>
           <Link
             to="/waitlist"
             onClick={() => setMobileOpen(false)}
