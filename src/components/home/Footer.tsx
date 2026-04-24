@@ -144,7 +144,7 @@ export default function Footer() {
           </div>
           <p className="text-[11px] text-white/30 text-center sm:text-left leading-[1.5]">
             Dent Dock is a trading name of Paradigm Network Limited.<br />
-            Company No. 16903048 · Registered in England and Wales.
+            Company No. 16903048 · Registered in England and Wales · ICO No. ZXXXXXXXX
           </p>
         </div>
       </div>
