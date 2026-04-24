@@ -721,7 +721,7 @@ function EmailView() {
           </p>
 
           {/* Appointment detail block */}
-          <div className="bg-[#f8fafc] border border-[#e2e8f0] rounded-lg px-3 py-3 mb-3">
+          <div className="bg-[#f3f6fd] border border-[#e2e8f0] rounded-lg px-3 py-3 mb-3">
             <div className="text-[13px] font-bold text-[#0f172a] mb-2">
               Hygiene check
             </div>
