@@ -1068,25 +1068,31 @@ export default function ProductShowcase() {
   const [activeTab, setActiveTab] = useState(0);
   const [paused, setPaused] = useState(false);
   const [inView, setInView] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const sectionRef = useRef<HTMLElement | null>(null);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const pauseTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
 
-  // Scroll active tab into view horizontally (mobile tab strip only).
-  // We manually scroll the parent container so we don't hijack the page's
-  // vertical scroll position when tabs auto-advance.
+  // Track the `sm` breakpoint (Tailwind's 640px) so we can reorder tabs on
+  // mobile only — putting the active tab first in the horizontal strip.
   useEffect(() => {
+    const mql = window.matchMedia("(max-width: 639px)");
+    const update = () => setIsMobile(mql.matches);
+    update();
+    mql.addEventListener("change", update);
+    return () => mql.removeEventListener("change", update);
+  }, []);
+
+  // After the active tab moves to the first position on mobile, scroll the
+  // strip back to the left so the freshly-activated pill is visible.
+  useEffect(() => {
+    if (!isMobile) return;
     const btn = tabRefs.current[activeTab];
-    if (!btn) return;
-    const container = btn.parentElement;
+    const container = btn?.parentElement;
     if (!container) return;
-    // Only scroll if the tab strip actually overflows horizontally
-    if (container.scrollWidth <= container.clientWidth) return;
-    const offset =
-      btn.offsetLeft - container.clientWidth / 2 + btn.offsetWidth / 2;
-    container.scrollTo({ left: offset, behavior: "smooth" });
-  }, [activeTab]);
+    container.scrollTo({ left: 0, behavior: "smooth" });
+  }, [activeTab, isMobile]);
 
   // Observe when the section enters the viewport
   useEffect(() => {
@@ -1129,6 +1135,12 @@ export default function ProductShowcase() {
   const ActiveMockup = mockups[activeTab];
   const content = tabContent[activeTab];
 
+  // On mobile, render the active tab first, then the rest in their original
+  // order. On tablet/desktop the visual order stays fixed.
+  const displayOrder = isMobile
+    ? [activeTab, ...tabs.map((_, i) => i).filter((i) => i !== activeTab)]
+    : tabs.map((_, i) => i);
+
   return (
     <section ref={sectionRef} className="relative bg-gradient-to-br from-[#DBEAFE] via-[#EFF6FF] to-white py-16 md:py-24 px-6 overflow-hidden">
       {/* Top irregular fade to white */}
@@ -1170,7 +1182,8 @@ export default function ProductShowcase() {
         <div className="mt-12 -mx-6 sm:mx-0 flex sm:justify-center">
           <div className="overflow-x-auto scrollbar-hide px-6 sm:px-0 sm:overflow-visible w-full sm:w-auto">
             <div className="inline-flex flex-nowrap lg:flex-wrap justify-start lg:justify-center gap-2 sm:gap-1 sm:rounded-2xl sm:border sm:border-neutral-200 sm:bg-white sm:p-1.5 sm:shadow-sm mx-auto">
-              {tabs.map((tab, i) => {
+              {displayOrder.map((i) => {
+                const tab = tabs[i];
                 const Icon = tabIcons[i];
                 const active = activeTab === i;
                 return (
