@@ -133,12 +133,18 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-12 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-[13px] text-white/40">
-            © {new Date().getFullYear()} Dent Dock. All rights reserved.
-          </p>
-          <p className="text-[13px] text-white/40">
-            Made in the UK
+        <div className="mt-12 pt-6 border-t border-white/10 flex flex-col gap-4">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
+            <p className="text-[13px] text-white/40">
+              © {new Date().getFullYear()} Dent Dock. All rights reserved.
+            </p>
+            <p className="text-[13px] text-white/40">
+              Made in the UK
+            </p>
+          </div>
+          <p className="text-[11px] text-white/30 text-center sm:text-left leading-[1.5]">
+            Dent Dock is a trading name of Paradigm Network Limited.<br />
+            Company No. 16903048 · Registered in England and Wales.
           </p>
         </div>
       </div>
