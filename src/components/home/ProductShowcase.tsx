@@ -1084,6 +1084,16 @@ export default function ProductShowcase() {
     return () => mql.removeEventListener("change", update);
   }, []);
 
+  // After the active tab moves to the first position on mobile, scroll the
+  // strip back to the left so the freshly-activated pill is visible.
+  useEffect(() => {
+    if (!isMobile) return;
+    const btn = tabRefs.current[activeTab];
+    const container = btn?.parentElement;
+    if (!container) return;
+    container.scrollTo({ left: 0, behavior: "smooth" });
+  }, [activeTab, isMobile]);
+
   // Observe when the section enters the viewport
   useEffect(() => {
     const el = sectionRef.current;
