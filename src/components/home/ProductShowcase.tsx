@@ -1125,6 +1125,12 @@ export default function ProductShowcase() {
   const ActiveMockup = mockups[activeTab];
   const content = tabContent[activeTab];
 
+  // On mobile, render the active tab first, then the rest in their original
+  // order. On tablet/desktop the visual order stays fixed.
+  const displayOrder = isMobile
+    ? [activeTab, ...tabs.map((_, i) => i).filter((i) => i !== activeTab)]
+    : tabs.map((_, i) => i);
+
   return (
     <section ref={sectionRef} className="relative bg-gradient-to-br from-[#DBEAFE] via-[#EFF6FF] to-white py-16 md:py-24 px-6 overflow-hidden">
       {/* Top irregular fade to white */}
@@ -1166,7 +1172,8 @@ export default function ProductShowcase() {
         <div className="mt-12 -mx-6 sm:mx-0 flex sm:justify-center">
           <div className="overflow-x-auto scrollbar-hide px-6 sm:px-0 sm:overflow-visible w-full sm:w-auto">
             <div className="inline-flex flex-nowrap lg:flex-wrap justify-start lg:justify-center gap-2 sm:gap-1 sm:rounded-2xl sm:border sm:border-neutral-200 sm:bg-white sm:p-1.5 sm:shadow-sm mx-auto">
-              {tabs.map((tab, i) => {
+              {displayOrder.map((i) => {
+                const tab = tabs[i];
                 const Icon = tabIcons[i];
                 const active = activeTab === i;
                 return (
