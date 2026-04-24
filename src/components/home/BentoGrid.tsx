@@ -786,7 +786,7 @@ const cells = [
   },
   {
     Icon: Monitor,
-    title: "Patients manage themselves.",
+    title: "Patients manage themselves",
     visual: (
       <motion.div
         initial={{ opacity: 0, y: 16 }}
@@ -819,7 +819,7 @@ const cells = [
   },
   {
     Icon: TrendingUp,
-    title: "Know your numbers.",
+    title: "Know your numbers",
     visual: (
       <motion.div
         initial={{ opacity: 0, y: 16 }}
