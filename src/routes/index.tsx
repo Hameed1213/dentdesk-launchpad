@@ -22,7 +22,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Online booking, automated reminders, payments and recalls for UK private dental practices. Set up in under 10 minutes. From £49/month. No contracts.",
+          "Online booking, automated reminders, payments and recalls for UK private dental practices. Set up in under 10 minutes. No contracts.",
       },
       { property: "og:url", content: "https://dentdock.co.uk" },
       { property: "og:title", content: "Dent Dock — Dental Practice Management Software" },
