@@ -85,9 +85,10 @@ function WaitlistForm() {
         />
         <button
           type="submit"
-          className="bg-[#2563EB] text-white text-sm font-semibold px-6 py-3 rounded-xl hover:bg-[#1d4ed8] transition-all shadow-md shadow-blue-500/20 whitespace-nowrap"
+          disabled={isLoading}
+          className="bg-[#2563EB] text-white text-sm font-semibold px-6 py-3 rounded-xl hover:bg-[#1d4ed8] transition-all shadow-md shadow-blue-500/20 whitespace-nowrap disabled:opacity-60"
         >
-          Join the waitlist →
+          {isLoading ? "Joining..." : "Join the waitlist →"}
         </button>
       </form>
       {error && (
