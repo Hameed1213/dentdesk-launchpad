@@ -7,11 +7,11 @@ import { supabase } from "@/lib/supabase";
 const transition = {
   type: "spring" as const,
   bounce: 0.2,
-  duration: 0.6,
+  duration: 0.35,
 };
 
 const itemBlurSlide = {
-  hidden: { opacity: 0, filter: "blur(8px)", y: 8 },
+  hidden: { opacity: 0, filter: "blur(6px)", y: 6 },
   visible: { opacity: 1, filter: "blur(0px)", y: 0, transition },
 };
 
@@ -19,7 +19,7 @@ const makeContainer = (delay: number) => ({
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.03, delayChildren: delay },
+    transition: { staggerChildren: 0.02, delayChildren: delay },
   },
 });
 
@@ -130,7 +130,7 @@ export default function HeroSection() {
 
         {/* Subheadline */}
         <AnimatedGroup
-          variants={{ container: makeContainer(0.1), item: itemBlurSlide }}
+          variants={{ container: makeContainer(0.05), item: itemBlurSlide }}
         >
           <p className="text-lg text-neutral-500 max-w-xl mx-auto text-center leading-relaxed mt-5">
             Online booking, automated reminders, payments and recalls. Built for UK private practices.
@@ -140,7 +140,7 @@ export default function HeroSection() {
         {/* Waitlist form */}
         <AnimatedGroup
           className="w-full"
-          variants={{ container: makeContainer(0.18), item: itemBlurSlide }}
+          variants={{ container: makeContainer(0.1), item: itemBlurSlide }}
         >
           <WaitlistForm />
         </AnimatedGroup>
@@ -148,7 +148,7 @@ export default function HeroSection() {
         {/* Trust strip */}
         <AnimatedGroup
           className="mt-4"
-          variants={{ container: makeContainer(0.25), item: itemBlurSlide }}
+          variants={{ container: makeContainer(0.14), item: itemBlurSlide }}
         >
           <div className="flex items-center justify-center gap-2 flex-wrap">
             {["No contracts", "No setup fees", "Live within the day"].map(
@@ -167,7 +167,7 @@ export default function HeroSection() {
         {/* Social proof */}
         <AnimatedGroup
           className="mt-4 flex justify-center"
-          variants={{ container: makeContainer(0.32), item: itemBlurSlide }}
+          variants={{ container: makeContainer(0.18), item: itemBlurSlide }}
         >
           <p className="text-sm text-neutral-400 text-center max-w-sm mx-auto mt-5 leading-relaxed">
             Be one of the{" "}
