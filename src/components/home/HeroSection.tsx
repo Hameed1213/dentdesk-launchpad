@@ -140,7 +140,7 @@ export default function HeroSection() {
         {/* Waitlist form */}
         <AnimatedGroup
           className="w-full"
-          variants={{ container: makeContainer(0.18), item: itemBlurSlide }}
+          variants={{ container: makeContainer(0.1), item: itemBlurSlide }}
         >
           <WaitlistForm />
         </AnimatedGroup>
