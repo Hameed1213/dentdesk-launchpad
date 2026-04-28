@@ -7,11 +7,11 @@ import { supabase } from "@/lib/supabase";
 const transition = {
   type: "spring" as const,
   bounce: 0.2,
-  duration: 0.6,
+  duration: 0.35,
 };
 
 const itemBlurSlide = {
-  hidden: { opacity: 0, filter: "blur(8px)", y: 8 },
+  hidden: { opacity: 0, filter: "blur(6px)", y: 6 },
   visible: { opacity: 1, filter: "blur(0px)", y: 0, transition },
 };
 
@@ -19,7 +19,7 @@ const makeContainer = (delay: number) => ({
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.03, delayChildren: delay },
+    transition: { staggerChildren: 0.02, delayChildren: delay },
   },
 });
 
