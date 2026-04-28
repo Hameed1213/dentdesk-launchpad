@@ -167,7 +167,7 @@ export default function HeroSection() {
         {/* Social proof */}
         <AnimatedGroup
           className="mt-4 flex justify-center"
-          variants={{ container: makeContainer(0.32), item: itemBlurSlide }}
+          variants={{ container: makeContainer(0.18), item: itemBlurSlide }}
         >
           <p className="text-sm text-neutral-400 text-center max-w-sm mx-auto mt-5 leading-relaxed">
             Be one of the{" "}
