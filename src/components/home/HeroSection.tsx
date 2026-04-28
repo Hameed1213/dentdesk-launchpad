@@ -130,7 +130,7 @@ export default function HeroSection() {
 
         {/* Subheadline */}
         <AnimatedGroup
-          variants={{ container: makeContainer(0.1), item: itemBlurSlide }}
+          variants={{ container: makeContainer(0.05), item: itemBlurSlide }}
         >
           <p className="text-lg text-neutral-500 max-w-xl mx-auto text-center leading-relaxed mt-5">
             Online booking, automated reminders, payments and recalls. Built for UK private practices.
