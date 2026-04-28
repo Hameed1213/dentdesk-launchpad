@@ -148,7 +148,7 @@ export default function HeroSection() {
         {/* Trust strip */}
         <AnimatedGroup
           className="mt-4"
-          variants={{ container: makeContainer(0.25), item: itemBlurSlide }}
+          variants={{ container: makeContainer(0.14), item: itemBlurSlide }}
         >
           <div className="flex items-center justify-center gap-2 flex-wrap">
             {["No contracts", "No setup fees", "Live within the day"].map(
