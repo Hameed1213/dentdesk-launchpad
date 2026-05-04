@@ -39,12 +39,24 @@ function WaitlistPage() {
   const [email, setEmail] = useState("");
   const [practice, setPractice] = useState("");
   const [role, setRole] = useState("");
+  const [website, setWebsite] = useState(""); // honeypot — see handleSubmit
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Honeypot: bots auto-fill fields named "website". Real users never see
+    // or interact with this input (it's visually hidden + aria-hidden + tabIndex -1).
+    // If it has any value, silently fake success — do NOT insert and do NOT
+    // show an error, so the bot thinks it worked and doesn't retry.
+    // Do not remove this check or the corresponding hidden input.
+    if (website) {
+      setSubmitted(true);
+      return;
+    }
+
     const trimmedEmail = email.trim();
     const trimmedPractice = practice.trim();
     const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmedEmail);
@@ -248,6 +260,17 @@ function WaitlistPage() {
                   noValidate
                   className="space-y-4"
                 >
+                  {/* Honeypot — hidden from humans, irresistible to bots. Do not remove. */}
+                  <input
+                    type="text"
+                    name="website"
+                    value={website}
+                    onChange={(e) => setWebsite(e.target.value)}
+                    tabIndex={-1}
+                    autoComplete="off"
+                    aria-hidden="true"
+                    style={{ position: "absolute", left: "-9999px", opacity: 0 }}
+                  />
                   <motion.div
                     initial={{ opacity: 0, y: 16 }}
                     animate={{ opacity: 1, y: 0 }}
