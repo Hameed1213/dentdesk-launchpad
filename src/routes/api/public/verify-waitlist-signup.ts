@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import "@tanstack/react-start";
 import { createClient } from "@supabase/supabase-js";
 
 const SUPABASE_URL = "https://pyotfmkosyrehtrcurue.supabase.co";
