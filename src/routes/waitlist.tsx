@@ -43,6 +43,7 @@ function WaitlistPage() {
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
   const turnstileRef = useRef<TurnstileInstance | null>(null);
   const siteKey = import.meta.env.VITE_TURNSTILE_SITE_KEY as string | undefined;
 
@@ -71,18 +72,14 @@ function WaitlistPage() {
       setError("Please enter your practice name.");
       return;
     }
+    if (!turnstileToken) {
+      setError("Please wait a moment and try again.");
+      return;
+    }
     setError(null);
     setIsLoading(true);
 
     try {
-      const token = await turnstileRef.current?.getResponsePromise();
-      if (!token) {
-        turnstileRef.current?.reset();
-        setError("Please try again.");
-        setIsLoading(false);
-        return;
-      }
-
       const res = await fetch("/api/public/verify-waitlist-signup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -90,21 +87,25 @@ function WaitlistPage() {
           email: trimmedEmail,
           practice_name: trimmedPractice,
           role: role || undefined,
-          turnstile_token: token,
+          turnstile_token: turnstileToken,
         }),
       });
+
+      // Token is single-use — reset for next attempt regardless of outcome.
+      turnstileRef.current?.reset();
+      setTurnstileToken(null);
 
       if (res.ok) {
         setSubmitted(true);
         return;
       }
 
-      turnstileRef.current?.reset();
       if (res.status === 400) setError("Please check your details and try again.");
       else if (res.status === 403) setError("Please try again.");
       else setError("Something went wrong, please try again later.");
     } catch {
       turnstileRef.current?.reset();
+      setTurnstileToken(null);
       setError("Something went wrong, please try again later.");
     } finally {
       setIsLoading(false);
