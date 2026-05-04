@@ -407,6 +407,17 @@ function WaitlistPage() {
                     {isLoading ? "Joining..." : "Join the waitlist"}
                   </motion.button>
 
+                  {siteKey && (
+                    <Turnstile
+                      ref={turnstileRef}
+                      siteKey={siteKey}
+                      options={{ size: "invisible" }}
+                      onSuccess={(token) => setTurnstileToken(token)}
+                      onError={() => setTurnstileToken(null)}
+                      onExpire={() => setTurnstileToken(null)}
+                    />
+                  )}
+
                   <motion.p
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
