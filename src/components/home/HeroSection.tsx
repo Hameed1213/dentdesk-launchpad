@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { Turnstile, type TurnstileInstance } from "@marsidev/react-turnstile";
 import { AnimatedGroup } from "@/components/ui/animated-group";
 import { AuroraBackground } from "@/components/ui/aurora-background";
 import DashboardAnimation from "@/components/home/DashboardAnimation";
-import { supabase } from "@/lib/supabase";
 
 const transition = {
   type: "spring" as const,
@@ -29,9 +29,12 @@ function WaitlistForm() {
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const turnstileRef = useRef<TurnstileInstance | null>(null);
+  const siteKey = import.meta.env.VITE_TURNSTILE_SITE_KEY as string | undefined;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (isLoading) return;
 
     // Honeypot: bots auto-fill fields named "website". Real users never see
     // or interact with this input (it's visually hidden + aria-hidden + tabIndex -1).
@@ -52,18 +55,36 @@ function WaitlistForm() {
     setError(null);
     setIsLoading(true);
 
-    const { error: insertError } = await supabase
-      .from("marketing_waitlist")
-      .insert({ email: trimmed, source: "hero" });
+    try {
+      const token = await turnstileRef.current?.getResponsePromise();
+      if (!token) {
+        turnstileRef.current?.reset();
+        setError("Please try again.");
+        setIsLoading(false);
+        return;
+      }
 
-    setIsLoading(false);
+      const res = await fetch("/api/public/verify-waitlist-signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: trimmed, turnstile_token: token }),
+      });
 
-    if (insertError && insertError.code !== "23505") {
-      setError("Something went wrong. Please try again.");
-      return;
+      if (res.ok) {
+        setSubmitted(true);
+        return;
+      }
+
+      turnstileRef.current?.reset();
+      if (res.status === 400) setError("Please enter a valid email address.");
+      else if (res.status === 403) setError("Please try again.");
+      else setError("Something went wrong, please try again later.");
+    } catch {
+      turnstileRef.current?.reset();
+      setError("Something went wrong, please try again later.");
+    } finally {
+      setIsLoading(false);
     }
-
-    setSubmitted(true);
   };
 
   if (submitted) {
@@ -114,6 +135,13 @@ function WaitlistForm() {
           {isLoading ? "Joining..." : "Join the waitlist →"}
         </button>
       </form>
+      {siteKey && (
+        <Turnstile
+          ref={turnstileRef}
+          siteKey={siteKey}
+          options={{ size: "invisible" }}
+        />
+      )}
       {error && (
         <p className="text-sm text-red-500 text-center w-full mt-1">{error}</p>
       )}
