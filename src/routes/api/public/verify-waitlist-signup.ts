@@ -62,7 +62,7 @@ export const Route = createFileRoute("/api/public/verify-waitlist-signup")({
 
           // ---- 2. Verify Turnstile
           const turnstileSecret = process.env.TURNSTILE_SECRET_KEY;
-          const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+          const serviceRoleKey = process.env.WAITLIST_SUPABASE_SERVICE_ROLE_KEY;
           if (!turnstileSecret || !serviceRoleKey) {
             console.error("verify-waitlist-signup: missing server secrets", {
               hasTurnstile: Boolean(turnstileSecret),
