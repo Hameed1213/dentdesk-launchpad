@@ -1,9 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { Turnstile, type TurnstileInstance } from "@marsidev/react-turnstile";
 import { motion } from "framer-motion";
 import { ArrowLeft, Check, Mail, Sparkles } from "lucide-react";
 import ToothIcon from "@/components/icons/ToothIcon";
-import { supabase } from "@/lib/supabase";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -43,9 +43,12 @@ function WaitlistPage() {
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const turnstileRef = useRef<TurnstileInstance | null>(null);
+  const siteKey = import.meta.env.VITE_TURNSTILE_SITE_KEY as string | undefined;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (isLoading) return;
 
     // Honeypot: bots auto-fill fields named "website". Real users never see
     // or interact with this input (it's visually hidden + aria-hidden + tabIndex -1).
@@ -71,23 +74,41 @@ function WaitlistPage() {
     setError(null);
     setIsLoading(true);
 
-    const { error: insertError } = await supabase
-      .from("marketing_waitlist")
-      .insert({
-        email: trimmedEmail,
-        practice_name: trimmedPractice,
-        role: role || null,
-        source: "waitlist_page",
+    try {
+      const token = await turnstileRef.current?.getResponsePromise();
+      if (!token) {
+        turnstileRef.current?.reset();
+        setError("Please try again.");
+        setIsLoading(false);
+        return;
+      }
+
+      const res = await fetch("/api/public/verify-waitlist-signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: trimmedEmail,
+          practice_name: trimmedPractice,
+          role: role || undefined,
+          turnstile_token: token,
+        }),
       });
 
-    setIsLoading(false);
+      if (res.ok) {
+        setSubmitted(true);
+        return;
+      }
 
-    if (insertError && insertError.code !== "23505") {
-      setError("Something went wrong. Please try again.");
-      return;
+      turnstileRef.current?.reset();
+      if (res.status === 400) setError("Please check your details and try again.");
+      else if (res.status === 403) setError("Please try again.");
+      else setError("Something went wrong, please try again later.");
+    } catch {
+      turnstileRef.current?.reset();
+      setError("Something went wrong, please try again later.");
+    } finally {
+      setIsLoading(false);
     }
-
-    setSubmitted(true);
   };
 
   return (
