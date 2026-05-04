@@ -29,6 +29,7 @@ function WaitlistForm() {
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
   const turnstileRef = useRef<TurnstileInstance | null>(null);
   const siteKey = import.meta.env.VITE_TURNSTILE_SITE_KEY as string | undefined;
 
@@ -52,35 +53,35 @@ function WaitlistForm() {
       setError("Please enter a valid email address.");
       return;
     }
+    if (!turnstileToken) {
+      setError("Please wait a moment and try again.");
+      return;
+    }
     setError(null);
     setIsLoading(true);
 
     try {
-      const token = await turnstileRef.current?.getResponsePromise();
-      if (!token) {
-        turnstileRef.current?.reset();
-        setError("Please try again.");
-        setIsLoading(false);
-        return;
-      }
-
       const res = await fetch("/api/public/verify-waitlist-signup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: trimmed, turnstile_token: token }),
+        body: JSON.stringify({ email: trimmed, turnstile_token: turnstileToken }),
       });
+
+      // Token is single-use — reset for next attempt regardless of outcome.
+      turnstileRef.current?.reset();
+      setTurnstileToken(null);
 
       if (res.ok) {
         setSubmitted(true);
         return;
       }
 
-      turnstileRef.current?.reset();
       if (res.status === 400) setError("Please enter a valid email address.");
       else if (res.status === 403) setError("Please try again.");
       else setError("Something went wrong, please try again later.");
     } catch {
       turnstileRef.current?.reset();
+      setTurnstileToken(null);
       setError("Something went wrong, please try again later.");
     } finally {
       setIsLoading(false);
@@ -140,6 +141,9 @@ function WaitlistForm() {
           ref={turnstileRef}
           siteKey={siteKey}
           options={{ size: "invisible" }}
+          onSuccess={(token) => setTurnstileToken(token)}
+          onError={() => setTurnstileToken(null)}
+          onExpire={() => setTurnstileToken(null)}
         />
       )}
       {error && (
