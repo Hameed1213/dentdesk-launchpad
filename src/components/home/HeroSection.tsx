@@ -31,7 +31,9 @@ function WaitlistForm() {
   const [isLoading, setIsLoading] = useState(false);
   const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
   const turnstileRef = useRef<TurnstileInstance | null>(null);
-  const siteKey = import.meta.env.VITE_TURNSTILE_SITE_KEY as string | undefined;
+  // Cloudflare Turnstile site key — publishable, safe to commit.
+  // The "secret" key is in TURNSTILE_SECRET_KEY runtime secret.
+  const siteKey = "0x4AAAAAADI8G4sRIlHtA1y7";
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
