@@ -29,7 +29,7 @@ function PrivacyPage() {
     <LegalLayout title="Privacy Policy" updated="April 2026">
       <LegalSection heading="Who we are">
         <p>
-          Dent Dock is a dental practice management platform operated by Dent Dock Ltd, registered in England and Wales. Our platform is available at dentdock.co.uk and app.dentdock.co.uk.
+          Dent Dock is a dental practice management platform operated by PARADIGM NETWORK LIMITED, registered in England and Wales. Our platform is available at dentdock.co.uk and app.dentdock.co.uk.
         </p>
         <p>Contact: hello@dentdock.co.uk</p>
       </LegalSection>
