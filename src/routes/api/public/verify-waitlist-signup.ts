@@ -81,6 +81,15 @@ export const Route = createFileRoute("/api/public/verify-waitlist-signup")({
             { method: "POST", body: form },
           );
 
+          // TEMP DEBUG LOGGING — remove once Turnstile verification is confirmed working
+          const rawBody = await verifyRes.text();
+          console.error("Turnstile siteverify debug", {
+            httpStatus: verifyRes.status,
+            rawBody,
+            tokenPrefix: turnstileToken.substring(0, 10),
+            tokenLength: turnstileToken.length,
+          });
+
           if (!verifyRes.ok) {
             console.error("Turnstile verify HTTP error", {
               status: verifyRes.status,
@@ -88,14 +97,21 @@ export const Route = createFileRoute("/api/public/verify-waitlist-signup")({
             return json(403, { error: "Verification failed" });
           }
 
-          const verifyData = (await verifyRes.json()) as {
-            success: boolean;
-            "error-codes"?: string[];
-          };
+          let verifyData: { success: boolean; "error-codes"?: string[] };
+          try {
+            verifyData = JSON.parse(rawBody) as {
+              success: boolean;
+              "error-codes"?: string[];
+            };
+          } catch (parseErr) {
+            console.error("Turnstile verify body not JSON", { rawBody });
+            return json(403, { error: "Verification failed" });
+          }
 
           if (!verifyData.success) {
             console.error("Turnstile verify rejected", {
               errorCodes: verifyData["error-codes"],
+              rawBody,
             });
             return json(403, { error: "Verification failed" });
           }
