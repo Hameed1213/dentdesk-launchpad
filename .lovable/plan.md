@@ -1,37 +1,37 @@
-## Goal
+## Problem
 
-On mobile (the horizontally scrolling tab strip in `ProductShowcase`), when the user taps a tab, that tab should move to the first position on the left, with the remaining tabs following in their original order. On tablet/desktop (`sm:` and above) nothing changes — tabs stay in their fixed grouped pill.
+On mobile, clicking Features / Pricing / FAQ in the header or footer menu scrolls those sections to the very top of the viewport. Because the navbar is `position: fixed`, the section title ends up tucked right under (and partly behind) the navbar with no breathing room.
 
-## Current Behaviour
+The scroll is triggered by `el.scrollIntoView({ block: "start" })` in `Navbar.tsx` and `Footer.tsx`, which scrolls the element flush to the top — it doesn't know about the fixed header.
 
-In `src/components/home/ProductShowcase.tsx`:
-- `tabs`, `tabIcons`, `tabDescriptions`, `tabUrls` are parallel arrays indexed 0–4.
-- `activeTab` is the active index.
-- On mobile, the active tab is auto-centered via `container.scrollTo` (lines 1079–1089).
-- All tabs render in fixed order via `tabs.map((tab, i) => ...)` (line 1173).
+## Fix
 
-## Change
+Use the standard CSS `scroll-margin-top` mechanism. It applies to `scrollIntoView()` and to native hash navigation (e.g. landing on `/#pricing` from another page), so it covers both the header menu, the footer menu, and direct URL hits — no JS changes needed.
 
-1. Build a mobile-only display order where the active tab comes first, followed by the others in their original order. Example: if `activeTab = 3`, mobile order = `[3, 0, 1, 2, 4]`. Desktop order stays `[0, 1, 2, 3, 4]`.
-2. Render the tab list using this order. Use a `useIsMobile`-style check (or a CSS-driven approach) so only the mobile view reorders.
-3. Remove the horizontal auto-scroll-to-center effect on mobile (it's no longer needed since the active tab is always first). Keep behaviour intact on desktop.
-4. Keep the data arrays (`tabs`, `tabIcons`, `tabDescriptions`, `tabUrls`, `mockups`, `tabContent`) unchanged — only the render order changes. Active state, content, mockup, URL all continue to be looked up by the original index `i`.
+### Change
 
-## Technical Details
+In `src/styles.css`, add a small rule targeting the three landing-page section anchors:
 
-- Use the existing `useIsMobile` hook from `src/hooks/use-mobile.tsx` to detect mobile (`< sm` breakpoint).
-- Compute `displayOrder`:
-  - Mobile: `[activeTab, ...tabs.map((_,i)=>i).filter(i => i !== activeTab)]`
-  - Desktop: `[0, 1, 2, 3, 4]`
-- In the `.map`, iterate over `displayOrder` and look up `tabs[i]`, `tabIcons[i]`, etc., by the original index.
-- Remove (or gate to desktop-only) the `useEffect` that calls `container.scrollTo` to auto-center, since on mobile the active tab will already be at the left edge. Keep `tabRefs` if needed only for desktop; otherwise remove.
-- Auto-advance interval (`setInterval` cycling through tabs every 35s) stays unchanged.
+```css
+#about,
+#pricing,
+#faq {
+  scroll-margin-top: 88px; /* mobile: clears the fixed navbar + a bit of breathing room */
+}
 
-## Files to Edit
+@media (min-width: 1024px) {
+  #about,
+  #pricing,
+  #faq {
+    scroll-margin-top: 96px; /* desktop navbar is slightly taller when not scrolled */
+  }
+}
+```
 
-- `src/components/home/ProductShowcase.tsx` — only this file.
+That's the only change. No edits to `Navbar.tsx`, `Footer.tsx`, or any section component.
 
-## Out of Scope
+## Why this approach
 
-- No changes to tab content, icons, copy, styling, colors, animations, or desktop layout.
-- No changes to other components.
+- One small, scoped CSS rule — no JS offset math, no per-link special casing.
+- Works for both the smooth-scroll path (header/footer click handlers) and for arriving at `/#pricing` from another route.
+- Easy to tune later by changing the pixel value in one place.

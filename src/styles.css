@@ -137,6 +137,20 @@
     border-color: var(--color-border);
   }
 
+  #about,
+  #pricing,
+  #faq {
+    scroll-margin-top: 88px;
+  }
+
+  @media (min-width: 1024px) {
+    #about,
+    #pricing,
+    #faq {
+      scroll-margin-top: 96px;
+    }
+  }
+
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
