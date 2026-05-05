@@ -124,14 +124,6 @@ function TermsPage() {
           dentdock.co.uk
         </p>
       </LegalSection>
-
-      <LegalSection heading="10. Contact">
-        <p>
-          Dent Dock Ltd<br />
-          hello@dentdock.co.uk<br />
-          dentdock.co.uk
-        </p>
-      </LegalSection>
     </LegalLayout>
   );
 }
