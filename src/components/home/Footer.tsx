@@ -16,7 +16,6 @@ type CompanyLink = {
 
 const companyLinks: CompanyLink[] = [
   { label: "Contact", href: "https://wa.me/447700000000", external: true },
-  { label: "Log in", href: "https://app.dentdock.co.uk", external: true },
   { label: "Join the waitlist", href: "/waitlist", internal: true },
 ];
 
@@ -144,7 +143,7 @@ export default function Footer() {
           </div>
           <p className="text-[11px] text-white/30 text-center sm:text-left leading-[1.5]">
             Dent Dock is a trading name of Paradigm Network Limited.<br />
-            Company No. 16903048 · Registered in England and Wales · ICO No. ZXXXXXXXX
+            Company No. 16903048 · Registered in England and Wales · ICO No. ZC132966
           </p>
         </div>
       </div>
