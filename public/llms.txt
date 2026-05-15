@@ -1,0 +1,13 @@
+# Dent Dock
+
+> Dental practice management software for UK private practices — online booking, automated reminders, payments and recalls.
+
+Dent Dock helps UK private dental practices run their day-to-day: patients book online, reminders go out automatically over SMS and email, payments are taken without chasing, and recalls keep chairs full. Built for private and mixed practices (no NHS UDA management). No contracts, no setup fees, live within the day.
+
+## Pages
+
+- [Home](/): Product overview, features, pricing and waitlist signup.
+- [Waitlist](/waitlist): Join the early-access waitlist.
+- [Privacy](/privacy): Privacy policy.
+- [Terms](/terms): Terms of service.
+- [Cookies](/cookies): Cookie policy.
