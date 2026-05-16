@@ -418,7 +418,7 @@ function WhyDentDockBlock({
 
 function WhyDentDockBlocks() {
   return (
-    <section className="relative bg-gradient-to-br from-[#DBEAFE] via-[#EFF6FF] to-white pt-4 pb-4 md:pt-8 md:pb-8 px-6 overflow-hidden">
+    <section className="relative bg-gradient-to-br from-[#DBEAFE] via-[#EFF6FF] to-white pt-4 pb-4 md:pt-8 md:pb-8 px-6 [overflow:clip]">
       {/* Top irregular fade to white */}
       <div
         className="pointer-events-none absolute inset-x-0 top-0 h-72 z-10"
