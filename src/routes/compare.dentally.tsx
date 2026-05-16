@@ -1233,7 +1233,7 @@ function StickyPricingCards({ progress }: { progress: number }) {
       <div className="relative grid grid-cols-[45%_27.5%_27.5%] px-3 py-2">
         <div className="flex items-center pl-2">
           <span
-            className="font-semibold text-[#475569]"
+            className="font-semibold text-white"
             style={{ fontSize: 15 }}
           >
             Features
