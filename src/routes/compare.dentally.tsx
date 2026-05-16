@@ -898,24 +898,6 @@ function HonestAnswer() {
           <p className="mt-5 text-base md:text-lg text-muted-foreground">
             Different software, built for different practices.
           </p>
-          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6">
-            <div className="inline-flex items-center gap-2 rounded-full border border-[#E2E8F0] bg-white px-[18px] py-[10px] shadow-sm text-sm font-medium text-[#0F172A]">
-              <span className="h-2 w-2 rounded-full bg-[#2563EB]" aria-hidden="true" />
-              <span>Dent Dock</span>
-              <span className="text-[#CBD5E1]" aria-hidden="true">·</span>
-              <span>£49/mo</span>
-              <span className="text-[#CBD5E1]" aria-hidden="true">·</span>
-              <span>Single-site private</span>
-            </div>
-            <div className="inline-flex items-center gap-2 rounded-full border border-[#E2E8F0] bg-white px-[18px] py-[10px] shadow-sm text-sm font-medium text-[#0F172A]">
-              <span className="h-2 w-2 rounded-full bg-[#94A3B8]" aria-hidden="true" />
-              <span>Dentally</span>
-              <span className="text-[#CBD5E1]" aria-hidden="true">·</span>
-              <span>From £125+/mo</span>
-              <span className="text-[#CBD5E1]" aria-hidden="true">·</span>
-              <span>Every type of practice</span>
-            </div>
-          </div>
         </motion.div>
 
         <motion.div
