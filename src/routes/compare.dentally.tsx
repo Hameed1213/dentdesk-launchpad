@@ -315,7 +315,7 @@ const whyBlocks = [
   {
     title: "Live in a day",
     body: "Sign up, set up your practice in 8 steps, go live the same day. No sales call, no implementation consultant — the first thing you'll do tomorrow is take an online booking.",
-    note: "Coming from another system or starting fresh? We've written setup guides for every path.",
+    note: "Guides for switching systems, and for starting fresh.",
     label: "VISUAL · LIVE IN A DAY",
     textLeft: true,
   },
