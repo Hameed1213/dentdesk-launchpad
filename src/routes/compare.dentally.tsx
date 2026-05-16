@@ -934,9 +934,6 @@ function HonestAnswer() {
                   </motion.li>
                 ))}
               </ul>
-              <p className="mt-8 max-w-[42ch] text-[15px] italic font-normal text-[#475569]">
-                Built for the practice we wished we'd had.
-              </p>
             </div>
 
             {/* Divider on mobile */}
