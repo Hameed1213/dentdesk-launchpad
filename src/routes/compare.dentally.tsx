@@ -837,20 +837,20 @@ function PriceCard({
 }
 
 const dentallyFit = [
-  "Clinical charting, tooth charts and treatment plan builders",
-  "NHS UDA and FP17 management",
-  "Multi-site practice management",
-  "AI clinical note transcription",
-  "Imaging integration (DEXIS, Carestream, Sirona)",
-  "A long-established platform with thousands of UK customers",
+  "NHS, mixed and private practices of every size",
+  "Practices that need full clinical charting and treatment plans",
+  "Practices managing NHS UDA contracts and FP17 claims",
+  "Practices running multi-site or multi-location groups",
+  "Practices that need imaging integration and AI clinical notes",
+  "Practices that want a long-established platform",
 ];
 
 const dentDockFit = [
-  "Online booking and a public booking page",
-  "Digital patient forms with signature capture",
-  "Automated reminders, recalls and patient comms",
-  "Patient payments and deposit handling via Stripe",
-  "A simple front-of-house tool for single-site UK private practices",
+  "Single-site UK private practices",
+  "Practices that book most patients online",
+  "Practices replacing manual reminders, recalls and form-chasing",
+  "Practices taking patient payments and deposits through Stripe",
+  "Practices that want simple, fast front-of-house software",
 ];
 
 function HonestAnswer() {
