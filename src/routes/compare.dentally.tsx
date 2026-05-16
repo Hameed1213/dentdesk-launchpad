@@ -464,10 +464,10 @@ function CompareDentallyPage() {
       
       <FeatureComparison />
       
-      <WhyDentDockBlocks />
       <WhatNextCTA />
       <FAQ />
       <ClosingCTA />
+      <WhyDentDockBlocks />
       <PageDisclaimer />
       <Footer />
     </main>
