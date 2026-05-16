@@ -893,9 +893,7 @@ function HonestAnswer() {
           className="mx-auto max-w-2xl text-center"
         >
           <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-foreground leading-[1.1]">
-            Which one is
-            <br />
-            <span className="text-[#2563EB]">right for you?</span>
+            Which one is <span className="text-[#2563EB]">right for you?</span>
           </h2>
           <p className="mt-5 text-base md:text-lg text-muted-foreground">
             Two short lists. Read both. If both describe you, talk to both — we won't be offended.
