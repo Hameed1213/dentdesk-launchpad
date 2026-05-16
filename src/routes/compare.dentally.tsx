@@ -937,7 +937,7 @@ function Hero() {
         </div>
 
         <div className="hidden lg:flex lg:w-2/5 justify-center">
-          <SmsThread />
+          <PriceCompare />
         </div>
       </div>
     </section>
