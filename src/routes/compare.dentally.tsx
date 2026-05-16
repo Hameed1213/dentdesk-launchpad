@@ -1283,13 +1283,13 @@ function StickyPricingCards({ progress }: { progress: number }) {
         >
           <span
             className="font-semibold text-[#475569]"
-            style={{ fontSize: 12, letterSpacing: "0.14em", textTransform: "uppercase" }}
+            style={{ fontSize: 12, letterSpacing: "0.04em" }}
           >
             Dentally
           </span>
           <span
-            className="font-bold text-[#0F172A] tabular-nums"
-            style={{ fontSize: priceSize, letterSpacing: "-0.03em", marginTop: gap, transition, lineHeight: 1.1 }}
+            className="font-medium text-[#0F172A] tabular-nums"
+            style={{ fontSize: priceSize, letterSpacing: "-0.02em", marginTop: gap, transition, lineHeight: 1.1 }}
           >
             £125 — £220+
           </span>
