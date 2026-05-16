@@ -269,6 +269,34 @@ function FounderNote() {
   );
 }
 
+function ClosingCTA() {
+  return (
+    <section className="bg-[#F3F6FD] py-16 lg:py-24">
+      <div className="mx-auto max-w-[720px] px-6 text-center">
+        <p className="text-[14px] font-medium uppercase tracking-[0.14em] text-dd-brand-blue">
+          Ready?
+        </p>
+        <h2 className="mt-4 text-[32px] font-semibold tracking-tight text-dd-foreground lg:text-[48px]">
+          Try Dent Dock
+        </h2>
+        <p className="mx-auto mt-6 max-w-[560px] text-[20px] text-dd-muted">
+          Join the waitlist and we'll walk you through a live demo. If after seeing both you decide Dentally is the better fit, we'd rather you knew today.
+        </p>
+        <div className="mt-10 flex flex-col items-center gap-4">
+          <a
+            href="#waitlist"
+            className="inline-flex items-center justify-center rounded-2xl bg-[#2563EB] px-8 py-4 text-[18px] font-semibold text-white shadow-[0_14px_32px_-8px_rgba(37,99,235,0.35)] transition-all duration-200 hover:-translate-y-px hover:bg-[#1D4ED8]"
+          >
+            Join the waitlist →
+          </a>
+          <p className="text-[14px] text-dd-muted">
+            30-day trial when you're ready. No card required.
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
 
 const dentallyWins: { icon: LucideIcon; title: string; body: string }[] = [
   {
