@@ -12,6 +12,8 @@ import {
   Brain,
   Image as ImageIcon,
   MessagesSquare,
+  Banknote,
+  MapPin,
   type LucideIcon,
 } from "lucide-react";
 import {
@@ -23,11 +25,29 @@ import {
 import Footer from "@/components/home/Footer";
 import Navbar from "@/components/home/Navbar";
 import { useEffect, useState } from "react";
-import { Check, X } from "lucide-react";
 
 const EASING = "cubic-bezier(0.22, 1, 0.36, 1)";
 
-function PriceCompare() {
+type FloatPill = {
+
+  icon: LucideIcon;
+  text: string;
+  // position within the right column (percent)
+  top: string;
+  left: string;
+  floatDelay: string;
+  // hide on intermediate (lg but not xl) screens
+  hideOnMd?: boolean;
+};
+
+const PILLS: FloatPill[] = [
+  { icon: Banknote, text: "£49 vs £125+ a month", top: "6%", left: "2%", floatDelay: "0s" },
+  { icon: CalendarCheck, text: "Online booking included from day one", top: "32%", left: "30%", floatDelay: "-1.2s" },
+  { icon: FileText, text: "16 dental form templates pre-built", top: "62%", left: "0%", floatDelay: "-2.5s", hideOnMd: true },
+  { icon: MapPin, text: "Single-site UK private practice focus", top: "78%", left: "28%", floatDelay: "-3.7s" },
+];
+
+function FloatingPills() {
   const prefersReducedMotion =
     typeof window !== "undefined" &&
     window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
@@ -39,91 +59,42 @@ function PriceCompare() {
     return () => cancelAnimationFrame(t);
   }, [prefersReducedMotion]);
 
-  const cardBase =
-    "w-[220px] rounded-2xl bg-white p-6 shadow-sm transition-all";
-  const animStyle = (i: number): React.CSSProperties => ({
-    opacity: mounted ? 1 : 0,
-    transform: mounted ? "translateY(0)" : "translateY(12px)",
-    transitionDuration: "400ms",
-    transitionDelay: `${i * 200}ms`,
-    transitionTimingFunction: EASING,
-  });
-
-  const rows = ["Online booking", "Digital forms", "Patient portal"];
-
   return (
-    <div className="flex flex-col items-center">
-      <div className="flex items-stretch gap-4">
-        <div
-          className={cardBase}
-          style={{
-            ...animStyle(0),
-            border: "2px solid #2563EB",
-            boxShadow: "0 14px 32px -8px rgba(37,99,235,0.25)",
-          }}
-        >
-          <p
-            className="text-[12px] font-semibold uppercase text-[#2563EB]"
-            style={{ letterSpacing: "0.14em" }}
+    <div className="relative h-[380px] w-full">
+      {PILLS.map((p, i) => {
+        const Icon = p.icon;
+        return (
+          <div
+            key={p.text}
+            className={`absolute z-[1] ${p.hideOnMd ? "hidden xl:flex" : "flex"} items-center gap-3 rounded-full bg-white pr-5 pl-3 py-3`}
+            style={{
+              top: p.top,
+              left: p.left,
+              border: "1px solid #E2E8F0",
+              boxShadow: "0 8px 24px -8px rgba(37,99,235,0.15)",
+              opacity: mounted ? 1 : 0,
+              transform: mounted ? "translateY(0)" : "translateY(8px)",
+              transition: `opacity 400ms ${EASING} ${i * 150}ms, transform 400ms ${EASING} ${i * 150}ms`,
+              animation: prefersReducedMotion || !mounted
+                ? undefined
+                : `pill-float 5s ease-in-out ${p.floatDelay} infinite`,
+            }}
           >
-            Dent Dock
-          </p>
-          <p
-            className="mt-2 text-[36px] font-bold text-[#0F172A] leading-none"
-            style={{ fontVariantNumeric: "tabular-nums" }}
-          >
-            £49
-          </p>
-          <p className="mt-1 text-[13px] text-[#475569]">per month</p>
-          <div className="my-4 h-px bg-[#E2E8F0]" />
-          <ul className="flex flex-col gap-2">
-            {rows.map((r) => (
-              <li
-                key={r}
-                className="flex items-center gap-2 text-[13px] font-medium text-[#0F172A]"
-              >
-                <Check size={14} strokeWidth={2} className="text-[#2563EB] shrink-0" />
-                {r}
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div
-          className={cardBase}
-          style={{ ...animStyle(1), border: "1px solid #E2E8F0" }}
-        >
-          <p
-            className="text-[12px] font-semibold uppercase text-[#475569]"
-            style={{ letterSpacing: "0.14em" }}
-          >
-            Dentally · Starter
-          </p>
-          <p
-            className="mt-2 text-[36px] font-bold text-[#0F172A] leading-none"
-            style={{ fontVariantNumeric: "tabular-nums" }}
-          >
-            £125
-          </p>
-          <p className="mt-1 text-[13px] text-[#475569]">per month plus VAT</p>
-          <div className="my-4 h-px bg-[#E2E8F0]" />
-          <ul className="flex flex-col gap-2">
-            {rows.map((r) => (
-              <li
-                key={r}
-                className="flex items-center gap-2 text-[13px] font-medium text-[#94A3B8]"
-              >
-                <X size={14} strokeWidth={2} className="text-[#94A3B8] shrink-0" />
-                {r}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-      <p className="mt-3 max-w-[460px] text-center text-[11px] text-[#94A3B8]">
-        Dentally Starter does not include online booking, digital forms, or the
-        patient portal. Source: dentally.com/en-gb/pricing.
-      </p>
+            <span
+              className="flex h-6 w-6 items-center justify-center rounded-full shrink-0"
+              style={{ backgroundColor: "#DBEAFE" }}
+            >
+              <Icon size={14} strokeWidth={2} color="#2563EB" />
+            </span>
+            <span
+              className="whitespace-nowrap text-[15px] text-[#0F172A]"
+              style={{ fontWeight: 500 }}
+            >
+              {p.text}
+            </span>
+          </div>
+        );
+      })}
     </div>
   );
 }
@@ -937,7 +908,7 @@ function Hero() {
         </div>
 
         <div className="hidden lg:flex lg:w-2/5 justify-center">
-          <PriceCompare />
+          <FloatingPills />
         </div>
       </div>
     </section>
