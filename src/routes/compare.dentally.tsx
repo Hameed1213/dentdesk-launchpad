@@ -425,7 +425,7 @@ function CompareDentallyPage() {
       <FeatureComparison />
       
       <WhatNextCTA />
-      <FounderNote />
+      
       <WhereDentallyWins />
       <PricingComparison />
       <SwitchingSteps />
@@ -469,33 +469,6 @@ function FAQ() {
   );
 }
 
-function FounderNote() {
-  return (
-    <section className="bg-[#F3F6FD] py-20 lg:py-28">
-      <div className="mx-auto max-w-[960px] px-6">
-        <p
-          className="text-[13px] font-semibold uppercase text-brand-blue"
-          style={{ letterSpacing: "0.14em" }}
-        >
-          A note from the founder
-        </p>
-        <h2
-          className="mt-5 text-[32px] font-semibold leading-[1.15] text-dd-foreground lg:text-[48px]"
-          style={{ letterSpacing: "-0.02em" }}
-        >
-          Built for single-site UK private practices.{" "}
-          <span className="text-brand-blue">Not trying to be Dentally.</span>
-        </h2>
-        <p className="mt-6 max-w-[760px] text-[18px] leading-[1.65] text-dd-muted lg:text-[20px]">
-          Dent Dock is new. Dentally has been around for over a decade and is the UK market leader,
-          owned by Henry Schein One. We do less, on purpose, for single-site UK private practices
-          that don't want to pay £264 a month for online booking.
-        </p>
-        <p className="mt-5 text-[15px] font-medium text-dd-muted">— Hariss, founder</p>
-      </div>
-    </section>
-  );
-}
 
 function WhatNextCTA() {
   const reduce = useReducedMotion();
