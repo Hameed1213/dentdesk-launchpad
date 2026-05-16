@@ -1242,11 +1242,7 @@ function StickyPricingCards({ progress }: { progress: number }) {
         {/* Dent Dock card */}
         <div
           style={{
-            backgroundColor: "#EBF1FE",
-            backgroundImage:
-              "linear-gradient(rgba(37,99,235,0.12) 1px, transparent 1px), linear-gradient(90deg, rgba(37,99,235,0.12) 1px, transparent 1px), linear-gradient(135deg, rgba(235,241,254,0.4) 0%, rgba(255,255,255,0.85) 100%)",
-            backgroundSize: "16px 16px, 16px 16px, 100% 100%",
-            backgroundPosition: "0 0, 0 0, 0 0",
+            background: "linear-gradient(135deg, #EBF1FE 0%, #FFFFFF 100%)",
             border: "2px solid #2563EB",
             borderRadius: 20,
             paddingTop: padY,
@@ -1255,23 +1251,37 @@ function StickyPricingCards({ progress }: { progress: number }) {
             paddingRight: padX,
             boxShadow: "0 14px 32px -8px rgba(37,99,235,0.2)",
             transition,
+            overflow: "hidden",
           }}
-          className="mx-auto flex w-full max-w-[300px] flex-col items-center justify-center text-center"
+          className="relative mx-auto flex w-full max-w-[300px] flex-col items-center justify-center text-center"
         >
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0 opacity-[0.45]"
+            style={{
+              backgroundImage:
+                "linear-gradient(to right, rgba(0,0,0,0.07) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,0,0,0.07) 1px, transparent 1px)",
+              backgroundSize: "22px 22px",
+              WebkitMaskImage:
+                "radial-gradient(ellipse at center, black 40%, transparent 80%)",
+              maskImage:
+                "radial-gradient(ellipse at center, black 40%, transparent 80%)",
+            }}
+          />
           <span
-            className="font-semibold text-[#2563EB]"
+            className="relative font-semibold text-[#2563EB]"
             style={{ fontSize: 12, letterSpacing: "0.04em" }}
           >
             Dent Dock
           </span>
           <span
-            className="font-medium text-[#0F172A] tabular-nums"
+            className="relative font-medium text-[#0F172A] tabular-nums"
             style={{ fontSize: priceSize, letterSpacing: "-0.02em", marginTop: gap, transition, lineHeight: 1.1 }}
           >
             £49
           </span>
           <span
-            className="font-medium text-[#475569]"
+            className="relative font-medium text-[#475569]"
             style={{ fontSize: subSize, marginTop: subGap, transition }}
           >
             per month
