@@ -114,6 +114,29 @@ function SwitchingSteps() {
   );
 }
 
+function PriceRationale() {
+  return (
+    <section className="bg-white py-16 lg:py-24">
+      <div className="mx-auto max-w-[720px] px-6 text-center">
+        <p className="text-[14px] font-medium uppercase tracking-[0.14em] text-dd-brand-blue">
+          The price
+        </p>
+        <h2 className="mt-4 text-[28px] font-semibold tracking-tight text-dd-foreground lg:text-[40px]">
+          Why we're £49
+        </h2>
+        <div className="mx-auto mt-8 max-w-[640px] space-y-6 text-left">
+          <p className="text-[20px] leading-[1.7] text-dd-foreground">
+            £49 is what a single-site UK private practice can pay comfortably out of cash flow without thinking about it. We deliberately don't build clinical charting, NHS contract management or imaging integration — that's where most of the cost of dental software comes from, and it's not what reception needs.
+          </p>
+          <p className="text-[20px] leading-[1.7] text-dd-foreground">
+            By scoping the product tightly, we keep the price low. When we add multi-site, clinical features or other major capabilities, we'll add tiers above Starter. Customers who join on Starter pricing keep Starter pricing.
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function CompareDentallyPage() {
   return (
     <main className="bg-white text-dd-foreground">
@@ -125,8 +148,7 @@ function CompareDentallyPage() {
       <FounderNote />
       <FeatureComparison />
       <SwitchingSteps />
-
-
+      <PriceRationale />
     </main>
   );
 }
