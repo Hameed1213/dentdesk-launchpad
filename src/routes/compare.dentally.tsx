@@ -1398,10 +1398,10 @@ function FeatureComparison() {
     <section id="comparison-table" className="bg-white py-16 lg:py-24 scroll-mt-24">
       <div className="mx-auto max-w-[1200px] px-6">
         <div className="mx-auto max-w-[720px] text-center">
-          <h2 className="text-3xl md:text-5xl font-medium tracking-tight leading-[1.1] text-[#0F172A]">
-            Feature <span className="text-[#0F172A]">comparison</span>
+          <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-foreground leading-[1.1]">
+            Feature <span className="text-[#2563EB]">comparison</span>
           </h2>
-          <p className="mt-5 text-base md:text-lg text-[#0F172A]">
+          <p className="mt-5 text-base md:text-lg text-muted-foreground">
             Verified against dentally.com on 15 May 2026.
           </p>
         </div>
