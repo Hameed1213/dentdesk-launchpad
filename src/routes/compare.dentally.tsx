@@ -6,6 +6,12 @@ import {
   MessageSquare,
   Smartphone,
   Headphones,
+  Stethoscope,
+  Landmark,
+  Building2,
+  Brain,
+  Image as ImageIcon,
+  MessagesSquare,
   type LucideIcon,
 } from "lucide-react";
 
