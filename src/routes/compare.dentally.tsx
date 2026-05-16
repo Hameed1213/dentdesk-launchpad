@@ -1114,8 +1114,8 @@ const categories: Category[] = [
     title: "Patient communications",
     rows: [
       { feature: "Automated SMS + email reminders", dentDock: yes(), dentally: yes() },
-      { feature: "Pre-built automation flows", dentDock: yes("29 seeded on signup"), dentally: no("Configure manually") },
-      { feature: "SMS sender shows practice name", dentDock: yes("At launch"), dentally: yes() },
+      { feature: "Pre-built automation flows", dentDock: yes("29 seeded on signup"), dentally: no() },
+      { feature: "SMS sender shows practice name", dentDock: yes(), dentally: yes() },
       { feature: "Two-way SMS inbox", dentDock: yes(), dentally: yes() },
       { feature: "Internal team chat", dentDock: no("On the roadmap"), dentally: yes() },
       { feature: "Marketing vs transactional consent classifier", dentDock: yes(), dentally: yes() },
