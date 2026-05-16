@@ -1227,8 +1227,8 @@ function StickyPricingCards({ progress }: { progress: number }) {
       {/* Backdrop strip — only visible when sticky */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-[-100vw] top-0 bottom-0 bg-white border-b border-[#E2E8F0]"
-        style={{ opacity: backdropOpacity, transition: "opacity 200ms ease-out" }}
+        className="pointer-events-none absolute inset-x-[-100vw] bottom-0 bg-white border-b border-[#E2E8F0]"
+        style={{ top: -80, opacity: backdropOpacity, transition: "opacity 200ms ease-out" }}
       />
       <div className="relative grid grid-cols-[45%_27.5%_27.5%] px-3 py-2">
         <div className="flex items-center pl-2">
