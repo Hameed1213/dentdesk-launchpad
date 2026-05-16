@@ -840,14 +840,14 @@ const dentallyFit = [
   "NHS, mixed and private practices of every size",
   "Practices that need full clinical charting and treatment plans",
   "Practices managing NHS UDA contracts and FP17 claims",
-  "Practices running multi-site or multi-location groups",
+  "Multi-site practices and dental groups",
   "Practices that need imaging integration and AI clinical notes",
 ];
 
 const dentDockFit = [
   "Single-site UK private practices",
-  "Practices that book most patients online",
-  "Practices replacing manual reminders, recalls and form-chasing",
+  "Practices moving patient booking online",
+  "Practices tired of chasing reminders, recalls and forms by hand",
   "Practices that take card payments and deposits from patients",
   "Practices focused on private treatment and patient experience",
 ];
