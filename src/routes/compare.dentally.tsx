@@ -852,6 +852,38 @@ function FeatureTile({
 }
 
 function PricingComparison() {
+  const reduce = useReducedMotion();
+  const ease = [0.22, 1, 0.36, 1] as const;
+
+  const cardMotion = (delay: number) =>
+    reduce
+      ? {}
+      : {
+          initial: { opacity: 0, y: 16 },
+          whileInView: { opacity: 1, y: 0 },
+          viewport: { once: true, margin: "-80px" },
+          transition: { duration: 0.5, ease, delay },
+        };
+
+  const priceMotion = (delay: number) =>
+    reduce
+      ? {}
+      : {
+          initial: { opacity: 0 },
+          whileInView: { opacity: 1 },
+          viewport: { once: true, margin: "-80px" },
+          transition: { duration: 0.4, ease, delay },
+        };
+
+  const dentDockIncludes = [
+    "Online booking and patient portal",
+    "Digital forms with signature",
+    "Automated reminders and recalls",
+    "Patient payments and deposits",
+    "Two-way SMS inbox",
+    "29 automations and 16 form templates",
+  ];
+
   return (
     <section className="bg-white py-16 lg:py-24">
       <div className="mx-auto max-w-[1200px] px-6">
@@ -862,126 +894,131 @@ function PricingComparison() {
           >
             Pricing
           </p>
-          <h2
-            className="mt-4 text-[32px] font-semibold leading-tight text-dd-foreground lg:text-[48px]"
-            style={{ letterSpacing: "-0.02em" }}
-          >
-            What each actually costs
+          <h2 className="mt-4 text-3xl md:text-5xl font-medium tracking-tight text-foreground leading-[1.1]">
+            The price most practices <span className="text-[#2563EB]">actually pay.</span>
           </h2>
-          <p className="mt-5 text-[20px] leading-[1.6] text-dd-muted">
-            Dentally lists prices excluding VAT. Dent Dock is a flat practice price. Most UK dental
-            services are VAT-exempt supplies — practices generally can't reclaim VAT on inputs — so
-            the real cost to your practice is the inc-VAT figure.
+          <p className="mt-5 text-base md:text-lg text-muted-foreground">
+            Dentally lists prices excluding VAT. Dent Dock is a flat practice price. Below is what
+            each actually includes at each price point.
           </p>
         </div>
 
-        <div className="mt-14 grid grid-cols-1 items-start gap-6 lg:grid-cols-3">
-          <PriceCard
-            highlighted
-            eyebrow="Dent Dock · Starter"
-            price="£49"
-            subline="per month, no VAT charged today"
-            summary="Online booking, forms, recalls, payments, two-way SMS and 29 automations included."
-            pills={[
-              { label: "Online booking included", tone: "success" },
-              { label: "Digital forms included", tone: "success" },
-              { label: "Patient portal included", tone: "success" },
-            ]}
-          />
-          <PriceCard
-            eyebrow="Dentally · Starter"
-            price="£125"
-            subline="per month plus VAT · real cost £150"
-            summary="Practice management without the Dentally Portal."
-            pills={[
-              { label: "Online booking not included", tone: "attention" },
-              { label: "Digital forms not included", tone: "attention" },
-              { label: "Patient portal not included", tone: "attention" },
-            ]}
-          />
-          <PriceCard
-            eyebrow="Dentally · Essentials"
-            price="£220"
-            subline="per month plus VAT · real cost £264"
-            summary="Practice management with the Dentally Portal included."
-            pills={[
-              { label: "Online booking included", tone: "success" },
-              { label: "Digital forms included", tone: "success" },
-              { label: "Patient portal included", tone: "success" },
-            ]}
-          />
-        </div>
+        <div className="mt-16 grid grid-cols-1 items-start gap-8 lg:grid-cols-2">
+          {/* Dent Dock card */}
+          <motion.div
+            {...cardMotion(0)}
+            className="group rounded-[20px] border-2 border-[#2563EB] p-8 lg:p-12 lg:-translate-y-2 transition-all duration-200 ease-out hover:-translate-y-[10px]"
+            style={{
+              background:
+                "linear-gradient(135deg, #EBF1FE 0%, #FFFFFF 100%)",
+              boxShadow: "0 20px 48px -12px rgba(37,99,235,0.25)",
+            }}
+            onHoverStart={(e) => {
+              (e.currentTarget as HTMLElement).style.boxShadow =
+                "0 28px 56px -12px rgba(37,99,235,0.32)";
+            }}
+            onHoverEnd={(e) => {
+              (e.currentTarget as HTMLElement).style.boxShadow =
+                "0 20px 48px -12px rgba(37,99,235,0.25)";
+            }}
+          >
+            <p
+              className="text-[13px] font-semibold uppercase text-[#2563EB]"
+              style={{ letterSpacing: "0.14em" }}
+            >
+              Dent Dock
+            </p>
+            <motion.p
+              {...priceMotion(0.2)}
+              className="mt-4 text-[56px] lg:text-[72px] font-bold leading-none text-[#0F172A] tabular-nums"
+              style={{ letterSpacing: "-0.03em" }}
+            >
+              £49
+            </motion.p>
+            <p className="mt-2 text-[16px] font-medium text-[#475569]">
+              per month, flat practice price
+            </p>
 
-        <p className="mx-auto mt-10 max-w-[760px] text-center text-[14px] leading-[1.6] text-dd-muted">
-          Pricing for 1 surgery, taken from dentally.com/en-gb/pricing on 15 May 2026. Dentally
-          charges per practice based on number of surgeries — see the Dentally pricing page for
-          multi-surgery rates.
-        </p>
+            <div className="my-8 h-px w-full bg-[#E2E8F0]" />
+
+            <p
+              className="text-[14px] font-semibold uppercase text-[#0F172A]"
+              style={{ letterSpacing: "0.06em" }}
+            >
+              Included in your £49
+            </p>
+            <ul className="mt-4 flex flex-col gap-4">
+              {dentDockIncludes.map((item) => (
+                <li key={item} className="flex items-start gap-4">
+                  <span
+                    aria-hidden="true"
+                    className="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-[#2563EB]"
+                  >
+                    <Check size={14} strokeWidth={2.5} className="text-white" />
+                  </span>
+                  <span className="text-[16px] font-medium text-[#0F172A]">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+
+          {/* Dentally card */}
+          <motion.div
+            {...cardMotion(0.2)}
+            className="rounded-[20px] border border-[#E2E8F0] bg-white p-8 lg:p-12 shadow-sm transition-all duration-200 ease-out hover:-translate-y-[2px] hover:shadow-md"
+          >
+            <p
+              className="text-[13px] font-semibold uppercase text-[#475569]"
+              style={{ letterSpacing: "0.14em" }}
+            >
+              Dentally
+            </p>
+            <motion.p
+              {...priceMotion(0.4)}
+              className="mt-4 text-[56px] lg:text-[72px] font-bold leading-none text-[#0F172A] tabular-nums"
+              style={{ letterSpacing: "-0.03em" }}
+            >
+              £125 — £220+
+            </motion.p>
+            <p className="mt-2 text-[16px] font-medium text-[#475569]">
+              per month, ex VAT · scales by surgery count
+            </p>
+
+            <div className="my-8 h-px w-full bg-[#E2E8F0]" />
+
+            {/* Starter tier */}
+            <p
+              className="text-[14px] font-semibold uppercase text-[#0F172A]"
+              style={{ letterSpacing: "0.06em" }}
+            >
+              Starter · £125
+            </p>
+            <span
+              className="mt-2.5 inline-flex items-center rounded-full border border-[#FDE68A] bg-[#FEF3C7] px-3 py-1.5 text-[12px] font-semibold uppercase text-[#92400E]"
+              style={{ letterSpacing: "0.04em" }}
+            >
+              Online booking not included
+            </span>
+            <p className="mt-3 text-[15px] leading-[1.55] text-[#475569]">
+              Dentally Starter doesn't include the Dentally Portal — no online booking, digital
+              forms, or patient concierge.
+            </p>
+
+            {/* Essentials tier */}
+            <p
+              className="mt-8 text-[14px] font-semibold uppercase text-[#0F172A]"
+              style={{ letterSpacing: "0.06em" }}
+            >
+              Essentials · £220
+            </p>
+            <p className="mt-2 text-[15px] leading-[1.55] text-[#475569]">
+              To get online booking with Dentally, you'll need the Essentials tier — £220 per month
+              ex VAT, per practice (scales further by number of surgeries).
+            </p>
+          </motion.div>
+        </div>
       </div>
     </section>
-  );
-}
-
-type Pill = { label: string; tone: "success" | "attention" };
-
-function PriceCard({
-  highlighted = false,
-  eyebrow,
-  price,
-  subline,
-  summary,
-  pills,
-}: {
-  highlighted?: boolean;
-  eyebrow: string;
-  price: string;
-  subline: string;
-  summary: string;
-  pills: Pill[];
-}) {
-  return (
-    <div
-      className={
-        highlighted
-          ? "rounded-2xl border-2 border-brand-blue bg-white p-7 shadow-cta lg:-translate-y-2 lg:p-10"
-          : "rounded-2xl border border-dd-border bg-white p-7 shadow-sm lg:p-10"
-      }
-    >
-      <p
-        className={
-          highlighted
-            ? "text-[14px] font-semibold uppercase text-brand-blue"
-            : "text-[14px] font-semibold uppercase text-dd-muted"
-        }
-        style={{ letterSpacing: "0.14em" }}
-      >
-        {eyebrow}
-      </p>
-      <p className="tabular-nums mt-5 text-[56px] font-bold leading-none text-dd-foreground">
-        {price}
-      </p>
-      <p className="mt-3 text-[16px] text-dd-muted">{subline}</p>
-      <p className="mt-5 max-w-[280px] text-[18px] font-medium leading-[1.4] text-dd-foreground">
-        {summary}
-      </p>
-
-      <div className="my-6 h-px bg-dd-border" />
-
-      <div className="flex flex-col gap-2">
-        {pills.map((pill) => (
-          <span
-            key={pill.label}
-            className={
-              pill.tone === "success"
-                ? "inline-flex w-fit items-center rounded-xl bg-success-fill px-3 py-1.5 text-[14px] text-success-foreground"
-                : "inline-flex w-fit items-center rounded-xl bg-attention-fill px-3 py-1.5 text-[14px] text-attention-foreground"
-            }
-          >
-            {pill.label}
-          </span>
-        ))}
-      </div>
-    </div>
   );
 }
 
