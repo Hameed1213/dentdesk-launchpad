@@ -14,6 +14,47 @@ import {
   MessagesSquare,
   type LucideIcon,
 } from "lucide-react";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+
+const faqItems = [
+  {
+    q: "Is Dent Dock cheaper than Dentally?",
+    a: "Yes — significantly. Dent Dock is £49 per month flat for a single-site practice. Dentally's lowest plan that includes online booking is Essentials at £220 per month plus VAT (real cost £264 for a practice that can't reclaim VAT). Dent Dock includes online booking, digital forms, recalls, payments and two-way SMS in our only plan.",
+  },
+  {
+    q: "Does Dent Dock have clinical charting?",
+    a: "No, and that's intentional. We deliberately don't build tooth charts, perio charts or treatment plan builders. We focus on everything around the chair — booking, communications, recalls, payments, forms and front-of-house workflow. If you need clinical charting, choose Dentally or another clinical-first system, and either run Dent Dock alongside it or pick a different tool.",
+  },
+  {
+    q: "Does Dent Dock handle NHS practices?",
+    a: "Dent Dock is built for UK private practices. We capture NHS number as a field but we don't manage UDA contracts or generate FP17 claims. Mixed practices can use Dent Dock for their private work alongside another system for NHS. If you're predominantly NHS, Dentally is the right choice.",
+  },
+  {
+    q: "Can I switch from Dentally to Dent Dock?",
+    a: "Yes. Export your patient list from Dentally as CSV and import it into Dent Dock with our column-mapping importer. During our first-30-practices launch window we'll handle appointment history migration for you directly. Clinical notes can't migrate because Dent Dock doesn't have a clinical chart — most switching practices keep their notes system or use a separate lightweight clinical tool alongside.",
+  },
+  {
+    q: "Does Dent Dock support multi-site practices?",
+    a: "Not at launch. Multi-site is on our roadmap. Dentally supports multi-site on every plan, so if you run multiple locations today, Dentally is the right choice.",
+  },
+  {
+    q: "How long does it take to go live with Dent Dock?",
+    a: "Most practices can go from signup to a live booking page within a single day. The 8-step onboarding wizard covers practice details, opening hours, services, team and brand. No sales call, no implementation consultant.",
+  },
+  {
+    q: "Is Dent Dock GDPR-compliant?",
+    a: "Dent Dock is built around UK GDPR from the ground up. Every patient consent is captured with the exact text version, IP address and user-agent at the time of giving. Every automated message is tagged transactional, clinical or marketing, and marketing-tagged sends honour patient opt-ins automatically. ICO registration and the practice's own DPIA are responsibilities that sit with the practice — Dent Dock provides the technical controls.",
+  },
+  {
+    q: "What if I outgrow Dent Dock?",
+    a: "If you grow into a multi-site group or you decide you need clinical charting and NHS UDA management, we'll help you migrate to Dentally or another platform with a clean export of your data. We'd rather you ended up with the right software than have you stuck on the wrong one.",
+  },
+];
 
 export const Route = createFileRoute("/compare/dentally")({
   head: () => ({
@@ -31,9 +72,24 @@ export const Route = createFileRoute("/compare/dentally")({
           "An honest comparison of Dent Dock and Dentally for UK private dental practices. Features, pricing and when to choose which.",
       },
     ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: faqItems.map((item) => ({
+            "@type": "Question",
+            name: item.q,
+            acceptedAnswer: { "@type": "Answer", text: item.a },
+          })),
+        }),
+      },
+    ],
   }),
   component: CompareDentallyPage,
 });
+
 
 const switchSteps = [
   {
