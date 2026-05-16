@@ -1144,11 +1144,10 @@ const categories: Category[] = [
   {
     title: "Payments",
     rows: [
-      { feature: "Practice owns its Stripe account", dentDock: yes(), dentally: no("Partner-dependent") },
       { feature: "Send payment links", dentDock: yes(), dentally: yes() },
-      { feature: "Late-cancellation fees", dentDock: yes("Auto via cancel link"), dentally: yes() },
+      { feature: "Late-cancellation fees", dentDock: yes(), dentally: yes() },
       { feature: "Patient receipts", dentDock: yes(), dentally: yes() },
-      { feature: "Deposit collection at booking", dentDock: no("Rolling out"), dentally: yes("Essentials+ only") },
+      { feature: "Deposit collection at booking", dentDock: yes(), dentally: yes("Essentials+ only") },
     ],
   },
   {
