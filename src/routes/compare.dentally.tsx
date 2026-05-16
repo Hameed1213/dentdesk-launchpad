@@ -823,7 +823,7 @@ function Hero() {
 
           <a
             href="#comparison-table"
-            className="mt-8 inline-flex items-center gap-2 rounded-2xl border border-[#E2E8F0] bg-white px-5 py-3 text-[16px] font-medium text-[#0F172A] shadow-sm transition-colors hover:bg-[#F3F6FD] hover:border-[#2563EB]/40"
+            className="mt-8 inline-flex items-center gap-2 rounded-xl bg-[#2563EB] px-6 py-3 text-sm font-semibold text-white shadow-md shadow-blue-500/20 transition-colors hover:bg-[#1d4ed8]"
           >
             Skip to the full feature comparison
             <span aria-hidden="true">→</span>
