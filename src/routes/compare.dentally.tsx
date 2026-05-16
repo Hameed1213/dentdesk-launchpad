@@ -1154,7 +1154,7 @@ const categories: Category[] = [
     title: "Clinical",
     rows: [
       { feature: "Tooth / perio chart", dentDock: no(), dentally: yes() },
-      { feature: "Treatment plan builder", dentDock: no("On the roadmap"), dentally: yes() },
+      { feature: "Treatment plan builder", dentDock: no(), dentally: yes() },
       { feature: "AI clinical note transcription", dentDock: no(), dentally: yes("Essentials+ only") },
       { feature: "Imaging integration", dentDock: no(), dentally: yes("Pro tier only") },
     ],
