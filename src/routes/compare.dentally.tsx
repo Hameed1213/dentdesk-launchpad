@@ -22,6 +22,91 @@ import {
 } from "@/components/ui/accordion";
 import Footer from "@/components/home/Footer";
 import Navbar from "@/components/home/Navbar";
+import { useEffect, useState } from "react";
+
+const EASING = [0.22, 1, 0.36, 1] as const;
+
+const SMS_BUBBLES = [
+  {
+    side: "left" as const,
+    text: "Hi Sarah, your appointment is confirmed for Thursday at 10:30am 👋",
+  },
+  { side: "right" as const, text: "Thanks, see you then 😊" },
+  {
+    side: "left" as const,
+    text: "Don't forget to fill in your medical form before you arrive: dentdock.co.uk/f/x82k",
+  },
+];
+
+function SmsThread() {
+  const prefersReducedMotion =
+    typeof window !== "undefined" &&
+    window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+
+  const [cycle, setCycle] = useState(0);
+  const [visibleCount, setVisibleCount] = useState(
+    prefersReducedMotion ? SMS_BUBBLES.length : 0,
+  );
+
+  useEffect(() => {
+    if (prefersReducedMotion) return;
+    setVisibleCount(0);
+    const timeouts: ReturnType<typeof setTimeout>[] = [];
+    SMS_BUBBLES.forEach((_, i) => {
+      timeouts.push(setTimeout(() => setVisibleCount(i + 1), 600 * (i + 1)));
+    });
+    const loop = setTimeout(() => setCycle((c) => c + 1), 12000);
+    return () => {
+      timeouts.forEach(clearTimeout);
+      clearTimeout(loop);
+    };
+  }, [cycle, prefersReducedMotion]);
+
+  return (
+    <div
+      className="w-[360px] rounded-2xl bg-white p-5"
+      style={{
+        boxShadow:
+          "0 1px 2px rgba(15,23,42,0.06), 0 24px 48px -16px rgba(37,99,235,0.18)",
+      }}
+    >
+      <div className="flex items-center gap-3">
+        <div className="flex h-7 w-7 items-center justify-center rounded-full bg-[#2563EB] text-[11px] font-semibold text-white">
+          SD
+        </div>
+        <span className="text-[14px] font-medium text-dd-foreground">
+          Smile Dental
+        </span>
+      </div>
+
+      <div className="mt-4 flex flex-col gap-2">
+        {SMS_BUBBLES.map((b, i) => {
+          const shown = i < visibleCount;
+          const base =
+            "text-[14px] leading-snug rounded-xl px-3.5 py-2.5 transition-all";
+          const sideCls =
+            b.side === "left"
+              ? "self-start bg-white border border-[#E2E8F0] text-dd-foreground max-w-[280px]"
+              : "self-end bg-[#2563EB] text-white max-w-[240px]";
+          return (
+            <div
+              key={`${cycle}-${i}`}
+              className={`${base} ${sideCls}`}
+              style={{
+                opacity: shown ? 1 : 0,
+                transform: shown ? "translateY(0)" : "translateY(12px)",
+                transitionDuration: "400ms",
+                transitionTimingFunction: `cubic-bezier(${EASING.join(",")})`,
+              }}
+            >
+              {b.text}
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
 
 const faqItems = [
   {
@@ -791,7 +876,7 @@ function Hero() {
         }}
       />
 
-      <div className="relative mx-auto max-w-[1200px] px-6">
+      <div className="relative mx-auto max-w-[1200px] px-6 flex flex-col lg:flex-row lg:items-center lg:gap-10">
         <div className="w-full lg:w-3/5">
           <p
             className="text-[14px] font-semibold uppercase text-brand-blue"
@@ -828,6 +913,10 @@ function Hero() {
             Skip to the full feature comparison
             <span aria-hidden="true">→</span>
           </a>
+        </div>
+
+        <div className="hidden lg:flex lg:w-2/5 justify-center">
+          <SmsThread />
         </div>
       </div>
     </section>
