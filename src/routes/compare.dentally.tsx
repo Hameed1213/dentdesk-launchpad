@@ -1227,7 +1227,7 @@ function StickyPricingCards({ progress }: { progress: number }) {
       {/* Backdrop strip — only visible when sticky */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-[-100vw] bottom-0 bg-[#f3f6fd] border-b border-[#E2E8F0]"
+        className="pointer-events-none absolute inset-x-[-100vw] bottom-0 bg-white border-b border-[#E2E8F0]"
         style={{ top: -80, opacity: backdropOpacity, transition: "opacity 200ms ease-out" }}
       />
       <div className="relative grid grid-cols-[45%_27.5%_27.5%] px-3 py-2">
@@ -1395,13 +1395,13 @@ function FeatureComparison() {
   }, []);
 
   return (
-    <section id="comparison-table" className="bg-[#f3f6fd] py-16 lg:py-24 scroll-mt-24">
+    <section id="comparison-table" className="bg-white py-16 lg:py-24 scroll-mt-24">
       <div className="mx-auto max-w-[1200px] px-6">
         <div className="mx-auto max-w-[720px] text-center">
-          <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-[#0F172A] leading-[1.1]">
+          <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-foreground leading-[1.1]">
             Feature <span className="text-[#2563EB]">comparison</span>
           </h2>
-          <p className="mt-5 text-base md:text-lg text-[#475569]">
+          <p className="mt-5 text-base md:text-lg text-muted-foreground">
             Verified against dentally.com on 15 May 2026.
           </p>
         </div>
@@ -1424,8 +1424,8 @@ function FeatureComparison() {
                 {cat.rows.map((row, i) => (
                   <div
                     key={row.feature}
-                    className={`grid grid-cols-[45%_27.5%_27.5%] items-center px-3 py-4 border-b border-[#E2E8F0] ${
-                      i % 2 === 1 ? "bg-white/50" : ""
+                    className={`grid grid-cols-[45%_27.5%_27.5%] items-center px-3 py-4 border-b border-[#F1F5F9] ${
+                      i % 2 === 1 ? "bg-[#FAFBFC]" : ""
                     }`}
                   >
                     <div className="text-[16px] font-medium text-[#0F172A]">{row.feature}</div>
@@ -1440,7 +1440,7 @@ function FeatureComparison() {
                 {cat.rows.map((row) => (
                   <div
                     key={row.feature}
-                    className="border-b border-[#E2E8F0] pb-5 last:border-0 last:pb-0"
+                    className="border-b border-[#F1F5F9] pb-5 last:border-0 last:pb-0"
                   >
                     <p className="text-[16px] font-medium text-[#0F172A]">{row.feature}</p>
                     <div className="mt-3 grid grid-cols-2 gap-3">
@@ -1470,7 +1470,7 @@ function FeatureComparison() {
           ))}
         </div>
 
-        <p className="mt-12 text-[14px] leading-[1.6] text-[#475569]">
+        <p className="mt-12 text-[14px] leading-[1.6] text-dd-muted">
           Last verified: 15 May 2026. Dent Dock checks Dentally's pricing and feature pages
           quarterly. Spotted something inaccurate? Email hello@dentdock.co.uk and we'll correct it.
         </p>
