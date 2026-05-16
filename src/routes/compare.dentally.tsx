@@ -208,6 +208,8 @@ function CompareDentallyPage() {
       <PriceRationale />
       <FAQ />
       <ClosingCTA />
+      <PageDisclaimer />
+      <Footer />
     </main>
   );
 }
