@@ -866,14 +866,23 @@ function HonestAnswer() {
         transition: { duration: 0.6, ease },
       };
 
-  const cardMotion = (delay: number) =>
+  const panelMotion = reduce
+    ? {}
+    : {
+        initial: { opacity: 0, y: 16 },
+        whileInView: { opacity: 1, y: 0 },
+        viewport: { once: true, margin: "-80px" },
+        transition: { duration: 0.5, ease },
+      };
+
+  const itemMotion = (index: number) =>
     reduce
       ? {}
       : {
-          initial: { opacity: 0, y: 12 },
+          initial: { opacity: 0, y: 8 },
           whileInView: { opacity: 1, y: 0 },
           viewport: { once: true, margin: "-80px" },
-          transition: { duration: 0.4, ease, delay },
+          transition: { duration: 0.4, ease, delay: 0.2 + index * 0.08 },
         };
 
   return (
@@ -881,7 +890,7 @@ function HonestAnswer() {
       <div className="mx-auto max-w-[1200px] px-6">
         <motion.div
           {...headingMotion}
-          className="mx-auto max-w-2xl text-center mb-16"
+          className="mx-auto max-w-2xl text-center"
         >
           <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-foreground leading-[1.1]">
             Which one is
@@ -893,77 +902,75 @@ function HonestAnswer() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:items-start">
-          {/* Dent Dock — warmer */}
-          <motion.div
-            {...cardMotion(0)}
-            className="group rounded-2xl border p-7 lg:p-10 lg:-mt-2 transition-all duration-200 ease-out hover:-translate-y-0.5"
-            style={{
-              background: "linear-gradient(135deg, #EBF1FE 0%, #FFFFFF 100%)",
-              borderColor: "#DBEAFE",
-              boxShadow: "0 14px 32px -8px rgba(37,99,235,0.15)",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.boxShadow = "0 20px 40px -8px rgba(37,99,235,0.22)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.boxShadow = "0 14px 32px -8px rgba(37,99,235,0.15)";
-            }}
-          >
-            <p
-              className="text-[13px] font-semibold uppercase text-[#2563EB]"
-              style={{ letterSpacing: "0.14em" }}
-            >
-              Choose Dent Dock if
-            </p>
-            <h3 className="mt-3 text-[28px] font-semibold leading-tight text-[#0F172A]">
-              Dent Dock
-            </h3>
-            <p className="mt-4 mb-6 text-[17px] leading-[1.6] text-[#0F172A]">
-              Dent Dock is the right fit if all of these describe you:
-            </p>
-            <ul className="flex flex-col gap-[14px]">
-              {dentDockFit.map((item) => (
-                <li key={item} className="flex items-start gap-3 text-[16px] leading-[1.5] text-[#0F172A]">
-                  <CheckCircle2
-                    size={20}
-                    className="mt-0.5 flex-shrink-0 text-[#2563EB]"
-                    fill="#2563EB"
-                    stroke="#FFFFFF"
-                  />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </motion.div>
+        <motion.div
+          {...panelMotion}
+          className="mt-16 lg:mt-24 rounded-[20px] border border-[#E2E8F0] p-8 lg:p-14"
+          style={{
+            background:
+              "linear-gradient(to right, #EBF1FE 0%, #F3F6FD 50%, #FFFFFF 100%)",
+            boxShadow: "0 14px 32px -8px rgba(37,99,235,0.10)",
+          }}
+        >
+          <div className="grid grid-cols-1 lg:grid-cols-2 lg:divide-x lg:divide-[rgba(226,232,240,0.6)]">
+            {/* Dent Dock — left */}
+            <div className="lg:pr-12">
+              <p
+                className="text-[13px] font-semibold uppercase text-[#2563EB]"
+                style={{ letterSpacing: "0.14em" }}
+              >
+                Choose Dent Dock if
+              </p>
+              <ul className="mt-8 flex flex-col gap-5">
+                {dentDockFit.map((item, i) => (
+                  <motion.li
+                    key={item}
+                    {...itemMotion(i)}
+                    className="flex items-start gap-4"
+                  >
+                    <Check
+                      size={20}
+                      strokeWidth={2.5}
+                      className="mt-0.5 flex-shrink-0 text-[#2563EB]"
+                    />
+                    <span className="text-[17px] font-medium leading-[1.5] text-[#0F172A]">
+                      {item}
+                    </span>
+                  </motion.li>
+                ))}
+              </ul>
+            </div>
 
-          {/* Dentally — neutral */}
-          <motion.div
-            {...cardMotion(0.2)}
-            className="rounded-2xl border border-[#E2E8F0] bg-white p-7 lg:p-10 shadow-sm transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-md"
-          >
-            <p
-              className="text-[13px] font-semibold uppercase text-[#475569]"
-              style={{ letterSpacing: "0.14em" }}
-            >
-              Choose Dentally if
-            </p>
-            <h3 className="mt-3 text-[28px] font-semibold leading-tight text-[#0F172A]">
-              Dentally
-            </h3>
-            <p className="mt-4 mb-6 text-[17px] leading-[1.6] text-[#475569]">
-              Dentally is the right fit if you need any of:
-            </p>
-            <ul className="flex flex-col gap-[14px]">
-              {dentallyFit.map((item) => (
-                <li key={item} className="flex items-start gap-3 text-[16px] leading-[1.5] text-[#475569]">
-                  <Minus size={16} className="mt-1 flex-shrink-0 text-[#94A3B8]" />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-        </div>
+            {/* Divider on mobile */}
+            <div className="my-8 h-px bg-[rgba(226,232,240,0.6)] lg:hidden" />
+
+            {/* Dentally — right */}
+            <div className="lg:pl-12">
+              <p
+                className="text-[13px] font-semibold uppercase text-[#94A3B8]"
+                style={{ letterSpacing: "0.14em" }}
+              >
+                Choose Dentally if
+              </p>
+              <ul className="mt-8 flex flex-col gap-5">
+                {dentallyFit.map((item, i) => (
+                  <motion.li
+                    key={item}
+                    {...itemMotion(dentDockFit.length + i)}
+                    className="flex items-start gap-4"
+                  >
+                    <span
+                      aria-hidden="true"
+                      className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-[#94A3B8]"
+                    />
+                    <span className="text-[17px] font-normal leading-[1.5] text-[#475569]">
+                      {item}
+                    </span>
+                  </motion.li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
