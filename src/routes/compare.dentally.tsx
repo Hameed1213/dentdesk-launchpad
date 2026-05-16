@@ -1208,14 +1208,16 @@ function StickyPricingCards({ progress }: { progress: number }) {
   // progress: 0 = full/entry state, 1 = compact/sticky state
   const p = progress;
   const lerp = (a: number, b: number) => a + (b - a) * p;
-  const padY = lerp(24, 12);
-  const padX = lerp(24, 20);
-  const priceSize = lerp(40, 24);
-  const subSize = lerp(14, 12);
-  const gap = lerp(8, 4);
-  const subGap = lerp(4, 4);
+  const padY = lerp(16, 8);
+  const padX = lerp(20, 16);
+  const priceSize = lerp(28, 18);
+  const subSize = lerp(13, 11);
+  const gap = lerp(4, 2);
+  const subGap = lerp(2, 2);
 
   const transition = "all 300ms cubic-bezier(0.22, 1, 0.36, 1)";
+  // Snap backdrop on as soon as cards begin to compress, so rows never show through
+  const backdropOpacity = p > 0.02 ? 1 : 0;
 
   return (
     <div
@@ -1226,7 +1228,7 @@ function StickyPricingCards({ progress }: { progress: number }) {
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-x-[-100vw] top-0 bottom-0 bg-white border-b border-[#E2E8F0]"
-        style={{ opacity: p, transition }}
+        style={{ opacity: backdropOpacity, transition: "opacity 200ms ease-out" }}
       />
       <div className="relative grid grid-cols-[45%_27.5%_27.5%] gap-x-6 py-3">
         <div />
