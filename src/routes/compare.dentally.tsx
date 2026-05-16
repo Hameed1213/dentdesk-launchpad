@@ -905,7 +905,7 @@ function HonestAnswer() {
           className="mt-16 lg:mt-24 rounded-[20px] border border-[#E2E8F0] p-8 lg:p-14"
           style={{
             background:
-              "linear-gradient(to right, #EBF1FE 0%, #F3F6FD 50%, #FFFFFF 100%)",
+              "linear-gradient(to right, #DBEAFE 0%, #F3F6FD 50%, #FFFFFF 100%)",
             boxShadow: "0 14px 32px -8px rgba(37,99,235,0.10)",
           }}
         >
@@ -918,6 +918,12 @@ function HonestAnswer() {
               >
                 Choose Dent Dock if
               </p>
+              <div
+                className="mt-4 inline-flex items-center rounded-full bg-[#DBEAFE] border border-[#BFDBFE] px-[14px] py-[6px] text-[13px] font-semibold text-[#2563EB] tabular-nums"
+                style={{ letterSpacing: "0.02em" }}
+              >
+                FROM £49 / MONTH
+              </div>
               <ul className="mt-8 flex flex-col gap-5">
                 {dentDockFit.map((item, i) => (
                   <motion.li
@@ -925,17 +931,22 @@ function HonestAnswer() {
                     {...itemMotion(i)}
                     className="flex items-start gap-4"
                   >
-                    <Check
-                      size={20}
-                      strokeWidth={2.5}
-                      className="mt-0.5 flex-shrink-0 text-[#2563EB]"
-                    />
+                    <span
+                      aria-hidden="true"
+                      className="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-[#2563EB]"
+                      style={{ boxShadow: "0 2px 4px -1px rgba(37,99,235,0.3)" }}
+                    >
+                      <Check size={14} strokeWidth={2.5} className="text-white" />
+                    </span>
                     <span className="text-[17px] font-medium leading-[1.5] text-[#0F172A]">
                       {item}
                     </span>
                   </motion.li>
                 ))}
               </ul>
+              <p className="mt-8 max-w-[42ch] text-[15px] italic font-normal text-[#475569]">
+                Built for the practice we wished we'd had.
+              </p>
             </div>
 
             {/* Divider on mobile */}
