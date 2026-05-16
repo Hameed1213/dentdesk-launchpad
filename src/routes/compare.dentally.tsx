@@ -1262,20 +1262,11 @@ function FeatureComparison() {
   return (
     <section id="comparison-table" className="bg-white py-16 lg:py-24 scroll-mt-24">
       <div className="mx-auto max-w-[1200px] px-6">
-        <div className="max-w-[720px]">
-          <p
-            className="text-[14px] font-semibold uppercase text-brand-blue"
-            style={{ letterSpacing: "0.14em" }}
-          >
-            Side by side
-          </p>
-          <h2
-            className="mt-4 text-[32px] font-semibold leading-tight text-dd-foreground lg:text-[48px]"
-            style={{ letterSpacing: "-0.02em" }}
-          >
-            Feature comparison
+        <div className="mx-auto max-w-[720px] text-center">
+          <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-foreground leading-[1.1]">
+            Feature <span className="text-[#2563EB]">comparison</span>
           </h2>
-          <p className="mt-5 max-w-[640px] text-[20px] leading-[1.6] text-dd-muted">
+          <p className="mt-5 text-base md:text-lg text-muted-foreground">
             Verified against dentally.com/en-gb/pricing on 15 May 2026. We've left out anything we
             couldn't substantiate.
           </p>
