@@ -54,14 +54,26 @@ function HeroVisual() {
   const [isDesktop, setIsDesktop] = useState(
     typeof window !== "undefined" ? window.matchMedia?.("(min-width: 1024px)").matches ?? false : false,
   );
+  const [isTablet, setIsTablet] = useState(
+    typeof window !== "undefined"
+      ? window.matchMedia?.("(min-width: 640px) and (max-width: 1023px)").matches ?? false
+      : false,
+  );
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-    const mq = window.matchMedia("(min-width: 1024px)");
-    const handler = (e: MediaQueryListEvent) => setIsDesktop(e.matches);
-    setIsDesktop(mq.matches);
-    mq.addEventListener("change", handler);
-    return () => mq.removeEventListener("change", handler);
+    const mqDesktop = window.matchMedia("(min-width: 1024px)");
+    const mqTablet = window.matchMedia("(min-width: 640px) and (max-width: 1023px)");
+    const handleDesktop = (e: MediaQueryListEvent) => setIsDesktop(e.matches);
+    const handleTablet = (e: MediaQueryListEvent) => setIsTablet(e.matches);
+    setIsDesktop(mqDesktop.matches);
+    setIsTablet(mqTablet.matches);
+    mqDesktop.addEventListener("change", handleDesktop);
+    mqTablet.addEventListener("change", handleTablet);
+    return () => {
+      mqDesktop.removeEventListener("change", handleDesktop);
+      mqTablet.removeEventListener("change", handleTablet);
+    };
   }, []);
 
   useEffect(() => {
