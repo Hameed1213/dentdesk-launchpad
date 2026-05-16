@@ -14,8 +14,11 @@ import {
   MessagesSquare,
   Banknote,
   MessageCircle,
+  CheckCircle2,
+  Minus,
   type LucideIcon,
 } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
 import {
   Accordion,
   AccordionContent,
@@ -852,52 +855,118 @@ const dentDockFit = [
 ];
 
 function HonestAnswer() {
-  return (
-    <section className="bg-white py-16 lg:py-24">
-      <div className="mx-auto max-w-[1200px] px-6">
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
-          <FitCard
-            title="Dentally"
-            intro="Dentally is the right fit if you need any of:"
-            items={dentallyFit}
-          />
-          <FitCard
-            title="Dent Dock"
-            intro="Dent Dock is the right fit if all of these describe you:"
-            items={dentDockFit}
-          />
-        </div>
+  const reduce = useReducedMotion();
+  const ease = [0.22, 1, 0.36, 1] as const;
 
-        <p className="mx-auto mt-10 max-w-[640px] text-center text-[16px] text-dd-muted">
-          If both lists describe you, talk to both. We won't be offended.
-        </p>
+  const headingMotion = reduce
+    ? {}
+    : {
+        initial: { opacity: 0, y: 24 },
+        whileInView: { opacity: 1, y: 0 },
+        viewport: { once: true, margin: "-80px" },
+        transition: { duration: 0.6, ease },
+      };
+
+  const cardMotion = (delay: number) =>
+    reduce
+      ? {}
+      : {
+          initial: { opacity: 0, y: 12 },
+          whileInView: { opacity: 1, y: 0 },
+          viewport: { once: true, margin: "-80px" },
+          transition: { duration: 0.4, ease, delay },
+        };
+
+  return (
+    <section className="bg-white pt-16 pb-16 lg:pt-24 lg:pb-24">
+      <div className="mx-auto max-w-[1200px] px-6">
+        <motion.div
+          {...headingMotion}
+          className="mx-auto max-w-2xl text-center mb-16"
+        >
+          <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-foreground leading-[1.1]">
+            Which one is
+            <br />
+            <span className="text-[#2563EB]">right for you?</span>
+          </h2>
+          <p className="mt-5 text-base md:text-lg text-muted-foreground">
+            Two short lists. Read both. If both describe you, talk to both — we won't be offended.
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:items-start">
+          {/* Dent Dock — warmer */}
+          <motion.div
+            {...cardMotion(0)}
+            className="group rounded-2xl border p-7 lg:p-10 lg:-mt-2 transition-all duration-200 ease-out hover:-translate-y-0.5"
+            style={{
+              background: "linear-gradient(135deg, #EBF1FE 0%, #FFFFFF 100%)",
+              borderColor: "#DBEAFE",
+              boxShadow: "0 14px 32px -8px rgba(37,99,235,0.15)",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.boxShadow = "0 20px 40px -8px rgba(37,99,235,0.22)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.boxShadow = "0 14px 32px -8px rgba(37,99,235,0.15)";
+            }}
+          >
+            <p
+              className="text-[13px] font-semibold uppercase text-[#2563EB]"
+              style={{ letterSpacing: "0.14em" }}
+            >
+              Choose Dent Dock if
+            </p>
+            <h3 className="mt-3 text-[28px] font-semibold leading-tight text-[#0F172A]">
+              Dent Dock
+            </h3>
+            <p className="mt-4 mb-6 text-[17px] leading-[1.6] text-[#0F172A]">
+              Dent Dock is the right fit if all of these describe you:
+            </p>
+            <ul className="flex flex-col gap-[14px]">
+              {dentDockFit.map((item) => (
+                <li key={item} className="flex items-start gap-3 text-[16px] leading-[1.5] text-[#0F172A]">
+                  <CheckCircle2
+                    size={20}
+                    className="mt-0.5 flex-shrink-0 text-[#2563EB]"
+                    fill="#2563EB"
+                    stroke="#FFFFFF"
+                  />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+
+          {/* Dentally — neutral */}
+          <motion.div
+            {...cardMotion(0.2)}
+            className="rounded-2xl border border-[#E2E8F0] bg-white p-7 lg:p-10 shadow-sm transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-md"
+          >
+            <p
+              className="text-[13px] font-semibold uppercase text-[#475569]"
+              style={{ letterSpacing: "0.14em" }}
+            >
+              Choose Dentally if
+            </p>
+            <h3 className="mt-3 text-[28px] font-semibold leading-tight text-[#0F172A]">
+              Dentally
+            </h3>
+            <p className="mt-4 mb-6 text-[17px] leading-[1.6] text-[#475569]">
+              Dentally is the right fit if you need any of:
+            </p>
+            <ul className="flex flex-col gap-[14px]">
+              {dentallyFit.map((item) => (
+                <li key={item} className="flex items-start gap-3 text-[16px] leading-[1.5] text-[#475569]">
+                  <Minus size={16} className="mt-1 flex-shrink-0 text-[#94A3B8]" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+        </div>
       </div>
     </section>
-  );
-}
-
-function FitCard({ title, intro, items }: { title: string; intro: string; items: string[] }) {
-  return (
-    <div className="rounded-2xl border border-dd-border bg-white p-7 shadow-sm lg:p-10">
-      <p
-        className="text-[14px] font-semibold uppercase text-dd-muted"
-        style={{ letterSpacing: "0.14em" }}
-      >
-        When to choose
-      </p>
-      <h2 className="mt-3 text-[28px] font-semibold leading-tight text-dd-foreground">{title}</h2>
-      <p className="mt-5 text-[18px] leading-[1.6] text-dd-foreground">{intro}</p>
-      <ul className="mt-5 flex flex-col gap-3 text-[18px] leading-[1.6] text-dd-foreground">
-        {items.map((item) => (
-          <li key={item} className="flex gap-3">
-            <span aria-hidden="true" className="select-none text-dd-subtle">
-              —
-            </span>
-            <span>{item}</span>
-          </li>
-        ))}
-      </ul>
-    </div>
   );
 }
 
