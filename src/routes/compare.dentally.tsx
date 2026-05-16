@@ -20,6 +20,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import Footer from "@/components/home/Footer";
 
 const faqItems = [
   {
@@ -90,6 +91,20 @@ export const Route = createFileRoute("/compare/dentally")({
   component: CompareDentallyPage,
 });
 
+function PageDisclaimer() {
+  return (
+    <section className="w-full border-t border-[#E2E8F0] bg-white py-12">
+      <div className="mx-auto max-w-[1080px] px-6">
+        <p className="text-[14px] font-medium text-[#475569]">
+          Last verified: 15 May 2026
+        </p>
+        <p className="mt-6 text-[14px] leading-[1.65] text-[#475569]">
+          Pricing and feature information about Dentally is taken from publicly available sources at dentally.com as of 15 May 2026 and is correct to the best of our knowledge. Dentally and Dentally Vision are trade marks of Henry Schein One UK Ltd. Dent Dock is not affiliated with, endorsed by, or sponsored by Dentally or Henry Schein One. If we've misrepresented anything on this page, please email hello@dentdock.co.uk and we'll correct it promptly. Dent Dock is a trading name of Paradigm Network Ltd, registered in England & Wales.
+        </p>
+      </div>
+    </section>
+  );
+}
 
 const switchSteps = [
   {
@@ -207,6 +222,8 @@ function CompareDentallyPage() {
       <PriceRationale />
       <FAQ />
       <ClosingCTA />
+      <PageDisclaimer />
+      <Footer />
     </main>
   );
 }
