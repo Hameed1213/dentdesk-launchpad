@@ -13,7 +13,7 @@ import {
   Image as ImageIcon,
   MessagesSquare,
   Banknote,
-  MapPin,
+  MessageCircle,
   type LucideIcon,
 } from "lucide-react";
 import {
@@ -39,9 +39,9 @@ type FloatPill = {
 
 const PILLS: FloatPill[] = [
   { icon: Banknote, text: "£49 vs £125+ a month", top: "10%", left: "5%", floatDelay: "0s" },
-  { icon: CalendarCheck, text: "Online booking included from day one", top: "18%", left: "55%", floatDelay: "-1.2s" },
-  { icon: FileText, text: "16 dental form templates pre-built", top: "70%", left: "0%", floatDelay: "-2.5s", hideOnMd: true },
-  { icon: MapPin, text: "Single-site UK private practice focus", top: "85%", left: "45%", floatDelay: "-3.7s" },
+  { icon: CalendarCheck, text: "Online booking included vs Essentials+ only", top: "18%", left: "55%", floatDelay: "-1.2s" },
+  { icon: Zap, text: "Live in a day vs sales call required", top: "70%", left: "0%", floatDelay: "-2.5s", hideOnMd: true },
+  { icon: MessageCircle, text: "Direct WhatsApp support vs standard chat support", top: "85%", left: "45%", floatDelay: "-3.7s" },
 ];
 
 function HeroVisual() {
@@ -115,10 +115,10 @@ function HeroVisual() {
             }}
           >
             <span
-              className="flex h-6 w-6 items-center justify-center rounded-full shrink-0"
+              className="flex h-9 w-9 items-center justify-center rounded-full shrink-0"
               style={{ backgroundColor: "#DBEAFE" }}
             >
-              <Icon size={14} strokeWidth={2} color="#2563EB" />
+              <Icon size={20} strokeWidth={2} color="#2563EB" />
             </span>
             <span
               className="whitespace-nowrap text-[15px] text-[#0F172A]"
