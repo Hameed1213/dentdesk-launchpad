@@ -39,10 +39,10 @@ type FloatPill = {
 };
 
 const PILLS: FloatPill[] = [
-  { icon: Banknote, text: "£49 vs £125+ a month", top: "10%", left: "5%", floatDelay: "0s" },
-  { icon: CalendarCheck, text: "Online booking included vs Essentials+ only", top: "18%", right: "0%", floatDelay: "-1.2s" },
-  { icon: Zap, text: "Live in a day vs sales call required", top: "70%", left: "0%", floatDelay: "-2.5s", hideOnMd: true },
-  { icon: MessageCircle, text: "Direct WhatsApp support vs standard chat support", top: "85%", right: "0%", floatDelay: "-3.7s" },
+  { icon: Banknote, text: "£49 vs £125+ a month", top: "8%", left: "10%", floatDelay: "0s" },
+  { icon: CalendarCheck, text: "Online booking included vs Essentials+ only", top: "30%", left: "40%", floatDelay: "-1.2s" },
+  { icon: Zap, text: "Live in a day vs sales call required", top: "55%", left: "0%", floatDelay: "-2.5s", hideOnMd: true },
+  { icon: MessageCircle, text: "Direct WhatsApp support vs standard chat support", top: "80%", left: "30%", floatDelay: "-3.7s" },
 ];
 
 function HeroVisual() {
@@ -106,7 +106,7 @@ function HeroVisual() {
               left: p.left,
               right: p.right,
               zIndex: 4,
-              padding: "10px 20px 10px 16px",
+              padding: "10px 20px 10px 0",
               border: "1px solid #E2E8F0",
               boxShadow: "0 8px 24px -8px rgba(37,99,235,0.15)",
               position: "absolute",
@@ -131,8 +131,8 @@ function HeroVisual() {
               <Icon size={20} strokeWidth={2} color="#2563EB" />
             </span>
             <span
-              className="whitespace-nowrap text-[15px] text-[#0F172A]"
-              style={{ fontWeight: 500, marginLeft: 56 }}
+              className="whitespace-nowrap text-[14px] text-[#0F172A]"
+              style={{ fontWeight: 500, paddingLeft: 60 }}
             >
               {p.text}
             </span>
