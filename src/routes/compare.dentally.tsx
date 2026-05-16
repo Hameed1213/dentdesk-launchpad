@@ -43,7 +43,7 @@ const PILLS: FloatPill[] = [
   { icon: Zap, text: "Live in a day vs sales call", top: "20%", topSm: "12%", left: "-10%", floatDelay: "0s" },
   { icon: Banknote, text: "£49 vs £125+", top: "16%", topXs: "8%", right: "0%", floatDelay: "-1.2s" },
   { icon: MessageCircle, text: "WhatsApp support vs ticket queue", top: "76%", topXs: "86%", left: "-6%", floatDelay: "-2.5s" },
-  { icon: CalendarCheck, text: "Booking included vs not", top: "62%", topXs: "74%", right: "-8%", floatDelay: "-3.7s" },
+  { icon: CalendarCheck, text: "Booking included vs not", top: "62%", topXs: "70%", right: "-8%", floatDelay: "-3.7s" },
 ];
 
 function HeroVisual() {
