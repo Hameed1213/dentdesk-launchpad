@@ -24,9 +24,76 @@ function CompareDentallyPage() {
   return (
     <main className="bg-white text-dd-foreground">
       <Hero />
+      <HonestAnswer />
     </main>
   );
 }
+
+const dentallyFit = [
+  "Clinical charting, tooth charts or treatment plan builders",
+  "NHS UDA / FP17 management",
+  "Multi-site practice management",
+  "AI clinical note transcription",
+  "Imaging integration (DEXIS, Carestream, Sirona)",
+  "A long-established platform with thousands of UK customers",
+];
+
+const dentDockFit = [
+  "Single-site UK private practice",
+  "You want online booking, digital forms, recalls and patient comms",
+  "You don't need clinical charting or NHS contract management",
+  "You'd rather pay £49 than £264 a month",
+  "You want to be live this week, not after a multi-week implementation",
+];
+
+function HonestAnswer() {
+  return (
+    <section className="bg-white py-16 lg:py-24">
+      <div className="mx-auto max-w-[1200px] px-6">
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
+          <FitCard title="Dentally" intro="Dentally is the right fit if you need any of:" items={dentallyFit} />
+          <FitCard
+            title="Dent Dock"
+            intro="Dent Dock is the right fit if all of these describe you:"
+            items={dentDockFit}
+          />
+        </div>
+
+        <p className="mx-auto mt-10 max-w-[640px] text-center text-[16px] text-dd-muted">
+          If both lists describe you, talk to both. We won't be offended.
+        </p>
+      </div>
+    </section>
+  );
+}
+
+function FitCard({ title, intro, items }: { title: string; intro: string; items: string[] }) {
+  return (
+    <div className="rounded-2xl border border-dd-border bg-white p-7 shadow-sm lg:p-10">
+      <p
+        className="text-[14px] font-semibold uppercase text-dd-muted"
+        style={{ letterSpacing: "0.14em" }}
+      >
+        When to choose
+      </p>
+      <h2 className="mt-3 text-[28px] font-semibold leading-tight text-dd-foreground">
+        {title}
+      </h2>
+      <p className="mt-5 text-[18px] leading-[1.6] text-dd-foreground">{intro}</p>
+      <ul className="mt-5 flex flex-col gap-3 text-[18px] leading-[1.6] text-dd-foreground">
+        {items.map((item) => (
+          <li key={item} className="flex gap-3">
+            <span aria-hidden="true" className="select-none text-dd-subtle">
+              —
+            </span>
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
 
 function Hero() {
   return (
