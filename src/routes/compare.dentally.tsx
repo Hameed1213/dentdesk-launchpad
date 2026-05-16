@@ -838,10 +838,10 @@ function PriceCard({
 
 const dentallyFit = [
   "NHS, mixed and private practices of every size",
-  "Practices that need full clinical charting and treatment plans",
-  "Practices managing NHS UDA contracts and FP17 claims",
+  "Full clinical charting and treatment plans",
+  "NHS UDA contracts and FP17 claims",
   "Multi-site practices and dental groups",
-  "Practices that need imaging integration and AI clinical notes",
+  "Imaging integration and AI clinical notes",
 ];
 
 const dentDockFit = [
