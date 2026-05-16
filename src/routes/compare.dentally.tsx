@@ -910,10 +910,24 @@ function HonestAnswer() {
         >
           <div className="grid grid-cols-1 lg:grid-cols-2 lg:divide-x lg:divide-[rgba(226,232,240,0.6)]">
             {/* Dent Dock — left */}
-            <div className="lg:pr-12">
-              <h3 className="text-[19px] font-semibold tracking-tight leading-snug text-[#2563EB]">
-                Dent Dock is for
-              </h3>
+            <div className="relative lg:pr-12">
+              <div
+                aria-hidden
+                className="pointer-events-none absolute -inset-2 opacity-[0.45]"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(to right, rgba(0,0,0,0.07) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,0,0,0.07) 1px, transparent 1px)",
+                  backgroundSize: "22px 22px",
+                  WebkitMaskImage:
+                    "radial-gradient(ellipse at center, black 40%, transparent 80%)",
+                  maskImage:
+                    "radial-gradient(ellipse at center, black 40%, transparent 80%)",
+                }}
+              />
+              <div className="relative">
+                <h3 className="text-[19px] font-semibold tracking-tight leading-snug text-[#2563EB]">
+                  Dent Dock is for
+                </h3>
               <ul className="mt-8 flex flex-col gap-5">
                 {dentDockFit.map((item, i) => (
                   <motion.li
@@ -934,6 +948,7 @@ function HonestAnswer() {
                   </motion.li>
                 ))}
               </ul>
+              </div>
             </div>
 
             {/* Divider on mobile */}
