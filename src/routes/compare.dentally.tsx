@@ -1204,7 +1204,173 @@ function StatusCell({ cell }: { cell: Cell }) {
   );
 }
 
+function StickyPricingCards({ progress }: { progress: number }) {
+  // progress: 0 = full/entry state, 1 = compact/sticky state
+  const p = progress;
+  const lerp = (a: number, b: number) => a + (b - a) * p;
+  const padY = lerp(24, 12);
+  const padX = lerp(24, 20);
+  const priceSize = lerp(40, 24);
+  const subSize = lerp(14, 12);
+  const gap = lerp(8, 4);
+  const subGap = lerp(4, 4);
+
+  const transition = "all 300ms cubic-bezier(0.22, 1, 0.36, 1)";
+
+  return (
+    <div
+      className="hidden md:block sticky z-20"
+      style={{ top: 80 }}
+    >
+      {/* Backdrop strip — only visible when sticky */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-[-100vw] top-0 bottom-0 bg-white border-b border-[#E2E8F0]"
+        style={{ opacity: p, transition }}
+      />
+      <div className="relative grid grid-cols-[45%_27.5%_27.5%] gap-x-6 py-3">
+        <div />
+        {/* Dent Dock card */}
+        <div
+          style={{
+            background: "linear-gradient(135deg, #EBF1FE 0%, #FFFFFF 100%)",
+            border: "2px solid #2563EB",
+            borderRadius: 20,
+            paddingTop: padY,
+            paddingBottom: padY,
+            paddingLeft: padX,
+            paddingRight: padX,
+            boxShadow: "0 14px 32px -8px rgba(37,99,235,0.2)",
+            transition,
+          }}
+          className="flex flex-col items-center justify-center text-center"
+        >
+          <span
+            className="font-semibold text-[#2563EB]"
+            style={{ fontSize: 12, letterSpacing: "0.14em", textTransform: "uppercase" }}
+          >
+            Dent Dock
+          </span>
+          <span
+            className="font-bold text-[#0F172A] tabular-nums"
+            style={{ fontSize: priceSize, letterSpacing: "-0.03em", marginTop: gap, transition, lineHeight: 1.1 }}
+          >
+            £49
+          </span>
+          <span
+            className="font-medium text-[#475569]"
+            style={{ fontSize: subSize, marginTop: subGap, transition }}
+          >
+            per month
+          </span>
+        </div>
+        {/* Dentally card */}
+        <div
+          style={{
+            background: "#FFFFFF",
+            border: "1px solid #E2E8F0",
+            borderRadius: 20,
+            paddingTop: padY,
+            paddingBottom: padY,
+            paddingLeft: padX,
+            paddingRight: padX,
+            boxShadow: "0 1px 2px 0 rgba(0,0,0,0.05)",
+            transition,
+          }}
+          className="flex flex-col items-center justify-center text-center"
+        >
+          <span
+            className="font-semibold text-[#475569]"
+            style={{ fontSize: 12, letterSpacing: "0.14em", textTransform: "uppercase" }}
+          >
+            Dentally
+          </span>
+          <span
+            className="font-bold text-[#0F172A] tabular-nums"
+            style={{ fontSize: priceSize, letterSpacing: "-0.03em", marginTop: gap, transition, lineHeight: 1.1 }}
+          >
+            £125 — £220+
+          </span>
+          <span
+            className="font-medium text-[#475569]"
+            style={{ fontSize: subSize, marginTop: subGap, transition }}
+          >
+            per month, ex VAT
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function MobilePricingCards() {
+  return (
+    <div className="md:hidden mt-8 grid grid-cols-2 gap-4">
+      <div
+        style={{
+          background: "linear-gradient(135deg, #EBF1FE 0%, #FFFFFF 100%)",
+          border: "2px solid #2563EB",
+          borderRadius: 20,
+          padding: 20,
+          boxShadow: "0 14px 32px -8px rgba(37,99,235,0.2)",
+        }}
+        className="flex flex-col items-center text-center"
+      >
+        <span className="font-semibold text-[#2563EB]" style={{ fontSize: 11, letterSpacing: "0.14em", textTransform: "uppercase" }}>
+          Dent Dock
+        </span>
+        <span className="font-bold text-[#0F172A] tabular-nums mt-2" style={{ fontSize: 28, letterSpacing: "-0.03em", lineHeight: 1.1 }}>
+          £49
+        </span>
+        <span className="font-medium text-[#475569] mt-1" style={{ fontSize: 13 }}>per month</span>
+      </div>
+      <div
+        style={{
+          background: "#FFFFFF",
+          border: "1px solid #E2E8F0",
+          borderRadius: 20,
+          padding: 20,
+          boxShadow: "0 1px 2px 0 rgba(0,0,0,0.05)",
+        }}
+        className="flex flex-col items-center text-center"
+      >
+        <span className="font-semibold text-[#475569]" style={{ fontSize: 11, letterSpacing: "0.14em", textTransform: "uppercase" }}>
+          Dentally
+        </span>
+        <span className="font-bold text-[#0F172A] tabular-nums mt-2" style={{ fontSize: 22, letterSpacing: "-0.03em", lineHeight: 1.1 }}>
+          £125 — £220+
+        </span>
+        <span className="font-medium text-[#475569] mt-1" style={{ fontSize: 13 }}>per month, ex VAT</span>
+      </div>
+    </div>
+  );
+}
+
 function FeatureComparison() {
+  const [progress, setProgress] = useState(0);
+  const stickyWrapRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const onScroll = () => {
+      const el = stickyWrapRef.current;
+      if (!el) return;
+      const rect = el.getBoundingClientRect();
+      // Sticky offset is 80px. Compress over a 120px window.
+      const offset = 80;
+      const window = 120;
+      const delta = offset - rect.top;
+      const p = Math.max(0, Math.min(1, delta / window));
+      setProgress(p);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, []);
+
   return (
     <section id="comparison-table" className="bg-white py-16 lg:py-24 scroll-mt-24">
       <div className="mx-auto max-w-[1200px] px-6">
@@ -1217,10 +1383,13 @@ function FeatureComparison() {
           </p>
         </div>
 
-        <div className="mt-12">
+        <div ref={stickyWrapRef} className="mt-12 relative">
+          <StickyPricingCards progress={progress} />
+          <MobilePricingCards />
+
           {categories.map((cat, catIdx) => (
-            <div key={cat.title} className={catIdx === 0 ? "" : "mt-16"}>
-              <div className="flex items-center gap-3">
+            <div key={cat.title} className={catIdx === 0 ? "mt-6" : "mt-16"}>
+              <div className="flex items-center gap-3 mb-6">
                 <span aria-hidden="true" className="h-8 w-1 rounded-full bg-[#2563EB]" />
                 <h3 className="text-[20px] md:text-[24px] font-semibold text-[#0F172A]">
                   {cat.title}
@@ -1228,19 +1397,11 @@ function FeatureComparison() {
               </div>
 
               {/* Desktop */}
-              <div className="mt-6 hidden md:block">
-                <div
-                  className="grid grid-cols-[45%_27.5%_27.5%] border-b border-[#E2E8F0] pb-3 text-[13px] font-semibold uppercase text-[#94A3B8]"
-                  style={{ letterSpacing: "0.08em" }}
-                >
-                  <div></div>
-                  <div className="text-center">Dent Dock</div>
-                  <div className="text-center">Dentally</div>
-                </div>
+              <div className="hidden md:block">
                 {cat.rows.map((row, i) => (
                   <div
                     key={row.feature}
-                    className={`grid grid-cols-[45%_27.5%_27.5%] items-center px-3 py-7 border-b border-[#F1F5F9] ${
+                    className={`grid grid-cols-[45%_27.5%_27.5%] items-center px-3 py-4 border-b border-[#F1F5F9] ${
                       i % 2 === 1 ? "bg-[#FAFBFC]" : ""
                     }`}
                   >
@@ -1252,7 +1413,7 @@ function FeatureComparison() {
               </div>
 
               {/* Mobile */}
-              <div className="mt-6 flex flex-col gap-5 md:hidden">
+              <div className="flex flex-col gap-5 md:hidden">
                 {cat.rows.map((row) => (
                   <div
                     key={row.feature}
