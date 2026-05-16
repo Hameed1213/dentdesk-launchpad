@@ -44,6 +44,8 @@ function CompareDentallyPage() {
       <FeaturesGrid />
       <WhereDentallyWins />
       <FounderNote />
+      <FeatureComparison />
+
     </main>
   );
 }
