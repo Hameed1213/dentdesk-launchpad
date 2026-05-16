@@ -337,11 +337,15 @@ function WhyDentDockBlock({
   body,
   label,
   textLeft,
+  index,
+  total,
 }: {
   title: string;
   body: string;
   label: string;
   textLeft: boolean;
+  index: number;
+  total: number;
 }) {
   const reduce = useReducedMotion();
   const ease = [0.22, 1, 0.36, 1] as const;
@@ -364,37 +368,50 @@ function WhyDentDockBlock({
         transition: { duration: 0.5, ease, delay: 0.1 },
       };
 
+  const isLast = index === total - 1;
+
   return (
-    <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-[45%_50%] lg:gap-16">
-      <motion.div
-        {...textMotion}
-        className={textLeft ? "lg:order-1" : "lg:order-2"}
+    <div
+      className="sticky"
+      style={{
+        top: `calc(96px + ${index * 24}px)`,
+        zIndex: 10 + index,
+        marginBottom: isLast ? 0 : 24,
+      }}
+    >
+      <div
+        className="rounded-3xl border border-[#E2E8F0] bg-white p-8 shadow-[0_20px_48px_-20px_rgba(15,23,42,0.18)] lg:p-14"
       >
-        <h3
-          className="text-[28px] font-semibold text-dd-foreground lg:text-[36px]"
-          style={{ letterSpacing: "-0.02em" }}
-        >
-          {title}
-        </h3>
-        <p className="mt-6 max-w-[520px] text-[17px] leading-[1.65] text-[#475569] lg:text-[18px]">
-          {body}
-        </p>
-      </motion.div>
-      <motion.div
-        {...visualMotion}
-        className={textLeft ? "lg:order-2" : "lg:order-1"}
-      >
-        <div
-          className="flex aspect-[4/3] w-full items-center justify-center rounded-2xl border border-dashed border-[#CBD5E1] bg-[#F1F5F9]"
-        >
-          <span
-            className="text-[13px] font-medium uppercase text-[#94A3B8]"
-            style={{ letterSpacing: "0.08em" }}
+        <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-[45%_50%] lg:gap-16">
+          <motion.div
+            {...textMotion}
+            className={textLeft ? "lg:order-1" : "lg:order-2"}
           >
-            {label}
-          </span>
+            <h3
+              className="text-[28px] font-semibold text-dd-foreground lg:text-[36px]"
+              style={{ letterSpacing: "-0.02em" }}
+            >
+              {title}
+            </h3>
+            <p className="mt-6 max-w-[520px] text-[17px] leading-[1.65] text-[#475569] lg:text-[18px]">
+              {body}
+            </p>
+          </motion.div>
+          <motion.div
+            {...visualMotion}
+            className={textLeft ? "lg:order-2" : "lg:order-1"}
+          >
+            <div className="flex aspect-[4/3] w-full items-center justify-center rounded-2xl border border-dashed border-[#CBD5E1] bg-[#F1F5F9]">
+              <span
+                className="text-[13px] font-medium uppercase text-[#94A3B8]"
+                style={{ letterSpacing: "0.08em" }}
+              >
+                {label}
+              </span>
+            </div>
+          </motion.div>
         </div>
-      </motion.div>
+      </div>
     </div>
   );
 }
@@ -418,9 +435,9 @@ function WhyDentDockBlocks() {
           </p>
         </div>
 
-        <div className="mt-16 flex flex-col gap-16 lg:mt-20 lg:gap-24">
-          {whyBlocks.map((b) => (
-            <WhyDentDockBlock key={b.title} {...b} />
+        <div className="mt-16 lg:mt-20">
+          {whyBlocks.map((b, i) => (
+            <WhyDentDockBlock key={b.title} {...b} index={i} total={whyBlocks.length} />
           ))}
         </div>
       </div>
