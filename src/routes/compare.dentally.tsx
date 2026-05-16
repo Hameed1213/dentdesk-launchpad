@@ -32,17 +32,16 @@ type FloatPill = {
   icon: LucideIcon;
   text: string;
   top: string;
-  left?: string;
-  right?: string;
+  left: string;
   floatDelay: string;
   hideOnMd?: boolean;
 };
 
 const PILLS: FloatPill[] = [
-  { icon: Banknote, text: "£49 vs £125+ a month", top: "19%", right: "56%", floatDelay: "0s" },
-  { icon: CalendarCheck, text: "Online booking included vs Essentials+ only", top: "28%", right: "0%", floatDelay: "-1.2s" },
-  { icon: Zap, text: "Live in a day vs sales call required", top: "66%", right: "55%", floatDelay: "-2.5s", hideOnMd: true },
-  { icon: MessageCircle, text: "Direct WhatsApp support vs standard chat support", top: "75%", right: "0%", floatDelay: "-3.7s" },
+  { icon: Banknote, text: "£49 vs £125+ a month", top: "25%", left: "29%", floatDelay: "0s" },
+  { icon: CalendarCheck, text: "Online booking included vs Essentials+ only", top: "26%", left: "70%", floatDelay: "-1.2s" },
+  { icon: Zap, text: "Live in a day vs sales call required", top: "68%", left: "31%", floatDelay: "-2.5s", hideOnMd: true },
+  { icon: MessageCircle, text: "Direct WhatsApp support vs standard chat support", top: "69%", left: "72%", floatDelay: "-3.7s" },
 ];
 
 function HeroVisual() {
