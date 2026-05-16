@@ -313,9 +313,10 @@ function PageDisclaimer() {
 
 const whyBlocks = [
   {
-    title: "Live within the day",
-    body: "Sign up online, run through the 8-step onboarding wizard — practice details, opening hours, services, team, brand — and your booking page is live the same day. No sales calls, no implementation consultant, no four-week project. The first thing you'll do tomorrow is take an online booking.",
-    label: "VISUAL · LIVE WITHIN THE DAY",
+    title: "Live in a day",
+    body: "Sign up, set up your practice in 8 steps, go live the same day. No sales call, no implementation consultant — the first thing you'll do tomorrow is take an online booking.",
+    note: "Coming from another system or starting fresh? We've written setup guides for every path.",
+    label: "VISUAL · LIVE IN A DAY",
     textLeft: true,
   },
   {
@@ -335,6 +336,7 @@ const whyBlocks = [
 function WhyDentDockBlock({
   title,
   body,
+  note,
   label,
   textLeft,
   index,
@@ -342,6 +344,7 @@ function WhyDentDockBlock({
 }: {
   title: string;
   body: string;
+  note?: string;
   label: string;
   textLeft: boolean;
   index: number;
@@ -396,6 +399,11 @@ function WhyDentDockBlock({
             <p className="mt-6 max-w-[520px] text-[17px] leading-[1.65] text-[#475569] lg:text-[18px]">
               {body}
             </p>
+            {note && (
+              <p className="mt-5 max-w-[520px] text-[15px] italic leading-[1.5] text-[#94A3B8]">
+                {note}
+              </p>
+            )}
           </motion.div>
           <motion.div
             {...visualMotion}
