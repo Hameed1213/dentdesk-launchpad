@@ -526,26 +526,19 @@ function WhatNextCTA() {
       style={{ background: "linear-gradient(to bottom, #F3F6FD, #FFFFFF)" }}
     >
       <div className="mx-auto max-w-[880px] px-6 text-center">
-        <motion.p
-          {...fade(0)}
-          className="text-[14px] font-semibold uppercase text-brand-blue"
-          style={{ letterSpacing: "0.14em" }}
-        >
-          What next?
-        </motion.p>
         <motion.h2
           {...fade(0.2)}
-          className="mt-6 text-[32px] font-semibold text-dd-foreground lg:text-[48px]"
+          className="text-[32px] font-semibold text-dd-foreground lg:text-[48px]"
           style={{ letterSpacing: "-0.02em" }}
         >
-          No pressure either way.
+          Want to see more, or just have a chat?
         </motion.h2>
         <motion.p
           {...fade(0.35)}
           className="mx-auto mt-4 max-w-[640px] text-[18px] leading-[1.6] text-[#475569] lg:text-[20px]"
         >
-          Have a look around the rest of Dent Dock, or send Hariss a message on WhatsApp. Real
-          human, same-day reply.
+          Explore the rest of Dent Dock, or message us directly with any questions about our
+          software.
         </motion.p>
 
         <motion.div
