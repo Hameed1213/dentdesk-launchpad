@@ -1254,8 +1254,8 @@ function StickyPricingCards({ progress }: { progress: number }) {
             Dent Dock
           </span>
           <span
-            className="font-bold text-[#0F172A] tabular-nums"
-            style={{ fontSize: priceSize, letterSpacing: "-0.03em", marginTop: gap, transition, lineHeight: 1.1 }}
+            className="font-medium text-[#0F172A] tabular-nums"
+            style={{ fontSize: priceSize, letterSpacing: "-0.02em", marginTop: gap, transition, lineHeight: 1.1 }}
           >
             £49
           </span>
