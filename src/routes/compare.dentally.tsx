@@ -986,6 +986,9 @@ function HonestAnswer() {
                   </motion.li>
                 ))}
               </ul>
+              <p className="mt-6 text-[14px] leading-[1.5] text-[#94A3B8]">
+                Dent Dock is a flat £49/mo per practice.
+              </p>
               </div>
             </div>
 
@@ -1014,6 +1017,9 @@ function HonestAnswer() {
                   </motion.li>
                 ))}
               </ul>
+              <p className="mt-6 text-[14px] leading-[1.5] text-[#94A3B8]">
+                Dentally starts at £125/mo, but online patient booking only kicks in on the Essentials tier at £220+/mo.
+              </p>
             </div>
           </div>
         </motion.div>
