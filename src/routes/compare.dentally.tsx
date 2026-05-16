@@ -846,10 +846,10 @@ const dentallyFit = [
 
 const dentDockFit = [
   "Single-site UK private practices",
-  "Practices that want 24/7 patient booking",
-  "Practices tired of manual reminders, recalls and forms",
-  "Practices that want to take deposits and reduce no-shows",
-  "Practices focused on private treatment and patient experience",
+  "24/7 patient booking, without the phone calls",
+  "Replacing manual reminders, recalls and forms",
+  "Taking deposits and reducing no-shows",
+  "Putting private treatment and patient experience first",
 ];
 
 function HonestAnswer() {
