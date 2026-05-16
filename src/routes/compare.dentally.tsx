@@ -842,15 +842,14 @@ const dentallyFit = [
   "Practices managing NHS UDA contracts and FP17 claims",
   "Practices running multi-site or multi-location groups",
   "Practices that need imaging integration and AI clinical notes",
-  "Practices that want a long-established platform",
 ];
 
 const dentDockFit = [
   "Single-site UK private practices",
   "Practices that book most patients online",
   "Practices replacing manual reminders, recalls and form-chasing",
-  "Practices taking patient payments and deposits through Stripe",
-  "Practices that want simple, fast front-of-house software",
+  "Practices that take card payments and deposits from patients",
+  "Practices focused on private treatment and patient experience",
 ];
 
 function HonestAnswer() {
