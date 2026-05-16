@@ -484,30 +484,66 @@ function CompareDentallyPage() {
 
 function FAQ() {
   return (
-    <section className="bg-white py-16 lg:py-24">
-      <div className="mx-auto max-w-[880px] px-6">
-        <p className="text-[14px] font-medium uppercase tracking-[0.14em] text-dd-brand-blue">
-          Frequently asked
-        </p>
-        <h2 className="mt-4 text-[32px] font-semibold tracking-tight text-dd-foreground lg:text-[48px]">
-          Questions practice owners ask
-        </h2>
-        <Accordion type="multiple" className="mt-10 flex flex-col gap-4">
-          {faqItems.map((item, i) => (
-            <AccordionItem
-              key={i}
-              value={`item-${i}`}
-              className="rounded-2xl border border-[#E2E8F0] bg-white px-6 [&[data-state=open]]:pb-2"
-            >
-              <AccordionTrigger className="py-6 text-left text-[18px] font-semibold text-dd-foreground hover:no-underline [&>svg]:text-[#64748B]">
-                {item.q}
-              </AccordionTrigger>
-              <AccordionContent className="border-t border-[#E2E8F0] pt-4 text-[16px] leading-[1.6] text-[#475569]">
-                {item.a}
-              </AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
+    <section className="bg-white py-16 md:py-24">
+      <div className="max-w-3xl mx-auto px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-12 sm:mb-16"
+        >
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight text-foreground leading-[1.1] mb-4">
+            Questions practice owners ask
+          </h2>
+          <p className="text-[16px] sm:text-[17px] leading-[1.6] text-[#475569]">
+            Everything you need to know before switching from Dentally.
+          </p>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+        >
+          <Accordion type="single" collapsible className="w-full">
+            {faqItems.map((item, i) => (
+              <AccordionItem
+                key={i}
+                value={`item-${i}`}
+                className="border-b border-[#EEEEEE]"
+              >
+                <AccordionTrigger className="text-left text-[16px] sm:text-[17px] font-medium text-[#0F172A] py-5 hover:no-underline">
+                  {item.q}
+                </AccordionTrigger>
+                <AccordionContent className="pb-5">
+                  <p className="text-[15px] sm:text-[16px] leading-[1.6] text-[#475569]">
+                    {item.a}
+                  </p>
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </motion.div>
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="text-center text-[15px] text-[#475569] mt-12"
+        >
+          Can't find what you're looking for?{" "}
+          <a
+            href="https://wa.me/447404488089"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[#2563EB] font-medium hover:underline"
+          >
+            Get in touch with us directly
+          </a>
+        </motion.p>
       </div>
     </section>
   );
