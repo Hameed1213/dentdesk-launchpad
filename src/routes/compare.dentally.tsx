@@ -99,13 +99,15 @@ function HeroVisual() {
         return (
           <div
             key={p.text}
-            className={`absolute ${p.hideOnMd ? "hidden xl:flex" : "flex"} items-center gap-3 rounded-full bg-white pr-5 pl-3 py-3`}
+            className={`absolute ${p.hideOnMd ? "hidden xl:flex" : "flex"} items-center rounded-full bg-white`}
             style={{
               top: p.top,
               left: p.left,
               zIndex: 4,
+              padding: "10px 20px 10px 16px",
               border: "1px solid #E2E8F0",
               boxShadow: "0 8px 24px -8px rgba(37,99,235,0.15)",
+              position: "absolute",
               opacity: mounted ? 1 : 0,
               transform: mounted ? "translateY(0)" : "translateY(8px)",
               transition: `opacity 400ms ${EASING} ${i * 150}ms, transform 400ms ${EASING} ${i * 150}ms`,
@@ -115,14 +117,20 @@ function HeroVisual() {
             }}
           >
             <span
-              className="flex h-9 w-9 items-center justify-center rounded-full shrink-0"
-              style={{ backgroundColor: "#DBEAFE" }}
+              className="absolute flex h-10 w-10 items-center justify-center rounded-full shrink-0"
+              style={{
+                left: 0,
+                top: "50%",
+                transform: "translateY(-50%)",
+                backgroundColor: "#DBEAFE",
+                boxShadow: "0 2px 6px -1px rgba(37,99,235,0.2)",
+              }}
             >
               <Icon size={20} strokeWidth={2} color="#2563EB" />
             </span>
             <span
               className="whitespace-nowrap text-[15px] text-[#0F172A]"
-              style={{ fontWeight: 500 }}
+              style={{ fontWeight: 500, marginLeft: 52 }}
             >
               {p.text}
             </span>
