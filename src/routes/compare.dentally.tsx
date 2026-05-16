@@ -311,6 +311,123 @@ function PageDisclaimer() {
 }
 
 
+const whyBlocks = [
+  {
+    title: "Live within the day",
+    body: "Sign up online, run through the 8-step onboarding wizard — practice details, opening hours, services, team, brand — and your booking page is live the same day. No sales calls, no implementation consultant, no four-week project. The first thing you'll do tomorrow is take an online booking.",
+    label: "VISUAL · LIVE WITHIN THE DAY",
+    textLeft: true,
+  },
+  {
+    title: "Ready on day one",
+    body: "Booking confirmations, 72/24/2-hour reminders, deposit chasers, recall sequences, birthday messages, daily summary emails — 29 automations are seeded into your practice the moment you sign up. Tweak the wording, change the timing, switch them off. You'll never have to build them from scratch.",
+    label: "VISUAL · READY ON DAY ONE",
+    textLeft: false,
+  },
+  {
+    title: "Talk to a real human",
+    body: "Something not working? Message Hariss directly on WhatsApp. No ticket queue, no chatbot, no escalation form. Real human, same-day reply — that's what comes with £49. As we grow this might change. For now, you're talking straight to the founder.",
+    label: "VISUAL · TALK TO A REAL HUMAN",
+    textLeft: true,
+  },
+];
+
+function WhyDentDockBlock({
+  title,
+  body,
+  label,
+  textLeft,
+}: {
+  title: string;
+  body: string;
+  label: string;
+  textLeft: boolean;
+}) {
+  const reduce = useReducedMotion();
+  const ease = [0.22, 1, 0.36, 1] as const;
+
+  const textMotion = reduce
+    ? {}
+    : {
+        initial: { opacity: 0, y: 12 },
+        whileInView: { opacity: 1, y: 0 },
+        viewport: { once: true, margin: "-80px" },
+        transition: { duration: 0.5, ease },
+      };
+
+  const visualMotion = reduce
+    ? {}
+    : {
+        initial: { opacity: 0, y: 16 },
+        whileInView: { opacity: 1, y: 0 },
+        viewport: { once: true, margin: "-80px" },
+        transition: { duration: 0.5, ease, delay: 0.1 },
+      };
+
+  return (
+    <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-[45%_50%] lg:gap-16">
+      <motion.div
+        {...textMotion}
+        className={textLeft ? "lg:order-1" : "lg:order-2"}
+      >
+        <h3
+          className="text-[28px] font-semibold text-dd-foreground lg:text-[36px]"
+          style={{ letterSpacing: "-0.02em" }}
+        >
+          {title}
+        </h3>
+        <p className="mt-6 max-w-[520px] text-[17px] leading-[1.65] text-[#475569] lg:text-[18px]">
+          {body}
+        </p>
+      </motion.div>
+      <motion.div
+        {...visualMotion}
+        className={textLeft ? "lg:order-2" : "lg:order-1"}
+      >
+        <div
+          className="flex aspect-[4/3] w-full items-center justify-center rounded-2xl border border-dashed border-[#CBD5E1] bg-[#F1F5F9]"
+        >
+          <span
+            className="text-[13px] font-medium uppercase text-[#94A3B8]"
+            style={{ letterSpacing: "0.08em" }}
+          >
+            {label}
+          </span>
+        </div>
+      </motion.div>
+    </div>
+  );
+}
+
+function WhyDentDockBlocks() {
+  return (
+    <section className="bg-white pt-16 pb-16 lg:pt-24 lg:pb-24">
+      <div className="mx-auto max-w-[1200px] px-6">
+        <div className="mx-auto max-w-[720px] text-center">
+          <p
+            className="text-[14px] font-semibold uppercase text-brand-blue"
+            style={{ letterSpacing: "0.14em" }}
+          >
+            Why Dent Dock
+          </p>
+          <h2 className="mt-4 text-3xl md:text-5xl font-medium tracking-tight text-foreground leading-[1.1]">
+            What £49 a month <span className="text-[#2563EB]">actually looks like.</span>
+          </h2>
+          <p className="mx-auto mt-5 max-w-[640px] text-base md:text-lg text-muted-foreground">
+            Three things you'll feel from day one.
+          </p>
+        </div>
+
+        <div className="mt-16 flex flex-col gap-16 lg:mt-20 lg:gap-24">
+          {whyBlocks.map((b) => (
+            <WhyDentDockBlock key={b.title} {...b} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 
 function CompareDentallyPage() {
   return (
@@ -321,10 +438,8 @@ function CompareDentallyPage() {
       
       <FeatureComparison />
       
+      <WhyDentDockBlocks />
       <WhatNextCTA />
-      
-      
-      
       <FAQ />
       <ClosingCTA />
       <PageDisclaimer />
