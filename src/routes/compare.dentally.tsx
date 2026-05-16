@@ -30,19 +30,17 @@ const EASING = "cubic-bezier(0.22, 1, 0.36, 1)";
 
 type FloatPill = {
   icon: LucideIcon;
-  text: string;
   top: string;
   left?: string;
   right?: string;
   floatDelay: string;
-  hideOnMd?: boolean;
 };
 
 const PILLS: FloatPill[] = [
-  { icon: Banknote, text: "£49 vs £125+ a month", top: "18%", left: "0%", floatDelay: "0s" },
-  { icon: CalendarCheck, text: "Online booking included vs Essentials+ only", top: "18%", right: "0%", floatDelay: "-1.2s" },
-  { icon: Zap, text: "Live in a day vs sales call required", top: "72%", left: "0%", floatDelay: "-2.5s", hideOnMd: true },
-  { icon: MessageCircle, text: "Direct WhatsApp support vs standard chat support", top: "72%", right: "0%", floatDelay: "-3.7s" },
+  { icon: Banknote, top: "16%", left: "0%", floatDelay: "0s" },
+  { icon: CalendarCheck, top: "16%", right: "0%", floatDelay: "-1.2s" },
+  { icon: Zap, top: "78%", left: "0%", floatDelay: "-2.5s" },
+  { icon: MessageCircle, top: "78%", right: "0%", floatDelay: "-3.7s" },
 ];
 
 function HeroVisual() {
@@ -99,14 +97,13 @@ function HeroVisual() {
         const Icon = p.icon;
         return (
           <div
-            key={p.text}
-            className={`absolute ${p.hideOnMd ? "hidden xl:flex" : "flex"} items-center rounded-full bg-white`}
+            key={i}
+            className="absolute flex h-14 w-14 items-center justify-center rounded-full bg-white"
             style={{
               top: p.top,
               left: p.left,
               right: p.right,
               zIndex: 4,
-              padding: "10px 20px 10px 0",
               border: "1px solid #E2E8F0",
               boxShadow: "0 8px 24px -8px rgba(37,99,235,0.15)",
               position: "absolute",
@@ -118,24 +115,7 @@ function HeroVisual() {
                 : `pill-float 5s ease-in-out ${p.floatDelay} infinite`,
             }}
           >
-            <span
-              className="absolute flex h-10 w-10 items-center justify-center rounded-full shrink-0"
-              style={{
-                left: 0,
-                top: "50%",
-                transform: "translateY(-50%)",
-                backgroundColor: "#DBEAFE",
-                boxShadow: "0 2px 6px -1px rgba(37,99,235,0.2)",
-              }}
-            >
-              <Icon size={20} strokeWidth={2} color="#2563EB" />
-            </span>
-            <span
-              className="whitespace-nowrap text-[13px] text-[#0F172A]"
-              style={{ fontWeight: 500, paddingLeft: 60 }}
-            >
-              {p.text}
-            </span>
+            <Icon size={22} strokeWidth={2} color="#2563EB" />
           </div>
         );
       })}
