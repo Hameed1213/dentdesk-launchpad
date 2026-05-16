@@ -131,7 +131,7 @@ function HeroVisual() {
               <Icon size={20} strokeWidth={2} color="#2563EB" />
             </span>
             <span
-              className="whitespace-nowrap text-[14px] text-[#0F172A]"
+              className="whitespace-nowrap text-[13px] text-[#0F172A]"
               style={{ fontWeight: 500, paddingLeft: 60 }}
             >
               {p.text}
