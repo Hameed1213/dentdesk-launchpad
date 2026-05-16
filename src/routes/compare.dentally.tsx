@@ -33,6 +33,7 @@ type FloatPill = {
   text: string;
   top: string;
   topSm?: string;
+  topXs?: string;
   left?: string;
   right?: string;
   floatDelay: string;
@@ -40,7 +41,7 @@ type FloatPill = {
 
 const PILLS: FloatPill[] = [
   { icon: Zap, text: "Live in a day vs sales call", top: "20%", topSm: "12%", left: "-10%", floatDelay: "0s" },
-  { icon: Banknote, text: "£49 vs £125+", top: "16%", right: "0%", floatDelay: "-1.2s" },
+  { icon: Banknote, text: "£49 vs £125+", top: "16%", topXs: "8%", right: "0%", floatDelay: "-1.2s" },
   { icon: MessageCircle, text: "WhatsApp support vs ticket queue", top: "76%", left: "-6%", floatDelay: "-2.5s" },
   { icon: CalendarCheck, text: "Booking included vs not", top: "62%", right: "-8%", floatDelay: "-3.7s" },
 ];
@@ -123,7 +124,12 @@ function HeroVisual() {
         const Icon = p.icon;
         const left = isDesktop ? p.left : p.left !== undefined ? "0%" : undefined;
         const right = isDesktop ? p.right : p.right !== undefined ? "0%" : undefined;
-        const top = isTablet && p.topSm ? p.topSm : p.top;
+        const top =
+          isTablet && p.topSm
+            ? p.topSm
+            : !isDesktop && !isTablet && p.topXs
+              ? p.topXs
+              : p.top;
         return (
           <div
             key={i}
