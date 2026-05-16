@@ -1125,7 +1125,7 @@ const categories: Category[] = [
     title: "Forms",
     rows: [
       { feature: "Digital forms", dentDock: yes(), dentally: yes("Essentials+ only") },
-      { feature: "Pre-built dental templates", dentDock: yes("16 included"), dentally: yes() },
+      { feature: "Pre-built dental templates", dentDock: yes(), dentally: yes() },
       { feature: "Digital signature capture", dentDock: yes(), dentally: yes("Essentials+ only") },
       { feature: "Conditional logic", dentDock: yes(), dentally: yes("Essentials+ only") },
       { feature: "Auto-sync answers to patient record", dentDock: yes(), dentally: yes() },
