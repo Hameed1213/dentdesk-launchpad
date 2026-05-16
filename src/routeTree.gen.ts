@@ -14,6 +14,7 @@ import { Route as TermsRouteImport } from './routes/terms'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as CookiesRouteImport } from './routes/cookies'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CompareDentallyRouteImport } from './routes/compare.dentally'
 import { Route as ApiPublicVerifyWaitlistSignupRouteImport } from './routes/api/public/verify-waitlist-signup'
 
 const WaitlistRoute = WaitlistRouteImport.update({
@@ -41,6 +42,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CompareDentallyRoute = CompareDentallyRouteImport.update({
+  id: '/compare/dentally',
+  path: '/compare/dentally',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiPublicVerifyWaitlistSignupRoute =
   ApiPublicVerifyWaitlistSignupRouteImport.update({
     id: '/api/public/verify-waitlist-signup',
@@ -54,6 +60,7 @@ export interface FileRoutesByFullPath {
   '/privacy': typeof PrivacyRoute
   '/terms': typeof TermsRoute
   '/waitlist': typeof WaitlistRoute
+  '/compare/dentally': typeof CompareDentallyRoute
   '/api/public/verify-waitlist-signup': typeof ApiPublicVerifyWaitlistSignupRoute
 }
 export interface FileRoutesByTo {
@@ -62,6 +69,7 @@ export interface FileRoutesByTo {
   '/privacy': typeof PrivacyRoute
   '/terms': typeof TermsRoute
   '/waitlist': typeof WaitlistRoute
+  '/compare/dentally': typeof CompareDentallyRoute
   '/api/public/verify-waitlist-signup': typeof ApiPublicVerifyWaitlistSignupRoute
 }
 export interface FileRoutesById {
@@ -71,6 +79,7 @@ export interface FileRoutesById {
   '/privacy': typeof PrivacyRoute
   '/terms': typeof TermsRoute
   '/waitlist': typeof WaitlistRoute
+  '/compare/dentally': typeof CompareDentallyRoute
   '/api/public/verify-waitlist-signup': typeof ApiPublicVerifyWaitlistSignupRoute
 }
 export interface FileRouteTypes {
@@ -81,6 +90,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/terms'
     | '/waitlist'
+    | '/compare/dentally'
     | '/api/public/verify-waitlist-signup'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -89,6 +99,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/terms'
     | '/waitlist'
+    | '/compare/dentally'
     | '/api/public/verify-waitlist-signup'
   id:
     | '__root__'
@@ -97,6 +108,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/terms'
     | '/waitlist'
+    | '/compare/dentally'
     | '/api/public/verify-waitlist-signup'
   fileRoutesById: FileRoutesById
 }
@@ -106,6 +118,7 @@ export interface RootRouteChildren {
   PrivacyRoute: typeof PrivacyRoute
   TermsRoute: typeof TermsRoute
   WaitlistRoute: typeof WaitlistRoute
+  CompareDentallyRoute: typeof CompareDentallyRoute
   ApiPublicVerifyWaitlistSignupRoute: typeof ApiPublicVerifyWaitlistSignupRoute
 }
 
@@ -146,6 +159,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/compare/dentally': {
+      id: '/compare/dentally'
+      path: '/compare/dentally'
+      fullPath: '/compare/dentally'
+      preLoaderRoute: typeof CompareDentallyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/public/verify-waitlist-signup': {
       id: '/api/public/verify-waitlist-signup'
       path: '/api/public/verify-waitlist-signup'
@@ -162,8 +182,18 @@ const rootRouteChildren: RootRouteChildren = {
   PrivacyRoute: PrivacyRoute,
   TermsRoute: TermsRoute,
   WaitlistRoute: WaitlistRoute,
+  CompareDentallyRoute: CompareDentallyRoute,
   ApiPublicVerifyWaitlistSignupRoute: ApiPublicVerifyWaitlistSignupRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { createStart } from '@tanstack/react-start'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+  }
+}
