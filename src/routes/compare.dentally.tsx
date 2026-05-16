@@ -901,7 +901,7 @@ function HonestAnswer() {
 
         <motion.div
           {...panelMotion}
-          className="mt-14 md:mt-20 rounded-[20px] border border-[#E2E8F0] p-8 lg:p-14"
+          className="mt-8 md:mt-12 rounded-[20px] border border-[#E2E8F0] p-8 lg:p-14"
           style={{
             background:
               "linear-gradient(to right, #DBEAFE 0%, #F3F6FD 50%, #FFFFFF 100%)",
