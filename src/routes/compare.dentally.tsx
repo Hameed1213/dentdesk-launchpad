@@ -88,7 +88,6 @@ function HeroVisual() {
               fill="#2563EB"
             />
           </svg>
-
         </div>
       </div>
 
@@ -110,9 +109,10 @@ function HeroVisual() {
               opacity: mounted ? 1 : 0,
               transform: mounted ? "translateY(0)" : "translateY(8px)",
               transition: `opacity 400ms ${EASING} ${i * 150}ms, transform 400ms ${EASING} ${i * 150}ms`,
-              animation: prefersReducedMotion || !mounted
-                ? undefined
-                : `pill-float 5s ease-in-out ${p.floatDelay} infinite`,
+              animation:
+                prefersReducedMotion || !mounted
+                  ? undefined
+                  : `pill-float 5s ease-in-out ${p.floatDelay} infinite`,
             }}
           >
             <Icon size={22} strokeWidth={2} color="#2563EB" />
@@ -122,7 +122,6 @@ function HeroVisual() {
     </div>
   );
 }
-
 
 const faqItems = [
   {
@@ -168,7 +167,10 @@ export const Route = createFileRoute("/compare/dentally")({
         content:
           "An honest comparison of Dent Dock and Dentally for UK private dental practices. Pricing from £49 vs £125–£320, features, support and when each is the right fit.",
       },
-      { property: "og:title", content: "Dent Dock vs Dentally · Pricing and features compared (2026)" },
+      {
+        property: "og:title",
+        content: "Dent Dock vs Dentally · Pricing and features compared (2026)",
+      },
       {
         property: "og:description",
         content:
@@ -176,9 +178,7 @@ export const Route = createFileRoute("/compare/dentally")({
       },
       { property: "og:url", content: "https://dentdock.co.uk/compare/dentally" },
     ],
-    links: [
-      { rel: "canonical", href: "https://dentdock.co.uk/compare/dentally" },
-    ],
+    links: [{ rel: "canonical", href: "https://dentdock.co.uk/compare/dentally" }],
     scripts: [
       {
         type: "application/ld+json",
@@ -262,11 +262,14 @@ function PageDisclaimer() {
   return (
     <section className="w-full border-t border-[#E2E8F0] bg-white py-12">
       <div className="mx-auto max-w-[1080px] px-6">
-        <p className="text-[14px] font-medium text-[#475569]">
-          Last verified: 15 May 2026
-        </p>
+        <p className="text-[14px] font-medium text-[#475569]">Last verified: 15 May 2026</p>
         <p className="mt-6 text-[14px] leading-[1.65] text-[#475569]">
-          Pricing and feature information about Dentally is taken from publicly available sources at dentally.com as of 15 May 2026 and is correct to the best of our knowledge. Dentally and Dentally Vision are trade marks of Henry Schein One UK Ltd. Dent Dock is not affiliated with, endorsed by, or sponsored by Dentally or Henry Schein One. If we've misrepresented anything on this page, please email hello@dentdock.co.uk and we'll correct it promptly. Dent Dock is a trading name of Paradigm Network Ltd, registered in England & Wales.
+          Pricing and feature information about Dentally is taken from publicly available sources at
+          dentally.com as of 15 May 2026 and is correct to the best of our knowledge. Dentally and
+          Dentally Vision are trade marks of Henry Schein One UK Ltd. Dent Dock is not affiliated
+          with, endorsed by, or sponsored by Dentally or Henry Schein One. If we've misrepresented
+          anything on this page, please email hello@dentdock.co.uk and we'll correct it promptly.
+          Dent Dock is a trading name of Paradigm Network Ltd, registered in England & Wales.
         </p>
       </div>
     </section>
@@ -309,8 +312,7 @@ function SwitchingSteps() {
             Moving from Dentally is straightforward
           </h2>
           <p className="mx-auto mt-5 max-w-[640px] text-[20px] leading-[1.6] text-dd-muted">
-            Most practices are live on Dent Dock the same day they decide to
-            switch.
+            Most practices are live on Dent Dock the same day they decide to switch.
           </p>
         </div>
 
@@ -325,25 +327,18 @@ function SwitchingSteps() {
                   {step.number}
                 </span>
               </div>
-              <h3 className="mt-6 text-[20px] font-semibold text-dd-foreground">
-                {step.title}
-              </h3>
-              <p className="mt-2 text-[16px] leading-[1.55] text-dd-muted">
-                {step.body}
-              </p>
+              <h3 className="mt-6 text-[20px] font-semibold text-dd-foreground">{step.title}</h3>
+              <p className="mt-2 text-[16px] leading-[1.55] text-dd-muted">{step.body}</p>
             </div>
           ))}
         </div>
 
         <div className="mt-8 rounded-2xl border border-brand-blue-tint bg-surface-tint p-7">
-          <p className="text-[16px] font-semibold text-dd-foreground">
-            Two honest caveats
-          </p>
+          <p className="text-[16px] font-semibold text-dd-foreground">Two honest caveats</p>
           <p className="mt-3 text-[16px] leading-[1.6] text-dd-muted">
-            Clinical notes and tooth charts can't migrate — Dent Dock doesn't
-            have a clinical chart to migrate them into. Most switching
-            practices keep clinical notes in their existing system or use a
-            lightweight clinical-notes tool alongside Dent Dock. And if you're
+            Clinical notes and tooth charts can't migrate — Dent Dock doesn't have a clinical chart
+            to migrate them into. Most switching practices keep clinical notes in their existing
+            system or use a lightweight clinical-notes tool alongside Dent Dock. And if you're
             mostly NHS, Dentally remains the right software for you.
           </p>
         </div>
@@ -364,10 +359,15 @@ function PriceRationale() {
         </h2>
         <div className="mx-auto mt-8 max-w-[640px] space-y-6 text-left">
           <p className="text-[20px] leading-[1.7] text-dd-foreground">
-            £49 is what a single-site UK private practice can pay comfortably out of cash flow without thinking about it. We deliberately don't build clinical charting, NHS contract management or imaging integration — that's where most of the cost of dental software comes from, and it's not what reception needs.
+            £49 is what a single-site UK private practice can pay comfortably out of cash flow
+            without thinking about it. We deliberately don't build clinical charting, NHS contract
+            management or imaging integration — that's where most of the cost of dental software
+            comes from, and it's not what reception needs.
           </p>
           <p className="text-[20px] leading-[1.7] text-dd-foreground">
-            By scoping the product tightly, we keep the price low. When we add multi-site, clinical features or other major capabilities, we'll add tiers above Starter. Customers who join on Starter pricing keep Starter pricing.
+            By scoping the product tightly, we keep the price low. When we add multi-site, clinical
+            features or other major capabilities, we'll add tiers above Starter. Customers who join
+            on Starter pricing keep Starter pricing.
           </p>
         </div>
       </div>
@@ -441,14 +441,11 @@ function FounderNote() {
           className="mt-6 text-[24px] leading-[1.6] text-dd-foreground"
           style={{ letterSpacing: "-0.01em" }}
         >
-          Dent Dock is new. Dentally has been around for over a decade and is
-          the UK market leader, owned by Henry Schein One. We're not trying to
-          be Dentally. We do less, on purpose, for single-site UK private
-          practices that don't want to pay £264 a month for online booking.
+          Dent Dock is new. Dentally has been around for over a decade and is the UK market leader,
+          owned by Henry Schein One. We're not trying to be Dentally. We do less, on purpose, for
+          single-site UK private practices that don't want to pay £264 a month for online booking.
         </p>
-        <p className="mt-6 text-[18px] font-medium text-dd-muted">
-          — Hariss, founder
-        </p>
+        <p className="mt-6 text-[18px] font-medium text-dd-muted">— Hariss, founder</p>
       </div>
     </section>
   );
@@ -465,7 +462,8 @@ function ClosingCTA() {
           Try Dent Dock
         </h2>
         <p className="mx-auto mt-6 max-w-[560px] text-[20px] text-dd-muted">
-          Join the waitlist and we'll walk you through a live demo. If after seeing both you decide Dentally is the better fit, we'd rather you knew today.
+          Join the waitlist and we'll walk you through a live demo. If after seeing both you decide
+          Dentally is the better fit, we'd rather you knew today.
         </p>
         <div className="mt-10 flex flex-col items-center gap-4">
           <a
@@ -533,9 +531,8 @@ function WhereDentallyWins() {
           Where Dentally is the better choice
         </h2>
         <p className="mt-5 text-[20px] leading-[1.6] text-dd-muted">
-          We're not going to pretend otherwise. If any of the six things below
-          are critical to how you run your practice, Dentally is the right
-          software for you.
+          We're not going to pretend otherwise. If any of the six things below are critical to how
+          you run your practice, Dentally is the right software for you.
         </p>
 
         <div className="mt-10 flex flex-col gap-4">
@@ -550,12 +547,8 @@ function WhereDentallyWins() {
                   <Icon className="h-4 w-4 text-dd-muted" strokeWidth={1.75} />
                 </div>
                 <div>
-                  <h4 className="text-[18px] font-semibold text-dd-foreground">
-                    {row.title}
-                  </h4>
-                  <p className="mt-1 text-[16px] leading-[1.55] text-dd-muted">
-                    {row.body}
-                  </p>
+                  <h4 className="text-[18px] font-semibold text-dd-foreground">{row.title}</h4>
+                  <p className="mt-1 text-[16px] leading-[1.55] text-dd-muted">{row.body}</p>
                 </div>
               </div>
             );
@@ -563,14 +556,13 @@ function WhereDentallyWins() {
         </div>
 
         <p className="mt-10 text-center text-[16px] text-dd-muted">
-          If any of those are critical to how you run your practice, Dentally
-          is the right choice. We mean that.
+          If any of those are critical to how you run your practice, Dentally is the right choice.
+          We mean that.
         </p>
       </div>
     </section>
   );
 }
-
 
 const features: { icon: LucideIcon; title: string; body: string }[] = [
   {
@@ -623,8 +615,7 @@ function FeaturesGrid() {
             What you get from Dent Dock at £49
           </h2>
           <p className="mt-5 max-w-[640px] text-[20px] leading-[1.6] text-dd-muted">
-            Not a teaser. Not a starter tier. Everything below is in our only
-            plan.
+            Not a teaser. Not a starter tier. Everything below is in our only plan.
           </p>
         </div>
 
@@ -662,15 +653,12 @@ function FeatureTile({
         <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-dd-border bg-white shadow-sm">
           <Icon className="h-5 w-5 text-brand-blue" strokeWidth={1.75} />
         </div>
-        <h3 className="mt-6 text-[20px] font-semibold text-dd-foreground">
-          {title}
-        </h3>
+        <h3 className="mt-6 text-[20px] font-semibold text-dd-foreground">{title}</h3>
         <p className="mt-2 text-[16px] leading-[1.55] text-dd-muted">{body}</p>
       </div>
     </div>
   );
 }
-
 
 function PricingComparison() {
   return (
@@ -690,10 +678,9 @@ function PricingComparison() {
             What each actually costs
           </h2>
           <p className="mt-5 text-[20px] leading-[1.6] text-dd-muted">
-            Dentally lists prices excluding VAT. Dent Dock is a flat practice
-            price. Most UK dental services are VAT-exempt supplies — practices
-            generally can't reclaim VAT on inputs — so the real cost to your
-            practice is the inc-VAT figure.
+            Dentally lists prices excluding VAT. Dent Dock is a flat practice price. Most UK dental
+            services are VAT-exempt supplies — practices generally can't reclaim VAT on inputs — so
+            the real cost to your practice is the inc-VAT figure.
           </p>
         </div>
 
@@ -735,9 +722,9 @@ function PricingComparison() {
         </div>
 
         <p className="mx-auto mt-10 max-w-[760px] text-center text-[14px] leading-[1.6] text-dd-muted">
-          Pricing for 1 surgery, taken from dentally.com/en-gb/pricing on 15
-          May 2026. Dentally charges per practice based on number of surgeries
-          — see the Dentally pricing page for multi-surgery rates.
+          Pricing for 1 surgery, taken from dentally.com/en-gb/pricing on 15 May 2026. Dentally
+          charges per practice based on number of surgeries — see the Dentally pricing page for
+          multi-surgery rates.
         </p>
       </div>
     </section>
@@ -807,7 +794,6 @@ function PriceCard({
   );
 }
 
-
 const dentallyFit = [
   "Clinical charting, tooth charts or treatment plan builders",
   "NHS UDA / FP17 management",
@@ -830,7 +816,11 @@ function HonestAnswer() {
     <section className="bg-white py-16 lg:py-24">
       <div className="mx-auto max-w-[1200px] px-6">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
-          <FitCard title="Dentally" intro="Dentally is the right fit if you need any of:" items={dentallyFit} />
+          <FitCard
+            title="Dentally"
+            intro="Dentally is the right fit if you need any of:"
+            items={dentallyFit}
+          />
           <FitCard
             title="Dent Dock"
             intro="Dent Dock is the right fit if all of these describe you:"
@@ -855,9 +845,7 @@ function FitCard({ title, intro, items }: { title: string; intro: string; items:
       >
         When to choose
       </p>
-      <h2 className="mt-3 text-[28px] font-semibold leading-tight text-dd-foreground">
-        {title}
-      </h2>
+      <h2 className="mt-3 text-[28px] font-semibold leading-tight text-dd-foreground">{title}</h2>
       <p className="mt-5 text-[18px] leading-[1.6] text-dd-foreground">{intro}</p>
       <ul className="mt-5 flex flex-col gap-3 text-[18px] leading-[1.6] text-dd-foreground">
         {items.map((item) => (
@@ -873,7 +861,6 @@ function FitCard({ title, intro, items }: { title: string; intro: string; items:
   );
 }
 
-
 function Hero() {
   return (
     <section className="relative overflow-hidden bg-gradient-to-b from-surface-tint to-white pt-28 pb-12 lg:pt-36 lg:pb-16">
@@ -885,10 +872,8 @@ function Hero() {
           background:
             "radial-gradient(60% 60% at 85% 15%, rgba(37,99,235,0.20) 0%, rgba(37,99,235,0.10) 35%, rgba(37,99,235,0) 70%)",
           filter: "blur(40px)",
-          maskImage:
-            "linear-gradient(to bottom left, black 0%, black 35%, transparent 70%)",
-          WebkitMaskImage:
-            "linear-gradient(to bottom left, black 0%, black 35%, transparent 70%)",
+          maskImage: "linear-gradient(to bottom left, black 0%, black 35%, transparent 70%)",
+          WebkitMaskImage: "linear-gradient(to bottom left, black 0%, black 35%, transparent 70%)",
         }}
       />
 
@@ -909,9 +894,8 @@ function Hero() {
           </h1>
 
           <p className="mt-6 text-lg text-neutral-500 max-w-xl leading-relaxed">
-            Dent Dock is dental practice software for single-site UK private
-            practices. Dentally is the UK market leader in cloud dental
-            practice software. Compare price, features, and fit
+            Dent Dock is dental practice software for single-site UK private practices. Dentally is
+            the UK market leader in cloud dental practice software. Compare price, features, and fit
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-x-4 gap-y-2 text-[14px] text-dd-subtle">
@@ -953,9 +937,7 @@ function StatusPill({ label, tone }: { label: string; tone: PillTone }) {
             ? "bg-slate-100 text-dd-muted"
             : "bg-slate-100 text-dd-muted";
   return (
-    <span
-      className={`inline-flex w-fit items-center rounded-xl px-3 py-1.5 text-[14px] ${cls}`}
-    >
+    <span className={`inline-flex w-fit items-center rounded-xl px-3 py-1.5 text-[14px] ${cls}`}>
       {label}
     </span>
   );
@@ -987,28 +969,56 @@ const categories: Category[] = [
     title: "Patient communications",
     rows: [
       { feature: "Automated SMS + email reminders", dentDock: included(), dentally: included() },
-      { feature: "Pre-built automation flows", dentDock: included("29 seeded on signup"), dentally: neutral("Configure your own") },
-      { feature: "SMS sender shows practice name", dentDock: limited("At launch"), dentally: neutral("Available") },
+      {
+        feature: "Pre-built automation flows",
+        dentDock: included("29 seeded on signup"),
+        dentally: neutral("Configure your own"),
+      },
+      {
+        feature: "SMS sender shows practice name",
+        dentDock: limited("At launch"),
+        dentally: neutral("Available"),
+      },
       { feature: "Two-way SMS inbox", dentDock: included(), dentally: neutral("Available") },
       { feature: "Internal team chat", dentDock: roadmap(), dentally: included() },
-      { feature: "Marketing vs transactional consent classifier", dentDock: included(), dentally: neutral("Available") },
+      {
+        feature: "Marketing vs transactional consent classifier",
+        dentDock: included(),
+        dentally: neutral("Available"),
+      },
     ],
   },
   {
     title: "Forms",
     rows: [
       { feature: "Digital forms", dentDock: included(), dentally: neutral("Essentials+") },
-      { feature: "Pre-built dental templates", dentDock: included("16 included"), dentally: neutral("Available") },
-      { feature: "Digital signature capture", dentDock: included(), dentally: neutral("Essentials+") },
+      {
+        feature: "Pre-built dental templates",
+        dentDock: included("16 included"),
+        dentally: neutral("Available"),
+      },
+      {
+        feature: "Digital signature capture",
+        dentDock: included(),
+        dentally: neutral("Essentials+"),
+      },
       { feature: "Conditional logic", dentDock: included(), dentally: neutral("Essentials+") },
-      { feature: "Auto-sync answers to patient record", dentDock: included(), dentally: neutral("Available") },
+      {
+        feature: "Auto-sync answers to patient record",
+        dentDock: included(),
+        dentally: neutral("Available"),
+      },
     ],
   },
   {
     title: "Recalls",
     rows: [
       { feature: "Recall list view", dentDock: included(), dentally: included() },
-      { feature: "5-step automated cascade", dentDock: included("Pre-built"), dentally: neutral("Configure your own") },
+      {
+        feature: "5-step automated cascade",
+        dentDock: included("Pre-built"),
+        dentally: neutral("Configure your own"),
+      },
       { feature: "Per-service recall intervals", dentDock: included(), dentally: included() },
       { feature: "Quiet hours for sends", dentDock: included(), dentally: neutral("Available") },
       { feature: "Recall effectiveness analytics", dentDock: included(), dentally: included() },
@@ -1017,11 +1027,23 @@ const categories: Category[] = [
   {
     title: "Payments",
     rows: [
-      { feature: "Practice owns its Stripe account", dentDock: included(), dentally: neutral("Partner-dependent") },
+      {
+        feature: "Practice owns its Stripe account",
+        dentDock: included(),
+        dentally: neutral("Partner-dependent"),
+      },
       { feature: "Send payment links", dentDock: included(), dentally: included() },
-      { feature: "Late-cancellation fees", dentDock: included("Auto via cancel link"), dentally: neutral("Available") },
+      {
+        feature: "Late-cancellation fees",
+        dentDock: included("Auto via cancel link"),
+        dentally: neutral("Available"),
+      },
       { feature: "Patient receipts", dentDock: included("Auto-generated"), dentally: included() },
-      { feature: "Deposit collection at booking", dentDock: limited("Rolling out"), dentally: neutral("Essentials+") },
+      {
+        feature: "Deposit collection at booking",
+        dentDock: limited("Rolling out"),
+        dentally: neutral("Essentials+"),
+      },
     ],
   },
   {
@@ -1029,7 +1051,11 @@ const categories: Category[] = [
     rows: [
       { feature: "Tooth / perio chart", dentDock: notIncluded(), dentally: included() },
       { feature: "Treatment plan builder", dentDock: roadmap(), dentally: included() },
-      { feature: "AI clinical note transcription", dentDock: notIncluded(), dentally: neutral("Essentials+") },
+      {
+        feature: "AI clinical note transcription",
+        dentDock: notIncluded(),
+        dentally: neutral("Essentials+"),
+      },
       { feature: "Imaging integration", dentDock: notIncluded(), dentally: neutral("Pro only") },
     ],
   },
@@ -1037,18 +1063,30 @@ const categories: Category[] = [
     title: "NHS and multi-site",
     rows: [
       { feature: "NHS UDA / FP17 management", dentDock: notIncluded(), dentally: included() },
-      { feature: "NHS number capture", dentDock: included("Included (field only)"), dentally: included() },
+      {
+        feature: "NHS number capture",
+        dentDock: included("Included (field only)"),
+        dentally: included(),
+      },
       { feature: "Multi-site practice management", dentDock: roadmap(), dentally: included() },
     ],
   },
   {
     title: "Support",
     rows: [
-      { feature: "WhatsApp support line to founder", dentDock: included(), dentally: notIncluded() },
+      {
+        feature: "WhatsApp support line to founder",
+        dentDock: included(),
+        dentally: notIncluded(),
+      },
       { feature: "Email support", dentDock: included(), dentally: included() },
       { feature: "Phone support", dentDock: roadmap(), dentally: neutral("Essentials+") },
       { feature: "Chat support", dentDock: included(), dentally: included() },
-      { feature: "Customer success manager", dentDock: notIncluded(), dentally: neutral("Essentials+") },
+      {
+        feature: "Customer success manager",
+        dentDock: notIncluded(),
+        dentally: neutral("Essentials+"),
+      },
     ],
   },
 ];
@@ -1071,8 +1109,8 @@ function FeatureComparison() {
             Feature comparison
           </h2>
           <p className="mt-5 max-w-[640px] text-[20px] leading-[1.6] text-dd-muted">
-            Verified against dentally.com/en-gb/pricing on 15 May 2026. We've
-            left out anything we couldn't substantiate.
+            Verified against dentally.com/en-gb/pricing on 15 May 2026. We've left out anything we
+            couldn't substantiate.
           </p>
         </div>
 
@@ -1080,10 +1118,11 @@ function FeatureComparison() {
         <div className="mt-12 hidden lg:block">
           {categories.map((cat) => (
             <div key={cat.title} className="mt-8 first:mt-0">
-              <h3 className="text-[24px] font-semibold text-dd-foreground">
-                {cat.title}
-              </h3>
-              <div className="mt-4 grid grid-cols-[45%_27.5%_27.5%] border-b border-dd-border text-[14px] font-semibold uppercase text-dd-subtle" style={{ letterSpacing: "0.08em" }}>
+              <h3 className="text-[24px] font-semibold text-dd-foreground">{cat.title}</h3>
+              <div
+                className="mt-4 grid grid-cols-[45%_27.5%_27.5%] border-b border-dd-border text-[14px] font-semibold uppercase text-dd-subtle"
+                style={{ letterSpacing: "0.08em" }}
+              >
                 <div className="px-2 pb-3">Feature</div>
                 <div className="px-2 pb-3">Dent Dock</div>
                 <div className="px-2 pb-3">Dentally</div>
@@ -1118,23 +1157,36 @@ function FeatureComparison() {
             >
               <summary className="flex cursor-pointer list-none items-center justify-between text-[20px] font-semibold text-dd-foreground">
                 <span>{cat.title}</span>
-                <span className="text-dd-subtle transition-transform group-open:rotate-45" aria-hidden="true">+</span>
+                <span
+                  className="text-dd-subtle transition-transform group-open:rotate-45"
+                  aria-hidden="true"
+                >
+                  +
+                </span>
               </summary>
               <div className="mt-4 flex flex-col gap-5">
                 {cat.rows.map((row) => (
                   <div key={row.feature}>
-                    <p className="text-[16px] font-medium text-dd-foreground">
-                      {row.feature}
-                    </p>
+                    <p className="text-[16px] font-medium text-dd-foreground">{row.feature}</p>
                     <div className="mt-2 grid grid-cols-2 gap-3">
                       <div>
-                        <p className="text-[12px] uppercase text-dd-subtle" style={{ letterSpacing: "0.1em" }}>Dent Dock</p>
+                        <p
+                          className="text-[12px] uppercase text-dd-subtle"
+                          style={{ letterSpacing: "0.1em" }}
+                        >
+                          Dent Dock
+                        </p>
                         <div className="mt-1.5">
                           <StatusPill label={row.dentDock.label} tone={row.dentDock.tone} />
                         </div>
                       </div>
                       <div>
-                        <p className="text-[12px] uppercase text-dd-subtle" style={{ letterSpacing: "0.1em" }}>Dentally</p>
+                        <p
+                          className="text-[12px] uppercase text-dd-subtle"
+                          style={{ letterSpacing: "0.1em" }}
+                        >
+                          Dentally
+                        </p>
                         <div className="mt-1.5">
                           <StatusPill label={row.dentally.label} tone={row.dentally.tone} />
                         </div>
@@ -1148,12 +1200,10 @@ function FeatureComparison() {
         </div>
 
         <p className="mt-12 text-[14px] leading-[1.6] text-dd-muted">
-          Last verified: 15 May 2026. Dent Dock checks Dentally's pricing and
-          feature pages quarterly. Spotted something inaccurate? Email
-          hello@dentdock.co.uk and we'll correct it.
+          Last verified: 15 May 2026. Dent Dock checks Dentally's pricing and feature pages
+          quarterly. Spotted something inaccurate? Email hello@dentdock.co.uk and we'll correct it.
         </p>
       </div>
     </section>
   );
 }
-
