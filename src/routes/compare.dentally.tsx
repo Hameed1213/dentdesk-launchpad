@@ -749,3 +749,82 @@ function FeatureComparison() {
     </section>
   );
 }
+
+const switchSteps = [
+  {
+    number: "01",
+    title: "Export from Dentally",
+    body: "Export your patient list as CSV from Dentally's settings. Standard feature — no special access needed.",
+  },
+  {
+    number: "02",
+    title: "Import into Dent Dock",
+    body: "Drop the CSV into our import flow. Auto-mapping handles common columns, the preview shows you what'll land where, and you can roll back if anything looks off.",
+  },
+  {
+    number: "03",
+    title: "We migrate the rest",
+    body: "For the first 30 practices we'll handle appointment history migration directly. Once we've ironed it out we'll release a self-serve flow.",
+  },
+];
+
+function SwitchingSteps() {
+  return (
+    <section className="bg-white py-16 lg:py-24">
+      <div className="mx-auto max-w-[1080px] px-6">
+        <div className="mx-auto max-w-[720px] text-center">
+          <p
+            className="text-[14px] font-semibold uppercase text-brand-blue"
+            style={{ letterSpacing: "0.14em" }}
+          >
+            Switching
+          </p>
+          <h2
+            className="mt-4 text-[32px] font-semibold leading-tight text-dd-foreground lg:text-[48px]"
+            style={{ letterSpacing: "-0.02em" }}
+          >
+            Moving from Dentally is straightforward
+          </h2>
+          <p className="mx-auto mt-5 max-w-[640px] text-[20px] leading-[1.6] text-dd-muted">
+            Most practices are live on Dent Dock the same day they decide to
+            switch.
+          </p>
+        </div>
+
+        <div className="mt-14 grid grid-cols-1 gap-6 lg:grid-cols-3">
+          {switchSteps.map((step) => (
+            <div
+              key={step.number}
+              className="rounded-2xl border border-dd-border bg-white p-8 shadow-sm"
+            >
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-blue-tint">
+                <span className="tabular-nums text-[18px] font-bold text-brand-blue">
+                  {step.number}
+                </span>
+              </div>
+              <h3 className="mt-6 text-[20px] font-semibold text-dd-foreground">
+                {step.title}
+              </h3>
+              <p className="mt-2 text-[16px] leading-[1.55] text-dd-muted">
+                {step.body}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-8 rounded-2xl border border-brand-blue-tint bg-surface-tint p-7">
+          <p className="text-[16px] font-semibold text-dd-foreground">
+            Two honest caveats
+          </p>
+          <p className="mt-3 text-[16px] leading-[1.6] text-dd-muted">
+            Clinical notes and tooth charts can't migrate — Dent Dock doesn't
+            have a clinical chart to migrate them into. Most switching
+            practices keep clinical notes in their existing system or use a
+            lightweight clinical-notes tool alongside Dent Dock. And if you're
+            mostly NHS, Dentally remains the right software for you.
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
