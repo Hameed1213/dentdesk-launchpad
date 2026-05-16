@@ -124,7 +124,12 @@ function HeroVisual() {
         const Icon = p.icon;
         const left = isDesktop ? p.left : p.left !== undefined ? "0%" : undefined;
         const right = isDesktop ? p.right : p.right !== undefined ? "0%" : undefined;
-        const top = isTablet && p.topSm ? p.topSm : p.top;
+        const top =
+          isTablet && p.topSm
+            ? p.topSm
+            : !isDesktop && !isTablet && p.topXs
+              ? p.topXs
+              : p.top;
         return (
           <div
             key={i}
