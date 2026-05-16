@@ -1135,7 +1135,7 @@ function FeatureComparison() {
   }, []);
 
   return (
-    <section id="comparison-table" className="bg-white py-16 lg:py-24 scroll-mt-24">
+    <section id="comparison-table" className="bg-white pt-16 pb-8 lg:pt-24 lg:pb-12 scroll-mt-24">
       <div className="mx-auto max-w-[1200px] px-6">
         <div className="mx-auto max-w-[720px] text-center">
           <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-foreground leading-[1.1]">
@@ -1210,7 +1210,7 @@ function FeatureComparison() {
           ))}
         </div>
 
-        <p className="mt-12 text-center text-[14px] leading-[1.6] text-dd-muted">
+        <p className="mt-8 text-center text-[14px] leading-[1.6] text-dd-muted">
           Spotted something inaccurate? Email{" "}
           <a href="mailto:hello@dentdock.co.uk" className="font-medium text-[#2563EB] hover:underline">
             hello@dentdock.co.uk
