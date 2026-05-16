@@ -88,7 +88,7 @@ function HeroVisual() {
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
         style={{ zIndex: 2 }}
       >
-        <div className="relative w-[130px] sm:w-[160px] lg:w-[180px] xl:w-[240px]">
+        <div className="relative w-[130px] sm:w-[230px] lg:w-[180px] xl:w-[240px]">
           <svg
             aria-hidden="true"
             viewBox="0 0 100 100"
