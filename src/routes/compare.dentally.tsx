@@ -327,7 +327,7 @@ const whyBlocks = [
   },
   {
     title: "Talk to a real human",
-    body: "Something not working? Message Hariss directly on WhatsApp. No ticket queue, no chatbot, no escalation form. Real human, same-day reply — that's what comes with £49. As we grow this might change. For now, you're talking straight to the founder.",
+    body: "Need help or something not working? Message us on WhatsApp. No ticket queue, no chatbot, no escalation form. Real human, same-day reply.",
     label: "VISUAL · TALK TO A REAL HUMAN",
     textLeft: true,
   },
