@@ -21,6 +21,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import Footer from "@/components/home/Footer";
+import Navbar from "@/components/home/Navbar";
 
 const faqItems = [
   {
@@ -276,6 +277,7 @@ function PriceRationale() {
 function CompareDentallyPage() {
   return (
     <main className="bg-white text-dd-foreground">
+      <Navbar />
       <Hero />
       <HonestAnswer />
       <PricingComparison />
@@ -773,7 +775,7 @@ function FitCard({ title, intro, items }: { title: string; intro: string; items:
 
 function Hero() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-surface-tint to-white pt-16 pb-12 lg:pt-24 lg:pb-16">
+    <section className="relative overflow-hidden bg-gradient-to-b from-surface-tint to-white pt-28 pb-12 lg:pt-36 lg:pb-16">
       {/* Aurora motif, top-right */}
       <div
         aria-hidden="true"
@@ -802,10 +804,10 @@ function Hero() {
             className="mt-6 font-semibold text-dd-foreground text-[44px] leading-[1.15] lg:text-[72px]"
             style={{ letterSpacing: "-0.03em" }}
           >
-            Dent Dock vs Dentally
+            <span style={{ color: "#2563EB" }}>Dent Dock</span> vs Dentally
           </h1>
 
-          <p className="mt-6 max-w-[640px] text-[20px] leading-[1.6] text-dd-muted lg:text-[24px]">
+          <p className="mt-6 text-lg text-neutral-500 max-w-xl leading-relaxed">
             An honest comparison for UK private dental practices. We're new.
             Dentally is the market leader. Here's what each does, what each
             costs, and when to choose which.
@@ -821,7 +823,7 @@ function Hero() {
 
           <a
             href="#comparison-table"
-            className="mt-6 inline-flex items-center gap-1 text-[14px] text-dd-muted underline-offset-4 transition-colors hover:text-brand-blue hover:underline"
+            className="mt-8 inline-flex items-center gap-2 rounded-2xl border border-[#E2E8F0] bg-white px-5 py-3 text-[16px] font-medium text-[#0F172A] shadow-sm transition-colors hover:bg-[#F3F6FD] hover:border-[#2563EB]/40"
           >
             Skip to the full feature comparison
             <span aria-hidden="true">→</span>
