@@ -1,4 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
+import {
+  CalendarCheck,
+  Zap,
+  FileText,
+  MessageSquare,
+  Smartphone,
+  Headphones,
+  type LucideIcon,
+} from "lucide-react";
 
 export const Route = createFileRoute("/compare/dentally")({
   head: () => ({
