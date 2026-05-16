@@ -74,7 +74,7 @@ function HeroVisual() {
       {/* Layer 1: aurora halo */}
       <div
         aria-hidden="true"
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none w-[260px] h-[260px] sm:w-[320px] sm:h-[320px] lg:w-[360px] lg:h-[360px] xl:w-[480px] xl:h-[480px]"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none w-[260px] h-[260px] sm:w-[420px] sm:h-[420px] lg:w-[360px] lg:h-[360px] xl:w-[480px] xl:h-[480px]"
         style={{
           background:
             "radial-gradient(circle, rgba(37,99,235,0.18) 0%, rgba(37,99,235,0.08) 40%, transparent 75%)",
@@ -88,7 +88,7 @@ function HeroVisual() {
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
         style={{ zIndex: 2 }}
       >
-        <div className="relative w-[130px] sm:w-[160px] lg:w-[180px] xl:w-[240px]">
+        <div className="relative w-[130px] sm:w-[230px] lg:w-[180px] xl:w-[240px]">
           <svg
             aria-hidden="true"
             viewBox="0 0 100 100"
