@@ -206,6 +206,7 @@ function CompareDentallyPage() {
       <SwitchingSteps />
       <PriceRationale />
       <FAQ />
+      <ClosingCTA />
     </main>
   );
 }
