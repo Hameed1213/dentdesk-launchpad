@@ -1230,7 +1230,7 @@ function StickyPricingCards({ progress }: { progress: number }) {
         className="pointer-events-none absolute inset-x-[-100vw] top-0 bottom-0 bg-white border-b border-[#E2E8F0]"
         style={{ opacity: backdropOpacity, transition: "opacity 200ms ease-out" }}
       />
-      <div className="relative grid grid-cols-[45%_27.5%_27.5%] gap-x-6 py-3">
+      <div className="relative grid grid-cols-[45%_27.5%_27.5%] px-3 py-2">
         <div />
         {/* Dent Dock card */}
         <div
@@ -1245,7 +1245,7 @@ function StickyPricingCards({ progress }: { progress: number }) {
             boxShadow: "0 14px 32px -8px rgba(37,99,235,0.2)",
             transition,
           }}
-          className="flex flex-col items-center justify-center text-center"
+          className="mx-auto flex w-full max-w-[318px] flex-col items-center justify-center text-center"
         >
           <span
             className="font-semibold text-[#2563EB]"
@@ -1279,7 +1279,7 @@ function StickyPricingCards({ progress }: { progress: number }) {
             boxShadow: "0 1px 2px 0 rgba(0,0,0,0.05)",
             transition,
           }}
-          className="flex flex-col items-center justify-center text-center"
+          className="mx-auto flex w-full max-w-[318px] flex-col items-center justify-center text-center"
         >
           <span
             className="font-semibold text-[#475569]"
