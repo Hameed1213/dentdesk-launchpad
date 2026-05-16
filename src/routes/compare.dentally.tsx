@@ -25,9 +25,146 @@ function CompareDentallyPage() {
     <main className="bg-white text-dd-foreground">
       <Hero />
       <HonestAnswer />
+      <PricingComparison />
     </main>
   );
 }
+
+function PricingComparison() {
+  return (
+    <section className="bg-white py-16 lg:py-24">
+      <div className="mx-auto max-w-[1200px] px-6">
+        <div className="mx-auto max-w-[720px] text-center">
+          <p
+            className="text-[14px] font-semibold uppercase text-brand-blue"
+            style={{ letterSpacing: "0.14em" }}
+          >
+            Pricing
+          </p>
+          <h2
+            className="mt-4 text-[32px] font-semibold leading-tight text-dd-foreground lg:text-[48px]"
+            style={{ letterSpacing: "-0.02em" }}
+          >
+            What each actually costs
+          </h2>
+          <p className="mt-5 text-[20px] leading-[1.6] text-dd-muted">
+            Dentally lists prices excluding VAT. Dent Dock is a flat practice
+            price. Most UK dental services are VAT-exempt supplies — practices
+            generally can't reclaim VAT on inputs — so the real cost to your
+            practice is the inc-VAT figure.
+          </p>
+        </div>
+
+        <div className="mt-14 grid grid-cols-1 items-start gap-6 lg:grid-cols-3">
+          <PriceCard
+            highlighted
+            eyebrow="Dent Dock · Starter"
+            price="£49"
+            subline="per month, no VAT charged today"
+            summary="Online booking, forms, recalls, payments, two-way SMS and 29 automations included."
+            pills={[
+              { label: "Online booking included", tone: "success" },
+              { label: "Digital forms included", tone: "success" },
+              { label: "Patient portal included", tone: "success" },
+            ]}
+          />
+          <PriceCard
+            eyebrow="Dentally · Starter"
+            price="£125"
+            subline="per month plus VAT · real cost £150"
+            summary="Practice management without the Dentally Portal."
+            pills={[
+              { label: "Online booking not included", tone: "attention" },
+              { label: "Digital forms not included", tone: "attention" },
+              { label: "Patient portal not included", tone: "attention" },
+            ]}
+          />
+          <PriceCard
+            eyebrow="Dentally · Essentials"
+            price="£220"
+            subline="per month plus VAT · real cost £264"
+            summary="Practice management with the Dentally Portal included."
+            pills={[
+              { label: "Online booking included", tone: "success" },
+              { label: "Digital forms included", tone: "success" },
+              { label: "Patient portal included", tone: "success" },
+            ]}
+          />
+        </div>
+
+        <p className="mx-auto mt-10 max-w-[760px] text-center text-[14px] leading-[1.6] text-dd-muted">
+          Pricing for 1 surgery, taken from dentally.com/en-gb/pricing on 15
+          May 2026. Dentally charges per practice based on number of surgeries
+          — see the Dentally pricing page for multi-surgery rates.
+        </p>
+      </div>
+    </section>
+  );
+}
+
+type Pill = { label: string; tone: "success" | "attention" };
+
+function PriceCard({
+  highlighted = false,
+  eyebrow,
+  price,
+  subline,
+  summary,
+  pills,
+}: {
+  highlighted?: boolean;
+  eyebrow: string;
+  price: string;
+  subline: string;
+  summary: string;
+  pills: Pill[];
+}) {
+  return (
+    <div
+      className={
+        highlighted
+          ? "rounded-2xl border-2 border-brand-blue bg-white p-7 shadow-cta lg:-translate-y-2 lg:p-10"
+          : "rounded-2xl border border-dd-border bg-white p-7 shadow-sm lg:p-10"
+      }
+    >
+      <p
+        className={
+          highlighted
+            ? "text-[14px] font-semibold uppercase text-brand-blue"
+            : "text-[14px] font-semibold uppercase text-dd-muted"
+        }
+        style={{ letterSpacing: "0.14em" }}
+      >
+        {eyebrow}
+      </p>
+      <p className="tabular-nums mt-5 text-[56px] font-bold leading-none text-dd-foreground">
+        {price}
+      </p>
+      <p className="mt-3 text-[16px] text-dd-muted">{subline}</p>
+      <p className="mt-5 max-w-[280px] text-[18px] font-medium leading-[1.4] text-dd-foreground">
+        {summary}
+      </p>
+
+      <div className="my-6 h-px bg-dd-border" />
+
+      <div className="flex flex-col gap-2">
+        {pills.map((pill) => (
+          <span
+            key={pill.label}
+            className={
+              pill.tone === "success"
+                ? "inline-flex w-fit items-center rounded-xl bg-success-fill px-3 py-1.5 text-[14px] text-success-foreground"
+                : "inline-flex w-fit items-center rounded-xl bg-attention-fill px-3 py-1.5 text-[14px] text-attention-foreground"
+            }
+          >
+            {pill.label}
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 
 const dentallyFit = [
   "Clinical charting, tooth charts or treatment plan builders",
