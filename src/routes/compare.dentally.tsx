@@ -43,9 +43,38 @@ function CompareDentallyPage() {
       <PricingComparison />
       <FeaturesGrid />
       <WhereDentallyWins />
+      <FounderNote />
     </main>
   );
 }
+
+function FounderNote() {
+  return (
+    <section className="bg-surface-tint py-16 lg:py-24">
+      <div className="mx-auto max-w-[720px] px-6 text-center">
+        <p
+          className="text-[14px] font-semibold uppercase text-brand-blue"
+          style={{ letterSpacing: "0.14em" }}
+        >
+          A note from the founder
+        </p>
+        <p
+          className="mt-6 text-[24px] leading-[1.6] text-dd-foreground"
+          style={{ letterSpacing: "-0.01em" }}
+        >
+          Dent Dock is new. Dentally has been around for over a decade and is
+          the UK market leader, owned by Henry Schein One. We're not trying to
+          be Dentally. We do less, on purpose, for single-site UK private
+          practices that don't want to pay £264 a month for online booking.
+        </p>
+        <p className="mt-6 text-[18px] font-medium text-dd-muted">
+          — Hariss, founder
+        </p>
+      </div>
+    </section>
+  );
+}
+
 
 const dentallyWins: { icon: LucideIcon; title: string; body: string }[] = [
   {
