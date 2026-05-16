@@ -1196,7 +1196,7 @@ function StatusCell({ cell }: { cell: Cell }) {
       </span>
       <span className="sr-only">{cell.included ? "Included" : "Not included"}</span>
       {cell.caveat && (
-        <span className="mt-2 text-[13px] font-medium leading-snug text-[#CBD5E1] line-clamp-2">
+        <span className="mt-2 text-[13px] font-medium leading-snug text-[#475569] line-clamp-2">
           {cell.caveat}
         </span>
       )}
