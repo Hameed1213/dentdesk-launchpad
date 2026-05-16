@@ -10,6 +10,7 @@ import {
   MessagesSquare,
   Banknote,
   MessageCircle,
+  ArrowRight,
   Check,
   X,
   type LucideIcon,
