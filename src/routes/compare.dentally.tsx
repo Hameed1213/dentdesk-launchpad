@@ -30,6 +30,7 @@ const EASING = "cubic-bezier(0.22, 1, 0.36, 1)";
 
 type FloatPill = {
   icon: LucideIcon;
+  text: string;
   top: string;
   left?: string;
   right?: string;
@@ -37,10 +38,10 @@ type FloatPill = {
 };
 
 const PILLS: FloatPill[] = [
-  { icon: Banknote, top: "16%", left: "0%", floatDelay: "0s" },
-  { icon: CalendarCheck, top: "16%", right: "0%", floatDelay: "-1.2s" },
-  { icon: Zap, top: "78%", left: "0%", floatDelay: "-2.5s" },
-  { icon: MessageCircle, top: "78%", right: "0%", floatDelay: "-3.7s" },
+  { icon: Banknote, text: "£49 a month", top: "16%", left: "0%", floatDelay: "0s" },
+  { icon: CalendarCheck, text: "Online booking included", top: "16%", right: "0%", floatDelay: "-1.2s" },
+  { icon: Zap, text: "Live in day", top: "78%", left: "0%", floatDelay: "-2.5s" },
+  { icon: MessageCircle, text: "Direct WhatsApp support", top: "78%", right: "0%", floatDelay: "-3.7s" },
 ];
 
 function HeroVisual() {
