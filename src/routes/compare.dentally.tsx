@@ -1103,7 +1103,7 @@ const categories: Category[] = [
     title: "Patient booking",
     rows: [
       { feature: "Online booking page", dentDock: yes(), dentally: yes("Essentials+ only") },
-      { feature: "Mobile-first design", dentDock: yes(), dentally: yes("Functional, not designed for it") },
+      
       { feature: "Live slot updates", dentDock: yes(), dentally: yes() },
       { feature: "Patient self-reschedule via link", dentDock: yes(), dentally: yes() },
       { feature: "Patient self-cancel via link", dentDock: yes(), dentally: yes() },
