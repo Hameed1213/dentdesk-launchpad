@@ -913,7 +913,7 @@ function Hero() {
       />
 
       <div className="relative mx-auto max-w-[1200px] px-6 flex flex-col lg:flex-row lg:items-center lg:gap-10">
-        <div className="w-full lg:w-3/5">
+        <div className="w-full lg:w-[55%] lg:max-w-[640px]">
           <p
             className="text-[14px] font-semibold uppercase text-brand-blue"
             style={{ letterSpacing: "0.14em" }}
