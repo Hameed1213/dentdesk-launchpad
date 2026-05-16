@@ -896,8 +896,26 @@ function HonestAnswer() {
             What each one <span className="text-[#2563EB]">is built for.</span>
           </h2>
           <p className="mt-5 text-base md:text-lg text-muted-foreground">
-            Dent Dock is dental practice software for single-site UK private practices — online booking, digital forms, recalls, payments and two-way patient comms at £49 a month. Dentally is the UK market leader and serves practices of every size and type, with deeper clinical features. Both are good software. They're built for different practices.
+            Different software, built for different practices.
           </p>
+          <div className="mt-8 mb-16 lg:mb-24 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6">
+            <div className="inline-flex items-center gap-2 rounded-full border border-[#E2E8F0] bg-white px-[18px] py-[10px] shadow-sm text-sm font-medium text-[#0F172A]">
+              <span className="h-2 w-2 rounded-full bg-[#2563EB]" aria-hidden="true" />
+              <span>Dent Dock</span>
+              <span className="text-[#CBD5E1]" aria-hidden="true">·</span>
+              <span>£49/mo</span>
+              <span className="text-[#CBD5E1]" aria-hidden="true">·</span>
+              <span>Single-site private</span>
+            </div>
+            <div className="inline-flex items-center gap-2 rounded-full border border-[#E2E8F0] bg-white px-[18px] py-[10px] shadow-sm text-sm font-medium text-[#0F172A]">
+              <span className="h-2 w-2 rounded-full bg-[#94A3B8]" aria-hidden="true" />
+              <span>Dentally</span>
+              <span className="text-[#CBD5E1]" aria-hidden="true">·</span>
+              <span>From £125+/mo</span>
+              <span className="text-[#CBD5E1]" aria-hidden="true">·</span>
+              <span>Every type of practice</span>
+            </div>
+          </div>
         </motion.div>
 
         <motion.div
