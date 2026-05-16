@@ -829,6 +829,10 @@ function Hero() {
             <span aria-hidden="true">→</span>
           </a>
         </div>
+
+        <div className="hidden lg:flex lg:w-2/5 justify-center">
+          <SmsThread />
+        </div>
       </div>
     </section>
   );
