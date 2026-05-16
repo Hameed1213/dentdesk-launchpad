@@ -98,7 +98,7 @@ function HeroVisual() {
         return (
           <div
             key={i}
-            className="absolute flex h-14 w-14 items-center justify-center rounded-full bg-white"
+            className="absolute flex items-center gap-2 rounded-full bg-white pl-2 pr-4 py-2"
             style={{
               top: p.top,
               left: p.left,
@@ -116,7 +116,10 @@ function HeroVisual() {
                   : `pill-float 5s ease-in-out ${p.floatDelay} infinite`,
             }}
           >
-            <Icon size={22} strokeWidth={2} color="#2563EB" />
+            <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#EFF4FF]">
+              <Icon size={16} strokeWidth={2} color="#2563EB" />
+            </span>
+            <span className="text-xs font-medium text-slate-700 whitespace-nowrap">{p.text}</span>
           </div>
         );
       })}
