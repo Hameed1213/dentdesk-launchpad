@@ -450,15 +450,15 @@ function StatBand() {
   const reduce = useReducedMotion();
   const ease = [0.22, 1, 0.36, 1] as const;
 
-  const numberClass =
-    "text-[36px] md:text-[56px] font-bold leading-none text-[#2563EB] tabular-nums";
-  const labelClass =
-    "mt-2 text-[14px] font-medium uppercase text-white/70";
+  const smallNumberClass =
+    "text-[36px] md:text-[48px] font-bold leading-none text-[#2563EB] tabular-nums";
+  const smallLabelClass =
+    "mt-1 text-[13px] font-medium uppercase text-white/70";
 
   const containerMotion = reduce
     ? {}
     : {
-        initial: { opacity: 0, y: 12 },
+        initial: { opacity: 0, y: 16 },
         whileInView: { opacity: 1, y: 0 },
         viewport: { once: true, margin: "-80px" },
         transition: { duration: 0.6, ease },
@@ -478,67 +478,85 @@ function StatBand() {
         {...containerMotion}
         className="relative mx-auto max-w-[1200px] px-6"
       >
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-y-10 md:gap-y-0 md:divide-x md:divide-white/10">
-          <div className="flex flex-col items-center text-center md:px-6">
-            <div
-              className={numberClass}
-              style={{ letterSpacing: "-0.02em" }}
-              aria-label="£49 versus £125 or more"
+        {/* Focal stat */}
+        <div className="text-center">
+          <div
+            className="font-bold leading-none tabular-nums whitespace-nowrap"
+            style={{ letterSpacing: "-0.02em" }}
+            aria-label="£49 versus £125 or more per month"
+          >
+            <motion.span
+              className="text-[#2563EB] text-[56px] md:text-[96px] font-bold"
+              initial={reduce ? false : { opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.5, ease }}
             >
-              <motion.span
-                initial={reduce ? false : { opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true, margin: "-80px" }}
-                transition={{ duration: 0.4, ease }}
-              >
-                £49
-              </motion.span>
-              <motion.span
-                className="text-white/60"
-                initial={reduce ? false : { opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true, margin: "-80px" }}
-                transition={{ duration: 0.4, ease, delay: 0.2 }}
-              >
-                {" "}/ £125+
-              </motion.span>
-            </div>
-            <div className={labelClass} style={{ letterSpacing: "0.06em" }}>
-              Dent Dock vs Dentally Starter
-            </div>
+              £49
+            </motion.span>
+            <motion.span
+              className="text-white/60 text-[28px] md:text-[48px] font-medium mx-3 md:mx-5 align-middle"
+              initial={reduce ? false : { opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.5, ease, delay: 0.3 }}
+            >
+              vs
+            </motion.span>
+            <motion.span
+              className="text-[#2563EB] text-[56px] md:text-[96px] font-bold"
+              initial={reduce ? false : { opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.5, ease, delay: 0.3 }}
+            >
+              £125+
+            </motion.span>
           </div>
+          <div
+            className="mt-2 text-[14px] md:text-[16px] font-medium uppercase text-white/70"
+            style={{ letterSpacing: "0.06em" }}
+          >
+            The monthly price difference · Dent Dock vs Dentally Starter
+          </div>
+        </div>
 
-          <div className="flex flex-col items-center text-center md:px-6">
-            <div className={numberClass} style={{ letterSpacing: "-0.02em" }} aria-label="29">
+        {/* Divider */}
+        <div className="my-14 h-px w-full bg-white/10" />
+
+        {/* Supporting stats */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-y-10 sm:gap-x-20 sm:gap-y-0">
+          <div className="flex flex-col items-center text-center">
+            <div className={smallNumberClass} style={{ letterSpacing: "-0.02em" }} aria-label="29">
               <CountUp target={29} />
             </div>
-            <div className={labelClass} style={{ letterSpacing: "0.06em" }}>
+            <div className={smallLabelClass} style={{ letterSpacing: "0.08em" }}>
               Automations built in
             </div>
           </div>
 
-          <div className="flex flex-col items-center text-center md:px-6">
-            <div className={numberClass} style={{ letterSpacing: "-0.02em" }} aria-label="16">
+          <div className="flex flex-col items-center text-center">
+            <div className={smallNumberClass} style={{ letterSpacing: "-0.02em" }} aria-label="16">
               <CountUp target={16} />
             </div>
-            <div className={labelClass} style={{ letterSpacing: "0.06em" }}>
+            <div className={smallLabelClass} style={{ letterSpacing: "0.08em" }}>
               Form templates included
             </div>
           </div>
 
-          <div className="flex flex-col items-center text-center md:px-6">
+          <div className="flex flex-col items-center text-center">
             <motion.div
-              className={numberClass}
+              className={smallNumberClass}
               style={{ letterSpacing: "-0.02em" }}
               initial={reduce ? false : { opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.4, ease }}
             >
-              Day one
+              Same-day
             </motion.div>
-            <div className={labelClass} style={{ letterSpacing: "0.06em" }}>
-              You go live
+            <div className={smallLabelClass} style={{ letterSpacing: "0.08em" }}>
+              Go-live
             </div>
           </div>
         </div>
