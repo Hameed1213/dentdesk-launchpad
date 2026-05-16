@@ -15,6 +15,7 @@ import {
   Banknote,
   MessageCircle,
   Check,
+  X,
   type LucideIcon,
 } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
