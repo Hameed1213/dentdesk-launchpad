@@ -837,20 +837,20 @@ function PriceCard({
 }
 
 const dentallyFit = [
-  "Clinical charting, tooth charts or treatment plan builders",
+  "Clinical charting, tooth charts or treatment plans",
   "NHS UDA / FP17 management",
   "Multi-site practice management",
   "AI clinical note transcription",
   "Imaging integration (DEXIS, Carestream, Sirona)",
-  "A long-established platform with thousands of UK customers",
+  "Long-established platform with thousands of UK customers",
 ];
 
 const dentDockFit = [
   "Single-site UK private practice",
-  "You want online booking, digital forms, recalls and patient comms",
-  "You don't need clinical charting or NHS contract management",
-  "You'd rather pay £49 than £264 a month",
-  "You want to be live this week, not after a multi-week implementation",
+  "Want online booking, forms, recalls and patient comms",
+  "Don't need clinical charting or NHS contract management",
+  "Rather pay £49 than £264 a month",
+  "Want to be live this week, not after a multi-week setup",
 ];
 
 function HonestAnswer() {
