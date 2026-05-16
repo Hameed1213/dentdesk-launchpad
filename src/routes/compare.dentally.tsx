@@ -321,7 +321,7 @@ const whyBlocks = [
   },
   {
     title: "Ready on day one",
-    body: "Booking confirmations, 72/24/2-hour reminders, deposit chasers, recall sequences, birthday messages, daily summary emails — 29 automations are seeded into your practice the moment you sign up. Tweak the wording, change the timing, switch them off. You'll never have to build them from scratch.",
+    body: "The work's already done. Automations, forms, recall sequences, booking confirmations are all running before you log in. Sign up, look around, take your first booking.",
     label: "VISUAL · READY ON DAY ONE",
     textLeft: false,
   },
