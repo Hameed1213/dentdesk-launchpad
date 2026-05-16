@@ -45,6 +45,8 @@ function CompareDentallyPage() {
       <WhereDentallyWins />
       <FounderNote />
       <FeatureComparison />
+      <SwitchingSteps />
+
 
     </main>
   );
