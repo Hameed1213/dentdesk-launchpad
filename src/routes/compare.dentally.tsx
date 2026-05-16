@@ -119,7 +119,7 @@ function HeroVisual() {
             <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#EFF4FF]">
               <Icon size={16} strokeWidth={2} color="#2563EB" />
             </span>
-            <span className="text-sm font-semibold text-slate-700 whitespace-nowrap">{p.text}</span>
+            <span className="text-[13px] font-semibold text-slate-700 whitespace-nowrap">{p.text}</span>
           </div>
         );
       })}
