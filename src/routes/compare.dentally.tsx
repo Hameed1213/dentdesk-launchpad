@@ -1230,7 +1230,7 @@ function StickyPricingCards({ progress }: { progress: number }) {
         className="pointer-events-none absolute inset-x-[-100vw] top-0 bottom-0 bg-white border-b border-[#E2E8F0]"
         style={{ opacity: backdropOpacity, transition: "opacity 200ms ease-out" }}
       />
-      <div className="relative grid grid-cols-[45%_27.5%_27.5%] px-3 py-2">
+      <div className="relative grid grid-cols-[45%_27.5%_27.5%] gap-x-4 px-3 py-2">
         <div />
         {/* Dent Dock card */}
         <div
