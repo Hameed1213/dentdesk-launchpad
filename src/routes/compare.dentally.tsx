@@ -103,14 +103,13 @@ function HeroVisual() {
             style={{
               top: p.top,
               left: p.left,
-              right: p.right,
               zIndex: 4,
               padding: "10px 20px 10px 0",
               border: "1px solid #E2E8F0",
               boxShadow: "0 8px 24px -8px rgba(37,99,235,0.15)",
               position: "absolute",
               opacity: mounted ? 1 : 0,
-              transform: mounted ? "translateY(0)" : "translateY(8px)",
+              transform: mounted ? "translate(-50%, 0)" : "translate(-50%, 8px)",
               transition: `opacity 400ms ${EASING} ${i * 150}ms, transform 400ms ${EASING} ${i * 150}ms`,
               animation: prefersReducedMotion || !mounted
                 ? undefined
