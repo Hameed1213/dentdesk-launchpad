@@ -964,8 +964,8 @@ function Hero() {
           </a>
         </div>
 
-        <div className="hidden lg:flex lg:w-2/5 justify-center">
-          <FloatingPills />
+        <div className="hidden lg:flex lg:w-[45%] justify-center">
+          <HeroVisual />
         </div>
       </div>
     </section>
