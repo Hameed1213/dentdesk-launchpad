@@ -1210,8 +1210,12 @@ function FeatureComparison() {
           ))}
         </div>
 
-        <p className="mt-12 text-[14px] leading-[1.6] text-dd-muted">
-          Spotted something inaccurate? Email hello@dentdock.co.uk and we'll fix it.
+        <p className="mt-12 text-center text-[14px] leading-[1.6] text-dd-muted">
+          Spotted something inaccurate? Email{" "}
+          <a href="mailto:hello@dentdock.co.uk" className="font-medium text-[#2563EB] hover:underline">
+            hello@dentdock.co.uk
+          </a>{" "}
+          and we'll fix it.
         </p>
       </div>
     </section>
