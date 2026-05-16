@@ -27,7 +27,7 @@ import {
 } from "@/components/ui/accordion";
 import Footer from "@/components/home/Footer";
 import Navbar from "@/components/home/Navbar";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const EASING = "cubic-bezier(0.22, 1, 0.36, 1)";
 
