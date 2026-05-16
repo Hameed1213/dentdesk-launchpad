@@ -205,7 +205,39 @@ function CompareDentallyPage() {
       <FeatureComparison />
       <SwitchingSteps />
       <PriceRationale />
+      <FAQ />
     </main>
+  );
+}
+
+function FAQ() {
+  return (
+    <section className="bg-white py-16 lg:py-24">
+      <div className="mx-auto max-w-[880px] px-6">
+        <p className="text-[14px] font-medium uppercase tracking-[0.14em] text-dd-brand-blue">
+          Frequently asked
+        </p>
+        <h2 className="mt-4 text-[32px] font-semibold tracking-tight text-dd-foreground lg:text-[48px]">
+          Questions practice owners ask
+        </h2>
+        <Accordion type="multiple" className="mt-10 flex flex-col gap-4">
+          {faqItems.map((item, i) => (
+            <AccordionItem
+              key={i}
+              value={`item-${i}`}
+              className="rounded-2xl border border-[#E2E8F0] bg-white px-6 [&[data-state=open]]:pb-2"
+            >
+              <AccordionTrigger className="py-6 text-left text-[18px] font-semibold text-dd-foreground hover:no-underline [&>svg]:text-[#64748B]">
+                {item.q}
+              </AccordionTrigger>
+              <AccordionContent className="border-t border-[#E2E8F0] pt-4 text-[16px] leading-[1.6] text-[#475569]">
+                {item.a}
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
+      </div>
+    </section>
   );
 }
 
