@@ -1,4 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
+import {
+  CalendarCheck,
+  Zap,
+  FileText,
+  MessageSquare,
+  Smartphone,
+  Headphones,
+  type LucideIcon,
+} from "lucide-react";
 
 export const Route = createFileRoute("/compare/dentally")({
   head: () => ({
@@ -26,9 +35,110 @@ function CompareDentallyPage() {
       <Hero />
       <HonestAnswer />
       <PricingComparison />
+      <FeaturesGrid />
     </main>
   );
 }
+
+const features: { icon: LucideIcon; title: string; body: string }[] = [
+  {
+    icon: CalendarCheck,
+    title: "Online booking, included",
+    body: "Mobile-first patient flow with real-time slot updates. Patients book, reschedule and cancel from their phone in seconds.",
+  },
+  {
+    icon: Zap,
+    title: "29 automation flows, pre-built",
+    body: "Booking confirmations, 72/24/2 hour reminders, deposit reminders, the 5-step recall sequence and more. Seeded on signup. Edit them, don't configure from scratch.",
+  },
+  {
+    icon: FileText,
+    title: "16 dental form templates",
+    body: "Invisalign pre-screening, dental anxiety, implant assessment, child new patient, infection control, consent to treatment, and more. Send by SMS or email.",
+  },
+  {
+    icon: MessageSquare,
+    title: "Two-way SMS inbox",
+    body: "Patient replies come back into a thread your receptionist can see. The SMS sender shows your practice name, not a random number.",
+  },
+  {
+    icon: Smartphone,
+    title: "Patient portal",
+    body: "Magic-link login. Patients see upcoming appointments, fill forms, view receipts and pay invoices — no password to remember.",
+  },
+  {
+    icon: Headphones,
+    title: "WhatsApp line to the founder",
+    body: "Real human, 48-hour reply, personally. No ticket queue, no chatbot.",
+  },
+];
+
+function FeaturesGrid() {
+  return (
+    <section className="bg-white py-16 lg:py-24">
+      <div className="mx-auto max-w-[1200px] px-6">
+        <div className="max-w-[720px]">
+          <p
+            className="text-[14px] font-semibold uppercase text-brand-blue"
+            style={{ letterSpacing: "0.14em" }}
+          >
+            Included from day one
+          </p>
+          <h2
+            className="mt-4 text-[32px] font-semibold leading-tight text-dd-foreground lg:text-[48px]"
+            style={{ letterSpacing: "-0.02em" }}
+          >
+            What you get from Dent Dock at £49
+          </h2>
+          <p className="mt-5 max-w-[640px] text-[20px] leading-[1.6] text-dd-muted">
+            Not a teaser. Not a starter tier. Everything below is in our only
+            plan.
+          </p>
+        </div>
+
+        <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {features.map((f) => (
+            <FeatureTile key={f.title} icon={f.icon} title={f.title} body={f.body} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function FeatureTile({
+  icon: Icon,
+  title,
+  body,
+}: {
+  icon: LucideIcon;
+  title: string;
+  body: string;
+}) {
+  return (
+    <div className="group relative overflow-hidden rounded-2xl border border-dd-border bg-white p-8 shadow-sm transition-transform duration-200 hover:-translate-y-px">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(120px 120px at 90% 10%, rgba(37,99,235,0.04), transparent 70%)",
+          filter: "blur(40px)",
+        }}
+      />
+      <div className="relative">
+        <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-dd-border bg-white shadow-sm">
+          <Icon className="h-5 w-5 text-brand-blue" strokeWidth={1.75} />
+        </div>
+        <h3 className="mt-6 text-[20px] font-semibold text-dd-foreground">
+          {title}
+        </h3>
+        <p className="mt-2 text-[16px] leading-[1.55] text-dd-muted">{body}</p>
+      </div>
+    </div>
+  );
+}
+
 
 function PricingComparison() {
   return (
