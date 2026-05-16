@@ -38,7 +38,7 @@ type FloatPill = {
 };
 
 const PILLS: FloatPill[] = [
-  { icon: Zap, text: "Live in a day vs sales call", top: "16%", left: "0%", floatDelay: "0s" },
+  { icon: Zap, text: "Live in a day vs sales call", top: "24%", left: "8%", floatDelay: "0s" },
   { icon: Banknote, text: "£49 vs £125+", top: "16%", right: "0%", floatDelay: "-1.2s" },
   { icon: MessageCircle, text: "WhatsApp support vs ticket queue", top: "78%", left: "0%", floatDelay: "-2.5s" },
   { icon: CalendarCheck, text: "Booking included vs not", top: "62%", right: "-8%", floatDelay: "-3.7s" },
