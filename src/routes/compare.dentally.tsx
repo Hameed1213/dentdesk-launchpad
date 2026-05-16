@@ -545,7 +545,7 @@ function WhatNextCTA() {
           className="text-[32px] font-semibold text-dd-foreground lg:text-[48px]"
           style={{ letterSpacing: "-0.02em" }}
         >
-          Want to see more, or just have a chat?
+          Want to see more, <span className="text-[#2563EB]">or just have a chat?</span>
         </motion.h2>
         <motion.p
           {...fade(0.35)}
