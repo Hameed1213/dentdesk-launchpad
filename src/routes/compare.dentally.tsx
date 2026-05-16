@@ -918,12 +918,6 @@ function HonestAnswer() {
               >
                 Choose Dent Dock if
               </p>
-              <div
-                className="mt-4 inline-flex items-center rounded-full bg-[#DBEAFE] border border-[#BFDBFE] px-[14px] py-[6px] text-[13px] font-semibold text-[#2563EB] tabular-nums"
-                style={{ letterSpacing: "0.02em" }}
-              >
-                FROM £49 / MONTH
-              </div>
               <ul className="mt-8 flex flex-col gap-5">
                 {dentDockFit.map((item, i) => (
                   <motion.li
