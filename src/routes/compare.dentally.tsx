@@ -529,3 +529,221 @@ function Hero() {
     </section>
   );
 }
+
+type PillTone = "included" | "not-included" | "roadmap" | "limited" | "neutral";
+
+function StatusPill({ label, tone }: { label: string; tone: PillTone }) {
+  const cls =
+    tone === "included"
+      ? "bg-success-fill text-success-foreground"
+      : tone === "roadmap"
+        ? "bg-brand-blue-tint text-brand-blue"
+        : tone === "limited"
+          ? "bg-attention-fill text-attention-foreground"
+          : tone === "not-included"
+            ? "bg-slate-100 text-dd-muted"
+            : "bg-slate-100 text-dd-muted";
+  return (
+    <span
+      className={`inline-flex w-fit items-center rounded-xl px-3 py-1.5 text-[14px] ${cls}`}
+    >
+      {label}
+    </span>
+  );
+}
+
+type Cell = { label: string; tone: PillTone };
+type FeatureRow = { feature: string; dentDock: Cell; dentally: Cell };
+type Category = { title: string; rows: FeatureRow[] };
+
+const included = (label = "Included"): Cell => ({ label, tone: "included" });
+const notIncluded = (label = "Not included"): Cell => ({ label, tone: "not-included" });
+const roadmap = (label = "Roadmap"): Cell => ({ label, tone: "roadmap" });
+const limited = (label: string): Cell => ({ label, tone: "limited" });
+const neutral = (label: string): Cell => ({ label, tone: "neutral" });
+
+const categories: Category[] = [
+  {
+    title: "Patient booking",
+    rows: [
+      { feature: "Online booking page", dentDock: included(), dentally: neutral("Essentials+") },
+      { feature: "Mobile-first design", dentDock: included(), dentally: neutral("Available") },
+      { feature: "Live slot updates", dentDock: included(), dentally: neutral("Available") },
+      { feature: "Patient self-reschedule via link", dentDock: included(), dentally: included() },
+      { feature: "Patient self-cancel via link", dentDock: included(), dentally: included() },
+      { feature: "Custom booking domain", dentDock: roadmap(), dentally: neutral("Pro only") },
+    ],
+  },
+  {
+    title: "Patient communications",
+    rows: [
+      { feature: "Automated SMS + email reminders", dentDock: included(), dentally: included() },
+      { feature: "Pre-built automation flows", dentDock: included("29 seeded on signup"), dentally: neutral("Configure your own") },
+      { feature: "SMS sender shows practice name", dentDock: limited("At launch"), dentally: neutral("Available") },
+      { feature: "Two-way SMS inbox", dentDock: included(), dentally: neutral("Available") },
+      { feature: "Internal team chat", dentDock: roadmap(), dentally: included() },
+      { feature: "Marketing vs transactional consent classifier", dentDock: included(), dentally: neutral("Available") },
+    ],
+  },
+  {
+    title: "Forms",
+    rows: [
+      { feature: "Digital forms", dentDock: included(), dentally: neutral("Essentials+") },
+      { feature: "Pre-built dental templates", dentDock: included("16 included"), dentally: neutral("Available") },
+      { feature: "Digital signature capture", dentDock: included(), dentally: neutral("Essentials+") },
+      { feature: "Conditional logic", dentDock: included(), dentally: neutral("Essentials+") },
+      { feature: "Auto-sync answers to patient record", dentDock: included(), dentally: neutral("Available") },
+    ],
+  },
+  {
+    title: "Recalls",
+    rows: [
+      { feature: "Recall list view", dentDock: included(), dentally: included() },
+      { feature: "5-step automated cascade", dentDock: included("Pre-built"), dentally: neutral("Configure your own") },
+      { feature: "Per-service recall intervals", dentDock: included(), dentally: included() },
+      { feature: "Quiet hours for sends", dentDock: included(), dentally: neutral("Available") },
+      { feature: "Recall effectiveness analytics", dentDock: included(), dentally: included() },
+    ],
+  },
+  {
+    title: "Payments",
+    rows: [
+      { feature: "Practice owns its Stripe account", dentDock: included(), dentally: neutral("Partner-dependent") },
+      { feature: "Send payment links", dentDock: included(), dentally: included() },
+      { feature: "Late-cancellation fees", dentDock: included("Auto via cancel link"), dentally: neutral("Available") },
+      { feature: "Patient receipts", dentDock: included("Auto-generated"), dentally: included() },
+      { feature: "Deposit collection at booking", dentDock: limited("Rolling out"), dentally: neutral("Essentials+") },
+    ],
+  },
+  {
+    title: "Clinical",
+    rows: [
+      { feature: "Tooth / perio chart", dentDock: notIncluded(), dentally: included() },
+      { feature: "Treatment plan builder", dentDock: roadmap(), dentally: included() },
+      { feature: "AI clinical note transcription", dentDock: notIncluded(), dentally: neutral("Essentials+") },
+      { feature: "Imaging integration", dentDock: notIncluded(), dentally: neutral("Pro only") },
+    ],
+  },
+  {
+    title: "NHS and multi-site",
+    rows: [
+      { feature: "NHS UDA / FP17 management", dentDock: notIncluded(), dentally: included() },
+      { feature: "NHS number capture", dentDock: included("Included (field only)"), dentally: included() },
+      { feature: "Multi-site practice management", dentDock: roadmap(), dentally: included() },
+    ],
+  },
+  {
+    title: "Support",
+    rows: [
+      { feature: "WhatsApp support line to founder", dentDock: included(), dentally: notIncluded() },
+      { feature: "Email support", dentDock: included(), dentally: included() },
+      { feature: "Phone support", dentDock: roadmap(), dentally: neutral("Essentials+") },
+      { feature: "Chat support", dentDock: included(), dentally: included() },
+      { feature: "Customer success manager", dentDock: notIncluded(), dentally: neutral("Essentials+") },
+    ],
+  },
+];
+
+function FeatureComparison() {
+  return (
+    <section id="comparison-table" className="bg-white py-16 lg:py-24 scroll-mt-24">
+      <div className="mx-auto max-w-[1200px] px-6">
+        <div className="max-w-[720px]">
+          <p
+            className="text-[14px] font-semibold uppercase text-brand-blue"
+            style={{ letterSpacing: "0.14em" }}
+          >
+            Side by side
+          </p>
+          <h2
+            className="mt-4 text-[32px] font-semibold leading-tight text-dd-foreground lg:text-[48px]"
+            style={{ letterSpacing: "-0.02em" }}
+          >
+            Feature comparison
+          </h2>
+          <p className="mt-5 max-w-[640px] text-[20px] leading-[1.6] text-dd-muted">
+            Verified against dentally.com/en-gb/pricing on 15 May 2026. We've
+            left out anything we couldn't substantiate.
+          </p>
+        </div>
+
+        {/* Desktop table */}
+        <div className="mt-12 hidden lg:block">
+          {categories.map((cat) => (
+            <div key={cat.title} className="mt-8 first:mt-0">
+              <h3 className="text-[24px] font-semibold text-dd-foreground">
+                {cat.title}
+              </h3>
+              <div className="mt-4 grid grid-cols-[45%_27.5%_27.5%] border-b border-dd-border text-[14px] font-semibold uppercase text-dd-subtle" style={{ letterSpacing: "0.08em" }}>
+                <div className="px-2 pb-3">Feature</div>
+                <div className="px-2 pb-3">Dent Dock</div>
+                <div className="px-2 pb-3">Dentally</div>
+              </div>
+              {cat.rows.map((row) => (
+                <div
+                  key={row.feature}
+                  className="grid grid-cols-[45%_27.5%_27.5%] items-center border-b border-dd-border py-4"
+                >
+                  <div className="px-2 text-[16px] font-medium text-dd-foreground">
+                    {row.feature}
+                  </div>
+                  <div className="px-2">
+                    <StatusPill label={row.dentDock.label} tone={row.dentDock.tone} />
+                  </div>
+                  <div className="px-2">
+                    <StatusPill label={row.dentally.label} tone={row.dentally.tone} />
+                  </div>
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
+
+        {/* Mobile accordion */}
+        <div className="mt-10 lg:hidden">
+          {categories.map((cat, idx) => (
+            <details
+              key={cat.title}
+              className="group border-b border-dd-border py-4"
+              open={idx === 0}
+            >
+              <summary className="flex cursor-pointer list-none items-center justify-between text-[20px] font-semibold text-dd-foreground">
+                <span>{cat.title}</span>
+                <span className="text-dd-subtle transition-transform group-open:rotate-45" aria-hidden="true">+</span>
+              </summary>
+              <div className="mt-4 flex flex-col gap-5">
+                {cat.rows.map((row) => (
+                  <div key={row.feature}>
+                    <p className="text-[16px] font-medium text-dd-foreground">
+                      {row.feature}
+                    </p>
+                    <div className="mt-2 grid grid-cols-2 gap-3">
+                      <div>
+                        <p className="text-[12px] uppercase text-dd-subtle" style={{ letterSpacing: "0.1em" }}>Dent Dock</p>
+                        <div className="mt-1.5">
+                          <StatusPill label={row.dentDock.label} tone={row.dentDock.tone} />
+                        </div>
+                      </div>
+                      <div>
+                        <p className="text-[12px] uppercase text-dd-subtle" style={{ letterSpacing: "0.1em" }}>Dentally</p>
+                        <div className="mt-1.5">
+                          <StatusPill label={row.dentally.label} tone={row.dentally.tone} />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </details>
+          ))}
+        </div>
+
+        <p className="mt-12 text-[14px] leading-[1.6] text-dd-muted">
+          Last verified: 15 May 2026. Dent Dock checks Dentally's pricing and
+          feature pages quarterly. Spotted something inaccurate? Email
+          hello@dentdock.co.uk and we'll correct it.
+        </p>
+      </div>
+    </section>
+  );
+}
