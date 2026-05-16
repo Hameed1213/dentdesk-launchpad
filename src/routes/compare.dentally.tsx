@@ -1243,7 +1243,7 @@ function StickyPricingCards({ progress }: { progress: number }) {
         <div
           style={{
             background: "linear-gradient(135deg, #EBF1FE 0%, #FFFFFF 100%)",
-            border: "2px solid #2563EB",
+            border: "2px solid #93B4F7",
             borderRadius: 20,
             paddingTop: padY,
             paddingBottom: padY,
