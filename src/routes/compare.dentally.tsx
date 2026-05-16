@@ -420,22 +420,7 @@ function WhyDentDockBlocks() {
   return (
     <section className="bg-white pt-16 pb-16 lg:pt-24 lg:pb-24">
       <div className="mx-auto max-w-[1200px] px-6">
-        <div className="mx-auto max-w-[720px] text-center">
-          <p
-            className="text-[14px] font-semibold uppercase text-brand-blue"
-            style={{ letterSpacing: "0.14em" }}
-          >
-            Why Dent Dock
-          </p>
-          <h2 className="mt-4 text-3xl md:text-5xl font-medium tracking-tight text-foreground leading-[1.1]">
-            What £49 a month <span className="text-[#2563EB]">actually looks like.</span>
-          </h2>
-          <p className="mx-auto mt-5 max-w-[640px] text-base md:text-lg text-muted-foreground">
-            Three things you'll feel from day one.
-          </p>
-        </div>
-
-        <div className="mt-16 lg:mt-20">
+        <div>
           {whyBlocks.map((b, i) => (
             <WhyDentDockBlock key={b.title} {...b} index={i} total={whyBlocks.length} />
           ))}
