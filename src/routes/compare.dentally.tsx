@@ -424,11 +424,11 @@ function CompareDentallyPage() {
       <Hero />
       <HonestAnswer />
       
-      <PricingComparison />
+      <FeatureComparison />
       <FeaturesGrid />
       <WhereDentallyWins />
       <FounderNote />
-      <FeatureComparison />
+      <PricingComparison />
       <SwitchingSteps />
       <PriceRationale />
       <FAQ />
