@@ -952,15 +952,11 @@ function HonestAnswer() {
             <div className="relative lg:pr-12">
               <div
                 aria-hidden
-                className="pointer-events-none absolute -inset-2 opacity-[0.45]"
+                className="pointer-events-none absolute -inset-2"
                 style={{
                   backgroundImage:
-                    "linear-gradient(to right, rgba(0,0,0,0.07) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,0,0,0.07) 1px, transparent 1px)",
-                  backgroundSize: "22px 22px",
-                  WebkitMaskImage:
-                    "radial-gradient(ellipse at center, black 40%, transparent 80%)",
-                  maskImage:
-                    "radial-gradient(ellipse at center, black 40%, transparent 80%)",
+                    "linear-gradient(rgba(37,99,235,0.12) 1px, transparent 1px), linear-gradient(90deg, rgba(37,99,235,0.12) 1px, transparent 1px)",
+                  backgroundSize: "16px 16px",
                 }}
               />
               <div className="relative">
