@@ -83,7 +83,7 @@ function HeroVisual() {
   }, [prefersReducedMotion]);
 
   return (
-    <div className="relative mx-auto h-[360px] w-full max-w-[420px] sm:h-[440px] sm:max-w-[520px] lg:h-[520px] lg:max-w-none">
+    <div className="relative mx-auto h-[460px] w-full max-w-[420px] sm:h-[440px] sm:max-w-[520px] lg:h-[520px] lg:max-w-none">
       {/* Layer 1: aurora halo */}
       <div
         aria-hidden="true"
