@@ -1091,173 +1091,119 @@ function Hero() {
   );
 }
 
-type PillTone = "included" | "not-included" | "roadmap" | "limited" | "neutral";
-
-function StatusPill({ label, tone }: { label: string; tone: PillTone }) {
-  const cls =
-    tone === "included"
-      ? "bg-success-fill text-success-foreground"
-      : tone === "roadmap"
-        ? "bg-brand-blue-tint text-brand-blue"
-        : tone === "limited"
-          ? "bg-attention-fill text-attention-foreground"
-          : tone === "not-included"
-            ? "bg-slate-100 text-dd-muted"
-            : "bg-slate-100 text-dd-muted";
-  return (
-    <span className={`inline-flex w-fit items-center rounded-xl px-3 py-1.5 text-[14px] ${cls}`}>
-      {label}
-    </span>
-  );
-}
-
-type Cell = { label: string; tone: PillTone };
+type Cell = { included: boolean; caveat?: string };
 type FeatureRow = { feature: string; dentDock: Cell; dentally: Cell };
 type Category = { title: string; rows: FeatureRow[] };
 
-const included = (label = "Included"): Cell => ({ label, tone: "included" });
-const notIncluded = (label = "Not included"): Cell => ({ label, tone: "not-included" });
-const roadmap = (label = "Roadmap"): Cell => ({ label, tone: "roadmap" });
-const limited = (label: string): Cell => ({ label, tone: "limited" });
-const neutral = (label: string): Cell => ({ label, tone: "neutral" });
+const yes = (caveat?: string): Cell => ({ included: true, caveat });
+const no = (caveat?: string): Cell => ({ included: false, caveat });
 
 const categories: Category[] = [
   {
     title: "Patient booking",
     rows: [
-      { feature: "Online booking page", dentDock: included(), dentally: neutral("Essentials+") },
-      { feature: "Mobile-first design", dentDock: included(), dentally: neutral("Available") },
-      { feature: "Live slot updates", dentDock: included(), dentally: neutral("Available") },
-      { feature: "Patient self-reschedule via link", dentDock: included(), dentally: included() },
-      { feature: "Patient self-cancel via link", dentDock: included(), dentally: included() },
-      { feature: "Custom booking domain", dentDock: roadmap(), dentally: neutral("Pro only") },
+      { feature: "Online booking page", dentDock: yes(), dentally: yes("Essentials+ only") },
+      { feature: "Mobile-first design", dentDock: yes(), dentally: yes("Functional, not designed for it") },
+      { feature: "Live slot updates", dentDock: yes(), dentally: yes() },
+      { feature: "Patient self-reschedule via link", dentDock: yes(), dentally: yes() },
+      { feature: "Patient self-cancel via link", dentDock: yes(), dentally: yes() },
+      { feature: "Custom booking domain", dentDock: no("On the roadmap"), dentally: yes("Pro tier only") },
     ],
   },
   {
     title: "Patient communications",
     rows: [
-      { feature: "Automated SMS + email reminders", dentDock: included(), dentally: included() },
-      {
-        feature: "Pre-built automation flows",
-        dentDock: included("29 seeded on signup"),
-        dentally: neutral("Configure your own"),
-      },
-      {
-        feature: "SMS sender shows practice name",
-        dentDock: limited("At launch"),
-        dentally: neutral("Available"),
-      },
-      { feature: "Two-way SMS inbox", dentDock: included(), dentally: neutral("Available") },
-      { feature: "Internal team chat", dentDock: roadmap(), dentally: included() },
-      {
-        feature: "Marketing vs transactional consent classifier",
-        dentDock: included(),
-        dentally: neutral("Available"),
-      },
+      { feature: "Automated SMS + email reminders", dentDock: yes(), dentally: yes() },
+      { feature: "Pre-built automation flows", dentDock: yes("29 seeded on signup"), dentally: no("Configure manually") },
+      { feature: "SMS sender shows practice name", dentDock: yes("At launch"), dentally: yes() },
+      { feature: "Two-way SMS inbox", dentDock: yes(), dentally: yes() },
+      { feature: "Internal team chat", dentDock: no("On the roadmap"), dentally: yes() },
+      { feature: "Marketing vs transactional consent classifier", dentDock: yes(), dentally: yes() },
     ],
   },
   {
     title: "Forms",
     rows: [
-      { feature: "Digital forms", dentDock: included(), dentally: neutral("Essentials+") },
-      {
-        feature: "Pre-built dental templates",
-        dentDock: included("16 included"),
-        dentally: neutral("Available"),
-      },
-      {
-        feature: "Digital signature capture",
-        dentDock: included(),
-        dentally: neutral("Essentials+"),
-      },
-      { feature: "Conditional logic", dentDock: included(), dentally: neutral("Essentials+") },
-      {
-        feature: "Auto-sync answers to patient record",
-        dentDock: included(),
-        dentally: neutral("Available"),
-      },
+      { feature: "Digital forms", dentDock: yes(), dentally: yes("Essentials+ only") },
+      { feature: "Pre-built dental templates", dentDock: yes("16 included"), dentally: yes() },
+      { feature: "Digital signature capture", dentDock: yes(), dentally: yes("Essentials+ only") },
+      { feature: "Conditional logic", dentDock: yes(), dentally: yes("Essentials+ only") },
+      { feature: "Auto-sync answers to patient record", dentDock: yes(), dentally: yes() },
     ],
   },
   {
     title: "Recalls",
     rows: [
-      { feature: "Recall list view", dentDock: included(), dentally: included() },
-      {
-        feature: "5-step automated cascade",
-        dentDock: included("Pre-built"),
-        dentally: neutral("Configure your own"),
-      },
-      { feature: "Per-service recall intervals", dentDock: included(), dentally: included() },
-      { feature: "Quiet hours for sends", dentDock: included(), dentally: neutral("Available") },
-      { feature: "Recall effectiveness analytics", dentDock: included(), dentally: included() },
+      { feature: "Recall list view", dentDock: yes(), dentally: yes() },
+      { feature: "5-step automated cascade", dentDock: yes("Pre-built"), dentally: no("Configure manually") },
+      { feature: "Per-service recall intervals", dentDock: yes(), dentally: yes() },
+      { feature: "Quiet hours for sends", dentDock: yes(), dentally: yes() },
+      { feature: "Recall effectiveness analytics", dentDock: yes(), dentally: yes() },
     ],
   },
   {
     title: "Payments",
     rows: [
-      {
-        feature: "Practice owns its Stripe account",
-        dentDock: included(),
-        dentally: neutral("Partner-dependent"),
-      },
-      { feature: "Send payment links", dentDock: included(), dentally: included() },
-      {
-        feature: "Late-cancellation fees",
-        dentDock: included("Auto via cancel link"),
-        dentally: neutral("Available"),
-      },
-      { feature: "Patient receipts", dentDock: included("Auto-generated"), dentally: included() },
-      {
-        feature: "Deposit collection at booking",
-        dentDock: limited("Rolling out"),
-        dentally: neutral("Essentials+"),
-      },
+      { feature: "Practice owns its Stripe account", dentDock: yes(), dentally: no("Partner-dependent") },
+      { feature: "Send payment links", dentDock: yes(), dentally: yes() },
+      { feature: "Late-cancellation fees", dentDock: yes("Auto via cancel link"), dentally: yes() },
+      { feature: "Patient receipts", dentDock: yes(), dentally: yes() },
+      { feature: "Deposit collection at booking", dentDock: no("Rolling out"), dentally: yes("Essentials+ only") },
     ],
   },
   {
     title: "Clinical",
     rows: [
-      { feature: "Tooth / perio chart", dentDock: notIncluded(), dentally: included() },
-      { feature: "Treatment plan builder", dentDock: roadmap(), dentally: included() },
-      {
-        feature: "AI clinical note transcription",
-        dentDock: notIncluded(),
-        dentally: neutral("Essentials+"),
-      },
-      { feature: "Imaging integration", dentDock: notIncluded(), dentally: neutral("Pro only") },
+      { feature: "Tooth / perio chart", dentDock: no(), dentally: yes() },
+      { feature: "Treatment plan builder", dentDock: no("On the roadmap"), dentally: yes() },
+      { feature: "AI clinical note transcription", dentDock: no(), dentally: yes("Essentials+ only") },
+      { feature: "Imaging integration", dentDock: no(), dentally: yes("Pro tier only") },
     ],
   },
   {
     title: "NHS and multi-site",
     rows: [
-      { feature: "NHS UDA / FP17 management", dentDock: notIncluded(), dentally: included() },
-      {
-        feature: "NHS number capture",
-        dentDock: included("Included (field only)"),
-        dentally: included(),
-      },
-      { feature: "Multi-site practice management", dentDock: roadmap(), dentally: included() },
+      { feature: "NHS UDA / FP17 management", dentDock: no(), dentally: yes() },
+      { feature: "NHS number capture", dentDock: yes("Field only"), dentally: yes() },
+      { feature: "Multi-site practice management", dentDock: no("On the roadmap"), dentally: yes() },
     ],
   },
   {
     title: "Support",
     rows: [
-      {
-        feature: "WhatsApp support line to founder",
-        dentDock: included(),
-        dentally: notIncluded(),
-      },
-      { feature: "Email support", dentDock: included(), dentally: included() },
-      { feature: "Phone support", dentDock: roadmap(), dentally: neutral("Essentials+") },
-      { feature: "Chat support", dentDock: included(), dentally: included() },
-      {
-        feature: "Customer success manager",
-        dentDock: notIncluded(),
-        dentally: neutral("Essentials+"),
-      },
+      { feature: "WhatsApp support line to the founder", dentDock: yes(), dentally: no() },
+      { feature: "Email support", dentDock: yes(), dentally: yes() },
+      { feature: "Phone support", dentDock: no("On the roadmap"), dentally: yes("Essentials+ only") },
+      { feature: "Chat support", dentDock: yes(), dentally: yes() },
+      { feature: "Customer success manager", dentDock: no(), dentally: yes("Essentials+ only") },
     ],
   },
 ];
+
+function StatusCell({ cell }: { cell: Cell }) {
+  return (
+    <div className="flex flex-col items-center text-center">
+      <span
+        aria-hidden="true"
+        className={`flex h-6 w-6 items-center justify-center rounded-full ${
+          cell.included ? "bg-[#2563EB]" : "bg-[#94A3B8]"
+        }`}
+      >
+        {cell.included ? (
+          <Check size={14} strokeWidth={2.5} className="text-white" />
+        ) : (
+          <X size={14} strokeWidth={2.5} className="text-white" />
+        )}
+      </span>
+      <span className="sr-only">{cell.included ? "Included" : "Not included"}</span>
+      {cell.caveat && (
+        <span className="mt-2 text-[13px] font-medium leading-snug text-[#475569] line-clamp-2">
+          {cell.caveat}
+        </span>
+      )}
+    </div>
+  );
+}
 
 function FeatureComparison() {
   return (
@@ -1272,90 +1218,71 @@ function FeatureComparison() {
           </p>
         </div>
 
-        {/* Desktop table */}
-        <div className="mt-12 hidden lg:block">
+        <Accordion
+          type="multiple"
+          defaultValue={[categories[0].title]}
+          className="mt-12 flex flex-col gap-3"
+        >
           {categories.map((cat) => (
-            <div key={cat.title} className="mt-8 first:mt-0">
-              <h3 className="text-[24px] font-semibold text-dd-foreground">{cat.title}</h3>
-              <div
-                className="mt-4 grid grid-cols-[45%_27.5%_27.5%] border-b border-dd-border text-[14px] font-semibold uppercase text-dd-subtle"
-                style={{ letterSpacing: "0.08em" }}
-              >
-                <div className="px-2 pb-3">Feature</div>
-                <div className="px-2 pb-3">Dent Dock</div>
-                <div className="px-2 pb-3">Dentally</div>
-              </div>
-              {cat.rows.map((row) => (
-                <div
-                  key={row.feature}
-                  className="grid grid-cols-[45%_27.5%_27.5%] items-center border-b border-dd-border py-4"
-                >
-                  <div className="px-2 text-[16px] font-medium text-dd-foreground">
-                    {row.feature}
-                  </div>
-                  <div className="px-2">
-                    <StatusPill label={row.dentDock.label} tone={row.dentDock.tone} />
-                  </div>
-                  <div className="px-2">
-                    <StatusPill label={row.dentally.label} tone={row.dentally.tone} />
-                  </div>
-                </div>
-              ))}
-            </div>
-          ))}
-        </div>
-
-        {/* Mobile accordion */}
-        <div className="mt-10 lg:hidden">
-          {categories.map((cat, idx) => (
-            <details
+            <AccordionItem
               key={cat.title}
-              className="group border-b border-dd-border py-4"
-              open={idx === 0}
+              value={cat.title}
+              className="rounded-2xl border border-[#E2E8F0] bg-white shadow-sm overflow-hidden transition-colors hover:bg-[#F3F6FD]/60"
             >
-              <summary className="flex cursor-pointer list-none items-center justify-between text-[20px] font-semibold text-dd-foreground">
-                <span>{cat.title}</span>
-                <span
-                  className="text-dd-subtle transition-transform group-open:rotate-45"
-                  aria-hidden="true"
-                >
-                  +
-                </span>
-              </summary>
-              <div className="mt-4 flex flex-col gap-5">
-                {cat.rows.map((row) => (
-                  <div key={row.feature}>
-                    <p className="text-[16px] font-medium text-dd-foreground">{row.feature}</p>
-                    <div className="mt-2 grid grid-cols-2 gap-3">
-                      <div>
-                        <p
-                          className="text-[12px] uppercase text-dd-subtle"
-                          style={{ letterSpacing: "0.1em" }}
-                        >
-                          Dent Dock
-                        </p>
-                        <div className="mt-1.5">
-                          <StatusPill label={row.dentDock.label} tone={row.dentDock.tone} />
+              <AccordionTrigger className="px-7 py-5 text-[20px] font-semibold text-[#0F172A] hover:no-underline [&[data-state=open]]:border-b [&[data-state=open]]:border-[#E2E8F0]">
+                {cat.title}
+              </AccordionTrigger>
+              <AccordionContent className="px-7 pt-6 pb-6">
+                {/* Desktop */}
+                <div className="hidden md:block">
+                  <div
+                    className="grid grid-cols-[45%_27.5%_27.5%] text-[13px] font-semibold uppercase text-[#94A3B8] pb-3 border-b border-[#E2E8F0]"
+                    style={{ letterSpacing: "0.08em" }}
+                  >
+                    <div>Feature</div>
+                    <div className="text-center">Dent Dock</div>
+                    <div className="text-center">Dentally</div>
+                  </div>
+                  {cat.rows.map((row, i) => (
+                    <div
+                      key={row.feature}
+                      className={`grid grid-cols-[45%_27.5%_27.5%] items-center py-4 ${
+                        i === cat.rows.length - 1 ? "" : "border-b border-[#E2E8F0]"
+                      }`}
+                    >
+                      <div className="text-[16px] font-medium text-[#0F172A]">{row.feature}</div>
+                      <div><StatusCell cell={row.dentDock} /></div>
+                      <div><StatusCell cell={row.dentally} /></div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Mobile */}
+                <div className="flex flex-col gap-5 md:hidden">
+                  {cat.rows.map((row) => (
+                    <div key={row.feature} className="border-b border-[#E2E8F0] pb-5 last:border-0 last:pb-0">
+                      <p className="text-[16px] font-medium text-[#0F172A]">{row.feature}</p>
+                      <div className="mt-3 grid grid-cols-2 gap-3">
+                        <div>
+                          <p className="text-[12px] font-semibold uppercase text-[#94A3B8] mb-2" style={{ letterSpacing: "0.1em" }}>
+                            Dent Dock
+                          </p>
+                          <StatusCell cell={row.dentDock} />
                         </div>
-                      </div>
-                      <div>
-                        <p
-                          className="text-[12px] uppercase text-dd-subtle"
-                          style={{ letterSpacing: "0.1em" }}
-                        >
-                          Dentally
-                        </p>
-                        <div className="mt-1.5">
-                          <StatusPill label={row.dentally.label} tone={row.dentally.tone} />
+                        <div>
+                          <p className="text-[12px] font-semibold uppercase text-[#94A3B8] mb-2" style={{ letterSpacing: "0.1em" }}>
+                            Dentally
+                          </p>
+                          <StatusCell cell={row.dentally} />
                         </div>
                       </div>
                     </div>
-                  </div>
-                ))}
-              </div>
-            </details>
+                  ))}
+                </div>
+              </AccordionContent>
+            </AccordionItem>
           ))}
-        </div>
+        </Accordion>
 
         <p className="mt-12 text-[14px] leading-[1.6] text-dd-muted">
           Last verified: 15 May 2026. Dent Dock checks Dentally's pricing and feature pages
