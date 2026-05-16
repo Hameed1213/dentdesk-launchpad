@@ -919,7 +919,7 @@ function Hero() {
           </a>
         </div>
 
-        <div className="hidden lg:flex lg:w-[45%] justify-center">
+        <div className="mt-10 flex w-full justify-center lg:mt-0 lg:w-[45%]">
           <HeroVisual />
         </div>
       </div>
