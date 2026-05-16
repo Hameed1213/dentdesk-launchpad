@@ -808,9 +808,9 @@ function Hero() {
           </h1>
 
           <p className="mt-6 text-lg text-neutral-500 max-w-xl leading-relaxed">
-            An honest comparison for UK private dental practices. We're new.
-            Dentally is the market leader. Here's what each does, what each
-            costs, and when to choose which.
+            Dent Dock is dental practice software for single-site UK private
+            practices. Dentally is the UK market leader in cloud dental
+            practice software. Compare price, features, and fit
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-x-4 gap-y-2 text-[14px] text-dd-subtle">
