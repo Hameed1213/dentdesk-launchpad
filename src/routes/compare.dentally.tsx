@@ -720,8 +720,7 @@ function PricingComparison() {
   );
 }
 
-type FloatPill = {
- label: string; tone: "success" | "attention" };
+type Pill = { label: string; tone: "success" | "attention" };
 
 function PriceCard({
   highlighted = false,
