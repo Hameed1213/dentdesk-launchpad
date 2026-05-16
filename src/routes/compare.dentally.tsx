@@ -277,6 +277,7 @@ function PriceRationale() {
 function CompareDentallyPage() {
   return (
     <main className="bg-white text-dd-foreground">
+      <Navbar />
       <Hero />
       <HonestAnswer />
       <PricingComparison />
