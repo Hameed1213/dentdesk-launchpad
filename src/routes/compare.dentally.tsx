@@ -469,33 +469,33 @@ function FAQ() {
 
 function FounderNote() {
   return (
-    <section className="bg-[#0B1220] py-20 lg:py-28">
+    <section className="bg-[#F3F6FD] py-20 lg:py-28">
       <div className="mx-auto max-w-[960px] px-6">
         <p
-          className="text-[13px] font-semibold uppercase text-[#93B4F7]"
+          className="text-[13px] font-semibold uppercase text-brand-blue"
           style={{ letterSpacing: "0.14em" }}
         >
           A note from the founder
         </p>
         <h2
-          className="mt-5 text-[32px] font-semibold leading-[1.15] text-white lg:text-[48px]"
+          className="mt-5 text-[32px] font-semibold leading-[1.15] text-dd-foreground lg:text-[48px]"
           style={{ letterSpacing: "-0.02em" }}
         >
           Built for single-site UK private practices.{" "}
-          <span className="text-[#93B4F7]">Not trying to be Dentally.</span>
+          <span className="text-brand-blue">Not trying to be Dentally.</span>
         </h2>
-        <p className="mt-6 max-w-[760px] text-[18px] leading-[1.65] text-[#C7D2E0] lg:text-[20px]">
+        <p className="mt-6 max-w-[760px] text-[18px] leading-[1.65] text-dd-foreground/80 lg:text-[20px]">
           Dent Dock is new. Dentally has been around for over a decade and is the UK market leader,
           owned by Henry Schein One. We do less, on purpose, for single-site UK private practices
           that don't want to pay £264 a month for online booking.
         </p>
-        <p className="mt-5 text-[15px] font-medium text-[#8FA0BC]">— Hariss, founder</p>
+        <p className="mt-5 text-[15px] font-medium text-dd-muted">— Hariss, founder</p>
 
         <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
           <Link
             to="/"
             hash="features"
-            className="inline-flex items-center justify-center rounded-xl bg-white px-6 py-3 text-[15px] font-semibold text-[#0B1220] transition-all duration-200 hover:-translate-y-px hover:bg-[#E8EEFB]"
+            className="inline-flex items-center justify-center rounded-xl bg-[#2563EB] px-6 py-3 text-[15px] font-semibold text-white transition-all duration-200 hover:-translate-y-px hover:bg-[#1D4ED8]"
           >
             Our features ›
           </Link>
@@ -503,7 +503,7 @@ function FounderNote() {
             href="https://wa.me/447404488089"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/5 px-6 py-3 text-[15px] font-semibold text-white transition-all duration-200 hover:-translate-y-px hover:bg-white/10"
+            className="inline-flex items-center justify-center gap-2 rounded-xl border border-dd-border bg-white px-6 py-3 text-[15px] font-semibold text-dd-foreground transition-all duration-200 hover:-translate-y-px hover:bg-white/80"
           >
             <MessageCircle className="h-4 w-4" strokeWidth={2} />
             Get in contact
