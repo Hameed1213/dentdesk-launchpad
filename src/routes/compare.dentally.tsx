@@ -1242,7 +1242,11 @@ function StickyPricingCards({ progress }: { progress: number }) {
         {/* Dent Dock card */}
         <div
           style={{
-            background: "linear-gradient(135deg, #EBF1FE 0%, #FFFFFF 100%)",
+            backgroundColor: "#EBF1FE",
+            backgroundImage:
+              "linear-gradient(rgba(37,99,235,0.12) 1px, transparent 1px), linear-gradient(90deg, rgba(37,99,235,0.12) 1px, transparent 1px), linear-gradient(135deg, rgba(235,241,254,0.4) 0%, rgba(255,255,255,0.85) 100%)",
+            backgroundSize: "16px 16px, 16px 16px, 100% 100%",
+            backgroundPosition: "0 0, 0 0, 0 0",
             border: "2px solid #2563EB",
             borderRadius: 20,
             paddingTop: padY,
