@@ -39,7 +39,7 @@ type FloatPill = {
 
 const PILLS: FloatPill[] = [
   { icon: Banknote, text: "£49 vs £125+ a month", top: "10%", left: "5%", floatDelay: "0s" },
-  { icon: CalendarCheck, text: "Online booking included from day one", top: "35%", left: "50%", floatDelay: "-1.2s" },
+  { icon: CalendarCheck, text: "Online booking included from day one", top: "18%", left: "55%", floatDelay: "-1.2s" },
   { icon: FileText, text: "16 dental form templates pre-built", top: "70%", left: "0%", floatDelay: "-2.5s", hideOnMd: true },
   { icon: MapPin, text: "Single-site UK private practice focus", top: "85%", left: "45%", floatDelay: "-3.7s" },
 ];
