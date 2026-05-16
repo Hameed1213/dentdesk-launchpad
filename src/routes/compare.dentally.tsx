@@ -39,10 +39,10 @@ type FloatPill = {
 };
 
 const PILLS: FloatPill[] = [
-  { icon: Banknote, text: "£49 vs £125+ a month", top: "8%", left: "8%", floatDelay: "0s" },
-  { icon: CalendarCheck, text: "Online booking included vs Essentials+ only", top: "18%", right: "0%", floatDelay: "-1.2s" },
-  { icon: Zap, text: "Live in a day vs sales call required", top: "76%", left: "2%", floatDelay: "-2.5s", hideOnMd: true },
-  { icon: MessageCircle, text: "Direct WhatsApp support vs standard chat support", top: "70%", right: "0%", floatDelay: "-3.7s" },
+  { icon: Banknote, text: "£49 vs £125+ a month", top: "9%", right: "52%", floatDelay: "0s" },
+  { icon: CalendarCheck, text: "Online booking included vs Essentials+ only", top: "25%", right: "0%", floatDelay: "-1.2s" },
+  { icon: Zap, text: "Live in a day vs sales call required", top: "73%", right: "47%", floatDelay: "-2.5s", hideOnMd: true },
+  { icon: MessageCircle, text: "Direct WhatsApp support vs standard chat support", top: "78%", right: "0%", floatDelay: "-3.7s" },
 ];
 
 function HeroVisual() {
