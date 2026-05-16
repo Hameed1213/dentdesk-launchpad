@@ -123,12 +123,13 @@ function HeroVisual() {
         const Icon = p.icon;
         const left = isDesktop ? p.left : p.left !== undefined ? "0%" : undefined;
         const right = isDesktop ? p.right : p.right !== undefined ? "0%" : undefined;
+        const top = isTablet && p.topSm ? p.topSm : p.top;
         return (
           <div
             key={i}
             className="absolute flex items-center gap-2 rounded-full bg-white pl-2 pr-3 py-1.5 sm:pr-4 sm:py-2"
             style={{
-              top: p.top,
+              top,
               left,
               right,
               zIndex: 4,
