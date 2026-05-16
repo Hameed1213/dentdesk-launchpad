@@ -1135,7 +1135,7 @@ const categories: Category[] = [
     title: "Recalls",
     rows: [
       { feature: "Recall list view", dentDock: yes(), dentally: yes() },
-      { feature: "5-step automated cascade", dentDock: yes("Pre-built"), dentally: no("Configure manually") },
+      { feature: "5-step automated cascade", dentDock: yes(), dentally: no() },
       { feature: "Per-service recall intervals", dentDock: yes(), dentally: yes() },
       { feature: "Quiet hours for sends", dentDock: yes(), dentally: yes() },
       { feature: "Recall effectiveness analytics", dentDock: yes(), dentally: yes() },
