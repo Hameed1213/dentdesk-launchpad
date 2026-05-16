@@ -44,12 +44,6 @@ const PILLS: FloatPill[] = [
   { icon: MapPin, text: "Single-site UK private practice focus", top: "85%", left: "45%", floatDelay: "-3.7s" },
 ];
 
-const DOTS = [
-  { top: "20%", left: "15%", delay: "0s" },
-  { top: "50%", left: "95%", delay: "1s" },
-  { top: "80%", left: "30%", delay: "2s" },
-];
-
 function HeroVisual() {
   const prefersReducedMotion =
     typeof window !== "undefined" &&
