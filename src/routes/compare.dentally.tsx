@@ -1240,7 +1240,7 @@ function FeatureComparison() {
                 {cat.rows.map((row, i) => (
                   <div
                     key={row.feature}
-                    className={`grid grid-cols-[45%_27.5%_27.5%] items-center px-3 py-4 border-b border-[#F1F5F9] ${
+                    className={`grid grid-cols-[45%_27.5%_27.5%] items-center px-3 py-7 border-b border-[#F1F5F9] ${
                       i % 2 === 1 ? "bg-[#FAFBFC]" : ""
                     }`}
                   >
