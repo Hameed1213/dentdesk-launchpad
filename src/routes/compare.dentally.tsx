@@ -1233,7 +1233,7 @@ function FeatureComparison() {
                   className="grid grid-cols-[45%_27.5%_27.5%] border-b border-[#E2E8F0] pb-3 text-[13px] font-semibold uppercase text-[#94A3B8]"
                   style={{ letterSpacing: "0.08em" }}
                 >
-                  <div>Feature</div>
+                  <div></div>
                   <div className="text-center">Dent Dock</div>
                   <div className="text-center">Dentally</div>
                 </div>
