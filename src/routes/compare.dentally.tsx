@@ -890,13 +890,13 @@ function HonestAnswer() {
       <div className="mx-auto max-w-[1200px] px-6">
         <motion.div
           {...headingMotion}
-          className="mx-auto max-w-2xl text-center"
+          className="mx-auto max-w-[720px] text-center"
         >
           <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-foreground leading-[1.1]">
-            Which one is <span className="text-[#2563EB]">right for you?</span>
+            What each one <span className="text-[#2563EB]">is built for.</span>
           </h2>
           <p className="mt-5 text-base md:text-lg text-muted-foreground">
-            Two short lists. Read both. If both describe you, talk to both — we won't be offended.
+            Dent Dock is dental practice software for single-site UK private practices — online booking, digital forms, recalls, payments and two-way patient comms at £49 a month. Dentally is the UK market leader and serves practices of every size and type, with deeper clinical features. Both are good software. They're built for different practices.
           </p>
         </motion.div>
 
