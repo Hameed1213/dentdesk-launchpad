@@ -130,7 +130,7 @@ function HeroVisual() {
             </span>
             <span
               className="whitespace-nowrap text-[15px] text-[#0F172A]"
-              style={{ fontWeight: 500, marginLeft: 52 }}
+              style={{ fontWeight: 500, marginLeft: 56 }}
             >
               {p.text}
             </span>
