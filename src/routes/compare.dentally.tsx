@@ -423,7 +423,7 @@ function CompareDentallyPage() {
       <Navbar />
       <Hero />
       <HonestAnswer />
-      <StatBand />
+      
       <PricingComparison />
       <FeaturesGrid />
       <WhereDentallyWins />
