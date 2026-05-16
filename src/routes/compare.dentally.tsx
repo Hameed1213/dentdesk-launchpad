@@ -1196,7 +1196,7 @@ function StatusCell({ cell }: { cell: Cell }) {
       </span>
       <span className="sr-only">{cell.included ? "Included" : "Not included"}</span>
       {cell.caveat && (
-        <span className="mt-2 text-[13px] font-medium leading-snug text-[#475569] line-clamp-2">
+        <span className="mt-2 text-[13px] font-medium leading-snug text-[#CBD5E1] line-clamp-2">
           {cell.caveat}
         </span>
       )}
@@ -1227,13 +1227,13 @@ function StickyPricingCards({ progress }: { progress: number }) {
       {/* Backdrop strip — only visible when sticky */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-[-100vw] bottom-0 bg-white border-b border-[#E2E8F0]"
+        className="pointer-events-none absolute inset-x-[-100vw] bottom-0 bg-[#0F172A] border-b border-white/10"
         style={{ top: -80, opacity: backdropOpacity, transition: "opacity 200ms ease-out" }}
       />
       <div className="relative grid grid-cols-[45%_27.5%_27.5%] px-3 py-2">
         <div className="flex items-center pl-2">
           <span
-            className="font-semibold text-[#475569]"
+            className="font-semibold text-white"
             style={{ fontSize: 15 }}
           >
             Features
@@ -1395,13 +1395,13 @@ function FeatureComparison() {
   }, []);
 
   return (
-    <section id="comparison-table" className="bg-white py-16 lg:py-24 scroll-mt-24">
+    <section id="comparison-table" className="bg-[#0F172A] py-16 lg:py-24 scroll-mt-24">
       <div className="mx-auto max-w-[1200px] px-6">
         <div className="mx-auto max-w-[720px] text-center">
-          <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-foreground leading-[1.1]">
-            Feature <span className="text-[#2563EB]">comparison</span>
+          <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-white leading-[1.1]">
+            Feature <span className="text-[#60A5FA]">comparison</span>
           </h2>
-          <p className="mt-5 text-base md:text-lg text-muted-foreground">
+          <p className="mt-5 text-base md:text-lg text-[#94A3B8]">
             Verified against dentally.com on 15 May 2026.
           </p>
         </div>
@@ -1413,8 +1413,8 @@ function FeatureComparison() {
           {categories.map((cat, catIdx) => (
             <div key={cat.title} className={catIdx === 0 ? "mt-6" : "mt-16"}>
               <div className="flex items-center gap-3 mb-6">
-                <span aria-hidden="true" className="h-8 w-1 rounded-full bg-[#2563EB]" />
-                <h3 className="text-[20px] md:text-[24px] font-semibold text-[#0F172A]">
+                <span aria-hidden="true" className="h-8 w-1 rounded-full bg-[#60A5FA]" />
+                <h3 className="text-[20px] md:text-[24px] font-semibold text-white">
                   {cat.title}
                 </h3>
               </div>
@@ -1424,11 +1424,11 @@ function FeatureComparison() {
                 {cat.rows.map((row, i) => (
                   <div
                     key={row.feature}
-                    className={`grid grid-cols-[45%_27.5%_27.5%] items-center px-3 py-4 border-b border-[#F1F5F9] ${
-                      i % 2 === 1 ? "bg-[#FAFBFC]" : ""
+                    className={`grid grid-cols-[45%_27.5%_27.5%] items-center px-3 py-4 border-b border-white/10 ${
+                      i % 2 === 1 ? "bg-white/[0.04]" : ""
                     }`}
                   >
-                    <div className="text-[16px] font-medium text-[#0F172A]">{row.feature}</div>
+                    <div className="text-[16px] font-medium text-white">{row.feature}</div>
                     <div><StatusCell cell={row.dentDock} /></div>
                     <div><StatusCell cell={row.dentally} /></div>
                   </div>
@@ -1440,9 +1440,9 @@ function FeatureComparison() {
                 {cat.rows.map((row) => (
                   <div
                     key={row.feature}
-                    className="border-b border-[#F1F5F9] pb-5 last:border-0 last:pb-0"
+                    className="border-b border-white/10 pb-5 last:border-0 last:pb-0"
                   >
-                    <p className="text-[16px] font-medium text-[#0F172A]">{row.feature}</p>
+                    <p className="text-[16px] font-medium text-white">{row.feature}</p>
                     <div className="mt-3 grid grid-cols-2 gap-3">
                       <div>
                         <p
@@ -1470,7 +1470,7 @@ function FeatureComparison() {
           ))}
         </div>
 
-        <p className="mt-12 text-[14px] leading-[1.6] text-dd-muted">
+        <p className="mt-12 text-[14px] leading-[1.6] text-[#94A3B8]">
           Last verified: 15 May 2026. Dent Dock checks Dentally's pricing and feature pages
           quarterly. Spotted something inaccurate? Email hello@dentdock.co.uk and we'll correct it.
         </p>
