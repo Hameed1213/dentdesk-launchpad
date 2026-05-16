@@ -6,6 +6,12 @@ import {
   MessageSquare,
   Smartphone,
   Headphones,
+  Stethoscope,
+  Landmark,
+  Building2,
+  Brain,
+  Image as ImageIcon,
+  MessagesSquare,
   type LucideIcon,
 } from "lucide-react";
 
@@ -36,9 +42,99 @@ function CompareDentallyPage() {
       <HonestAnswer />
       <PricingComparison />
       <FeaturesGrid />
+      <WhereDentallyWins />
     </main>
   );
 }
+
+const dentallyWins: { icon: LucideIcon; title: string; body: string }[] = [
+  {
+    icon: Stethoscope,
+    title: "Clinical charting",
+    body: "No tooth chart, no perio chart in Dent Dock. Dentally has full charting on every plan and clinical-grade charting (Dentally Vision) on Pro.",
+  },
+  {
+    icon: Landmark,
+    title: "NHS UDA / FP17 management",
+    body: "Dentally manages NHS contracts and claim submission on every plan. Dent Dock is built for private practices.",
+  },
+  {
+    icon: Building2,
+    title: "Multi-site practice management",
+    body: "Dentally supports multi-site on every plan. Dent Dock is single-site at launch — multi-site is on our roadmap.",
+  },
+  {
+    icon: Brain,
+    title: "AI clinical note transcription",
+    body: "Dentally Essentials includes 45 transcriptions per surgery per month; Pro includes 90. Dent Dock has no equivalent.",
+  },
+  {
+    icon: ImageIcon,
+    title: "Imaging integration",
+    body: "Dentally Pro integrates with DEXIS, Carestream and other imaging systems via Dentally Vision. Dent Dock doesn't integrate with imaging.",
+  },
+  {
+    icon: MessagesSquare,
+    title: "Internal team chat",
+    body: "Dentally has practice-wide team chat on every plan. We're working on this — it's on our roadmap.",
+  },
+];
+
+function WhereDentallyWins() {
+  return (
+    <section className="bg-white py-16 lg:py-24">
+      <div className="mx-auto max-w-[880px] px-6">
+        <p
+          className="text-[14px] font-semibold uppercase text-dd-muted"
+          style={{ letterSpacing: "0.14em" }}
+        >
+          Honest
+        </p>
+        <h2
+          className="mt-4 text-[28px] font-semibold leading-tight text-dd-foreground lg:text-[40px]"
+          style={{ letterSpacing: "-0.02em" }}
+        >
+          Where Dentally is the better choice
+        </h2>
+        <p className="mt-5 text-[20px] leading-[1.6] text-dd-muted">
+          We're not going to pretend otherwise. If any of the six things below
+          are critical to how you run your practice, Dentally is the right
+          software for you.
+        </p>
+
+        <div className="mt-10 flex flex-col gap-4">
+          {dentallyWins.map((row) => {
+            const Icon = row.icon;
+            return (
+              <div
+                key={row.title}
+                className="flex gap-4 rounded-2xl border border-dd-border bg-white p-6"
+              >
+                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-surface-tint">
+                  <Icon className="h-4 w-4 text-dd-muted" strokeWidth={1.75} />
+                </div>
+                <div>
+                  <h4 className="text-[18px] font-semibold text-dd-foreground">
+                    {row.title}
+                  </h4>
+                  <p className="mt-1 text-[16px] leading-[1.55] text-dd-muted">
+                    {row.body}
+                  </p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        <p className="mt-10 text-center text-[16px] text-dd-muted">
+          If any of those are critical to how you run your practice, Dentally
+          is the right choice. We mean that.
+        </p>
+      </div>
+    </section>
+  );
+}
+
 
 const features: { icon: LucideIcon; title: string; body: string }[] = [
   {
