@@ -916,7 +916,7 @@ function HonestAnswer() {
                 className="text-[13px] font-semibold uppercase text-[#2563EB]"
                 style={{ letterSpacing: "0.14em" }}
               >
-                Choose Dent Dock if
+                Dent Dock is for
               </p>
               <ul className="mt-8 flex flex-col gap-5">
                 {dentDockFit.map((item, i) => (
@@ -952,7 +952,7 @@ function HonestAnswer() {
                 className="text-[13px] font-semibold uppercase text-[#94A3B8]"
                 style={{ letterSpacing: "0.14em" }}
               >
-                Choose Dentally if
+                Dentally is for
               </p>
               <ul className="mt-8 flex flex-col gap-5">
                 {dentallyFit.map((item, i) => (
