@@ -50,6 +50,19 @@ function HeroVisual() {
     window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
 
   const [mounted, setMounted] = useState(prefersReducedMotion);
+  const [isDesktop, setIsDesktop] = useState(
+    typeof window !== "undefined" ? window.matchMedia?.("(min-width: 1024px)").matches ?? false : false,
+  );
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const mq = window.matchMedia("(min-width: 1024px)");
+    const handler = (e: MediaQueryListEvent) => setIsDesktop(e.matches);
+    setIsDesktop(mq.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
+
   useEffect(() => {
     if (prefersReducedMotion) return;
     const t = requestAnimationFrame(() => setMounted(true));
@@ -57,11 +70,11 @@ function HeroVisual() {
   }, [prefersReducedMotion]);
 
   return (
-    <div className="relative h-[520px] w-full">
+    <div className="relative mx-auto h-[360px] w-full max-w-[420px] sm:h-[440px] sm:max-w-[520px] lg:h-[520px] lg:max-w-none">
       {/* Layer 1: aurora halo */}
       <div
         aria-hidden="true"
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none w-[360px] h-[360px] xl:w-[480px] xl:h-[480px]"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none w-[260px] h-[260px] sm:w-[320px] sm:h-[320px] lg:w-[360px] lg:h-[360px] xl:w-[480px] xl:h-[480px]"
         style={{
           background:
             "radial-gradient(circle, rgba(37,99,235,0.18) 0%, rgba(37,99,235,0.08) 40%, transparent 75%)",
@@ -75,7 +88,7 @@ function HeroVisual() {
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
         style={{ zIndex: 2 }}
       >
-        <div className="relative w-[180px] xl:w-[240px]">
+        <div className="relative w-[130px] sm:w-[160px] lg:w-[180px] xl:w-[240px]">
           <svg
             aria-hidden="true"
             viewBox="0 0 100 100"
@@ -95,14 +108,16 @@ function HeroVisual() {
       {/* Layer 4: floating pills */}
       {PILLS.map((p, i) => {
         const Icon = p.icon;
+        const left = isDesktop ? p.left : p.left !== undefined ? "0%" : undefined;
+        const right = isDesktop ? p.right : p.right !== undefined ? "0%" : undefined;
         return (
           <div
             key={i}
-            className="absolute flex items-center gap-2 rounded-full bg-white pl-2 pr-4 py-2"
+            className="absolute flex items-center gap-2 rounded-full bg-white pl-2 pr-3 py-1.5 sm:pr-4 sm:py-2"
             style={{
               top: p.top,
-              left: p.left,
-              right: p.right,
+              left,
+              right,
               zIndex: 4,
               border: "1px solid #E2E8F0",
               boxShadow: "0 8px 24px -8px rgba(37,99,235,0.15)",
@@ -116,10 +131,11 @@ function HeroVisual() {
                   : `pill-float 5s ease-in-out ${p.floatDelay} infinite`,
             }}
           >
-            <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#EFF4FF]">
-              <Icon size={16} strokeWidth={2} color="#2563EB" />
+            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#EFF4FF] sm:h-8 sm:w-8">
+              <Icon size={14} strokeWidth={2} color="#2563EB" className="sm:hidden" />
+              <Icon size={16} strokeWidth={2} color="#2563EB" className="hidden sm:block" />
             </span>
-            <span className="text-[13px] font-semibold text-slate-700 whitespace-nowrap">{p.text}</span>
+            <span className="text-[11px] font-semibold text-slate-700 whitespace-nowrap sm:text-[13px]">{p.text}</span>
           </div>
         );
       })}
@@ -919,7 +935,7 @@ function Hero() {
           </a>
         </div>
 
-        <div className="hidden lg:flex lg:w-[45%] justify-center">
+        <div className="mt-10 flex w-full justify-center lg:mt-0 lg:w-[45%]">
           <HeroVisual />
         </div>
       </div>
