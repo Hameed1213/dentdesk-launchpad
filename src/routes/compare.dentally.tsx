@@ -1103,7 +1103,7 @@ const categories: Category[] = [
     title: "Patient booking",
     rows: [
       { feature: "Online booking page", dentDock: yes(), dentally: yes("Essentials+ only") },
-      { feature: "Mobile-first design", dentDock: yes(), dentally: yes("Functional, not designed for it") },
+      
       { feature: "Live slot updates", dentDock: yes(), dentally: yes() },
       { feature: "Patient self-reschedule via link", dentDock: yes(), dentally: yes() },
       { feature: "Patient self-cancel via link", dentDock: yes(), dentally: yes() },
@@ -1114,8 +1114,8 @@ const categories: Category[] = [
     title: "Patient communications",
     rows: [
       { feature: "Automated SMS + email reminders", dentDock: yes(), dentally: yes() },
-      { feature: "Pre-built automation flows", dentDock: yes("29 seeded on signup"), dentally: no("Configure manually") },
-      { feature: "SMS sender shows practice name", dentDock: yes("At launch"), dentally: yes() },
+      { feature: "Pre-built automation flows", dentDock: yes("29 seeded on signup"), dentally: no() },
+      { feature: "SMS sender shows practice name", dentDock: yes(), dentally: yes() },
       { feature: "Two-way SMS inbox", dentDock: yes(), dentally: yes() },
       { feature: "Internal team chat", dentDock: no("On the roadmap"), dentally: yes() },
       { feature: "Marketing vs transactional consent classifier", dentDock: yes(), dentally: yes() },
@@ -1125,7 +1125,7 @@ const categories: Category[] = [
     title: "Forms",
     rows: [
       { feature: "Digital forms", dentDock: yes(), dentally: yes("Essentials+ only") },
-      { feature: "Pre-built dental templates", dentDock: yes("16 included"), dentally: yes() },
+      { feature: "Pre-built dental templates", dentDock: yes(), dentally: yes() },
       { feature: "Digital signature capture", dentDock: yes(), dentally: yes("Essentials+ only") },
       { feature: "Conditional logic", dentDock: yes(), dentally: yes("Essentials+ only") },
       { feature: "Auto-sync answers to patient record", dentDock: yes(), dentally: yes() },
@@ -1135,7 +1135,7 @@ const categories: Category[] = [
     title: "Recalls",
     rows: [
       { feature: "Recall list view", dentDock: yes(), dentally: yes() },
-      { feature: "5-step automated cascade", dentDock: yes("Pre-built"), dentally: no("Configure manually") },
+      { feature: "5-step automated cascade", dentDock: yes(), dentally: no() },
       { feature: "Per-service recall intervals", dentDock: yes(), dentally: yes() },
       { feature: "Quiet hours for sends", dentDock: yes(), dentally: yes() },
       { feature: "Recall effectiveness analytics", dentDock: yes(), dentally: yes() },
@@ -1144,18 +1144,17 @@ const categories: Category[] = [
   {
     title: "Payments",
     rows: [
-      { feature: "Practice owns its Stripe account", dentDock: yes(), dentally: no("Partner-dependent") },
       { feature: "Send payment links", dentDock: yes(), dentally: yes() },
-      { feature: "Late-cancellation fees", dentDock: yes("Auto via cancel link"), dentally: yes() },
+      { feature: "Late-cancellation fees", dentDock: yes(), dentally: yes() },
       { feature: "Patient receipts", dentDock: yes(), dentally: yes() },
-      { feature: "Deposit collection at booking", dentDock: no("Rolling out"), dentally: yes("Essentials+ only") },
+      { feature: "Deposit collection at booking", dentDock: yes(), dentally: yes("Essentials+ only") },
     ],
   },
   {
     title: "Clinical",
     rows: [
       { feature: "Tooth / perio chart", dentDock: no(), dentally: yes() },
-      { feature: "Treatment plan builder", dentDock: no("On the roadmap"), dentally: yes() },
+      { feature: "Treatment plan builder", dentDock: no(), dentally: yes() },
       { feature: "AI clinical note transcription", dentDock: no(), dentally: yes("Essentials+ only") },
       { feature: "Imaging integration", dentDock: no(), dentally: yes("Pro tier only") },
     ],
