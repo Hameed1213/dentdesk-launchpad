@@ -14,8 +14,11 @@ import {
   MessagesSquare,
   Banknote,
   MessageCircle,
+  CheckCircle2,
+  Minus,
   type LucideIcon,
 } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
 import {
   Accordion,
   AccordionContent,
