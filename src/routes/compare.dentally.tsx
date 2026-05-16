@@ -566,8 +566,7 @@ function WhatNextCTA() {
             rel="noopener noreferrer"
             className="inline-flex w-full items-center justify-center rounded-2xl border border-[#2563EB] bg-white px-7 py-[14px] text-[16px] font-semibold text-[#2563EB] shadow-sm transition-all duration-200 ease-out hover:-translate-y-px hover:bg-[#F3F6FD] sm:w-auto"
           >
-            <MessageCircle className="h-[18px] w-[18px]" strokeWidth={2} style={{ marginRight: 10 }} />
-            Message Hariss on WhatsApp
+            Contact us
           </a>
         </motion.div>
       </div>
