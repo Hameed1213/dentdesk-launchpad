@@ -23,90 +23,111 @@ import {
 import Footer from "@/components/home/Footer";
 import Navbar from "@/components/home/Navbar";
 import { useEffect, useState } from "react";
+import { Check, X } from "lucide-react";
 
-const EASING = [0.22, 1, 0.36, 1] as const;
+const EASING = "cubic-bezier(0.22, 1, 0.36, 1)";
 
-const SMS_BUBBLES = [
-  {
-    side: "left" as const,
-    text: "Hi Sarah, your appointment is confirmed for Thursday at 10:30am 👋",
-  },
-  { side: "right" as const, text: "Thanks, see you then 😊" },
-  {
-    side: "left" as const,
-    text: "Don't forget to fill in your medical form before you arrive: dentdock.co.uk/f/x82k",
-  },
-];
-
-function SmsThread() {
+function PriceCompare() {
   const prefersReducedMotion =
     typeof window !== "undefined" &&
     window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
 
-  const [cycle, setCycle] = useState(0);
-  const [visibleCount, setVisibleCount] = useState(
-    prefersReducedMotion ? SMS_BUBBLES.length : 0,
-  );
-
+  const [mounted, setMounted] = useState(prefersReducedMotion);
   useEffect(() => {
     if (prefersReducedMotion) return;
-    setVisibleCount(0);
-    const timeouts: ReturnType<typeof setTimeout>[] = [];
-    SMS_BUBBLES.forEach((_, i) => {
-      timeouts.push(setTimeout(() => setVisibleCount(i + 1), 600 * (i + 1)));
-    });
-    const loop = setTimeout(() => setCycle((c) => c + 1), 12000);
-    return () => {
-      timeouts.forEach(clearTimeout);
-      clearTimeout(loop);
-    };
-  }, [cycle, prefersReducedMotion]);
+    const t = requestAnimationFrame(() => setMounted(true));
+    return () => cancelAnimationFrame(t);
+  }, [prefersReducedMotion]);
+
+  const cardBase =
+    "w-[220px] rounded-2xl bg-white p-6 shadow-sm transition-all";
+  const animStyle = (i: number): React.CSSProperties => ({
+    opacity: mounted ? 1 : 0,
+    transform: mounted ? "translateY(0)" : "translateY(12px)",
+    transitionDuration: "400ms",
+    transitionDelay: `${i * 200}ms`,
+    transitionTimingFunction: EASING,
+  });
+
+  const rows = ["Online booking", "Digital forms", "Patient portal"];
 
   return (
-    <div
-      className="w-[360px] rounded-2xl bg-white p-5"
-      style={{
-        boxShadow:
-          "0 1px 2px rgba(15,23,42,0.06), 0 24px 48px -16px rgba(37,99,235,0.18)",
-      }}
-    >
-      <div className="flex items-center gap-3">
-        <div className="flex h-7 w-7 items-center justify-center rounded-full bg-[#2563EB] text-[11px] font-semibold text-white">
-          SD
+    <div className="flex flex-col items-center">
+      <div className="flex items-stretch gap-4">
+        <div
+          className={cardBase}
+          style={{
+            ...animStyle(0),
+            border: "2px solid #2563EB",
+            boxShadow: "0 14px 32px -8px rgba(37,99,235,0.25)",
+          }}
+        >
+          <p
+            className="text-[12px] font-semibold uppercase text-[#2563EB]"
+            style={{ letterSpacing: "0.14em" }}
+          >
+            Dent Dock
+          </p>
+          <p
+            className="mt-2 text-[36px] font-bold text-[#0F172A] leading-none"
+            style={{ fontVariantNumeric: "tabular-nums" }}
+          >
+            £49
+          </p>
+          <p className="mt-1 text-[13px] text-[#475569]">per month</p>
+          <div className="my-4 h-px bg-[#E2E8F0]" />
+          <ul className="flex flex-col gap-2">
+            {rows.map((r) => (
+              <li
+                key={r}
+                className="flex items-center gap-2 text-[13px] font-medium text-[#0F172A]"
+              >
+                <Check size={14} strokeWidth={2} className="text-[#2563EB] shrink-0" />
+                {r}
+              </li>
+            ))}
+          </ul>
         </div>
-        <span className="text-[14px] font-medium text-dd-foreground">
-          Smile Dental
-        </span>
-      </div>
 
-      <div className="mt-4 flex flex-col gap-2">
-        {SMS_BUBBLES.map((b, i) => {
-          const shown = i < visibleCount;
-          const base =
-            "text-[14px] leading-snug rounded-xl px-3.5 py-2.5 transition-all";
-          const sideCls =
-            b.side === "left"
-              ? "self-start bg-white border border-[#E2E8F0] text-dd-foreground max-w-[280px]"
-              : "self-end bg-[#2563EB] text-white max-w-[240px]";
-          return (
-            <div
-              key={`${cycle}-${i}`}
-              className={`${base} ${sideCls}`}
-              style={{
-                opacity: shown ? 1 : 0,
-                transform: shown ? "translateY(0)" : "translateY(12px)",
-                transitionDuration: "400ms",
-                transitionTimingFunction: `cubic-bezier(${EASING.join(",")})`,
-              }}
-            >
-              {b.text}
-            </div>
-          );
-        })}
+        <div
+          className={cardBase}
+          style={{ ...animStyle(1), border: "1px solid #E2E8F0" }}
+        >
+          <p
+            className="text-[12px] font-semibold uppercase text-[#475569]"
+            style={{ letterSpacing: "0.14em" }}
+          >
+            Dentally · Starter
+          </p>
+          <p
+            className="mt-2 text-[36px] font-bold text-[#0F172A] leading-none"
+            style={{ fontVariantNumeric: "tabular-nums" }}
+          >
+            £125
+          </p>
+          <p className="mt-1 text-[13px] text-[#475569]">per month plus VAT</p>
+          <div className="my-4 h-px bg-[#E2E8F0]" />
+          <ul className="flex flex-col gap-2">
+            {rows.map((r) => (
+              <li
+                key={r}
+                className="flex items-center gap-2 text-[13px] font-medium text-[#94A3B8]"
+              >
+                <X size={14} strokeWidth={2} className="text-[#94A3B8] shrink-0" />
+                {r}
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
+      <p className="mt-3 max-w-[460px] text-center text-[11px] text-[#94A3B8]">
+        Dentally Starter does not include online booking, digital forms, or the
+        patient portal. Source: dentally.com/en-gb/pricing.
+      </p>
     </div>
   );
 }
+
 
 const faqItems = [
   {
