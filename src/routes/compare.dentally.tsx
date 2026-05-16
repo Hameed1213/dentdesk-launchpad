@@ -41,7 +41,7 @@ const PILLS: FloatPill[] = [
   { icon: Banknote, text: "£49 a month", top: "24%", left: "0%", floatDelay: "0s" },
   { icon: CalendarCheck, text: "Online booking included", top: "16%", right: "0%", floatDelay: "-1.2s" },
   { icon: Zap, text: "Live in day", top: "78%", left: "0%", floatDelay: "-2.5s" },
-  { icon: MessageCircle, text: "Direct WhatsApp support", top: "70%", right: "0%", floatDelay: "-3.7s" },
+  { icon: MessageCircle, text: "Direct WhatsApp support", top: "70%", right: "-4%", floatDelay: "-3.7s" },
 ];
 
 function HeroVisual() {
@@ -119,7 +119,7 @@ function HeroVisual() {
             <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#EFF4FF]">
               <Icon size={16} strokeWidth={2} color="#2563EB" />
             </span>
-            <span className="text-sm font-semibold text-slate-700 whitespace-nowrap">{p.text}</span>
+            <span className="text-[13px] font-semibold text-slate-700 whitespace-nowrap">{p.text}</span>
           </div>
         );
       })}
