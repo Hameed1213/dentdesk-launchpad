@@ -1249,7 +1249,7 @@ function StickyPricingCards({ progress }: { progress: number }) {
             paddingBottom: padY,
             paddingLeft: padX,
             paddingRight: padX,
-            boxShadow: "0 14px 32px -8px rgba(37,99,235,0.2)",
+            boxShadow: "0 4px 12px -6px rgba(37,99,235,0.12)",
             transition,
             overflow: "hidden",
           }}
