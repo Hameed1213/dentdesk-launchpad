@@ -21,6 +21,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import Footer from "@/components/home/Footer";
+import Navbar from "@/components/home/Navbar";
 
 const faqItems = [
   {
