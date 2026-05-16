@@ -30,6 +30,7 @@ const EASING = "cubic-bezier(0.22, 1, 0.36, 1)";
 
 type FloatPill = {
   icon: LucideIcon;
+  text: string;
   top: string;
   left?: string;
   right?: string;
@@ -37,10 +38,10 @@ type FloatPill = {
 };
 
 const PILLS: FloatPill[] = [
-  { icon: Banknote, top: "16%", left: "0%", floatDelay: "0s" },
-  { icon: CalendarCheck, top: "16%", right: "0%", floatDelay: "-1.2s" },
-  { icon: Zap, top: "78%", left: "0%", floatDelay: "-2.5s" },
-  { icon: MessageCircle, top: "78%", right: "0%", floatDelay: "-3.7s" },
+  { icon: Banknote, text: "£49 a month", top: "16%", left: "0%", floatDelay: "0s" },
+  { icon: CalendarCheck, text: "Online booking included", top: "16%", right: "0%", floatDelay: "-1.2s" },
+  { icon: Zap, text: "Live in day", top: "78%", left: "0%", floatDelay: "-2.5s" },
+  { icon: MessageCircle, text: "Direct WhatsApp support", top: "78%", right: "0%", floatDelay: "-3.7s" },
 ];
 
 function HeroVisual() {
@@ -97,7 +98,7 @@ function HeroVisual() {
         return (
           <div
             key={i}
-            className="absolute flex h-14 w-14 items-center justify-center rounded-full bg-white"
+            className="absolute flex items-center gap-2 rounded-full bg-white pl-2 pr-4 py-2"
             style={{
               top: p.top,
               left: p.left,
@@ -115,7 +116,10 @@ function HeroVisual() {
                   : `pill-float 5s ease-in-out ${p.floatDelay} infinite`,
             }}
           >
-            <Icon size={22} strokeWidth={2} color="#2563EB" />
+            <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#EFF4FF]">
+              <Icon size={16} strokeWidth={2} color="#2563EB" />
+            </span>
+            <span className="text-xs font-medium text-slate-700 whitespace-nowrap">{p.text}</span>
           </div>
         );
       })}
