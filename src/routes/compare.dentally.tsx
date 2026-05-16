@@ -986,7 +986,7 @@ function HonestAnswer() {
                   </motion.li>
                 ))}
               </ul>
-              <p className="mt-6 text-[14px] leading-[1.5] text-[#94A3B8]">
+              <p className="mt-10 text-[14px] italic leading-[1.5] text-[#94A3B8]">
                 Dent Dock is a flat £49/mo per practice.
               </p>
               </div>
@@ -1017,7 +1017,7 @@ function HonestAnswer() {
                   </motion.li>
                 ))}
               </ul>
-              <p className="mt-6 text-[14px] leading-[1.5] text-[#94A3B8]">
+              <p className="mt-10 text-[14px] italic leading-[1.5] text-[#94A3B8]">
                 £125 to start, £220 for online booking.
               </p>
             </div>
