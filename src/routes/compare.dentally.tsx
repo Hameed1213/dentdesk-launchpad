@@ -383,7 +383,7 @@ function WhyDentDockBlock({
       }}
     >
       <div
-        className="rounded-3xl border border-[#E2E8F0] bg-white p-8 shadow-[0_20px_48px_-20px_rgba(15,23,42,0.18)] lg:p-14"
+        className="rounded-3xl border border-[#E2E8F0] bg-white p-8 shadow-[0_12px_32px_-20px_rgba(15,23,42,0.08)] lg:p-14"
       >
         <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-[45%_50%] lg:gap-16">
           <motion.div
