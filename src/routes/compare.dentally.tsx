@@ -948,6 +948,7 @@ function HonestAnswer() {
                   </motion.li>
                 ))}
               </ul>
+              </div>
             </div>
 
             {/* Divider on mobile */}
