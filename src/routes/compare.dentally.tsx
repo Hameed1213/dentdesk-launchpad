@@ -1210,7 +1210,7 @@ function StickyPricingCards({ progress }: { progress: number }) {
   const lerp = (a: number, b: number) => a + (b - a) * p;
   const padY = lerp(16, 8);
   const padX = lerp(20, 16);
-  const priceSize = lerp(28, 18);
+  const priceSize = lerp(22, 15);
   const subSize = lerp(13, 11);
   const gap = lerp(4, 2);
   const subGap = lerp(2, 2);
