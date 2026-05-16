@@ -1211,8 +1211,7 @@ function FeatureComparison() {
         </div>
 
         <p className="mt-12 text-[14px] leading-[1.6] text-dd-muted">
-          Last verified: 15 May 2026. Dent Dock checks Dentally's pricing and feature pages
-          quarterly. Spotted something inaccurate? Email hello@dentdock.co.uk and we'll correct it.
+          Spotted something inaccurate? Email hello@dentdock.co.uk and we'll fix it.
         </p>
       </div>
     </section>
