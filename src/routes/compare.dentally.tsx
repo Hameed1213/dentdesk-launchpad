@@ -846,9 +846,9 @@ const dentallyFit = [
 
 const dentDockFit = [
   "Single-site UK private practices",
-  "Practices moving patient booking online",
-  "Practices tired of chasing reminders, recalls and forms by hand",
-  "Practices that take card payments and deposits from patients",
+  "Practices that want 24/7 patient booking",
+  "Practices tired of manual reminders, recalls and forms",
+  "Practices that want to take deposits and reduce no-shows",
   "Practices focused on private treatment and patient experience",
 ];
 
