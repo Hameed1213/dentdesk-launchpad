@@ -791,7 +791,7 @@ function Hero() {
         }}
       />
 
-      <div className="relative mx-auto max-w-[1200px] px-6">
+      <div className="relative mx-auto max-w-[1200px] px-6 flex flex-col lg:flex-row lg:items-center lg:gap-10">
         <div className="w-full lg:w-3/5">
           <p
             className="text-[14px] font-semibold uppercase text-brand-blue"
