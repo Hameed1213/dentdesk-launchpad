@@ -912,12 +912,9 @@ function HonestAnswer() {
           <div className="grid grid-cols-1 lg:grid-cols-2 lg:divide-x lg:divide-[rgba(226,232,240,0.6)]">
             {/* Dent Dock — left */}
             <div className="lg:pr-12">
-              <p
-                className="text-[13px] font-semibold uppercase text-[#2563EB]"
-                style={{ letterSpacing: "0.14em" }}
-              >
+              <h3 className="text-[19px] font-semibold tracking-tight leading-snug text-[#2563EB]">
                 Dent Dock is for
-              </p>
+              </h3>
               <ul className="mt-8 flex flex-col gap-5">
                 {dentDockFit.map((item, i) => (
                   <motion.li
@@ -948,12 +945,9 @@ function HonestAnswer() {
 
             {/* Dentally — right */}
             <div className="lg:pl-12">
-              <p
-                className="text-[13px] font-semibold uppercase text-[#94A3B8]"
-                style={{ letterSpacing: "0.14em" }}
-              >
+              <h3 className="text-[19px] font-semibold tracking-tight leading-snug text-[#94A3B8]">
                 Dentally is for
-              </p>
+              </h3>
               <ul className="mt-8 flex flex-col gap-5">
                 {dentallyFit.map((item, i) => (
                   <motion.li
