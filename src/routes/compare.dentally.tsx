@@ -10,6 +10,7 @@ import {
   MessagesSquare,
   Banknote,
   MessageCircle,
+  ArrowRight,
   Check,
   X,
   type LucideIcon,
@@ -423,6 +424,7 @@ function CompareDentallyPage() {
       
       <FeatureComparison />
       
+      <WhatNextCTA />
       <FounderNote />
       <WhereDentallyWins />
       <PricingComparison />
@@ -469,46 +471,112 @@ function FAQ() {
 
 function FounderNote() {
   return (
-    <section className="bg-[#0B1220] py-20 lg:py-28">
+    <section className="bg-[#F3F6FD] py-20 lg:py-28">
       <div className="mx-auto max-w-[960px] px-6">
         <p
-          className="text-[13px] font-semibold uppercase text-[#93B4F7]"
+          className="text-[13px] font-semibold uppercase text-brand-blue"
           style={{ letterSpacing: "0.14em" }}
         >
           A note from the founder
         </p>
         <h2
-          className="mt-5 text-[32px] font-semibold leading-[1.15] text-white lg:text-[48px]"
+          className="mt-5 text-[32px] font-semibold leading-[1.15] text-dd-foreground lg:text-[48px]"
           style={{ letterSpacing: "-0.02em" }}
         >
           Built for single-site UK private practices.{" "}
-          <span className="text-[#93B4F7]">Not trying to be Dentally.</span>
+          <span className="text-brand-blue">Not trying to be Dentally.</span>
         </h2>
-        <p className="mt-6 max-w-[760px] text-[18px] leading-[1.65] text-[#C7D2E0] lg:text-[20px]">
+        <p className="mt-6 max-w-[760px] text-[18px] leading-[1.65] text-dd-muted lg:text-[20px]">
           Dent Dock is new. Dentally has been around for over a decade and is the UK market leader,
           owned by Henry Schein One. We do less, on purpose, for single-site UK private practices
           that don't want to pay £264 a month for online booking.
         </p>
-        <p className="mt-5 text-[15px] font-medium text-[#8FA0BC]">— Hariss, founder</p>
+        <p className="mt-5 text-[15px] font-medium text-dd-muted">— Hariss, founder</p>
+      </div>
+    </section>
+  );
+}
 
-        <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
+function WhatNextCTA() {
+  const reduce = useReducedMotion();
+  const ease = [0.22, 1, 0.36, 1] as const;
+
+  const fade = (delay: number) =>
+    reduce
+      ? {}
+      : {
+          initial: { opacity: 0 },
+          whileInView: { opacity: 1 },
+          viewport: { once: true, margin: "-80px" },
+          transition: { duration: 0.3, ease, delay },
+        };
+
+  const buttonsMotion = reduce
+    ? {}
+    : {
+        initial: { opacity: 0, y: 12 },
+        whileInView: { opacity: 1, y: 0 },
+        viewport: { once: true, margin: "-80px" },
+        transition: { duration: 0.4, ease, delay: 0.65 },
+      };
+
+  return (
+    <section
+      className="py-16 lg:py-24"
+      style={{ background: "linear-gradient(to bottom, #F3F6FD, #FFFFFF)" }}
+    >
+      <div className="mx-auto max-w-[880px] px-6 text-center">
+        <motion.p
+          {...fade(0)}
+          className="text-[14px] font-semibold uppercase text-brand-blue"
+          style={{ letterSpacing: "0.14em" }}
+        >
+          What next?
+        </motion.p>
+        <motion.h2
+          {...fade(0.2)}
+          className="mt-6 text-[32px] font-semibold text-dd-foreground lg:text-[48px]"
+          style={{ letterSpacing: "-0.02em" }}
+        >
+          No pressure either way.
+        </motion.h2>
+        <motion.p
+          {...fade(0.35)}
+          className="mx-auto mt-4 max-w-[640px] text-[18px] leading-[1.6] text-[#475569] lg:text-[20px]"
+        >
+          Have a look around the rest of Dent Dock, or send Hariss a message on WhatsApp. Real
+          human, same-day reply.
+        </motion.p>
+
+        <motion.div
+          {...buttonsMotion}
+          className="mt-12 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4"
+        >
           <Link
             to="/"
             hash="features"
-            className="inline-flex items-center justify-center rounded-xl bg-white px-6 py-3 text-[15px] font-semibold text-[#0B1220] transition-all duration-200 hover:-translate-y-px hover:bg-[#E8EEFB]"
+            className="group inline-flex w-full items-center justify-center rounded-2xl bg-[#2563EB] px-7 py-[14px] text-[16px] font-semibold text-white transition-all duration-200 ease-out hover:-translate-y-px hover:bg-[#1D4ED8] sm:w-auto"
+            style={{ boxShadow: "0 14px 32px -8px rgba(37,99,235,0.35)" }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.boxShadow = "0 20px 40px -8px rgba(37,99,235,0.45)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.boxShadow = "0 14px 32px -8px rgba(37,99,235,0.35)";
+            }}
           >
-            Our features ›
+            See all features
+            <ArrowRight className="ml-2 h-[18px] w-[18px]" strokeWidth={2} />
           </Link>
           <a
             href="https://wa.me/447404488089"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/5 px-6 py-3 text-[15px] font-semibold text-white transition-all duration-200 hover:-translate-y-px hover:bg-white/10"
+            className="inline-flex w-full items-center justify-center rounded-2xl border border-[#2563EB] bg-white px-7 py-[14px] text-[16px] font-semibold text-[#2563EB] shadow-sm transition-all duration-200 ease-out hover:-translate-y-px hover:bg-[#F3F6FD] sm:w-auto"
           >
-            <MessageCircle className="h-4 w-4" strokeWidth={2} />
-            Get in contact
+            <MessageCircle className="h-[18px] w-[18px]" strokeWidth={2} style={{ marginRight: 10 }} />
+            Message Hariss on WhatsApp
           </a>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
