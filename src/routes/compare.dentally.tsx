@@ -29,25 +29,28 @@ import { useEffect, useState } from "react";
 const EASING = "cubic-bezier(0.22, 1, 0.36, 1)";
 
 type FloatPill = {
-
   icon: LucideIcon;
   text: string;
-  // position within the right column (percent)
   top: string;
   left: string;
   floatDelay: string;
-  // hide on intermediate (lg but not xl) screens
   hideOnMd?: boolean;
 };
 
 const PILLS: FloatPill[] = [
-  { icon: Banknote, text: "£49 vs £125+ a month", top: "6%", left: "2%", floatDelay: "0s" },
-  { icon: CalendarCheck, text: "Online booking included from day one", top: "32%", left: "30%", floatDelay: "-1.2s" },
-  { icon: FileText, text: "16 dental form templates pre-built", top: "62%", left: "0%", floatDelay: "-2.5s", hideOnMd: true },
-  { icon: MapPin, text: "Single-site UK private practice focus", top: "78%", left: "28%", floatDelay: "-3.7s" },
+  { icon: Banknote, text: "£49 vs £125+ a month", top: "10%", left: "5%", floatDelay: "0s" },
+  { icon: CalendarCheck, text: "Online booking included from day one", top: "35%", left: "50%", floatDelay: "-1.2s" },
+  { icon: FileText, text: "16 dental form templates pre-built", top: "70%", left: "0%", floatDelay: "-2.5s", hideOnMd: true },
+  { icon: MapPin, text: "Single-site UK private practice focus", top: "85%", left: "45%", floatDelay: "-3.7s" },
 ];
 
-function FloatingPills() {
+const DOTS = [
+  { top: "20%", left: "15%", delay: "0s" },
+  { top: "50%", left: "95%", delay: "1s" },
+  { top: "80%", left: "30%", delay: "2s" },
+];
+
+function HeroVisual() {
   const prefersReducedMotion =
     typeof window !== "undefined" &&
     window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
@@ -60,16 +63,70 @@ function FloatingPills() {
   }, [prefersReducedMotion]);
 
   return (
-    <div className="relative h-[380px] w-full">
+    <div className="relative h-[520px] w-full">
+      {/* Layer 1: aurora halo */}
+      <div
+        aria-hidden="true"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none w-[360px] h-[360px] xl:w-[480px] xl:h-[480px]"
+        style={{
+          background:
+            "radial-gradient(circle, rgba(37,99,235,0.18) 0%, rgba(37,99,235,0.08) 40%, transparent 75%)",
+          filter: "blur(40px)",
+          zIndex: 1,
+        }}
+      />
+
+      {/* Layer 2: tooth SVG */}
+      <div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+        style={{ zIndex: 2 }}
+      >
+        <div className="relative w-[180px] xl:w-[240px]">
+          <svg
+            aria-hidden="true"
+            viewBox="0 0 100 100"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="w-full h-auto"
+            style={{ filter: "drop-shadow(0 12px 24px rgba(37,99,235,0.25))" }}
+          >
+            <path
+              d="M28 14C20 14 13 20 16 34C19 46 25 58 32 68C38 78 44 84 50 84C56 84 62 78 68 68C75 58 81 46 84 34C87 20 80 14 72 14C64 14 60 20 60 26C60 32 56 38 50 38C44 38 40 32 40 26C40 20 36 14 28 14Z"
+              fill="#2563EB"
+            />
+          </svg>
+
+          {/* Layer 3: pulse dots — positioned within tooth bounding box */}
+          {DOTS.map((d, i) => (
+            <span
+              key={i}
+              aria-hidden="true"
+              className="absolute w-2 h-2 rounded-full -translate-x-1/2 -translate-y-1/2"
+              style={{
+                top: d.top,
+                left: d.left,
+                backgroundColor: "#2563EB",
+                zIndex: 3,
+                animation: prefersReducedMotion
+                  ? undefined
+                  : `pulse-dot 4s ease-out ${d.delay} infinite`,
+              }}
+            />
+          ))}
+        </div>
+      </div>
+
+      {/* Layer 4: floating pills */}
       {PILLS.map((p, i) => {
         const Icon = p.icon;
         return (
           <div
             key={p.text}
-            className={`absolute z-[1] ${p.hideOnMd ? "hidden xl:flex" : "flex"} items-center gap-3 rounded-full bg-white pr-5 pl-3 py-3`}
+            className={`absolute ${p.hideOnMd ? "hidden xl:flex" : "flex"} items-center gap-3 rounded-full bg-white pr-5 pl-3 py-3`}
             style={{
               top: p.top,
               left: p.left,
+              zIndex: 4,
               border: "1px solid #E2E8F0",
               boxShadow: "0 8px 24px -8px rgba(37,99,235,0.15)",
               opacity: mounted ? 1 : 0,
@@ -907,8 +964,8 @@ function Hero() {
           </a>
         </div>
 
-        <div className="hidden lg:flex lg:w-2/5 justify-center">
-          <FloatingPills />
+        <div className="hidden lg:flex lg:w-[45%] justify-center">
+          <HeroVisual />
         </div>
       </div>
     </section>
