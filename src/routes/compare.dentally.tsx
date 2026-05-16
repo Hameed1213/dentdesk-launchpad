@@ -28,7 +28,8 @@ import { useEffect, useState } from "react";
 
 const EASING = "cubic-bezier(0.22, 1, 0.36, 1)";
 
-type Pill = {
+type FloatPill = {
+
   icon: LucideIcon;
   text: string;
   // position within the right column (percent)
@@ -39,7 +40,7 @@ type Pill = {
   hideOnMd?: boolean;
 };
 
-const PILLS: Pill[] = [
+const PILLS: FloatPill[] = [
   { icon: Banknote, text: "£49 vs £125+ a month", top: "6%", left: "2%", floatDelay: "0s" },
   { icon: CalendarCheck, text: "Online booking included from day one", top: "32%", left: "30%", floatDelay: "-1.2s" },
   { icon: FileText, text: "16 dental form templates pre-built", top: "62%", left: "0%", floatDelay: "-2.5s", hideOnMd: true },
@@ -719,7 +720,8 @@ function PricingComparison() {
   );
 }
 
-type Pill = { label: string; tone: "success" | "attention" };
+type FloatPill = {
+ label: string; tone: "success" | "attention" };
 
 function PriceCard({
   highlighted = false,
@@ -907,7 +909,7 @@ function Hero() {
         </div>
 
         <div className="hidden lg:flex lg:w-2/5 justify-center">
-          <PriceCompare />
+          <FloatingPills />
         </div>
       </div>
     </section>
