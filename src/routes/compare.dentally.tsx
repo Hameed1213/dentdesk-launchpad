@@ -475,7 +475,7 @@ function CompareDentallyPage() {
       <WhyDentDockBlocks />
       <WhatNextCTA />
       <FAQ />
-      <ClosingCTA />
+      
       <PageDisclaimer />
       <Footer />
     </main>
