@@ -1249,7 +1249,7 @@ function StickyPricingCards({ progress }: { progress: number }) {
         >
           <span
             className="font-semibold text-[#2563EB]"
-            style={{ fontSize: 12, letterSpacing: "0.14em", textTransform: "uppercase" }}
+            style={{ fontSize: 12, letterSpacing: "0.04em" }}
           >
             Dent Dock
           </span>
