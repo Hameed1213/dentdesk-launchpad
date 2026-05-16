@@ -90,23 +90,6 @@ function HeroVisual() {
             />
           </svg>
 
-          {/* Layer 3: pulse dots — positioned within tooth bounding box */}
-          {DOTS.map((d, i) => (
-            <span
-              key={i}
-              aria-hidden="true"
-              className="absolute w-2 h-2 rounded-full -translate-x-1/2 -translate-y-1/2"
-              style={{
-                top: d.top,
-                left: d.left,
-                backgroundColor: "#2563EB",
-                zIndex: 3,
-                animation: prefersReducedMotion
-                  ? undefined
-                  : `pulse-dot 4s ease-out ${d.delay} infinite`,
-              }}
-            />
-          ))}
         </div>
       </div>
 
