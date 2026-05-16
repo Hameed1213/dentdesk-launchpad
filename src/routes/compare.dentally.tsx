@@ -538,10 +538,7 @@ function WhatNextCTA() {
       };
 
   return (
-    <section
-      className="py-16 lg:py-24"
-      style={{ background: "linear-gradient(to bottom, #F3F6FD, #FFFFFF)" }}
-    >
+    <section className="py-16 lg:py-24">
       <div className="mx-auto max-w-[880px] px-6 text-center">
         <motion.h2
           {...fade(0.2)}
