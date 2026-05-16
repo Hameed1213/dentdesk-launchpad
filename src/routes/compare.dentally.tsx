@@ -1218,71 +1218,74 @@ function FeatureComparison() {
           </p>
         </div>
 
-        <Accordion
-          type="multiple"
-          defaultValue={[categories[0].title]}
-          className="mt-12 flex flex-col gap-3"
-        >
-          {categories.map((cat) => (
-            <AccordionItem
-              key={cat.title}
-              value={cat.title}
-              className="rounded-2xl border border-[#E2E8F0] bg-white shadow-sm overflow-hidden transition-colors hover:bg-[#F3F6FD]/60"
-            >
-              <AccordionTrigger className="px-7 py-5 text-[20px] font-semibold text-[#0F172A] hover:no-underline [&[data-state=open]]:border-b [&[data-state=open]]:border-[#E2E8F0]">
-                {cat.title}
-              </AccordionTrigger>
-              <AccordionContent className="px-7 pt-6 pb-6">
-                {/* Desktop */}
-                <div className="hidden md:block">
-                  <div
-                    className="grid grid-cols-[45%_27.5%_27.5%] text-[13px] font-semibold uppercase text-[#94A3B8] pb-3 border-b border-[#E2E8F0]"
-                    style={{ letterSpacing: "0.08em" }}
-                  >
-                    <div>Feature</div>
-                    <div className="text-center">Dent Dock</div>
-                    <div className="text-center">Dentally</div>
-                  </div>
-                  {cat.rows.map((row, i) => (
-                    <div
-                      key={row.feature}
-                      className={`grid grid-cols-[45%_27.5%_27.5%] items-center py-4 ${
-                        i === cat.rows.length - 1 ? "" : "border-b border-[#E2E8F0]"
-                      }`}
-                    >
-                      <div className="text-[16px] font-medium text-[#0F172A]">{row.feature}</div>
-                      <div><StatusCell cell={row.dentDock} /></div>
-                      <div><StatusCell cell={row.dentally} /></div>
-                    </div>
-                  ))}
-                </div>
+        <div className="mt-12">
+          {categories.map((cat, catIdx) => (
+            <div key={cat.title} className={catIdx === 0 ? "" : "mt-16"}>
+              <div className="flex items-center gap-3">
+                <span aria-hidden="true" className="h-8 w-1 rounded-full bg-[#2563EB]" />
+                <h3 className="text-[20px] md:text-[24px] font-semibold text-[#0F172A]">
+                  {cat.title}
+                </h3>
+              </div>
 
-                {/* Mobile */}
-                <div className="flex flex-col gap-5 md:hidden">
-                  {cat.rows.map((row) => (
-                    <div key={row.feature} className="border-b border-[#E2E8F0] pb-5 last:border-0 last:pb-0">
-                      <p className="text-[16px] font-medium text-[#0F172A]">{row.feature}</p>
-                      <div className="mt-3 grid grid-cols-2 gap-3">
-                        <div>
-                          <p className="text-[12px] font-semibold uppercase text-[#94A3B8] mb-2" style={{ letterSpacing: "0.1em" }}>
-                            Dent Dock
-                          </p>
-                          <StatusCell cell={row.dentDock} />
-                        </div>
-                        <div>
-                          <p className="text-[12px] font-semibold uppercase text-[#94A3B8] mb-2" style={{ letterSpacing: "0.1em" }}>
-                            Dentally
-                          </p>
-                          <StatusCell cell={row.dentally} />
-                        </div>
+              {/* Desktop */}
+              <div className="mt-6 hidden md:block">
+                <div
+                  className="grid grid-cols-[45%_27.5%_27.5%] border-b border-[#E2E8F0] pb-3 text-[13px] font-semibold uppercase text-[#94A3B8]"
+                  style={{ letterSpacing: "0.08em" }}
+                >
+                  <div>Feature</div>
+                  <div className="text-center">Dent Dock</div>
+                  <div className="text-center">Dentally</div>
+                </div>
+                {cat.rows.map((row, i) => (
+                  <div
+                    key={row.feature}
+                    className={`grid grid-cols-[45%_27.5%_27.5%] items-center px-3 py-4 border-b border-[#F1F5F9] ${
+                      i % 2 === 1 ? "bg-[#FAFBFC]" : ""
+                    }`}
+                  >
+                    <div className="text-[16px] font-medium text-[#0F172A]">{row.feature}</div>
+                    <div><StatusCell cell={row.dentDock} /></div>
+                    <div><StatusCell cell={row.dentally} /></div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Mobile */}
+              <div className="mt-6 flex flex-col gap-5 md:hidden">
+                {cat.rows.map((row) => (
+                  <div
+                    key={row.feature}
+                    className="border-b border-[#F1F5F9] pb-5 last:border-0 last:pb-0"
+                  >
+                    <p className="text-[16px] font-medium text-[#0F172A]">{row.feature}</p>
+                    <div className="mt-3 grid grid-cols-2 gap-3">
+                      <div>
+                        <p
+                          className="mb-2 text-[11px] font-semibold uppercase text-[#94A3B8]"
+                          style={{ letterSpacing: "0.1em" }}
+                        >
+                          Dent Dock
+                        </p>
+                        <StatusCell cell={row.dentDock} />
+                      </div>
+                      <div>
+                        <p
+                          className="mb-2 text-[11px] font-semibold uppercase text-[#94A3B8]"
+                          style={{ letterSpacing: "0.1em" }}
+                        >
+                          Dentally
+                        </p>
+                        <StatusCell cell={row.dentally} />
                       </div>
                     </div>
-                  ))}
-                </div>
-              </AccordionContent>
-            </AccordionItem>
+                  </div>
+                ))}
+              </div>
+            </div>
           ))}
-        </Accordion>
+        </div>
 
         <p className="mt-12 text-[14px] leading-[1.6] text-dd-muted">
           Last verified: 15 May 2026. Dent Dock checks Dentally's pricing and feature pages
