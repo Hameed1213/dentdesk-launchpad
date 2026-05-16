@@ -1267,8 +1267,7 @@ function FeatureComparison() {
             Feature <span className="text-[#2563EB]">comparison</span>
           </h2>
           <p className="mt-5 text-base md:text-lg text-muted-foreground">
-            Verified against dentally.com/en-gb/pricing on 15 May 2026. We've left out anything we
-            couldn't substantiate.
+            Verified against dentally.com on 15 May 2026.
           </p>
         </div>
 
