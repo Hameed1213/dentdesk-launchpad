@@ -1170,7 +1170,7 @@ const categories: Category[] = [
   {
     title: "Support",
     rows: [
-      { feature: "WhatsApp support line to the founder", dentDock: yes(), dentally: no() },
+      { feature: "WhatsApp support line", dentDock: yes(), dentally: no() },
       { feature: "Email support", dentDock: yes(), dentally: yes() },
       { feature: "Phone support", dentDock: no("On the roadmap"), dentally: yes("Essentials+ only") },
       { feature: "Chat support", dentDock: yes(), dentally: yes() },
