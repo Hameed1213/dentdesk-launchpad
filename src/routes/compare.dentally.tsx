@@ -417,12 +417,143 @@ function PriceRationale() {
   );
 }
 
+function CountUp({ target, duration = 1200 }: { target: number; duration?: number }) {
+  const reduce = useReducedMotion();
+  const [value, setValue] = useState(reduce ? target : 0);
+  const [started, setStarted] = useState(false);
+
+  useEffect(() => {
+    if (!started || reduce) return;
+    const start = performance.now();
+    let raf = 0;
+    const tick = (now: number) => {
+      const t = Math.min(1, (now - start) / duration);
+      const eased = 1 - Math.pow(1 - t, 3);
+      setValue(Math.round(target * eased));
+      if (t < 1) raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [started, target, duration, reduce]);
+
+  return (
+    <motion.span
+      onViewportEnter={() => setStarted(true)}
+      viewport={{ once: true, margin: "-80px" }}
+    >
+      {value}
+    </motion.span>
+  );
+}
+
+function StatBand() {
+  const reduce = useReducedMotion();
+  const ease = [0.22, 1, 0.36, 1] as const;
+
+  const numberClass =
+    "text-[36px] md:text-[56px] font-bold leading-none text-[#2563EB] tabular-nums";
+  const labelClass =
+    "mt-2 text-[14px] font-medium uppercase text-white/70";
+
+  const containerMotion = reduce
+    ? {}
+    : {
+        initial: { opacity: 0, y: 12 },
+        whileInView: { opacity: 1, y: 0 },
+        viewport: { once: true, margin: "-80px" },
+        transition: { duration: 0.6, ease },
+      };
+
+  return (
+    <section className="bg-[#0F162B] py-14 md:py-20 relative overflow-hidden">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 opacity-[0.06]"
+        style={{
+          background:
+            "radial-gradient(50% 60% at 90% 0%, rgba(37,99,235,0.9) 0%, rgba(37,99,235,0) 70%)",
+        }}
+      />
+      <motion.div
+        {...containerMotion}
+        className="relative mx-auto max-w-[1200px] px-6"
+      >
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-y-10 md:gap-y-0 md:divide-x md:divide-white/10">
+          <div className="flex flex-col items-center text-center md:px-6">
+            <div
+              className={numberClass}
+              style={{ letterSpacing: "-0.02em" }}
+              aria-label="£49 versus £125 or more"
+            >
+              <motion.span
+                initial={reduce ? false : { opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.4, ease }}
+              >
+                £49
+              </motion.span>
+              <motion.span
+                className="text-white/60"
+                initial={reduce ? false : { opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.4, ease, delay: 0.2 }}
+              >
+                {" "}/ £125+
+              </motion.span>
+            </div>
+            <div className={labelClass} style={{ letterSpacing: "0.06em" }}>
+              Dent Dock vs Dentally Starter
+            </div>
+          </div>
+
+          <div className="flex flex-col items-center text-center md:px-6">
+            <div className={numberClass} style={{ letterSpacing: "-0.02em" }} aria-label="29">
+              <CountUp target={29} />
+            </div>
+            <div className={labelClass} style={{ letterSpacing: "0.06em" }}>
+              Automations built in
+            </div>
+          </div>
+
+          <div className="flex flex-col items-center text-center md:px-6">
+            <div className={numberClass} style={{ letterSpacing: "-0.02em" }} aria-label="16">
+              <CountUp target={16} />
+            </div>
+            <div className={labelClass} style={{ letterSpacing: "0.06em" }}>
+              Form templates included
+            </div>
+          </div>
+
+          <div className="flex flex-col items-center text-center md:px-6">
+            <motion.div
+              className={numberClass}
+              style={{ letterSpacing: "-0.02em" }}
+              initial={reduce ? false : { opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.4, ease }}
+            >
+              Day one
+            </motion.div>
+            <div className={labelClass} style={{ letterSpacing: "0.06em" }}>
+              You go live
+            </div>
+          </div>
+        </div>
+      </motion.div>
+    </section>
+  );
+}
+
 function CompareDentallyPage() {
   return (
     <main className="bg-white text-dd-foreground">
       <Navbar />
       <Hero />
       <HonestAnswer />
+      <StatBand />
       <PricingComparison />
       <FeaturesGrid />
       <WhereDentallyWins />
