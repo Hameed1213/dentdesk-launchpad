@@ -355,8 +355,12 @@ function LiveInADayVisual() {
 
   return (
     <div
-      className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-[#F3F6FD]"
-      style={{ fontFamily: "Inter, sans-serif" }}
+      className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl"
+      style={{
+        fontFamily: "Inter, sans-serif",
+        background:
+          "radial-gradient(circle at 0% 0%, rgba(36,69,234,0.55) 0%, rgba(36,69,234,0) 45%), radial-gradient(circle at 100% 100%, rgba(36,69,234,0.35) 0%, rgba(36,69,234,0) 50%), #1a1f2e",
+      }}
     >
       {/* Wizard navy card */}
       <div
