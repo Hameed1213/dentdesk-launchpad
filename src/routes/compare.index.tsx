@@ -84,17 +84,11 @@ function CompareHubPage() {
       {/* Hero */}
       <section className="pt-32 sm:pt-40 pb-12 sm:pb-16">
         <div className="max-w-5xl mx-auto px-6 text-center">
-          <p
-            className="text-[12px] font-semibold uppercase tracking-[0.18em] mb-5"
-            style={{ color: "#2563EB" }}
-          >
-            Compare
-          </p>
           <h1
             className="text-[40px] sm:text-[56px] leading-[1.05] tracking-[-0.03em] font-semibold"
             style={{ color: "#0F162B" }}
           >
-            Dent Dock vs the alternatives
+            <span style={{ color: "#2563EB" }}>Dent Dock</span> vs the alternatives
           </h1>
           <p className="mt-5 text-[16px] sm:text-[18px] leading-[1.55] text-[#4B5563] max-w-2xl mx-auto">
             Honest side-by-side comparisons against the major UK dental practice
