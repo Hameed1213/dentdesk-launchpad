@@ -355,7 +355,7 @@ function LiveInADayVisual() {
 
   return (
     <div
-      className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-[#1a1f2e]"
+      className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-[#F3F6FD]"
       style={{ fontFamily: "Inter, sans-serif" }}
     >
       {/* Wizard navy card */}
