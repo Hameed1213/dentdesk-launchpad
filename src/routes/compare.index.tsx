@@ -7,8 +7,8 @@ import ToothIcon from "@/components/icons/ToothIcon";
 
 type Comparison = {
   competitor: string;
-  slug: "dentally" | "ismile-dental-software";
-  to: "/compare/dentally" | "/compare/ismile-dental-software";
+  slug: "dentally" | "ismile-dental-software" | "software-of-excellence";
+  to: "/compare/dentally" | "/compare/ismile-dental-software" | "/compare/software-of-excellence";
   tagline: string;
   summary: string;
   accent: string;
@@ -37,6 +37,17 @@ const comparisons: Comparison[] = [
     accent: "#2563EB",
     background:
       "radial-gradient(ellipse 80% 100% at 80% 20%, rgba(37,99,235,0.22), transparent 60%), radial-gradient(ellipse 60% 80% at 15% 85%, rgba(56,189,248,0.16), transparent 65%), linear-gradient(215deg, #EAF1FF 0%, #F5F8FF 100%)",
+  },
+  {
+    competitor: "Software of Excellence",
+    slug: "software-of-excellence",
+    to: "/compare/software-of-excellence",
+    tagline: "Dent Dock vs Software of Excellence",
+    summary:
+      "Transparent £49/mo vs sales-quote pricing. Modern cloud workflow vs the UK's longest-established PMS.",
+    accent: "#2563EB",
+    background:
+      "radial-gradient(ellipse 75% 95% at 50% 15%, rgba(37,99,235,0.20), transparent 65%), radial-gradient(ellipse 55% 75% at 20% 90%, rgba(129,140,248,0.16), transparent 65%), radial-gradient(ellipse 55% 75% at 85% 85%, rgba(56,189,248,0.14), transparent 65%), linear-gradient(180deg, #EEF2FF 0%, #F5F8FF 100%)",
   },
 ];
 
@@ -209,7 +220,7 @@ function CompareHubPage() {
                 More comparisons coming soon
               </p>
               <p className="mt-1 text-[13px] text-[#6B7280]">
-                Software of Excellence, Curve, R4 and more.
+                Curve, R4 and more.
               </p>
             </div>
           </div>
