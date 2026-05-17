@@ -1526,7 +1526,7 @@ function Hero() {
             the UK market leader in cloud dental practice software. Compare price, features, and fit
           </p>
 
-          <div className="mt-8 flex flex-wrap items-center gap-x-4 gap-y-2 text-[12px] sm:text-[14px] text-dd-subtle">
+          <div className="mt-8 flex flex-wrap items-center gap-x-4 gap-y-2 text-[10px] sm:text-[14px] text-dd-subtle">
             <span>No contracts</span>
             <span aria-hidden="true">·</span>
             <span>No setup fees</span>
