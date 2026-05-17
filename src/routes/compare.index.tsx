@@ -183,8 +183,8 @@ function CompareHubPage() {
                           {c.competitor.charAt(0)}
                         </span>
                       </div>
-                      <span className="text-[11px] sm:text-[12px] font-semibold tracking-[-0.01em] text-[#0F162B]">
-                        {c.competitor}
+                      <span className="text-[11px] sm:text-[12px] font-semibold tracking-[-0.01em] text-[#0F162B] text-center leading-[1.2] whitespace-pre-line">
+                        {c.slug === "software-of-excellence" ? "Software\nof Excellence" : c.competitor}
                       </span>
                     </div>
                   </div>
