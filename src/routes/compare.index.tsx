@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 import Navbar from "@/components/home/Navbar";
 import Footer from "@/components/home/Footer";
 import WhatsAppButton from "@/components/home/WhatsAppButton";
+import ToothIcon from "@/components/icons/ToothIcon";
 
 type Comparison = {
   competitor: string;
@@ -105,26 +106,88 @@ function CompareHubPage() {
               <Link
                 key={c.slug}
                 to={c.to}
-                className="group relative flex flex-col rounded-2xl border border-neutral-200 bg-white p-6 sm:p-7 shadow-[0_1px_2px_rgba(15,22,43,0.04)] hover:shadow-[0_12px_32px_-12px_rgba(37,99,235,0.25)] hover:-translate-y-0.5 hover:border-[#2563EB]/30 transition-all duration-300"
+                className="group relative flex flex-col rounded-2xl border border-neutral-200 bg-white overflow-hidden shadow-[0_1px_2px_rgba(15,22,43,0.04)] hover:shadow-[0_12px_32px_-12px_rgba(37,99,235,0.25)] hover:-translate-y-0.5 hover:border-[#2563EB]/30 transition-all duration-300"
               >
-                <h2
-                  className="text-[22px] sm:text-[24px] leading-[1.2] tracking-[-0.02em] font-semibold"
-                  style={{ color: "#0F162B" }}
-                >
-                  {c.tagline}
-                </h2>
-                <p className="mt-3 text-[14.5px] leading-[1.55] text-[#4B5563] flex-1">
-                  {c.summary}
-                </p>
+                {/* Visual matchup */}
                 <div
-                  className="mt-6 inline-flex items-center gap-1.5 text-[14px] font-semibold"
-                  style={{ color: c.accent }}
+                  className="relative aspect-[16/9] w-full overflow-hidden"
+                  style={{
+                    background:
+                      "radial-gradient(ellipse 70% 90% at 20% 30%, rgba(37,99,235,0.18), transparent 65%), radial-gradient(ellipse 70% 90% at 85% 75%, rgba(99,102,241,0.14), transparent 65%), linear-gradient(135deg, #F5F8FF 0%, #EAF1FF 100%)",
+                  }}
                 >
-                  See comparison
-                  <ArrowRight
-                    size={16}
-                    className="transition-transform duration-300 group-hover:translate-x-1"
+                  {/* Soft grid */}
+                  <div
+                    className="absolute inset-0 opacity-[0.5]"
+                    style={{
+                      backgroundImage:
+                        "linear-gradient(rgba(37,99,235,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(37,99,235,0.06) 1px, transparent 1px)",
+                      backgroundSize: "24px 24px",
+                      maskImage:
+                        "radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 80%)",
+                    }}
                   />
+
+                  <div className="relative z-10 h-full w-full flex items-center justify-center gap-4 sm:gap-6 px-5">
+                    {/* Dent Dock side */}
+                    <div className="flex flex-col items-center gap-2 transition-transform duration-500 group-hover:-translate-x-1">
+                      <div
+                        className="flex items-center justify-center h-12 w-12 sm:h-14 sm:w-14 rounded-2xl bg-white shadow-[0_8px_24px_-8px_rgba(37,99,235,0.45)] border border-white"
+                      >
+                        <ToothIcon size={26} color="#2563EB" />
+                      </div>
+                      <span
+                        className="text-[11px] sm:text-[12px] font-semibold tracking-[-0.01em]"
+                        style={{ color: "#2563EB" }}
+                      >
+                        Dent Dock
+                      </span>
+                    </div>
+
+                    {/* VS pill */}
+                    <div
+                      className="flex items-center justify-center h-8 w-8 sm:h-9 sm:w-9 rounded-full bg-[#0F162B] text-white text-[10px] sm:text-[11px] font-bold tracking-[0.04em] shadow-[0_6px_16px_-6px_rgba(15,22,43,0.4)]"
+                    >
+                      VS
+                    </div>
+
+                    {/* Competitor side */}
+                    <div className="flex flex-col items-center gap-2 transition-transform duration-500 group-hover:translate-x-1">
+                      <div className="flex items-center justify-center h-12 w-12 sm:h-14 sm:w-14 rounded-2xl bg-white shadow-[0_8px_24px_-8px_rgba(15,22,43,0.18)] border border-neutral-100">
+                        <span
+                          className="text-[18px] sm:text-[20px] font-bold tracking-[-0.04em]"
+                          style={{ color: "#0F162B" }}
+                        >
+                          {c.competitor.charAt(0)}
+                        </span>
+                      </div>
+                      <span className="text-[11px] sm:text-[12px] font-semibold tracking-[-0.01em] text-[#0F162B]">
+                        {c.competitor}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex flex-col flex-1 p-6 sm:p-7">
+                  <h2
+                    className="text-[22px] sm:text-[24px] leading-[1.2] tracking-[-0.02em] font-semibold"
+                    style={{ color: "#0F162B" }}
+                  >
+                    {c.tagline}
+                  </h2>
+                  <p className="mt-3 text-[14.5px] leading-[1.55] text-[#4B5563] flex-1">
+                    {c.summary}
+                  </p>
+                  <div
+                    className="mt-6 inline-flex items-center gap-1.5 text-[14px] font-semibold"
+                    style={{ color: c.accent }}
+                  >
+                    See comparison
+                    <ArrowRight
+                      size={16}
+                      className="transition-transform duration-300 group-hover:translate-x-1"
+                    />
+                  </div>
                 </div>
               </Link>
             ))}
