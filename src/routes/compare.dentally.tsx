@@ -481,13 +481,13 @@ function LiveInADayVisual() {
             </div>
 
             {/* Field: Phone */}
-            <div>
+            <div className="hidden sm:block">
               <p style={fieldLabelStyle}>PHONE</p>
               <div style={{ ...inputStyle, marginTop: "4px" }}>020 7946 0123</div>
             </div>
 
             {/* City + Postcode */}
-            <div className="grid grid-cols-2" style={{ gap: "8px" }}>
+            <div className="hidden grid-cols-2 sm:grid" style={{ gap: "8px" }}>
               <div>
                 <p style={fieldLabelStyle}>CITY</p>
                 <div style={{ ...inputStyle, marginTop: "4px" }}>London</div>
