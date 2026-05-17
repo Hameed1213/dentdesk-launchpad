@@ -297,12 +297,11 @@ function PageDisclaimer() {
     <section className="w-full bg-white py-12">
       <div className="mx-auto max-w-[1080px] px-6 text-center">
         <p className="text-[12px] italic leading-[1.6] text-[#475569]">
-          Last verified: 15 May 2026. Pricing and feature information about Dentally is taken from publicly available sources at
-          dentally.com as of 15 May 2026 and is correct to the best of our knowledge. Dentally and
-          Dentally Vision are trade marks of Henry Schein One UK Ltd. Dent Dock is not affiliated
-          with, endorsed by, or sponsored by Dentally or Henry Schein One. If we've misrepresented
-          anything on this page, please email hello@dentdock.co.uk and we'll correct it promptly.
-          Dent Dock is a trading name of Paradigm Network Ltd, registered in England & Wales.
+          Last verified 15 May 2026. Dentally pricing and feature information is taken from
+          dentally.com and correct to the best of our knowledge. Dentally and Dentally Vision are
+          trade marks of Henry Schein One UK Ltd. Dent Dock is not affiliated with or endorsed by
+          Dentally or Henry Schein One. Spotted an inaccuracy? Email hello@dentdock.co.uk. Dent
+          Dock is a trading name of Paradigm Network Ltd, registered in England & Wales.
         </p>
       </div>
     </section>
