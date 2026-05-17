@@ -220,7 +220,7 @@ function CompareHubPage() {
                 More comparisons coming soon
               </p>
               <p className="mt-1 text-[13px] text-[#6B7280]">
-                Software of Excellence, Curve, R4 and more.
+                Curve, R4 and more.
               </p>
             </div>
           </div>
