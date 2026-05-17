@@ -399,28 +399,8 @@ function LiveInADayVisual() {
           bottom: "8%",
         }}
       >
-
-        {/* Header */}
-        <div className="relative flex items-center justify-between">
-          <div className="flex items-center gap-1.5">
-            <svg viewBox="0 0 24 24" className="h-4 w-4 text-white" fill="currentColor">
-              <path d="M12 2c-2.5 0-4 1.5-6 1.5S2 2.5 2 6c0 3 1 6 2.5 9.5S7 22 9 22c1.2 0 1.5-2 3-2s1.8 2 3 2c2 0 3-3.5 4.5-6.5S22 9 22 6c0-3.5-2-4.5-4-4.5S14.5 2 12 2z" />
-            </svg>
-            <span style={{ fontSize: "13px", fontWeight: 700, letterSpacing: "-0.01em" }}>
-              <span style={{ color: "#60a5fa" }}>Dent</span>
-              <span style={{ color: "#ffffff" }}>Dock</span>
-            </span>
-          </div>
-          <span
-            className="text-white/50"
-            style={{ fontSize: "10px", fontWeight: 500 }}
-          >
-            Save & exit
-          </span>
-        </div>
-
         {/* Step indicator */}
-        <div className="relative mt-3">
+        <div className="relative">
           <p style={{ fontSize: "10px", fontWeight: 500, color: "rgba(255,255,255,0.7)" }}>
             Step <span style={{ color: "#60a5fa", fontWeight: 700 }}>1</span> of 8
           </p>
