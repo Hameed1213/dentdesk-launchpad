@@ -400,7 +400,7 @@ function LiveInADayVisual() {
         }}
       >
         {/* Step indicator */}
-        <div className="relative mt-3">
+        <div className="relative">
           <p style={{ fontSize: "10px", fontWeight: 500, color: "rgba(255,255,255,0.7)" }}>
             Step <span style={{ color: "#60a5fa", fontWeight: 700 }}>1</span> of 8
           </p>
