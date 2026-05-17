@@ -333,117 +333,193 @@ const whyBlocks = [
 ];
 
 function LiveInADayVisual() {
-  const services = [
-    { name: "New Patient Checkup", meta: "30 min · £85" },
-    { name: "Hygiene", meta: "30 min · £65" },
-    { name: "Whitening Consultation", meta: "20 min · Free" },
+  const swatches = [
+    { color: "#2445ea", selected: true },
+    { color: "#EC4899" },
+    { color: "#10B981" },
+    { color: "#8B5CF6" },
+    { color: "#F97316" },
+    { color: "#14B8A6" },
   ];
 
   return (
-    <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-[#F3F6FD]">
-      {/* Soft brand-blue glow behind the phone */}
+    <div
+      className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-[#F3F6FD]"
+      style={{ fontFamily: "Inter, sans-serif" }}
+    >
+      {/* Wizard navy card */}
       <div
-        aria-hidden
-        className="absolute left-[18%] top-1/2 h-[70%] w-[45%] -translate-y-1/2 rounded-full bg-[#2563EB]"
-        style={{ filter: "blur(60px)", opacity: 0.15 }}
-      />
-
-      {/* Phone mockup */}
-      <div
-        className="absolute left-[8%] top-1/2 -translate-y-1/2"
+        className="absolute left-[5%] top-1/2 overflow-hidden rounded-[20px]"
         style={{
-          height: "88%",
-          aspectRatio: "10 / 20",
+          width: "65%",
+          aspectRatio: "5 / 4",
+          background: "#1a1f2e",
           transform: "translateY(-50%) rotate(-3deg)",
+          boxShadow:
+            "0 1px 0 rgba(255,255,255,0.04) inset, 0 24px 48px -20px rgba(15,23,42,0.35)",
+          padding: "14px",
         }}
       >
+        {/* Orbs */}
         <div
-          className="relative h-full w-full rounded-[28px] bg-[#0F162B]"
+          aria-hidden
+          className="absolute rounded-full"
           style={{
-            padding: "8px",
-            boxShadow:
-              "0 1px 0 rgba(15,23,42,0.06), 0 24px 48px -20px rgba(15,23,42,0.35)",
+            top: "-60px",
+            left: "-60px",
+            width: "200px",
+            height: "200px",
+            background: "#2445ea",
+            opacity: 0.4,
+            filter: "blur(80px)",
+          }}
+        />
+        <div
+          aria-hidden
+          className="absolute rounded-full"
+          style={{
+            bottom: "-50px",
+            right: "-50px",
+            width: "140px",
+            height: "140px",
+            background: "#2445ea",
+            opacity: 0.25,
+            filter: "blur(100px)",
+          }}
+        />
+
+        {/* Header */}
+        <div className="relative flex items-center justify-between">
+          <div className="flex items-center gap-1">
+            <svg viewBox="0 0 24 24" className="h-3 w-3 text-white" fill="currentColor">
+              <path d="M12 2c-2.5 0-4 1.5-6 1.5S2 2.5 2 6c0 3 1 6 2.5 9.5S7 22 9 22c1.2 0 1.5-2 3-2s1.8 2 3 2c2 0 3-3.5 4.5-6.5S22 9 22 6c0-3.5-2-4.5-4-4.5S14.5 2 12 2z" />
+            </svg>
+            <span style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "-0.01em" }}>
+              <span style={{ color: "#60a5fa" }}>Dent</span>
+              <span style={{ color: "#ffffff" }}>Dock</span>
+            </span>
+          </div>
+          <span
+            className="text-white/50"
+            style={{ fontSize: "9px", fontWeight: 500 }}
+          >
+            Save & exit
+          </span>
+        </div>
+
+        {/* Step indicator */}
+        <div className="relative mt-2.5">
+          <p style={{ fontSize: "9px", fontWeight: 500, color: "rgba(255,255,255,0.7)" }}>
+            Step <span style={{ color: "#60a5fa", fontWeight: 700 }}>6</span> of 8
+          </p>
+          <div
+            className="mt-1 w-full overflow-hidden rounded-full"
+            style={{ height: "3px", background: "rgba(255,255,255,0.12)" }}
+          >
+            <div style={{ width: "75%", height: "100%", background: "#2445ea" }} />
+          </div>
+        </div>
+
+        {/* StepCard (white) */}
+        <div
+          className="relative mt-2.5 rounded-[10px] bg-white"
+          style={{
+            padding: "12px",
+            boxShadow: "0 8px 20px -10px rgba(0,0,0,0.25)",
           }}
         >
-          {/* Notch */}
-          <div
-            aria-hidden
-            className="absolute left-1/2 top-[10px] z-10 h-[10px] w-[34%] -translate-x-1/2 rounded-full bg-[#0F162B]"
-          />
-          {/* Screen */}
-          <div
-            className="relative flex h-full w-full flex-col overflow-hidden rounded-[22px] bg-white"
-            style={{ fontFamily: "Inter, sans-serif", padding: "18px 12px 12px" }}
+          <p
+            style={{
+              fontSize: "8px",
+              fontWeight: 600,
+              letterSpacing: "0.1em",
+              color: "#2445ea",
+            }}
           >
-            {/* Top bar */}
-            <div className="flex items-center justify-center gap-1.5 pt-1">
-              <div className="flex h-4 w-4 items-center justify-center rounded-[5px] bg-[#2563EB] text-white">
-                <svg viewBox="0 0 24 24" className="h-2.5 w-2.5" fill="currentColor">
-                  <path d="M12 2c-2.5 0-4 1.5-6 1.5S2 2.5 2 6c0 3 1 6 2.5 9.5S7 22 9 22c1.2 0 1.5-2 3-2s1.8 2 3 2c2 0 3-3.5 4.5-6.5S22 9 22 6c0-3.5-2-4.5-4-4.5S14.5 2 12 2z" />
-                </svg>
-              </div>
-              <span
-                className="text-dd-foreground"
-                style={{ fontSize: "11px", fontWeight: 600, letterSpacing: "-0.01em" }}
-              >
-                Smile Dental
-              </span>
-            </div>
+            STEP 6 OF 8
+          </p>
+          <h3
+            className="mt-1 text-dd-foreground"
+            style={{ fontSize: "13px", fontWeight: 700, letterSpacing: "-0.01em" }}
+          >
+            Here's your booking page
+          </h3>
+          <p style={{ fontSize: "9px", fontWeight: 400, color: "#94A3B8", marginTop: "2px" }}>
+            Customise any time in Settings
+          </p>
 
-            {/* Heading */}
-            <h5
-              className="mt-3 text-dd-foreground"
-              style={{ fontSize: "13px", fontWeight: 600, letterSpacing: "-0.01em" }}
+          {/* Swatches */}
+          <div className="mt-3 flex items-center gap-1.5">
+            {swatches.map((s) => (
+              <div
+                key={s.color}
+                className="rounded-full"
+                style={{
+                  width: "12px",
+                  height: "12px",
+                  background: s.color,
+                  transform: s.selected ? "scale(1.15)" : "scale(1)",
+                  boxShadow: s.selected ? "0 0 0 1.5px #1a1f2e" : "none",
+                }}
+              />
+            ))}
+          </div>
+
+          {/* Booking link card */}
+          <div
+            className="mt-3 rounded-[8px] bg-white"
+            style={{ border: "1px solid #E2E8F0", padding: "8px 10px" }}
+          >
+            <p
+              style={{
+                fontSize: "7px",
+                fontWeight: 600,
+                letterSpacing: "0.1em",
+                color: "#94A3B8",
+              }}
             >
-              Book an appointment
-            </h5>
-
-            {/* Services */}
-            <div className="mt-2 flex-1">
-              {services.map((s, i) => (
-                <div
-                  key={s.name}
-                  className="flex items-center justify-between py-2"
+              YOUR BOOKING LINK
+            </p>
+            <p
+              style={{
+                fontSize: "11px",
+                fontWeight: 600,
+                color: "#2445ea",
+                marginTop: "2px",
+                fontFamily: "ui-monospace, SFMono-Regular, Menlo, monospace",
+              }}
+            >
+              book.dentdock.co.uk/smile-dental
+            </p>
+            <div className="mt-2 flex items-center gap-1.5">
+              {["Copy link", "Preview"].map((label) => (
+                <span
+                  key={label}
                   style={{
-                    borderTop: i === 0 ? "none" : "1px solid #F1F5F9",
+                    border: "1px solid #E2E8F0",
+                    borderRadius: "5px",
+                    padding: "3px 7px",
+                    fontSize: "8px",
+                    fontWeight: 500,
+                    color: "#475569",
                   }}
                 >
-                  <span
-                    className="text-dd-foreground"
-                    style={{ fontSize: "10px", fontWeight: 500 }}
-                  >
-                    {s.name}
-                  </span>
-                  <span
-                    className="text-[#94A3B8]"
-                    style={{ fontSize: "9px", fontWeight: 400 }}
-                  >
-                    {s.meta}
-                  </span>
-                </div>
+                  {label}
+                </span>
               ))}
             </div>
-
-            {/* Continue button */}
-            <button
-              type="button"
-              className="mt-2 w-full rounded-[10px] bg-[#2563EB] text-white"
-              style={{ fontSize: "11px", fontWeight: 600, padding: "8px 0" }}
-            >
-              Continue
-            </button>
           </div>
         </div>
       </div>
 
       {/* Live-now pop-out */}
       <div
-        className="absolute right-[4%] top-[10%] flex items-start gap-3 rounded-xl border border-[#E2E8F0] bg-white"
+        className="absolute right-[4%] top-[8%] flex items-start gap-3 rounded-xl border border-[#E2E8F0] bg-white"
         style={{
           width: "min(240px, 52%)",
           padding: "14px 18px",
           transform: "rotate(3deg)",
-          boxShadow: "0 12px 32px -8px rgba(15,23,42,0.15)",
+          boxShadow: "0 16px 36px -10px rgba(15,23,42,0.2)",
           fontFamily: "Inter, sans-serif",
         }}
       >
@@ -464,8 +540,8 @@ function LiveInADayVisual() {
             Your booking page is live
           </p>
           <p
-            className="mt-0.5 truncate text-[#94A3B8]"
-            style={{ fontSize: "10px", fontWeight: 400 }}
+            className="mt-0.5 truncate text-[#2445ea]"
+            style={{ fontSize: "10px", fontWeight: 600 }}
           >
             book.dentdock.co.uk/smile-dental
           </p>
