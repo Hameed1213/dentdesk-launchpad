@@ -1275,9 +1275,8 @@ function WhatNextCTA() {
           {...buttonsMotion}
           className="mt-12 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4"
         >
-          <Link
-            to="/"
-            hash="features"
+          <a
+            href="/#features"
             className="group inline-flex w-full items-center justify-center rounded-2xl bg-[#2563EB] px-7 py-[14px] text-[16px] font-semibold text-white transition-all duration-200 ease-out hover:-translate-y-px hover:bg-[#1D4ED8] sm:w-auto"
             style={{ boxShadow: "0 14px 32px -8px rgba(37,99,235,0.35)" }}
             onMouseEnter={(e) => {
@@ -1289,7 +1288,7 @@ function WhatNextCTA() {
           >
             See all features
             <ArrowRight className="ml-2 h-[18px] w-[18px]" strokeWidth={2} />
-          </Link>
+          </a>
           <a
             href="https://wa.me/447404488089"
             target="_blank"
