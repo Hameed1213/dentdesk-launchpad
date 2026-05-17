@@ -125,10 +125,7 @@ function CompareHubPage() {
                 {/* Visual matchup */}
                 <div
                   className="relative aspect-[16/9] w-full overflow-hidden"
-                  style={{
-                    background:
-                      "radial-gradient(ellipse 70% 90% at 20% 30%, rgba(37,99,235,0.18), transparent 65%), radial-gradient(ellipse 70% 90% at 85% 75%, rgba(99,102,241,0.14), transparent 65%), linear-gradient(135deg, #F5F8FF 0%, #EAF1FF 100%)",
-                  }}
+                  style={{ background: c.background }}
                 >
                   {/* Soft grid */}
                   <div
