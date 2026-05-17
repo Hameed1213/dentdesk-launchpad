@@ -51,7 +51,7 @@ function HeroVisual() {
     typeof window !== "undefined" &&
     window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
 
-  const [mounted, setMounted] = useState(prefersReducedMotion);
+  const [mounted, setMounted] = useState(true);
   const [isDesktop, setIsDesktop] = useState(
     typeof window !== "undefined" ? window.matchMedia?.("(min-width: 1024px)").matches ?? false : false,
   );
@@ -78,10 +78,8 @@ function HeroVisual() {
   }, []);
 
   useEffect(() => {
-    if (prefersReducedMotion) return;
-    const t = requestAnimationFrame(() => setMounted(true));
-    return () => cancelAnimationFrame(t);
-  }, [prefersReducedMotion]);
+    setMounted(true);
+  }, []);
 
   return (
     <div className="relative mx-auto h-[460px] w-full max-w-[420px] sm:h-[440px] sm:max-w-[520px] lg:h-[520px] lg:max-w-none">
@@ -142,13 +140,11 @@ function HeroVisual() {
               border: "1px solid #E2E8F0",
               boxShadow: "0 8px 24px -8px rgba(37,99,235,0.15)",
               position: "absolute",
-              opacity: mounted ? 1 : 0,
-              transform: mounted ? "translateY(0)" : "translateY(8px)",
-              transition: `opacity 400ms ${EASING} ${i * 150}ms, transform 400ms ${EASING} ${i * 150}ms`,
-              animation:
-                prefersReducedMotion || !mounted
-                  ? undefined
-                  : `pill-float 5s ease-in-out ${p.floatDelay} infinite`,
+              opacity: 1,
+              transform: "translateY(0)",
+              animation: prefersReducedMotion
+                ? undefined
+                : `pill-float 5s ease-in-out ${p.floatDelay} infinite`,
             }}
           >
             <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#EFF4FF] sm:h-8 sm:w-8">
