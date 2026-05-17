@@ -1820,13 +1820,13 @@ function MobilePricingCards() {
         }}
         className="flex flex-col items-center"
       >
-        <span className="font-semibold text-[#475569]" style={{ fontSize: 11, letterSpacing: "0.02em" }}>
-          Dentally
+        <span className="font-semibold text-[#475569]" style={{ fontSize: 11, letterSpacing: "0.14em" }}>
+          ISMILE
         </span>
-        <span className="font-bold text-[#0F172A] tabular-nums mt-1" style={{ fontSize: 14, letterSpacing: "-0.03em", lineHeight: 1.1 }}>
-          £125 — £220+
+        <span className="font-bold text-[#0F172A] mt-1" style={{ fontSize: 13, letterSpacing: "-0.02em", lineHeight: 1.1 }}>
+          Pricing not listed
         </span>
-        <span className="font-medium text-[#475569] mt-0.5" style={{ fontSize: 10 }}>per month, ex VAT</span>
+        <span className="font-medium text-[#475569] mt-0.5" style={{ fontSize: 10 }}>demo and quote required</span>
       </div>
     </div>
   );
