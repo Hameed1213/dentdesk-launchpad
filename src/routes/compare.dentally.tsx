@@ -423,8 +423,8 @@ function LiveInADayVisual() {
             STEP 1 OF 8
           </p>
           <h3
-            className="mt-1 text-dd-foreground"
-            style={{ fontSize: "16px", fontWeight: 700, letterSpacing: "-0.01em" }}
+            className="mt-1 text-[13px] text-dd-foreground sm:text-[16px]"
+            style={{ fontWeight: 700, letterSpacing: "-0.01em" }}
           >
             Tell us about your practice
           </h3>
