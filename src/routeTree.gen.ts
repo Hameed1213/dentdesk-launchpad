@@ -15,6 +15,7 @@ import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as CookiesRouteImport } from './routes/cookies'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CompareIndexRouteImport } from './routes/compare.index'
+import { Route as CompareSoftwareOfExcellenceRouteImport } from './routes/compare.software-of-excellence'
 import { Route as CompareIsmileDentalSoftwareRouteImport } from './routes/compare.ismile-dental-software'
 import { Route as CompareDentallyRouteImport } from './routes/compare.dentally'
 import { Route as ApiPublicVerifyWaitlistSignupRouteImport } from './routes/api/public/verify-waitlist-signup'
@@ -49,6 +50,12 @@ const CompareIndexRoute = CompareIndexRouteImport.update({
   path: '/compare/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CompareSoftwareOfExcellenceRoute =
+  CompareSoftwareOfExcellenceRouteImport.update({
+    id: '/compare/software-of-excellence',
+    path: '/compare/software-of-excellence',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const CompareIsmileDentalSoftwareRoute =
   CompareIsmileDentalSoftwareRouteImport.update({
     id: '/compare/ismile-dental-software',
@@ -75,6 +82,7 @@ export interface FileRoutesByFullPath {
   '/waitlist': typeof WaitlistRoute
   '/compare/dentally': typeof CompareDentallyRoute
   '/compare/ismile-dental-software': typeof CompareIsmileDentalSoftwareRoute
+  '/compare/software-of-excellence': typeof CompareSoftwareOfExcellenceRoute
   '/compare/': typeof CompareIndexRoute
   '/api/public/verify-waitlist-signup': typeof ApiPublicVerifyWaitlistSignupRoute
 }
@@ -86,6 +94,7 @@ export interface FileRoutesByTo {
   '/waitlist': typeof WaitlistRoute
   '/compare/dentally': typeof CompareDentallyRoute
   '/compare/ismile-dental-software': typeof CompareIsmileDentalSoftwareRoute
+  '/compare/software-of-excellence': typeof CompareSoftwareOfExcellenceRoute
   '/compare': typeof CompareIndexRoute
   '/api/public/verify-waitlist-signup': typeof ApiPublicVerifyWaitlistSignupRoute
 }
@@ -98,6 +107,7 @@ export interface FileRoutesById {
   '/waitlist': typeof WaitlistRoute
   '/compare/dentally': typeof CompareDentallyRoute
   '/compare/ismile-dental-software': typeof CompareIsmileDentalSoftwareRoute
+  '/compare/software-of-excellence': typeof CompareSoftwareOfExcellenceRoute
   '/compare/': typeof CompareIndexRoute
   '/api/public/verify-waitlist-signup': typeof ApiPublicVerifyWaitlistSignupRoute
 }
@@ -111,6 +121,7 @@ export interface FileRouteTypes {
     | '/waitlist'
     | '/compare/dentally'
     | '/compare/ismile-dental-software'
+    | '/compare/software-of-excellence'
     | '/compare/'
     | '/api/public/verify-waitlist-signup'
   fileRoutesByTo: FileRoutesByTo
@@ -122,6 +133,7 @@ export interface FileRouteTypes {
     | '/waitlist'
     | '/compare/dentally'
     | '/compare/ismile-dental-software'
+    | '/compare/software-of-excellence'
     | '/compare'
     | '/api/public/verify-waitlist-signup'
   id:
@@ -133,6 +145,7 @@ export interface FileRouteTypes {
     | '/waitlist'
     | '/compare/dentally'
     | '/compare/ismile-dental-software'
+    | '/compare/software-of-excellence'
     | '/compare/'
     | '/api/public/verify-waitlist-signup'
   fileRoutesById: FileRoutesById
@@ -145,6 +158,7 @@ export interface RootRouteChildren {
   WaitlistRoute: typeof WaitlistRoute
   CompareDentallyRoute: typeof CompareDentallyRoute
   CompareIsmileDentalSoftwareRoute: typeof CompareIsmileDentalSoftwareRoute
+  CompareSoftwareOfExcellenceRoute: typeof CompareSoftwareOfExcellenceRoute
   CompareIndexRoute: typeof CompareIndexRoute
   ApiPublicVerifyWaitlistSignupRoute: typeof ApiPublicVerifyWaitlistSignupRoute
 }
@@ -193,6 +207,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CompareIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/compare/software-of-excellence': {
+      id: '/compare/software-of-excellence'
+      path: '/compare/software-of-excellence'
+      fullPath: '/compare/software-of-excellence'
+      preLoaderRoute: typeof CompareSoftwareOfExcellenceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/compare/ismile-dental-software': {
       id: '/compare/ismile-dental-software'
       path: '/compare/ismile-dental-software'
@@ -225,6 +246,7 @@ const rootRouteChildren: RootRouteChildren = {
   WaitlistRoute: WaitlistRoute,
   CompareDentallyRoute: CompareDentallyRoute,
   CompareIsmileDentalSoftwareRoute: CompareIsmileDentalSoftwareRoute,
+  CompareSoftwareOfExcellenceRoute: CompareSoftwareOfExcellenceRoute,
   CompareIndexRoute: CompareIndexRoute,
   ApiPublicVerifyWaitlistSignupRoute: ApiPublicVerifyWaitlistSignupRoute,
 }
