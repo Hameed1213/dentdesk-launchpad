@@ -571,14 +571,18 @@ function WhyDentDockBlock({
             {...visualMotion}
             className={textLeft ? "lg:order-2" : "lg:order-1"}
           >
-            <div className="flex aspect-[4/3] w-full items-center justify-center rounded-2xl border border-dashed border-[#CBD5E1] bg-[#F1F5F9]">
-              <span
-                className="text-[13px] font-medium uppercase text-[#94A3B8]"
-                style={{ letterSpacing: "0.08em" }}
-              >
-                {label}
-              </span>
-            </div>
+            {visual === "live-in-a-day" ? (
+              <LiveInADayVisual />
+            ) : (
+              <div className="flex aspect-[4/3] w-full items-center justify-center rounded-2xl border border-dashed border-[#CBD5E1] bg-[#F1F5F9]">
+                <span
+                  className="text-[13px] font-medium uppercase text-[#94A3B8]"
+                  style={{ letterSpacing: "0.08em" }}
+                >
+                  {label}
+                </span>
+              </div>
+            )}
           </motion.div>
         </div>
       </div>
