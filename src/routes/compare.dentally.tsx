@@ -7,8 +7,6 @@ import {
   ArrowRight,
   Check,
   X,
-  UserPlus,
-  Clock,
   type LucideIcon,
 } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
