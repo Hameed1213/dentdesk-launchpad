@@ -160,7 +160,7 @@ function CompareHubPage() {
       {/* Bottom CTA */}
       <section className="pb-24 sm:pb-32">
         <div className="max-w-4xl mx-auto px-6">
-          <div className="rounded-3xl border border-neutral-200 bg-gradient-to-br from-white to-[#F5F8FF] p-8 sm:p-12 text-center">
+          <div className="rounded-3xl border border-neutral-200 bg-white p-8 sm:p-12 text-center">
             <h3
               className="text-[26px] sm:text-[32px] leading-[1.15] tracking-[-0.02em] font-semibold"
               style={{ color: "#0F162B" }}
