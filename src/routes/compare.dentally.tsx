@@ -514,7 +514,7 @@ function LiveInADayVisual() {
 
       {/* Live-now pop-out */}
       <div
-        className="absolute right-[3%] top-[4%] flex items-start gap-2.5 rounded-xl border border-[#E2E8F0] bg-white"
+        className="absolute right-[3%] top-[4%] hidden items-start gap-2.5 rounded-xl border border-[#E2E8F0] bg-white sm:flex"
         style={{
           width: "min(210px, 42%)",
           padding: "12px 14px",
