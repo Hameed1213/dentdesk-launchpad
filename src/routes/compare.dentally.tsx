@@ -1185,7 +1185,7 @@ function FeatureComparison() {
   return (
     <section id="comparison-table" className="bg-white pt-16 pb-8 lg:pt-24 lg:pb-12 scroll-mt-24">
       <div className="mx-auto max-w-[1200px] px-6">
-        <div className="mx-auto max-w-[720px] text-center">
+        <div className="mx-auto max-w-[720px] text-center max-md:relative max-md:z-30">
           <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-foreground leading-[1.1]">
             Feature <span className="text-[#2563EB]">comparison</span>
           </h2>
