@@ -1116,7 +1116,7 @@ function StickyPricingCards({ progress }: { progress: number }) {
 
 function MobilePricingCards() {
   return (
-    <div className="md:hidden sticky top-[64px] z-20 -mx-6 px-6 py-3 bg-white border-b border-[#E2E8F0] grid grid-cols-2 gap-3 relative before:fixed before:left-0 before:right-0 before:top-0 before:h-[64px] before:bg-white before:content-[''] before:pointer-events-none before:-z-10">
+    <div className="md:hidden sticky top-[64px] z-20 -mx-6 px-6 py-3 bg-white border-b border-[#E2E8F0] grid grid-cols-2 gap-3">
       <div
         style={{
           background: "linear-gradient(135deg, #EBF1FE 0%, #FFFFFF 100%)",
