@@ -7,6 +7,7 @@ import ToothIcon from "@/components/icons/ToothIcon";
 const navLinks = [
   { label: "Features", href: "/#about" },
   { label: "Pricing", href: "/#pricing" },
+  { label: "Compare", href: "/compare" },
   { label: "FAQ", href: "/#faq" },
 ];
 
