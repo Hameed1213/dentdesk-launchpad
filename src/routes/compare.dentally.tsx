@@ -51,7 +51,7 @@ function HeroVisual() {
     typeof window !== "undefined" &&
     window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
 
-  const [mounted, setMounted] = useState(prefersReducedMotion);
+  const [mounted, setMounted] = useState(true);
   const [isDesktop, setIsDesktop] = useState(
     typeof window !== "undefined" ? window.matchMedia?.("(min-width: 1024px)").matches ?? false : false,
   );
