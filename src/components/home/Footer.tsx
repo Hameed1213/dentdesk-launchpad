@@ -58,7 +58,7 @@ export default function Footer() {
                 <li key={l.label}>
                   {l.internal ? (
                     <Link
-                      to={l.href as "/compare"}
+                      to={l.href as "/compare/dentally"}
                       className="text-[14px] text-white/70 hover:text-white transition-colors"
                     >
                       {l.label}
