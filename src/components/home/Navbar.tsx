@@ -7,7 +7,7 @@ import ToothIcon from "@/components/icons/ToothIcon";
 const navLinks = [
   { label: "Features", href: "/#about" },
   { label: "Pricing", href: "/#pricing" },
-  { label: "Comparisons", href: "/compare/dentally" },
+  { label: "Comparisons", href: "/compare" },
   { label: "FAQ", href: "/#faq" },
 ];
 
@@ -88,7 +88,7 @@ export default function Navbar() {
               ) : (
                 <Link
                   key={l.label}
-                  to={l.href as "/compare/dentally"}
+                  to={l.href as "/compare"}
                   className="text-sm font-medium text-neutral-600 hover:text-neutral-900 transition-colors"
                 >
                   {l.label}
@@ -147,7 +147,7 @@ export default function Navbar() {
             ) : (
               <Link
                 key={l.label}
-                to={l.href as "/compare/dentally"}
+                to={l.href as "/compare"}
                 onClick={() => setMobileOpen(false)}
                 className="text-sm font-medium text-neutral-700 hover:text-neutral-900 px-3 py-2.5 rounded-lg hover:bg-neutral-100"
               >

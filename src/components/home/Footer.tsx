@@ -5,7 +5,7 @@ type ProductLink = { label: string; href: string; internal?: boolean };
 const productLinks: ProductLink[] = [
   { label: "Features", href: "/#about" },
   { label: "Pricing", href: "/#pricing" },
-  { label: "Comparisons", href: "/compare/dentally", internal: true },
+  { label: "Comparisons", href: "/compare", internal: true },
   { label: "FAQ", href: "/#faq" },
 ];
 
@@ -58,7 +58,7 @@ export default function Footer() {
                 <li key={l.label}>
                   {l.internal ? (
                     <Link
-                      to={l.href as "/compare/dentally"}
+                      to={l.href as "/compare"}
                       className="text-[14px] text-white/70 hover:text-white transition-colors"
                     >
                       {l.label}
