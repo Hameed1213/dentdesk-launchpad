@@ -988,8 +988,8 @@ function StickyPricingCards({ progress }: { progress: number }) {
   // progress: 0 = full/entry state, 1 = compact/sticky state
   const p = progress;
   const lerp = (a: number, b: number) => a + (b - a) * p;
-  const [isTablet, setIsTablet] = React.useState(false);
-  React.useEffect(() => {
+  const [isTablet, setIsTablet] = useState(false);
+  useEffect(() => {
     const mql = window.matchMedia("(min-width: 768px) and (max-width: 1023px)");
     const update = () => setIsTablet(mql.matches);
     update();
