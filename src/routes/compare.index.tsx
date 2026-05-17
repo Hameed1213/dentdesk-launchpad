@@ -7,8 +7,8 @@ import ToothIcon from "@/components/icons/ToothIcon";
 
 type Comparison = {
   competitor: string;
-  slug: "dentally";
-  to: "/compare/dentally";
+  slug: "dentally" | "ismile-dental-software";
+  to: "/compare/dentally" | "/compare/ismile-dental-software";
   tagline: string;
   summary: string;
   accent: string;
@@ -22,6 +22,15 @@ const comparisons: Comparison[] = [
     tagline: "Dent Dock vs Dentally",
     summary:
       "£49/mo flat vs £220+/mo per user. Built for private practices going cloud-first.",
+    accent: "#2563EB",
+  },
+  {
+    competitor: "iSmile",
+    slug: "ismile-dental-software",
+    to: "/compare/ismile-dental-software",
+    tagline: "Dent Dock vs iSmile",
+    summary:
+      "Published £49/mo vs demo-and-quote pricing. Self-serve setup vs dedicated consultant onboarding.",
     accent: "#2563EB",
   },
 ];
