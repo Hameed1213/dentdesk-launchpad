@@ -412,16 +412,7 @@ function LiveInADayVisual() {
             boxShadow: "0 10px 24px -10px rgba(0,0,0,0.25)",
           }}
         >
-          <p
-            style={{
-              fontSize: "10px",
-              fontWeight: 600,
-              letterSpacing: "0.1em",
-              color: "#2445ea",
-            }}
-          >
-            STEP 1 OF 8
-          </p>
+          {null}
           <h3
             className="mt-1 text-[13px] text-dd-foreground sm:text-[16px]"
             style={{ fontWeight: 700, letterSpacing: "-0.01em" }}
