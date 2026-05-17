@@ -1328,7 +1328,7 @@ const dentallyFit = [
   "Individual practices and corporate groups of every size",
   "Full clinical charting and treatment planning",
   "NHS UDA contracts and mixed-treatment practices",
-  "Imaging integration (X-ray hardware, waiting room screens)",
+  "Imaging integration and waiting room screens",
   "Practices that want a dedicated phone consultant",
 ];
 
