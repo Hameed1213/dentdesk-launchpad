@@ -140,13 +140,11 @@ function HeroVisual() {
               border: "1px solid #E2E8F0",
               boxShadow: "0 8px 24px -8px rgba(37,99,235,0.15)",
               position: "absolute",
-              opacity: mounted ? 1 : 0,
-              transform: mounted ? "translateY(0)" : "translateY(8px)",
-              transition: `opacity 400ms ${EASING} ${i * 150}ms, transform 400ms ${EASING} ${i * 150}ms`,
-              animation:
-                prefersReducedMotion || !mounted
-                  ? undefined
-                  : `pill-float 5s ease-in-out ${p.floatDelay} infinite`,
+              opacity: 1,
+              transform: "translateY(0)",
+              animation: prefersReducedMotion
+                ? undefined
+                : `pill-float 5s ease-in-out ${p.floatDelay} infinite`,
             }}
           >
             <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#EFF4FF] sm:h-8 sm:w-8">
