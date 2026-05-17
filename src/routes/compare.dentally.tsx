@@ -742,7 +742,7 @@ function ReadyOnDayOneVisual() {
             className="text-dd-foreground"
             style={{ fontSize: "12px", fontWeight: 600, lineHeight: 1.3 }}
           >
-            4 automations running
+            5 automations running
           </p>
           <p
             className="mt-0.5 truncate text-[#94A3B8]"
