@@ -1145,7 +1145,7 @@ function MobilePricingCards() {
         }}
         className="flex flex-col items-center text-center"
       >
-        <span className="font-semibold text-[#475569]" style={{ fontSize: 9, letterSpacing: "0.14em", textTransform: "uppercase" }}>
+        <span className="font-semibold text-[#475569]" style={{ fontSize: 11, letterSpacing: "0.02em" }}>
           Dentally
         </span>
         <span className="font-bold text-[#0F172A] tabular-nums mt-1" style={{ fontSize: 14, letterSpacing: "-0.03em", lineHeight: 1.1 }}>
