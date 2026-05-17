@@ -548,6 +548,207 @@ function LiveInADayVisual() {
   );
 }
 
+function ReadyOnDayOneVisual() {
+  const rows = [
+    {
+      Icon: Bell,
+      title: "Booking confirmations",
+      desc: "Sent the moment a slot is booked",
+    },
+    {
+      Icon: Calendar,
+      title: "Appointment reminders",
+      desc: "24 h and 1 h before the visit",
+    },
+    {
+      Icon: MessageSquare,
+      title: "Recall sequences",
+      desc: "Bring patients back at 6 and 12 months",
+      mobileHidden: true,
+    },
+    {
+      Icon: FileText,
+      title: "New-patient forms",
+      desc: "Medical history collected before arrival",
+      mobileHidden: true,
+    },
+  ];
+
+  return (
+    <div
+      className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl"
+      style={{
+        fontFamily: "Inter, sans-serif",
+        background: "#1a1f2e",
+      }}
+    >
+      {/* Orbs */}
+      <div
+        aria-hidden
+        className="absolute rounded-full"
+        style={{
+          top: "-100px",
+          left: "-100px",
+          width: "340px",
+          height: "340px",
+          background: "#2445ea",
+          opacity: 0.45,
+          filter: "blur(110px)",
+        }}
+      />
+      <div
+        aria-hidden
+        className="absolute rounded-full"
+        style={{
+          bottom: "-90px",
+          right: "-90px",
+          width: "260px",
+          height: "260px",
+          background: "#2445ea",
+          opacity: 0.28,
+          filter: "blur(130px)",
+        }}
+      />
+
+      {/* Inset content */}
+      <div className="absolute inset-x-[5%] inset-y-[6%] sm:inset-x-[10%] sm:inset-y-[8%]">
+        <div
+          className="relative rounded-[14px] bg-white"
+          style={{
+            padding: "18px 20px",
+            boxShadow: "0 10px 24px -10px rgba(0,0,0,0.25)",
+          }}
+        >
+          <h3
+            className="text-[13px] text-dd-foreground sm:text-[16px]"
+            style={{ fontWeight: 700, letterSpacing: "-0.01em" }}
+          >
+            Automations
+          </h3>
+          <p
+            style={{
+              fontSize: "11px",
+              fontWeight: 400,
+              color: "#94A3B8",
+              marginTop: "3px",
+              lineHeight: 1.4,
+            }}
+          >
+            Running on your account by default
+          </p>
+
+          <div className="mt-3 flex flex-col" style={{ gap: "10px" }}>
+            {rows.map(({ Icon, title, desc, mobileHidden }) => (
+              <div
+                key={title}
+                className={`flex items-center ${mobileHidden ? "hidden sm:flex" : ""}`}
+                style={{
+                  border: "1px solid #E2E8F0",
+                  borderRadius: "10px",
+                  padding: "8px 10px",
+                  gap: "10px",
+                }}
+              >
+                <div
+                  className="flex flex-shrink-0 items-center justify-center"
+                  style={{
+                    width: "26px",
+                    height: "26px",
+                    borderRadius: "7px",
+                    background: "rgba(36,69,234,0.10)",
+                    color: "#2445ea",
+                  }}
+                >
+                  <Icon className="h-3.5 w-3.5" strokeWidth={2} />
+                </div>
+                <div className="min-w-0 flex-1">
+                  <p
+                    className="text-dd-foreground"
+                    style={{ fontSize: "12px", fontWeight: 600, lineHeight: 1.2 }}
+                  >
+                    {title}
+                  </p>
+                  <p
+                    className="truncate"
+                    style={{
+                      fontSize: "10px",
+                      fontWeight: 400,
+                      color: "#94A3B8",
+                      marginTop: "1px",
+                    }}
+                  >
+                    {desc}
+                  </p>
+                </div>
+                {/* Toggle (ON) */}
+                <div
+                  className="relative flex-shrink-0"
+                  style={{
+                    width: "26px",
+                    height: "14px",
+                    borderRadius: "999px",
+                    background: "#2445ea",
+                  }}
+                >
+                  <div
+                    className="absolute"
+                    style={{
+                      top: "2px",
+                      left: "14px",
+                      width: "10px",
+                      height: "10px",
+                      borderRadius: "999px",
+                      background: "#ffffff",
+                      boxShadow: "0 1px 2px rgba(0,0,0,0.2)",
+                    }}
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Pop-out */}
+      <div
+        className="absolute right-[3%] top-[4%] hidden items-start gap-2.5 rounded-xl border border-[#E2E8F0] bg-white sm:flex"
+        style={{
+          width: "min(210px, 42%)",
+          padding: "12px 14px",
+          transform: "rotate(3deg)",
+          boxShadow: "0 18px 40px -10px rgba(15,23,42,0.22)",
+          fontFamily: "Inter, sans-serif",
+          zIndex: 10,
+        }}
+      >
+        <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-[#16A34A]">
+          <Check className="h-4 w-4 text-white" strokeWidth={2.5} />
+        </div>
+        <div className="min-w-0 flex-1">
+          <p
+            className="text-[#16A34A]"
+            style={{ fontSize: "9px", fontWeight: 700, letterSpacing: "0.1em" }}
+          >
+            ALL ACTIVE
+          </p>
+          <p
+            className="text-dd-foreground"
+            style={{ fontSize: "12px", fontWeight: 600, lineHeight: 1.3 }}
+          >
+            4 automations running
+          </p>
+          <p
+            className="mt-0.5 truncate text-[#94A3B8]"
+            style={{ fontSize: "9px", fontWeight: 500 }}
+          >
+            Since you signed up
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function WhyDentDockBlock({
   title,
   body,
