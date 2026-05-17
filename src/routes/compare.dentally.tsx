@@ -358,18 +358,14 @@ function LiveInADayVisual() {
       className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-[#F3F6FD]"
       style={{ fontFamily: "Inter, sans-serif" }}
     >
-      {/* Wizard navy card */}
+      {/* Wizard navy card — fills container */}
       <div
-        className="absolute overflow-hidden rounded-[20px]"
+        className="absolute inset-0 overflow-hidden rounded-2xl"
         style={{
-          left: "3%",
-          right: "3%",
-          top: "50%",
           background: "#1a1f2e",
-          transform: "translateY(-50%) rotate(-2deg)",
+          transform: "rotate(-2deg) scale(1.04)",
           boxShadow:
             "0 1px 0 rgba(255,255,255,0.04) inset, 0 30px 60px -24px rgba(15,23,42,0.4)",
-          padding: "18px 20px",
         }}
       >
         {/* Orbs */}
@@ -377,10 +373,10 @@ function LiveInADayVisual() {
           aria-hidden
           className="absolute rounded-full"
           style={{
-            top: "-80px",
-            left: "-80px",
-            width: "260px",
-            height: "260px",
+            top: "-15%",
+            left: "-10%",
+            width: "45%",
+            aspectRatio: "1",
             background: "#2445ea",
             opacity: 0.4,
             filter: "blur(90px)",
@@ -390,150 +386,162 @@ function LiveInADayVisual() {
           aria-hidden
           className="absolute rounded-full"
           style={{
-            bottom: "-70px",
-            right: "-70px",
-            width: "200px",
-            height: "200px",
+            bottom: "-15%",
+            right: "-10%",
+            width: "40%",
+            aspectRatio: "1",
             background: "#2445ea",
             opacity: 0.25,
             filter: "blur(110px)",
           }}
         />
 
-        {/* Header */}
-        <div className="relative flex items-center justify-between">
-          <div className="flex items-center gap-1.5">
-            <svg viewBox="0 0 24 24" className="h-4 w-4 text-white" fill="currentColor">
-              <path d="M12 2c-2.5 0-4 1.5-6 1.5S2 2.5 2 6c0 3 1 6 2.5 9.5S7 22 9 22c1.2 0 1.5-2 3-2s1.8 2 3 2c2 0 3-3.5 4.5-6.5S22 9 22 6c0-3.5-2-4.5-4-4.5S14.5 2 12 2z" />
-            </svg>
-            <span style={{ fontSize: "13px", fontWeight: 700, letterSpacing: "-0.01em" }}>
-              <span style={{ color: "#60a5fa" }}>Dent</span>
-              <span style={{ color: "#ffffff" }}>Dock</span>
-            </span>
-          </div>
-          <span
-            className="text-white/50"
-            style={{ fontSize: "10px", fontWeight: 500 }}
-          >
-            Save & exit
-          </span>
-        </div>
-
-        {/* Step indicator */}
-        <div className="relative mt-3">
-          <p style={{ fontSize: "10px", fontWeight: 500, color: "rgba(255,255,255,0.7)" }}>
-            Step <span style={{ color: "#60a5fa", fontWeight: 700 }}>1</span> of 8
-          </p>
-          <div
-            className="mt-1.5 w-full overflow-hidden rounded-full"
-            style={{ height: "4px", background: "rgba(255,255,255,0.12)" }}
-          >
-            <div style={{ width: "12.5%", height: "100%", background: "#2445ea" }} />
-          </div>
-        </div>
-
-        {/* StepCard (white) */}
+        {/* Inner padding wrapper */}
         <div
-          className="relative mt-3 rounded-[14px] bg-white"
-          style={{
-            padding: "18px 20px",
-            boxShadow: "0 10px 24px -10px rgba(0,0,0,0.25)",
-          }}
+          className="relative flex h-full w-full flex-col"
+          style={{ padding: "4% 5%" }}
         >
-          <p
-            style={{
-              fontSize: "10px",
-              fontWeight: 600,
-              letterSpacing: "0.1em",
-              color: "#2445ea",
-            }}
-          >
-            STEP 1 OF 8
-          </p>
-          <h3
-            className="mt-1 text-dd-foreground"
-            style={{ fontSize: "16px", fontWeight: 700, letterSpacing: "-0.01em" }}
-          >
-            Tell us about your practice
-          </h3>
-          <p
-            style={{
-              fontSize: "11px",
-              fontWeight: 400,
-              color: "#94A3B8",
-              marginTop: "3px",
-              lineHeight: 1.4,
-            }}
-          >
-            This information appears on your patient booking page.
-          </p>
-
-          {/* Stack */}
-          <div className="mt-3 flex flex-col" style={{ gap: "12px" }}>
-            {/* Logo upload */}
-            <div
-              className="flex flex-col items-center justify-center"
-              style={{
-                border: "1px dashed #CBD5E1",
-                borderRadius: "12px",
-                height: "56px",
-              }}
-            >
-              <Camera className="h-4 w-4" style={{ color: "#94A3B8" }} />
-              <span
-                style={{
-                  fontSize: "11px",
-                  fontWeight: 500,
-                  color: "#94A3B8",
-                  marginTop: "3px",
-                }}
-              >
-                Upload your logo
+          {/* Header */}
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <svg viewBox="0 0 24 24" className="h-5 w-5 text-white" fill="currentColor">
+                <path d="M12 2c-2.5 0-4 1.5-6 1.5S2 2.5 2 6c0 3 1 6 2.5 9.5S7 22 9 22c1.2 0 1.5-2 3-2s1.8 2 3 2c2 0 3-3.5 4.5-6.5S22 9 22 6c0-3.5-2-4.5-4-4.5S14.5 2 12 2z" />
+              </svg>
+              <span style={{ fontSize: "16px", fontWeight: 700, letterSpacing: "-0.01em" }}>
+                <span style={{ color: "#60a5fa" }}>Dent</span>
+                <span style={{ color: "#ffffff" }}>Dock</span>
               </span>
             </div>
+            <span
+              className="text-white/50"
+              style={{ fontSize: "12px", fontWeight: 500 }}
+            >
+              Save & exit
+            </span>
+          </div>
 
-            {/* Field: Practice name */}
-            <div>
-              <p style={fieldLabelStyle}>
-                PRACTICE NAME <span style={{ color: "#EF4444" }}>*</span>
-              </p>
-              <div style={{ ...inputStyle, marginTop: "4px" }}>Smile Dental</div>
+          {/* Step indicator */}
+          <div className="mt-3">
+            <p style={{ fontSize: "12px", fontWeight: 500, color: "rgba(255,255,255,0.7)" }}>
+              Step <span style={{ color: "#60a5fa", fontWeight: 700 }}>1</span> of 8
+            </p>
+            <div
+              className="mt-1.5 w-full overflow-hidden rounded-full"
+              style={{ height: "5px", background: "rgba(255,255,255,0.12)" }}
+            >
+              <div style={{ width: "12.5%", height: "100%", background: "#2445ea" }} />
             </div>
+          </div>
 
-            {/* Field: Phone */}
-            <div>
-              <p style={fieldLabelStyle}>PHONE</p>
-              <div style={{ ...inputStyle, marginTop: "4px" }}>020 7946 0123</div>
-            </div>
+          {/* StepCard — 80% width centered, fills remaining height */}
+          <div
+            className="relative mx-auto mt-3 flex-1 rounded-[16px] bg-white"
+            style={{
+              width: "85%",
+              padding: "3% 3.5%",
+              boxShadow: "0 14px 32px -12px rgba(0,0,0,0.3)",
+            }}
+          >
+            {/* Two-column inner layout for landscape format */}
+            <div className="flex h-full" style={{ gap: "5%" }}>
+              {/* Left column: heading + sub + upload */}
+              <div className="flex flex-1 flex-col" style={{ minWidth: 0 }}>
+                <p
+                  style={{
+                    fontSize: "11px",
+                    fontWeight: 600,
+                    letterSpacing: "0.1em",
+                    color: "#2445ea",
+                  }}
+                >
+                  STEP 1 OF 8
+                </p>
+                <h3
+                  className="text-dd-foreground"
+                  style={{
+                    fontSize: "20px",
+                    fontWeight: 700,
+                    letterSpacing: "-0.015em",
+                    lineHeight: 1.15,
+                    marginTop: "4px",
+                  }}
+                >
+                  Tell us about your practice
+                </h3>
+                <p
+                  style={{
+                    fontSize: "12px",
+                    fontWeight: 400,
+                    color: "#94A3B8",
+                    marginTop: "6px",
+                    lineHeight: 1.4,
+                  }}
+                >
+                  This information appears on your patient booking page.
+                </p>
 
-            {/* City + Postcode */}
-            <div className="grid grid-cols-2" style={{ gap: "8px" }}>
-              <div>
-                <p style={fieldLabelStyle}>CITY</p>
-                <div style={{ ...inputStyle, marginTop: "4px" }}>London</div>
+                {/* Logo upload */}
+                <div
+                  className="mt-auto flex flex-col items-center justify-center"
+                  style={{
+                    border: "1.5px dashed #CBD5E1",
+                    borderRadius: "12px",
+                    padding: "14px",
+                  }}
+                >
+                  <Camera className="h-5 w-5" style={{ color: "#94A3B8" }} />
+                  <span
+                    style={{
+                      fontSize: "12px",
+                      fontWeight: 500,
+                      color: "#94A3B8",
+                      marginTop: "4px",
+                    }}
+                  >
+                    Upload your logo
+                  </span>
+                </div>
               </div>
-              <div>
-                <p style={fieldLabelStyle}>POSTCODE</p>
-                <div style={{ ...inputStyle, marginTop: "4px" }}>SW1A 1AA</div>
-              </div>
-            </div>
 
-            {/* Continue */}
-            <div className="flex justify-end">
-              <div
-                className="inline-flex items-center"
-                style={{
-                  background: "#2445ea",
-                  color: "#ffffff",
-                  borderRadius: "8px",
-                  padding: "6px 14px",
-                  fontSize: "11px",
-                  fontWeight: 600,
-                  gap: "4px",
-                }}
-              >
-                Continue
-                <ArrowRight className="h-3 w-3" strokeWidth={2} />
+              {/* Right column: form fields + CTA */}
+              <div className="flex flex-1 flex-col" style={{ gap: "10px", minWidth: 0 }}>
+                <div>
+                  <p style={fieldLabelStyle}>
+                    PRACTICE NAME <span style={{ color: "#EF4444" }}>*</span>
+                  </p>
+                  <div style={{ ...inputStyle, marginTop: "4px" }}>Smile Dental</div>
+                </div>
+                <div>
+                  <p style={fieldLabelStyle}>PHONE</p>
+                  <div style={{ ...inputStyle, marginTop: "4px" }}>020 7946 0123</div>
+                </div>
+                <div className="grid grid-cols-2" style={{ gap: "8px" }}>
+                  <div>
+                    <p style={fieldLabelStyle}>CITY</p>
+                    <div style={{ ...inputStyle, marginTop: "4px" }}>London</div>
+                  </div>
+                  <div>
+                    <p style={fieldLabelStyle}>POSTCODE</p>
+                    <div style={{ ...inputStyle, marginTop: "4px" }}>SW1A 1AA</div>
+                  </div>
+                </div>
+                <div className="mt-auto flex justify-end">
+                  <div
+                    className="inline-flex items-center"
+                    style={{
+                      background: "#2445ea",
+                      color: "#ffffff",
+                      borderRadius: "10px",
+                      padding: "9px 18px",
+                      fontSize: "13px",
+                      fontWeight: 600,
+                      gap: "6px",
+                    }}
+                  >
+                    Continue
+                    <ArrowRight className="h-3.5 w-3.5" strokeWidth={2} />
+                  </div>
+                </div>
               </div>
             </div>
           </div>
