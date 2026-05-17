@@ -4,6 +4,8 @@ import {
   Zap,
   Banknote,
   MessageCircle,
+  Eye,
+  MousePointerClick,
   ArrowRight,
   Check,
   Camera,
