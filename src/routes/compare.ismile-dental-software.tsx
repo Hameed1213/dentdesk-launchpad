@@ -1767,21 +1767,21 @@ function StickyPricingCards({ progress }: { progress: number }) {
         >
           <span
             className="font-semibold text-[#475569]"
-            style={{ fontSize: 12, letterSpacing: "0.04em" }}
+            style={{ fontSize: 12, letterSpacing: "0.14em" }}
           >
-            Dentally
+            ISMILE
           </span>
           <span
-            className="font-medium text-[#0F172A] tabular-nums"
-            style={{ fontSize: priceSize, letterSpacing: "-0.02em", marginTop: gap, transition, lineHeight: 1.1 }}
+            className="font-bold text-[#0F172A]"
+            style={{ fontSize: 28, letterSpacing: "-0.02em", marginTop: gap, transition, lineHeight: 1.1 }}
           >
-            £125 — £220+
+            Pricing not listed
           </span>
           <span
             className="font-medium text-[#475569]"
-            style={{ fontSize: subSize, marginTop: subGap, transition }}
+            style={{ fontSize: 14, marginTop: 8, transition }}
           >
-            per month, ex VAT
+            demo and quote required
           </span>
         </div>
       </div>
