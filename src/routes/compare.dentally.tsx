@@ -1116,7 +1116,7 @@ function StickyPricingCards({ progress }: { progress: number }) {
 
 function MobilePricingCards() {
   return (
-    <div className="md:hidden sticky top-[64px] z-20 -mx-6 px-6 pt-3 pb-5 bg-white border-b border-[#E2E8F0] grid grid-cols-2 gap-3">
+    <div className="mt-5 grid grid-cols-2 gap-3 items-start text-center">
       <div
         style={{
           background: "linear-gradient(135deg, #EBF1FE 0%, #FFFFFF 100%)",
@@ -1125,7 +1125,7 @@ function MobilePricingCards() {
           padding: 10,
           boxShadow: "0 6px 16px -8px rgba(37,99,235,0.2)",
         }}
-        className="flex flex-col items-center text-center"
+        className="flex flex-col items-center"
       >
         <span className="font-semibold text-[#2563EB]" style={{ fontSize: 11, letterSpacing: "0.02em" }}>
           Dent Dock
@@ -1143,7 +1143,7 @@ function MobilePricingCards() {
           padding: 10,
           boxShadow: "0 1px 2px 0 rgba(0,0,0,0.05)",
         }}
-        className="flex flex-col items-center text-center"
+        className="flex flex-col items-center"
       >
         <span className="font-semibold text-[#475569]" style={{ fontSize: 11, letterSpacing: "0.02em" }}>
           Dentally
