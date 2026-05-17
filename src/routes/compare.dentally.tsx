@@ -1231,7 +1231,7 @@ function FeatureComparison() {
                     className="border-b border-[#F1F5F9] pb-8 last:border-0 last:pb-0"
                   >
                     <p className="text-[16px] font-medium text-[#0F172A]">{row.feature}</p>
-                    <div className="mt-5 grid grid-cols-2 gap-3 items-center">
+                    <div className="mt-5 grid grid-cols-2 gap-3 items-start">
                       <div>
                         <StatusCell cell={row.dentDock} />
                       </div>
