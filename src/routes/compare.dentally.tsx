@@ -771,7 +771,7 @@ function WhyDentDockBlock({
   body: string;
   note?: string;
   label: string;
-  visual?: "live-in-a-day" | "ready-on-day-one";
+  visual?: "live-in-a-day" | "ready-on-day-one" | "talk-to-a-human";
   textLeft: boolean;
   index: number;
   total: number;
