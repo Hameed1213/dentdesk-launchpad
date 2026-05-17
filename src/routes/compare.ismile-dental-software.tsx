@@ -1448,7 +1448,7 @@ function HonestAnswer() {
             {/* Dentally — right */}
             <div className="lg:pl-12">
               <h3 className="text-[19px] font-semibold tracking-tight leading-snug text-[#94A3B8]">
-                Dentally is for
+                iSmile is for
               </h3>
               <ul className="mt-8 flex flex-col gap-5">
                 {dentallyFit.map((item, i) => (
@@ -1468,7 +1468,7 @@ function HonestAnswer() {
                 ))}
               </ul>
               <p className="mt-10 text-[14px] italic leading-[1.5] text-[#94A3B8]">
-                £125 to start, £220 for online booking.
+                Pricing not publicly listed.
               </p>
             </div>
           </div>
