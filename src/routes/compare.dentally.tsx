@@ -393,11 +393,11 @@ function LiveInADayVisual() {
       <div
         className="absolute"
         style={{
-          left: "5%",
-          right: "5%",
+          left: "10%",
+          right: "10%",
           top: "50%",
           transform: "translateY(-50%)",
-          padding: "4px 0",
+          padding: "24px 0",
         }}
       >
 
