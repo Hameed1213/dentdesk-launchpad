@@ -335,6 +335,7 @@ const whyBlocks = [
     title: "Talk to a real human",
     body: "Need help or something not working? Message us on WhatsApp. No ticket queue, no chatbot, no escalation form. Real human, same-day reply.",
     label: "VISUAL · TALK TO A REAL HUMAN",
+    visual: "talk-to-a-human" as const,
     textLeft: true,
   },
 ];
@@ -756,6 +757,266 @@ function ReadyOnDayOneVisual() {
   );
 }
 
+function TalkToAHumanVisual() {
+  return (
+    <div
+      className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl"
+      style={{
+        fontFamily: "Inter, sans-serif",
+        background: "#1a1f2e",
+      }}
+    >
+      {/* Orbs */}
+      <div
+        aria-hidden
+        className="absolute rounded-full"
+        style={{
+          top: "-100px",
+          left: "-100px",
+          width: "340px",
+          height: "340px",
+          background: "#2445ea",
+          opacity: 0.45,
+          filter: "blur(110px)",
+        }}
+      />
+      <div
+        aria-hidden
+        className="absolute rounded-full"
+        style={{
+          bottom: "-90px",
+          right: "-90px",
+          width: "260px",
+          height: "260px",
+          background: "#2445ea",
+          opacity: 0.28,
+          filter: "blur(130px)",
+        }}
+      />
+
+      {/* Inset chat card */}
+      <div className="absolute inset-x-[5%] inset-y-[6%] sm:inset-x-[10%] sm:inset-y-[8%]">
+        <div
+          className="relative flex h-full flex-col overflow-hidden rounded-[14px] bg-white"
+          style={{
+            boxShadow: "0 10px 24px -10px rgba(0,0,0,0.25)",
+          }}
+        >
+          {/* Header */}
+          <div
+            className="flex items-center gap-2.5"
+            style={{
+              padding: "12px 16px",
+              borderBottom: "1px solid #E2E8F0",
+              background: "#F8FAFC",
+            }}
+          >
+            <div
+              className="relative flex flex-shrink-0 items-center justify-center"
+              style={{
+                width: "32px",
+                height: "32px",
+                borderRadius: "999px",
+                background: "#2445ea",
+                color: "#ffffff",
+                fontSize: "12px",
+                fontWeight: 700,
+              }}
+            >
+              S
+              <span
+                className="absolute"
+                style={{
+                  width: "9px",
+                  height: "9px",
+                  borderRadius: "999px",
+                  background: "#22C55E",
+                  border: "2px solid #ffffff",
+                  bottom: "-1px",
+                  right: "-1px",
+                }}
+              />
+            </div>
+            <div className="min-w-0 flex-1">
+              <p
+                className="text-dd-foreground"
+                style={{ fontSize: "12px", fontWeight: 600, lineHeight: 1.2 }}
+              >
+                Sarah from Dent Dock
+              </p>
+              <p style={{ fontSize: "10px", color: "#22C55E", fontWeight: 500, marginTop: "1px" }}>
+                Online · replies in minutes
+              </p>
+            </div>
+            <div
+              className="flex flex-shrink-0 items-center justify-center"
+              style={{
+                width: "26px",
+                height: "26px",
+                borderRadius: "7px",
+                background: "rgba(34,197,94,0.12)",
+                color: "#16A34A",
+              }}
+            >
+              <MessageCircle className="h-3.5 w-3.5" strokeWidth={2.2} />
+            </div>
+          </div>
+
+          {/* Messages */}
+          <div
+            className="flex flex-1 flex-col"
+            style={{ padding: "14px 16px", gap: "10px", background: "#ffffff" }}
+          >
+            {/* Inbound */}
+            <div className="flex max-w-[78%] flex-col" style={{ gap: "2px" }}>
+              <div
+                style={{
+                  background: "#F1F5F9",
+                  color: "#0F172A",
+                  borderRadius: "12px 12px 12px 4px",
+                  padding: "8px 10px",
+                  fontSize: "11px",
+                  lineHeight: 1.35,
+                  fontWeight: 500,
+                }}
+              >
+                Hey — is there a way to bulk-import patient recall dates from a CSV?
+              </div>
+              <p style={{ fontSize: "9px", color: "#94A3B8", fontWeight: 500 }}>You · 09:42</p>
+            </div>
+
+            {/* Outbound */}
+            <div
+              className="ml-auto hidden max-w-[80%] flex-col sm:flex"
+              style={{ gap: "2px", alignItems: "flex-end" }}
+            >
+              <div
+                style={{
+                  background: "#2445ea",
+                  color: "#ffffff",
+                  borderRadius: "12px 12px 4px 12px",
+                  padding: "8px 10px",
+                  fontSize: "11px",
+                  lineHeight: 1.35,
+                  fontWeight: 500,
+                }}
+              >
+                Yep — send it over and I'll map the columns for you. Live in your account in about
+                an hour.
+              </div>
+              <p style={{ fontSize: "9px", color: "#94A3B8", fontWeight: 500 }}>
+                Sarah · 09:46
+              </p>
+            </div>
+
+            {/* Typing on mobile only — keeps card balanced */}
+            <div className="mt-auto flex items-center gap-1.5 sm:hidden">
+              <div
+                style={{
+                  background: "#F1F5F9",
+                  borderRadius: "12px",
+                  padding: "8px 12px",
+                  display: "inline-flex",
+                  gap: "3px",
+                  alignItems: "center",
+                }}
+              >
+                {[0, 1, 2].map((i) => (
+                  <span
+                    key={i}
+                    style={{
+                      width: "5px",
+                      height: "5px",
+                      borderRadius: "999px",
+                      background: "#94A3B8",
+                    }}
+                  />
+                ))}
+              </div>
+              <span style={{ fontSize: "9px", color: "#94A3B8", fontWeight: 500 }}>
+                Sarah is typing
+              </span>
+            </div>
+          </div>
+
+          {/* Composer */}
+          <div
+            className="flex items-center gap-2"
+            style={{
+              padding: "10px 14px",
+              borderTop: "1px solid #E2E8F0",
+              background: "#F8FAFC",
+            }}
+          >
+            <div
+              className="flex flex-1 items-center"
+              style={{
+                background: "#ffffff",
+                border: "1px solid #E2E8F0",
+                borderRadius: "999px",
+                padding: "6px 12px",
+                fontSize: "11px",
+                color: "#94A3B8",
+              }}
+            >
+              Message Dent Dock support…
+            </div>
+            <div
+              className="flex flex-shrink-0 items-center justify-center"
+              style={{
+                width: "28px",
+                height: "28px",
+                borderRadius: "999px",
+                background: "#2445ea",
+                color: "#ffffff",
+              }}
+            >
+              <ArrowRight className="h-3.5 w-3.5" strokeWidth={2.2} />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Pop-out */}
+      <div
+        className="absolute right-[3%] top-[4%] hidden items-start gap-2.5 rounded-xl border border-[#E2E8F0] bg-white sm:flex"
+        style={{
+          width: "min(210px, 42%)",
+          padding: "12px 14px",
+          transform: "rotate(3deg)",
+          boxShadow: "0 18px 40px -10px rgba(15,23,42,0.22)",
+          fontFamily: "Inter, sans-serif",
+          zIndex: 10,
+        }}
+      >
+        <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-[#16A34A]">
+          <Check className="h-4 w-4 text-white" strokeWidth={2.5} />
+        </div>
+        <div className="min-w-0 flex-1">
+          <p
+            className="text-[#16A34A]"
+            style={{ fontSize: "9px", fontWeight: 700, letterSpacing: "0.1em" }}
+          >
+            REPLIED IN 4 MIN
+          </p>
+          <p
+            className="text-dd-foreground"
+            style={{ fontSize: "12px", fontWeight: 600, lineHeight: 1.3 }}
+          >
+            Sarah from Dent Dock
+          </p>
+          <p
+            className="mt-0.5 truncate text-[#94A3B8]"
+            style={{ fontSize: "9px", fontWeight: 500 }}
+          >
+            Same-day, every day
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function WhyDentDockBlock({
   title,
   body,
@@ -770,7 +1031,7 @@ function WhyDentDockBlock({
   body: string;
   note?: string;
   label: string;
-  visual?: "live-in-a-day" | "ready-on-day-one";
+  visual?: "live-in-a-day" | "ready-on-day-one" | "talk-to-a-human";
   textLeft: boolean;
   index: number;
   total: number;
@@ -838,6 +1099,8 @@ function WhyDentDockBlock({
               <LiveInADayVisual />
             ) : visual === "ready-on-day-one" ? (
               <ReadyOnDayOneVisual />
+            ) : visual === "talk-to-a-human" ? (
+              <TalkToAHumanVisual />
             ) : (
               <div className="flex aspect-[4/3] w-full items-center justify-center rounded-2xl border border-dashed border-[#CBD5E1] bg-[#F1F5F9]">
                 <span
