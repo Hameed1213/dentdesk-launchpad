@@ -1166,7 +1166,7 @@ function FAQ() {
             Questions practice owners ask
           </h2>
           <p className="text-[16px] sm:text-[17px] leading-[1.6] text-[#475569]">
-            Everything you need to know before switching from Dentally.
+            Everything you need to know before switching from iSmile.
           </p>
         </motion.div>
 
