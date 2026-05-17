@@ -390,15 +390,7 @@ function LiveInADayVisual() {
       />
 
       {/* Wizard content (transparent — sits on the navy canvas) */}
-      <div
-        className="absolute"
-        style={{
-          left: "10%",
-          right: "10%",
-          top: "8%",
-          bottom: "8%",
-        }}
-      >
+      <div className="absolute inset-x-[5%] inset-y-[6%] sm:inset-x-[10%] sm:inset-y-[8%]">
         {/* Step indicator */}
         <div className="relative">
           <p style={{ fontSize: "10px", fontWeight: 500, color: "rgba(255,255,255,0.7)" }}>
