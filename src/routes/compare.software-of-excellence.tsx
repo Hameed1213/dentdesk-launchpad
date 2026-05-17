@@ -1328,10 +1328,10 @@ function ClosingCTA() {
 
 const dentallyFit = [
   "NHS, mixed and private practices of every size",
-  "Full clinical charting and treatment plans",
+  "Full clinical charting, treatment plans and imaging",
   "NHS UDA contracts and FP17 claims",
   "Multi-site practices and dental groups",
-  "Imaging integration and AI clinical notes",
+  "Dedicated Customer Success Consultant per practice",
 ];
 
 const dentDockFit = [
