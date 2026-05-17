@@ -1116,42 +1116,42 @@ function StickyPricingCards({ progress }: { progress: number }) {
 
 function MobilePricingCards() {
   return (
-    <div className="md:hidden mt-8 grid grid-cols-2 gap-4">
+    <div className="md:hidden sticky top-[64px] z-20 -mx-6 px-6 py-3 bg-white/95 backdrop-blur border-b border-[#E2E8F0] grid grid-cols-2 gap-3">
       <div
         style={{
           background: "linear-gradient(135deg, #EBF1FE 0%, #FFFFFF 100%)",
           border: "2px solid #2563EB",
-          borderRadius: 20,
-          padding: 20,
-          boxShadow: "0 14px 32px -8px rgba(37,99,235,0.2)",
+          borderRadius: 14,
+          padding: 10,
+          boxShadow: "0 6px 16px -8px rgba(37,99,235,0.2)",
         }}
         className="flex flex-col items-center text-center"
       >
-        <span className="font-semibold text-[#2563EB]" style={{ fontSize: 11, letterSpacing: "0.14em", textTransform: "uppercase" }}>
+        <span className="font-semibold text-[#2563EB]" style={{ fontSize: 9, letterSpacing: "0.14em", textTransform: "uppercase" }}>
           Dent Dock
         </span>
-        <span className="font-bold text-[#0F172A] tabular-nums mt-2" style={{ fontSize: 28, letterSpacing: "-0.03em", lineHeight: 1.1 }}>
+        <span className="font-bold text-[#0F172A] tabular-nums mt-1" style={{ fontSize: 18, letterSpacing: "-0.03em", lineHeight: 1.1 }}>
           £49
         </span>
-        <span className="font-medium text-[#475569] mt-1" style={{ fontSize: 13 }}>per month</span>
+        <span className="font-medium text-[#475569] mt-0.5" style={{ fontSize: 10 }}>per month</span>
       </div>
       <div
         style={{
           background: "#FFFFFF",
           border: "1px solid #E2E8F0",
-          borderRadius: 20,
-          padding: 20,
+          borderRadius: 14,
+          padding: 10,
           boxShadow: "0 1px 2px 0 rgba(0,0,0,0.05)",
         }}
         className="flex flex-col items-center text-center"
       >
-        <span className="font-semibold text-[#475569]" style={{ fontSize: 11, letterSpacing: "0.14em", textTransform: "uppercase" }}>
+        <span className="font-semibold text-[#475569]" style={{ fontSize: 9, letterSpacing: "0.14em", textTransform: "uppercase" }}>
           Dentally
         </span>
-        <span className="font-bold text-[#0F172A] tabular-nums mt-2" style={{ fontSize: 22, letterSpacing: "-0.03em", lineHeight: 1.1 }}>
+        <span className="font-bold text-[#0F172A] tabular-nums mt-1" style={{ fontSize: 14, letterSpacing: "-0.03em", lineHeight: 1.1 }}>
           £125 — £220+
         </span>
-        <span className="font-medium text-[#475569] mt-1" style={{ fontSize: 13 }}>per month, ex VAT</span>
+        <span className="font-medium text-[#475569] mt-0.5" style={{ fontSize: 10 }}>per month, ex VAT</span>
       </div>
     </div>
   );
