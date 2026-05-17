@@ -1030,7 +1030,7 @@ function WhyDentDockBlock({
         initial: { opacity: 0, y: 12 },
         whileInView: { opacity: 1, y: 0 },
         viewport: { once: true, margin: "-80px" },
-        transition: { duration: 0.5, ease },
+        transition: { duration: 0.25, ease },
       };
 
   const visualMotion = reduce
@@ -1039,7 +1039,7 @@ function WhyDentDockBlock({
         initial: { opacity: 0, y: 16 },
         whileInView: { opacity: 1, y: 0 },
         viewport: { once: true, margin: "-80px" },
-        transition: { duration: 0.5, ease, delay: 0.1 },
+        transition: { duration: 0.25, ease, delay: 0.05 },
       };
 
   const isLast = index === total - 1;
@@ -1170,7 +1170,7 @@ function FAQ() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.3 }}
           className="text-center mb-12 sm:mb-16"
         >
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight text-foreground leading-[1.1] mb-4">
@@ -1185,7 +1185,7 @@ function FAQ() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6, delay: 0.1 }}
+          transition={{ duration: 0.18, delay: 0.05 }}
         >
           <Accordion type="single" collapsible className="w-full">
             {faqItems.map((item, i) => (
@@ -1211,7 +1211,7 @@ function FAQ() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          transition={{ duration: 0.18, delay: 0.05 }}
           className="text-center text-[15px] text-[#475569] mt-12"
         >
           Can't find what you're looking for?{" "}
@@ -1241,7 +1241,7 @@ function WhatNextCTA() {
           initial: { opacity: 0 },
           whileInView: { opacity: 1 },
           viewport: { once: true, margin: "-80px" },
-          transition: { duration: 0.3, ease, delay },
+          transition: { duration: 0.18, ease, delay },
         };
 
   const buttonsMotion = reduce
@@ -1250,21 +1250,21 @@ function WhatNextCTA() {
         initial: { opacity: 0, y: 12 },
         whileInView: { opacity: 1, y: 0 },
         viewport: { once: true, margin: "-80px" },
-        transition: { duration: 0.4, ease, delay: 0.65 },
+        transition: { duration: 0.2, ease, delay: 0.25 },
       };
 
   return (
     <section className="py-16 lg:py-24">
       <div className="mx-auto max-w-[880px] px-6 text-center">
         <motion.h2
-          {...fade(0.2)}
+          {...fade(0.08)}
           className="text-[32px] font-semibold text-dd-foreground lg:text-[48px]"
           style={{ letterSpacing: "-0.02em" }}
         >
           Want to see more, <span className="text-[#2563EB]">or just have a chat?</span>
         </motion.h2>
         <motion.p
-          {...fade(0.35)}
+          {...fade(0.16)}
           className="mx-auto mt-4 max-w-[640px] text-[18px] leading-[1.6] text-[#475569] lg:text-[20px]"
         >
           Explore the rest of Dent Dock, or message us directly with any questions about our
@@ -1362,7 +1362,7 @@ function HonestAnswer() {
         initial: { opacity: 0, y: 24 },
         whileInView: { opacity: 1, y: 0 },
         viewport: { once: true, margin: "-80px" },
-        transition: { duration: 0.6, ease },
+        transition: { duration: 0.18, ease },
       };
 
   const panelMotion = reduce
@@ -1371,7 +1371,7 @@ function HonestAnswer() {
         initial: { opacity: 0, y: 16 },
         whileInView: { opacity: 1, y: 0 },
         viewport: { once: true, margin: "-80px" },
-        transition: { duration: 0.5, ease },
+        transition: { duration: 0.25, ease },
       };
 
   const itemMotion = (index: number) =>
@@ -1381,7 +1381,7 @@ function HonestAnswer() {
           initial: { opacity: 0, y: 8 },
           whileInView: { opacity: 1, y: 0 },
           viewport: { once: true, margin: "-80px" },
-          transition: { duration: 0.4, ease, delay: 0.2 + index * 0.08 },
+          transition: { duration: 0.2, ease, delay: 0.08 + index * 0.04 },
         };
 
   return (
