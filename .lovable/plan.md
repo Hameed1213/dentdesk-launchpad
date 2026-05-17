@@ -1,44 +1,47 @@
-## Plan: "Ready on day one" visual
+## /compare hub page
 
-Add a second product-screenshot-style visual for Block 2 ("Ready on day one") in the "What £49 a month actually looks like." section on `/compare/dentally`. Match the visual language of `LiveInADayVisual`: navy `#1a1f2e` canvas, two brand-blue radial orbs, a white card sitting inset on top, a green "LIVE NOW"-style pop-out toast in the top-right corner, same Inter typography and brand-blue `#2445ea` accents.
+Create a new route at **`/compare`** that acts as a landing page listing every comparison Dent Dock has published. For now it shows one card — Dentally — and is built so more cards can drop in later without restructuring.
 
-## What the visual shows
+### Page structure
 
-A miniature snapshot of the Dent Dock **Automations / Settings** panel — the metaphor: "all the automations are already turned on the moment you sign up."
+Reuse the existing visual language from `/compare/dentally` (Navbar at top, Footer + WhatsApp button at bottom, white background, blue accents).
 
-White inset card contains:
+1. **Navbar** (existing component)
+2. **Hero**
+   - Eyebrow: `COMPARE`
+   - H1: `Dent Dock vs the alternatives`
+   - Sub: One sentence: "Honest side-by-side comparisons against the major UK dental practice software, written for private practices choosing what to switch to."
+3. **Comparison cards grid**
+   - Single column on mobile, 2-up from `md:`, 3-up from `lg:` so it scales as more comparisons are added.
+   - Each card: competitor logo/wordmark area at top, "Dent Dock vs **Dentally**" headline, one-line summary ("£49/mo flat vs £220+/mo. Built for private practices going cloud-first."), and a "See comparison →" CTA covering the whole card.
+   - Cards use the same rounded-2xl + soft shadow + hover lift treatment used elsewhere on the site for consistency.
+   - Today: **1 card (Dentally)** linking to `/compare/dentally`.
+4. **Bottom CTA strip** — same "Want to see more, or just have a chat?" pattern that already exists on `/compare/dentally`, with WhatsApp + Waitlist buttons. Keeps the page from ending cold when only one comparison exists.
+5. **Footer** + floating **WhatsApp button** (existing components)
 
-- Small heading (foreground, 13px/16px responsive, bold): "Automations"
-- Sub-text (muted #94A3B8, 11px): "Running on your account by default"
-- A list of 4 automation rows, each with:
-  - Left: small icon in a brand-blue-tinted square (16px) — Bell / Calendar / MessageSquare / FileText
-  - Middle: row title (foreground, 12px, 600) + tiny description (muted, 10px)
-  - Right: a small toggle pill rendered in the ON state (brand-blue `#2445ea` background, white knob on the right)
+### SEO / head metadata
 
-Rows:
-1. **Booking confirmations** — "Sent the moment a slot is booked"
-2. **Appointment reminders** — "24 h and 1 h before the visit"
-3. **Recall sequences** — "Bring patients back at 6 and 12 months"
-4. **New-patient forms** — "Medical history collected before arrival"
+Set per-route `head()` with:
+- `title`: `Compare Dent Dock · Honest comparisons vs other UK dental software`
+- `description`: One sentence about the hub.
+- `og:title`, `og:description`, `og:url` (`https://dentdock.co.uk/compare`)
+- `<link rel="canonical">` to the same URL.
+- No JSON-LD needed on the hub (the individual comparison pages own that).
 
-Pop-out toast (top-right, +3deg rotation, hidden on phone — matching the Live-in-a-day pattern):
-- Green check badge
-- "ALL ACTIVE" label (green, uppercase, tracked)
-- "4 automations running" headline
-- Small muted sub-text: "Since you signed up"
+### Navigation entry points
 
-## Responsive behaviour (mirrors Live in a Day)
+- **Navbar** (`src/components/home/Navbar.tsx`): add `{ label: "Compare", href: "/compare" }` to `navLinks`. Render it as a real `<Link to="/compare">` (not the smooth-scroll `<a>`) so it routes properly from any page. Show in both the desktop nav row and the mobile menu.
+- **Footer** (`src/components/home/Footer.tsx`): add `Compare` to the Product column alongside Features / Pricing / FAQ, as an internal route link.
 
-- On mobile: hide the pop-out toast, hide rows 3 and 4 so the card stays readable, shrink heading from 16px → 13px.
-- Tighter side inset on mobile (`inset-x-[5%]`) → wider on desktop (`sm:inset-x-[10%]`).
+### Files
 
-## Implementation
+- **New**: `src/routes/compare.index.tsx` → URL `/compare`
+- **Edit**: `src/components/home/Navbar.tsx` (add nav link, desktop + mobile)
+- **Edit**: `src/components/home/Footer.tsx` (add to product column)
+- `routeTree.gen.ts` regenerates automatically — don't touch it.
 
-In `src/routes/compare.dentally.tsx`:
+### What stays unchanged
 
-1. Add `Bell`, `Calendar`, `MessageSquare`, `FileText` to the existing `lucide-react` import.
-2. Add `visual: "ready-on-day-one" as const` to the second `whyBlocks` entry.
-3. Create a new `ReadyOnDayOneVisual` component, structurally identical to `LiveInADayVisual` (same outer container, orbs, inset wrapper, pop-out shell) but with the automations content described above.
-4. Extend the `visual` type union on `WhyDentDockBlock` to `"live-in-a-day" | "ready-on-day-one"` and add a second conditional branch that renders `<ReadyOnDayOneVisual />`.
-
-No other files change. No new dependencies. Static composition, no animation, same design tokens.
+- `/compare/dentally` page content
+- Existing Navbar / Footer behaviour for other links
+- Site styling tokens

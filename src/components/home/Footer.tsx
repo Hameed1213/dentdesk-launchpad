@@ -1,9 +1,11 @@
 import { Link } from "@tanstack/react-router";
 import ToothIcon from "@/components/icons/ToothIcon";
 
-const productLinks = [
+type ProductLink = { label: string; href: string; internal?: boolean };
+const productLinks: ProductLink[] = [
   { label: "Features", href: "/#about" },
   { label: "Pricing", href: "/#pricing" },
+  { label: "Compare", href: "/compare", internal: true },
   { label: "FAQ", href: "/#faq" },
 ];
 
@@ -54,26 +56,34 @@ export default function Footer() {
             <ul className="space-y-2.5">
               {productLinks.map((l) => (
                 <li key={l.label}>
-                  <a
-                    href={l.href}
-                    onClick={(e) => {
-                      const hashIdx = l.href.indexOf("#");
-                      if (hashIdx === -1) return;
-                      const id = l.href.slice(hashIdx + 1);
-                      const el = document.getElementById(id);
-                      if (el) {
-                        e.preventDefault();
-                        el.scrollIntoView({ behavior: "smooth", block: "start" });
-                      } else {
-                        // Element not on current page — navigate to home with hash
-                        e.preventDefault();
-                        window.location.href = `/#${id}`;
-                      }
-                    }}
-                    className="text-[14px] text-white/70 hover:text-white transition-colors"
-                  >
-                    {l.label}
-                  </a>
+                  {l.internal ? (
+                    <Link
+                      to={l.href as "/compare"}
+                      className="text-[14px] text-white/70 hover:text-white transition-colors"
+                    >
+                      {l.label}
+                    </Link>
+                  ) : (
+                    <a
+                      href={l.href}
+                      onClick={(e) => {
+                        const hashIdx = l.href.indexOf("#");
+                        if (hashIdx === -1) return;
+                        const id = l.href.slice(hashIdx + 1);
+                        const el = document.getElementById(id);
+                        if (el) {
+                          e.preventDefault();
+                          el.scrollIntoView({ behavior: "smooth", block: "start" });
+                        } else {
+                          e.preventDefault();
+                          window.location.href = `/#${id}`;
+                        }
+                      }}
+                      className="text-[14px] text-white/70 hover:text-white transition-colors"
+                    >
+                      {l.label}
+                    </a>
+                  )}
                 </li>
               ))}
             </ul>
