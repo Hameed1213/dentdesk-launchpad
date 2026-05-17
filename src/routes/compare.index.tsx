@@ -84,17 +84,11 @@ function CompareHubPage() {
       {/* Hero */}
       <section className="pt-32 sm:pt-40 pb-12 sm:pb-16">
         <div className="max-w-5xl mx-auto px-6 text-center">
-          <p
-            className="text-[12px] font-semibold uppercase tracking-[0.18em] mb-5"
-            style={{ color: "#2563EB" }}
-          >
-            Compare
-          </p>
           <h1
             className="text-[40px] sm:text-[56px] leading-[1.05] tracking-[-0.03em] font-semibold"
             style={{ color: "#0F162B" }}
           >
-            Dent Dock vs the alternatives
+            <span style={{ color: "#2563EB" }}>Dent Dock</span> vs the alternatives
           </h1>
           <p className="mt-5 text-[16px] sm:text-[18px] leading-[1.55] text-[#4B5563] max-w-2xl mx-auto">
             Honest side-by-side comparisons against the major UK dental practice
@@ -167,13 +161,13 @@ function CompareHubPage() {
                 href="https://wa.me/447700000000"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl border border-neutral-200 bg-white text-[14px] font-semibold text-[#0F162B] hover:bg-neutral-50 transition-colors"
+                className="inline-flex w-full sm:w-auto items-center justify-center gap-2 px-5 py-3 rounded-xl border border-neutral-200 bg-white text-[14px] font-semibold text-[#0F162B] hover:bg-neutral-50 transition-colors"
               >
                 Contact us
               </a>
               <Link
                 to="/waitlist"
-                className="inline-flex items-center justify-center px-5 py-3 rounded-xl text-[14px] font-semibold text-white transition-all hover:-translate-y-px"
+                className="inline-flex w-full sm:w-auto items-center justify-center px-5 py-3 rounded-xl text-[14px] font-semibold text-white transition-all hover:-translate-y-px"
                 style={{
                   backgroundColor: "#2563EB",
                   boxShadow: "0 8px 20px -6px rgba(37, 99, 235, 0.45)",
