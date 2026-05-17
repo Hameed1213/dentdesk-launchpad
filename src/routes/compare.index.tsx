@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 import Navbar from "@/components/home/Navbar";
 import Footer from "@/components/home/Footer";
 import WhatsAppButton from "@/components/home/WhatsAppButton";
+import ToothIcon from "@/components/icons/ToothIcon";
 
 type Comparison = {
   competitor: string;
