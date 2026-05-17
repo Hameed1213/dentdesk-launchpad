@@ -195,6 +195,8 @@ function CompareHubPage() {
           </div>
         </div>
       </section>
+        </div>
+      </div>
 
       <Footer />
       <WhatsAppButton />
