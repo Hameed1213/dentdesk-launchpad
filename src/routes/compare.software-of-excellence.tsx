@@ -1769,21 +1769,21 @@ function StickyPricingCards({ progress }: { progress: number }) {
         >
           <span
             className="font-semibold text-[#475569]"
-            style={{ fontSize: 12, letterSpacing: "0.04em" }}
+            style={{ fontSize: 10, letterSpacing: "0.14em" }}
           >
-            Dentally
+            SOFTWARE OF EXCELLENCE
           </span>
           <span
-            className="font-medium text-[#0F172A] tabular-nums"
+            className="font-bold text-[#0F172A] tabular-nums"
             style={{ fontSize: priceSize, letterSpacing: "-0.02em", marginTop: gap, transition, lineHeight: 1.1 }}
           >
-            £125 — £220+
+            Pricing not listed
           </span>
           <span
             className="font-medium text-[#475569]"
             style={{ fontSize: subSize, marginTop: subGap, transition }}
           >
-            per month, ex VAT
+            sales quote required
           </span>
         </div>
       </div>
