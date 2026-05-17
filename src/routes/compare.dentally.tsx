@@ -1448,7 +1448,7 @@ function HonestAnswer() {
                 ))}
               </ul>
               <p className="mt-10 text-[14px] italic leading-[1.5] text-[#94A3B8]">
-                Dent Dock is a flat £49/mo per practice.
+                Dent Dock is a flat £49/mo.
               </p>
               </div>
             </div>
