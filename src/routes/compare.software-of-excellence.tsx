@@ -1450,7 +1450,7 @@ function HonestAnswer() {
             {/* Dentally — right */}
             <div className="lg:pl-12">
               <h3 className="text-[19px] font-semibold tracking-tight leading-snug text-[#94A3B8]">
-                Dentally is for
+                Software of Excellence is for
               </h3>
               <ul className="mt-8 flex flex-col gap-5">
                 {dentallyFit.map((item, i) => (
