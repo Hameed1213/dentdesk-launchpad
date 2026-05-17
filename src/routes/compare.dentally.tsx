@@ -829,6 +829,8 @@ function WhyDentDockBlock({
           >
             {visual === "live-in-a-day" ? (
               <LiveInADayVisual />
+            ) : visual === "ready-on-day-one" ? (
+              <ReadyOnDayOneVisual />
             ) : (
               <div className="flex aspect-[4/3] w-full items-center justify-center rounded-2xl border border-dashed border-[#CBD5E1] bg-[#F1F5F9]">
                 <span
