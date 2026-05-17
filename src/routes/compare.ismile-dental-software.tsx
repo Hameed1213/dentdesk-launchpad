@@ -1772,8 +1772,8 @@ function StickyPricingCards({ progress }: { progress: number }) {
             ISMILE
           </span>
           <span
-            className="font-bold text-[#0F172A]"
-            style={{ fontSize: 28, letterSpacing: "-0.02em", marginTop: gap, transition, lineHeight: 1.1 }}
+            className="font-medium text-[#0F172A]"
+            style={{ fontSize: priceSize, letterSpacing: "-0.02em", marginTop: gap, transition, lineHeight: 1.1 }}
           >
             Pricing not listed
           </span>
