@@ -131,19 +131,30 @@ export default function Navbar() {
         )}
       >
         <div className="mx-4 mt-2 rounded-2xl border border-neutral-200/60 bg-white/95 backdrop-blur-lg shadow-sm p-5 flex flex-col gap-1">
-          {navLinks.map((l) => (
-            <a
-              key={l.label}
-              href={l.href}
-              onClick={(e) => {
-                setMobileOpen(false);
-                smoothScrollTo(e, l.href);
-              }}
-              className="text-sm font-medium text-neutral-700 hover:text-neutral-900 px-3 py-2.5 rounded-lg hover:bg-neutral-100"
-            >
-              {l.label}
-            </a>
-          ))}
+          {navLinks.map((l) =>
+            l.href.includes("#") ? (
+              <a
+                key={l.label}
+                href={l.href}
+                onClick={(e) => {
+                  setMobileOpen(false);
+                  smoothScrollTo(e, l.href);
+                }}
+                className="text-sm font-medium text-neutral-700 hover:text-neutral-900 px-3 py-2.5 rounded-lg hover:bg-neutral-100"
+              >
+                {l.label}
+              </a>
+            ) : (
+              <Link
+                key={l.label}
+                to={l.href}
+                onClick={() => setMobileOpen(false)}
+                className="text-sm font-medium text-neutral-700 hover:text-neutral-900 px-3 py-2.5 rounded-lg hover:bg-neutral-100"
+              >
+                {l.label}
+              </Link>
+            ),
+          )}
           <div className="h-px bg-neutral-200 my-2" />
           <Link
             to="/waitlist"
