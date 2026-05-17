@@ -6,6 +6,7 @@ import {
   MessageCircle,
   ArrowRight,
   Check,
+  Camera,
   X,
   type LucideIcon,
 } from "lucide-react";
@@ -333,14 +334,24 @@ const whyBlocks = [
 ];
 
 function LiveInADayVisual() {
-  const swatches = [
-    { color: "#2445ea", selected: true },
-    { color: "#EC4899" },
-    { color: "#10B981" },
-    { color: "#8B5CF6" },
-    { color: "#F97316" },
-    { color: "#14B8A6" },
-  ];
+  const fieldLabelStyle = {
+    fontSize: "9px",
+    fontWeight: 600,
+    letterSpacing: "0.06em",
+    color: "#94A3B8",
+  } as const;
+  const inputStyle = {
+    border: "1px solid #E2E8F0",
+    borderRadius: "8px",
+    height: "32px",
+    padding: "0 10px",
+    display: "flex",
+    alignItems: "center",
+    fontSize: "11px",
+    fontWeight: 400,
+    color: "#94A3B8",
+    background: "#FFFFFF",
+  } as const;
 
   return (
     <div
@@ -349,15 +360,16 @@ function LiveInADayVisual() {
     >
       {/* Wizard navy card */}
       <div
-        className="absolute left-[5%] top-1/2 overflow-hidden rounded-[20px]"
+        className="absolute overflow-hidden rounded-[20px]"
         style={{
-          width: "65%",
-          aspectRatio: "5 / 4",
+          left: "3%",
+          right: "3%",
+          top: "50%",
           background: "#1a1f2e",
-          transform: "translateY(-50%) rotate(-3deg)",
+          transform: "translateY(-50%) rotate(-2deg)",
           boxShadow:
-            "0 1px 0 rgba(255,255,255,0.04) inset, 0 24px 48px -20px rgba(15,23,42,0.35)",
-          padding: "14px",
+            "0 1px 0 rgba(255,255,255,0.04) inset, 0 30px 60px -24px rgba(15,23,42,0.4)",
+          padding: "18px 20px",
         }}
       >
         {/* Orbs */}
@@ -365,148 +377,164 @@ function LiveInADayVisual() {
           aria-hidden
           className="absolute rounded-full"
           style={{
-            top: "-60px",
-            left: "-60px",
-            width: "200px",
-            height: "200px",
+            top: "-80px",
+            left: "-80px",
+            width: "260px",
+            height: "260px",
             background: "#2445ea",
             opacity: 0.4,
-            filter: "blur(80px)",
+            filter: "blur(90px)",
           }}
         />
         <div
           aria-hidden
           className="absolute rounded-full"
           style={{
-            bottom: "-50px",
-            right: "-50px",
-            width: "140px",
-            height: "140px",
+            bottom: "-70px",
+            right: "-70px",
+            width: "200px",
+            height: "200px",
             background: "#2445ea",
             opacity: 0.25,
-            filter: "blur(100px)",
+            filter: "blur(110px)",
           }}
         />
 
         {/* Header */}
         <div className="relative flex items-center justify-between">
-          <div className="flex items-center gap-1">
-            <svg viewBox="0 0 24 24" className="h-3 w-3 text-white" fill="currentColor">
+          <div className="flex items-center gap-1.5">
+            <svg viewBox="0 0 24 24" className="h-4 w-4 text-white" fill="currentColor">
               <path d="M12 2c-2.5 0-4 1.5-6 1.5S2 2.5 2 6c0 3 1 6 2.5 9.5S7 22 9 22c1.2 0 1.5-2 3-2s1.8 2 3 2c2 0 3-3.5 4.5-6.5S22 9 22 6c0-3.5-2-4.5-4-4.5S14.5 2 12 2z" />
             </svg>
-            <span style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "-0.01em" }}>
+            <span style={{ fontSize: "13px", fontWeight: 700, letterSpacing: "-0.01em" }}>
               <span style={{ color: "#60a5fa" }}>Dent</span>
               <span style={{ color: "#ffffff" }}>Dock</span>
             </span>
           </div>
           <span
             className="text-white/50"
-            style={{ fontSize: "9px", fontWeight: 500 }}
+            style={{ fontSize: "10px", fontWeight: 500 }}
           >
             Save & exit
           </span>
         </div>
 
         {/* Step indicator */}
-        <div className="relative mt-2.5">
-          <p style={{ fontSize: "9px", fontWeight: 500, color: "rgba(255,255,255,0.7)" }}>
-            Step <span style={{ color: "#60a5fa", fontWeight: 700 }}>6</span> of 8
+        <div className="relative mt-3">
+          <p style={{ fontSize: "10px", fontWeight: 500, color: "rgba(255,255,255,0.7)" }}>
+            Step <span style={{ color: "#60a5fa", fontWeight: 700 }}>1</span> of 8
           </p>
           <div
-            className="mt-1 w-full overflow-hidden rounded-full"
-            style={{ height: "3px", background: "rgba(255,255,255,0.12)" }}
+            className="mt-1.5 w-full overflow-hidden rounded-full"
+            style={{ height: "4px", background: "rgba(255,255,255,0.12)" }}
           >
-            <div style={{ width: "75%", height: "100%", background: "#2445ea" }} />
+            <div style={{ width: "12.5%", height: "100%", background: "#2445ea" }} />
           </div>
         </div>
 
         {/* StepCard (white) */}
         <div
-          className="relative mt-2.5 rounded-[10px] bg-white"
+          className="relative mt-3 rounded-[14px] bg-white"
           style={{
-            padding: "12px",
-            boxShadow: "0 8px 20px -10px rgba(0,0,0,0.25)",
+            padding: "18px 20px",
+            boxShadow: "0 10px 24px -10px rgba(0,0,0,0.25)",
           }}
         >
           <p
             style={{
-              fontSize: "8px",
+              fontSize: "10px",
               fontWeight: 600,
               letterSpacing: "0.1em",
               color: "#2445ea",
             }}
           >
-            STEP 6 OF 8
+            STEP 1 OF 8
           </p>
           <h3
             className="mt-1 text-dd-foreground"
-            style={{ fontSize: "13px", fontWeight: 700, letterSpacing: "-0.01em" }}
+            style={{ fontSize: "16px", fontWeight: 700, letterSpacing: "-0.01em" }}
           >
-            Here's your booking page
+            Tell us about your practice
           </h3>
-          <p style={{ fontSize: "9px", fontWeight: 400, color: "#94A3B8", marginTop: "2px" }}>
-            Customise any time in Settings
+          <p
+            style={{
+              fontSize: "11px",
+              fontWeight: 400,
+              color: "#94A3B8",
+              marginTop: "3px",
+              lineHeight: 1.4,
+            }}
+          >
+            This information appears on your patient booking page.
           </p>
 
-          {/* Swatches */}
-          <div className="mt-3 flex items-center gap-1.5">
-            {swatches.map((s) => (
-              <div
-                key={s.color}
-                className="rounded-full"
+          {/* Stack */}
+          <div className="mt-3 flex flex-col" style={{ gap: "12px" }}>
+            {/* Logo upload */}
+            <div
+              className="flex flex-col items-center justify-center"
+              style={{
+                border: "1px dashed #CBD5E1",
+                borderRadius: "12px",
+                height: "56px",
+              }}
+            >
+              <Camera className="h-4 w-4" style={{ color: "#94A3B8" }} />
+              <span
                 style={{
-                  width: "12px",
-                  height: "12px",
-                  background: s.color,
-                  transform: s.selected ? "scale(1.15)" : "scale(1)",
-                  boxShadow: s.selected ? "0 0 0 1.5px #1a1f2e" : "none",
+                  fontSize: "11px",
+                  fontWeight: 500,
+                  color: "#94A3B8",
+                  marginTop: "3px",
                 }}
-              />
-            ))}
-          </div>
+              >
+                Upload your logo
+              </span>
+            </div>
 
-          {/* Booking link card */}
-          <div
-            className="mt-3 rounded-[8px] bg-white"
-            style={{ border: "1px solid #E2E8F0", padding: "8px 10px" }}
-          >
-            <p
-              style={{
-                fontSize: "7px",
-                fontWeight: 600,
-                letterSpacing: "0.1em",
-                color: "#94A3B8",
-              }}
-            >
-              YOUR BOOKING LINK
-            </p>
-            <p
-              style={{
-                fontSize: "11px",
-                fontWeight: 600,
-                color: "#2445ea",
-                marginTop: "2px",
-                fontFamily: "ui-monospace, SFMono-Regular, Menlo, monospace",
-              }}
-            >
-              book.dentdock.co.uk/smile-dental
-            </p>
-            <div className="mt-2 flex items-center gap-1.5">
-              {["Copy link", "Preview"].map((label) => (
-                <span
-                  key={label}
-                  style={{
-                    border: "1px solid #E2E8F0",
-                    borderRadius: "5px",
-                    padding: "3px 7px",
-                    fontSize: "8px",
-                    fontWeight: 500,
-                    color: "#475569",
-                  }}
-                >
-                  {label}
-                </span>
-              ))}
+            {/* Field: Practice name */}
+            <div>
+              <p style={fieldLabelStyle}>
+                PRACTICE NAME <span style={{ color: "#EF4444" }}>*</span>
+              </p>
+              <div style={{ ...inputStyle, marginTop: "4px" }}>Smile Dental</div>
+            </div>
+
+            {/* Field: Phone */}
+            <div>
+              <p style={fieldLabelStyle}>PHONE</p>
+              <div style={{ ...inputStyle, marginTop: "4px" }}>020 7946 0123</div>
+            </div>
+
+            {/* City + Postcode */}
+            <div className="grid grid-cols-2" style={{ gap: "8px" }}>
+              <div>
+                <p style={fieldLabelStyle}>CITY</p>
+                <div style={{ ...inputStyle, marginTop: "4px" }}>London</div>
+              </div>
+              <div>
+                <p style={fieldLabelStyle}>POSTCODE</p>
+                <div style={{ ...inputStyle, marginTop: "4px" }}>SW1A 1AA</div>
+              </div>
+            </div>
+
+            {/* Continue */}
+            <div className="flex justify-end">
+              <div
+                className="inline-flex items-center"
+                style={{
+                  background: "#2445ea",
+                  color: "#ffffff",
+                  borderRadius: "8px",
+                  padding: "6px 14px",
+                  fontSize: "11px",
+                  fontWeight: 600,
+                  gap: "4px",
+                }}
+              >
+                Continue
+                <ArrowRight className="h-3 w-3" strokeWidth={2} />
+              </div>
             </div>
           </div>
         </div>
@@ -514,34 +542,35 @@ function LiveInADayVisual() {
 
       {/* Live-now pop-out */}
       <div
-        className="absolute right-[4%] top-[8%] flex items-start gap-3 rounded-xl border border-[#E2E8F0] bg-white"
+        className="absolute right-[3%] top-[4%] flex items-start gap-2.5 rounded-xl border border-[#E2E8F0] bg-white"
         style={{
-          width: "min(240px, 52%)",
-          padding: "14px 18px",
+          width: "min(210px, 42%)",
+          padding: "12px 14px",
           transform: "rotate(3deg)",
-          boxShadow: "0 16px 36px -10px rgba(15,23,42,0.2)",
+          boxShadow: "0 18px 40px -10px rgba(15,23,42,0.22)",
           fontFamily: "Inter, sans-serif",
+          zIndex: 10,
         }}
       >
-        <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full bg-[#16A34A]">
+        <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-[#16A34A]">
           <Check className="h-4 w-4 text-white" strokeWidth={2.5} />
         </div>
         <div className="min-w-0 flex-1">
           <p
             className="text-[#16A34A]"
-            style={{ fontSize: "10px", fontWeight: 700, letterSpacing: "0.1em" }}
+            style={{ fontSize: "9px", fontWeight: 700, letterSpacing: "0.1em" }}
           >
             LIVE NOW
           </p>
           <p
             className="text-dd-foreground"
-            style={{ fontSize: "13px", fontWeight: 600, lineHeight: 1.3 }}
+            style={{ fontSize: "12px", fontWeight: 600, lineHeight: 1.3 }}
           >
             Your booking page is live
           </p>
           <p
             className="mt-0.5 truncate text-[#2445ea]"
-            style={{ fontSize: "10px", fontWeight: 600 }}
+            style={{ fontSize: "9px", fontWeight: 600 }}
           >
             book.dentdock.co.uk/smile-dental
           </p>
