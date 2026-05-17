@@ -358,51 +358,48 @@ function LiveInADayVisual() {
       className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl"
       style={{
         fontFamily: "Inter, sans-serif",
-        background:
-          "radial-gradient(circle at 0% 0%, rgba(36,69,234,0.55) 0%, rgba(36,69,234,0) 45%), radial-gradient(circle at 100% 100%, rgba(36,69,234,0.35) 0%, rgba(36,69,234,0) 50%), #1a1f2e",
+        background: "#1a1f2e",
       }}
     >
-      {/* Wizard navy card */}
+      {/* Orbs on the outer canvas so they bleed into the padding */}
       <div
-        className="absolute overflow-hidden rounded-[20px]"
+        aria-hidden
+        className="absolute rounded-full"
+        style={{
+          top: "-100px",
+          left: "-100px",
+          width: "340px",
+          height: "340px",
+          background: "#2445ea",
+          opacity: 0.45,
+          filter: "blur(110px)",
+        }}
+      />
+      <div
+        aria-hidden
+        className="absolute rounded-full"
+        style={{
+          bottom: "-90px",
+          right: "-90px",
+          width: "260px",
+          height: "260px",
+          background: "#2445ea",
+          opacity: 0.28,
+          filter: "blur(130px)",
+        }}
+      />
+
+      {/* Wizard content (transparent — sits on the navy canvas) */}
+      <div
+        className="absolute"
         style={{
           left: "5%",
           right: "5%",
           top: "50%",
-          background: "#1a1f2e",
           transform: "translateY(-50%)",
-          boxShadow:
-            "0 1px 0 rgba(255,255,255,0.04) inset, 0 30px 60px -24px rgba(15,23,42,0.4)",
-          padding: "18px 20px",
+          padding: "4px 0",
         }}
       >
-        {/* Orbs */}
-        <div
-          aria-hidden
-          className="absolute rounded-full"
-          style={{
-            top: "-80px",
-            left: "-80px",
-            width: "260px",
-            height: "260px",
-            background: "#2445ea",
-            opacity: 0.4,
-            filter: "blur(90px)",
-          }}
-        />
-        <div
-          aria-hidden
-          className="absolute rounded-full"
-          style={{
-            bottom: "-70px",
-            right: "-70px",
-            width: "200px",
-            height: "200px",
-            background: "#2445ea",
-            opacity: 0.25,
-            filter: "blur(110px)",
-          }}
-        />
 
         {/* Header */}
         <div className="relative flex items-center justify-between">
