@@ -988,10 +988,18 @@ function StickyPricingCards({ progress }: { progress: number }) {
   // progress: 0 = full/entry state, 1 = compact/sticky state
   const p = progress;
   const lerp = (a: number, b: number) => a + (b - a) * p;
+  const [isTablet, setIsTablet] = useState(false);
+  useEffect(() => {
+    const mql = window.matchMedia("(min-width: 768px) and (max-width: 1023px)");
+    const update = () => setIsTablet(mql.matches);
+    update();
+    mql.addEventListener("change", update);
+    return () => mql.removeEventListener("change", update);
+  }, []);
   const padY = lerp(16, 8);
   const padX = lerp(20, 16);
-  const priceSize = lerp(22, 15);
-  const subSize = lerp(13, 11);
+  const priceSize = isTablet ? lerp(18, 13) : lerp(22, 15);
+  const subSize = isTablet ? lerp(12, 10) : lerp(13, 11);
   const gap = lerp(4, 2);
   const subGap = lerp(2, 2);
 
