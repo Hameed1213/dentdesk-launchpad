@@ -880,7 +880,7 @@ function TalkToAHumanVisual() {
                   fontWeight: 500,
                 }}
               >
-                Hey — is there a way to bulk-import patient recall dates from a CSV?
+                Want to take 50% deposits on whitening and Invisalign. Possible?
               </div>
               <p style={{ fontSize: "9px", color: "#94A3B8", fontWeight: 500 }}>You · 09:42</p>
             </div>
