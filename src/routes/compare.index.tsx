@@ -53,6 +53,34 @@ function CompareHubPage() {
     <div className="min-h-screen bg-white text-[#0F162B]">
       <Navbar />
 
+      <div className="relative bg-gradient-to-br from-[#DBEAFE] via-[#EFF6FF] to-white overflow-hidden">
+        {/* Top irregular fade to white */}
+        <div
+          className="pointer-events-none absolute inset-x-0 top-0 h-72 z-10"
+          style={{
+            background:
+              "radial-gradient(ellipse 45% 120% at 10% 0%, white 55%, transparent 85%), radial-gradient(ellipse 40% 110% at 32% 0%, white 50%, transparent 85%), radial-gradient(ellipse 50% 130% at 55% 0%, white 55%, transparent 85%), radial-gradient(ellipse 45% 115% at 78% 0%, white 50%, transparent 85%), radial-gradient(ellipse 40% 100% at 95% 0%, white 50%, transparent 85%), radial-gradient(ellipse 130% 90% at 50% 0%, white 35%, transparent 80%)",
+          }}
+        />
+        {/* Bottom irregular fade to white */}
+        <div
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-72 z-10"
+          style={{
+            background:
+              "radial-gradient(ellipse 75% 130% at 30% 100%, white 55%, transparent 85%), radial-gradient(ellipse 65% 110% at 80% 100%, white 50%, transparent 85%), radial-gradient(ellipse 120% 90% at 50% 100%, white 35%, transparent 80%)",
+          }}
+        />
+        {/* Center white blobs */}
+        <div
+          className="pointer-events-none absolute inset-0 z-0"
+          style={{
+            background:
+              "radial-gradient(ellipse 30% 25% at 15% 40%, rgba(255,255,255,0.85), transparent 70%), radial-gradient(ellipse 35% 30% at 85% 55%, rgba(255,255,255,0.8), transparent 70%), radial-gradient(ellipse 25% 20% at 50% 50%, rgba(255,255,255,0.6), transparent 70%), radial-gradient(ellipse 28% 22% at 35% 65%, rgba(255,255,255,0.7), transparent 70%), radial-gradient(ellipse 30% 25% at 70% 35%, rgba(255,255,255,0.75), transparent 70%)",
+          }}
+        />
+        <div className="relative z-20">
+
+
       {/* Hero */}
       <section className="pt-32 sm:pt-40 pb-12 sm:pb-16">
         <div className="max-w-5xl mx-auto px-6 text-center">
@@ -167,6 +195,8 @@ function CompareHubPage() {
           </div>
         </div>
       </section>
+        </div>
+      </div>
 
       <Footer />
       <WhatsAppButton />
