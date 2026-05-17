@@ -6,6 +6,7 @@ import {
   MessageCircle,
   ArrowRight,
   Check,
+  Camera,
   X,
   type LucideIcon,
 } from "lucide-react";
