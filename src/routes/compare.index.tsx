@@ -161,13 +161,13 @@ function CompareHubPage() {
                 href="https://wa.me/447700000000"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl border border-neutral-200 bg-white text-[14px] font-semibold text-[#0F162B] hover:bg-neutral-50 transition-colors"
+                className="inline-flex w-full sm:w-auto items-center justify-center gap-2 px-5 py-3 rounded-xl border border-neutral-200 bg-white text-[14px] font-semibold text-[#0F162B] hover:bg-neutral-50 transition-colors"
               >
                 Contact us
               </a>
               <Link
                 to="/waitlist"
-                className="inline-flex items-center justify-center px-5 py-3 rounded-xl text-[14px] font-semibold text-white transition-all hover:-translate-y-px"
+                className="inline-flex w-full sm:w-auto items-center justify-center px-5 py-3 rounded-xl text-[14px] font-semibold text-white transition-all hover:-translate-y-px"
                 style={{
                   backgroundColor: "#2563EB",
                   boxShadow: "0 8px 20px -6px rgba(37, 99, 235, 0.45)",
