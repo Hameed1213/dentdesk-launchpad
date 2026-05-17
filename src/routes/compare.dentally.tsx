@@ -644,7 +644,7 @@ function ReadyOnDayOneVisual() {
             Running on your account by default
           </p>
 
-          <div className="mt-3 flex flex-col" style={{ gap: "10px" }}>
+          <div className="mt-4 flex flex-col" style={{ gap: "14px" }}>
             {rows.map(({ Icon, title, desc, mobileHidden }) => (
               <div
                 key={title}
