@@ -1325,11 +1325,11 @@ function ClosingCTA() {
 
 
 const dentallyFit = [
-  "NHS, mixed and private practices of every size",
-  "Full clinical charting and treatment plans",
-  "NHS UDA contracts and FP17 claims",
-  "Multi-site practices and dental groups",
-  "Imaging integration and AI clinical notes",
+  "Individual practices and corporate groups of every size",
+  "Full clinical charting and treatment planning",
+  "NHS UDA contracts and mixed-treatment practices",
+  "Imaging integration (X-ray hardware, waiting room screens)",
+  "Practices that want a dedicated phone consultant",
 ];
 
 const dentDockFit = [
@@ -1448,7 +1448,7 @@ function HonestAnswer() {
             {/* Dentally — right */}
             <div className="lg:pl-12">
               <h3 className="text-[19px] font-semibold tracking-tight leading-snug text-[#94A3B8]">
-                Dentally is for
+                iSmile is for
               </h3>
               <ul className="mt-8 flex flex-col gap-5">
                 {dentallyFit.map((item, i) => (
@@ -1468,7 +1468,7 @@ function HonestAnswer() {
                 ))}
               </ul>
               <p className="mt-10 text-[14px] italic leading-[1.5] text-[#94A3B8]">
-                £125 to start, £220 for online booking.
+                Pricing not publicly listed.
               </p>
             </div>
           </div>
