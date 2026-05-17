@@ -335,6 +335,7 @@ const whyBlocks = [
     title: "Talk to a real human",
     body: "Need help or something not working? Message us on WhatsApp. No ticket queue, no chatbot, no escalation form. Real human, same-day reply.",
     label: "VISUAL · TALK TO A REAL HUMAN",
+    visual: "talk-to-a-human" as const,
     textLeft: true,
   },
 ];
