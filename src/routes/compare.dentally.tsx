@@ -670,8 +670,8 @@ function ReadyOnDayOneVisual() {
                 </div>
                 <div className="min-w-0 flex-1">
                   <p
-                    className="text-dd-foreground"
-                    style={{ fontSize: "12px", fontWeight: 600, lineHeight: 1.2 }}
+                    className="text-[10px] text-dd-foreground sm:text-[12px]"
+                    style={{ fontWeight: 600, lineHeight: 1.2 }}
                   >
                     {title}
                   </p>
