@@ -41,10 +41,10 @@ type FloatPill = {
 };
 
 const PILLS: FloatPill[] = [
-  { icon: Zap, text: "Live in a day vs sales call", top: "20%", topSm: "12%", left: "-10%", floatDelay: "0s" },
-  { icon: Banknote, text: "£49 vs £125+", top: "16%", topXs: "8%", right: "0%", floatDelay: "-1.2s" },
-  { icon: MessageCircle, text: "WhatsApp support vs ticket queue", top: "76%", topXs: "86%", left: "-6%", floatDelay: "-2.5s" },
-  { icon: CalendarCheck, text: "Booking included vs not", top: "62%", topXs: "70%", right: "-8%", floatDelay: "-3.7s" },
+  { icon: Banknote, text: "Published price vs sales call", top: "20%", topSm: "12%", left: "-10%", floatDelay: "0s" },
+  { icon: CalendarCheck, text: "Sign up online vs demo first", top: "16%", topXs: "8%", right: "0%", floatDelay: "-1.2s" },
+  { icon: Zap, text: "Live in a day vs onboarding project", top: "76%", topXs: "86%", left: "-6%", floatDelay: "-2.5s" },
+  { icon: MessageCircle, text: "WhatsApp support vs phone consultant", top: "62%", topXs: "70%", right: "-8%", floatDelay: "-3.7s" },
 ];
 
 function HeroVisual() {
@@ -1507,12 +1507,11 @@ function Hero() {
             className="mt-6 font-semibold text-dd-foreground text-[44px] leading-[1.15] lg:text-[72px]"
             style={{ letterSpacing: "-0.03em" }}
           >
-            <span style={{ color: "#2563EB" }}>Dent Dock</span> vs Dentally
+            <span style={{ color: "#2563EB" }}>Dent Dock</span> vs iSmile
           </h1>
 
           <p className="mt-6 text-lg text-neutral-500 max-w-xl leading-relaxed">
-            Dent Dock is dental practice software for single-site UK private practices. Dentally is
-            the UK market leader in cloud dental practice software. Compare price, features, and fit
+            Dent Dock is dental practice software for single-site UK private practices. iSmile is UK-built dental practice software used by individual practices and corporate groups. Compare features, fit and approach.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-x-4 gap-y-2 text-[10px] sm:text-[14px] text-dd-subtle">
