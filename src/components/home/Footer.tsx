@@ -1,9 +1,11 @@
 import { Link } from "@tanstack/react-router";
 import ToothIcon from "@/components/icons/ToothIcon";
 
-const productLinks = [
+type ProductLink = { label: string; href: string; internal?: boolean };
+const productLinks: ProductLink[] = [
   { label: "Features", href: "/#about" },
   { label: "Pricing", href: "/#pricing" },
+  { label: "Compare", href: "/compare", internal: true },
   { label: "FAQ", href: "/#faq" },
 ];
 
