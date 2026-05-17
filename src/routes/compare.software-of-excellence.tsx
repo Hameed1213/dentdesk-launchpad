@@ -44,7 +44,7 @@ type FloatPill = {
 
 const PILLS: FloatPill[] = [
   { icon: Zap, text: "Live in a day vs implementation project", top: "14%", topSm: "12%", left: "-10%", floatDelay: "0s" },
-  { icon: Eye, text: "Published price vs sales call", top: "4%", topSm: "16%", topXs: "8%", right: "0%", floatDelay: "-1.2s" },
+  { icon: Eye, text: "Published price vs sales call", top: "-4%", topSm: "16%", topXs: "8%", right: "0%", floatDelay: "-1.2s" },
   { icon: MessageCircle, text: "WhatsApp support vs customer success consultant", top: "76%", topXs: "86%", left: "-6%", floatDelay: "-2.5s" },
   { icon: MousePointerClick, text: "Sign up online vs demo first", top: "62%", topXs: "70%", right: "-8%", floatDelay: "-3.7s" },
 ];
