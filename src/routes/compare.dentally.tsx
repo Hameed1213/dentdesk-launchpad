@@ -452,7 +452,7 @@ function LiveInADayVisual() {
           <div className="mt-3 flex flex-col" style={{ gap: "12px" }}>
             {/* Logo upload */}
             <div
-              className="hidden sm:flex flex-col items-center justify-center"
+              className="flex flex-col items-center justify-center"
               style={{
                 border: "1px dashed #CBD5E1",
                 borderRadius: "12px",
@@ -481,13 +481,13 @@ function LiveInADayVisual() {
             </div>
 
             {/* Field: Phone */}
-            <div className="hidden sm:block">
+            <div>
               <p style={fieldLabelStyle}>PHONE</p>
               <div style={{ ...inputStyle, marginTop: "4px" }}>020 7946 0123</div>
             </div>
 
             {/* City + Postcode */}
-            <div className="hidden sm:grid grid-cols-2" style={{ gap: "8px" }}>
+            <div className="grid grid-cols-2" style={{ gap: "8px" }}>
               <div>
                 <p style={fieldLabelStyle}>CITY</p>
                 <div style={{ ...inputStyle, marginTop: "4px" }}>London</div>
