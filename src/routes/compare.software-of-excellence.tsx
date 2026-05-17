@@ -1506,15 +1506,14 @@ function Hero() {
           </p>
 
           <h1
-            className="mt-6 font-semibold text-dd-foreground text-[44px] leading-[1.15] lg:text-[72px]"
+            className="mt-6 font-semibold text-dd-foreground text-[44px] leading-[1.15] lg:text-[72px] text-balance"
             style={{ letterSpacing: "-0.03em" }}
           >
-            <span style={{ color: "#2563EB" }}>Dent Dock</span> vs Dentally
+            <span style={{ color: "#2563EB" }}>Dent Dock</span> vs Software of Excellence
           </h1>
 
           <p className="mt-6 text-lg text-neutral-500 max-w-xl leading-relaxed">
-            Dent Dock is dental practice software for single-site UK private practices. Dentally is
-            the UK market leader in cloud dental practice software. Compare price, features, and fit
+            Dent Dock is dental practice software for single-site UK private practices. Software of Excellence is the UK's longest-established dental practice management system. Compare features, fit and approach.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-x-4 gap-y-2 text-[10px] sm:text-[14px] text-dd-subtle">
