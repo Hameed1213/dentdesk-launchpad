@@ -1224,11 +1224,11 @@ function FeatureComparison() {
               </div>
 
               {/* Mobile */}
-              <div className="flex flex-col gap-5 md:hidden">
+              <div className="flex flex-col gap-8 md:hidden">
                 {cat.rows.map((row) => (
                   <div
                     key={row.feature}
-                    className="border-b border-[#F1F5F9] pb-5 last:border-0 last:pb-0"
+                    className="border-b border-[#F1F5F9] pb-8 last:border-0 last:pb-0"
                   >
                     <p className="text-[16px] font-medium text-[#0F172A]">{row.feature}</p>
                     <div className="mt-3 grid grid-cols-2 gap-3 items-center">
