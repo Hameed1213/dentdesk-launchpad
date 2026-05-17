@@ -11,6 +11,7 @@ import {
   Calendar,
   MessageSquare,
   FileText,
+  Star,
   X,
   type LucideIcon,
 } from "lucide-react";
