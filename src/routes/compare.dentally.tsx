@@ -165,36 +165,32 @@ function HeroVisual() {
 
 const faqItems = [
   {
-    q: "Is Dent Dock cheaper than Dentally?",
-    a: "Yes — significantly. Dent Dock is £49 per month flat for a single-site practice. Dentally's lowest plan that includes online booking is Essentials at £220 per month plus VAT (real cost £264 for a practice that can't reclaim VAT). Dent Dock includes online booking, digital forms, recalls, payments and two-way SMS in our only plan.",
+    q: "What happens after I sign up?",
+    a: "You go through the 8-step onboarding wizard. Practice details, opening hours, services, team, payments setup and brand. By the end, your booking page is live and your automations are running. Most practices finish setup in under 20 minutes. If you get stuck, message us on WhatsApp and we'll help in real time.",
   },
   {
-    q: "Does Dent Dock have clinical charting?",
-    a: "No, and that's intentional. We deliberately don't build tooth charts, perio charts or treatment plan builders. We focus on everything around the chair — booking, communications, recalls, payments, forms and front-of-house workflow. If you need clinical charting, choose Dentally or another clinical-first system, and either run Dent Dock alongside it or pick a different tool.",
+    q: "Do you help me move from my current system?",
+    a: "Yes. Export your patient list from your existing software as CSV, drop it into our import flow, and we'll map the columns with you. For the first 30 practices we handle migration personally, including appointment history.",
   },
   {
-    q: "Does Dent Dock handle NHS practices?",
-    a: "Dent Dock is built for UK private practices. We capture NHS number as a field but we don't manage UDA contracts or generate FP17 claims. Mixed practices can use Dent Dock for their private work alongside another system for NHS. If you're predominantly NHS, Dentally is the right choice.",
+    q: "What if something breaks?",
+    a: "Message us on WhatsApp. Real human, same-day reply, no ticket queue. We handle the fix directly. As we grow we'll add more channels, but the direct-line philosophy stays.",
   },
   {
-    q: "Can I switch from Dentally to Dent Dock?",
-    a: "Yes. Export your patient list from Dentally as CSV and import it into Dent Dock with our column-mapping importer. During our first-30-practices launch window we'll handle appointment history migration for you directly. Clinical notes can't migrate because Dent Dock doesn't have a clinical chart — most switching practices keep their notes system or use a separate lightweight clinical tool alongside.",
+    q: "Do I have to commit to a contract?",
+    a: "No. Month-to-month, cancel any time from your settings.",
   },
   {
-    q: "Does Dent Dock support multi-site practices?",
-    a: "Not at launch. Multi-site is on our roadmap. Dentally supports multi-site on every plan, so if you run multiple locations today, Dentally is the right choice.",
+    q: "Who actually replies to support messages?",
+    a: "Always real humans, always within the same day. We don't use chatbots or AI for support, and we don't outsource. The person who built the product is the person fixing your issue.",
   },
   {
-    q: "How long does it take to go live with Dent Dock?",
-    a: "Most practices can go from signup to a live booking page within a single day. The 8-step onboarding wizard covers practice details, opening hours, services, team and brand. No sales call, no implementation consultant.",
+    q: "Can I export my data if I leave?",
+    a: "Yes. Patient lists, appointment history, forms, recall data and payments are all exportable as CSV from your settings. Your data is yours, no lock-in, no friction. If you leave, you take everything with you.",
   },
   {
-    q: "Is Dent Dock GDPR-compliant?",
-    a: "Dent Dock is built around UK GDPR from the ground up. Every patient consent is captured with the exact text version, IP address and user-agent at the time of giving. Every automated message is tagged transactional, clinical or marketing, and marketing-tagged sends honour patient opt-ins automatically. ICO registration and the practice's own DPIA are responsibilities that sit with the practice — Dent Dock provides the technical controls.",
-  },
-  {
-    q: "What if I outgrow Dent Dock?",
-    a: "If you grow into a multi-site group or you decide you need clinical charting and NHS UDA management, we'll help you migrate to Dentally or another platform with a clean export of your data. We'd rather you ended up with the right software than have you stuck on the wrong one.",
+    q: "What if I need a feature you don't have?",
+    a: "Tell us. We're a small team building close to our practices, which means we ship features fast when something matters to real customers. We can't promise every request, but we promise to listen and tell you honestly whether it's on the roadmap. Some of our best features came from a practice owner asking for them.",
   },
 ];
 
