@@ -362,8 +362,8 @@ function LiveInADayVisual() {
       <div
         className="absolute overflow-hidden rounded-[20px]"
         style={{
-          left: "3%",
-          right: "3%",
+          left: "-2%",
+          right: "-2%",
           top: "50%",
           background: "#1a1f2e",
           transform: "translateY(-50%) rotate(-2deg)",
