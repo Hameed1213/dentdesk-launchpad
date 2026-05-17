@@ -1391,7 +1391,7 @@ function HonestAnswer() {
           className="mx-auto max-w-[720px] text-center"
         >
           <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-foreground leading-[1.1]">
-            What each one <span className="text-[#2563EB]">is built for.</span>
+            What each one <span className="text-[#2563EB]">is built for</span>
           </h2>
           <p className="mt-5 text-base md:text-lg text-muted-foreground">
             Different software, built for different practices.
