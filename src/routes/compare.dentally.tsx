@@ -317,6 +317,7 @@ const whyBlocks = [
     body: "Sign up, set up your practice in 8 steps, go live the same day. No sales call, no implementation consultant. The first thing you'll do tomorrow is take an online booking.",
     note: "Guides for switching systems, and for starting fresh.",
     label: "VISUAL · LIVE IN A DAY",
+    visual: "live-in-a-day" as const,
     textLeft: true,
   },
   {
@@ -332,6 +333,165 @@ const whyBlocks = [
     textLeft: true,
   },
 ];
+
+function LiveInADayVisual() {
+  return (
+    <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-gradient-to-br from-[#F8FAFC] to-[#EEF2F7] p-[4%]">
+      {/* Layer 1: faint back UI hint */}
+      <div
+        aria-hidden
+        className="absolute inset-[6%] rounded-2xl border border-[#E2E8F0] bg-white/40 opacity-60"
+        style={{ boxShadow: "0 8px 24px -16px rgba(15,23,42,0.08)" }}
+      />
+
+      {/* Layer 2: setup wizard backdrop card */}
+      <div
+        className="absolute right-[4%] top-1/2 w-[80%] -translate-y-1/2 rounded-2xl border border-[#E2E8F0] bg-white opacity-90"
+        style={{
+          boxShadow:
+            "0 1px 0 rgba(15,23,42,0.04), 0 12px 28px -16px rgba(15,23,42,0.12)",
+        }}
+      >
+        <div className="p-[6%]">
+          {/* brand badge */}
+          <div className="flex items-center gap-1.5">
+            <div className="flex h-5 w-5 items-center justify-center rounded-md bg-[#2563EB] text-white">
+              <svg viewBox="0 0 24 24" className="h-3 w-3" fill="currentColor">
+                <path d="M12 2c-2.5 0-4 1.5-6 1.5S2 2.5 2 6c0 3 1 6 2.5 9.5S7 22 9 22c1.2 0 1.5-2 3-2s1.8 2 3 2c2 0 3-3.5 4.5-6.5S22 9 22 6c0-3.5-2-4.5-4-4.5S14.5 2 12 2z" />
+              </svg>
+            </div>
+            <span
+              className="font-semibold text-dd-foreground"
+              style={{ fontFamily: "Inter, sans-serif", fontSize: "13px", letterSpacing: "-0.01em" }}
+            >
+              Dent Dock
+            </span>
+          </div>
+
+          <h4
+            className="mt-3 font-semibold text-dd-foreground"
+            style={{ fontFamily: "Inter, sans-serif", fontSize: "clamp(14px, 1.6vw, 18px)", letterSpacing: "-0.01em" }}
+          >
+            Set up your practice
+          </h4>
+          <p
+            className="mt-0.5 text-[#94A3B8]"
+            style={{ fontFamily: "Inter, sans-serif", fontSize: "12px", fontWeight: 400 }}
+          >
+            Step 6 of 8
+          </p>
+
+          {/* progress bar */}
+          <div className="mt-3 flex w-[70%] gap-1">
+            {Array.from({ length: 8 }).map((_, i) => (
+              <div
+                key={i}
+                className="h-1.5 flex-1 rounded-full"
+                style={{ backgroundColor: i < 6 ? "#2563EB" : "#E2E8F0" }}
+              />
+            ))}
+          </div>
+
+          {/* placeholder bars */}
+          <div className="mt-4 space-y-2 opacity-50">
+            <div className="h-2.5 w-[90%] rounded-md bg-[#F1F5F9]" />
+            <div className="h-2.5 w-[75%] rounded-md bg-[#F1F5F9]" />
+            <div className="h-2.5 w-[85%] rounded-md bg-[#F1F5F9]" />
+            <div className="h-2.5 w-[60%] rounded-md bg-[#F1F5F9]" />
+          </div>
+        </div>
+      </div>
+
+      {/* Layer 3: pop-out cards */}
+      {/* Pop-out 1: top-left */}
+      <div
+        className="absolute left-[2%] top-[8%] w-[44%] rounded-xl border border-[#E2E8F0] bg-white"
+        style={{
+          padding: "10px 12px",
+          transform: "rotate(-2deg)",
+          boxShadow: "0 12px 32px -8px rgba(15,23,42,0.12)",
+          fontFamily: "Inter, sans-serif",
+        }}
+      >
+        <div className="flex h-6 w-6 items-center justify-center rounded-full bg-[#DBEAFE]">
+          <UserPlus className="h-3.5 w-3.5 text-[#2563EB]" strokeWidth={2} />
+        </div>
+        <p
+          className="mt-2 text-[#2563EB]"
+          style={{ fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em" }}
+        >
+          STEP 1
+        </p>
+        <p
+          className="mt-0.5 text-dd-foreground"
+          style={{ fontSize: "13px", fontWeight: 600, lineHeight: 1.3 }}
+        >
+          Add your practice details
+        </p>
+      </div>
+
+      {/* Pop-out 2: right-middle */}
+      <div
+        className="absolute right-[1%] top-[42%] w-[38%] rounded-xl border border-[#E2E8F0] bg-white"
+        style={{
+          padding: "10px 12px",
+          transform: "rotate(2deg)",
+          boxShadow: "0 12px 32px -8px rgba(15,23,42,0.12)",
+          fontFamily: "Inter, sans-serif",
+        }}
+      >
+        <div className="flex h-6 w-6 items-center justify-center rounded-full bg-[#DBEAFE]">
+          <Clock className="h-3.5 w-3.5 text-[#2563EB]" strokeWidth={2} />
+        </div>
+        <p
+          className="mt-2 text-[#2563EB]"
+          style={{ fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em" }}
+        >
+          STEP 4
+        </p>
+        <p
+          className="mt-0.5 text-dd-foreground"
+          style={{ fontSize: "13px", fontWeight: 600, lineHeight: 1.3 }}
+        >
+          Set your hours
+        </p>
+      </div>
+
+      {/* Pop-out 3: bottom-centre-left, slightly larger */}
+      <div
+        className="absolute bottom-[6%] left-[12%] w-[56%] rounded-xl border border-[#E2E8F0] bg-white"
+        style={{
+          padding: "12px 14px",
+          transform: "rotate(-1deg)",
+          boxShadow: "0 18px 40px -10px rgba(15,23,42,0.18)",
+          fontFamily: "Inter, sans-serif",
+        }}
+      >
+        <div className="flex h-7 w-7 items-center justify-center rounded-full bg-[#2563EB]">
+          <Check className="h-4 w-4 text-white" strokeWidth={2.5} />
+        </div>
+        <p
+          className="mt-2 text-[#16A34A]"
+          style={{ fontSize: "10px", fontWeight: 700, letterSpacing: "0.1em" }}
+        >
+          LIVE NOW
+        </p>
+        <p
+          className="mt-0.5 text-dd-foreground"
+          style={{ fontSize: "14px", fontWeight: 600, lineHeight: 1.3 }}
+        >
+          Your booking page is live
+        </p>
+        <p
+          className="mt-1 text-[#94A3B8]"
+          style={{ fontSize: "11px", fontWeight: 400 }}
+        >
+          book.dentdock.co.uk/your-practice
+        </p>
+      </div>
+    </div>
+  );
+}
 
 function WhyDentDockBlock({
   title,
