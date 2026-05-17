@@ -7,6 +7,10 @@ import {
   ArrowRight,
   Check,
   Camera,
+  Bell,
+  Calendar,
+  MessageSquare,
+  FileText,
   X,
   type LucideIcon,
 } from "lucide-react";
