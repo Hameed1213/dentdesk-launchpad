@@ -7,8 +7,6 @@ import {
   ArrowRight,
   Check,
   X,
-  UserPlus,
-  Clock,
   type LucideIcon,
 } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
@@ -335,159 +333,143 @@ const whyBlocks = [
 ];
 
 function LiveInADayVisual() {
+  const services = [
+    { name: "New Patient Checkup", meta: "30 min · £85" },
+    { name: "Hygiene", meta: "30 min · £65" },
+    { name: "Whitening Consultation", meta: "20 min · Free" },
+  ];
+
   return (
-    <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-gradient-to-br from-[#F8FAFC] to-[#EEF2F7] p-[4%]">
-      {/* Layer 1: faint back UI hint */}
+    <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-[#F3F6FD]">
+      {/* Soft brand-blue glow behind the phone */}
       <div
         aria-hidden
-        className="absolute inset-[6%] rounded-2xl border border-[#E2E8F0] bg-white/40 opacity-60"
-        style={{ boxShadow: "0 8px 24px -16px rgba(15,23,42,0.08)" }}
+        className="absolute left-[18%] top-1/2 h-[70%] w-[45%] -translate-y-1/2 rounded-full bg-[#2563EB]"
+        style={{ filter: "blur(60px)", opacity: 0.15 }}
       />
 
-      {/* Layer 2: setup wizard backdrop card */}
+      {/* Phone mockup */}
       <div
-        className="absolute right-[4%] top-1/2 w-[80%] -translate-y-1/2 rounded-2xl border border-[#E2E8F0] bg-white opacity-90"
+        className="absolute left-[8%] top-1/2 -translate-y-1/2"
         style={{
-          boxShadow:
-            "0 1px 0 rgba(15,23,42,0.04), 0 12px 28px -16px rgba(15,23,42,0.12)",
+          height: "88%",
+          aspectRatio: "10 / 20",
+          transform: "translateY(-50%) rotate(-3deg)",
         }}
       >
-        <div className="p-[6%]">
-          {/* brand badge */}
-          <div className="flex items-center gap-1.5">
-            <div className="flex h-5 w-5 items-center justify-center rounded-md bg-[#2563EB] text-white">
-              <svg viewBox="0 0 24 24" className="h-3 w-3" fill="currentColor">
-                <path d="M12 2c-2.5 0-4 1.5-6 1.5S2 2.5 2 6c0 3 1 6 2.5 9.5S7 22 9 22c1.2 0 1.5-2 3-2s1.8 2 3 2c2 0 3-3.5 4.5-6.5S22 9 22 6c0-3.5-2-4.5-4-4.5S14.5 2 12 2z" />
-              </svg>
+        <div
+          className="relative h-full w-full rounded-[28px] bg-[#0F162B]"
+          style={{
+            padding: "8px",
+            boxShadow:
+              "0 1px 0 rgba(15,23,42,0.06), 0 24px 48px -20px rgba(15,23,42,0.35)",
+          }}
+        >
+          {/* Notch */}
+          <div
+            aria-hidden
+            className="absolute left-1/2 top-[10px] z-10 h-[10px] w-[34%] -translate-x-1/2 rounded-full bg-[#0F162B]"
+          />
+          {/* Screen */}
+          <div
+            className="relative flex h-full w-full flex-col overflow-hidden rounded-[22px] bg-white"
+            style={{ fontFamily: "Inter, sans-serif", padding: "18px 12px 12px" }}
+          >
+            {/* Top bar */}
+            <div className="flex items-center justify-center gap-1.5 pt-1">
+              <div className="flex h-4 w-4 items-center justify-center rounded-[5px] bg-[#2563EB] text-white">
+                <svg viewBox="0 0 24 24" className="h-2.5 w-2.5" fill="currentColor">
+                  <path d="M12 2c-2.5 0-4 1.5-6 1.5S2 2.5 2 6c0 3 1 6 2.5 9.5S7 22 9 22c1.2 0 1.5-2 3-2s1.8 2 3 2c2 0 3-3.5 4.5-6.5S22 9 22 6c0-3.5-2-4.5-4-4.5S14.5 2 12 2z" />
+                </svg>
+              </div>
+              <span
+                className="text-dd-foreground"
+                style={{ fontSize: "11px", fontWeight: 600, letterSpacing: "-0.01em" }}
+              >
+                Smile Dental
+              </span>
             </div>
-            <span
-              className="font-semibold text-dd-foreground"
-              style={{ fontFamily: "Inter, sans-serif", fontSize: "13px", letterSpacing: "-0.01em" }}
+
+            {/* Heading */}
+            <h5
+              className="mt-3 text-dd-foreground"
+              style={{ fontSize: "13px", fontWeight: 600, letterSpacing: "-0.01em" }}
             >
-              Dent Dock
-            </span>
-          </div>
+              Book an appointment
+            </h5>
 
-          <h4
-            className="mt-3 font-semibold text-dd-foreground"
-            style={{ fontFamily: "Inter, sans-serif", fontSize: "clamp(14px, 1.6vw, 18px)", letterSpacing: "-0.01em" }}
-          >
-            Set up your practice
-          </h4>
-          <p
-            className="mt-0.5 text-[#94A3B8]"
-            style={{ fontFamily: "Inter, sans-serif", fontSize: "12px", fontWeight: 400 }}
-          >
-            Step 6 of 8
-          </p>
+            {/* Services */}
+            <div className="mt-2 flex-1">
+              {services.map((s, i) => (
+                <div
+                  key={s.name}
+                  className="flex items-center justify-between py-2"
+                  style={{
+                    borderTop: i === 0 ? "none" : "1px solid #F1F5F9",
+                  }}
+                >
+                  <span
+                    className="text-dd-foreground"
+                    style={{ fontSize: "10px", fontWeight: 500 }}
+                  >
+                    {s.name}
+                  </span>
+                  <span
+                    className="text-[#94A3B8]"
+                    style={{ fontSize: "9px", fontWeight: 400 }}
+                  >
+                    {s.meta}
+                  </span>
+                </div>
+              ))}
+            </div>
 
-          {/* progress bar */}
-          <div className="mt-3 flex w-[70%] gap-1">
-            {Array.from({ length: 8 }).map((_, i) => (
-              <div
-                key={i}
-                className="h-1.5 flex-1 rounded-full"
-                style={{ backgroundColor: i < 6 ? "#2563EB" : "#E2E8F0" }}
-              />
-            ))}
-          </div>
-
-          {/* placeholder bars */}
-          <div className="mt-4 space-y-2 opacity-50">
-            <div className="h-2.5 w-[90%] rounded-md bg-[#F1F5F9]" />
-            <div className="h-2.5 w-[75%] rounded-md bg-[#F1F5F9]" />
-            <div className="h-2.5 w-[85%] rounded-md bg-[#F1F5F9]" />
-            <div className="h-2.5 w-[60%] rounded-md bg-[#F1F5F9]" />
+            {/* Continue button */}
+            <button
+              type="button"
+              className="mt-2 w-full rounded-[10px] bg-[#2563EB] text-white"
+              style={{ fontSize: "11px", fontWeight: 600, padding: "8px 0" }}
+            >
+              Continue
+            </button>
           </div>
         </div>
       </div>
 
-      {/* Layer 3: pop-out cards */}
-      {/* Pop-out 1: top-left */}
+      {/* Live-now pop-out */}
       <div
-        className="absolute left-[2%] top-[8%] w-[44%] rounded-xl border border-[#E2E8F0] bg-white"
+        className="absolute right-[4%] top-[10%] flex items-start gap-3 rounded-xl border border-[#E2E8F0] bg-white"
         style={{
-          padding: "10px 12px",
-          transform: "rotate(-2deg)",
-          boxShadow: "0 12px 32px -8px rgba(15,23,42,0.12)",
+          width: "min(240px, 52%)",
+          padding: "14px 18px",
+          transform: "rotate(3deg)",
+          boxShadow: "0 12px 32px -8px rgba(15,23,42,0.15)",
           fontFamily: "Inter, sans-serif",
         }}
       >
-        <div className="flex h-6 w-6 items-center justify-center rounded-full bg-[#DBEAFE]">
-          <UserPlus className="h-3.5 w-3.5 text-[#2563EB]" strokeWidth={2} />
-        </div>
-        <p
-          className="mt-2 text-[#2563EB]"
-          style={{ fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em" }}
-        >
-          STEP 1
-        </p>
-        <p
-          className="mt-0.5 text-dd-foreground"
-          style={{ fontSize: "13px", fontWeight: 600, lineHeight: 1.3 }}
-        >
-          Add your practice details
-        </p>
-      </div>
-
-      {/* Pop-out 2: right-middle */}
-      <div
-        className="absolute right-[1%] top-[42%] w-[38%] rounded-xl border border-[#E2E8F0] bg-white"
-        style={{
-          padding: "10px 12px",
-          transform: "rotate(2deg)",
-          boxShadow: "0 12px 32px -8px rgba(15,23,42,0.12)",
-          fontFamily: "Inter, sans-serif",
-        }}
-      >
-        <div className="flex h-6 w-6 items-center justify-center rounded-full bg-[#DBEAFE]">
-          <Clock className="h-3.5 w-3.5 text-[#2563EB]" strokeWidth={2} />
-        </div>
-        <p
-          className="mt-2 text-[#2563EB]"
-          style={{ fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em" }}
-        >
-          STEP 4
-        </p>
-        <p
-          className="mt-0.5 text-dd-foreground"
-          style={{ fontSize: "13px", fontWeight: 600, lineHeight: 1.3 }}
-        >
-          Set your hours
-        </p>
-      </div>
-
-      {/* Pop-out 3: bottom-centre-left, slightly larger */}
-      <div
-        className="absolute bottom-[6%] left-[12%] w-[56%] rounded-xl border border-[#E2E8F0] bg-white"
-        style={{
-          padding: "12px 14px",
-          transform: "rotate(-1deg)",
-          boxShadow: "0 18px 40px -10px rgba(15,23,42,0.18)",
-          fontFamily: "Inter, sans-serif",
-        }}
-      >
-        <div className="flex h-7 w-7 items-center justify-center rounded-full bg-[#2563EB]">
+        <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full bg-[#16A34A]">
           <Check className="h-4 w-4 text-white" strokeWidth={2.5} />
         </div>
-        <p
-          className="mt-2 text-[#16A34A]"
-          style={{ fontSize: "10px", fontWeight: 700, letterSpacing: "0.1em" }}
-        >
-          LIVE NOW
-        </p>
-        <p
-          className="mt-0.5 text-dd-foreground"
-          style={{ fontSize: "14px", fontWeight: 600, lineHeight: 1.3 }}
-        >
-          Your booking page is live
-        </p>
-        <p
-          className="mt-1 text-[#94A3B8]"
-          style={{ fontSize: "11px", fontWeight: 400 }}
-        >
-          book.dentdock.co.uk/your-practice
-        </p>
+        <div className="min-w-0 flex-1">
+          <p
+            className="text-[#16A34A]"
+            style={{ fontSize: "10px", fontWeight: 700, letterSpacing: "0.1em" }}
+          >
+            LIVE NOW
+          </p>
+          <p
+            className="text-dd-foreground"
+            style={{ fontSize: "13px", fontWeight: 600, lineHeight: 1.3 }}
+          >
+            Your booking page is live
+          </p>
+          <p
+            className="mt-0.5 truncate text-[#94A3B8]"
+            style={{ fontSize: "10px", fontWeight: 400 }}
+          >
+            book.dentdock.co.uk/smile-dental
+          </p>
+        </div>
       </div>
     </div>
   );
