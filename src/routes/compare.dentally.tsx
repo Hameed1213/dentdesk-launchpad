@@ -573,6 +573,12 @@ function ReadyOnDayOneVisual() {
       desc: "Medical history collected before arrival",
       mobileHidden: true,
     },
+    {
+      Icon: Star,
+      title: "Review requests",
+      desc: "Sent the day after each appointment",
+      mobileHidden: true,
+    },
   ];
 
   return (
