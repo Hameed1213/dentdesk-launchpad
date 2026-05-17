@@ -880,7 +880,7 @@ function TalkToAHumanVisual() {
                   fontWeight: 500,
                 }}
               >
-                Hey — is there a way to bulk-import patient recall dates from a CSV?
+                Want to take 50% deposits on whitening and Invisalign. Possible?
               </div>
               <p style={{ fontSize: "9px", color: "#94A3B8", fontWeight: 500 }}>You · 09:42</p>
             </div>
@@ -901,8 +901,8 @@ function TalkToAHumanVisual() {
                   fontWeight: 500,
                 }}
               >
-                Yep — send it over and I'll map the columns for you. Live in your account in about
-                an hour.
+                Yes, set the deposit on each service in Settings → Services. Want me to walk you
+                through it on a quick call?
               </div>
               <p style={{ fontSize: "9px", color: "#94A3B8", fontWeight: 500 }}>
                 Sarah · 09:46
