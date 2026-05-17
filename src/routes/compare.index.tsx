@@ -12,6 +12,7 @@ type Comparison = {
   tagline: string;
   summary: string;
   accent: string;
+  background: string;
 };
 
 const comparisons: Comparison[] = [
@@ -23,6 +24,8 @@ const comparisons: Comparison[] = [
     summary:
       "£49/mo flat vs £220+/mo per user. Built for private practices going cloud-first.",
     accent: "#2563EB",
+    background:
+      "radial-gradient(ellipse 70% 90% at 20% 30%, rgba(37,99,235,0.18), transparent 65%), radial-gradient(ellipse 70% 90% at 85% 75%, rgba(99,102,241,0.14), transparent 65%), linear-gradient(135deg, #F5F8FF 0%, #EAF1FF 100%)",
   },
   {
     competitor: "iSmile",
@@ -32,6 +35,8 @@ const comparisons: Comparison[] = [
     summary:
       "Published £49/mo vs demo-and-quote pricing. Self-serve setup vs dedicated consultant onboarding.",
     accent: "#2563EB",
+    background:
+      "radial-gradient(ellipse 80% 100% at 80% 20%, rgba(37,99,235,0.22), transparent 60%), radial-gradient(ellipse 60% 80% at 15% 85%, rgba(56,189,248,0.16), transparent 65%), linear-gradient(215deg, #EAF1FF 0%, #F5F8FF 100%)",
   },
 ];
 
@@ -120,10 +125,7 @@ function CompareHubPage() {
                 {/* Visual matchup */}
                 <div
                   className="relative aspect-[16/9] w-full overflow-hidden"
-                  style={{
-                    background:
-                      "radial-gradient(ellipse 70% 90% at 20% 30%, rgba(37,99,235,0.18), transparent 65%), radial-gradient(ellipse 70% 90% at 85% 75%, rgba(99,102,241,0.14), transparent 65%), linear-gradient(135deg, #F5F8FF 0%, #EAF1FF 100%)",
-                  }}
+                  style={{ background: c.background }}
                 >
                   {/* Soft grid */}
                   <div
