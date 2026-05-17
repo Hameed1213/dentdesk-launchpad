@@ -279,6 +279,9 @@ export const Route = createFileRoute("/compare/dentally")({
               },
             },
           ],
+        }),
+      },
+    ],
   }),
   component: CompareDentallyPage,
 });
