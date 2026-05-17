@@ -1233,21 +1233,9 @@ function FeatureComparison() {
                     <p className="text-[16px] font-medium text-[#0F172A]">{row.feature}</p>
                     <div className="mt-3 grid grid-cols-2 gap-3">
                       <div>
-                        <p
-                          className="mb-2 text-[11px] font-semibold uppercase text-[#94A3B8]"
-                          style={{ letterSpacing: "0.1em" }}
-                        >
-                          Dent Dock
-                        </p>
                         <StatusCell cell={row.dentDock} />
                       </div>
                       <div>
-                        <p
-                          className="mb-2 text-[11px] font-semibold uppercase text-[#94A3B8]"
-                          style={{ letterSpacing: "0.1em" }}
-                        >
-                          Dentally
-                        </p>
                         <StatusCell cell={row.dentally} />
                       </div>
                     </div>
