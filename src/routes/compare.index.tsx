@@ -178,8 +178,7 @@ function CompareHubPage() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl border border-neutral-200 bg-white text-[14px] font-semibold text-[#0F162B] hover:bg-neutral-50 transition-colors"
               >
-                <MessageCircle size={16} />
-                Message on WhatsApp
+                Contact us
               </a>
               <Link
                 to="/waitlist"
