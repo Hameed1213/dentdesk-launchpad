@@ -390,15 +390,7 @@ function LiveInADayVisual() {
       />
 
       {/* Wizard content (transparent — sits on the navy canvas) */}
-      <div
-        className="absolute"
-        style={{
-          left: "10%",
-          right: "10%",
-          top: "8%",
-          bottom: "8%",
-        }}
-      >
+      <div className="absolute inset-x-[5%] inset-y-[6%] sm:inset-x-[10%] sm:inset-y-[8%]">
         {/* Step indicator */}
         <div className="relative">
           <p style={{ fontSize: "10px", fontWeight: 500, color: "rgba(255,255,255,0.7)" }}>
@@ -481,13 +473,13 @@ function LiveInADayVisual() {
             </div>
 
             {/* Field: Phone */}
-            <div>
+            <div className="hidden sm:block">
               <p style={fieldLabelStyle}>PHONE</p>
               <div style={{ ...inputStyle, marginTop: "4px" }}>020 7946 0123</div>
             </div>
 
             {/* City + Postcode */}
-            <div className="grid grid-cols-2" style={{ gap: "8px" }}>
+            <div className="hidden grid-cols-2 sm:grid" style={{ gap: "8px" }}>
               <div>
                 <p style={fieldLabelStyle}>CITY</p>
                 <div style={{ ...inputStyle, marginTop: "4px" }}>London</div>
