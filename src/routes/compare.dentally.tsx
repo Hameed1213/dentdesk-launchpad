@@ -11,6 +11,7 @@ import {
   Calendar,
   MessageSquare,
   FileText,
+  Star,
   X,
   type LucideIcon,
 } from "lucide-react";
@@ -572,6 +573,12 @@ function ReadyOnDayOneVisual() {
       desc: "Medical history collected before arrival",
       mobileHidden: true,
     },
+    {
+      Icon: Star,
+      title: "Review requests",
+      desc: "Sent the day after each appointment",
+      mobileHidden: true,
+    },
   ];
 
   return (
@@ -637,7 +644,7 @@ function ReadyOnDayOneVisual() {
             Running on your account by default
           </p>
 
-          <div className="mt-3 flex flex-col" style={{ gap: "10px" }}>
+          <div className="mt-4 flex flex-col" style={{ gap: "14px" }}>
             {rows.map(({ Icon, title, desc, mobileHidden }) => (
               <div
                 key={title}
@@ -735,7 +742,7 @@ function ReadyOnDayOneVisual() {
             className="text-dd-foreground"
             style={{ fontSize: "12px", fontWeight: 600, lineHeight: 1.3 }}
           >
-            4 automations running
+            5 automations running
           </p>
           <p
             className="mt-0.5 truncate text-[#94A3B8]"
