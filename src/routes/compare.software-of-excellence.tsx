@@ -194,24 +194,13 @@ const faqItems = [
 export const Route = createFileRoute("/compare/software-of-excellence")({
   head: () => ({
     meta: [
-      { title: "Dent Dock vs Dentally · Pricing and features compared (2026)" },
-      {
-        name: "description",
-        content:
-          "An honest comparison of Dent Dock and Dentally for UK private dental practices. Pricing from £49 vs £125–£320, features, support and when each is the right fit.",
-      },
-      {
-        property: "og:title",
-        content: "Dent Dock vs Dentally · Pricing and features compared (2026)",
-      },
-      {
-        property: "og:description",
-        content:
-          "An honest comparison of Dent Dock and Dentally for UK private dental practices. Pricing from £49 vs £125–£320, features, support and when each is the right fit.",
-      },
-      { property: "og:url", content: "https://dentdock.co.uk/compare/dentally" },
+      { title: "Dent Dock vs Software of Excellence (placeholder)" },
+      { name: "description", content: "Placeholder — to be updated." },
+      { property: "og:title", content: "Dent Dock vs Software of Excellence (placeholder)" },
+      { property: "og:description", content: "Placeholder — to be updated." },
+      { property: "og:url", content: "https://dentdock.co.uk/compare/software-of-excellence" },
     ],
-    links: [{ rel: "canonical", href: "https://dentdock.co.uk/compare/dentally" }],
+    links: [{ rel: "canonical", href: "https://dentdock.co.uk/compare/software-of-excellence" }],
     scripts: [
       {
         type: "application/ld+json",
