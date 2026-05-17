@@ -1257,14 +1257,14 @@ function WhatNextCTA() {
     <section className="py-16 lg:py-24">
       <div className="mx-auto max-w-[880px] px-6 text-center">
         <motion.h2
-          {...fade(0.2)}
+          {...fade(0.08)}
           className="text-[32px] font-semibold text-dd-foreground lg:text-[48px]"
           style={{ letterSpacing: "-0.02em" }}
         >
           Want to see more, <span className="text-[#2563EB]">or just have a chat?</span>
         </motion.h2>
         <motion.p
-          {...fade(0.35)}
+          {...fade(0.16)}
           className="mx-auto mt-4 max-w-[640px] text-[18px] leading-[1.6] text-[#475569] lg:text-[20px]"
         >
           Explore the rest of Dent Dock, or message us directly with any questions about our
