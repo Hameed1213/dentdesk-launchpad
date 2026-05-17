@@ -498,6 +498,7 @@ function WhyDentDockBlock({
   body,
   note,
   label,
+  visual,
   textLeft,
   index,
   total,
@@ -506,6 +507,7 @@ function WhyDentDockBlock({
   body: string;
   note?: string;
   label: string;
+  visual?: "live-in-a-day";
   textLeft: boolean;
   index: number;
   total: number;
