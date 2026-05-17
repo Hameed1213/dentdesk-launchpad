@@ -113,17 +113,8 @@ function CompareHubPage() {
                 to={c.to}
                 className="group relative flex flex-col rounded-2xl border border-neutral-200 bg-white p-6 sm:p-7 shadow-[0_1px_2px_rgba(15,22,43,0.04)] hover:shadow-[0_12px_32px_-12px_rgba(37,99,235,0.25)] hover:-translate-y-0.5 hover:border-[#2563EB]/30 transition-all duration-300"
               >
-                <div
-                  className="inline-flex self-start items-center rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.12em]"
-                  style={{
-                    backgroundColor: "rgba(37, 99, 235, 0.08)",
-                    color: c.accent,
-                  }}
-                >
-                  vs {c.competitor}
-                </div>
                 <h2
-                  className="mt-5 text-[22px] sm:text-[24px] leading-[1.2] tracking-[-0.02em] font-semibold"
+                  className="text-[22px] sm:text-[24px] leading-[1.2] tracking-[-0.02em] font-semibold"
                   style={{ color: "#0F162B" }}
                 >
                   {c.tagline}
