@@ -1157,6 +1157,7 @@ function CompareDentallyPage() {
       
       <PageDisclaimer />
       <Footer />
+      <WhatsAppButton />
     </main>
   );
 }
