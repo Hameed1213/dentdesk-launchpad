@@ -327,6 +327,7 @@ const whyBlocks = [
     title: "Ready on day one",
     body: "The work's already done. Automations, forms, recall sequences, booking confirmations are all running before you log in. Sign up, look around, take your first booking.",
     label: "VISUAL · READY ON DAY ONE",
+    visual: "ready-on-day-one" as const,
     textLeft: false,
   },
   {
