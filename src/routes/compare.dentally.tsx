@@ -347,7 +347,7 @@ function LiveInADayVisual() {
 
   return (
     <div
-      className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl"
+      className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl sm:rounded-2xl"
       style={{
         fontFamily: "Inter, sans-serif",
         background: "#1a1f2e",
@@ -569,7 +569,7 @@ function ReadyOnDayOneVisual() {
 
   return (
     <div
-      className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl"
+      className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl sm:rounded-2xl"
       style={{
         fontFamily: "Inter, sans-serif",
         background: "#1a1f2e",
@@ -745,7 +745,7 @@ function ReadyOnDayOneVisual() {
 function TalkToAHumanVisual() {
   return (
     <div
-      className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl"
+      className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl sm:rounded-2xl"
       style={{
         fontFamily: "Inter, sans-serif",
         background: "#1a1f2e",
