@@ -75,16 +75,26 @@ export default function Navbar() {
           <Logo />
 
           <nav className="hidden lg:flex items-center gap-8">
-            {navLinks.map((l) => (
-              <a
-                key={l.label}
-                href={l.href}
-                onClick={(e) => smoothScrollTo(e, l.href)}
-                className="text-sm font-medium text-neutral-600 hover:text-neutral-900 transition-colors"
-              >
-                {l.label}
-              </a>
-            ))}
+            {navLinks.map((l) =>
+              l.href.includes("#") ? (
+                <a
+                  key={l.label}
+                  href={l.href}
+                  onClick={(e) => smoothScrollTo(e, l.href)}
+                  className="text-sm font-medium text-neutral-600 hover:text-neutral-900 transition-colors"
+                >
+                  {l.label}
+                </a>
+              ) : (
+                <Link
+                  key={l.label}
+                  to={l.href}
+                  className="text-sm font-medium text-neutral-600 hover:text-neutral-900 transition-colors"
+                >
+                  {l.label}
+                </Link>
+              ),
+            )}
           </nav>
 
           <div className="hidden lg:flex items-center gap-5">
