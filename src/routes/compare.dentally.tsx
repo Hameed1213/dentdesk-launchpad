@@ -335,7 +335,7 @@ const whyBlocks = [
 
 function LiveInADayVisual() {
   const fieldLabelStyle = {
-    fontSize: "9px",
+    fontSize: "10px",
     fontWeight: 600,
     letterSpacing: "0.06em",
     color: "#94A3B8",
@@ -343,11 +343,11 @@ function LiveInADayVisual() {
   const inputStyle = {
     border: "1px solid #E2E8F0",
     borderRadius: "8px",
-    height: "32px",
-    padding: "0 10px",
+    height: "36px",
+    padding: "0 12px",
     display: "flex",
     alignItems: "center",
-    fontSize: "11px",
+    fontSize: "12px",
     fontWeight: 400,
     color: "#94A3B8",
     background: "#FFFFFF",
