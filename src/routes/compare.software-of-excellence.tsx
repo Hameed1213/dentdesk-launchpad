@@ -1470,7 +1470,7 @@ function HonestAnswer() {
                 ))}
               </ul>
               <p className="mt-10 text-[14px] italic leading-[1.5] text-[#94A3B8]">
-                £125 to start, £220 for online booking.
+                Pricing not publicly listed.
               </p>
             </div>
           </div>
