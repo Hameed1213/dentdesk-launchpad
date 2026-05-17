@@ -196,10 +196,10 @@ const faqItems = [
 export const Route = createFileRoute("/compare/software-of-excellence")({
   head: () => ({
     meta: [
-      { title: "Dent Dock vs Software of Excellence (placeholder)" },
-      { name: "description", content: "Placeholder — to be updated." },
-      { property: "og:title", content: "Dent Dock vs Software of Excellence (placeholder)" },
-      { property: "og:description", content: "Placeholder — to be updated." },
+      { title: "Dent Dock vs Software of Excellence · Dental practice software compared (2026)" },
+      { name: "description", content: "An honest comparison of Dent Dock and Software of Excellence (EXACT) for UK private practices. Compare features, support, transparency and approach." },
+      { property: "og:title", content: "Dent Dock vs Software of Excellence · Dental practice software compared (2026)" },
+      { property: "og:description", content: "An honest comparison of Dent Dock and Software of Excellence (EXACT) for UK private practices. Compare features, support, transparency and approach." },
       { property: "og:url", content: "https://dentdock.co.uk/compare/software-of-excellence" },
     ],
     links: [{ rel: "canonical", href: "https://dentdock.co.uk/compare/software-of-excellence" }],
