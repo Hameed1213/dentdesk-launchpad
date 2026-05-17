@@ -214,15 +214,6 @@ function CompareHubPage() {
               </Link>
             ))}
 
-            {/* More coming soon hint */}
-            <div className="hidden md:flex flex-col items-center justify-center rounded-2xl border border-dashed border-neutral-200 bg-neutral-50/50 p-6 sm:p-7 text-center">
-              <p className="text-[14px] font-medium text-[#4B5563]">
-                More comparisons coming soon
-              </p>
-              <p className="mt-1 text-[13px] text-[#6B7280]">
-                Curve, R4 and more.
-              </p>
-            </div>
           </div>
         </div>
       </section>
