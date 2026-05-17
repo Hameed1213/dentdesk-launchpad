@@ -12,6 +12,7 @@ type Comparison = {
   tagline: string;
   summary: string;
   accent: string;
+  background: string;
 };
 
 const comparisons: Comparison[] = [
