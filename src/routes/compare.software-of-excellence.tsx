@@ -1559,69 +1559,68 @@ const categories: Category[] = [
   {
     title: "Patient booking",
     rows: [
-      { feature: "Online booking page", dentDock: yes(), dentally: yes("Essentials+ only") },
-      
-      { feature: "Live slot updates", dentDock: yes(), dentally: yes() },
-      { feature: "Patient self-reschedule via link", dentDock: yes(), dentally: yes() },
-      { feature: "Patient self-cancel via link", dentDock: yes(), dentally: yes() },
-      { feature: "Custom booking domain", dentDock: no("On the roadmap"), dentally: yes("Pro tier only") },
+      { feature: "Online booking page", dentDock: yes(), dentally: yes("Online Booking module") },
+      { feature: "Live slot updates", dentDock: yes(), dentally: no("Not specified") },
+      { feature: "Patient self-reschedule via link", dentDock: yes(), dentally: no("Not specified") },
+      { feature: "Patient self-cancel via link", dentDock: yes(), dentally: no("Not specified") },
+      { feature: "Custom booking domain", dentDock: no("On the roadmap"), dentally: no("Not specified") },
     ],
   },
   {
     title: "Patient communications",
     rows: [
-      { feature: "Automated SMS + email reminders", dentDock: yes(), dentally: yes() },
-      { feature: "Pre-built automation flows", dentDock: yes("29 seeded on signup"), dentally: no() },
-      { feature: "SMS sender shows practice name", dentDock: yes(), dentally: yes() },
-      { feature: "Two-way SMS inbox", dentDock: yes(), dentally: yes() },
-      { feature: "Internal team chat", dentDock: no("On the roadmap"), dentally: yes() },
-      { feature: "Marketing vs transactional consent classifier", dentDock: yes(), dentally: yes() },
+      { feature: "Automated SMS + email reminders", dentDock: yes(), dentally: yes("Automated Reminders") },
+      { feature: "Pre-built automation flows", dentDock: yes("29 seeded on signup"), dentally: no("Customer Success Consultant configures") },
+      { feature: "SMS sender shows practice name", dentDock: yes(), dentally: no("Not specified") },
+      { feature: "Two-way SMS inbox", dentDock: yes(), dentally: no("Not specified") },
+      { feature: "Internal team chat", dentDock: no("On the roadmap"), dentally: no("Not specified") },
+      { feature: "Marketing vs transactional consent classifier", dentDock: yes(), dentally: no("Not specified") },
     ],
   },
   {
     title: "Forms",
     rows: [
-      { feature: "Digital forms", dentDock: yes(), dentally: yes("Essentials+ only") },
-      { feature: "Pre-built dental templates", dentDock: yes(), dentally: yes() },
-      { feature: "Digital signature capture", dentDock: yes(), dentally: yes("Essentials+ only") },
-      { feature: "Conditional logic", dentDock: yes(), dentally: yes("Essentials+ only") },
-      { feature: "Auto-sync answers to patient record", dentDock: yes(), dentally: yes() },
+      { feature: "Digital forms", dentDock: yes(), dentally: yes("Via Clinipad") },
+      { feature: "Pre-built dental templates", dentDock: yes(), dentally: no("Build your own") },
+      { feature: "Digital signature capture", dentDock: yes(), dentally: yes("Via Clinipad") },
+      { feature: "Conditional logic", dentDock: yes(), dentally: no("Not specified") },
+      { feature: "Auto-sync answers to patient record", dentDock: yes(), dentally: yes("Via Clinipad") },
     ],
   },
   {
     title: "Recalls",
     rows: [
       { feature: "Recall list view", dentDock: yes(), dentally: yes() },
-      { feature: "5-step automated cascade", dentDock: yes(), dentally: no() },
-      { feature: "Per-service recall intervals", dentDock: yes(), dentally: yes() },
-      { feature: "Quiet hours for sends", dentDock: yes(), dentally: yes() },
-      { feature: "Recall effectiveness analytics", dentDock: yes(), dentally: yes() },
+      { feature: "5-step automated cascade", dentDock: yes(), dentally: yes("Automated Recall Manager") },
+      { feature: "Per-service recall intervals", dentDock: yes(), dentally: yes("Customisable") },
+      { feature: "Quiet hours for sends", dentDock: yes(), dentally: no("Not specified") },
+      { feature: "Recall effectiveness analytics", dentDock: yes(), dentally: yes("MyPractice Cloud") },
     ],
   },
   {
     title: "Payments",
     rows: [
-      { feature: "Send payment links", dentDock: yes(), dentally: yes() },
-      { feature: "Late-cancellation fees", dentDock: yes(), dentally: yes() },
-      { feature: "Patient receipts", dentDock: yes(), dentally: yes() },
-      { feature: "Deposit collection at booking", dentDock: yes(), dentally: yes("Essentials+ only") },
+      { feature: "Send payment links", dentDock: yes(), dentally: no("Not specified") },
+      { feature: "Late-cancellation fees", dentDock: yes(), dentally: no("Not specified") },
+      { feature: "Patient receipts", dentDock: yes(), dentally: no("Not specified") },
+      { feature: "Deposit collection at booking", dentDock: yes(), dentally: no("Not specified") },
     ],
   },
   {
     title: "Clinical",
     rows: [
       { feature: "Tooth / perio chart", dentDock: no(), dentally: yes() },
-      { feature: "Treatment plan builder", dentDock: no(), dentally: yes() },
-      { feature: "AI clinical note transcription", dentDock: no(), dentally: yes("Essentials+ only") },
-      { feature: "Imaging integration", dentDock: no(), dentally: yes("Pro tier only") },
+      { feature: "Treatment plan builder", dentDock: no(), dentally: yes("Care Manager") },
+      { feature: "AI clinical note transcription", dentDock: no(), dentally: yes("Pearl Second Opinion AI") },
+      { feature: "Imaging integration", dentDock: no(), dentally: yes("Examine Pro") },
     ],
   },
   {
     title: "NHS and multi-site",
     rows: [
-      { feature: "NHS UDA / FP17 management", dentDock: no(), dentally: yes() },
+      { feature: "NHS UDA / FP17 management", dentDock: no(), dentally: yes("Predictive UDA Manager") },
       { feature: "NHS number capture", dentDock: yes("Field only"), dentally: yes() },
-      { feature: "Multi-site practice management", dentDock: no("On the roadmap"), dentally: yes() },
+      { feature: "Multi-site practice management", dentDock: no("On the roadmap"), dentally: yes("Dedicated multi-site solution") },
     ],
   },
   {
@@ -1629,9 +1628,10 @@ const categories: Category[] = [
     rows: [
       { feature: "WhatsApp support line", dentDock: yes(), dentally: no() },
       { feature: "Email support", dentDock: yes(), dentally: yes() },
-      { feature: "Phone support", dentDock: no("On the roadmap"), dentally: yes("Essentials+ only") },
-      { feature: "Chat support", dentDock: yes(), dentally: yes() },
-      { feature: "Customer success manager", dentDock: no(), dentally: yes("Essentials+ only") },
+      { feature: "Phone support", dentDock: no("On the roadmap"), dentally: yes() },
+      { feature: "Chat support", dentDock: yes(), dentally: yes("Live chat") },
+      { feature: "Dedicated consultant", dentDock: no(), dentally: yes("Customer Success Consultant") },
+      { feature: "Customer success manager", dentDock: no(), dentally: yes("Customer Success Programme") },
     ],
   },
 ];
@@ -1769,21 +1769,21 @@ function StickyPricingCards({ progress }: { progress: number }) {
         >
           <span
             className="font-semibold text-[#475569]"
-            style={{ fontSize: 12, letterSpacing: "0.04em" }}
+            style={{ fontSize: 10, letterSpacing: "0.14em" }}
           >
-            Dentally
+            SOFTWARE OF EXCELLENCE
           </span>
           <span
-            className="font-medium text-[#0F172A] tabular-nums"
+            className="font-bold text-[#0F172A] tabular-nums"
             style={{ fontSize: priceSize, letterSpacing: "-0.02em", marginTop: gap, transition, lineHeight: 1.1 }}
           >
-            £125 — £220+
+            Pricing not listed
           </span>
           <span
             className="font-medium text-[#475569]"
             style={{ fontSize: subSize, marginTop: subGap, transition }}
           >
-            per month, ex VAT
+            sales quote required
           </span>
         </div>
       </div>
@@ -1822,13 +1822,13 @@ function MobilePricingCards() {
         }}
         className="flex flex-col items-center"
       >
-        <span className="font-semibold text-[#475569]" style={{ fontSize: 11, letterSpacing: "0.02em" }}>
-          Dentally
+        <span className="font-semibold text-[#475569]" style={{ fontSize: 9, letterSpacing: "0.12em" }}>
+          SOFTWARE OF EXCELLENCE
         </span>
         <span className="font-bold text-[#0F172A] tabular-nums mt-1" style={{ fontSize: 14, letterSpacing: "-0.03em", lineHeight: 1.1 }}>
-          £125 — £220+
+          Pricing not listed
         </span>
-        <span className="font-medium text-[#475569] mt-0.5" style={{ fontSize: 10 }}>per month, ex VAT</span>
+        <span className="font-medium text-[#475569] mt-0.5" style={{ fontSize: 10 }}>sales quote required</span>
       </div>
     </div>
   );
@@ -1867,7 +1867,7 @@ function FeatureComparison() {
             Feature <span className="text-[#2563EB]">comparison</span>
           </h2>
           <p className="mt-5 text-base md:text-lg text-muted-foreground">
-            Verified against dentally.com on 15 May 2026.
+            Verified against softwareofexcellence.com on 17 May 2026.
           </p>
         </div>
 
