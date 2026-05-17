@@ -395,9 +395,8 @@ function LiveInADayVisual() {
         style={{
           left: "10%",
           right: "10%",
-          top: "50%",
-          transform: "translateY(-50%)",
-          padding: "24px 0",
+          top: "8%",
+          bottom: "8%",
         }}
       >
 
