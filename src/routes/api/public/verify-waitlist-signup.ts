@@ -1,8 +1,30 @@
 import { createFileRoute } from "@tanstack/react-router";
 import "@tanstack/react-start";
-import { createClient } from "@supabase/supabase-js";
+import { alertEmail, thankYouEmail, type WaitlistSignup } from "@/lib/waitlistEmails";
 
-const SUPABASE_URL = "https://pyotfmkosyrehtrcurue.supabase.co";
+// Sign-ups are kept on the OPS Supabase project (DentDock's own business
+// data), through marketing_waitlist_join(): callable with the ops project's
+// public anon key, but refused unless given WAITLIST_KEY, which only this
+// server holds. The website holds no service_role key for any project.
+// Both overridable by env only so the whole flow can be tested against stand-ins.
+const opsUrl = () => process.env.OPS_SUPABASE_URL || "https://befyhizctaqhtlebzsdj.supabase.co";
+const resendUrl = () => process.env.RESEND_URL || "https://api.resend.com/emails";
+const FROM = "Dent Dock <noreply@dentdock.co.uk>";
+const TEAM = "hello@dentdock.co.uk";
+
+async function sendEmail(
+  apiKey: string,
+  to: string,
+  msg: { subject: string; text: string; html: string },
+) {
+  const res = await fetch(resendUrl(), {
+    method: "POST",
+    headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
+    body: JSON.stringify({ from: FROM, to: [to], reply_to: TEAM, ...msg }),
+  });
+  if (!res.ok)
+    console.error("waitlist email not sent", { status: res.status, subject: msg.subject });
+}
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -30,8 +52,7 @@ function sanitiseOptional(value: unknown, maxLen: number): string | null {
 export const Route = createFileRoute("/api/public/verify-waitlist-signup")({
   server: {
     handlers: {
-      OPTIONS: async () =>
-        new Response(null, { status: 204, headers: corsHeaders }),
+      OPTIONS: async () => new Response(null, { status: 204, headers: corsHeaders }),
 
       POST: async ({ request }) => {
         try {
@@ -43,10 +64,7 @@ export const Route = createFileRoute("/api/public/verify-waitlist-signup")({
             return json(400, { error: "Invalid JSON body" });
           }
 
-          const email =
-            typeof body.email === "string"
-              ? body.email.trim().toLowerCase()
-              : "";
+          const email = typeof body.email === "string" ? body.email.trim().toLowerCase() : "";
           const turnstileToken =
             typeof body.turnstile_token === "string" ? body.turnstile_token : "";
 
@@ -63,11 +81,14 @@ export const Route = createFileRoute("/api/public/verify-waitlist-signup")({
 
           // ---- 2. Verify Turnstile
           const turnstileSecret = process.env.TURNSTILE_SECRET_KEY;
-          const serviceRoleKey = process.env.WAITLIST_SUPABASE_SERVICE_ROLE_KEY;
-          if (!turnstileSecret || !serviceRoleKey) {
+          const waitlistKey = process.env.WAITLIST_KEY;
+          const opsAnonKey = process.env.OPS_SUPABASE_ANON_KEY;
+          const resendKey = process.env.RESEND_API_KEY;
+          if (!turnstileSecret || !waitlistKey || !opsAnonKey) {
             console.error("verify-waitlist-signup: missing server secrets", {
               hasTurnstile: Boolean(turnstileSecret),
-              hasServiceRole: Boolean(serviceRoleKey),
+              hasWaitlistKey: Boolean(waitlistKey),
+              hasOpsAnonKey: Boolean(opsAnonKey),
             });
             return json(500, { error: "Server not configured" });
           }
@@ -75,71 +96,58 @@ export const Route = createFileRoute("/api/public/verify-waitlist-signup")({
           const form = new URLSearchParams();
           form.set("secret", turnstileSecret);
           form.set("response", turnstileToken);
-
           const verifyRes = await fetch(
             "https://challenges.cloudflare.com/turnstile/v0/siteverify",
             { method: "POST", body: form },
           );
-
-          // TEMP DEBUG LOGGING — remove once Turnstile verification is confirmed working
-          const rawBody = await verifyRes.text();
-          console.error("Turnstile siteverify debug", {
-            httpStatus: verifyRes.status,
-            rawBody,
-            tokenPrefix: turnstileToken.substring(0, 10),
-            tokenLength: turnstileToken.length,
-          });
-
-          if (!verifyRes.ok) {
-            console.error("Turnstile verify HTTP error", {
-              status: verifyRes.status,
-            });
-            return json(403, { error: "Verification failed" });
-          }
-
-          let verifyData: { success: boolean; "error-codes"?: string[] };
-          try {
-            verifyData = JSON.parse(rawBody) as {
-              success: boolean;
-              "error-codes"?: string[];
-            };
-          } catch (parseErr) {
-            console.error("Turnstile verify body not JSON", { rawBody });
-            return json(403, { error: "Verification failed" });
-          }
-
-          if (!verifyData.success) {
+          const verifyData = (await verifyRes.json().catch(() => null)) as {
+            success?: boolean;
+            "error-codes"?: string[];
+          } | null;
+          if (!verifyRes.ok || !verifyData?.success) {
             console.error("Turnstile verify rejected", {
-              errorCodes: verifyData["error-codes"],
-              rawBody,
+              status: verifyRes.status,
+              errorCodes: verifyData?.["error-codes"],
             });
             return json(403, { error: "Verification failed" });
           }
 
-          // ---- 3. Insert (service role bypasses RLS)
-          const admin = createClient(SUPABASE_URL, serviceRoleKey, {
-            auth: { persistSession: false, autoRefreshToken: false },
+          // ---- 3. Save on the ops project
+          const joinRes = await fetch(`${opsUrl()}/rest/v1/rpc/marketing_waitlist_join`, {
+            method: "POST",
+            headers: {
+              apikey: opsAnonKey,
+              Authorization: `Bearer ${opsAnonKey}`,
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              p_key: waitlistKey,
+              p_email: email,
+              p_practice_name: practiceName,
+              p_role: role,
+              p_source: "marketing-site",
+            }),
           });
-
-          const { error: insertError } = await admin
-            .from("marketing_waitlist")
-            .insert({
-              email,
-              practice_name: practiceName,
-              role,
-              source: "marketing-site",
-            });
-
-          if (insertError) {
-            // 23505 = unique_violation. Treat as success to avoid email-enumeration leak.
-            if (insertError.code === "23505") {
-              return json(200, { success: true });
-            }
-            console.error("marketing_waitlist insert failed", {
-              code: insertError.code,
-              message: insertError.message,
-            });
+          if (!joinRes.ok) {
+            console.error("marketing_waitlist_join failed", { status: joinRes.status });
             return json(500, { error: "Could not save signup" });
+          }
+          const outcome = await joinRes.json().catch(() => null);
+
+          // ---- 4. Emails, for a NEW sign-up only. A repeat answers the same
+          // success (no way to tell from outside whether an email was already
+          // on the list) and sends nothing. A failed email never fails the
+          // sign-up: it is saved either way.
+          if (outcome === "new") {
+            if (resendKey) {
+              const signup: WaitlistSignup = { email, practiceName, role };
+              await Promise.all([
+                sendEmail(resendKey, email, thankYouEmail(signup)),
+                sendEmail(resendKey, TEAM, alertEmail(signup)),
+              ]);
+            } else {
+              console.error("verify-waitlist-signup: RESEND_API_KEY not set, no emails sent");
+            }
           }
 
           return json(200, { success: true });
