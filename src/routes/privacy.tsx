@@ -39,7 +39,7 @@ function PrivacyPage() {
           <strong className="text-[#0F172A] font-semibold">For dental practices and their staff</strong>, we are the data controller. This policy explains how we use your account information.
         </p>
         <p>
-          <strong className="text-[#0F172A] font-semibold">For patients</strong>, the dental practice is the data controller and we are its data processor. We hold patient information only so the practice can use Dent Dock, and only on the practice's instructions. If you are a patient, your practice's privacy notice explains how your information is used, and your practice is the first place to go with any request about it.
+          <strong className="text-[#0F172A] font-semibold">For patients</strong>, the dental practice is the data controller and we are its data processor. We hold patient information only so the practice can use Dent Dock, and only on the practice's instructions, under our <a href="/dpa" className="text-[#2563EB] hover:underline">Data Processing Agreement</a>. If you are a patient, your practice's privacy notice explains how your information is used, and your practice is the first place to go with any request about it.
         </p>
       </LegalSection>
 
@@ -98,7 +98,7 @@ function PrivacyPage() {
           <li><strong className="text-[#0F172A] font-semibold">Stripe</strong> — subscription billing and patient payments.</li>
           <li><strong className="text-[#0F172A] font-semibold">Resend</strong> — sending emails.</li>
           <li><strong className="text-[#0F172A] font-semibold">Vercel</strong> — hosting the practice app and the online booking site.</li>
-          <li><strong className="text-[#0F172A] font-semibold">Cloudflare</strong> — protecting sign-up and booking forms from automated abuse, and hosting dentdock.co.uk.</li>
+          <li><strong className="text-[#0F172A] font-semibold">Cloudflare</strong> — protecting online booking and waitlist forms from automated abuse, and hosting dentdock.co.uk.</li>
         </ul>
         <p>
           We do not send text messages yet. Before we do, we will add the text message provider to this list and tell practices.

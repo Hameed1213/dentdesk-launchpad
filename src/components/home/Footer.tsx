@@ -25,6 +25,7 @@ const legalLinks = [
   { label: "Privacy", href: "/privacy" as const },
   { label: "Terms", href: "/terms" as const },
   { label: "Cookies", href: "/cookies" as const },
+  { label: "DPA", href: "/dpa" as const },
 ];
 
 export default function Footer() {

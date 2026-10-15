@@ -61,10 +61,10 @@ function TermsPage() {
 
       <LegalSection heading="4. Patient Data Responsibilities">
         <p>
-          As a dental practice using Dent Dock, you are the data controller for your patients' personal data. Dent Dock acts as a data processor on your behalf and processes patient data only to provide the service to you.
+          As a dental practice using Dent Dock, you are the data controller for your patients' personal data. Dent Dock acts as a data processor on your behalf and processes patient data only to provide the service to you, under our <a href="/dpa" className="text-[#2563EB] hover:underline">Data Processing Agreement</a>, which forms part of these terms.
         </p>
         <p>
-          The third parties we use to provide the service are listed in our Privacy Policy. We will tell you before we add a new one.
+          The third parties we use to provide the service are listed in the Data Processing Agreement and our Privacy Policy. We will tell you at least 30 days before we add or replace one.
         </p>
         <p>You are responsible for:</p>
         <ul className="list-disc pl-5 space-y-1.5">
