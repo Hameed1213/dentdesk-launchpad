@@ -25,7 +25,7 @@ export const Route = createFileRoute("/dpa")({
 
 function DpaPage() {
   return (
-    <LegalLayout title="Data Processing Agreement" updated="15 October 2026">
+    <LegalLayout title="Data Processing Agreement" updated="16 October 2026">
       <p>
         This Data Processing Agreement ("DPA") is between the dental practice that holds a Dent Dock account (the "Practice") and PARADIGM NETWORK LIMITED, trading as Dent Dock, a company registered in England and Wales (company number 16903048), whose registered office is at 11 Dronfield Road, Salford, M6 7FN ("Dent Dock", "we", "us").
       </p>
@@ -103,6 +103,9 @@ function DpaPage() {
       <LegalSection heading="12. The Practice's responsibilities">
         <p>
           The Practice is responsible for having a lawful basis for the personal data it processes with Dent Dock, for telling its patients how their data is used (Dent Dock provides a standard patient privacy notice that the Practice can change), for the accuracy of the data, and for making sure its instructions to us are lawful.
+        </p>
+        <p>
+          If the Practice adds its own analytics or advertising accounts (such as Google Analytics, Google Ads or Meta) to its online booking page, those providers act for the Practice and are not our sub-processors. The Practice is responsible for its arrangements with them and for telling its patients (the standard patient privacy notice names them automatically). We only load them after the patient agrees on the booking page, and we never send them patients' names, contact details, dates of birth, health information or form answers.
         </p>
       </LegalSection>
 
