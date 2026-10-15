@@ -47,7 +47,7 @@ export function thankYouEmail(s: WaitlistSignup) {
     "",
     "---",
     "You're receiving this because this email address was used to join the waitlist at dentdock.co.uk. Not you? Reply and we'll remove it.",
-    "Dent Dock is a trading name of Paradigm Network Limited. Company No. 16903048. 11 Dronfield Road, Salford, M6 7FN.",
+    "Dent Dock is a trading name of Paradigm Network Limited. Company No. 16903048.",
   ].join("\n");
 
   const html = `<!doctype html>
@@ -103,7 +103,7 @@ export function thankYouEmail(s: WaitlistSignup) {
     <tr><td style="padding:22px 8px 0 8px;font:12px/1.6 ${FONT};color:${MUTED};text-align:center">
       You're receiving this because this email address was used to join the waitlist at <a href="${SITE}" style="color:${MUTED}">dentdock.co.uk</a>. Not you? Reply and we'll remove it.<br>
       Dent Dock is a trading name of Paradigm Network Limited · Company No. 16903048<br>
-      11 Dronfield Road, Salford, M6 7FN · <a href="${SITE}/privacy" style="color:${MUTED}">Privacy Policy</a>
+      <a href="${SITE}/privacy" style="color:${MUTED}">Privacy Policy</a>
     </td></tr>
   </table>
 </td></tr>
