@@ -25,15 +25,15 @@ export const Route = createFileRoute("/terms")({
 
 function TermsPage() {
   return (
-    <LegalLayout title="Terms of Service" updated="April 2026">
+    <LegalLayout title="Terms of Service" updated="15 October 2026">
       <p>
-        These Terms of Service govern your use of Dent Dock, operated by PARADIGM NETWORK LIMITED, registered in England and Wales.
+        These Terms of Service govern your use of Dent Dock. Dent Dock is a trading name of PARADIGM NETWORK LIMITED, a company registered in England and Wales (company number 16903048), whose registered office is at 11 Dronfield Road, Salford, M6 7FN.
       </p>
       <p>By creating an account, you agree to these terms.</p>
 
       <LegalSection heading="1. The Service">
         <p>
-          Dent Dock provides dental practice management software, including online booking, calendar management, patient records, SMS reminders, payments, and recalls.
+          Dent Dock provides dental practice management software, including online booking, calendar management, patient records, appointment reminders, payments, and recalls.
         </p>
         <p>
           The platform is provided as-is on a subscription basis. We reserve the right to update, modify, or discontinue features with reasonable notice.
@@ -55,17 +55,20 @@ function TermsPage() {
           <li>Attempt to access data belonging to other practices.</li>
           <li>Reverse engineer, copy, or resell the platform.</li>
           <li>Upload malicious code or attempt to disrupt the service.</li>
-          <li>Use the SMS feature to send unsolicited marketing messages.</li>
+          <li>Use email or text messages to send unsolicited marketing.</li>
         </ul>
       </LegalSection>
 
       <LegalSection heading="4. Patient Data Responsibilities">
         <p>
-          As a dental practice using Dent Dock, you are the data controller for your patients' personal data. Dent Dock acts as a data processor on your behalf.
+          As a dental practice using Dent Dock, you are the data controller for your patients' personal data. Dent Dock acts as a data processor on your behalf and processes patient data only to provide the service to you, under our <a href="/dpa" className="text-[#2563EB] hover:underline">Data Processing Agreement</a>, which forms part of these terms.
+        </p>
+        <p>
+          The third parties we use to provide the service are listed in the Data Processing Agreement and our Privacy Policy. We will tell you at least 30 days before we add or replace one.
         </p>
         <p>You are responsible for:</p>
         <ul className="list-disc pl-5 space-y-1.5">
-          <li>Obtaining appropriate consent from patients.</li>
+          <li>Having a lawful basis for the patient data you hold, and telling your patients how you use it.</li>
           <li>Complying with UK GDPR in your use of patient data.</li>
           <li>Ensuring your use of the platform complies with CQC requirements.</li>
         </ul>
@@ -79,9 +82,6 @@ function TermsPage() {
         <p>
           You may cancel your subscription at any time via the Billing section in Settings. Cancellation takes effect at the end of the current billing period. No refunds are issued for partial months.
         </p>
-        <p>
-          SMS messages beyond the monthly allowance are charged at £0.05 per message segment and billed monthly in arrears.
-        </p>
       </LegalSection>
 
       <LegalSection heading="6. Availability">
@@ -91,7 +91,7 @@ function TermsPage() {
       </LegalSection>
 
       <LegalSection heading="7. Limitation of Liability">
-        <p>To the maximum extent permitted by law, Dent Dock Ltd shall not be liable for:</p>
+        <p>To the maximum extent permitted by law, PARADIGM NETWORK LIMITED shall not be liable for:</p>
         <ul className="list-disc pl-5 space-y-1.5">
           <li>Loss of revenue or profits.</li>
           <li>Loss of patient data beyond our reasonable control.</li>
@@ -109,6 +109,9 @@ function TermsPage() {
         <p>
           You may terminate your account at any time by contacting hello@dentdock.co.uk.
         </p>
+        <p>
+          When your account closes, we will, at your choice, return your practice's data to you or delete it, within 90 days. Dental records usually have to be kept for many years, so please ask us for a copy of your patient records before your account closes.
+        </p>
       </LegalSection>
 
       <LegalSection heading="9. Governing Law">
@@ -119,7 +122,9 @@ function TermsPage() {
 
       <LegalSection heading="10. Contact">
         <p>
-          PARADIGM NETWORK LIMITED<br />
+          PARADIGM NETWORK LIMITED (trading as Dent Dock)<br />
+          11 Dronfield Road, Salford, M6 7FN<br />
+          Company number 16903048<br />
           hello@dentdock.co.uk<br />
           dentdock.co.uk
         </p>

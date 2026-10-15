@@ -26,92 +26,100 @@ export const Route = createFileRoute("/privacy")({
 
 function PrivacyPage() {
   return (
-    <LegalLayout title="Privacy Policy" updated="April 2026">
+    <LegalLayout title="Privacy Policy" updated="15 October 2026">
       <LegalSection heading="Who we are">
         <p>
-          Dent Dock is a dental practice management platform operated by PARADIGM NETWORK LIMITED, registered in England and Wales. Our platform is available at dentdock.co.uk and app.dentdock.co.uk.
+          Dent Dock is a dental practice management platform. Dent Dock is a trading name of PARADIGM NETWORK LIMITED, a company registered in England and Wales (company number 16903048), whose registered office is at 11 Dronfield Road, Salford, M6 7FN. Our ICO registration number is ZC132966.
         </p>
         <p>Contact: hello@dentdock.co.uk</p>
       </LegalSection>
 
-      <LegalSection heading="What data we collect">
-        <p>We collect the following categories of data:</p>
+      <LegalSection heading="Our two roles">
         <p>
-          <strong className="text-[#0F172A] font-semibold">Practice account data</strong> — practice name, address, phone, email, opening hours and branding preferences provided during onboarding.
+          <strong className="text-[#0F172A] font-semibold">For dental practices and their staff</strong>, we are the data controller. This policy explains how we use your account information.
         </p>
         <p>
-          <strong className="text-[#0F172A] font-semibold">User account data</strong> — name, email address and role for each staff member added to a practice account.
-        </p>
-        <p>
-          <strong className="text-[#0F172A] font-semibold">Patient data</strong> — name, date of birth, contact details, appointment history, medical notes, form responses and communication preferences. This data is entered by practice staff or submitted directly by patients via the online booking flow.
-        </p>
-        <p>
-          <strong className="text-[#0F172A] font-semibold">Payment data</strong> — transaction records, deposit amounts and payment status. Card details are processed directly by Stripe and never stored on Dent Dock servers.
-        </p>
-        <p>
-          <strong className="text-[#0F172A] font-semibold">Usage data</strong> — how you interact with the platform, including pages visited, features used and error logs. Used to improve the product.
-        </p>
-        <p>
-          <strong className="text-[#0F172A] font-semibold">Communications data</strong> — SMS messages sent and received via the Inbox feature.
+          <strong className="text-[#0F172A] font-semibold">For patients</strong>, the dental practice is the data controller and we are its data processor. We hold patient information only so the practice can use Dent Dock, and only on the practice's instructions, under our <a href="/dpa" className="text-[#2563EB] hover:underline">Data Processing Agreement</a>. If you are a patient, your practice's privacy notice explains how your information is used, and your practice is the first place to go with any request about it.
         </p>
       </LegalSection>
 
-      <LegalSection heading="How we use your data">
-        <p>We use data to:</p>
-        <ul className="list-disc pl-5 space-y-1.5">
-          <li>Provide and operate the Dent Dock platform</li>
-          <li>Send appointment reminders and recalls on behalf of dental practices</li>
-          <li>Process payments via Stripe</li>
-          <li>Provide customer support</li>
-          <li>Improve and develop the platform</li>
-          <li>Comply with legal obligations</li>
-        </ul>
+      <LegalSection heading="What data we hold">
+        <p>
+          <strong className="text-[#0F172A] font-semibold">Practice account data</strong> — practice name, address, phone, email, opening hours and branding provided during setup.
+        </p>
+        <p>
+          <strong className="text-[#0F172A] font-semibold">Staff account data</strong> — name, email address and role for each person added to a practice account, and a record of sign-ins and actions taken in the app.
+        </p>
+        <p>
+          <strong className="text-[#0F172A] font-semibold">Patient data (held for the practice)</strong> — name, date of birth, contact details, appointments, medical history and notes, form answers, payments and communication preferences. This is entered by practice staff or given by patients when they book online, fill in a form or use the patient portal.
+        </p>
+        <p>
+          <strong className="text-[#0F172A] font-semibold">Payment data</strong> — subscription and payment records. Card details are handled by Stripe and are never stored by Dent Dock.
+        </p>
+        <p>
+          <strong className="text-[#0F172A] font-semibold">Messages</strong> — emails (and, once available, text messages) sent to patients through Dent Dock, and messages you send to our support team.
+        </p>
+        <p>
+          <strong className="text-[#0F172A] font-semibold">Technical data</strong> — error reports from the app, used to find and fix problems. We do not use advertising or tracking tools.
+        </p>
+        <p>
+          <strong className="text-[#0F172A] font-semibold">Website waitlist</strong> — if you join the waitlist on dentdock.co.uk, your email address, practice name and role.
+        </p>
       </LegalSection>
 
-      <LegalSection heading="Legal basis for processing">
-        <p>We process data under the following lawful bases under UK GDPR:</p>
+      <LegalSection heading="How we use it and our legal basis">
         <p>
-          <strong className="text-[#0F172A] font-semibold">Contract</strong> — to deliver the service you have signed up for.
+          <strong className="text-[#0F172A] font-semibold">Contract</strong> — to provide Dent Dock to your practice, including billing and support.
         </p>
         <p>
-          <strong className="text-[#0F172A] font-semibold">Legitimate interests</strong> — to improve the platform, prevent fraud and ensure security.
+          <strong className="text-[#0F172A] font-semibold">Legitimate interests</strong> — to keep the service secure, prevent fraud and misuse, and improve the product.
         </p>
         <p>
-          <strong className="text-[#0F172A] font-semibold">Consent</strong> — for marketing communications to waitlist subscribers.
+          <strong className="text-[#0F172A] font-semibold">Consent</strong> — to contact you about Dent Dock if you join the website waitlist. You can withdraw this at any time.
         </p>
         <p>
-          <strong className="text-[#0F172A] font-semibold">Legal obligation</strong> — where required by law.
+          <strong className="text-[#0F172A] font-semibold">Legal obligation</strong> — to keep financial records and meet other legal duties.
+        </p>
+        <p>
+          We do not sell data, and we never use patient data for advertising or for any purpose other than providing the service to the practice.
+        </p>
+      </LegalSection>
+
+      <LegalSection heading="Support access">
+        <p>
+          If a practice needs help, a member of the Dent Dock team may sign in to that practice's account through a named "Dent Dock Support" user. Each support session is short, is recorded, and the record can be seen by the practice.
         </p>
       </LegalSection>
 
       <LegalSection heading="Who we share data with">
-        <p>
-          We share data only with the following third-party processors, all operating under appropriate data processing agreements:
-        </p>
+        <p>We use the following companies to provide the service:</p>
         <ul className="list-disc pl-5 space-y-1.5">
-          <li><strong className="text-[#0F172A] font-semibold">Supabase</strong> — database and authentication. Data stored in EU West 2 (London), UK.</li>
-          <li><strong className="text-[#0F172A] font-semibold">Stripe</strong> — payment processing.</li>
-          <li><strong className="text-[#0F172A] font-semibold">The SMS Works</strong> — SMS delivery. UK-based, UK data residency.</li>
-          <li><strong className="text-[#0F172A] font-semibold">Resend</strong> — transactional email delivery.</li>
-          <li><strong className="text-[#0F172A] font-semibold">Vercel</strong> — platform hosting and edge network.</li>
+          <li><strong className="text-[#0F172A] font-semibold">Supabase</strong> — database, sign-in, file storage and server functions. Data stored in London, UK.</li>
+          <li><strong className="text-[#0F172A] font-semibold">Stripe</strong> — subscription billing and patient payments.</li>
+          <li><strong className="text-[#0F172A] font-semibold">Resend</strong> — sending emails.</li>
+          <li><strong className="text-[#0F172A] font-semibold">Vercel</strong> — hosting the practice app and the online booking site.</li>
+          <li><strong className="text-[#0F172A] font-semibold">Cloudflare</strong> — protecting online booking and waitlist forms from automated abuse, and hosting dentdock.co.uk.</li>
         </ul>
         <p>
-          We do not sell data to third parties. We do not use patient data for advertising.
-        </p>
-      </LegalSection>
-
-      <LegalSection heading="Data retention">
-        <p>
-          Practice and user account data is retained for the duration of the subscription and deleted within 90 days of account closure upon request.
-        </p>
-        <p>
-          Patient data is retained in accordance with CQC guidelines for dental records — a minimum of 10 years for adults, until age 25 for patients treated as children.
+          We do not send text messages yet. Before we do, we will add the text message provider to this list and tell practices.
         </p>
       </LegalSection>
 
       <LegalSection heading="Where data is stored">
         <p>
-          All data is stored on Supabase infrastructure in the EU West 2 (London) region. Data does not leave the United Kingdom.
+          Our database and files are stored in London, UK. Some of the companies above (Stripe, Resend, Vercel and Cloudflare) may process data outside the UK, including in the United States. Where that happens, we rely on the protections UK data protection law requires, such as UK adequacy regulations or the UK International Data Transfer Agreement.
+        </p>
+      </LegalSection>
+
+      <LegalSection heading="How long we keep data">
+        <p>
+          <strong className="text-[#0F172A] font-semibold">Practice and staff account data</strong> — for as long as the practice has an account, and deleted within 90 days after the account closes.
+        </p>
+        <p>
+          <strong className="text-[#0F172A] font-semibold">Financial records</strong> — six years, as required by UK tax law.
+        </p>
+        <p>
+          <strong className="text-[#0F172A] font-semibold">Patient data</strong> — kept on the practice's instructions. UK guidance is that dental records are kept for 11 years after the last treatment for adults, and for children until they are 25 or for 11 years, whichever is longer. When a practice's account closes, we return its data or delete it, as the practice chooses, within 90 days.
         </p>
       </LegalSection>
 
@@ -120,28 +128,34 @@ function PrivacyPage() {
         <ul className="list-disc pl-5 space-y-1.5">
           <li>Access the personal data we hold about you</li>
           <li>Correct inaccurate data</li>
-          <li>Request deletion of your data</li>
-          <li>Object to processing</li>
+          <li>Ask us to delete your data</li>
+          <li>Object to or restrict how we use it</li>
           <li>Data portability</li>
-          <li>Withdraw consent at any time</li>
+          <li>Withdraw consent at any time, where we rely on consent</li>
         </ul>
         <p>
-          To exercise any of these rights, contact us at hello@dentdock.co.uk. We will respond within 30 days.
+          To use any of these rights, contact us at hello@dentdock.co.uk. We will respond within one month. If you are a patient, please contact your dental practice; we will pass on any request we receive to them.
         </p>
         <p>
-          You also have the right to lodge a complaint with the Information Commissioner's Office (ICO) at ico.org.uk.
+          You can also complain to the Information Commissioner's Office (ICO) at ico.org.uk or on 0303 123 1113.
         </p>
       </LegalSection>
 
       <LegalSection heading="Security">
         <p>
-          We implement appropriate technical and organisational measures to protect your data, including encryption at rest and in transit, row-level security policies and access controls.
+          We protect data with encryption in transit and at rest, access rules that keep each practice's data separate, and records of who did what in the app.
+        </p>
+      </LegalSection>
+
+      <LegalSection heading="Cookies">
+        <p>
+          We only use what is needed to keep you signed in. See our <a href="/cookies" className="text-[#2563EB] hover:underline">Cookie Policy</a>.
         </p>
       </LegalSection>
 
       <LegalSection heading="Changes to this policy">
         <p>
-          We may update this policy from time to time. We will notify account holders of material changes by email.
+          We may update this policy from time to time. We will email account holders about important changes.
         </p>
       </LegalSection>
     </LegalLayout>
