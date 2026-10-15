@@ -26,7 +26,7 @@ export const Route = createFileRoute("/cookies")({
 
 function CookiesPage() {
   return (
-    <LegalLayout title="Cookie Policy" updated="April 2026">
+    <LegalLayout title="Cookie Policy" updated="15 October 2026">
       <LegalSection heading="What are cookies">
         <p>
           Cookies are small text files stored on your device when you visit a website. They help us provide a working, secure experience.
@@ -41,10 +41,7 @@ function CookiesPage() {
         <p>These are required for the platform to work. They cannot be disabled.</p>
         <ul className="list-disc pl-5 space-y-1.5">
           <li>
-            <strong className="text-[#0F172A] font-semibold">Session cookie</strong> — keeps you logged in during your session. Expires when you close your browser.
-          </li>
-          <li>
-            <strong className="text-[#0F172A] font-semibold">Authentication token</strong> — maintains your authenticated session across pages. Set by Supabase Auth.
+            <strong className="text-[#0F172A] font-semibold">Sign-in</strong> — keeps you signed in to the practice app or patient portal. Stored in your browser's local storage by Supabase Auth, and removed when you sign out.
           </li>
           <li>
             <strong className="text-[#0F172A] font-semibold">Onboarding progress</strong> — stores your setup wizard progress locally so you can resume if you close the browser. Stored in localStorage, not a cookie.
