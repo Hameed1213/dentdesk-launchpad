@@ -27,7 +27,7 @@ export const Route = createFileRoute("/cookies")({
 
 function CookiesPage() {
   return (
-    <LegalLayout title="Cookie Policy" updated="15 October 2026">
+    <LegalLayout title="Cookie Policy" updated="16 October 2026">
       <LegalSection heading="What are cookies">
         <p>
           Cookies are small text files stored on your device when you visit a website. They help us provide a working, secure experience.
@@ -50,12 +50,24 @@ function CookiesPage() {
         </ul>
       </LegalSection>
 
+      <LegalSection heading="Practices' online booking pages">
+        <p>
+          A practice can choose to measure its own online booking page with its own Google Analytics, Google Ads or Meta (Facebook and Instagram) account, for example to see which of its adverts lead to bookings. If it does, the booking page asks the patient first, and nothing is loaded unless they click Accept.
+        </p>
+        <p>
+          After Accept, these tools set cookies on that practice's booking page only: Google (<strong className="text-[#0F172A] font-semibold">_ga</strong>, <strong className="text-[#0F172A] font-semibold">_ga_</strong> followed by the practice's ID, and <strong className="text-[#0F172A] font-semibold">_gcl_au</strong>, lasting up to two years) and Meta (<strong className="text-[#0F172A] font-semibold">_fbp</strong> and <strong className="text-[#0F172A] font-semibold">_fbc</strong>, lasting 90 days). They are told which pages are viewed and the steps taken, for example that an appointment was booked. They are never sent a patient's name, contact details, date of birth, health information or form answers. The practice decides to use them and names them in its privacy notice.
+        </p>
+        <p>
+          Patients can change their choice at any time with "Cookie settings" at the bottom of the booking page.
+        </p>
+      </LegalSection>
+
       <LegalSection heading="Analytics cookies (only if you accept)">
         <p>
           On dentdock.co.uk we use Google Analytics to see how many people visit and which pages they use. It sets the cookies <strong className="text-[#0F172A] font-semibold">_ga</strong> and <strong className="text-[#0F172A] font-semibold">_ga_RVEYZHHMEC</strong>, which last up to two years. They are only set if you click Accept on the cookie banner, and are removed if you change your mind. Google provides this service for us.
         </p>
         <p>
-          We do not use advertising cookies or social media tracking pixels. The practice app and the online booking site do not use analytics cookies.
+          We do not use advertising cookies or social media tracking pixels on dentdock.co.uk. The practice app does not use analytics cookies.
         </p>
         <p>
           <button type="button" onClick={openCookieSettings} className="text-[#2563EB] hover:underline">Change your cookie choice</button>

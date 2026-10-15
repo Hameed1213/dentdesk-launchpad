@@ -26,7 +26,7 @@ export const Route = createFileRoute("/privacy")({
 
 function PrivacyPage() {
   return (
-    <LegalLayout title="Privacy Policy" updated="15 October 2026">
+    <LegalLayout title="Privacy Policy" updated="16 October 2026">
       <LegalSection heading="Who we are">
         <p>
           Dent Dock is a dental practice management platform. Dent Dock is a trading name of PARADIGM NETWORK LIMITED, a company registered in England and Wales (company number 16903048), whose registered office is at 11 Dronfield Road, Salford, M6 7FN. Our ICO registration number is ZC132966.
@@ -99,8 +99,11 @@ function PrivacyPage() {
           <li><strong className="text-[#0F172A] font-semibold">Resend</strong> — sending emails.</li>
           <li><strong className="text-[#0F172A] font-semibold">Vercel</strong> — hosting the practice app and the online booking site.</li>
           <li><strong className="text-[#0F172A] font-semibold">Cloudflare</strong> — protecting online booking and waitlist forms from automated abuse, and hosting dentdock.co.uk.</li>
-          <li><strong className="text-[#0F172A] font-semibold">Google</strong> — website analytics on dentdock.co.uk, only if you accept analytics cookies, and website fonts. Google never receives patient data.</li>
+          <li><strong className="text-[#0F172A] font-semibold">Google</strong> — website analytics on dentdock.co.uk, only if you accept analytics cookies, and website fonts. Google never receives patient data from us.</li>
         </ul>
+        <p>
+          A practice can choose to add its own Google Analytics, Google Ads or Meta account to its online booking page. Those companies then work for the practice, not for Dent Dock, and are only used if the patient accepts cookies on that page. We never send them a patient's name, contact details, date of birth, health information or form answers. See our <a href="/cookies" className="text-[#2563EB] hover:underline">Cookie Policy</a>.
+        </p>
         <p>
           We do not send text messages yet. Before we do, we will add the text message provider to this list and tell practices.
         </p>
@@ -150,7 +153,7 @@ function PrivacyPage() {
 
       <LegalSection heading="Cookies">
         <p>
-          In the app we only use what is needed to keep you signed in. On dentdock.co.uk we use analytics cookies only if you accept them. See our <a href="/cookies" className="text-[#2563EB] hover:underline">Cookie Policy</a>.
+          In the app we only use what is needed to keep you signed in. On dentdock.co.uk we use analytics cookies only if you accept them. A practice's online booking page may use the practice's own analytics and advertising cookies, only if the patient accepts them. See our <a href="/cookies" className="text-[#2563EB] hover:underline">Cookie Policy</a>.
         </p>
       </LegalSection>
 
