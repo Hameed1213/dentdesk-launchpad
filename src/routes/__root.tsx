@@ -1,6 +1,7 @@
 import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
 
 import appCss from "../styles.css?url";
+import CookieBanner from "@/components/CookieBanner";
 
 function NotFoundComponent() {
   return (
@@ -54,21 +55,6 @@ export const Route = createRootRoute({
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" },
     ],
-    scripts: [
-      {
-        src: "https://www.googletagmanager.com/gtag/js?id=G-RVEYZHHMEC",
-        async: true,
-      },
-      {
-        type: "text/javascript",
-        children: `
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-RVEYZHHMEC');
-        `,
-      },
-    ],
   }),
   shellComponent: RootShell,
   component: RootComponent,
@@ -90,5 +76,10 @@ function RootShell({ children }: { children: React.ReactNode }) {
 }
 
 function RootComponent() {
-  return <Outlet />;
+  return (
+    <>
+      <Outlet />
+      <CookieBanner />
+    </>
+  );
 }

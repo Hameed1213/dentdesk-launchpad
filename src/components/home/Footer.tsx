@@ -1,3 +1,4 @@
+import { openCookieSettings } from "@/lib/cookieConsent";
 import { Link } from "@tanstack/react-router";
 import ToothIcon from "@/components/icons/ToothIcon";
 
@@ -138,6 +139,15 @@ export default function Footer() {
                   </Link>
                 </li>
               ))}
+              <li>
+                <button
+                  type="button"
+                  onClick={openCookieSettings}
+                  className="text-[14px] text-white/70 hover:text-white transition-colors"
+                >
+                  Cookie settings
+                </button>
+              </li>
             </ul>
           </div>
         </div>
