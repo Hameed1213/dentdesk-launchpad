@@ -7,4 +7,7 @@
   // Keep variables set in the Cloudflare dashboard when GitHub deploys run
   // (without this, each deploy wipes plain-text dashboard variables).
   "keep_vars": true,
+  // Logs on (Cloudflare: Observability -> Logs). Set here, or the next GitHub
+  // deploy turns off a switch flipped in the dashboard.
+  "observability": { "enabled": true },
 }
