@@ -115,9 +115,10 @@ export const Route = createFileRoute("/api/public/verify-waitlist-signup")({
           // ---- 3. Save on the ops project
           const joinRes = await fetch(`${opsUrl()}/rest/v1/rpc/marketing_waitlist_join`, {
             method: "POST",
+            // apikey only: works with a legacy anon JWT or a new sb_publishable_
+            // key (which the gateway refuses as a Bearer token).
             headers: {
               apikey: opsAnonKey,
-              Authorization: `Bearer ${opsAnonKey}`,
               "Content-Type": "application/json",
             },
             body: JSON.stringify({
