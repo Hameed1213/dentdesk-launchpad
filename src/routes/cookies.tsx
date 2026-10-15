@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import LegalLayout, { LegalSection } from "@/components/legal/LegalLayout";
+import { openCookieSettings } from "@/lib/cookieConsent";
 
 export const Route = createFileRoute("/cookies")({
   component: CookiesPage,
@@ -34,7 +35,7 @@ function CookiesPage() {
       </LegalSection>
 
       <LegalSection heading="What cookies we use">
-        <p>We use a minimal set of cookies:</p>
+        <p>We use a minimal set of cookies. Analytics cookies are only used if you agree.</p>
       </LegalSection>
 
       <LegalSection heading="Essential cookies">
@@ -49,9 +50,15 @@ function CookiesPage() {
         </ul>
       </LegalSection>
 
-      <LegalSection heading="Analytics cookies">
+      <LegalSection heading="Analytics cookies (only if you accept)">
         <p>
-          We do not currently use any third-party analytics or tracking cookies. We do not use Google Analytics, Meta Pixel or any advertising cookies.
+          On dentdock.co.uk we use Google Analytics to see how many people visit and which pages they use. It sets the cookies <strong className="text-[#0F172A] font-semibold">_ga</strong> and <strong className="text-[#0F172A] font-semibold">_ga_RVEYZHHMEC</strong>, which last up to two years. They are only set if you click Accept on the cookie banner, and are removed if you change your mind. Google provides this service for us.
+        </p>
+        <p>
+          We do not use advertising cookies or social media tracking pixels. The practice app and the online booking site do not use analytics cookies.
+        </p>
+        <p>
+          <button type="button" onClick={openCookieSettings} className="text-[#2563EB] hover:underline">Change your cookie choice</button>
         </p>
       </LegalSection>
 
@@ -63,7 +70,7 @@ function CookiesPage() {
 
       <LegalSection heading="Marketing site (dentdock.co.uk)">
         <p>
-          The marketing site uses no tracking cookies. Your email address submitted via the waitlist form is stored in our database only and is not shared with any advertising platform.
+          Apart from Google Analytics (only if you accept), the website sets one cookie of its own provider, Cloudflare (<strong className="text-[#0F172A] font-semibold">__cf_bm</strong>), which protects the site from automated abuse and lasts 30 minutes. Your details submitted via the waitlist form are stored in our database only and are not shared with any advertising platform.
         </p>
       </LegalSection>
 

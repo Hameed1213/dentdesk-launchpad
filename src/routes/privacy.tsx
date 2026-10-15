@@ -60,7 +60,7 @@ function PrivacyPage() {
           <strong className="text-[#0F172A] font-semibold">Messages</strong> — emails (and, once available, text messages) sent to patients through Dent Dock, and messages you send to our support team.
         </p>
         <p>
-          <strong className="text-[#0F172A] font-semibold">Technical data</strong> — error reports from the app, used to find and fix problems. We do not use advertising or tracking tools.
+          <strong className="text-[#0F172A] font-semibold">Technical data</strong> — error reports from the app, used to find and fix problems. On dentdock.co.uk only, and only if you accept analytics cookies, Google Analytics records how the website is used. We do not use advertising tools. See our <a href="/cookies" className="text-[#2563EB] hover:underline">Cookie Policy</a>.
         </p>
         <p>
           <strong className="text-[#0F172A] font-semibold">Website waitlist</strong> — if you join the waitlist on dentdock.co.uk, your email address, practice name and role.
@@ -99,6 +99,7 @@ function PrivacyPage() {
           <li><strong className="text-[#0F172A] font-semibold">Resend</strong> — sending emails.</li>
           <li><strong className="text-[#0F172A] font-semibold">Vercel</strong> — hosting the practice app and the online booking site.</li>
           <li><strong className="text-[#0F172A] font-semibold">Cloudflare</strong> — protecting online booking and waitlist forms from automated abuse, and hosting dentdock.co.uk.</li>
+          <li><strong className="text-[#0F172A] font-semibold">Google</strong> — website analytics on dentdock.co.uk, only if you accept analytics cookies, and website fonts. Google never receives patient data.</li>
         </ul>
         <p>
           We do not send text messages yet. Before we do, we will add the text message provider to this list and tell practices.
@@ -107,7 +108,7 @@ function PrivacyPage() {
 
       <LegalSection heading="Where data is stored">
         <p>
-          Our database and files are stored in London, UK. Some of the companies above (Stripe, Resend, Vercel and Cloudflare) may process data outside the UK, including in the United States. Where that happens, we rely on the protections UK data protection law requires, such as UK adequacy regulations or the UK International Data Transfer Agreement.
+          Our database and files are stored in London, UK. Some of the companies above (Stripe, Resend, Vercel, Cloudflare and Google) may process data outside the UK, including in the United States. Where that happens, we rely on the protections UK data protection law requires, such as UK adequacy regulations or the UK International Data Transfer Agreement.
         </p>
       </LegalSection>
 
@@ -149,7 +150,7 @@ function PrivacyPage() {
 
       <LegalSection heading="Cookies">
         <p>
-          We only use what is needed to keep you signed in. See our <a href="/cookies" className="text-[#2563EB] hover:underline">Cookie Policy</a>.
+          In the app we only use what is needed to keep you signed in. On dentdock.co.uk we use analytics cookies only if you accept them. See our <a href="/cookies" className="text-[#2563EB] hover:underline">Cookie Policy</a>.
         </p>
       </LegalSection>
 
