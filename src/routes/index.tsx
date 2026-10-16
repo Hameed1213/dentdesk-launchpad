@@ -85,7 +85,7 @@ export const Route = createFileRoute("/")({
               name: "Can I import my existing patients?",
               acceptedAnswer: {
                 "@type": "Answer",
-                text: "Yes. We support direct imports from Dentally, Software of Excellence (EXACT), Curve Dental, Carestream R4 and Practiceworks. Upload a CSV and we handle the rest automatically.",
+                text: "Yes. Export your patient list as a CSV from your current system and upload it. Dent Dock matches the columns for you.",
               },
             },
             {

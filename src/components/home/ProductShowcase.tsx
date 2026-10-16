@@ -17,8 +17,6 @@ import {
   Shield,
   Zap,
   Plus,
-  Paperclip,
-  Send,
 } from "lucide-react";
 import ToothIcon from "@/components/icons/ToothIcon";
 
@@ -40,7 +38,7 @@ const tabDescriptions = [
   "Branded booking page your patients actually want to use",
   "Stripe deposits, payment links and card on arrival",
   "Automated sequences that run without you",
-  "All patient messages in one place",
+  "Every message sent to a patient, in one place",
 ];
 
 const tabUrls = [
@@ -832,7 +830,7 @@ function InboxMockup() {
       bg: "#dbeafe",
       color: "#2563EB",
       name: "Sarah Mitchell",
-      preview: "Haven't paid the deposit yet...",
+      preview: "Reminder: your appointment tomorrow",
       time: "2m",
       unread: true,
       active: true,
@@ -842,7 +840,7 @@ function InboxMockup() {
       bg: "#dcfce7",
       color: "#16a34a",
       name: "James T.",
-      preview: "Reminder received, see you then!",
+      preview: "Your appointment is confirmed",
       time: "1h",
       unread: false,
       active: false,
@@ -852,7 +850,7 @@ function InboxMockup() {
       bg: "#faf5ff",
       color: "#7c3aed",
       name: "Maria L.",
-      preview: "Can I get a receipt for today?",
+      preview: "Please fill in your health form",
       time: "3h",
       unread: true,
       active: false,
@@ -861,19 +859,19 @@ function InboxMockup() {
 
   const messages = [
     {
-      type: "inbound",
-      text: "Hi, I booked online but haven't paid my deposit yet, how do I pay?",
-      time: "10:14am",
-    },
-    {
       type: "outbound",
-      text: "No problem — here's your deposit link: pay.dentdock.co.uk/sarah",
-      time: "10:16am",
+      text: "Hi Sarah, your hygiene appointment at Smile Dental is booked for Thu 14 Nov at 10:30am.",
+      time: "Mon 9:02am",
     },
     {
       type: "automated",
-      text: "Payment of £80 received from Sarah Mitchell",
-      time: "10:19am",
+      text: "Health form completed by Sarah Mitchell",
+      time: "Mon 6:40pm",
+    },
+    {
+      type: "outbound",
+      text: "Hi Sarah, a reminder that we'll see you tomorrow at 10:30am. Call us if you need to change it.",
+      time: "10:00am",
     },
   ];
 
@@ -995,16 +993,6 @@ function InboxMockup() {
             })}
           </div>
 
-          {/* Composer */}
-          <div className="border-t border-[#E2E8F0] bg-white p-3 flex items-center gap-2 flex-shrink-0">
-            <Paperclip size={14} className="text-[#64748b]" />
-            <div className="flex-1 h-8 bg-[#F8FAFC] border border-[#E2E8F0] rounded-full px-3 flex items-center text-[11px] text-[#94a3b8]">
-              Reply to Sarah Mitchell…
-            </div>
-            <button className="w-8 h-8 rounded-full bg-[#2563EB] flex items-center justify-center text-white">
-              <Send size={13} />
-            </button>
-          </div>
         </div>
       </div>
     </div>
@@ -1045,10 +1033,10 @@ const tabContent = [
     buttonText: "See automations",
   },
   {
-    badge: "One Conversation",
-    title: "Every patient message in one inbox",
+    badge: "One Place",
+    title: "Every patient message in one place",
     description:
-      "Every patient SMS message in one place. Reply, send payment links and forms, with full patient history one tap away.",
+      "Every confirmation, reminder, recall and form Dent Dock sends a patient, in one place, with their full history one tap away.",
     buttonText: "See the inbox",
   },
 ];

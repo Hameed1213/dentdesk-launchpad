@@ -854,7 +854,7 @@ function TalkToAHumanVisual() {
                   fontWeight: 500,
                 }}
               >
-                Want to take 50% deposits on whitening and Invisalign. Possible?
+                Can we stop recall reminders going out on Sundays?
               </div>
               <p style={{ fontSize: "9px", color: "#94A3B8", fontWeight: 500 }}>You · 09:42</p>
             </div>
@@ -875,8 +875,8 @@ function TalkToAHumanVisual() {
                   fontWeight: 500,
                 }}
               >
-                Yes, set the deposit on each service in Settings → Services. Want me to walk you
-                through it on a quick call?
+                Yes, in Settings → Recalls you can choose the send hours and skip Sundays and bank
+                holidays. Want me to walk you through it?
               </div>
               <p style={{ fontSize: "9px", color: "#94A3B8", fontWeight: 500 }}>
                 Sarah · 09:46
@@ -1568,9 +1568,9 @@ const categories: Category[] = [
     title: "Patient communications",
     rows: [
       { feature: "Automated SMS + email reminders", dentDock: yes(), dentally: yes() },
-      { feature: "Pre-built automation flows", dentDock: yes("29 seeded on signup"), dentally: no("Manual configuration") },
+      { feature: "Pre-built automation flows", dentDock: yes("Ready-made on signup"), dentally: no("Manual configuration") },
       { feature: "SMS sender shows practice name", dentDock: yes(), dentally: yes() },
-      { feature: "Two-way SMS inbox", dentDock: yes(), dentally: no("Not specified") },
+      { feature: "Two-way SMS inbox", dentDock: no(), dentally: no("Not specified") },
       { feature: "Internal team chat", dentDock: no("On the roadmap"), dentally: no("Not specified") },
       { feature: "Marketing vs transactional consent classifier", dentDock: yes(), dentally: no("Not specified") },
     ],
@@ -1627,7 +1627,7 @@ const categories: Category[] = [
       { feature: "WhatsApp support line", dentDock: yes(), dentally: no() },
       { feature: "Email support", dentDock: yes(), dentally: yes() },
       { feature: "Phone support", dentDock: no("On the roadmap"), dentally: yes() },
-      { feature: "Chat support", dentDock: yes(), dentally: no("Not specified") },
+      { feature: "Chat support", dentDock: yes("By WhatsApp"), dentally: no("Not specified") },
       { feature: "Dedicated consultant", dentDock: no(), dentally: yes("One assigned per practice") },
       { feature: "Customer success manager", dentDock: no(), dentally: yes() },
     ],
