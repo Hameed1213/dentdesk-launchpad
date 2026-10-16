@@ -865,7 +865,7 @@ function TalkToAHumanVisual() {
                   fontWeight: 500,
                 }}
               >
-                Want to take 50% deposits on whitening and Invisalign. Possible?
+                Can we stop recall reminders going out on Sundays?
               </div>
               <p style={{ fontSize: "9px", color: "#94A3B8", fontWeight: 500 }}>You · 09:42</p>
             </div>
@@ -886,8 +886,8 @@ function TalkToAHumanVisual() {
                   fontWeight: 500,
                 }}
               >
-                Yes, set the deposit on each service in Settings → Services. Want me to walk you
-                through it on a quick call?
+                Yes, in Settings → Recalls you can choose the send hours and skip Sundays and bank
+                holidays. Want me to walk you through it?
               </div>
               <p style={{ fontSize: "9px", color: "#94A3B8", fontWeight: 500 }}>
                 Sarah · 09:46
@@ -1347,7 +1347,7 @@ const dentDockFit = [
   "Single-site UK private practices",
   "24/7 patient booking, without the phone calls",
   "Replacing manual reminders, recalls and forms",
-  "Taking deposits and reducing no-shows",
+  "Reducing no-shows with reminders that go out on their own",
   "Putting private treatment and patient experience first",
 ];
 
@@ -1581,9 +1581,9 @@ const categories: Category[] = [
     title: "Patient communications",
     rows: [
       { feature: "Automated SMS + email reminders", dentDock: yes(), dentally: yes() },
-      { feature: "Pre-built automation flows", dentDock: yes("29 seeded on signup"), dentally: no() },
+      { feature: "Pre-built automation flows", dentDock: yes("Ready-made on signup"), dentally: no() },
       { feature: "SMS sender shows practice name", dentDock: yes(), dentally: yes() },
-      { feature: "Two-way SMS inbox", dentDock: yes(), dentally: yes() },
+      { feature: "Two-way SMS inbox", dentDock: no("Coming soon"), dentally: yes() },
       { feature: "Internal team chat", dentDock: no("On the roadmap"), dentally: yes() },
       { feature: "Marketing vs transactional consent classifier", dentDock: yes(), dentally: yes() },
     ],
@@ -1611,10 +1611,10 @@ const categories: Category[] = [
   {
     title: "Payments",
     rows: [
-      { feature: "Send payment links", dentDock: yes(), dentally: yes() },
-      { feature: "Late-cancellation fees", dentDock: yes(), dentally: yes() },
+      { feature: "Send payment links", dentDock: no("Coming soon"), dentally: yes() },
+      { feature: "Late-cancellation fees", dentDock: no("Coming soon"), dentally: yes() },
       { feature: "Patient receipts", dentDock: yes(), dentally: yes() },
-      { feature: "Deposit collection at booking", dentDock: yes(), dentally: yes("Essentials+ only") },
+      { feature: "Deposit collection at booking", dentDock: no("Coming soon"), dentally: yes("Essentials+ only") },
     ],
   },
   {
@@ -1640,7 +1640,7 @@ const categories: Category[] = [
       { feature: "WhatsApp support line", dentDock: yes(), dentally: no() },
       { feature: "Email support", dentDock: yes(), dentally: yes() },
       { feature: "Phone support", dentDock: no("On the roadmap"), dentally: yes("Essentials+ only") },
-      { feature: "Chat support", dentDock: yes(), dentally: yes() },
+      { feature: "Chat support", dentDock: yes("By WhatsApp"), dentally: yes() },
       { feature: "Customer success manager", dentDock: no(), dentally: yes("Essentials+ only") },
     ],
   },

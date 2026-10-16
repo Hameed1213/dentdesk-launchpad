@@ -17,8 +17,6 @@ import {
   Shield,
   Zap,
   Plus,
-  Paperclip,
-  Send,
 } from "lucide-react";
 import ToothIcon from "@/components/icons/ToothIcon";
 
@@ -38,9 +36,9 @@ const tabIcons = [CalendarDays, Globe, CreditCard, RefreshCw, MessageSquare];
 const tabDescriptions = [
   "Day, week and month views with drag and drop",
   "Branded booking page your patients actually want to use",
-  "Stripe deposits, payment links and card on arrival",
+  "Every payment recorded, with receipts",
   "Automated sequences that run without you",
-  "All patient messages in one place",
+  "Every message sent to a patient, in one place",
 ];
 
 const tabUrls = [
@@ -474,7 +472,7 @@ function PaymentsMockup() {
       name: "Sarah M.",
       service: "Whitening",
       amount: "£80",
-      method: "Visa ···· 4242",
+      method: "Card machine",
       status: "Paid",
       statusBg: "#dcfce7",
       statusColor: "#16a34a",
@@ -486,7 +484,7 @@ function PaymentsMockup() {
       name: "James T.",
       service: "Hygiene",
       amount: "£90",
-      method: "Payment link",
+      method: "Bank transfer",
       status: "Paid",
       statusBg: "#dcfce7",
       statusColor: "#16a34a",
@@ -498,7 +496,7 @@ function PaymentsMockup() {
       name: "Maria L.",
       service: "Implant",
       amount: "£150",
-      method: "Visa ···· 1234",
+      method: "Card machine",
       status: "Paid",
       statusBg: "#dcfce7",
       statusColor: "#16a34a",
@@ -522,7 +520,7 @@ function PaymentsMockup() {
       name: "Emma W.",
       service: "Whitening",
       amount: "£350",
-      method: "Online",
+      method: "Card machine",
       status: "Paid",
       statusBg: "#dcfce7",
       statusColor: "#16a34a",
@@ -832,7 +830,7 @@ function InboxMockup() {
       bg: "#dbeafe",
       color: "#2563EB",
       name: "Sarah Mitchell",
-      preview: "Haven't paid the deposit yet...",
+      preview: "Reminder: your appointment tomorrow",
       time: "2m",
       unread: true,
       active: true,
@@ -842,7 +840,7 @@ function InboxMockup() {
       bg: "#dcfce7",
       color: "#16a34a",
       name: "James T.",
-      preview: "Reminder received, see you then!",
+      preview: "Your appointment is confirmed",
       time: "1h",
       unread: false,
       active: false,
@@ -852,7 +850,7 @@ function InboxMockup() {
       bg: "#faf5ff",
       color: "#7c3aed",
       name: "Maria L.",
-      preview: "Can I get a receipt for today?",
+      preview: "Please fill in your health form",
       time: "3h",
       unread: true,
       active: false,
@@ -861,19 +859,19 @@ function InboxMockup() {
 
   const messages = [
     {
-      type: "inbound",
-      text: "Hi, I booked online but haven't paid my deposit yet, how do I pay?",
-      time: "10:14am",
-    },
-    {
       type: "outbound",
-      text: "No problem — here's your deposit link: pay.dentdock.co.uk/sarah",
-      time: "10:16am",
+      text: "Hi Sarah, your hygiene appointment at Smile Dental is booked for Thu 14 Nov at 10:30am.",
+      time: "Mon 9:02am",
     },
     {
       type: "automated",
-      text: "Payment of £80 received from Sarah Mitchell",
-      time: "10:19am",
+      text: "Health form completed by Sarah Mitchell",
+      time: "Mon 6:40pm",
+    },
+    {
+      type: "outbound",
+      text: "Hi Sarah, a reminder that we'll see you tomorrow at 10:30am. Call us if you need to change it.",
+      time: "10:00am",
     },
   ];
 
@@ -997,13 +995,9 @@ function InboxMockup() {
 
           {/* Composer */}
           <div className="border-t border-[#E2E8F0] bg-white p-3 flex items-center gap-2 flex-shrink-0">
-            <Paperclip size={14} className="text-[#64748b]" />
-            <div className="flex-1 h-8 bg-[#F8FAFC] border border-[#E2E8F0] rounded-full px-3 flex items-center text-[11px] text-[#94a3b8]">
-              Reply to Sarah Mitchell…
+            <div className="flex-1 h-8 bg-[#F8FAFC] border border-[#E2E8F0] rounded-full px-3 flex items-center justify-center text-[11px] text-[#94a3b8]">
+              Two-way texting coming soon
             </div>
-            <button className="w-8 h-8 rounded-full bg-[#2563EB] flex items-center justify-center text-white">
-              <Send size={13} />
-            </button>
           </div>
         </div>
       </div>
@@ -1020,21 +1014,21 @@ const tabContent = [
     badge: "Smart Scheduling",
     title: "A calendar that runs your day for you",
     description:
-      "Drag and drop appointments, see your whole team at a glance, and let Dent Dock handle reminders, deposits and confirmations automatically.",
+      "Drag and drop appointments, see your whole team at a glance, and let Dent Dock handle reminders and confirmations automatically.",
     buttonText: "See the calendar",
   },
   {
     badge: "Patient-Facing",
     title: "A booking page patients actually want to use",
     description:
-      "Branded to your practice, mobile-first and live 24/7. Patients book in seconds, pay deposits instantly and manage their appointments through their own patient portal.",
+      "Branded to your practice, mobile-first and live 24/7. Patients book in seconds and manage their appointments through their own patient portal.",
     buttonText: "See booking pages",
   },
   {
     badge: "Get Paid Faster",
-    title: "Payments, deposits and links. All built in",
+    title: "Every payment in one place",
     description:
-      "Take deposits, track every transaction and see your monthly revenue at a glance. No chasing. No guessing.",
+      "Record card machine, cash and bank payments at the desk, send receipts and see your monthly revenue at a glance. Online deposits and payment links are coming soon.",
     buttonText: "See payments",
   },
   {
@@ -1045,10 +1039,10 @@ const tabContent = [
     buttonText: "See automations",
   },
   {
-    badge: "One Conversation",
-    title: "Every patient message in one inbox",
+    badge: "One Place",
+    title: "Every patient message in one place",
     description:
-      "Every patient SMS message in one place. Reply, send payment links and forms, with full patient history one tap away.",
+      "Every confirmation, reminder and recall sent to a patient, in one place, with their full history one tap away. Two-way texting is coming soon.",
     buttonText: "See the inbox",
   },
 ];

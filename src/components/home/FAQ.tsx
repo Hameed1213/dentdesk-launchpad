@@ -13,7 +13,7 @@ export default function FAQ() {
       id: "item-2",
       question: "Can I import my existing patients?",
       answer:
-        "Yes. We support direct imports from Dentally, Software of Excellence (EXACT), Curve Dental, Carestream R4 and Practiceworks. Upload a CSV and we handle the rest automatically.",
+        "Yes. Export your patient list as a CSV from your current system and upload it. Dent Dock matches the columns for you.",
     },
     {
       id: "item-3",
