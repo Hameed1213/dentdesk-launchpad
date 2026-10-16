@@ -28,7 +28,7 @@ export default function PricingCTA() {
     "Online booking page",
     "Patient records & notes",
     "Automated reminders & recalls",
-    "Payments & receipts",
+    "Payments & deposits",
     "Forms & questionnaires",
     "Advanced analytics & reports",
     "Priority WhatsApp support",

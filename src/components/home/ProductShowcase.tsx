@@ -36,7 +36,7 @@ const tabIcons = [CalendarDays, Globe, CreditCard, RefreshCw, MessageSquare];
 const tabDescriptions = [
   "Day, week and month views with drag and drop",
   "Branded booking page your patients actually want to use",
-  "Every payment recorded, with receipts",
+  "Stripe deposits, payment links and card on arrival",
   "Automated sequences that run without you",
   "Every message sent to a patient, in one place",
 ];
@@ -472,7 +472,7 @@ function PaymentsMockup() {
       name: "Sarah M.",
       service: "Whitening",
       amount: "£80",
-      method: "Card machine",
+      method: "Visa ···· 4242",
       status: "Paid",
       statusBg: "#dcfce7",
       statusColor: "#16a34a",
@@ -484,7 +484,7 @@ function PaymentsMockup() {
       name: "James T.",
       service: "Hygiene",
       amount: "£90",
-      method: "Bank transfer",
+      method: "Payment link",
       status: "Paid",
       statusBg: "#dcfce7",
       statusColor: "#16a34a",
@@ -496,7 +496,7 @@ function PaymentsMockup() {
       name: "Maria L.",
       service: "Implant",
       amount: "£150",
-      method: "Card machine",
+      method: "Visa ···· 1234",
       status: "Paid",
       statusBg: "#dcfce7",
       statusColor: "#16a34a",
@@ -520,7 +520,7 @@ function PaymentsMockup() {
       name: "Emma W.",
       service: "Whitening",
       amount: "£350",
-      method: "Card machine",
+      method: "Online",
       status: "Paid",
       statusBg: "#dcfce7",
       statusColor: "#16a34a",
@@ -993,12 +993,6 @@ function InboxMockup() {
             })}
           </div>
 
-          {/* Composer */}
-          <div className="border-t border-[#E2E8F0] bg-white p-3 flex items-center gap-2 flex-shrink-0">
-            <div className="flex-1 h-8 bg-[#F8FAFC] border border-[#E2E8F0] rounded-full px-3 flex items-center justify-center text-[11px] text-[#94a3b8]">
-              Two-way texting coming soon
-            </div>
-          </div>
         </div>
       </div>
     </div>
@@ -1014,21 +1008,21 @@ const tabContent = [
     badge: "Smart Scheduling",
     title: "A calendar that runs your day for you",
     description:
-      "Drag and drop appointments, see your whole team at a glance, and let Dent Dock handle reminders and confirmations automatically.",
+      "Drag and drop appointments, see your whole team at a glance, and let Dent Dock handle reminders, deposits and confirmations automatically.",
     buttonText: "See the calendar",
   },
   {
     badge: "Patient-Facing",
     title: "A booking page patients actually want to use",
     description:
-      "Branded to your practice, mobile-first and live 24/7. Patients book in seconds and manage their appointments through their own patient portal.",
+      "Branded to your practice, mobile-first and live 24/7. Patients book in seconds, pay deposits instantly and manage their appointments through their own patient portal.",
     buttonText: "See booking pages",
   },
   {
     badge: "Get Paid Faster",
-    title: "Every payment in one place",
+    title: "Payments, deposits and links. All built in",
     description:
-      "Record card machine, cash and bank payments at the desk, send receipts and see your monthly revenue at a glance. Online deposits and payment links are coming soon.",
+      "Take deposits, track every transaction and see your monthly revenue at a glance. No chasing. No guessing.",
     buttonText: "See payments",
   },
   {
@@ -1042,7 +1036,7 @@ const tabContent = [
     badge: "One Place",
     title: "Every patient message in one place",
     description:
-      "Every confirmation, reminder and recall sent to a patient, in one place, with their full history one tap away. Two-way texting is coming soon.",
+      "Every confirmation, reminder, recall and form Dent Dock sends a patient, in one place, with their full history one tap away.",
     buttonText: "See the inbox",
   },
 ];

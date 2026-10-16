@@ -1336,7 +1336,7 @@ const dentDockFit = [
   "Single-site UK private practices",
   "24/7 patient booking, without the phone calls",
   "Replacing manual reminders, recalls and forms",
-  "Reducing no-shows with reminders that go out on their own",
+  "Taking deposits and reducing no-shows",
   "Putting private treatment and patient experience first",
 ];
 
@@ -1570,7 +1570,7 @@ const categories: Category[] = [
       { feature: "Automated SMS + email reminders", dentDock: yes(), dentally: yes() },
       { feature: "Pre-built automation flows", dentDock: yes("Ready-made on signup"), dentally: no("Manual configuration") },
       { feature: "SMS sender shows practice name", dentDock: yes(), dentally: yes() },
-      { feature: "Two-way SMS inbox", dentDock: no("Coming soon"), dentally: no("Not specified") },
+      { feature: "Two-way SMS inbox", dentDock: no(), dentally: no("Not specified") },
       { feature: "Internal team chat", dentDock: no("On the roadmap"), dentally: no("Not specified") },
       { feature: "Marketing vs transactional consent classifier", dentDock: yes(), dentally: no("Not specified") },
     ],
@@ -1598,10 +1598,10 @@ const categories: Category[] = [
   {
     title: "Payments",
     rows: [
-      { feature: "Send payment links", dentDock: no("Coming soon"), dentally: yes("Via Patient App") },
-      { feature: "Late-cancellation fees", dentDock: no("Coming soon"), dentally: no("Not specified") },
+      { feature: "Send payment links", dentDock: yes(), dentally: yes("Via Patient App") },
+      { feature: "Late-cancellation fees", dentDock: yes(), dentally: no("Not specified") },
       { feature: "Patient receipts", dentDock: yes(), dentally: yes() },
-      { feature: "Deposit collection at booking", dentDock: no("Coming soon"), dentally: no("Not specified") },
+      { feature: "Deposit collection at booking", dentDock: yes(), dentally: no("Not specified") },
     ],
   },
   {
