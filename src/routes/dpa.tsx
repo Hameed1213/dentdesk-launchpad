@@ -25,7 +25,7 @@ export const Route = createFileRoute("/dpa")({
 
 function DpaPage() {
   return (
-    <LegalLayout title="Data Processing Agreement" updated="16 October 2026">
+    <LegalLayout title="Data Processing Agreement" updated="20 October 2026">
       <p>
         This Data Processing Agreement ("DPA") is between the dental practice that holds a Dent Dock account (the "Practice") and PARADIGM NETWORK LIMITED, trading as Dent Dock, a company registered in England and Wales (company number 16903048), whose registered office is at 11 Dronfield Road, Salford, M6 7FN ("Dent Dock", "we", "us").
       </p>
@@ -51,7 +51,7 @@ function DpaPage() {
 
       <LegalSection heading="4. Our people">
         <p>
-          Only people who need access to provide, support or secure the service can access personal data, and they are bound by confidentiality. Our team signs in to a Practice's account only to help the Practice or to keep the service working, through a named "Dent Dock Support" user. Each support session is short, is recorded, and the record can be seen by the Practice.
+          Only people who need access to provide, support or secure the service can access personal data, and they are bound by confidentiality. Our team signs in to a Practice's account only to help the Practice or to keep the service working, through a named "Dent Dock Support" user. Each support session is short, is recorded, and the record can be seen by the Practice. Once the Practice's account has closed, we can no longer start a support session, and when the Practice's data is deleted under section 10, the "Dent Dock Support" user is deleted with it. We keep our own record of each support session (who, when and why) for 24 months.
         </p>
       </LegalSection>
 
@@ -121,7 +121,7 @@ function DpaPage() {
       <LegalSection heading="Annex 1: Details of the processing">
         <p><strong className="text-[#0F172A] font-semibold">Subject matter</strong> — providing Dent Dock, practice management software for dental practices, to the Practice.</p>
         <p><strong className="text-[#0F172A] font-semibold">Duration</strong> — for as long as the Practice has an account, and until its data is returned or deleted under section 10.</p>
-        <p><strong className="text-[#0F172A] font-semibold">Nature and purpose</strong> — storing and organising records; online booking and the patient portal; forms; appointment reminders, recalls and other messages; recording payments; reporting; support; and keeping the service secure.</p>
+        <p><strong className="text-[#0F172A] font-semibold">Nature and purpose</strong> — storing and organising records; online booking and the patient portal; forms; appointment reminders, recalls and other messages; recording payments; reporting, including counting how many people reach, finish and book after a treatment's health form during online booking (daily totals per treatment, which contain no personal data and use no cookies or device storage); support; and keeping the service secure.</p>
         <p><strong className="text-[#0F172A] font-semibold">Types of personal data</strong> — name, date of birth, contact details, address, appointments, dental and treatment notes, form answers, signatures, files and images, payment records, messages, and communication preferences.</p>
         <p><strong className="text-[#0F172A] font-semibold">Special category data</strong> — health data, including medical history, medicines, allergies and dental records.</p>
         <p><strong className="text-[#0F172A] font-semibold">Data subjects</strong> — the Practice's patients (including children), their parents, guardians or carers, and the Practice's staff.</p>

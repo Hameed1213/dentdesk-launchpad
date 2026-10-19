@@ -27,7 +27,7 @@ export const Route = createFileRoute("/cookies")({
 
 function CookiesPage() {
   return (
-    <LegalLayout title="Cookie Policy" updated="16 October 2026">
+    <LegalLayout title="Cookie Policy" updated="20 October 2026">
       <LegalSection heading="What are cookies">
         <p>
           Cookies are small text files stored on your device when you visit a website. They help us provide a working, secure experience.
@@ -47,6 +47,15 @@ function CookiesPage() {
           <li>
             <strong className="text-[#0F172A] font-semibold">Onboarding progress</strong> — stores your setup wizard progress locally so you can resume if you close the browser. Stored in localStorage, not a cookie.
           </li>
+          <li>
+            <strong className="text-[#0F172A] font-semibold">Practice app preferences</strong> — screen choices in the practice app, such as the calendar view, filters and the last clinician or treatment picked. Stored in localStorage, not a cookie.
+          </li>
+          <li>
+            <strong className="text-[#0F172A] font-semibold">Booking page cookie choice</strong> — remembers whether a patient accepted or rejected cookies on a practice's booking page (<strong className="text-[#0F172A] font-semibold">dd_tracking_consent_v1</strong>). Stored in localStorage, not a cookie, and only on booking pages where the practice has added its own analytics or advertising account.
+          </li>
+          <li>
+            <strong className="text-[#0F172A] font-semibold">Patient portal to booking</strong> — when a signed-in patient chooses to book from the patient portal, their name, contact details and date of birth are passed to the booking page so they do not have to type them again. Stored in the browser tab's session storage and removed as soon as the booking page has read them.
+          </li>
         </ul>
       </LegalSection>
 
@@ -59,6 +68,9 @@ function CookiesPage() {
         </p>
         <p>
           Patients can change their choice at any time with "Cookie settings" at the bottom of the booking page.
+        </p>
+        <p>
+          Separately, for every practice, Dent Dock counts how many people reach, finish and book after a treatment's health form during online booking. These are daily totals with no details about anyone, and they use no cookies and store nothing on the device, so they do not depend on the cookie choice.
         </p>
       </LegalSection>
 

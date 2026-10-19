@@ -26,7 +26,7 @@ export const Route = createFileRoute("/privacy")({
 
 function PrivacyPage() {
   return (
-    <LegalLayout title="Privacy Policy" updated="16 October 2026">
+    <LegalLayout title="Privacy Policy" updated="20 October 2026">
       <LegalSection heading="Who we are">
         <p>
           Dent Dock is a dental practice management platform. Dent Dock is a trading name of PARADIGM NETWORK LIMITED, a company registered in England and Wales (company number 16903048), whose registered office is at 11 Dronfield Road, Salford, M6 7FN. Our ICO registration number is ZC132966.
@@ -52,6 +52,9 @@ function PrivacyPage() {
         </p>
         <p>
           <strong className="text-[#0F172A] font-semibold">Patient data (held for the practice)</strong> — name, date of birth, contact details, appointments, medical history and notes, form answers, payments and communication preferences. This is entered by practice staff or given by patients when they book online, fill in a form or use the patient portal.
+        </p>
+        <p>
+          <strong className="text-[#0F172A] font-semibold">Online booking form totals (for the practice)</strong> — when a patient books online for a treatment that has a health form, we count, for the practice, how many people reach the form, how many finish it and how many go on to book. These are daily totals for each treatment. They contain no names, contact details, answers or other details about anyone, we cannot tell who a count came from, and we do not use cookies or store anything on the patient's device to make them. Every visitor is counted, whether or not they accept cookies.
         </p>
         <p>
           <strong className="text-[#0F172A] font-semibold">Payment data</strong> — subscription and payment records. Card details are handled by Stripe and are never stored by Dent Dock.
@@ -89,6 +92,9 @@ function PrivacyPage() {
         <p>
           If a practice needs help, a member of the Dent Dock team may sign in to that practice's account through a named "Dent Dock Support" user. Each support session is short, is recorded, and the record can be seen by the practice.
         </p>
+        <p>
+          Once a practice's account has closed, we can no longer sign in to it this way. When the practice's data is deleted, the "Dent Dock Support" user is deleted with it. We keep our own record of each support session (who signed in, when and why) for 24 months.
+        </p>
       </LegalSection>
 
       <LegalSection heading="Who we share data with">
@@ -121,6 +127,15 @@ function PrivacyPage() {
         </p>
         <p>
           <strong className="text-[#0F172A] font-semibold">Financial records</strong> — six years, as required by UK tax law.
+        </p>
+        <p>
+          <strong className="text-[#0F172A] font-semibold">Error reports</strong> — until 12 months after the problem is marked as fixed. If the same problem happens again, it is reopened and kept.
+        </p>
+        <p>
+          <strong className="text-[#0F172A] font-semibold">Records of support sessions</strong> — 24 months.
+        </p>
+        <p>
+          <strong className="text-[#0F172A] font-semibold">Online booking form totals</strong> — for as long as the practice has an account. They contain no personal data.
         </p>
         <p>
           <strong className="text-[#0F172A] font-semibold">Patient data</strong> — kept on the practice's instructions. UK guidance is that dental records are kept for 11 years after the last treatment for adults, and for children until they are 25 or for 11 years, whichever is longer. When a practice's account closes, we return its data or delete it, as the practice chooses, within 90 days.
