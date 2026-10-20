@@ -1138,7 +1138,7 @@ const tabContent = [
     badge: "For Patients",
     title: "A patient portal that saves your reception calls",
     description:
-      "Patients sign in with a link sent to their email. No password, no app. They can see their appointments, cancel or move them, fill in their forms, download receipts and keep their details up to date. Families can share one email.",
+      "Patients sign in with a link from their email, no password or app needed. From there they can move or cancel appointments, fill in forms, download receipts and update their details.",
     buttonText: "See the patient portal",
   },
   {
