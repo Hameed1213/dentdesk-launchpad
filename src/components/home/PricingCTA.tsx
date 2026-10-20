@@ -25,18 +25,12 @@ export default function PricingCTA() {
       priceSuffix: "/mo",
       note: "",
       features: [
-        "1 location",
-        "Unlimited dentists & staff permissions",
-        "Calendar & scheduling",
-        "Online booking page",
-        "Patient portal",
-        "Patient records & notes",
+        "Unlimited dentists & staff",
+        "Online booking & patient portal",
         "Automated reminders & recalls",
-        "200 free text messages a month, then pay per text",
-        "Unlimited emails",
+        "200 free texts a month",
         "Payments & deposits",
-        "Forms & questionnaires",
-        "Advanced analytics & reports",
+        "Digital forms & medical history",
         "Ad tracking & booking sources",
         "Priority WhatsApp support",
         AND_MORE,
@@ -45,37 +39,32 @@ export default function PricingCTA() {
     {
       name: "Multi-site",
       price: "Coming soon",
-      note: "For practices with more than one site",
+      note: "",
       comingSoon: true,
       features: [
         "Everything in Starter",
-        "Owner overview: analytics, money, bookings and recalls for every site, together or one at a time",
-        "Up to 5 sites under one login, switch in one click",
-        "One patient record shared across your sites",
-        "Each site has its own booking page, opening hours, branding and emails",
-        "Clinicians who work across sites, with a diary per site",
-        "Book into any site's diary from one reception",
-        "Team messaging: message colleagues at your site or another, one to one or in groups",
-        "Permissions per site",
-        "Membership plans: patients pay monthly for their check-ups and hygiene visits",
+        "Up to 5 sites, one login",
+        "Owner overview of every site",
+        "Shared patient records",
+        "Book any site from one reception",
+        "Team messaging",
+        "Membership plans",
         AND_MORE,
       ],
     },
     {
       name: "Enterprise",
       price: "Coming soon",
-      note: "For groups and larger organisations",
+      note: "",
       comingSoon: true,
       features: [
         "Everything in Multi-site",
-        "Unlimited sites, grouped into regions, with area-manager views",
-        "Your own booking address (book.yourpractice.co.uk)",
-        "Data migration done for you, including appointment history",
-        "Dedicated account manager, onboarding and staff training",
-        "Templates and automations set once by head office, used by every site",
-        "Data exports for your own reporting tools",
-        "Custom contract and data processing agreement",
-        "Membership plans across every site, managed from head office",
+        "Unlimited sites & regions",
+        "Your own booking domain",
+        "Data migration done for you",
+        "Dedicated account manager",
+        "Head-office templates & automations",
+        "Custom contract",
         AND_MORE,
       ],
     },
@@ -214,7 +203,7 @@ export default function PricingCTA() {
           >
             <div className="pb-4 mb-2 border-b border-neutral-100 flex items-center justify-between gap-3">
               <h3 className="text-[15px] font-semibold text-foreground">
-                {isComingSoon ? `${activePlan.name} is planned to include:` : "Includes:"}
+                {isComingSoon ? "Planned to include:" : "Includes:"}
               </h3>
               {isComingSoon && (
                 <span className="text-[11px] font-semibold px-2.5 py-1 rounded-full bg-[#EFF6FF] text-[#2563EB] whitespace-nowrap">
