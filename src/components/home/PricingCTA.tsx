@@ -68,7 +68,6 @@ export default function PricingCTA() {
       features: [
         "Everything in Multi-site",
         "Unlimited sites, grouped into regions, with area-manager views",
-        "Sign in with Google Workspace or Microsoft 365",
         "Your own booking address (book.yourpractice.co.uk)",
         "Data migration done for you, including appointment history",
         "Dedicated account manager, onboarding and staff training",
@@ -229,7 +228,11 @@ export default function PricingCTA() {
                   </li>
                 ) : (
                   <li key={i} className="flex items-center justify-between gap-4 py-3">
-                    <span className="text-[15px] leading-[1.5] text-[#0F172A]">{feature}</span>
+                    <span
+                      className={`text-[15px] leading-[1.5] text-[#0F172A] ${feature.startsWith("Everything in ") ? "font-semibold" : ""}`}
+                    >
+                      {feature}
+                    </span>
                     <Check className="w-4 h-4 text-[#2563EB] flex-shrink-0" strokeWidth={3} />
                   </li>
                 ),
