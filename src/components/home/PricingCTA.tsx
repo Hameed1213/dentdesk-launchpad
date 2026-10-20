@@ -9,30 +9,82 @@ type Plan = {
   priceSuffix?: string;
   note: string;
   comingSoon?: boolean;
+  /** What the plan includes. Every Starter line is in the product today
+   *  (payments and text messages go live before launch); the coming-soon
+   *  plans list what they are planned to include. */
+  features: string[];
 };
+
+const AND_MORE = "and more…";
 
 export default function PricingCTA() {
   const plans: Plan[] = [
-    { name: "Starter", price: "£49", priceSuffix: "/mo", note: "" },
-    { name: "Multi-site", price: "Coming soon", note: "", comingSoon: true },
-    { name: "Enterprise", price: "Coming soon", note: "", comingSoon: true },
+    {
+      name: "Starter",
+      price: "£49",
+      priceSuffix: "/mo",
+      note: "",
+      features: [
+        "1 location",
+        "Unlimited dentists & staff permissions",
+        "Calendar & scheduling",
+        "Online booking page",
+        "Patient portal",
+        "Patient records & notes",
+        "Automated reminders & recalls",
+        "200 free text messages a month, then pay per text",
+        "Unlimited emails",
+        "Payments & deposits",
+        "Forms & questionnaires",
+        "Advanced analytics & reports",
+        "Ad tracking & booking sources",
+        "Priority WhatsApp support",
+        AND_MORE,
+      ],
+    },
+    {
+      name: "Multi-site",
+      price: "Coming soon",
+      note: "For practices with more than one site",
+      comingSoon: true,
+      features: [
+        "Everything in Starter",
+        "Owner overview: analytics, money, bookings and recalls for every site, together or one at a time",
+        "Up to 5 sites under one login, switch in one click",
+        "One patient record shared across your sites",
+        "Each site has its own booking page, opening hours, branding and emails",
+        "Clinicians who work across sites, with a diary per site",
+        "Book into any site's diary from one reception",
+        "Team messaging: message colleagues at your site or another, one to one or in groups",
+        "Permissions per site",
+        AND_MORE,
+      ],
+    },
+    {
+      name: "Enterprise",
+      price: "Coming soon",
+      note: "For groups and larger organisations",
+      comingSoon: true,
+      features: [
+        "Everything in Multi-site",
+        "Unlimited sites, grouped into regions, with area-manager views",
+        "Sign in with Google Workspace or Microsoft 365",
+        "Your own booking address (book.yourpractice.co.uk)",
+        "Data migration done for you, including appointment history",
+        "Dedicated account manager, onboarding and staff training",
+        "Templates and automations set once by head office, used by every site",
+        "Data exports for your own reporting tools",
+        "Custom contract and data processing agreement",
+        AND_MORE,
+      ],
+    },
   ];
 
   const [selected, setSelected] = useState<string>("Starter");
   const activePlan = plans.find((p) => p.name === selected) ?? plans[0];
   const isComingSoon = !!activePlan.comingSoon;
 
-  const features = [
-    "1 location",
-    "Unlimited dentists & Staff permissions",
-    "Online booking page",
-    "Patient records & notes",
-    "Automated reminders & recalls",
-    "Payments & deposits",
-    "Forms & questionnaires",
-    "Advanced analytics & reports",
-    "Priority WhatsApp support",
-  ];
+  const features = activePlan.features;
 
   return (
     <section className="relative bg-gradient-to-br from-[#DBEAFE] via-[#EFF6FF] to-white py-16 md:py-24 overflow-hidden">
@@ -123,7 +175,7 @@ export default function PricingCTA() {
                       )}
                     </div>
                   </div>
-                  <div className="text-right">
+                  <div className="text-right whitespace-nowrap pl-3">
                     <span
                       className={[
                         plan.priceSuffix ? "text-xl font-medium" : "text-sm font-medium",
@@ -159,30 +211,42 @@ export default function PricingCTA() {
             transition={{ duration: 0.6, delay: 0.15 }}
             className="relative rounded-2xl border border-neutral-200 bg-white p-8 overflow-hidden"
           >
-            <div className={isComingSoon ? "blur-md select-none pointer-events-none" : ""}>
-              <div className="pb-4 mb-2 border-b border-neutral-100">
-                <h3 className="text-[15px] font-semibold text-foreground">Includes:</h3>
-              </div>
-              <ul className="divide-y divide-neutral-100">
-                {features.map((feature, i) => (
-                  <li key={i} className="flex items-center justify-between py-3">
+            <div className="pb-4 mb-2 border-b border-neutral-100 flex items-center justify-between gap-3">
+              <h3 className="text-[15px] font-semibold text-foreground">
+                {isComingSoon ? `${activePlan.name} is planned to include:` : "Includes:"}
+              </h3>
+              {isComingSoon && (
+                <span className="text-[11px] font-semibold px-2.5 py-1 rounded-full bg-[#EFF6FF] text-[#2563EB] whitespace-nowrap">
+                  Coming soon
+                </span>
+              )}
+            </div>
+            <ul className="divide-y divide-neutral-100">
+              {features.map((feature, i) =>
+                feature === AND_MORE ? (
+                  <li key={i} className="py-3 text-[15px] leading-[1.5] text-[#64748B]">
+                    {feature}
+                  </li>
+                ) : (
+                  <li key={i} className="flex items-center justify-between gap-4 py-3">
                     <span className="text-[15px] leading-[1.5] text-[#0F172A]">{feature}</span>
                     <Check className="w-4 h-4 text-[#2563EB] flex-shrink-0" strokeWidth={3} />
                   </li>
-                ))}
-              </ul>
-            </div>
+                ),
+              )}
+            </ul>
 
             {isComingSoon && (
-              <div className="absolute inset-0 flex flex-col items-center justify-center bg-white/40 backdrop-blur-[2px]">
-                <div className="flex flex-col items-center gap-3 px-6 py-5 rounded-2xl bg-white/90 border border-neutral-200 shadow-lg">
-                  <div className="text-center">
-                    <div className="text-[18px] font-semibold text-foreground">Coming soon</div>
-                    <div className="text-[13px] text-[#475569] mt-1 max-w-[240px]">
-                      {activePlan.name} plan is launching soon. Get started with Starter today.
-                    </div>
-                  </div>
-                </div>
+              <div className="mt-6 pt-5 border-t border-neutral-100 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                <p className="text-[13px] text-[#475569]">
+                  No price yet. Register your interest and we'll be in touch when it launches.
+                </p>
+                <Link
+                  to="/waitlist"
+                  className="inline-flex items-center justify-center gap-2 border border-[#2563EB] text-[#2563EB] text-[14px] font-semibold px-5 py-2.5 rounded-xl hover:bg-[#EFF6FF] transition-colors whitespace-nowrap"
+                >
+                  Register interest <ArrowRight className="w-4 h-4" />
+                </Link>
               </div>
             )}
           </motion.div>
