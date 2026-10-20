@@ -63,10 +63,13 @@ function PrivacyPage() {
           <strong className="text-[#0F172A] font-semibold">Messages</strong> — emails (and, once available, text messages) sent to patients through Dent Dock, and messages you send to our support team.
         </p>
         <p>
+          <strong className="text-[#0F172A] font-semibold">Website visit totals</strong> — for dentdock.co.uk, we count daily totals of visits and page views, by page, by where visitors came from, by device type and by country. They contain nothing about any one person, we cannot tell who a count came from, and we do not use cookies or store anything on your device to make them. Every visitor is counted, whether or not they accept cookies.
+        </p>
+        <p>
           <strong className="text-[#0F172A] font-semibold">Technical data</strong> — error reports from the app, used to find and fix problems. On dentdock.co.uk only, and only if you accept analytics cookies, Google Analytics records how the website is used. We do not use advertising tools. See our <a href="/cookies" className="text-[#2563EB] hover:underline">Cookie Policy</a>.
         </p>
         <p>
-          <strong className="text-[#0F172A] font-semibold">Website waitlist</strong> — if you join the waitlist on dentdock.co.uk, your email address, practice name and role.
+          <strong className="text-[#0F172A] font-semibold">Website waitlist</strong> — if you join the waitlist on dentdock.co.uk, your email address, practice name and role. To see how people find us, we also keep where you came from: the page you signed up on, the first page you visited, the website or link that brought you (including any campaign tags on that link and whether it came from an advert, but not the advert's click ID), whether you used a phone, tablet or computer, and your country. We do not keep your IP address. This is worked out when you sign up; nothing is stored on your device to do it.
         </p>
       </LegalSection>
 
@@ -136,6 +139,12 @@ function PrivacyPage() {
         </p>
         <p>
           <strong className="text-[#0F172A] font-semibold">Online booking form totals</strong> — for as long as the practice has an account. They contain no personal data.
+        </p>
+        <p>
+          <strong className="text-[#0F172A] font-semibold">Website waitlist</strong> — until you ask us to remove you, or two years after you joined if you have not become a customer by then.
+        </p>
+        <p>
+          <strong className="text-[#0F172A] font-semibold">Website visit totals</strong> — for as long as they are useful to us. They contain no personal data.
         </p>
         <p>
           <strong className="text-[#0F172A] font-semibold">Patient data</strong> — kept on the practice's instructions. UK guidance is that dental records are kept for 11 years after the last treatment for adults, and for children until they are 25 or for 11 years, whichever is longer. When a practice's account closes, we return its data or delete it, as the practice chooses, within 90 days.
