@@ -18,10 +18,10 @@ const FONT = "-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial
 const step = (n: number, title: string, body: string) => `
 <tr>
   <td valign="top" width="40" style="padding:0 0 18px 0">
-    <div style="width:28px;height:28px;border-radius:14px;background:#EFF6FF;color:${BLUE};font:600 14px/28px ${FONT};text-align:center">${n}</div>
+    <div class="dd-step" style="width:28px;height:28px;border-radius:14px;background:#EFF6FF;color:${BLUE};font:600 14px/28px ${FONT};text-align:center">${n}</div>
   </td>
-  <td valign="top" style="padding:3px 0 18px 0;font:15px/1.55 ${FONT};color:${INK}">
-    <strong style="font-weight:600">${title}</strong><br><span style="color:${MUTED}">${body}</span>
+  <td valign="top" class="dd-ink" style="padding:3px 0 18px 0;font:15px/1.55 ${FONT};color:${INK}">
+    <strong style="font-weight:600">${title}</strong><br><span class="dd-muted" style="color:${MUTED}">${body}</span>
   </td>
 </tr>`;
 
@@ -52,11 +52,30 @@ export function thankYouEmail(s: WaitlistSignup) {
 
   const html = `<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="color-scheme" content="light"><meta name="supported-color-schemes" content="light">
-<title>You're on the Dent Dock waitlist</title></head>
-<body style="margin:0;padding:0;background:#F1F5F9">
+<meta name="color-scheme" content="light dark"><meta name="supported-color-schemes" content="light dark">
+<title>You're on the Dent Dock waitlist</title>
+<style>
+  /* Dark mode only. Light mode uses the inline colours unchanged. Mail apps
+     that darken pale backgrounds left dark text on dark blue (unreadable). */
+  @media (prefers-color-scheme: dark) {
+    .dd-bg { background:#0B1220 !important; }
+    .dd-card { background:#111827 !important; border-color:#1F2937 !important; }
+    .dd-ink { color:#F1F5F9 !important; }
+    .dd-muted { color:#94A3B8 !important; }
+    .dd-note { background:#1E3A8A !important; }
+    .dd-note-text { color:#DBEAFE !important; }
+    .dd-step { background:#1E3A8A !important; color:#DBEAFE !important; }
+  }
+  /* Outlook apps in dark mode */
+  [data-ogsc] .dd-ink { color:#F1F5F9 !important; }
+  [data-ogsc] .dd-muted { color:#94A3B8 !important; }
+  [data-ogsc] .dd-note-text { color:#DBEAFE !important; }
+  [data-ogsc] .dd-step { color:#DBEAFE !important; }
+  [data-ogsb] .dd-note, [data-ogsb] .dd-step { background:#1E3A8A !important; }
+</style></head>
+<body class="dd-bg" style="margin:0;padding:0;background:#F1F5F9">
 <div style="display:none;max-height:0;overflow:hidden;opacity:0">Thanks for joining. Here's what happens next.</div>
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#F1F5F9">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" class="dd-bg" style="background:#F1F5F9">
 <tr><td align="center" style="padding:32px 16px">
   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:560px">
     <tr><td style="padding:0 4px 20px 4px">
@@ -65,7 +84,7 @@ export function thankYouEmail(s: WaitlistSignup) {
         <span style="font:700 19px/28px ${FONT};color:${BLUE};vertical-align:middle;letter-spacing:-0.02em">&nbsp;Dent Dock</span>
       </a>
     </td></tr>
-    <tr><td style="background:#FFFFFF;border-radius:16px;border:1px solid #E2E8F0;overflow:hidden">
+    <tr><td class="dd-card" style="background:#FFFFFF;border-radius:16px;border:1px solid #E2E8F0;overflow:hidden">
       <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr><td style="background:${BLUE};background-image:linear-gradient(135deg,#2563EB,#1D4ED8);padding:36px 32px;border-radius:16px 16px 0 0">
           <div style="font:600 12px/1 ${FONT};letter-spacing:0.14em;text-transform:uppercase;color:#BFDBFE">Waitlist</div>
@@ -73,7 +92,7 @@ export function thankYouEmail(s: WaitlistSignup) {
           <p style="margin:10px 0 0 0;font:16px/1.55 ${FONT};color:#DBEAFE">Thank you for joining the Dent Dock waitlist${esc(practice)}.</p>
         </td></tr>
         <tr><td style="padding:32px 32px 8px 32px">
-          <h2 style="margin:0 0 18px 0;font:600 17px/1.3 ${FONT};color:${INK}">What happens next</h2>
+          <h2 class="dd-ink" style="margin:0 0 18px 0;font:600 17px/1.3 ${FONT};color:${INK}">What happens next</h2>
           <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
             ${step(1, "We'll be in touch", "We'll email you as soon as a place opens for your practice.")}
             ${step(2, "We set it up with you", "Online booking, reminders, recalls and payments, shaped around how your practice works.")}
@@ -81,8 +100,8 @@ export function thankYouEmail(s: WaitlistSignup) {
           </table>
         </td></tr>
         <tr><td style="padding:0 32px">
-          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#EFF6FF;border-radius:12px">
-            <tr><td style="padding:16px 18px;font:14px/1.55 ${FONT};color:#1E3A8A">
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" class="dd-note" style="background:#EFF6FF;border-radius:12px">
+            <tr><td class="dd-note-text" style="padding:16px 18px;font:14px/1.55 ${FONT};color:#1E3A8A">
               <strong style="font-weight:600">Early practices get more.</strong> Our first 30 practices get priority support and help shape the product from day one.
             </td></tr>
           </table>
@@ -94,16 +113,16 @@ export function thankYouEmail(s: WaitlistSignup) {
             </td>
           </tr></table>
         </td></tr>
-        <tr><td style="padding:20px 32px 32px 32px;font:15px/1.6 ${FONT};color:${INK}">
+        <tr><td class="dd-ink" style="padding:20px 32px 32px 32px;font:15px/1.6 ${FONT};color:${INK}">
           Questions? Just reply to this email. It comes straight to our team.<br><br>
           The Dent Dock team
         </td></tr>
       </table>
     </td></tr>
-    <tr><td style="padding:22px 8px 0 8px;font:12px/1.6 ${FONT};color:${MUTED};text-align:center">
-      You're receiving this because this email address was used to join the waitlist at <a href="${SITE}" style="color:${MUTED}">dentdock.co.uk</a>. Not you? Reply and we'll remove it.<br>
+    <tr><td class="dd-muted" style="padding:22px 8px 0 8px;font:12px/1.6 ${FONT};color:${MUTED};text-align:center">
+      You're receiving this because this email address was used to join the waitlist at <a href="${SITE}" class="dd-muted" style="color:${MUTED}">dentdock.co.uk</a>. Not you? Reply and we'll remove it.<br>
       Dent Dock is a trading name of Paradigm Network Limited · Company No. 16903048<br>
-      <a href="${SITE}/privacy" style="color:${MUTED}">Privacy Policy</a>
+      <a href="${SITE}/privacy" class="dd-muted" style="color:${MUTED}">Privacy Policy</a>
     </td></tr>
   </table>
 </td></tr>
