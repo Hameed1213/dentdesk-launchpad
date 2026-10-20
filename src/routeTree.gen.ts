@@ -9,37 +9,22 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as WaitlistRouteImport } from './routes/waitlist'
-import { Route as TermsRouteImport } from './routes/terms'
-import { Route as PrivacyRouteImport } from './routes/privacy'
-import { Route as DpaRouteImport } from './routes/dpa'
-import { Route as CookiesRouteImport } from './routes/cookies'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CookiesRouteImport } from './routes/cookies'
+import { Route as DpaRouteImport } from './routes/dpa'
+import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as TermsRouteImport } from './routes/terms'
+import { Route as WaitlistRouteImport } from './routes/waitlist'
 import { Route as CompareIndexRouteImport } from './routes/compare.index'
-import { Route as CompareSoftwareOfExcellenceRouteImport } from './routes/compare.software-of-excellence'
-import { Route as CompareIsmileDentalSoftwareRouteImport } from './routes/compare.ismile-dental-software'
 import { Route as CompareDentallyRouteImport } from './routes/compare.dentally'
-import { Route as ApiPublicVerifyWaitlistSignupRouteImport } from './routes/api/public/verify-waitlist-signup'
+import { Route as CompareIsmileDentalSoftwareRouteImport } from './routes/compare.ismile-dental-software'
+import { Route as CompareSoftwareOfExcellenceRouteImport } from './routes/compare.software-of-excellence'
 import { Route as ApiPublicCountVisitRouteImport } from './routes/api/public/count-visit'
+import { Route as ApiPublicVerifyWaitlistSignupRouteImport } from './routes/api/public/verify-waitlist-signup'
 
-const WaitlistRoute = WaitlistRouteImport.update({
-  id: '/waitlist',
-  path: '/waitlist',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const TermsRoute = TermsRouteImport.update({
-  id: '/terms',
-  path: '/terms',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PrivacyRoute = PrivacyRouteImport.update({
-  id: '/privacy',
-  path: '/privacy',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DpaRoute = DpaRouteImport.update({
-  id: '/dpa',
-  path: '/dpa',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CookiesRoute = CookiesRouteImport.update({
@@ -47,9 +32,24 @@ const CookiesRoute = CookiesRouteImport.update({
   path: '/cookies',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const DpaRoute = DpaRouteImport.update({
+  id: '/dpa',
+  path: '/dpa',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WaitlistRoute = WaitlistRouteImport.update({
+  id: '/waitlist',
+  path: '/waitlist',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CompareIndexRoute = CompareIndexRouteImport.update({
@@ -57,21 +57,26 @@ const CompareIndexRoute = CompareIndexRouteImport.update({
   path: '/compare/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const CompareSoftwareOfExcellenceRoute =
-  CompareSoftwareOfExcellenceRouteImport.update({
-    id: '/compare/software-of-excellence',
-    path: '/compare/software-of-excellence',
-    getParentRoute: () => rootRouteImport,
-  } as any)
+const CompareDentallyRoute = CompareDentallyRouteImport.update({
+  id: '/compare/dentally',
+  path: '/compare/dentally',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CompareIsmileDentalSoftwareRoute =
   CompareIsmileDentalSoftwareRouteImport.update({
     id: '/compare/ismile-dental-software',
     path: '/compare/ismile-dental-software',
     getParentRoute: () => rootRouteImport,
   } as any)
-const CompareDentallyRoute = CompareDentallyRouteImport.update({
-  id: '/compare/dentally',
-  path: '/compare/dentally',
+const CompareSoftwareOfExcellenceRoute =
+  CompareSoftwareOfExcellenceRouteImport.update({
+    id: '/compare/software-of-excellence',
+    path: '/compare/software-of-excellence',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ApiPublicCountVisitRoute = ApiPublicCountVisitRouteImport.update({
+  id: '/api/public/count-visit',
+  path: '/api/public/count-visit',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiPublicVerifyWaitlistSignupRoute =
@@ -80,11 +85,6 @@ const ApiPublicVerifyWaitlistSignupRoute =
     path: '/api/public/verify-waitlist-signup',
     getParentRoute: () => rootRouteImport,
   } as any)
-const ApiPublicCountVisitRoute = ApiPublicCountVisitRouteImport.update({
-  id: '/api/public/count-visit',
-  path: '/api/public/count-visit',
-  getParentRoute: () => rootRouteImport,
-} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -191,32 +191,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/waitlist': {
-      id: '/waitlist'
-      path: '/waitlist'
-      fullPath: '/waitlist'
-      preLoaderRoute: typeof WaitlistRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/terms': {
-      id: '/terms'
-      path: '/terms'
-      fullPath: '/terms'
-      preLoaderRoute: typeof TermsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/privacy': {
-      id: '/privacy'
-      path: '/privacy'
-      fullPath: '/privacy'
-      preLoaderRoute: typeof PrivacyRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/dpa': {
-      id: '/dpa'
-      path: '/dpa'
-      fullPath: '/dpa'
-      preLoaderRoute: typeof DpaRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/cookies': {
@@ -226,11 +205,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CookiesRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/dpa': {
+      id: '/dpa'
+      path: '/dpa'
+      fullPath: '/dpa'
+      preLoaderRoute: typeof DpaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/waitlist': {
+      id: '/waitlist'
+      path: '/waitlist'
+      fullPath: '/waitlist'
+      preLoaderRoute: typeof WaitlistRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/compare/': {
@@ -240,11 +240,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CompareIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/compare/software-of-excellence': {
-      id: '/compare/software-of-excellence'
-      path: '/compare/software-of-excellence'
-      fullPath: '/compare/software-of-excellence'
-      preLoaderRoute: typeof CompareSoftwareOfExcellenceRouteImport
+    '/compare/dentally': {
+      id: '/compare/dentally'
+      path: '/compare/dentally'
+      fullPath: '/compare/dentally'
+      preLoaderRoute: typeof CompareDentallyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/compare/ismile-dental-software': {
@@ -254,18 +254,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CompareIsmileDentalSoftwareRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/compare/dentally': {
-      id: '/compare/dentally'
-      path: '/compare/dentally'
-      fullPath: '/compare/dentally'
-      preLoaderRoute: typeof CompareDentallyRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/api/public/verify-waitlist-signup': {
-      id: '/api/public/verify-waitlist-signup'
-      path: '/api/public/verify-waitlist-signup'
-      fullPath: '/api/public/verify-waitlist-signup'
-      preLoaderRoute: typeof ApiPublicVerifyWaitlistSignupRouteImport
+    '/compare/software-of-excellence': {
+      id: '/compare/software-of-excellence'
+      path: '/compare/software-of-excellence'
+      fullPath: '/compare/software-of-excellence'
+      preLoaderRoute: typeof CompareSoftwareOfExcellenceRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/public/count-visit': {
@@ -273,6 +266,13 @@ declare module '@tanstack/react-router' {
       path: '/api/public/count-visit'
       fullPath: '/api/public/count-visit'
       preLoaderRoute: typeof ApiPublicCountVisitRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/verify-waitlist-signup': {
+      id: '/api/public/verify-waitlist-signup'
+      path: '/api/public/verify-waitlist-signup'
+      fullPath: '/api/public/verify-waitlist-signup'
+      preLoaderRoute: typeof ApiPublicVerifyWaitlistSignupRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
