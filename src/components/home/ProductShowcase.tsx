@@ -34,7 +34,7 @@ const tabs = [
 const tabIcons = [CalendarDays, Globe, CreditCard, RefreshCw, MessageSquare];
 
 const tabDescriptions = [
-  "Day, week and month views with drag and drop",
+  "Day, week and month views for your whole team",
   "Branded booking page your patients actually want to use",
   "Stripe deposits, payment links and card on arrival",
   "Automated sequences that run without you",
@@ -714,13 +714,13 @@ function RecallsMockup() {
     },
     {
       Icon: RefreshCw,
-      name: "6-month recall sequence",
-      trigger: "Fires 6 months after last visit",
+      name: "Recall reminder",
+      trigger: "Fires 4 weeks before a check-up is due",
     },
     {
       Icon: MessageSquare,
-      name: "No-show follow-up",
-      trigger: "Fires 30 mins after missed appt",
+      name: "Form reminder",
+      trigger: "Fires the day before if a form is outstanding",
     },
   ];
 
@@ -1008,7 +1008,7 @@ const tabContent = [
     badge: "Smart Scheduling",
     title: "A calendar that runs your day for you",
     description:
-      "Drag and drop appointments, see your whole team at a glance, and let Dent Dock handle reminders, deposits and confirmations automatically.",
+      "Book and move appointments in a couple of clicks, see your whole team at a glance, and let Dent Dock handle reminders, deposits and confirmations automatically.",
     buttonText: "See the calendar",
   },
   {
@@ -1029,7 +1029,7 @@ const tabContent = [
     badge: "Set And Forget",
     title: "Recalls and automations that run themselves",
     description:
-      "Six-month recalls, no-show follow-ups, post-treatment check-ins, all pre-built and ready to switch on. No setup. Just toggle and go.",
+      "Appointment reminders, recall reminders, form chasers and birthday messages, all pre-built and ready to switch on. Most are on from day one, and you can edit every word.",
     buttonText: "See automations",
   },
   {

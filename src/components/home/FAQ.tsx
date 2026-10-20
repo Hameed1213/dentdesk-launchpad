@@ -25,7 +25,7 @@ export default function FAQ() {
       id: "item-4",
       question: "How long does setup actually take?",
       answer:
-        "Most practices are fully configured and live in under 10 minutes. Your opening hours, services and SMS automations all have smart defaults pre-filled, you just confirm and go.",
+        "Most practices are set up and live within the day. Your opening hours, treatments and automations come with sensible defaults, so you mostly confirm and go.",
     },
     {
       id: "item-5",

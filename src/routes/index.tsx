@@ -22,7 +22,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Online booking, automated reminders, payments and recalls for UK private dental practices. Set up in under 10 minutes. No contracts.",
+          "Online booking, automated reminders, payments and recalls for UK private dental practices. Live within the day. No contracts.",
       },
       { property: "og:url", content: "https://dentdock.co.uk" },
       { property: "og:title", content: "Dent Dock — Dental Practice Management Software" },
@@ -101,7 +101,7 @@ export const Route = createFileRoute("/")({
               name: "How long does setup actually take?",
               acceptedAnswer: {
                 "@type": "Answer",
-                text: "Most practices are fully configured and live in under 10 minutes. Your opening hours, services and SMS automations all have smart defaults pre-filled — you just confirm and go.",
+                text: "Most practices are set up and live within the day. Your opening hours, treatments and automations come with sensible defaults, so you mostly confirm and go.",
               },
             },
             {
