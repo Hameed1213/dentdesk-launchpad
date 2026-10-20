@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useRef, useState } from "react";
 import { Turnstile, type TurnstileInstance } from "@marsidev/react-turnstile";
+import { visitTracking } from "@/lib/visitSource";
 import { motion } from "framer-motion";
 import { ArrowLeft, Check, Mail, Sparkles } from "lucide-react";
 import ToothIcon from "@/components/icons/ToothIcon";
@@ -90,6 +91,7 @@ function WaitlistPage() {
           practice_name: trimmedPractice,
           role: role || undefined,
           turnstile_token: turnstileToken,
+          tracking: { ...visitTracking(), signup_form: "waitlist_page", signup_page: window.location.pathname },
         }),
       });
 

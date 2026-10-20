@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import "@tanstack/react-start";
 import { alertEmail, thankYouEmail, type WaitlistSignup } from "@/lib/waitlistEmails";
+import { channelFor, cleanTracking, countryFrom, deviceFrom } from "@/lib/visitSource";
 
 // Sign-ups are kept on the OPS Supabase project (DentDock's own business
 // data), through marketing_waitlist_join(): callable with the ops project's
@@ -78,6 +79,16 @@ export const Route = createFileRoute("/api/public/verify-waitlist-signup")({
           // Optional fields — sanitise; unknown extras silently ignored.
           const practiceName = sanitiseOptional(body.practice_name, 200);
           const role = sanitiseOptional(body.role, 100);
+          // Where they came from (see lib/visitSource.ts). The channel, device
+          // and country are worked out here, not taken from the browser; the
+          // IP address and user agent are not stored.
+          const t = cleanTracking(body.tracking);
+          const tracking = {
+            ...t,
+            channel: channelFor(t),
+            device: deviceFrom(request.headers.get("user-agent")),
+            country: countryFrom(request.headers.get("cf-ipcountry")),
+          };
 
           // ---- 2. Verify Turnstile
           const turnstileSecret = process.env.TURNSTILE_SECRET_KEY;
@@ -127,6 +138,7 @@ export const Route = createFileRoute("/api/public/verify-waitlist-signup")({
               p_practice_name: practiceName,
               p_role: role,
               p_source: "marketing-site",
+              p_tracking: tracking,
             }),
           });
           if (!joinRes.ok) {

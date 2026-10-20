@@ -20,6 +20,7 @@ import { Route as CompareSoftwareOfExcellenceRouteImport } from './routes/compar
 import { Route as CompareIsmileDentalSoftwareRouteImport } from './routes/compare.ismile-dental-software'
 import { Route as CompareDentallyRouteImport } from './routes/compare.dentally'
 import { Route as ApiPublicVerifyWaitlistSignupRouteImport } from './routes/api/public/verify-waitlist-signup'
+import { Route as ApiPublicCountVisitRouteImport } from './routes/api/public/count-visit'
 
 const WaitlistRoute = WaitlistRouteImport.update({
   id: '/waitlist',
@@ -79,6 +80,11 @@ const ApiPublicVerifyWaitlistSignupRoute =
     path: '/api/public/verify-waitlist-signup',
     getParentRoute: () => rootRouteImport,
   } as any)
+const ApiPublicCountVisitRoute = ApiPublicCountVisitRouteImport.update({
+  id: '/api/public/count-visit',
+  path: '/api/public/count-visit',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -91,6 +97,7 @@ export interface FileRoutesByFullPath {
   '/compare/ismile-dental-software': typeof CompareIsmileDentalSoftwareRoute
   '/compare/software-of-excellence': typeof CompareSoftwareOfExcellenceRoute
   '/compare/': typeof CompareIndexRoute
+  '/api/public/count-visit': typeof ApiPublicCountVisitRoute
   '/api/public/verify-waitlist-signup': typeof ApiPublicVerifyWaitlistSignupRoute
 }
 export interface FileRoutesByTo {
@@ -104,6 +111,7 @@ export interface FileRoutesByTo {
   '/compare/ismile-dental-software': typeof CompareIsmileDentalSoftwareRoute
   '/compare/software-of-excellence': typeof CompareSoftwareOfExcellenceRoute
   '/compare': typeof CompareIndexRoute
+  '/api/public/count-visit': typeof ApiPublicCountVisitRoute
   '/api/public/verify-waitlist-signup': typeof ApiPublicVerifyWaitlistSignupRoute
 }
 export interface FileRoutesById {
@@ -118,6 +126,7 @@ export interface FileRoutesById {
   '/compare/ismile-dental-software': typeof CompareIsmileDentalSoftwareRoute
   '/compare/software-of-excellence': typeof CompareSoftwareOfExcellenceRoute
   '/compare/': typeof CompareIndexRoute
+  '/api/public/count-visit': typeof ApiPublicCountVisitRoute
   '/api/public/verify-waitlist-signup': typeof ApiPublicVerifyWaitlistSignupRoute
 }
 export interface FileRouteTypes {
@@ -133,6 +142,7 @@ export interface FileRouteTypes {
     | '/compare/ismile-dental-software'
     | '/compare/software-of-excellence'
     | '/compare/'
+    | '/api/public/count-visit'
     | '/api/public/verify-waitlist-signup'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -146,6 +156,7 @@ export interface FileRouteTypes {
     | '/compare/ismile-dental-software'
     | '/compare/software-of-excellence'
     | '/compare'
+    | '/api/public/count-visit'
     | '/api/public/verify-waitlist-signup'
   id:
     | '__root__'
@@ -159,6 +170,7 @@ export interface FileRouteTypes {
     | '/compare/ismile-dental-software'
     | '/compare/software-of-excellence'
     | '/compare/'
+    | '/api/public/count-visit'
     | '/api/public/verify-waitlist-signup'
   fileRoutesById: FileRoutesById
 }
@@ -173,6 +185,7 @@ export interface RootRouteChildren {
   CompareIsmileDentalSoftwareRoute: typeof CompareIsmileDentalSoftwareRoute
   CompareSoftwareOfExcellenceRoute: typeof CompareSoftwareOfExcellenceRoute
   CompareIndexRoute: typeof CompareIndexRoute
+  ApiPublicCountVisitRoute: typeof ApiPublicCountVisitRoute
   ApiPublicVerifyWaitlistSignupRoute: typeof ApiPublicVerifyWaitlistSignupRoute
 }
 
@@ -255,6 +268,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiPublicVerifyWaitlistSignupRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/public/count-visit': {
+      id: '/api/public/count-visit'
+      path: '/api/public/count-visit'
+      fullPath: '/api/public/count-visit'
+      preLoaderRoute: typeof ApiPublicCountVisitRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -269,6 +289,7 @@ const rootRouteChildren: RootRouteChildren = {
   CompareIsmileDentalSoftwareRoute: CompareIsmileDentalSoftwareRoute,
   CompareSoftwareOfExcellenceRoute: CompareSoftwareOfExcellenceRoute,
   CompareIndexRoute: CompareIndexRoute,
+  ApiPublicCountVisitRoute: ApiPublicCountVisitRoute,
   ApiPublicVerifyWaitlistSignupRoute: ApiPublicVerifyWaitlistSignupRoute,
 }
 export const routeTree = rootRouteImport

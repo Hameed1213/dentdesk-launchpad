@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import { Turnstile, type TurnstileInstance } from "@marsidev/react-turnstile";
 import { AnimatedGroup } from "@/components/ui/animated-group";
+import { visitTracking } from "@/lib/visitSource";
 import { AuroraBackground } from "@/components/ui/aurora-background";
 import DashboardAnimation from "@/components/home/DashboardAnimation";
 
@@ -66,7 +67,11 @@ function WaitlistForm() {
       const res = await fetch("/api/public/verify-waitlist-signup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: trimmed, turnstile_token: turnstileToken }),
+        body: JSON.stringify({
+          email: trimmed,
+          turnstile_token: turnstileToken,
+          tracking: { ...visitTracking(), signup_form: "hero", signup_page: window.location.pathname },
+        }),
       });
 
       // Token is single-use — reset for next attempt regardless of outcome.
