@@ -1,7 +1,9 @@
-import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
+import { Outlet, Link, createRootRoute, HeadContent, Scripts, useRouterState } from "@tanstack/react-router";
+import { useEffect } from "react";
 
 import appCss from "../styles.css?url";
 import CookieBanner from "@/components/CookieBanner";
+import { captureLanding, countPageView } from "@/lib/visitSource";
 
 function NotFoundComponent() {
   return (
@@ -75,6 +77,15 @@ function RootShell({ children }: { children: React.ReactNode }) {
 }
 
 function RootComponent() {
+  // Website visit totals for the ops console (no cookies, nothing stored on
+  // the device): the first page of the visit is noted in memory, then every
+  // page shown is counted.
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  useEffect(() => {
+    captureLanding();
+    countPageView(pathname);
+  }, [pathname]);
+
   return (
     <>
       <Outlet />
