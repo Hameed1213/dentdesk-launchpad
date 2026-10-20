@@ -31,7 +31,7 @@ export const Route = createRootRoute({
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Dent Dock" },
-      { name: "description", content: "Online booking, automated reminders, payments and recalls for UK private dental practices. Set up in under 10 minutes. No contracts." },
+      { name: "description", content: "Online booking, automated reminders, payments and recalls for UK private dental practices. Live within the day. No contracts." },
       { name: "author", content: "Dent Dock" },
       { property: "og:title", content: "Dent Dock" },
       { property: "og:description", content: "Dental practice management software for UK private practices. Online booking, automated reminders, payments and recalls." },
@@ -39,8 +39,8 @@ export const Route = createRootRoute({
       { name: "twitter:card", content: "summary" },
       { name: "twitter:title", content: "Dent Dock" },
       { name: "twitter:description", content: "Dental practice management software for UK private practices. Online booking, automated reminders, payments and recalls." },
-      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/2gylzXc6BRPR8iug7rZHBUuq8Du1/social-images/social-1776969334430-Social_Media.webp" },
-      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/2gylzXc6BRPR8iug7rZHBUuq8Du1/social-images/social-1776969334430-Social_Media.webp" },
+      { property: "og:image", content: "https://dentdock.co.uk/og-image.png" },
+      { name: "twitter:image", content: "https://dentdock.co.uk/og-image.png" },
     ],
     links: [
       {

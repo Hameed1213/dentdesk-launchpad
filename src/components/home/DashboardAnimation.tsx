@@ -12,7 +12,6 @@ import {
   ClipboardList,
   BarChart2,
   Settings,
-  Sparkles,
   Search,
   Bell,
   TrendingUp,
@@ -227,7 +226,6 @@ function SidebarIconOnly() {
         <SidebarIconBtn Icon={BarChart2} />
         <div className="border-t border-[#1E293B] mx-3 my-1" />
         <SidebarIconBtn Icon={Settings} />
-        <SidebarIconBtn Icon={Sparkles} pulseDot />
       </div>
       <div className="mt-auto pb-4 flex justify-center">
         <div className="w-8 h-8 bg-[#2563EB] rounded-full flex items-center justify-center text-white text-xs font-bold">
@@ -814,12 +812,6 @@ function MobileDashboardMockup() {
           </div>
           <ScheduleRows visibleRows={visibleRows} compact />
         </div>
-      </div>
-
-      {/* Floating sparkle pill */}
-      <div className="absolute bottom-[68px] right-3 bg-[#2563EB] text-white rounded-full px-2.5 py-1.5 flex items-center gap-1 shadow-lg">
-        <Sparkles size={12} />
-        <span className="text-[10px] font-semibold">AI</span>
       </div>
 
       {/* Bottom tab bar */}

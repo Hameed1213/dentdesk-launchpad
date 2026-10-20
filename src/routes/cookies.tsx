@@ -10,7 +10,7 @@ export const Route = createFileRoute("/cookies")({
       {
         name: "description",
         content:
-          "How Dent Dock uses cookies. Minimal essential cookies only, no tracking or advertising cookies.",
+          "How Dent Dock uses cookies. Essential cookies, optional analytics on dentdock.co.uk, and the tracking practices can add to their booking pages, each only with your consent.",
       },
       { property: "og:title", content: "Cookie Policy — Dent Dock" },
       {

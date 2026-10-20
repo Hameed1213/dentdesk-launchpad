@@ -459,7 +459,6 @@ const smsMessages = [
     type: "outbound",
     text: "Hi Sarah, your appointment is tomorrow at 10:00am — Smile Dental 👋",
   },
-  { id: 3, type: "inbound", text: "Thanks, see you tomorrow! 😊" },
 ] as const;
 
 const SmsVisual = () => {
@@ -467,7 +466,6 @@ const SmsVisual = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [visibleMessages, setVisibleMessages] = useState<number[]>([]);
   const [typing, setTyping] = useState(false);
-  const [typingFor, setTypingFor] = useState<number | null>(null);
   const [channel, setChannel] = useState<"sms" | "email">("sms");
   const [channelVisible, setChannelVisible] = useState(true);
 
@@ -491,34 +489,18 @@ const SmsVisual = () => {
     function runSequence() {
       setVisibleMessages([]);
       setTyping(false);
-      setTypingFor(null);
 
       timers.push(setTimeout(() => setVisibleMessages([1]), 600));
       timers.push(
         setTimeout(() => {
           setTyping(true);
-          setTypingFor(2);
         }, 1800),
       );
       timers.push(
         setTimeout(() => {
           setTyping(false);
-          setTypingFor(null);
           setVisibleMessages((prev) => [...prev, 2]);
         }, 3200),
-      );
-      timers.push(
-        setTimeout(() => {
-          setTyping(true);
-          setTypingFor(3);
-        }, 4400),
-      );
-      timers.push(
-        setTimeout(() => {
-          setTyping(false);
-          setTypingFor(null);
-          setVisibleMessages((prev) => [...prev, 3]);
-        }, 5600),
       );
       // After SMS completes — crossfade to email
       timers.push(
@@ -538,7 +520,6 @@ const SmsVisual = () => {
                       setChannelVisible(true);
                       setVisibleMessages([]);
                       setTyping(false);
-                      setTypingFor(null);
                       timers.push(setTimeout(runSequence, 400));
                     }, 400),
                   );
@@ -605,72 +586,36 @@ const SmsVisual = () => {
                           </div>
                         </div>
                       )}
-                      {msg.type === "inbound" && (
-                        <div className="flex justify-start">
-                          <div className="bg-white border border-[#e2e8f0] rounded-2xl rounded-bl-sm px-3 py-2 max-w-[85%] shadow-sm">
-                            <p className="text-[12px] text-[#0f172a] leading-relaxed">
-                              {msg.text}
-                            </p>
-                          </div>
-                        </div>
-                      )}
                     </div>
                   ),
               )}
 
               {typing && (
                 <div style={{ animation: "msgSlideIn 0.3s ease forwards" }}>
-                  {typingFor === 3 ? (
-                    <div className="flex justify-start">
-                      <div className="bg-white border border-[#e2e8f0] rounded-2xl rounded-bl-sm px-3 py-2.5 shadow-sm">
-                        <div className="flex gap-1 items-center">
-                          <span
-                            className="w-1.5 h-1.5 rounded-full bg-neutral-300"
-                            style={{ animation: "typingDot 1.2s ease-in-out infinite" }}
-                          />
-                          <span
-                            className="w-1.5 h-1.5 rounded-full bg-neutral-300"
-                            style={{
-                              animation:
-                                "typingDot 1.2s ease-in-out 0.2s infinite",
-                            }}
-                          />
-                          <span
-                            className="w-1.5 h-1.5 rounded-full bg-neutral-300"
-                            style={{
-                              animation:
-                                "typingDot 1.2s ease-in-out 0.4s infinite",
-                            }}
-                          />
-                        </div>
+                  <div className="flex justify-end">
+                    <div className="bg-[#2563EB] rounded-2xl rounded-br-sm px-3 py-2.5">
+                      <div className="flex gap-1 items-center">
+                        <span
+                          className="w-1.5 h-1.5 rounded-full bg-white/50"
+                          style={{ animation: "typingDot 1.2s ease-in-out infinite" }}
+                        />
+                        <span
+                          className="w-1.5 h-1.5 rounded-full bg-white/50"
+                          style={{
+                            animation:
+                              "typingDot 1.2s ease-in-out 0.2s infinite",
+                          }}
+                        />
+                        <span
+                          className="w-1.5 h-1.5 rounded-full bg-white/50"
+                          style={{
+                            animation:
+                              "typingDot 1.2s ease-in-out 0.4s infinite",
+                          }}
+                        />
                       </div>
                     </div>
-                  ) : (
-                    <div className="flex justify-end">
-                      <div className="bg-[#2563EB] rounded-2xl rounded-br-sm px-3 py-2.5">
-                        <div className="flex gap-1 items-center">
-                          <span
-                            className="w-1.5 h-1.5 rounded-full bg-white/50"
-                            style={{ animation: "typingDot 1.2s ease-in-out infinite" }}
-                          />
-                          <span
-                            className="w-1.5 h-1.5 rounded-full bg-white/50"
-                            style={{
-                              animation:
-                                "typingDot 1.2s ease-in-out 0.2s infinite",
-                            }}
-                          />
-                          <span
-                            className="w-1.5 h-1.5 rounded-full bg-white/50"
-                            style={{
-                              animation:
-                                "typingDot 1.2s ease-in-out 0.4s infinite",
-                            }}
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  )}
+                  </div>
                 </div>
               )}
             </div>

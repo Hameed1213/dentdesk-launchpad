@@ -216,7 +216,7 @@ function WaitlistPage() {
             Terms
           </Link>
           <a
-            href="https://wa.me/447700000000"
+            href="https://wa.me/447404488089"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-[#0F172A] transition-colors"
@@ -450,7 +450,7 @@ function WaitlistPage() {
           Terms
         </Link>
         <a
-          href="https://wa.me/447700000000"
+          href="https://wa.me/447404488089"
           target="_blank"
           rel="noopener noreferrer"
           className="text-[12px] text-neutral-400 hover:text-neutral-600 transition-colors"

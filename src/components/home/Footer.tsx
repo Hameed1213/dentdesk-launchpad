@@ -18,7 +18,7 @@ type CompanyLink = {
 };
 
 const companyLinks: CompanyLink[] = [
-  { label: "Contact", href: "https://wa.me/447700000000", external: true },
+  { label: "Contact", href: "https://wa.me/447404488089", external: true },
   { label: "Join the waitlist", href: "/waitlist", internal: true },
 ];
 

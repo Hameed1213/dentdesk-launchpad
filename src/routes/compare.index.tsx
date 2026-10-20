@@ -234,7 +234,7 @@ function CompareHubPage() {
             </p>
             <div className="mt-7 flex flex-col sm:flex-row items-center justify-center gap-3">
               <a
-                href="https://wa.me/447700000000"
+                href="https://wa.me/447404488089"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex w-full sm:w-auto items-center justify-center gap-2 px-5 py-3 rounded-xl border border-neutral-200 bg-white text-[14px] font-semibold text-[#0F162B] hover:bg-neutral-50 transition-colors"

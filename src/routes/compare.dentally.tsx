@@ -163,7 +163,7 @@ function HeroVisual() {
 const faqItems = [
   {
     q: "What happens after I sign up?",
-    a: "You go through the 8-step onboarding wizard. Practice details, opening hours, services, team, payments setup and brand. By the end, your booking page is live and your automations are running. Most practices finish setup in under 20 minutes. If you get stuck, message us on WhatsApp and we'll help in real time.",
+    a: "You go through the 8-step onboarding wizard: practice details, opening hours, treatments, team, patient import, a preview of your booking page, payments and text messages. By the end, your booking page is live and your automations are running. Most practices are live within the day. If you get stuck, message us on WhatsApp and we'll help in real time.",
   },
   {
     q: "Do you help me move from my current system?",
@@ -224,7 +224,7 @@ export const Route = createFileRoute("/compare/dentally")({
               name: "What happens after I sign up?",
               acceptedAnswer: {
                 "@type": "Answer",
-                text: "You go through the 8-step onboarding wizard. Practice details, opening hours, services, team, payments setup and brand. By the end, your booking page is live and your automations are running. Most practices finish setup in under 20 minutes. If you get stuck, message us on WhatsApp and we'll help in real time.",
+                text: "You go through the 8-step onboarding wizard: practice details, opening hours, treatments, team, patient import, a preview of your booking page, payments and text messages. By the end, your booking page is live and your automations are running. Most practices are live within the day. If you get stuck, message us on WhatsApp and we'll help in real time.",
               },
             },
             {
@@ -545,12 +545,12 @@ function ReadyOnDayOneVisual() {
     {
       Icon: Calendar,
       title: "Appointment reminders",
-      desc: "24 h and 1 h before the visit",
+      desc: "72 h, 24 h and 2 h before the visit",
     },
     {
       Icon: MessageSquare,
       title: "Recall sequences",
-      desc: "Bring patients back at 6 and 12 months",
+      desc: "Reminders before each check-up is due",
       mobileHidden: true,
     },
     {
@@ -561,8 +561,8 @@ function ReadyOnDayOneVisual() {
     },
     {
       Icon: Star,
-      title: "Review requests",
-      desc: "Sent the day after each appointment",
+      title: "Form reminders",
+      desc: "A nudge when a form isn't filled in yet",
       mobileHidden: true,
     },
   ];
@@ -1571,7 +1571,6 @@ const categories: Category[] = [
     rows: [
       { feature: "Online booking page", dentDock: yes(), dentally: yes("Essentials+ only") },
       
-      { feature: "Live slot updates", dentDock: yes(), dentally: yes() },
       { feature: "Patient self-reschedule via link", dentDock: yes(), dentally: yes() },
       { feature: "Patient self-cancel via link", dentDock: yes(), dentally: yes() },
       { feature: "Custom booking domain", dentDock: no("On the roadmap"), dentally: yes("Pro tier only") },

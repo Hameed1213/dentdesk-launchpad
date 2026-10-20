@@ -11,3 +11,8 @@ Dent Dock helps UK private dental practices run their day-to-day: patients book 
 - [Privacy](/privacy): Privacy policy.
 - [Terms](/terms): Terms of service.
 - [Cookies](/cookies): Cookie policy.
+- [Data Processing Agreement](/dpa): How Dent Dock processes patient data for practices.
+- [Compare](/compare): Dent Dock compared with other UK dental software.
+- [Dent Dock vs Dentally](/compare/dentally)
+- [Dent Dock vs iSmile Dental Software](/compare/ismile-dental-software)
+- [Dent Dock vs Software of Excellence](/compare/software-of-excellence)
