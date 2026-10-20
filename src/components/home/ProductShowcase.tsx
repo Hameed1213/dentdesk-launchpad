@@ -17,6 +17,10 @@ import {
   Shield,
   Zap,
   Plus,
+  UserRound,
+  FileText,
+  Download,
+  Mail,
 } from "lucide-react";
 import ToothIcon from "@/components/icons/ToothIcon";
 
@@ -26,16 +30,18 @@ import ToothIcon from "@/components/icons/ToothIcon";
 const tabs = [
   "Calendar",
   "Online Booking",
+  "Patient Portal",
   "Payments",
   "Recalls & Automations",
   "Inbox",
 ];
 
-const tabIcons = [CalendarDays, Globe, CreditCard, RefreshCw, MessageSquare];
+const tabIcons = [CalendarDays, Globe, UserRound, CreditCard, RefreshCw, MessageSquare];
 
 const tabDescriptions = [
   "Day, week and month views for your whole team",
   "Branded booking page your patients actually want to use",
+  "Patients manage their own appointments, forms and details",
   "Stripe deposits, payment links and card on arrival",
   "Automated sequences that run without you",
   "Every message sent to a patient, in one place",
@@ -44,6 +50,7 @@ const tabDescriptions = [
 const tabUrls = [
   "app.dentdock.co.uk/calendar",
   "book.dentdock.co.uk/smile-dental",
+  "book.dentdock.co.uk/smile-dental/portal",
   "app.dentdock.co.uk/payments",
   "app.dentdock.co.uk/recalls",
   "app.dentdock.co.uk/inbox",
@@ -461,7 +468,116 @@ function BookingMockup() {
 }
 
 /* =========================================================
-   TAB 3 — PAYMENTS
+   TAB 3 — PATIENT PORTAL
+========================================================= */
+function PortalMockup() {
+  const portalTabs = [
+    { label: "Appointments", Icon: CalendarDays, active: true },
+    { label: "Forms", Icon: FileText, active: false },
+    { label: "Payments", Icon: CreditCard, active: false },
+    { label: "My Details", Icon: UserRound, active: false },
+  ];
+
+  return (
+    <div className="bg-[#F8FAFC] h-full overflow-hidden flex flex-col">
+      {/* Portal header */}
+      <div className="bg-white border-b border-[#E2E8F0] px-5 py-4 flex items-center justify-between">
+        <div className="flex items-center gap-3">
+          <div className="w-9 h-9 rounded-full bg-[#2563eb26] flex items-center justify-center">
+            <span className="text-[#2563EB] font-extrabold text-[12px]">SD</span>
+          </div>
+          <div>
+            <div className="text-[14px] font-bold text-[#0A0F1E] leading-tight">Hi Sarah</div>
+            <div className="text-[11px] text-neutral-400">Smile Dental · patient portal</div>
+          </div>
+        </div>
+        <div className="hidden sm:flex items-center gap-1.5 text-[11px] text-neutral-400">
+          <Mail size={12} />
+          <span>Signed in by email link</span>
+        </div>
+      </div>
+
+      {/* Tabs */}
+      <div className="bg-white border-b border-[#E2E8F0] px-4 flex gap-1 overflow-hidden">
+        {portalTabs.map(({ label, Icon, active }) => (
+          <div
+            key={label}
+            className={`flex items-center gap-1.5 px-3 py-2.5 text-[12px] font-semibold whitespace-nowrap border-b-2 ${
+              active ? "text-[#2563EB] border-[#2563EB]" : "text-neutral-400 border-transparent"
+            }`}
+          >
+            <Icon size={13} />
+            <span>{label}</span>
+          </div>
+        ))}
+      </div>
+
+      <div className="p-5 flex flex-col gap-4 flex-1">
+        {/* Upcoming */}
+        <div>
+          <div className="text-[12px] font-bold text-[#0A0F1E] mb-2">Upcoming</div>
+          <div className="bg-white rounded-xl border border-[#E2E8F0] p-4 shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
+            <div className="flex items-start justify-between gap-3">
+              <div>
+                <div className="text-[14px] font-semibold text-[#0A0F1E]">Hygiene appointment</div>
+                <div className="text-[12px] text-neutral-500 mt-0.5">with Dr J. Webb</div>
+                <div className="text-[12px] text-neutral-500">Thu 14 Nov · 10:30am</div>
+              </div>
+              <span className="text-[10px] font-semibold text-[#166534] bg-[#DCFCE7] rounded-full px-2 py-0.5">
+                Confirmed
+              </span>
+            </div>
+            <div className="flex gap-2 mt-3">
+              <span className="text-[12px] font-semibold text-[#2563EB] border border-[#BFDBFE] bg-[#EFF6FF] rounded-lg px-3 py-1.5">
+                Reschedule
+              </span>
+              <span className="text-[12px] font-semibold text-neutral-600 border border-[#E2E8F0] rounded-lg px-3 py-1.5">
+                Cancel
+              </span>
+            </div>
+          </div>
+        </div>
+
+        {/* Form to complete */}
+        <div className="bg-white rounded-xl border border-[#E2E8F0] p-4 flex items-center justify-between gap-3">
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 rounded-lg bg-[#FEF3C7] flex items-center justify-center">
+              <FileText size={15} className="text-[#B45309]" />
+            </div>
+            <div>
+              <div className="text-[13px] font-semibold text-[#0A0F1E]">Medical history update</div>
+              <div className="text-[11px] text-neutral-400">Before your visit on 14 Nov</div>
+            </div>
+          </div>
+          <span className="text-[12px] font-semibold text-white bg-[#2563EB] rounded-lg px-3 py-1.5 whitespace-nowrap">
+            Complete now
+          </span>
+        </div>
+
+        {/* Past + receipt */}
+        <div>
+          <div className="text-[12px] font-bold text-[#0A0F1E] mb-2">Past</div>
+          <div className="bg-white rounded-xl border border-[#E2E8F0] p-4 flex items-center justify-between gap-3">
+            <div>
+              <div className="text-[13px] font-semibold text-[#0A0F1E]">Check-up</div>
+              <div className="text-[11px] text-neutral-400">Tue 14 May · £60 paid</div>
+            </div>
+            <div className="flex items-center gap-3">
+              <span className="flex items-center gap-1 text-[12px] font-semibold text-neutral-600">
+                <Download size={12} />
+                Receipt
+              </span>
+              <span className="text-[12px] font-semibold text-[#2563EB]">Book again →</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* =========================================================
+   TAB 4 — PAYMENTS
 ========================================================= */
 function PaymentsMockup() {
   const transactions = [
@@ -672,7 +788,7 @@ function PaymentsMockup() {
 }
 
 /* =========================================================
-   TAB 4 — RECALLS & AUTOMATIONS
+   TAB 5 — RECALLS & AUTOMATIONS
 ========================================================= */
 function RecallsMockup() {
   const queue = [
@@ -821,7 +937,7 @@ function RecallsMockup() {
 }
 
 /* =========================================================
-   TAB 5 — INBOX
+   TAB 6 — INBOX
 ========================================================= */
 function InboxMockup() {
   const conversations = [
@@ -1019,6 +1135,13 @@ const tabContent = [
     buttonText: "See booking pages",
   },
   {
+    badge: "For Patients",
+    title: "A patient portal that saves your reception calls",
+    description:
+      "Patients sign in with a link from their email, no password or app needed. From there they can move or cancel appointments, fill in forms, download receipts and update their details.",
+    buttonText: "See the patient portal",
+  },
+  {
     badge: "Get Paid Faster",
     title: "Payments, deposits and links. All built in",
     description:
@@ -1044,6 +1167,7 @@ const tabContent = [
 const mockups = [
   CalendarMockup,
   BookingMockup,
+  PortalMockup,
   PaymentsMockup,
   RecallsMockup,
   InboxMockup,

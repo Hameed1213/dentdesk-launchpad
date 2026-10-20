@@ -6,8 +6,6 @@ import {
   FileCheck,
   TrendingUp,
   Users,
-  Monitor,
-  Calendar,
   CalendarDays,
   MapPin,
   Check,
@@ -360,95 +358,65 @@ const StaffVisual = () => {
   );
 };
 
-const PortalVisual = () => (
-  <div
-    className="w-full h-full relative"
-    style={{
-      filter:
-        "drop-shadow(0 8px 16px rgba(0,0,0,0.06)) drop-shadow(0 2px 4px rgba(0,0,0,0.04))",
-    }}
-  >
-    {/* Browser window */}
-    <div className="bg-white rounded-lg overflow-hidden border border-neutral-200 p-5">
-        {/* Portal content */}
-        <div className="bg-white">
-          {/* Greeting */}
-          <div className="text-[12px] font-bold text-[#0f172a] mb-2.5">
-            Hi Sarah
-          </div>
+const SourcesVisual = () => {
+  const rows = [
+    { label: "Google Ads", colour: "#4285F4", bookings: 24, newPatients: 15, paid: "£3,120" },
+    { label: "Facebook / Instagram", colour: "#1877F2", bookings: 14, newPatients: 11, paid: "£1,480" },
+    { label: "Your website", colour: "#0f766e", bookings: 6, newPatients: 2, paid: "£410" },
+  ];
+  const max = Math.max(...rows.map((r) => r.bookings));
 
-          {/* Tabs */}
-          <div className="flex gap-1.5 mb-2.5">
-            <div className="text-[8px] font-semibold text-white bg-[#2563EB] px-2 py-1 rounded-md flex items-center gap-1">
-              <Calendar size={8} /> Appointments
+  return (
+    <div
+      className="w-full h-full relative"
+      style={{
+        filter:
+          "drop-shadow(0 8px 16px rgba(0,0,0,0.06)) drop-shadow(0 2px 4px rgba(0,0,0,0.04))",
+      }}
+    >
+      <div className="bg-white rounded-lg overflow-hidden border border-neutral-200 p-4">
+        <div className="flex items-center justify-between mb-2">
+          <div>
+            <div className="text-[11px] font-semibold text-neutral-400 uppercase tracking-wider">
+              Where online bookings came from
             </div>
-            <div className="text-[8px] font-semibold text-[#475569] bg-[#F3F6FD] border border-[#e2e8f0] px-2 py-1 rounded-md">
-              Forms
-            </div>
-            <div className="text-[8px] font-semibold text-[#475569] bg-[#F3F6FD] border border-[#e2e8f0] px-2 py-1 rounded-md">
-              Payments
-            </div>
-            <div className="hidden sm:block text-[8px] font-semibold text-[#475569] bg-[#F3F6FD] border border-[#e2e8f0] px-2 py-1 rounded-md">
-              Details
-            </div>
+            <div className="text-[13px] font-bold text-[#0f172a]">Last 30 days</div>
           </div>
+        </div>
 
-          {/* Upcoming label */}
-          <div className="text-[9px] font-bold text-[#0f172a] mb-1">
-            Upcoming
-          </div>
-          {/* Upcoming appointment card */}
-          <div className="bg-[#F3F6FD] border border-[#e2e8f0] rounded-lg p-2 mb-2.5 flex items-center justify-between">
+        <div className="grid grid-cols-[1fr_48px_56px_56px] gap-x-2 text-[9px] font-semibold text-neutral-400 uppercase tracking-wide pb-1.5 border-b border-neutral-100">
+          <span>Source</span>
+          <span className="text-right">Bookings</span>
+          <span className="text-right">New patients</span>
+          <span className="text-right">Paid</span>
+        </div>
+        {rows.map((r) => (
+          <div
+            key={r.label}
+            className="grid grid-cols-[1fr_48px_56px_56px] gap-x-2 items-center py-1.5 border-b border-neutral-50 last:border-0"
+          >
             <div className="min-w-0">
-              <div className="text-[10px] sm:text-[9px] font-bold text-[#0f172a] truncate">
-                Hygiene check
-              </div>
-              <div className="text-[9px] sm:text-[8px] text-[#64748b]">with Dr. J. Webb</div>
-              <div className="text-[9px] sm:text-[8px] text-[#64748b]">
-                Thu 18 Apr · 10:30am
+              <div className="text-[11px] font-medium text-[#0f172a] truncate">{r.label}</div>
+              <div className="h-1 rounded-full bg-neutral-100 mt-1">
+                <div
+                  className="h-1 rounded-full"
+                  style={{ width: `${(r.bookings / max) * 100}%`, background: r.colour }}
+                />
               </div>
             </div>
-            <span className="text-[8px] sm:text-[7px] font-semibold bg-emerald-100 text-emerald-700 px-1.5 py-0.5 rounded-full shrink-0">
-              Confirmed
-            </span>
+            <span className="text-[11px] text-right tabular-nums text-[#0f172a]">{r.bookings}</span>
+            <span className="text-[11px] text-right tabular-nums text-[#0f172a]">{r.newPatients}</span>
+            <span className="text-[11px] text-right tabular-nums font-semibold text-[#0f172a]">{r.paid}</span>
           </div>
+        ))}
 
-          {/* Past label */}
-          <div className="text-[9px] font-bold text-[#0f172a] mb-1">Past</div>
-          {/* Past grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
-            {[
-              { svc: "New Patient Checkup", when: "Thu 16 Apr · 3:30pm" },
-              { svc: "Hygiene Appointment", when: "Thu 16 Apr · 2:30pm" },
-              { svc: "Routine Checkup", when: "Wed 15 Apr · 1:45pm" },
-              { svc: "Whitening", when: "Wed 15 Apr · 12:00pm" },
-            ].map((p, idx) => (
-              <div
-                key={p.svc + p.when}
-                className={`bg-[#F3F6FD] border border-[#e2e8f0] rounded-lg p-1.5 ${idx >= 2 ? "hidden sm:block" : ""}`}
-              >
-                <div className="flex items-center justify-between gap-1">
-                  <div className="text-[10px] sm:text-[8px] font-bold text-[#0f172a] truncate">
-                    {p.svc}
-                  </div>
-                  <span className="text-[8px] sm:text-[6px] font-semibold bg-emerald-100 text-emerald-700 px-1.5 sm:px-1 py-0.5 rounded-full shrink-0">
-                    Confirmed
-                  </span>
-                </div>
-                <div className="text-[9px] sm:text-[7px] text-[#64748b] mt-0.5">
-                  with Dr. Webb
-                </div>
-                <div className="text-[9px] sm:text-[7px] text-[#64748b]">{p.when}</div>
-                <div className="text-[9px] sm:text-[7px] font-semibold text-[#2563EB] mt-0.5">
-                  Book again →
-                </div>
-              </div>
-            ))}
+        <div className="mt-2 text-[10px] text-neutral-400 leading-snug">
+          Google &amp; Meta codes · cookie bar built in · no patient details sent
         </div>
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 /* ---------- SMS reminder visual ---------- */
 
@@ -730,8 +698,10 @@ const cells = [
     orb: "37,99,235", // primary royal blue
   },
   {
-    Icon: Monitor,
-    title: "Patients manage themselves",
+    Icon: TrendingUp,
+    title: "Know where your bookings come from",
+    description:
+      "See where each online booking came from, and what those patients went on to spend.",
     visual: (
       <motion.div
         initial={{ opacity: 0, y: 16 }}
@@ -739,7 +709,7 @@ const cells = [
         viewport={{ once: true, margin: "-40px" }}
         transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.25 }}
       >
-        <PortalVisual />
+        <SourcesVisual />
       </motion.div>
     ),
     span: "md:col-span-2 lg:col-span-4 lg:row-span-1",
@@ -845,7 +815,7 @@ export default function BentoGrid() {
             // Per-cell entrance: direction + delay
             const cellEntrances = [
               { initial: { opacity: 0, x: -24 }, delay: 0.05 }, // 1 patient records — left
-              { initial: { opacity: 0, x: 24 }, delay: 0.1 },  // 2 portal — right
+              { initial: { opacity: 0, x: 24 }, delay: 0.1 },  // 2 booking sources — right
               { initial: { opacity: 0, x: -24 }, delay: 0.15 }, // 3 staff — left
               { initial: { opacity: 0, x: 24 }, delay: 0.2 },  // 4 sms — right
               { initial: { opacity: 0, y: 32 }, delay: 0.1 },  // 5 analytics — up
@@ -915,6 +885,11 @@ export default function BentoGrid() {
                       <h3 className={`text-[19px] font-semibold text-foreground tracking-tight leading-snug whitespace-pre-line ${("titleClass" in cell && cell.titleClass) ? cell.titleClass : "lg:max-w-[220px]"}`}>
                         {cell.title}
                       </h3>
+                      {"description" in cell && cell.description && (
+                        <p className="mt-2 text-sm text-muted-foreground leading-snug lg:max-w-[220px]">
+                          {cell.description}
+                        </p>
+                      )}
                     </div>
                     {cell.popOut ? (
                       <>
