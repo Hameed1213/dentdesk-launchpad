@@ -1573,6 +1573,8 @@ const categories: Category[] = [
       
       { feature: "Patient self-reschedule via link", dentDock: yes(), dentally: yes() },
       { feature: "Patient self-cancel via link", dentDock: yes(), dentally: yes() },
+      { feature: "Patient portal", dentDock: yes(), dentally: yes("Dentally Portal") },
+      { feature: "Booking source tracked automatically", dentDock: yes(), dentally: no("Not specified") },
       { feature: "Custom booking domain", dentDock: no("On the roadmap"), dentally: yes("Pro tier only") },
     ],
   },
