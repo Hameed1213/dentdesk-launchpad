@@ -57,6 +57,7 @@ export default function PricingCTA() {
         "Book into any site's diary from one reception",
         "Team messaging: message colleagues at your site or another, one to one or in groups",
         "Permissions per site",
+        "Membership plans: patients pay monthly for their check-ups and hygiene visits",
         AND_MORE,
       ],
     },
@@ -74,6 +75,7 @@ export default function PricingCTA() {
         "Templates and automations set once by head office, used by every site",
         "Data exports for your own reporting tools",
         "Custom contract and data processing agreement",
+        "Membership plans across every site, managed from head office",
         AND_MORE,
       ],
     },
@@ -253,6 +255,29 @@ export default function PricingCTA() {
               </div>
             )}
           </motion.div>
+        </div>
+
+        {/* Patient directory — coming soon */}
+        <div className="mt-5 rounded-2xl bg-white border border-neutral-200 px-6 sm:px-8 py-5 sm:py-6 flex flex-col md:flex-row md:items-center md:justify-between gap-5 shadow-sm">
+          <div className="md:max-w-none">
+            <span className="text-[11px] font-semibold px-2.5 py-1 rounded-full bg-[#EFF6FF] text-[#2563EB]">
+              Coming soon
+            </span>
+            <h3 className="mt-3 text-2xl sm:text-3xl md:text-[30px] font-medium tracking-tight text-[#0F172A] leading-tight">
+              Listed in the <span className="text-[#2563EB]">DentDock patient directory</span>
+            </h3>
+            <p className="text-[15px] sm:text-[16px] leading-[1.55] text-[#64748b] mt-2">
+              Patients near you find your practice, see your real prices and free times, and book in seconds.
+            </p>
+          </div>
+          <div className="flex flex-col items-stretch md:items-end gap-1 flex-shrink-0 w-full md:w-auto">
+            <Link
+              to="/waitlist"
+              className="w-full md:w-auto inline-flex items-center justify-center gap-2 border border-[#2563EB] text-[#2563EB] text-[14px] font-semibold px-5 py-2.5 rounded-xl hover:bg-[#2563EB] hover:text-white transition-all"
+            >
+              Join the waitlist <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
         </div>
 
         <div className="mt-8 flex justify-center lg:hidden">
