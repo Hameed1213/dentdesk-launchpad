@@ -9,30 +9,72 @@ type Plan = {
   priceSuffix?: string;
   note: string;
   comingSoon?: boolean;
+  /** What the plan includes. Every Starter line is in the product today
+   *  (payments and text messages go live before launch); the coming-soon
+   *  plans list what they are planned to include. */
+  features: string[];
 };
+
+const AND_MORE = "and more…";
 
 export default function PricingCTA() {
   const plans: Plan[] = [
-    { name: "Starter", price: "£49", priceSuffix: "/mo", note: "" },
-    { name: "Multi-site", price: "Coming soon", note: "", comingSoon: true },
-    { name: "Enterprise", price: "Coming soon", note: "", comingSoon: true },
+    {
+      name: "Starter",
+      price: "£49",
+      priceSuffix: "/mo",
+      note: "",
+      features: [
+        "Unlimited dentists & staff",
+        "Online booking & patient portal",
+        "Automated reminders & recalls",
+        "200 free texts a month",
+        "Payments & deposits",
+        "Digital forms & medical history",
+        "Ad tracking & booking sources",
+        "Priority WhatsApp support",
+        AND_MORE,
+      ],
+    },
+    {
+      name: "Multi-site",
+      price: "Coming soon",
+      note: "",
+      comingSoon: true,
+      features: [
+        "Everything in Starter",
+        "Up to 5 sites, one login",
+        "Owner overview of every site",
+        "Shared patient records",
+        "Book any site from one reception",
+        "Team messaging",
+        "Membership plans",
+        AND_MORE,
+      ],
+    },
+    {
+      name: "Enterprise",
+      price: "Coming soon",
+      note: "",
+      comingSoon: true,
+      features: [
+        "Everything in Multi-site",
+        "Unlimited sites & regions",
+        "Your own booking domain",
+        "Data migration done for you",
+        "Dedicated account manager",
+        "Head-office templates & automations",
+        "Custom contract",
+        AND_MORE,
+      ],
+    },
   ];
 
   const [selected, setSelected] = useState<string>("Starter");
   const activePlan = plans.find((p) => p.name === selected) ?? plans[0];
   const isComingSoon = !!activePlan.comingSoon;
 
-  const features = [
-    "1 location",
-    "Unlimited dentists & Staff permissions",
-    "Online booking page",
-    "Patient records & notes",
-    "Automated reminders & recalls",
-    "Payments & deposits",
-    "Forms & questionnaires",
-    "Advanced analytics & reports",
-    "Priority WhatsApp support",
-  ];
+  const features = activePlan.features;
 
   return (
     <section className="relative bg-gradient-to-br from-[#DBEAFE] via-[#EFF6FF] to-white py-16 md:py-24 overflow-hidden">
@@ -123,7 +165,7 @@ export default function PricingCTA() {
                       )}
                     </div>
                   </div>
-                  <div className="text-right">
+                  <div className="text-right whitespace-nowrap pl-3">
                     <span
                       className={[
                         plan.priceSuffix ? "text-xl font-medium" : "text-sm font-medium",
@@ -159,33 +201,72 @@ export default function PricingCTA() {
             transition={{ duration: 0.6, delay: 0.15 }}
             className="relative rounded-2xl border border-neutral-200 bg-white p-8 overflow-hidden"
           >
-            <div className={isComingSoon ? "blur-md select-none pointer-events-none" : ""}>
-              <div className="pb-4 mb-2 border-b border-neutral-100">
-                <h3 className="text-[15px] font-semibold text-foreground">Includes:</h3>
-              </div>
-              <ul className="divide-y divide-neutral-100">
-                {features.map((feature, i) => (
-                  <li key={i} className="flex items-center justify-between py-3">
-                    <span className="text-[15px] leading-[1.5] text-[#0F172A]">{feature}</span>
+            <div className="pb-4 mb-2 border-b border-neutral-100 flex items-center justify-between gap-3">
+              <h3 className="text-[15px] font-semibold text-foreground">
+                {isComingSoon ? "Planned to include:" : "Includes:"}
+              </h3>
+              {isComingSoon && (
+                <span className="text-[11px] font-semibold px-2.5 py-1 rounded-full bg-[#EFF6FF] text-[#2563EB] whitespace-nowrap">
+                  Coming soon
+                </span>
+              )}
+            </div>
+            <ul className="divide-y divide-neutral-100">
+              {features.map((feature, i) =>
+                feature === AND_MORE ? (
+                  <li key={i} className="py-3 text-[15px] leading-[1.5] text-[#64748B]">
+                    {feature}
+                  </li>
+                ) : (
+                  <li key={i} className="flex items-center justify-between gap-4 py-3">
+                    <span
+                      className={`text-[15px] leading-[1.5] text-[#0F172A] ${feature.startsWith("Everything in ") ? "font-semibold" : ""}`}
+                    >
+                      {feature}
+                    </span>
                     <Check className="w-4 h-4 text-[#2563EB] flex-shrink-0" strokeWidth={3} />
                   </li>
-                ))}
-              </ul>
-            </div>
+                ),
+              )}
+            </ul>
 
             {isComingSoon && (
-              <div className="absolute inset-0 flex flex-col items-center justify-center bg-white/40 backdrop-blur-[2px]">
-                <div className="flex flex-col items-center gap-3 px-6 py-5 rounded-2xl bg-white/90 border border-neutral-200 shadow-lg">
-                  <div className="text-center">
-                    <div className="text-[18px] font-semibold text-foreground">Coming soon</div>
-                    <div className="text-[13px] text-[#475569] mt-1 max-w-[240px]">
-                      {activePlan.name} plan is launching soon. Get started with Starter today.
-                    </div>
-                  </div>
-                </div>
+              <div className="mt-6 pt-5 border-t border-neutral-100 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                <p className="text-[13px] text-[#475569]">
+                  No price yet. Register your interest and we'll be in touch when it launches.
+                </p>
+                <Link
+                  to="/waitlist"
+                  className="inline-flex items-center justify-center gap-2 border border-[#2563EB] text-[#2563EB] text-[14px] font-semibold px-5 py-2.5 rounded-xl hover:bg-[#EFF6FF] transition-colors whitespace-nowrap"
+                >
+                  Register interest <ArrowRight className="w-4 h-4" />
+                </Link>
               </div>
             )}
           </motion.div>
+        </div>
+
+        {/* Patient directory — coming soon */}
+        <div className="mt-5 rounded-2xl bg-white border border-neutral-200 px-6 sm:px-8 py-5 sm:py-6 flex flex-col md:flex-row md:items-center md:justify-between gap-5 shadow-sm">
+          <div className="md:max-w-none">
+            <span className="text-[11px] font-semibold px-2.5 py-1 rounded-full bg-[#EFF6FF] text-[#2563EB]">
+              Coming soon
+            </span>
+            <h3 className="mt-3 text-2xl sm:text-3xl md:text-[30px] font-medium tracking-tight text-[#0F172A] leading-tight">
+              Listed in the <span className="text-[#2563EB]">DentDock patient directory</span>
+            </h3>
+            <p className="text-[15px] sm:text-[16px] leading-[1.55] text-[#64748b] mt-2">
+              Patients near you find your practice, see your real prices and free times, and book in seconds.
+            </p>
+          </div>
+          <div className="flex flex-col items-stretch md:items-end gap-1 flex-shrink-0 w-full md:w-auto">
+            <Link
+              to="/waitlist"
+              className="w-full md:w-auto inline-flex items-center justify-center gap-2 border border-[#2563EB] text-[#2563EB] text-[14px] font-semibold px-5 py-2.5 rounded-xl hover:bg-[#2563EB] hover:text-white transition-all"
+            >
+              Join the waitlist <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
         </div>
 
         <div className="mt-8 flex justify-center lg:hidden">
