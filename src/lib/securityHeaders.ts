@@ -7,8 +7,8 @@
  * subdomain (including any email link-tracking one) to https; add it once
  * they are all confirmed.
  *
- * The content policy is sent in report-only mode first: it blocks nothing
- * and only reports. TanStack's server rendering writes inline scripts, so
+ * The content policy is enforced (22 Oct, after report-only showed nothing on
+ * the home, compare and privacy pages). TanStack's server rendering writes inline scripts, so
  * 'unsafe-inline' stays until they carry a nonce; the rest (framing, plugins,
  * base, which sites may be contacted) is already narrow.
  */
@@ -18,7 +18,7 @@ export const SECURITY_HEADERS: Record<string, string> = {
   "X-Frame-Options": "DENY",
   "Referrer-Policy": "strict-origin-when-cross-origin",
   "Permissions-Policy": "camera=(), microphone=(), geolocation=(), payment=(), usb=()",
-  "Content-Security-Policy-Report-Only": [
+  "Content-Security-Policy": [
     "default-src 'self'",
     "script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com https://www.googletagmanager.com",
     "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
