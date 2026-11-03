@@ -1325,7 +1325,7 @@ function ClosingCTA() {
             Join the waitlist →
           </a>
           <p className="text-[14px] text-dd-muted">
-            30-day trial when you're ready. No card required.
+            30-day free trial when you're ready. A card is needed to start, but nothing is charged during the trial.
           </p>
         </div>
       </div>
