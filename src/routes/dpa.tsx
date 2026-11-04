@@ -25,7 +25,7 @@ export const Route = createFileRoute("/dpa")({
 
 function DpaPage() {
   return (
-    <LegalLayout title="Data Processing Agreement" updated="20 October 2026">
+    <LegalLayout title="Data Processing Agreement" updated="4 November 2026">
       <p>
         This Data Processing Agreement ("DPA") is between the dental practice that holds a Dent Dock account (the "Practice") and PARADIGM NETWORK LIMITED, trading as Dent Dock, a company registered in England and Wales (company number 16903048), whose registered office is at 11 Dronfield Road, Salford, M6 7FN ("Dent Dock", "we", "us").
       </p>
@@ -121,8 +121,8 @@ function DpaPage() {
       <LegalSection heading="Annex 1: Details of the processing">
         <p><strong className="text-[#0F172A] font-semibold">Subject matter</strong> — providing Dent Dock, practice management software for dental practices, to the Practice.</p>
         <p><strong className="text-[#0F172A] font-semibold">Duration</strong> — for as long as the Practice has an account, and until its data is returned or deleted under section 10.</p>
-        <p><strong className="text-[#0F172A] font-semibold">Nature and purpose</strong> — storing and organising records; online booking and the patient portal; forms; appointment reminders, recalls and other messages; recording payments; reporting, including counting how many people reach, finish and book after a treatment's health form during online booking (daily totals per treatment, which contain no personal data and use no cookies or device storage); support; and keeping the service secure.</p>
-        <p><strong className="text-[#0F172A] font-semibold">Types of personal data</strong> — name, date of birth, contact details, address, appointments, dental and treatment notes, form answers, signatures, files and images, payment records, messages, and communication preferences.</p>
+        <p><strong className="text-[#0F172A] font-semibold">Nature and purpose</strong> — storing and organising records; online booking and the patient portal; forms; appointment reminders, recalls and other messages, by email and, once switched on for the Practice, by text message; recording payments, and passing payment details to the Practice's own Stripe account when a patient pays online; holding an online booking and its form answers for a short time while a deposit is paid; reporting, including counting how many people reach, finish and book after a treatment's health form during online booking (daily totals per treatment, which contain no personal data and use no cookies or device storage); support; and keeping the service secure.</p>
+        <p><strong className="text-[#0F172A] font-semibold">Types of personal data</strong> — name, date of birth, contact details, address, appointments, dental and treatment notes, form answers, signatures, files and images, payment records, messages, communication preferences, and records of text usage and of patients who have stopped texts.</p>
         <p><strong className="text-[#0F172A] font-semibold">Special category data</strong> — health data, including medical history, medicines, allergies and dental records.</p>
         <p><strong className="text-[#0F172A] font-semibold">Data subjects</strong> — the Practice's patients (including children), their parents, guardians or carers, and the Practice's staff.</p>
       </LegalSection>
@@ -140,14 +140,12 @@ function DpaPage() {
       <LegalSection heading="Annex 3: Sub-processors">
         <ul className="list-disc pl-5 space-y-1.5">
           <li><strong className="text-[#0F172A] font-semibold">Supabase</strong> — database, sign-in, file storage and server functions. Data stored in London, UK.</li>
-          <li><strong className="text-[#0F172A] font-semibold">Stripe</strong> — subscription billing and patient payments.</li>
+          <li><strong className="text-[#0F172A] font-semibold">Stripe</strong> — subscription billing. Patient payments go through the Practice's own Stripe account, under the Practice's own agreement with Stripe.</li>
+          <li><strong className="text-[#0F172A] font-semibold">Twilio</strong> — sending text messages, used for a Practice only once texts are switched on for it. Twilio Inc. is in the United States. Transfers rely on the UK Extension to the EU-US Data Privacy Framework and, if that does not apply, the UK Addendum.</li>
           <li><strong className="text-[#0F172A] font-semibold">Resend</strong> — sending emails.</li>
           <li><strong className="text-[#0F172A] font-semibold">Vercel</strong> — hosting the practice app and the online booking site.</li>
           <li><strong className="text-[#0F172A] font-semibold">Cloudflare</strong> — protecting online booking and waitlist forms from automated abuse.</li>
         </ul>
-        <p>
-          We do not send text messages yet. We will give 30 days' notice under section 6 before adding a text message provider.
-        </p>
       </LegalSection>
 
       <LegalSection heading="Contact">

@@ -27,7 +27,7 @@ export const Route = createFileRoute("/cookies")({
 
 function CookiesPage() {
   return (
-    <LegalLayout title="Cookie Policy" updated="20 October 2026">
+    <LegalLayout title="Cookie Policy" updated="4 November 2026">
       <LegalSection heading="What are cookies">
         <p>
           Cookies are small text files stored on your device when you visit a website. They help us provide a working, secure experience.
@@ -52,6 +52,9 @@ function CookiesPage() {
           </li>
           <li>
             <strong className="text-[#0F172A] font-semibold">Booking page cookie choice</strong> — remembers whether a patient accepted or rejected cookies on a practice's booking page (<strong className="text-[#0F172A] font-semibold">dd_tracking_consent_v1</strong>). Stored in localStorage, not a cookie, and only on booking pages where the practice has added its own analytics or advertising account.
+          </li>
+          <li>
+            <strong className="text-[#0F172A] font-semibold">Deposit payment</strong> — while a patient pays a deposit during online booking, a reference to their held booking is kept so that reloading the page does not lose it (<strong className="text-[#0F172A] font-semibold">dentdock_hold_</strong> followed by the practice's address). Stored in localStorage, not a cookie, and removed when the booking is finished or the hold ends.
           </li>
           <li>
             <strong className="text-[#0F172A] font-semibold">Patient portal to booking</strong> — when a signed-in patient chooses to book from the patient portal, their name, contact details and date of birth are passed to the booking page so they do not have to type them again. Stored in the browser tab's session storage and removed as soon as the booking page has read them.
@@ -91,7 +94,7 @@ function CookiesPage() {
 
       <LegalSection heading="Payment cookies">
         <p>
-          If you connect Stripe during onboarding, Stripe may set its own cookies to process payments securely. These are governed by Stripe's own cookie policy at stripe.com.
+          If you connect Stripe during onboarding, Stripe may set its own cookies to process payments securely. Stripe's card form loads only on the page where a patient pays a deposit, and Stripe may set its own cookies there to process the payment securely and prevent fraud. This is needed to take the payment, so it does not depend on the cookie choice. These are governed by Stripe's own cookie policy at stripe.com.
         </p>
       </LegalSection>
 
