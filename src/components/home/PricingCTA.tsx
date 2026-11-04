@@ -28,7 +28,7 @@ export default function PricingCTA() {
         "Unlimited dentists & staff",
         "Online booking & patient portal",
         "Automated reminders & recalls",
-        "200 free texts a month",
+        "200 texts a month included, then 8p",
         "Payments & deposits",
         "Digital forms & medical history",
         "Ad tracking & booking sources",

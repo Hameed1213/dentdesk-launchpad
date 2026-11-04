@@ -26,7 +26,7 @@ export const Route = createFileRoute("/privacy")({
 
 function PrivacyPage() {
   return (
-    <LegalLayout title="Privacy Policy" updated="20 October 2026">
+    <LegalLayout title="Privacy Policy" updated="4 November 2026">
       <LegalSection heading="Who we are">
         <p>
           Dent Dock is a dental practice management platform. Dent Dock is a trading name of PARADIGM NETWORK LIMITED, a company registered in England and Wales (company number 16903048), whose registered office is at 11 Dronfield Road, Salford, M6 7FN. Our ICO registration number is ZC132966.
@@ -57,10 +57,10 @@ function PrivacyPage() {
           <strong className="text-[#0F172A] font-semibold">Online booking form totals (for the practice)</strong> — when a patient books online for a treatment that has a health form, we count, for the practice, how many people reach the form, how many finish it and how many go on to book. These are daily totals for each treatment. They contain no names, contact details, answers or other details about anyone, we cannot tell who a count came from, and we do not use cookies or store anything on the patient's device to make them. Every visitor is counted, whether or not they accept cookies.
         </p>
         <p>
-          <strong className="text-[#0F172A] font-semibold">Payment data</strong> — subscription and payment records. Card details are handled by Stripe and are never stored by Dent Dock.
+          <strong className="text-[#0F172A] font-semibold">Payment data</strong> — subscription and payment records, including the extra text charges on a practice's invoices. Card details are handled by Stripe and are never stored by Dent Dock. When a patient pays online, the card form comes directly from Stripe, and the patient's card details go straight to Stripe.
         </p>
         <p>
-          <strong className="text-[#0F172A] font-semibold">Messages</strong> — emails (and, once available, text messages) sent to patients through Dent Dock, and messages you send to our support team.
+          <strong className="text-[#0F172A] font-semibold">Messages</strong> — emails and text messages sent to patients through Dent Dock, and messages you send to our support team. For each text we also keep a usage record, used to count and bill texts: the practice, the patient record, a scrambled version of the phone number with its last three digits, the date and its delivery status. If a patient stops texts, we keep the same kind of record of the stop, so that it keeps working.
         </p>
         <p>
           <strong className="text-[#0F172A] font-semibold">Website visit totals</strong> — for dentdock.co.uk, we count daily totals of visits and page views, by page, by where visitors came from, by device type and by country. They contain nothing about any one person, we cannot tell who a count came from, and we do not use cookies or store anything on your device to make them. Every visitor is counted, whether or not they accept cookies.
@@ -104,7 +104,8 @@ function PrivacyPage() {
         <p>We use the following companies to provide the service:</p>
         <ul className="list-disc pl-5 space-y-1.5">
           <li><strong className="text-[#0F172A] font-semibold">Supabase</strong> — database, sign-in, file storage and server functions. Data stored in London, UK.</li>
-          <li><strong className="text-[#0F172A] font-semibold">Stripe</strong> — subscription billing and patient payments.</li>
+          <li><strong className="text-[#0F172A] font-semibold">Stripe</strong> — subscription billing. Patient payments go through the practice's own Stripe account, under the practice's own agreement with Stripe. For a patient payment, Stripe receives the amount, the card details, what the payment is for (such as "Deposit: Check-up"), our reference numbers for the payment, and, for a deposit paid online, the patient's email address.</li>
+          <li><strong className="text-[#0F172A] font-semibold">Twilio</strong> — sending text messages, once texts are switched on for a practice. Twilio receives the patient's mobile number and the message, and the practice's name as the sender.</li>
           <li><strong className="text-[#0F172A] font-semibold">Resend</strong> — sending emails.</li>
           <li><strong className="text-[#0F172A] font-semibold">Vercel</strong> — hosting the practice app and the online booking site.</li>
           <li><strong className="text-[#0F172A] font-semibold">Cloudflare</strong> — protecting online booking and waitlist forms from automated abuse, and hosting dentdock.co.uk.</li>
@@ -113,14 +114,11 @@ function PrivacyPage() {
         <p>
           A practice can choose to add its own Google Analytics, Google Ads or Meta account to its online booking page. Those companies then work for the practice, not for Dent Dock, and are only used if the patient accepts cookies on that page. We never send them a patient's name, contact details, date of birth, health information or form answers. See our <a href="/cookies" className="text-[#2563EB] hover:underline">Cookie Policy</a>.
         </p>
-        <p>
-          We do not send text messages yet. Before we do, we will add the text message provider to this list and tell practices.
-        </p>
       </LegalSection>
 
       <LegalSection heading="Where data is stored">
         <p>
-          Our database and files are stored in London, UK. Some of the companies above (Stripe, Resend, Vercel, Cloudflare and Google) may process data outside the UK, including in the United States. Where that happens, we rely on the protections UK data protection law requires, such as UK adequacy regulations or the UK International Data Transfer Agreement.
+          Our database and files are stored in London, UK. Some of the companies above (Stripe, Twilio, Resend, Vercel, Cloudflare and Google) may process data outside the UK, including in the United States. Where that happens, we rely on the protections UK data protection law requires, such as UK adequacy regulations (including the UK Extension to the EU-US Data Privacy Framework) or the UK International Data Transfer Agreement or Addendum.
         </p>
       </LegalSection>
 
@@ -130,6 +128,15 @@ function PrivacyPage() {
         </p>
         <p>
           <strong className="text-[#0F172A] font-semibold">Financial records</strong> — six years, as required by UK tax law.
+        </p>
+        <p>
+          <strong className="text-[#0F172A] font-semibold">Text usage and stop records</strong> — for as long as the practice has an account, and deleted with the practice's data.
+        </p>
+        <p>
+          <strong className="text-[#0F172A] font-semibold">Online bookings waiting for a deposit</strong> — while a patient pays a deposit online, the rest of their booking, including any health form answers, is held on our servers for a short time, usually up to 10 minutes. It is deleted as soon as the booking is finished or the hold ends.
+        </p>
+        <p>
+          <strong className="text-[#0F172A] font-semibold">Security records</strong> — short-lived records used to stop abuse: requests for patient portal sign-in links, sign-up attempts and counts of emails sent by staff for 2 days, and invitation confirmations for 24 hours.
         </p>
         <p>
           <strong className="text-[#0F172A] font-semibold">Error reports</strong> — until 12 months after the problem is marked as fixed. If the same problem happens again, it is reopened and kept.
