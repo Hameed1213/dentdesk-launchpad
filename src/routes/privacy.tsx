@@ -26,7 +26,7 @@ export const Route = createFileRoute("/privacy")({
 
 function PrivacyPage() {
   return (
-    <LegalLayout title="Privacy Policy" updated="4 November 2026">
+    <LegalLayout title="Privacy Policy" updated="9 November 2026">
       <LegalSection heading="Who we are">
         <p>
           Dent Dock is a dental practice management platform. Dent Dock is a trading name of PARADIGM NETWORK LIMITED, a company registered in England and Wales (company number 16903048), whose registered office is at 11 Dronfield Road, Salford, M6 7FN. Our ICO registration number is ZC132966.
@@ -139,6 +139,9 @@ function PrivacyPage() {
           <strong className="text-[#0F172A] font-semibold">Security records</strong> — short-lived records used to stop abuse: requests for patient portal sign-in links, sign-up attempts and counts of emails sent by staff for 2 days, and invitation confirmations for 24 hours.
         </p>
         <p>
+          <strong className="text-[#0F172A] font-semibold">Two-step login</strong> — a scrambled copy of each person's recovery codes, until they are replaced or two-step login is turned off, and attempts to use one, for no more than a day.
+        </p>
+        <p>
           <strong className="text-[#0F172A] font-semibold">Error reports</strong> — until 12 months after the problem is marked as fixed. If the same problem happens again, it is reopened and kept.
         </p>
         <p>
@@ -178,7 +181,7 @@ function PrivacyPage() {
 
       <LegalSection heading="Security">
         <p>
-          We protect data with encryption in transit and at rest, access rules that keep each practice's data separate, and records of who did what in the app.
+          We protect data with encryption in transit and at rest, access rules that keep each practice's data separate, two-step login with an authenticator app (required for owners and practice managers), and records of who did what in the app.
         </p>
       </LegalSection>
 
