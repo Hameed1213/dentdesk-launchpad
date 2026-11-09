@@ -27,7 +27,7 @@ export const Route = createFileRoute("/cookies")({
 
 function CookiesPage() {
   return (
-    <LegalLayout title="Cookie Policy" updated="4 November 2026">
+    <LegalLayout title="Cookie Policy" updated="9 November 2026">
       <LegalSection heading="What are cookies">
         <p>
           Cookies are small text files stored on your device when you visit a website. They help us provide a working, secure experience.
@@ -58,6 +58,9 @@ function CookiesPage() {
           </li>
           <li>
             <strong className="text-[#0F172A] font-semibold">Patient portal to booking</strong> — when a signed-in patient chooses to book from the patient portal, their name, contact details and date of birth are passed to the booking page so they do not have to type them again. Stored in the browser tab's session storage and removed as soon as the booking page has read them.
+          </li>
+          <li>
+            <strong className="text-[#0F172A] font-semibold">Booking progress</strong> — while a patient books online, the treatment, clinician and day they have chosen, and the name, contact details, date of birth, gender and postcode they have typed, are kept for 30 minutes after the last change so that reloading the page does not lose them (<strong className="text-[#0F172A] font-semibold">dentdock_booking_</strong> followed by the practice's address). Health form answers, the consent ticks and the chosen time are not kept. Stored in the browser tab's session storage, not a cookie, and removed when the booking is made or the tab is closed, or the next time the page loads after the 30 minutes.
           </li>
         </ul>
       </LegalSection>
