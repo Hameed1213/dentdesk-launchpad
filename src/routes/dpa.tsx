@@ -25,7 +25,7 @@ export const Route = createFileRoute("/dpa")({
 
 function DpaPage() {
   return (
-    <LegalLayout title="Data Processing Agreement" updated="4 November 2026">
+    <LegalLayout title="Data Processing Agreement" updated="9 November 2026">
       <p>
         This Data Processing Agreement ("DPA") is between the dental practice that holds a Dent Dock account (the "Practice") and PARADIGM NETWORK LIMITED, trading as Dent Dock, a company registered in England and Wales (company number 16903048), whose registered office is at 11 Dronfield Road, Salford, M6 7FN ("Dent Dock", "we", "us").
       </p>
@@ -132,6 +132,7 @@ function DpaPage() {
           <li>Data is stored in London, UK, and encrypted in transit (TLS) and at rest.</li>
           <li>Each practice's data is kept separate by database access rules, and staff permissions within a practice are set by role.</li>
           <li>Records of who did what are kept in the app.</li>
+          <li>Practice accounts have two-step login with an authenticator app. It is required for owners and practice managers, and optional for other staff.</li>
           <li>Our internal tools require two-factor sign-in and do not show patient records. Our team sees a practice's account only through a recorded support session, and direct access to the production database is limited to named administrators.</li>
           <li>Online booking and waitlist forms are protected against automated abuse.</li>
         </ul>
