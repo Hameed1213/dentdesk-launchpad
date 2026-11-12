@@ -3,6 +3,7 @@ import { Menu, X } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { cn } from "@/lib/utils";
 import ToothIcon from "@/components/icons/ToothIcon";
+import { FeaturesMenuDesktop, FeaturesMenuMobile } from "@/components/home/FeaturesMenu";
 
 const navLinks = [
   { label: "Features", href: "/features" },
@@ -12,11 +13,13 @@ const navLinks = [
   { label: "FAQ", href: "/#faq" },
 ];
 
-
-
 function Logo() {
   return (
-    <Link to="/" aria-label="Dent Dock — go to homepage" className="flex items-center gap-2 shrink-0">
+    <Link
+      to="/"
+      aria-label="Dent Dock — go to homepage"
+      className="flex items-center gap-2 shrink-0"
+    >
       <ToothIcon size={22} color="#2563EB" />
       <span
         className="text-lg tracking-tight"
@@ -76,26 +79,29 @@ export default function Navbar() {
           <Logo />
 
           <nav className="hidden lg:flex items-center gap-8">
-            {navLinks.map((l) =>
-              l.href.includes("#") ? (
-                <a
-                  key={l.label}
-                  href={l.href}
-                  onClick={(e) => smoothScrollTo(e, l.href)}
-                  className="text-sm font-medium text-neutral-600 hover:text-neutral-900 transition-colors"
-                >
-                  {l.label}
-                </a>
-              ) : (
-                <Link
-                  key={l.label}
-                  to={l.href as "/compare"}
-                  className="text-sm font-medium text-neutral-600 hover:text-neutral-900 transition-colors"
-                >
-                  {l.label}
-                </Link>
-              ),
-            )}
+            <FeaturesMenuDesktop />
+            {navLinks
+              .filter((l) => l.label !== "Features")
+              .map((l) =>
+                l.href.includes("#") ? (
+                  <a
+                    key={l.label}
+                    href={l.href}
+                    onClick={(e) => smoothScrollTo(e, l.href)}
+                    className="text-sm font-medium text-neutral-600 hover:text-neutral-900 transition-colors"
+                  >
+                    {l.label}
+                  </a>
+                ) : (
+                  <Link
+                    key={l.label}
+                    to={l.href as "/compare"}
+                    className="text-sm font-medium text-neutral-600 hover:text-neutral-900 transition-colors"
+                  >
+                    {l.label}
+                  </Link>
+                ),
+              )}
           </nav>
 
           <div className="hidden lg:flex items-center gap-5">
@@ -119,7 +125,11 @@ export default function Navbar() {
             onClick={() => setMobileOpen((v) => !v)}
             className="lg:hidden inline-flex h-9 w-9 items-center justify-center rounded-lg border border-neutral-200 bg-white/80 backdrop-blur-sm text-neutral-700 shadow-sm hover:bg-neutral-100 transition-colors"
           >
-            {mobileOpen ? <X size={16} strokeWidth={2.25} /> : <Menu size={16} strokeWidth={2.25} />}
+            {mobileOpen ? (
+              <X size={16} strokeWidth={2.25} />
+            ) : (
+              <Menu size={16} strokeWidth={2.25} />
+            )}
           </button>
         </div>
       </div>
@@ -128,34 +138,37 @@ export default function Navbar() {
       <div
         className={cn(
           "lg:hidden overflow-hidden transition-[max-height,opacity] duration-300 ease-out",
-          mobileOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0",
+          mobileOpen ? "max-h-[85vh] opacity-100" : "max-h-0 opacity-0",
         )}
       >
-        <div className="mx-4 mt-2 rounded-2xl border border-neutral-200/60 bg-white/95 backdrop-blur-lg shadow-sm p-5 flex flex-col gap-1">
-          {navLinks.map((l) =>
-            l.href.includes("#") ? (
-              <a
-                key={l.label}
-                href={l.href}
-                onClick={(e) => {
-                  setMobileOpen(false);
-                  smoothScrollTo(e, l.href);
-                }}
-                className="text-sm font-medium text-neutral-700 hover:text-neutral-900 px-3 py-2.5 rounded-lg hover:bg-neutral-100"
-              >
-                {l.label}
-              </a>
-            ) : (
-              <Link
-                key={l.label}
-                to={l.href as "/compare"}
-                onClick={() => setMobileOpen(false)}
-                className="text-sm font-medium text-neutral-700 hover:text-neutral-900 px-3 py-2.5 rounded-lg hover:bg-neutral-100"
-              >
-                {l.label}
-              </Link>
-            ),
-          )}
+        <div className="mx-4 mt-2 rounded-2xl border border-neutral-200/60 bg-white/95 backdrop-blur-lg shadow-sm p-5 flex flex-col gap-1 max-h-[75vh] overflow-y-auto">
+          <FeaturesMenuMobile onNavigate={() => setMobileOpen(false)} />
+          {navLinks
+            .filter((l) => l.label !== "Features")
+            .map((l) =>
+              l.href.includes("#") ? (
+                <a
+                  key={l.label}
+                  href={l.href}
+                  onClick={(e) => {
+                    setMobileOpen(false);
+                    smoothScrollTo(e, l.href);
+                  }}
+                  className="text-sm font-medium text-neutral-700 hover:text-neutral-900 px-3 py-2.5 rounded-lg hover:bg-neutral-100"
+                >
+                  {l.label}
+                </a>
+              ) : (
+                <Link
+                  key={l.label}
+                  to={l.href as "/compare"}
+                  onClick={() => setMobileOpen(false)}
+                  className="text-sm font-medium text-neutral-700 hover:text-neutral-900 px-3 py-2.5 rounded-lg hover:bg-neutral-100"
+                >
+                  {l.label}
+                </Link>
+              ),
+            )}
           <div className="h-px bg-neutral-200 my-2" />
           <Link
             to="/waitlist"
