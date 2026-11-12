@@ -6,7 +6,7 @@ export default function FAQ() {
   const faqItems = homeFaq;
 
   return (
-    <section className="bg-white py-16 md:py-24">
+    <section className="bg-white pt-16 md:pt-24 pb-4 md:pb-6">
       <div className="max-w-3xl mx-auto px-6">
         {/* Header */}
         <motion.div
@@ -31,7 +31,7 @@ export default function FAQ() {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6, delay: 0.1 }}
         >
-          <Accordion type="single" collapsible className="w-full faq-accordion">
+          <Accordion type="multiple" className="w-full faq-accordion">
             {faqItems.map((item) => (
               <AccordionItem
                 key={item.id}

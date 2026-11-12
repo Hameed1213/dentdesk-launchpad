@@ -10,23 +10,56 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CookiesRouteImport } from './routes/cookies'
 import { Route as DpaRouteImport } from './routes/dpa'
-import { Route as FeaturesRouteImport } from './routes/features'
+import { Route as FaqRouteImport } from './routes/faq'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as TermsRouteImport } from './routes/terms'
+import { Route as ToolsRouteImport } from './routes/tools'
 import { Route as WaitlistRouteImport } from './routes/waitlist'
 import { Route as CompareIndexRouteImport } from './routes/compare.index'
 import { Route as CompareDentallyRouteImport } from './routes/compare.dentally'
 import { Route as CompareIsmileDentalSoftwareRouteImport } from './routes/compare.ismile-dental-software'
 import { Route as CompareSoftwareOfExcellenceRouteImport } from './routes/compare.software-of-excellence'
+import { Route as FeaturesIndexRouteImport } from './routes/features.index'
+import { Route as FeaturesCalendarRouteImport } from './routes/features.calendar'
+import { Route as FeaturesFormsRouteImport } from './routes/features.forms'
+import { Route as FeaturesOnlineBookingRouteImport } from './routes/features.online-booking'
+import { Route as FeaturesPaymentsRouteImport } from './routes/features.payments'
+import { Route as FeaturesRemindersAndRecallsRouteImport } from './routes/features.reminders-and-recalls'
+import { Route as FeaturesReportsRouteImport } from './routes/features.reports'
+import { Route as FeaturesSecurityRouteImport } from './routes/features.security'
+import { Route as FeaturesSwitchingRouteImport } from './routes/features.switching'
+import { Route as GuidesIndexRouteImport } from './routes/guides.index'
+import { Route as GuidesMissedAppointmentFeesRouteImport } from './routes/guides.missed-appointment-fees'
+import { Route as SolutionsIndexRouteImport } from './routes/solutions.index'
+import { Route as SolutionsBringPatientsBackRouteImport } from './routes/solutions.bring-patients-back'
+import { Route as SolutionsCutAdminRouteImport } from './routes/solutions.cut-admin'
+import { Route as SolutionsDepositsAndLateCancellationsRouteImport } from './routes/solutions.deposits-and-late-cancellations'
+import { Route as SolutionsFillCancelledAppointmentsRouteImport } from './routes/solutions.fill-cancelled-appointments'
+import { Route as SolutionsGoingPrivateRouteImport } from './routes/solutions.going-private'
+import { Route as SolutionsNewPracticesRouteImport } from './routes/solutions.new-practices'
+import { Route as SolutionsPrivatePracticesRouteImport } from './routes/solutions.private-practices'
+import { Route as SolutionsReduceNoShowsRouteImport } from './routes/solutions.reduce-no-shows'
 import { Route as ApiPublicCountVisitRouteImport } from './routes/api/public/count-visit'
 import { Route as ApiPublicVerifyWaitlistSignupRouteImport } from './routes/api/public/verify-waitlist-signup'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CookiesRoute = CookiesRouteImport.update({
@@ -39,9 +72,9 @@ const DpaRoute = DpaRouteImport.update({
   path: '/dpa',
   getParentRoute: () => rootRouteImport,
 } as any)
-const FeaturesRoute = FeaturesRouteImport.update({
-  id: '/features',
-  path: '/features',
+const FaqRoute = FaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PricingRoute = PricingRouteImport.update({
@@ -57,6 +90,11 @@ const PrivacyRoute = PrivacyRouteImport.update({
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
   path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ToolsRoute = ToolsRouteImport.update({
+  id: '/tools',
+  path: '/tools',
   getParentRoute: () => rootRouteImport,
 } as any)
 const WaitlistRoute = WaitlistRouteImport.update({
@@ -86,6 +124,112 @@ const CompareSoftwareOfExcellenceRoute =
     path: '/compare/software-of-excellence',
     getParentRoute: () => rootRouteImport,
   } as any)
+const FeaturesIndexRoute = FeaturesIndexRouteImport.update({
+  id: '/features/',
+  path: '/features/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FeaturesCalendarRoute = FeaturesCalendarRouteImport.update({
+  id: '/features/calendar',
+  path: '/features/calendar',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FeaturesFormsRoute = FeaturesFormsRouteImport.update({
+  id: '/features/forms',
+  path: '/features/forms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FeaturesOnlineBookingRoute = FeaturesOnlineBookingRouteImport.update({
+  id: '/features/online-booking',
+  path: '/features/online-booking',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FeaturesPaymentsRoute = FeaturesPaymentsRouteImport.update({
+  id: '/features/payments',
+  path: '/features/payments',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FeaturesRemindersAndRecallsRoute =
+  FeaturesRemindersAndRecallsRouteImport.update({
+    id: '/features/reminders-and-recalls',
+    path: '/features/reminders-and-recalls',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const FeaturesReportsRoute = FeaturesReportsRouteImport.update({
+  id: '/features/reports',
+  path: '/features/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FeaturesSecurityRoute = FeaturesSecurityRouteImport.update({
+  id: '/features/security',
+  path: '/features/security',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FeaturesSwitchingRoute = FeaturesSwitchingRouteImport.update({
+  id: '/features/switching',
+  path: '/features/switching',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GuidesIndexRoute = GuidesIndexRouteImport.update({
+  id: '/guides/',
+  path: '/guides/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GuidesMissedAppointmentFeesRoute =
+  GuidesMissedAppointmentFeesRouteImport.update({
+    id: '/guides/missed-appointment-fees',
+    path: '/guides/missed-appointment-fees',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const SolutionsIndexRoute = SolutionsIndexRouteImport.update({
+  id: '/solutions/',
+  path: '/solutions/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SolutionsBringPatientsBackRoute =
+  SolutionsBringPatientsBackRouteImport.update({
+    id: '/solutions/bring-patients-back',
+    path: '/solutions/bring-patients-back',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const SolutionsCutAdminRoute = SolutionsCutAdminRouteImport.update({
+  id: '/solutions/cut-admin',
+  path: '/solutions/cut-admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SolutionsDepositsAndLateCancellationsRoute =
+  SolutionsDepositsAndLateCancellationsRouteImport.update({
+    id: '/solutions/deposits-and-late-cancellations',
+    path: '/solutions/deposits-and-late-cancellations',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const SolutionsFillCancelledAppointmentsRoute =
+  SolutionsFillCancelledAppointmentsRouteImport.update({
+    id: '/solutions/fill-cancelled-appointments',
+    path: '/solutions/fill-cancelled-appointments',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const SolutionsGoingPrivateRoute = SolutionsGoingPrivateRouteImport.update({
+  id: '/solutions/going-private',
+  path: '/solutions/going-private',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SolutionsNewPracticesRoute = SolutionsNewPracticesRouteImport.update({
+  id: '/solutions/new-practices',
+  path: '/solutions/new-practices',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SolutionsPrivatePracticesRoute =
+  SolutionsPrivatePracticesRouteImport.update({
+    id: '/solutions/private-practices',
+    path: '/solutions/private-practices',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const SolutionsReduceNoShowsRoute = SolutionsReduceNoShowsRouteImport.update({
+  id: '/solutions/reduce-no-shows',
+  path: '/solutions/reduce-no-shows',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiPublicCountVisitRoute = ApiPublicCountVisitRouteImport.update({
   id: '/api/public/count-visit',
   path: '/api/public/count-visit',
@@ -100,50 +244,119 @@ const ApiPublicVerifyWaitlistSignupRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
   '/cookies': typeof CookiesRoute
   '/dpa': typeof DpaRoute
-  '/features': typeof FeaturesRoute
+  '/faq': typeof FaqRoute
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
   '/terms': typeof TermsRoute
+  '/tools': typeof ToolsRoute
   '/waitlist': typeof WaitlistRoute
   '/compare/dentally': typeof CompareDentallyRoute
   '/compare/ismile-dental-software': typeof CompareIsmileDentalSoftwareRoute
   '/compare/software-of-excellence': typeof CompareSoftwareOfExcellenceRoute
+  '/features/calendar': typeof FeaturesCalendarRoute
+  '/features/forms': typeof FeaturesFormsRoute
+  '/features/online-booking': typeof FeaturesOnlineBookingRoute
+  '/features/payments': typeof FeaturesPaymentsRoute
+  '/features/reminders-and-recalls': typeof FeaturesRemindersAndRecallsRoute
+  '/features/reports': typeof FeaturesReportsRoute
+  '/features/security': typeof FeaturesSecurityRoute
+  '/features/switching': typeof FeaturesSwitchingRoute
+  '/guides/missed-appointment-fees': typeof GuidesMissedAppointmentFeesRoute
+  '/solutions/bring-patients-back': typeof SolutionsBringPatientsBackRoute
+  '/solutions/cut-admin': typeof SolutionsCutAdminRoute
+  '/solutions/deposits-and-late-cancellations': typeof SolutionsDepositsAndLateCancellationsRoute
+  '/solutions/fill-cancelled-appointments': typeof SolutionsFillCancelledAppointmentsRoute
+  '/solutions/going-private': typeof SolutionsGoingPrivateRoute
+  '/solutions/new-practices': typeof SolutionsNewPracticesRoute
+  '/solutions/private-practices': typeof SolutionsPrivatePracticesRoute
+  '/solutions/reduce-no-shows': typeof SolutionsReduceNoShowsRoute
   '/compare/': typeof CompareIndexRoute
+  '/features/': typeof FeaturesIndexRoute
+  '/guides/': typeof GuidesIndexRoute
+  '/solutions/': typeof SolutionsIndexRoute
   '/api/public/count-visit': typeof ApiPublicCountVisitRoute
   '/api/public/verify-waitlist-signup': typeof ApiPublicVerifyWaitlistSignupRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
   '/cookies': typeof CookiesRoute
   '/dpa': typeof DpaRoute
-  '/features': typeof FeaturesRoute
+  '/faq': typeof FaqRoute
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
   '/terms': typeof TermsRoute
+  '/tools': typeof ToolsRoute
   '/waitlist': typeof WaitlistRoute
   '/compare/dentally': typeof CompareDentallyRoute
   '/compare/ismile-dental-software': typeof CompareIsmileDentalSoftwareRoute
   '/compare/software-of-excellence': typeof CompareSoftwareOfExcellenceRoute
+  '/features/calendar': typeof FeaturesCalendarRoute
+  '/features/forms': typeof FeaturesFormsRoute
+  '/features/online-booking': typeof FeaturesOnlineBookingRoute
+  '/features/payments': typeof FeaturesPaymentsRoute
+  '/features/reminders-and-recalls': typeof FeaturesRemindersAndRecallsRoute
+  '/features/reports': typeof FeaturesReportsRoute
+  '/features/security': typeof FeaturesSecurityRoute
+  '/features/switching': typeof FeaturesSwitchingRoute
+  '/guides/missed-appointment-fees': typeof GuidesMissedAppointmentFeesRoute
+  '/solutions/bring-patients-back': typeof SolutionsBringPatientsBackRoute
+  '/solutions/cut-admin': typeof SolutionsCutAdminRoute
+  '/solutions/deposits-and-late-cancellations': typeof SolutionsDepositsAndLateCancellationsRoute
+  '/solutions/fill-cancelled-appointments': typeof SolutionsFillCancelledAppointmentsRoute
+  '/solutions/going-private': typeof SolutionsGoingPrivateRoute
+  '/solutions/new-practices': typeof SolutionsNewPracticesRoute
+  '/solutions/private-practices': typeof SolutionsPrivatePracticesRoute
+  '/solutions/reduce-no-shows': typeof SolutionsReduceNoShowsRoute
   '/compare': typeof CompareIndexRoute
+  '/features': typeof FeaturesIndexRoute
+  '/guides': typeof GuidesIndexRoute
+  '/solutions': typeof SolutionsIndexRoute
   '/api/public/count-visit': typeof ApiPublicCountVisitRoute
   '/api/public/verify-waitlist-signup': typeof ApiPublicVerifyWaitlistSignupRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
   '/cookies': typeof CookiesRoute
   '/dpa': typeof DpaRoute
-  '/features': typeof FeaturesRoute
+  '/faq': typeof FaqRoute
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
   '/terms': typeof TermsRoute
+  '/tools': typeof ToolsRoute
   '/waitlist': typeof WaitlistRoute
   '/compare/dentally': typeof CompareDentallyRoute
   '/compare/ismile-dental-software': typeof CompareIsmileDentalSoftwareRoute
   '/compare/software-of-excellence': typeof CompareSoftwareOfExcellenceRoute
+  '/features/calendar': typeof FeaturesCalendarRoute
+  '/features/forms': typeof FeaturesFormsRoute
+  '/features/online-booking': typeof FeaturesOnlineBookingRoute
+  '/features/payments': typeof FeaturesPaymentsRoute
+  '/features/reminders-and-recalls': typeof FeaturesRemindersAndRecallsRoute
+  '/features/reports': typeof FeaturesReportsRoute
+  '/features/security': typeof FeaturesSecurityRoute
+  '/features/switching': typeof FeaturesSwitchingRoute
+  '/guides/missed-appointment-fees': typeof GuidesMissedAppointmentFeesRoute
+  '/solutions/bring-patients-back': typeof SolutionsBringPatientsBackRoute
+  '/solutions/cut-admin': typeof SolutionsCutAdminRoute
+  '/solutions/deposits-and-late-cancellations': typeof SolutionsDepositsAndLateCancellationsRoute
+  '/solutions/fill-cancelled-appointments': typeof SolutionsFillCancelledAppointmentsRoute
+  '/solutions/going-private': typeof SolutionsGoingPrivateRoute
+  '/solutions/new-practices': typeof SolutionsNewPracticesRoute
+  '/solutions/private-practices': typeof SolutionsPrivatePracticesRoute
+  '/solutions/reduce-no-shows': typeof SolutionsReduceNoShowsRoute
   '/compare/': typeof CompareIndexRoute
+  '/features/': typeof FeaturesIndexRoute
+  '/guides/': typeof GuidesIndexRoute
+  '/solutions/': typeof SolutionsIndexRoute
   '/api/public/count-visit': typeof ApiPublicCountVisitRoute
   '/api/public/verify-waitlist-signup': typeof ApiPublicVerifyWaitlistSignupRoute
 }
@@ -151,66 +364,158 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/about'
+    | '/contact'
     | '/cookies'
     | '/dpa'
-    | '/features'
+    | '/faq'
     | '/pricing'
     | '/privacy'
     | '/terms'
+    | '/tools'
     | '/waitlist'
     | '/compare/dentally'
     | '/compare/ismile-dental-software'
     | '/compare/software-of-excellence'
+    | '/features/calendar'
+    | '/features/forms'
+    | '/features/online-booking'
+    | '/features/payments'
+    | '/features/reminders-and-recalls'
+    | '/features/reports'
+    | '/features/security'
+    | '/features/switching'
+    | '/guides/missed-appointment-fees'
+    | '/solutions/bring-patients-back'
+    | '/solutions/cut-admin'
+    | '/solutions/deposits-and-late-cancellations'
+    | '/solutions/fill-cancelled-appointments'
+    | '/solutions/going-private'
+    | '/solutions/new-practices'
+    | '/solutions/private-practices'
+    | '/solutions/reduce-no-shows'
     | '/compare/'
+    | '/features/'
+    | '/guides/'
+    | '/solutions/'
     | '/api/public/count-visit'
     | '/api/public/verify-waitlist-signup'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/about'
+    | '/contact'
     | '/cookies'
     | '/dpa'
-    | '/features'
+    | '/faq'
     | '/pricing'
     | '/privacy'
     | '/terms'
+    | '/tools'
     | '/waitlist'
     | '/compare/dentally'
     | '/compare/ismile-dental-software'
     | '/compare/software-of-excellence'
+    | '/features/calendar'
+    | '/features/forms'
+    | '/features/online-booking'
+    | '/features/payments'
+    | '/features/reminders-and-recalls'
+    | '/features/reports'
+    | '/features/security'
+    | '/features/switching'
+    | '/guides/missed-appointment-fees'
+    | '/solutions/bring-patients-back'
+    | '/solutions/cut-admin'
+    | '/solutions/deposits-and-late-cancellations'
+    | '/solutions/fill-cancelled-appointments'
+    | '/solutions/going-private'
+    | '/solutions/new-practices'
+    | '/solutions/private-practices'
+    | '/solutions/reduce-no-shows'
     | '/compare'
+    | '/features'
+    | '/guides'
+    | '/solutions'
     | '/api/public/count-visit'
     | '/api/public/verify-waitlist-signup'
   id:
     | '__root__'
     | '/'
+    | '/about'
+    | '/contact'
     | '/cookies'
     | '/dpa'
-    | '/features'
+    | '/faq'
     | '/pricing'
     | '/privacy'
     | '/terms'
+    | '/tools'
     | '/waitlist'
     | '/compare/dentally'
     | '/compare/ismile-dental-software'
     | '/compare/software-of-excellence'
+    | '/features/calendar'
+    | '/features/forms'
+    | '/features/online-booking'
+    | '/features/payments'
+    | '/features/reminders-and-recalls'
+    | '/features/reports'
+    | '/features/security'
+    | '/features/switching'
+    | '/guides/missed-appointment-fees'
+    | '/solutions/bring-patients-back'
+    | '/solutions/cut-admin'
+    | '/solutions/deposits-and-late-cancellations'
+    | '/solutions/fill-cancelled-appointments'
+    | '/solutions/going-private'
+    | '/solutions/new-practices'
+    | '/solutions/private-practices'
+    | '/solutions/reduce-no-shows'
     | '/compare/'
+    | '/features/'
+    | '/guides/'
+    | '/solutions/'
     | '/api/public/count-visit'
     | '/api/public/verify-waitlist-signup'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  ContactRoute: typeof ContactRoute
   CookiesRoute: typeof CookiesRoute
   DpaRoute: typeof DpaRoute
-  FeaturesRoute: typeof FeaturesRoute
+  FaqRoute: typeof FaqRoute
   PricingRoute: typeof PricingRoute
   PrivacyRoute: typeof PrivacyRoute
   TermsRoute: typeof TermsRoute
+  ToolsRoute: typeof ToolsRoute
   WaitlistRoute: typeof WaitlistRoute
   CompareDentallyRoute: typeof CompareDentallyRoute
   CompareIsmileDentalSoftwareRoute: typeof CompareIsmileDentalSoftwareRoute
   CompareSoftwareOfExcellenceRoute: typeof CompareSoftwareOfExcellenceRoute
+  FeaturesCalendarRoute: typeof FeaturesCalendarRoute
+  FeaturesFormsRoute: typeof FeaturesFormsRoute
+  FeaturesOnlineBookingRoute: typeof FeaturesOnlineBookingRoute
+  FeaturesPaymentsRoute: typeof FeaturesPaymentsRoute
+  FeaturesRemindersAndRecallsRoute: typeof FeaturesRemindersAndRecallsRoute
+  FeaturesReportsRoute: typeof FeaturesReportsRoute
+  FeaturesSecurityRoute: typeof FeaturesSecurityRoute
+  FeaturesSwitchingRoute: typeof FeaturesSwitchingRoute
+  GuidesMissedAppointmentFeesRoute: typeof GuidesMissedAppointmentFeesRoute
+  SolutionsBringPatientsBackRoute: typeof SolutionsBringPatientsBackRoute
+  SolutionsCutAdminRoute: typeof SolutionsCutAdminRoute
+  SolutionsDepositsAndLateCancellationsRoute: typeof SolutionsDepositsAndLateCancellationsRoute
+  SolutionsFillCancelledAppointmentsRoute: typeof SolutionsFillCancelledAppointmentsRoute
+  SolutionsGoingPrivateRoute: typeof SolutionsGoingPrivateRoute
+  SolutionsNewPracticesRoute: typeof SolutionsNewPracticesRoute
+  SolutionsPrivatePracticesRoute: typeof SolutionsPrivatePracticesRoute
+  SolutionsReduceNoShowsRoute: typeof SolutionsReduceNoShowsRoute
   CompareIndexRoute: typeof CompareIndexRoute
+  FeaturesIndexRoute: typeof FeaturesIndexRoute
+  GuidesIndexRoute: typeof GuidesIndexRoute
+  SolutionsIndexRoute: typeof SolutionsIndexRoute
   ApiPublicCountVisitRoute: typeof ApiPublicCountVisitRoute
   ApiPublicVerifyWaitlistSignupRoute: typeof ApiPublicVerifyWaitlistSignupRoute
 }
@@ -222,6 +527,20 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/cookies': {
@@ -238,11 +557,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DpaRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/features': {
-      id: '/features'
-      path: '/features'
-      fullPath: '/features'
-      preLoaderRoute: typeof FeaturesRouteImport
+    '/faq': {
+      id: '/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof FaqRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/pricing': {
@@ -264,6 +583,13 @@ declare module '@tanstack/react-router' {
       path: '/terms'
       fullPath: '/terms'
       preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tools': {
+      id: '/tools'
+      path: '/tools'
+      fullPath: '/tools'
+      preLoaderRoute: typeof ToolsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/waitlist': {
@@ -301,6 +627,146 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CompareSoftwareOfExcellenceRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/features/': {
+      id: '/features/'
+      path: '/features'
+      fullPath: '/features/'
+      preLoaderRoute: typeof FeaturesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/features/calendar': {
+      id: '/features/calendar'
+      path: '/features/calendar'
+      fullPath: '/features/calendar'
+      preLoaderRoute: typeof FeaturesCalendarRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/features/forms': {
+      id: '/features/forms'
+      path: '/features/forms'
+      fullPath: '/features/forms'
+      preLoaderRoute: typeof FeaturesFormsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/features/online-booking': {
+      id: '/features/online-booking'
+      path: '/features/online-booking'
+      fullPath: '/features/online-booking'
+      preLoaderRoute: typeof FeaturesOnlineBookingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/features/payments': {
+      id: '/features/payments'
+      path: '/features/payments'
+      fullPath: '/features/payments'
+      preLoaderRoute: typeof FeaturesPaymentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/features/reminders-and-recalls': {
+      id: '/features/reminders-and-recalls'
+      path: '/features/reminders-and-recalls'
+      fullPath: '/features/reminders-and-recalls'
+      preLoaderRoute: typeof FeaturesRemindersAndRecallsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/features/reports': {
+      id: '/features/reports'
+      path: '/features/reports'
+      fullPath: '/features/reports'
+      preLoaderRoute: typeof FeaturesReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/features/security': {
+      id: '/features/security'
+      path: '/features/security'
+      fullPath: '/features/security'
+      preLoaderRoute: typeof FeaturesSecurityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/features/switching': {
+      id: '/features/switching'
+      path: '/features/switching'
+      fullPath: '/features/switching'
+      preLoaderRoute: typeof FeaturesSwitchingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/guides/': {
+      id: '/guides/'
+      path: '/guides'
+      fullPath: '/guides/'
+      preLoaderRoute: typeof GuidesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/guides/missed-appointment-fees': {
+      id: '/guides/missed-appointment-fees'
+      path: '/guides/missed-appointment-fees'
+      fullPath: '/guides/missed-appointment-fees'
+      preLoaderRoute: typeof GuidesMissedAppointmentFeesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/solutions/': {
+      id: '/solutions/'
+      path: '/solutions'
+      fullPath: '/solutions/'
+      preLoaderRoute: typeof SolutionsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/solutions/bring-patients-back': {
+      id: '/solutions/bring-patients-back'
+      path: '/solutions/bring-patients-back'
+      fullPath: '/solutions/bring-patients-back'
+      preLoaderRoute: typeof SolutionsBringPatientsBackRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/solutions/cut-admin': {
+      id: '/solutions/cut-admin'
+      path: '/solutions/cut-admin'
+      fullPath: '/solutions/cut-admin'
+      preLoaderRoute: typeof SolutionsCutAdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/solutions/deposits-and-late-cancellations': {
+      id: '/solutions/deposits-and-late-cancellations'
+      path: '/solutions/deposits-and-late-cancellations'
+      fullPath: '/solutions/deposits-and-late-cancellations'
+      preLoaderRoute: typeof SolutionsDepositsAndLateCancellationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/solutions/fill-cancelled-appointments': {
+      id: '/solutions/fill-cancelled-appointments'
+      path: '/solutions/fill-cancelled-appointments'
+      fullPath: '/solutions/fill-cancelled-appointments'
+      preLoaderRoute: typeof SolutionsFillCancelledAppointmentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/solutions/going-private': {
+      id: '/solutions/going-private'
+      path: '/solutions/going-private'
+      fullPath: '/solutions/going-private'
+      preLoaderRoute: typeof SolutionsGoingPrivateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/solutions/new-practices': {
+      id: '/solutions/new-practices'
+      path: '/solutions/new-practices'
+      fullPath: '/solutions/new-practices'
+      preLoaderRoute: typeof SolutionsNewPracticesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/solutions/private-practices': {
+      id: '/solutions/private-practices'
+      path: '/solutions/private-practices'
+      fullPath: '/solutions/private-practices'
+      preLoaderRoute: typeof SolutionsPrivatePracticesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/solutions/reduce-no-shows': {
+      id: '/solutions/reduce-no-shows'
+      path: '/solutions/reduce-no-shows'
+      fullPath: '/solutions/reduce-no-shows'
+      preLoaderRoute: typeof SolutionsReduceNoShowsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/public/count-visit': {
       id: '/api/public/count-visit'
       path: '/api/public/count-visit'
@@ -320,17 +786,42 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  ContactRoute: ContactRoute,
   CookiesRoute: CookiesRoute,
   DpaRoute: DpaRoute,
-  FeaturesRoute: FeaturesRoute,
+  FaqRoute: FaqRoute,
   PricingRoute: PricingRoute,
   PrivacyRoute: PrivacyRoute,
   TermsRoute: TermsRoute,
+  ToolsRoute: ToolsRoute,
   WaitlistRoute: WaitlistRoute,
   CompareDentallyRoute: CompareDentallyRoute,
   CompareIsmileDentalSoftwareRoute: CompareIsmileDentalSoftwareRoute,
   CompareSoftwareOfExcellenceRoute: CompareSoftwareOfExcellenceRoute,
+  FeaturesCalendarRoute: FeaturesCalendarRoute,
+  FeaturesFormsRoute: FeaturesFormsRoute,
+  FeaturesOnlineBookingRoute: FeaturesOnlineBookingRoute,
+  FeaturesPaymentsRoute: FeaturesPaymentsRoute,
+  FeaturesRemindersAndRecallsRoute: FeaturesRemindersAndRecallsRoute,
+  FeaturesReportsRoute: FeaturesReportsRoute,
+  FeaturesSecurityRoute: FeaturesSecurityRoute,
+  FeaturesSwitchingRoute: FeaturesSwitchingRoute,
+  GuidesMissedAppointmentFeesRoute: GuidesMissedAppointmentFeesRoute,
+  SolutionsBringPatientsBackRoute: SolutionsBringPatientsBackRoute,
+  SolutionsCutAdminRoute: SolutionsCutAdminRoute,
+  SolutionsDepositsAndLateCancellationsRoute:
+    SolutionsDepositsAndLateCancellationsRoute,
+  SolutionsFillCancelledAppointmentsRoute:
+    SolutionsFillCancelledAppointmentsRoute,
+  SolutionsGoingPrivateRoute: SolutionsGoingPrivateRoute,
+  SolutionsNewPracticesRoute: SolutionsNewPracticesRoute,
+  SolutionsPrivatePracticesRoute: SolutionsPrivatePracticesRoute,
+  SolutionsReduceNoShowsRoute: SolutionsReduceNoShowsRoute,
   CompareIndexRoute: CompareIndexRoute,
+  FeaturesIndexRoute: FeaturesIndexRoute,
+  GuidesIndexRoute: GuidesIndexRoute,
+  SolutionsIndexRoute: SolutionsIndexRoute,
   ApiPublicCountVisitRoute: ApiPublicCountVisitRoute,
   ApiPublicVerifyWaitlistSignupRoute: ApiPublicVerifyWaitlistSignupRoute,
 }
