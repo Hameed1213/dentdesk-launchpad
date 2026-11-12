@@ -7,6 +7,7 @@ import {
   Bell,
   CalendarDays,
   ChevronDown,
+  ChevronRight,
   CreditCard,
   FileText,
   Globe,
@@ -15,8 +16,7 @@ import {
 import { cn } from "@/lib/utils";
 
 /*
- * Features dropdown in the navbar: a small, simple panel with the eight feature pages in two
- * columns (icon and name) and an "All features" link.
+ * Features dropdown in the navbar: a full-width panel in three layouts to choose from (see below).
  */
 
 type Path =
@@ -80,11 +80,198 @@ export const featureMenu: { label: string; line: string; to: Path; Icon: typeof 
   },
 ];
 
-/** Desktop: "Features" button that opens the panel on hover or click. */
+type Item = (typeof featureMenu)[number];
+const byPath = (to: Path) => featureMenu.find((f) => f.to === to)!;
+
+/*
+ * Three layouts to compare (Hariss, 12 Nov). Add ?menu=1, ?menu=2 or ?menu=3 to any address;
+ * the choice is remembered in this browser. Once one is chosen, delete the other two.
+ */
+type Variant = 1 | 2 | 3;
+function useMenuVariant(): Variant {
+  const [v, setV] = useState<Variant>(1);
+  useEffect(() => {
+    try {
+      const q = new URLSearchParams(window.location.search).get("menu");
+      if (q === "1" || q === "2" || q === "3") localStorage.setItem("dd-menu", q);
+      const saved = localStorage.getItem("dd-menu");
+      if (saved === "2" || saved === "3") setV(Number(saved) as Variant);
+    } catch {
+      /* storage unavailable: keep layout 1 */
+    }
+  }, []);
+  return v;
+}
+
+function Intro({ onClose }: { onClose: () => void }) {
+  return (
+    <div>
+      <p className="text-[20px] font-semibold text-[#2563EB] leading-snug">
+        Dental practice software
+      </p>
+      <p className="mt-2 text-[14px] text-[#334155] leading-relaxed">
+        DentDock brings your diary, online booking, reminders, forms, payments and reports together,
+        built for UK private practices.
+      </p>
+      <Link
+        to="/features"
+        onClick={onClose}
+        className="mt-4 inline-flex items-center gap-1.5 rounded-full bg-[#2563EB] px-5 py-2.5 text-[14px] font-semibold text-white hover:bg-[#1D4ED8] transition-colors"
+      >
+        Explore DentDock <ChevronRight className="w-4 h-4" />
+      </Link>
+    </div>
+  );
+}
+
+function ListRow({ item, onClose }: { item: Item; onClose: () => void }) {
+  const { label, to, Icon } = item;
+  return (
+    <Link
+      to={to}
+      onClick={onClose}
+      className="group flex items-center justify-between py-3.5 border-b border-[#E5EDFB] last:border-b-0"
+    >
+      <span className="flex items-center gap-3">
+        <Icon className="w-5 h-5 text-[#2563EB]" strokeWidth={1.8} />
+        <span className="text-[15px] font-semibold text-[#2563EB] group-hover:underline underline-offset-4">
+          {label}
+        </span>
+      </span>
+      <ChevronRight className="w-4 h-4 text-[#2563EB] transition-transform group-hover:translate-x-0.5" />
+    </Link>
+  );
+}
+
+function CardLink({
+  item,
+  onClose,
+  withLine = false,
+}: {
+  item: Item;
+  onClose: () => void;
+  withLine?: boolean;
+}) {
+  const { label, line, to, Icon } = item;
+  return (
+    <Link
+      to={to}
+      onClick={onClose}
+      className="group block rounded-2xl border border-[#DBEAFE] bg-white px-5 py-4 transition-colors hover:border-[#2563EB] hover:bg-[#F8FAFF]"
+    >
+      <Icon className="w-5 h-5 text-[#2563EB]" strokeWidth={1.8} />
+      <div className="mt-2.5 flex items-end justify-between gap-3">
+        <span>
+          <span className="block text-[15px] font-semibold text-[#2563EB]">{label}</span>
+          {withLine && (
+            <span className="block mt-0.5 text-[13px] text-[#64748B] leading-snug">{line}</span>
+          )}
+        </span>
+        <ChevronRight className="w-4 h-4 text-[#2563EB] flex-shrink-0 transition-transform group-hover:translate-x-0.5" />
+      </div>
+    </Link>
+  );
+}
+
+function ColTitle({ children }: { children: string }) {
+  return <p className="text-[15px] font-semibold text-[#0F172A] mb-3">{children}</p>;
+}
+
+const divider = "lg:border-l lg:border-[#DBEAFE] lg:pl-10";
+
+/** 1: closest to Dentally. Intro + list rows, then two columns of cards. */
+function Layout1({ onClose }: { onClose: () => void }) {
+  return (
+    <div className="grid grid-cols-3 gap-10">
+      <div>
+        <Intro onClose={onClose} />
+        <div className="mt-4">
+          {(
+            [
+              "/features/calendar",
+              "/features/online-booking",
+              "/features/reminders-and-recalls",
+              "/features/forms",
+            ] as Path[]
+          ).map((p) => (
+            <ListRow key={p} item={byPath(p)} onClose={onClose} />
+          ))}
+        </div>
+      </div>
+      <div className={divider}>
+        <ColTitle>Money and numbers</ColTitle>
+        <div className="space-y-3">
+          <CardLink item={byPath("/features/payments")} onClose={onClose} />
+          <CardLink item={byPath("/features/reports")} onClose={onClose} />
+        </div>
+      </div>
+      <div className={divider}>
+        <ColTitle>Peace of mind</ColTitle>
+        <div className="space-y-3">
+          <CardLink item={byPath("/features/security")} onClose={onClose} />
+          <CardLink item={byPath("/features/switching")} onClose={onClose} />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/** 2: intro, then two grouped columns of list rows. */
+function Layout2({ onClose }: { onClose: () => void }) {
+  return (
+    <div className="grid grid-cols-3 gap-10">
+      <Intro onClose={onClose} />
+      <div className={divider}>
+        <ColTitle>Your patients</ColTitle>
+        {(
+          [
+            "/features/online-booking",
+            "/features/reminders-and-recalls",
+            "/features/forms",
+            "/features/switching",
+          ] as Path[]
+        ).map((p) => (
+          <ListRow key={p} item={byPath(p)} onClose={onClose} />
+        ))}
+      </div>
+      <div className={divider}>
+        <ColTitle>Your practice</ColTitle>
+        {(
+          [
+            "/features/calendar",
+            "/features/payments",
+            "/features/reports",
+            "/features/security",
+          ] as Path[]
+        ).map((p) => (
+          <ListRow key={p} item={byPath(p)} onClose={onClose} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/** 3: intro on the left, all eight as cards with a short line, four across. */
+function Layout3({ onClose }: { onClose: () => void }) {
+  return (
+    <div className="grid grid-cols-[1fr_3fr] gap-10">
+      <Intro onClose={onClose} />
+      <div className={`${divider} grid grid-cols-2 xl:grid-cols-4 gap-3`}>
+        {featureMenu.map((f) => (
+          <CardLink key={f.to} item={f} onClose={onClose} withLine />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/** Desktop: "Features" opens a full-width panel under the navbar (hover or click). */
 export function FeaturesMenuDesktop() {
   const [open, setOpen] = useState(false);
+  const variant = useMenuVariant();
   const closeTimer = useRef<number | null>(null);
   const wrap = useRef<HTMLDivElement | null>(null);
+  const close = () => setOpen(false);
 
   const openNow = () => {
     if (closeTimer.current) window.clearTimeout(closeTimer.current);
@@ -92,7 +279,7 @@ export function FeaturesMenuDesktop() {
   };
   const closeSoon = () => {
     if (closeTimer.current) window.clearTimeout(closeTimer.current);
-    closeTimer.current = window.setTimeout(() => setOpen(false), 150);
+    closeTimer.current = window.setTimeout(() => setOpen(false), 180);
   };
 
   useEffect(() => {
@@ -109,7 +296,8 @@ export function FeaturesMenuDesktop() {
   }, []);
 
   return (
-    <div ref={wrap} className="relative" onMouseEnter={openNow} onMouseLeave={closeSoon}>
+    // Not positioned on purpose: the panel is placed against the fixed header, so it spans the page.
+    <div ref={wrap} onMouseEnter={openNow} onMouseLeave={closeSoon}>
       <button
         type="button"
         aria-expanded={open}
@@ -129,35 +317,17 @@ export function FeaturesMenuDesktop() {
 
       <div
         className={cn(
-          "absolute left-1/2 top-full pt-3 -translate-x-1/2 w-[440px] transition-all duration-150",
+          "absolute inset-x-0 top-full pt-2 px-4 lg:px-8 transition-all duration-200",
           open
             ? "opacity-100 visible translate-y-0"
             : "opacity-0 invisible -translate-y-1 pointer-events-none",
         )}
       >
-        <div className="rounded-2xl bg-white border border-neutral-200 shadow-[0_16px_40px_-16px_rgba(15,23,42,0.25)] p-2">
-          <ul className="grid grid-cols-2">
-            {featureMenu.map(({ label, to, Icon }) => (
-              <li key={to}>
-                <Link
-                  to={to}
-                  onClick={() => setOpen(false)}
-                  className="flex items-center gap-2.5 rounded-lg px-3 py-2.5 text-[14px] text-[#334155] transition-colors hover:bg-[#F3F7FF] hover:text-[#2563EB]"
-                >
-                  <Icon className="w-4 h-4 text-[#2563EB] flex-shrink-0" strokeWidth={1.9} />
-                  {label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-          <div className="mt-1 border-t border-neutral-100 px-3 pt-2.5 pb-1.5">
-            <Link
-              to="/features"
-              onClick={() => setOpen(false)}
-              className="inline-flex items-center gap-1 text-[13px] font-semibold text-[#2563EB] hover:underline"
-            >
-              All features <ArrowRight className="w-3.5 h-3.5" />
-            </Link>
+        <div className="mx-auto max-w-[1400px] rounded-3xl bg-white border border-[#E5EDFB] shadow-[0_24px_60px_-24px_rgba(15,23,42,0.28)] px-10 py-9">
+          <div className="mx-auto max-w-6xl">
+            {variant === 1 && <Layout1 onClose={close} />}
+            {variant === 2 && <Layout2 onClose={close} />}
+            {variant === 3 && <Layout3 onClose={close} />}
           </div>
         </div>
       </div>
