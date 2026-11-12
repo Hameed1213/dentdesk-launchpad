@@ -17,7 +17,8 @@ type Plan = {
 
 const AND_MORE = "and more…";
 
-export default function PricingCTA() {
+export default function PricingCTA({ asPage = false }: { asPage?: boolean } = {}) {
+  const Heading = asPage ? "h1" : "h2";
   const plans: Plan[] = [
     {
       name: "Starter",
@@ -77,7 +78,7 @@ export default function PricingCTA() {
   const features = activePlan.features;
 
   return (
-    <section className="relative bg-gradient-to-br from-[#DBEAFE] via-[#EFF6FF] to-white py-16 md:py-24 overflow-hidden">
+    <section className={`relative bg-gradient-to-br from-[#DBEAFE] via-[#EFF6FF] to-white ${asPage ? "pt-28 pb-16 lg:pt-36 md:pb-24" : "py-16 md:py-24"} overflow-hidden`}>
       {/* Top irregular fade to white */}
       <div
         className="pointer-events-none absolute inset-x-0 top-0 h-72 z-10"
@@ -111,9 +112,9 @@ export default function PricingCTA() {
           transition={{ duration: 0.6 }}
           className="mx-auto max-w-2xl text-center mb-14 md:mb-20"
         >
-          <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-foreground leading-[1.1]">
+          <Heading className="text-3xl md:text-5xl font-medium tracking-tight text-foreground leading-[1.1]">
             Simple pricing for <span className="text-[#2563EB]">every practice</span>
-          </h2>
+          </Heading>
           <p className="mt-5 text-base md:text-lg text-muted-foreground">
             One plan today, more coming as DentDock grows. Start with a 30-day free trial.
           </p>

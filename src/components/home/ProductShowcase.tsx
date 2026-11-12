@@ -1176,7 +1176,7 @@ const mockups = [
 /* =========================================================
    MAIN COMPONENT — Feature108 style
 ========================================================= */
-export default function ProductShowcase() {
+export default function ProductShowcase({ hideHeading = false }: { hideHeading?: boolean } = {}) {
   const [activeTab, setActiveTab] = useState(0);
   const [paused, setPaused] = useState(false);
   const [inView, setInView] = useState(false);
@@ -1268,18 +1268,18 @@ export default function ProductShowcase() {
         }}
       />
       <div className="relative z-20 container max-w-6xl mx-auto">
-        {/* Header */}
-        <div className="flex flex-col items-center text-center">
+        {/* Header (the /features page has its own H1 above, so it hides this one) */}
+        {!hideHeading && <div className="flex flex-col items-center text-center">
           <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-foreground leading-[1.1] max-w-2xl">
             Everything in <span className="text-[#2563EB]">one place</span>
           </h2>
           <p className="text-lg text-neutral-500 max-w-xl leading-relaxed mt-4">
             One platform for every part of your practice, from first booking to last recall.
           </p>
-        </div>
+        </div>}
 
         {/* Tab segmented control — individual pills on mobile, grouped pill on tablet/desktop */}
-        <div className="mt-12 -mx-6 sm:mx-0 flex sm:justify-center">
+        <div className={`${hideHeading ? "mt-0" : "mt-12"} -mx-6 sm:mx-0 flex sm:justify-center`}>
           <div ref={scrollContainerRef} className="overflow-x-auto scrollbar-hide px-6 sm:px-0 sm:overflow-visible w-full sm:w-auto">
             <div className="inline-flex flex-nowrap lg:flex-wrap justify-start lg:justify-center gap-2 sm:gap-1 sm:rounded-2xl sm:border sm:border-neutral-200 sm:bg-white sm:p-1.5 sm:shadow-sm mx-auto">
               {tabs.map((tab, i) => {
