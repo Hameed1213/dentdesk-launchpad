@@ -29,7 +29,12 @@ export const Route = createFileRoute("/features")({
           "@type": "BreadcrumbList",
           itemListElement: [
             { "@type": "ListItem", position: 1, name: "Home", item: "https://dentdock.co.uk/" },
-            { "@type": "ListItem", position: 2, name: "Features", item: "https://dentdock.co.uk/features" },
+            {
+              "@type": "ListItem",
+              position: 2,
+              name: "Features",
+              item: "https://dentdock.co.uk/features",
+            },
           ],
         }),
       },
@@ -44,8 +49,7 @@ function FeaturesPage() {
         eyebrow="Features"
         title={
           <>
-            Everything your practice runs on,{" "}
-            <span className="text-[#2563EB]">in one place</span>
+            Everything your practice runs on, <span className="text-[#2563EB]">in one place</span>
           </>
         }
         intro="Online booking, a patient portal, reminders and recalls, digital forms, payments and reports. One system for UK private dental practices, from first booking to last recall."

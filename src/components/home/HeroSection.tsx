@@ -4,6 +4,7 @@ import { AnimatedGroup } from "@/components/ui/animated-group";
 import { visitTracking } from "@/lib/visitSource";
 import { AuroraBackground } from "@/components/ui/aurora-background";
 import DashboardAnimation from "@/components/home/DashboardAnimation";
+import { Link } from "@tanstack/react-router";
 
 const transition = {
   type: "spring" as const,
@@ -24,7 +25,8 @@ const makeContainer = (delay: number) => ({
   },
 });
 
-function WaitlistForm() {
+/** The email waitlist form. Used in the hero and again in the closing band. */
+export function WaitlistForm({ className = "mt-10", onDark = false }: { className?: string; onDark?: boolean } = {}) {
   const [email, setEmail] = useState("");
   const [website, setWebsite] = useState(""); // honeypot — see handleSubmit
   const [submitted, setSubmitted] = useState(false);
@@ -97,14 +99,14 @@ function WaitlistForm() {
 
   if (submitted) {
     return (
-      <p className="text-sm text-green-600 font-medium text-center mt-2">
+      <p className={`text-sm font-medium text-center mt-2 ${onDark ? "text-white" : "text-green-600"}`}>
         ✓ You're on the list. We'll be in touch soon.
       </p>
     );
   }
 
   return (
-    <div className="flex flex-col items-center gap-2 max-w-md mx-auto mt-10 w-full">
+    <div className={`flex flex-col items-center gap-2 max-w-md mx-auto w-full ${className}`}>
       <form
         onSubmit={handleSubmit}
         className="flex flex-col sm:flex-row gap-3 w-full"
@@ -138,7 +140,7 @@ function WaitlistForm() {
         <button
           type="submit"
           disabled={isLoading}
-          className="bg-[#2563EB] text-white text-sm font-semibold px-6 py-3 rounded-xl hover:bg-[#1d4ed8] transition-all shadow-md shadow-blue-500/20 whitespace-nowrap disabled:opacity-60"
+          className={`text-sm font-semibold px-6 py-3 rounded-xl transition-all shadow-md whitespace-nowrap disabled:opacity-60 ${onDark ? "bg-white text-[#2563EB] hover:bg-[#EFF6FF]" : "bg-[#2563EB] text-white hover:bg-[#1d4ed8] shadow-blue-500/20"}`}
         >
           {isLoading ? "Joining..." : "Join the waitlist →"}
         </button>
@@ -154,7 +156,7 @@ function WaitlistForm() {
         />
       )}
       {error && (
-        <p className="text-sm text-red-500 text-center w-full mt-1">{error}</p>
+        <p className={`text-sm text-center w-full mt-1 ${onDark ? "text-red-100" : "text-red-500"}`}>{error}</p>
       )}
     </div>
   );
@@ -195,7 +197,7 @@ export default function HeroSection() {
           variants={{ container: makeContainer(0.05), item: itemBlurSlide }}
         >
           <p className="text-lg text-neutral-500 max-w-xl mx-auto text-center leading-relaxed mt-5">
-            Online booking, automated reminders, payments and recalls. Built for UK private practices.
+            Online booking, automated reminders, payments and recalls in one simple system. Built for UK private practices, for £49 a month.
           </p>
         </AnimatedGroup>
 
@@ -231,10 +233,17 @@ export default function HeroSection() {
           className="mt-4 flex justify-center"
           variants={{ container: makeContainer(0.18), item: itemBlurSlide }}
         >
+          <div className="flex flex-col items-center">
           <p className="text-sm text-neutral-400 text-center max-w-sm mx-auto mt-5 leading-relaxed">
             Be one of the{" "}
             <span className="text-neutral-700 font-medium">first 30 practices</span>, get priority support and help shape the product from day one.
           </p>
+          <p className="text-sm text-center mt-3">
+            <Link to="/pricing" className="text-[#2563EB] font-medium hover:underline">
+              See what's included and pricing →
+            </Link>
+          </p>
+          </div>
         </AnimatedGroup>
 
         {/* Dashboard animation */}

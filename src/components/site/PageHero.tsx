@@ -25,7 +25,10 @@ export default function PageHero({ eyebrow, title, intro, secondary }: Props) {
         }}
       />
       <div className="relative mx-auto max-w-3xl px-6 text-center">
-        <p className="text-[14px] font-semibold uppercase text-brand-blue" style={{ letterSpacing: "0.14em" }}>
+        <p
+          className="text-[14px] font-semibold uppercase text-brand-blue"
+          style={{ letterSpacing: "0.14em" }}
+        >
           {eyebrow}
         </p>
         <h1

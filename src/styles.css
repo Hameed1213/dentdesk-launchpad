@@ -300,3 +300,9 @@
   50% { box-shadow: 0 0 0 16px rgba(37, 99, 235, 0); }
   66%, 100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); }
 }
+
+/* Homepage FAQ: every answer stays in the page HTML (forceMount, so Google and AI tools can
+   read it), but closed answers are hidden on screen. */
+.faq-accordion [role="region"][data-state="closed"] {
+  display: none;
+}

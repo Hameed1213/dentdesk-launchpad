@@ -1,69 +1,89 @@
-import { lazy, Suspense } from "react";
-import { createFileRoute } from "@tanstack/react-router";
+import { lazy, Suspense, useEffect } from "react";
+import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import Navbar from "@/components/home/Navbar";
 import HeroSection from "@/components/home/HeroSection";
 import FeaturesSection from "@/components/home/FeaturesSection";
+import FAQ from "@/components/home/FAQ";
+import PricingCTA from "@/components/home/PricingCTA";
+import {
+  ClosingBand,
+  FeatureRows,
+  SolutionsGrid,
+  SupportRow,
+  SwitchRow,
+  TrustStrip,
+} from "@/components/home/HomeSections";
+import { homeFaq } from "@/lib/homeFaq";
 
-const ProductShowcase = lazy(() => import("@/components/home/ProductShowcase"));
-const BentoGrid = lazy(() => import("@/components/home/BentoGrid"));
-const PricingCTA = lazy(() => import("@/components/home/PricingCTA"));
-const FAQ = lazy(() => import("@/components/home/FAQ"));
 const Footer = lazy(() => import("@/components/home/Footer"));
 const WhatsAppButton = lazy(() => import("@/components/home/WhatsAppButton"));
+
+const SITE = "https://dentdock.co.uk";
+const TITLE = "DentDock | Dental software for UK private practices";
+const DESCRIPTION =
+  "Online booking, reminders, recalls, forms and payments for UK private dental practices. £49 a month per practice, no contract, with real support from the people who built it.";
+
+// Old one-page links (dentdock.co.uk/#pricing and so on) now live on their own pages.
+// Browsers never send the # part to the server, so this has to happen in the page.
+const MOVED_ANCHORS: Record<string, "/features"> = {
+  "#about": "/features",
+  "#everything": "/features",
+};
 
 export const Route = createFileRoute("/")({
   component: Index,
   head: () => ({
     meta: [
-      {
-        title:
-          "Dent Dock — Dental Practice Management Software for UK Practices",
-      },
-      {
-        name: "description",
-        content:
-          "Online booking, automated reminders, payments and recalls for UK private dental practices. Live within the day. No contracts.",
-      },
-      { property: "og:url", content: "https://dentdock.co.uk" },
-      { property: "og:title", content: "Dent Dock — Dental Practice Management Software" },
-      {
-        property: "og:description",
-        content:
-          "Online booking, automated reminders, payments and recalls for UK private dental practices. From £49/month.",
-      },
-      { property: "og:image", content: "https://dentdock.co.uk/og-image.png" },
-      { name: "twitter:image", content: "https://dentdock.co.uk/og-image.png" },
+      { title: TITLE },
+      { name: "description", content: DESCRIPTION },
+      { property: "og:url", content: SITE },
+      { property: "og:title", content: TITLE },
+      { property: "og:description", content: DESCRIPTION },
+      { property: "og:image", content: `${SITE}/og-image.png` },
+      { name: "twitter:image", content: `${SITE}/og-image.png` },
       { name: "twitter:site", content: "@dentdock" },
     ],
-    links: [
-      { rel: "canonical", href: "https://dentdock.co.uk" },
-    ],
+    links: [{ rel: "canonical", href: SITE }],
     scripts: [
       {
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
+          "@type": "WebSite",
+          name: "DentDock",
+          url: `${SITE}/`,
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          name: "DentDock",
+          legalName: "Paradigm Network Limited",
+          url: SITE,
+          email: "hello@dentdock.co.uk",
+          areaServed: "GB",
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
           "@type": "SoftwareApplication",
-          name: "Dent Dock",
+          name: "DentDock",
           applicationCategory: "BusinessApplication",
           operatingSystem: "Web",
-          url: "https://dentdock.co.uk",
+          url: SITE,
           description:
-            "Dental practice management software for UK private practices. Online booking, automated reminders, payments and recalls.",
+            "Dental practice software for UK private practices. Online booking, reminders, recalls, forms and payments.",
           offers: {
             "@type": "Offer",
             price: "49",
             priceCurrency: "GBP",
-            priceSpecification: {
-              "@type": "RecurringCharge",
-              billingDuration: "P1M",
-            },
+            priceSpecification: { "@type": "RecurringCharge", billingDuration: "P1M" },
           },
-          provider: {
-            "@type": "Organization",
-            name: "Dent Dock",
-            url: "https://dentdock.co.uk",
-          },
+          provider: { "@type": "Organization", name: "DentDock", url: SITE },
         }),
       },
       {
@@ -71,56 +91,11 @@ export const Route = createFileRoute("/")({
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "FAQPage",
-          mainEntity: [
-            {
-              "@type": "Question",
-              name: "When is Dent Dock launching?",
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: "We're currently in early access with our first practices. Join the waitlist and you'll be among the first to get access — with priority support and early access pricing locked in.",
-              },
-            },
-            {
-              "@type": "Question",
-              name: "Can I import my existing patients?",
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: "Yes. Export your patient list as a CSV from your current system and upload it. Dent Dock matches the columns for you.",
-              },
-            },
-            {
-              "@type": "Question",
-              name: "Does it work for mixed NHS and private practices?",
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: "Dent Dock is built for private and mixed practices. It doesn't include NHS UDA management or claim processing — if you need those, it may not be the right fit. If you're going private or already there, it's built for you.",
-              },
-            },
-            {
-              "@type": "Question",
-              name: "How long does setup actually take?",
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: "Most practices are set up and live within the day. Your opening hours, treatments and automations come with sensible defaults, so you mostly confirm and go.",
-              },
-            },
-            {
-              "@type": "Question",
-              name: "What happens after I join the waitlist?",
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: "You'll get an email from us personally — not an automated sequence. We'll walk you through early access, answer any questions and get you set up when you're ready.",
-              },
-            },
-            {
-              "@type": "Question",
-              name: "Is there a contract or minimum term?",
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: "No contracts. No setup fees. Cancel any time. We believe you should stay because the software is good, not because you're locked in.",
-              },
-            },
-          ],
+          mainEntity: homeFaq.map((f) => ({
+            "@type": "Question",
+            name: f.question,
+            acceptedAnswer: { "@type": "Answer", text: f.answer },
+          })),
         }),
       },
     ],
@@ -128,33 +103,31 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
+  const navigate = useNavigate();
+  useEffect(() => {
+    const to = MOVED_ANCHORS[window.location.hash];
+    if (to) navigate({ to, replace: true });
+  }, [navigate]);
+
   return (
     <main>
       <Navbar />
       <HeroSection />
-      <section id="features">
+      <TrustStrip />
+      <section id="features" className="scroll-mt-24">
         <FeaturesSection />
       </section>
-      <section id="about">
-        <Suspense fallback={null}>
-          <ProductShowcase />
-        </Suspense>
+      <FeatureRows />
+      <SolutionsGrid />
+      <SupportRow />
+      <SwitchRow />
+      <section id="pricing" className="scroll-mt-24">
+        <PricingCTA />
       </section>
-      <section id="everything">
-        <Suspense fallback={null}>
-          <BentoGrid />
-        </Suspense>
+      <section id="faq" className="scroll-mt-24">
+        <FAQ />
       </section>
-      <section id="pricing">
-        <Suspense fallback={null}>
-          <PricingCTA />
-        </Suspense>
-      </section>
-      <section id="faq">
-        <Suspense fallback={null}>
-          <FAQ />
-        </Suspense>
-      </section>
+      <ClosingBand />
       <Suspense fallback={null}>
         <Footer />
       </Suspense>

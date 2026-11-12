@@ -26,7 +26,12 @@ export const Route = createFileRoute("/pricing")({
           "@type": "BreadcrumbList",
           itemListElement: [
             { "@type": "ListItem", position: 1, name: "Home", item: "https://dentdock.co.uk/" },
-            { "@type": "ListItem", position: 2, name: "Pricing", item: "https://dentdock.co.uk/pricing" },
+            {
+              "@type": "ListItem",
+              position: 2,
+              name: "Pricing",
+              item: "https://dentdock.co.uk/pricing",
+            },
           ],
         }),
       },
