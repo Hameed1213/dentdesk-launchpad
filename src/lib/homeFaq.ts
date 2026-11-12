@@ -29,7 +29,8 @@ export const homeFaq: FaqItem[] = [
   {
     id: "export",
     question: "Can I take my data with me if I leave?",
-    answer: "Yes. You can export your practice's data from your settings at any time. Your data is yours.",
+    answer:
+      "Yes. You can export your practice's data from your settings at any time. Your data is yours.",
   },
   {
     id: "nhs",

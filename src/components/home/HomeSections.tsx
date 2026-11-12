@@ -17,10 +17,6 @@ import { WaitlistForm } from "@/components/home/HeroSection";
 const WHATSAPP = "https://wa.me/447404488089";
 const ENTRANCE = { duration: 0.6, ease: [0.22, 1, 0.36, 1] as const };
 
-const primaryButton =
-  "inline-flex items-center justify-center gap-2 rounded-xl bg-[#2563EB] px-6 py-3 text-sm font-semibold text-white shadow-md shadow-blue-500/20 transition-colors hover:bg-[#1d4ed8]";
-const secondaryButton =
-  "inline-flex items-center justify-center gap-2 rounded-xl border border-[#2563EB] px-6 py-3 text-sm font-semibold text-[#2563EB] transition-colors hover:bg-[#EFF6FF]";
 /** Outline pill, like the "See all … features" buttons on Dentally's rows. */
 const pillButton =
   "inline-flex items-center justify-center gap-2 rounded-full border border-[#2563EB] px-6 py-3 text-[15px] font-medium text-[#2563EB] transition-colors hover:bg-[#2563EB] hover:text-white";
@@ -36,7 +32,15 @@ function FloatCard({ className = "", children }: { className?: string; children:
   );
 }
 
-function Reveal({ children, className = "", delay = 0 }: { children: ReactNode; className?: string; delay?: number }) {
+function Reveal({
+  children,
+  className = "",
+  delay = 0,
+}: {
+  children: ReactNode;
+  className?: string;
+  delay?: number;
+}) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 24 }}
@@ -55,7 +59,10 @@ function Bullets({ items }: { items: string[] }) {
     <ul className="mt-5 space-y-3">
       {items.map((p) => (
         <li key={p} className="flex items-start gap-3 text-[17px] text-[#0F172A] leading-[1.5]">
-          <span aria-hidden="true" className="mt-[10px] h-1.5 w-1.5 rounded-full bg-[#0F172A] flex-shrink-0" />
+          <span
+            aria-hidden="true"
+            className="mt-[10px] h-1.5 w-1.5 rounded-full bg-[#0F172A] flex-shrink-0"
+          />
           {p}
         </li>
       ))}
@@ -63,34 +70,38 @@ function Bullets({ items }: { items: string[] }) {
   );
 }
 
-const rowHeading = "text-3xl md:text-[40px] font-semibold tracking-tight text-[#2563EB] leading-[1.15]";
-const panel = "rounded-[28px] bg-gradient-to-br from-[#EFF6FF] via-[#E0EAFF] to-[#DBEAFE] ring-1 ring-white";
+const rowHeading =
+  "text-3xl md:text-[40px] font-semibold tracking-tight text-[#2563EB] leading-[1.15]";
+const panel =
+  "rounded-[28px] bg-gradient-to-br from-[#EFF6FF] via-[#E0EAFF] to-[#DBEAFE] ring-1 ring-white";
 /** Panel for rows that sit on a tinted background: lighter, with an edge, so it stands off the tint. */
 const panelOnTint =
-  "rounded-[28px] bg-gradient-to-br from-white to-[#EEF4FF] ring-1 ring-[#DBEAFE] shadow-[0_24px_60px_-30px_rgba(37,99,235,0.35)]";
+  "rounded-[28px] bg-gradient-to-br from-white to-[#EEF4FF] ring-1 ring-[#DBEAFE]";
 
 /* ------------------------------------------------------------------ */
 /* Trust strip: three checkable facts in one bar                       */
 /* ------------------------------------------------------------------ */
 
 const trustItems = [
-  { title: "Hosted in London", detail: "Practice and patient records stored in the UK" },
+  { title: "UK data storage", detail: "Practice and patient records kept in London" },
   { title: "Encrypted", detail: "In transit and at rest" },
   { title: "ICO registered", detail: "Registration ZC132966" },
-  { title: "UK registered company", detail: "Paradigm Network Limited, No. 16903048" },
   { title: "No lock-in", detail: "No contract. Export your data any time" },
 ];
 
 export function TrustStrip() {
   return (
-    <section aria-label="Why practices can trust DentDock" className="bg-white border-y border-neutral-200">
-      <ul className="mx-auto max-w-7xl grid grid-cols-2 lg:grid-cols-5">
+    <section
+      aria-label="Why practices can trust DentDock"
+      className="bg-white border-y border-neutral-200"
+    >
+      <ul className="mx-auto max-w-7xl grid grid-cols-2 lg:grid-cols-4">
         {trustItems.map(({ title, detail }, i) => (
           <li
             key={title}
-            className={`px-6 py-6 lg:py-7 text-center border-neutral-200 ${i < 4 ? "lg:border-r border-b lg:border-b-0" : ""} ${
-              i % 2 === 0 && i < 4 ? "border-r" : ""
-            } ${i === 4 ? "col-span-2 lg:col-span-1" : ""}`}
+            className={`px-6 py-6 lg:py-7 text-center border-neutral-200 ${i < 3 ? "lg:border-r" : ""} ${
+              i % 2 === 0 ? "border-r" : ""
+            } ${i < 2 ? "border-b lg:border-b-0" : ""}`}
           >
             <p className="text-[16px] font-semibold tracking-tight text-[#0F172A]">{title}</p>
             <p className="mt-1 text-[13px] text-[#64748B] leading-snug">{detail}</p>
@@ -116,14 +127,18 @@ function BookingVisual() {
             <span
               key={t}
               className={`rounded-lg border px-2 py-2 text-center text-[12px] font-medium ${
-                t === "9:30" ? "border-[#2563EB] bg-[#2563EB] text-white" : "border-neutral-200 text-[#334155]"
+                t === "9:30"
+                  ? "border-[#2563EB] bg-[#2563EB] text-white"
+                  : "border-neutral-200 text-[#334155]"
               }`}
             >
               {t}
             </span>
           ))}
         </div>
-        <div className="mt-4 rounded-lg bg-[#2563EB] py-2 text-center text-[12px] font-semibold text-white">Confirm booking</div>
+        <div className="mt-4 rounded-lg bg-[#2563EB] py-2 text-center text-[12px] font-semibold text-white">
+          Confirm booking
+        </div>
       </FloatCard>
       <FloatCard className="absolute right-[4%] bottom-[7%] w-[190px] p-4">
         <div className="flex items-center gap-2">
@@ -142,7 +157,9 @@ function BookingVisual() {
             </li>
           ))}
         </ul>
-        <p className="mt-3 text-[11px] font-semibold text-emerald-600">Completed before the visit</p>
+        <p className="mt-3 text-[11px] font-semibold text-emerald-600">
+          Completed before the visit
+        </p>
       </FloatCard>
     </div>
   );
@@ -171,7 +188,10 @@ function FrontDeskVisual() {
             { n: "Priya K.", w: "Hygiene", offer: false },
             { n: "Tom R.", w: "Check-up", offer: false },
           ].map((r) => (
-            <div key={r.n} className="grid grid-cols-3 items-center px-3 py-2.5 text-[12px] text-[#334155]">
+            <div
+              key={r.n}
+              className="grid grid-cols-3 items-center px-3 py-2.5 text-[12px] text-[#334155]"
+            >
               <span>{r.n}</span>
               <span>{r.w}</span>
               <span className="text-right">
@@ -214,7 +234,10 @@ function MoneyVisual() {
         <p className="mt-4 text-[11px] text-[#64748B]">Bookings from</p>
         <div className="mt-2 flex gap-2">
           {["Google", "Instagram", "Direct"].map((s) => (
-            <span key={s} className="rounded-full bg-[#EFF6FF] px-2.5 py-1 text-[11px] font-medium text-[#2563EB]">
+            <span
+              key={s}
+              className="rounded-full bg-[#EFF6FF] px-2.5 py-1 text-[11px] font-medium text-[#2563EB]"
+            >
               {s}
             </span>
           ))}
@@ -244,14 +267,22 @@ const featureRows = [
   {
     title: "Reminders and recalls that run on their own",
     lead: "Take the chasing off your practice team with:",
-    points: ["Automatic email and text reminders", "Recalls that follow up for you", "A waitlist to fill cancelled slots"],
+    points: [
+      "Automatic email and text reminders",
+      "Recalls that follow up for you",
+      "A waitlist to fill cancelled slots",
+    ],
     button: "See all reminder and recall features",
     Visual: FrontDeskVisual,
   },
   {
     title: "Get paid on time and know your numbers",
     lead: "See exactly how the practice is doing with:",
-    points: ["Payments, deposits and payment links", "Reports and takings by clinician", "See where your bookings come from"],
+    points: [
+      "Payments, deposits and payment links",
+      "Reports and takings by clinician",
+      "See where your bookings come from",
+    ],
     button: "See payments and reports",
     Visual: MoneyVisual,
   },
@@ -264,7 +295,10 @@ export function FeatureRows() {
         {featureRows.map(({ title, lead, points, button, Visual }, i) => {
           const flip = i % 2 === 1;
           return (
-            <div key={title} className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+            <div
+              key={title}
+              className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center"
+            >
               <Reveal className={flip ? "lg:order-2" : ""}>
                 <h2 className={rowHeading}>{title}</h2>
                 <p className="mt-5 text-[17px] text-[#334155]">{lead}</p>
@@ -323,7 +357,8 @@ export function SolutionsGrid() {
       <div className="mx-auto max-w-6xl grid grid-cols-1 lg:grid-cols-[0.9fr_1.4fr] gap-10 lg:gap-14 items-start">
         <Reveal className="lg:sticky lg:top-28">
           <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-foreground leading-[1.1]">
-            Fixes for the problems <span className="text-[#2563EB]">your practice faces every day</span>
+            Fixes for the problems{" "}
+            <span className="text-[#2563EB]">your practice faces every day</span>
           </h2>
           <p className="mt-5 text-[17px] text-[#475569] leading-[1.6]">
             The everyday jobs that slow a practice down, handled by the software instead.
@@ -337,12 +372,14 @@ export function SolutionsGrid() {
             <Reveal key={title} delay={i * 0.08}>
               <Link
                 to="/features"
-                className={`group h-full rounded-3xl border border-[#E5EDFB] bg-gradient-to-b ${tint} p-7 flex flex-col transition-all duration-300 hover:-translate-y-1 hover:border-[#BFDBFE] hover:shadow-[0_20px_50px_-20px_rgba(37,99,235,0.35)]`}
+                className={`group h-full rounded-3xl border border-[#E5EDFB] bg-gradient-to-b ${tint} p-7 flex flex-col transition-colors duration-200 hover:border-[#2563EB]`}
               >
                 <span className="w-12 h-12 rounded-2xl bg-white shadow-sm ring-1 ring-[#DBEAFE] flex items-center justify-center">
                   <Icon className="w-5 h-5 text-[#2563EB]" strokeWidth={1.75} />
                 </span>
-                <h3 className="mt-6 text-[20px] font-semibold text-[#0F172A] tracking-tight">{title}</h3>
+                <h3 className="mt-6 text-[20px] font-semibold text-[#0F172A] tracking-tight">
+                  {title}
+                </h3>
                 <p className="mt-2 text-[15px] text-[#475569] leading-[1.6] flex-1">{body}</p>
                 <span className="mt-6 inline-flex items-center gap-1.5 text-[14px] font-semibold text-[#2563EB]">
                   Find out more
@@ -365,7 +402,10 @@ export function SolutionsGrid() {
 
 export function SupportRow() {
   return (
-    <section id="support" className="bg-gradient-to-b from-[#EAF1FF] to-[#F2F6FF] pt-16 md:pt-24 pb-10 md:pb-12 px-6 scroll-mt-24">
+    <section
+      id="support"
+      className="bg-gradient-to-b from-[#EAF1FF] to-[#F2F6FF] pt-16 md:pt-24 pb-14 md:pb-20 px-6 scroll-mt-24"
+    >
       <div className="mx-auto max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
         <Reveal>
           <div className={`relative ${panelOnTint} p-6 sm:p-8`}>
@@ -391,15 +431,18 @@ export function SupportRow() {
             </FloatCard>
             <FloatCard className="absolute -left-3 sm:-left-6 top-6 sm:top-10 px-4 py-2.5 flex items-center gap-2">
               <MessageCircle className="w-4 h-4 text-[#2563EB]" />
-              <span className="text-[12px] font-medium text-[#0F172A]">Real person, same-day reply</span>
+              <span className="text-[12px] font-medium text-[#0F172A]">
+                Real person, same-day reply
+              </span>
             </FloatCard>
           </div>
         </Reveal>
         <Reveal delay={0.1}>
           <h2 className={rowHeading}>Support from the people who built it</h2>
           <p className="mt-5 text-[17px] text-[#334155] leading-[1.6]">
-            When you need help, you message us on WhatsApp and talk to someone who knows DentDock inside out, because
-            they built it. No chatbot, no ticket number, no waiting days for an answer.
+            When you need help, you message us on WhatsApp and talk to someone who knows DentDock
+            inside out, because they built it. No chatbot, no ticket number, no waiting days for an
+            answer.
           </p>
           <Bullets
             items={[
@@ -408,7 +451,12 @@ export function SupportRow() {
               "Priority support for the first 30 practices",
             ]}
           />
-          <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className={`mt-8 ${pillButton}`}>
+          <a
+            href={WHATSAPP}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`mt-8 ${pillButton}`}
+          >
             Message us on WhatsApp
           </a>
         </Reveal>
@@ -422,14 +470,23 @@ export function SupportRow() {
 /* ------------------------------------------------------------------ */
 
 const steps = [
-  { title: "Set up your practice", body: "Opening hours, treatments and team. Reminders come ready to go." },
-  { title: "Bring your patients", body: "Upload your patient list as a CSV and DentDock matches the columns." },
-  { title: "Go live", body: "Share your booking link and let reminders and recalls start running." },
+  {
+    title: "Set up your practice",
+    body: "Opening hours, treatments and team. Reminders come ready to go.",
+  },
+  {
+    title: "Bring your patients",
+    body: "Upload your patient list as a CSV and DentDock matches the columns.",
+  },
+  {
+    title: "Go live",
+    body: "Share your booking link and let reminders and recalls start running.",
+  },
 ];
 
 export function SwitchRow() {
   return (
-    <section className="bg-gradient-to-b from-[#F2F6FF] to-[#EAF1FF] pt-10 md:pt-12 pb-16 md:pb-24 px-6">
+    <section className="bg-gradient-to-b from-[#F2F6FF] to-[#EAF1FF] pt-14 md:pt-20 pb-16 md:pb-24 px-6">
       <div className="mx-auto max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
         <Reveal className="lg:order-2">
           <div className={`relative ${panelOnTint} p-6 sm:p-8`}>
@@ -457,7 +514,9 @@ export function SwitchRow() {
             <div className="absolute -left-3 sm:-left-6 bottom-6 sm:bottom-10 z-10 flex flex-col items-start gap-2">
               <FloatCard className="px-4 py-2.5 flex items-center gap-2">
                 <Upload className="w-4 h-4 text-[#2563EB]" />
-                <span className="text-[12px] font-medium text-[#0F172A]">patients.csv · columns matched</span>
+                <span className="text-[12px] font-medium text-[#0F172A]">
+                  patients.csv · columns matched
+                </span>
               </FloatCard>
               <FloatCard className="px-4 py-2.5 flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-emerald-500" />
@@ -469,7 +528,8 @@ export function SwitchRow() {
         <Reveal delay={0.1} className="lg:order-1">
           <h2 className={rowHeading}>Switch in a single day</h2>
           <p className="mt-5 text-[17px] text-[#334155] leading-[1.6]">
-            No kick-off calls and no site visits. Set it up yourself, with us on WhatsApp if you want a hand.
+            No kick-off calls and no site visits. Set it up yourself, with us on WhatsApp if you
+            want a hand.
           </p>
           <ol className="mt-6 space-y-5">
             {steps.map((s, i) => (
@@ -487,87 +547,6 @@ export function SwitchRow() {
           <Link to="/waitlist" className={`mt-8 ${pillButton}`}>
             Join the waitlist
           </Link>
-        </Reveal>
-      </div>
-    </section>
-  );
-}
-
-/* ------------------------------------------------------------------ */
-/* Pricing teaser: blue price panel + what's included                  */
-/* ------------------------------------------------------------------ */
-
-const included = [
-  "Unlimited dentists and staff",
-  "Online booking and patient portal",
-  "Automated reminders and recalls",
-  "Digital forms and medical history",
-  "Payments and deposits",
-  "200 texts a month, then 8p",
-  "Priority WhatsApp support",
-];
-
-export function PricingTeaser() {
-  return (
-    <section className="relative overflow-hidden bg-[#0F162B] py-16 md:py-24 px-6">
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0"
-        style={{
-          background:
-            "radial-gradient(45% 55% at 15% 10%, rgba(37,99,235,0.35), transparent 70%), radial-gradient(40% 50% at 90% 90%, rgba(56,189,248,0.18), transparent 70%)",
-        }}
-      />
-      <div className="relative mx-auto max-w-5xl">
-        <Reveal className="text-center max-w-2xl mx-auto">
-          <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-white leading-[1.1]">
-            Simple pricing. <span className="text-[#60A5FA]">No surprises.</span>
-          </h2>
-          <p className="mt-5 text-[17px] text-[#CBD5E1] leading-[1.6]">
-            One plan with everything included, and the price is on the website, not behind a sales call.
-          </p>
-        </Reveal>
-        <Reveal delay={0.1} className="mt-12">
-          <div className="rounded-[28px] bg-white shadow-[0_40px_100px_-40px_rgba(0,0,0,0.6)] overflow-hidden">
-            <div className="grid grid-cols-1 md:grid-cols-[minmax(0,0.85fr)_minmax(0,1.4fr)]">
-              <div className="p-8 md:p-10 md:border-r border-neutral-100 flex flex-col">
-                <span className="self-start rounded-full bg-[#EFF6FF] px-3 py-1 text-[12px] font-semibold text-[#2563EB]">
-                  Starter
-                </span>
-                <div className="mt-5 flex items-end gap-2">
-                  <span className="text-6xl font-semibold tracking-tight text-[#0F172A] leading-none">£49</span>
-                  <span className="pb-1 text-[16px] text-[#64748B]">a month</span>
-                </div>
-                <p className="mt-2 text-[15px] text-[#475569]">Per practice, not per user.</p>
-                <div className="mt-8 flex flex-col gap-3">
-                  <Link to="/waitlist" className={primaryButton}>
-                    Join the waitlist <ArrowRight className="w-4 h-4" />
-                  </Link>
-                  <Link to="/pricing" className={secondaryButton}>
-                    See full pricing
-                  </Link>
-                </div>
-              </div>
-              <div className="p-8 md:p-10">
-                <p className="text-[15px] font-semibold text-[#0F172A]">Everything your practice needs:</p>
-                <ul className="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
-                  {included.map((item) => (
-                    <li key={item} className="flex items-start gap-3 text-[15px] text-[#0F172A] leading-[1.45]">
-                      <span className="mt-0.5 w-5 h-5 rounded-full bg-[#2563EB] flex items-center justify-center flex-shrink-0">
-                        <Check className="w-3 h-3 text-white" strokeWidth={3} />
-                      </span>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-            <div className="bg-[#F8FAFC] border-t border-neutral-100 px-8 md:px-10 py-4 flex flex-wrap justify-center gap-x-8 gap-y-1 text-[14px] font-medium text-[#475569]">
-              <span>No setup fees</span>
-              <span>No contract</span>
-              <span>Cancel any time</span>
-            </div>
-          </div>
         </Reveal>
       </div>
     </section>

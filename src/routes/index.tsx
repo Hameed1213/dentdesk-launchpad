@@ -4,10 +4,10 @@ import Navbar from "@/components/home/Navbar";
 import HeroSection from "@/components/home/HeroSection";
 import FeaturesSection from "@/components/home/FeaturesSection";
 import FAQ from "@/components/home/FAQ";
+import PricingCTA from "@/components/home/PricingCTA";
 import {
   ClosingBand,
   FeatureRows,
-  PricingTeaser,
   SolutionsGrid,
   SupportRow,
   SwitchRow,
@@ -25,10 +25,9 @@ const DESCRIPTION =
 
 // Old one-page links (dentdock.co.uk/#pricing and so on) now live on their own pages.
 // Browsers never send the # part to the server, so this has to happen in the page.
-const MOVED_ANCHORS: Record<string, "/features" | "/pricing"> = {
+const MOVED_ANCHORS: Record<string, "/features"> = {
   "#about": "/features",
   "#everything": "/features",
-  "#pricing": "/pricing",
 };
 
 export const Route = createFileRoute("/")({
@@ -122,7 +121,9 @@ function Index() {
       <SolutionsGrid />
       <SupportRow />
       <SwitchRow />
-      <PricingTeaser />
+      <section id="pricing" className="scroll-mt-24">
+        <PricingCTA />
+      </section>
       <section id="faq" className="scroll-mt-24">
         <FAQ />
       </section>
