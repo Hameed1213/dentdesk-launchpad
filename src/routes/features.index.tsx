@@ -146,10 +146,10 @@ function HubRows() {
 
 function TrustBand() {
   const items = [
-    { Icon: MapPin, text: "Stored in London, UK" },
-    { Icon: Lock, text: "Encrypted in transit and at rest" },
-    { Icon: UserCheck, text: "Two-step login for owners and managers" },
-    { Icon: ShieldCheck, text: "ICO registered: ZC132966" },
+    { Icon: MapPin, title: "UK hosted", sub: "Stored in London" },
+    { Icon: Lock, title: "Encrypted", sub: "In transit and at rest" },
+    { Icon: UserCheck, title: "Two-step login", sub: "For owners and managers" },
+    { Icon: ShieldCheck, title: "ICO registered", sub: "ZC132966" },
   ];
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-[#E8F0FF] via-[#F1EEFF] to-[#E3F2FF] py-16 md:py-24 px-6">
@@ -172,14 +172,23 @@ function TrustBand() {
             Patient data is stored in the UK, encrypted, and only seen by the people in your team
             who need it. You can download everything at any time.
           </p>
-          <ul className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3">
-            {items.map(({ Icon, text }) => (
+          <ul className="mt-7 grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {items.map(({ Icon, title, sub }) => (
               <li
-                key={text}
-                className="flex items-center gap-3 rounded-2xl bg-white/70 ring-1 ring-white px-4 py-3 text-[15px] text-[#0F172A]"
+                key={title}
+                className="flex items-center gap-3.5 rounded-2xl bg-white border border-[#E5EDFB] px-4 py-3.5"
               >
-                <Icon className="w-4 h-4 text-[#2563EB] flex-shrink-0" />
-                {text}
+                <span className="w-10 h-10 rounded-xl bg-[#EFF6FF] flex items-center justify-center flex-shrink-0">
+                  <Icon className="w-[18px] h-[18px] text-[#2563EB]" strokeWidth={1.9} />
+                </span>
+                <span className="min-w-0">
+                  <span className="block text-[15px] font-semibold text-[#0F172A] leading-tight">
+                    {title}
+                  </span>
+                  <span className="block mt-0.5 text-[13px] text-[#64748B] leading-tight">
+                    {sub}
+                  </span>
+                </span>
               </li>
             ))}
           </ul>
