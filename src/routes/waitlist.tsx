@@ -12,14 +12,14 @@ export const Route = createFileRoute("/waitlist")({
   component: WaitlistPage,
   head: () => ({
     meta: [
-      { title: "Join the Waitlist | Dent Dock" },
+      { title: "Join the waitlist | DentDock" },
       {
         name: "description",
         content:
           "Be among the first UK private practices to get early access to Dent Dock. Priority support and early access pricing locked in.",
       },
       { property: "og:url", content: "https://dentdock.co.uk/waitlist" },
-      { property: "og:title", content: "Join the Waitlist | Dent Dock" },
+      { property: "og:title", content: "Join the waitlist | DentDock" },
       {
         property: "og:description",
         content:

@@ -5,13 +5,13 @@ export const Route = createFileRoute("/dpa")({
   component: DpaPage,
   head: () => ({
     meta: [
-      { title: "Data Processing Agreement | Dent Dock" },
+      { title: "Data Processing Agreement | DentDock" },
       {
         name: "description",
         content:
           "The Data Processing Agreement between dental practices and Dent Dock under UK GDPR Article 28.",
       },
-      { property: "og:title", content: "Data Processing Agreement | Dent Dock" },
+      { property: "og:title", content: "Data Processing Agreement | DentDock" },
       {
         property: "og:description",
         content: "How Dent Dock processes patient data on behalf of dental practices.",

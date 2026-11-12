@@ -2,7 +2,7 @@ import { useState, type ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import PageShell from "@/components/site/PageShell";
-import { ClosingBand, Reveal, pillButton, primaryButton } from "@/components/site/ui";
+import { ClosingBand, HeroImage, Reveal, pillButton, primaryButton } from "@/components/site/ui";
 import {
   FaqSection,
   OtherAreas,
@@ -85,7 +85,9 @@ function StoryHero({ hero }: { hero: StoryHeroContent }) {
             £49 a month per practice, everything included. No contract.
           </p>
         </Reveal>
-        <Reveal delay={0.1}>{hero.visual}</Reveal>
+        <Reveal delay={0.1}>
+          <HeroImage.Provider value>{hero.visual}</HeroImage.Provider>
+        </Reveal>
       </div>
     </section>
   );

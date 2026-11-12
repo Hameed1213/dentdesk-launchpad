@@ -16,6 +16,7 @@ import {
   pillButton,
   primaryButton,
   rowHeading,
+  HeroImage,
 } from "@/components/site/ui";
 
 /*
@@ -121,7 +122,9 @@ export function PageHeroSplit({ hero }: { hero: HeroContent }) {
             £49 a month per practice · No contract · No setup fees
           </p>
         </Reveal>
-        <Reveal delay={0.1}>{hero.visual}</Reveal>
+        <Reveal delay={0.1}>
+          <HeroImage.Provider value>{hero.visual}</HeroImage.Provider>
+        </Reveal>
       </div>
     </section>
   );
@@ -649,6 +652,32 @@ export function AudiencePage({ content }: { content: AudienceContent }) {
 const SITE = "https://dentdock.co.uk";
 
 /** Title, description, canonical, Open Graph, breadcrumbs and FAQPage data for a template page. */
+/** Share image (1200x630, public/og) for each page, cropped from its hero photo. Others use /og-image.png. */
+const OG_IMAGES: Record<string, string> = {
+  "/features": "/og/features.jpg",
+  "/features/calendar": "/og/calendar.jpg",
+  "/features/online-booking": "/og/online-booking.jpg",
+  "/features/reminders-and-recalls": "/og/reminders-and-recalls.jpg",
+  "/features/forms": "/og/forms.jpg",
+  "/features/payments": "/og/payments.jpg",
+  "/features/reports": "/og/reports.jpg",
+  "/features/security": "/og/security.jpg",
+  "/features/switching": "/og/switching.jpg",
+  "/solutions": "/og/solutions.jpg",
+  "/solutions/reduce-no-shows": "/og/reduce-no-shows.jpg",
+  "/solutions/fill-cancelled-appointments": "/og/fill-cancelled-appointments.jpg",
+  "/solutions/cut-admin": "/og/cut-admin.jpg",
+  "/solutions/deposits-and-late-cancellations": "/og/deposits-and-late-cancellations.jpg",
+  "/solutions/bring-patients-back": "/og/bring-patients-back.jpg",
+  "/solutions/going-private": "/og/going-private.jpg",
+  "/solutions/new-practices": "/og/new-practices.jpg",
+  "/solutions/private-practices": "/og/private-practices.jpg",
+  "/about": "/og/about.jpg",
+  "/compare/dentally": "/og/compare-dentally.jpg",
+  "/compare/ismile-dental-software": "/og/compare-ismile.jpg",
+  "/compare/software-of-excellence": "/og/compare-soe.jpg",
+};
+
 export function templateHead({
   path,
   title,
@@ -663,6 +692,7 @@ export function templateHead({
   faq: Faq[];
 }) {
   const url = `${SITE}${path}`;
+  const image = `${SITE}${OG_IMAGES[path] ?? "/og-image.png"}`;
   return {
     meta: [
       { title },
@@ -671,7 +701,13 @@ export function templateHead({
       { property: "og:description", content: description },
       { property: "og:url", content: url },
       { property: "og:type", content: "website" },
-      { property: "og:image", content: `${SITE}/og-image.png` },
+      { property: "og:image", content: image },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: title },
+      { name: "twitter:description", content: description },
+      { name: "twitter:image", content: image },
     ],
     links: [{ rel: "canonical", href: url }],
     scripts: [

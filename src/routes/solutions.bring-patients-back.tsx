@@ -197,9 +197,9 @@ export const Route = createFileRoute("/solutions/bring-patients-back")({
   head: () =>
     templateHead({
       path: PATH,
-      title: "Dental recalls and Google reviews that bring patients back | DentDock",
+      title: "Dental recalls and Google reviews | DentDock",
       description:
-        "Recalls that set themselves and follow up until patients book, plus Google review links for happy patients. Work out what overdue patients are worth. £49 a month.",
+        "Recalls that set themselves and follow up until patients book, plus Google review links. See what overdue patients are worth. £49 a month.",
       crumbs: [
         { name: "Solutions", path: "/solutions" },
         { name: "Bring patients back", path: PATH },

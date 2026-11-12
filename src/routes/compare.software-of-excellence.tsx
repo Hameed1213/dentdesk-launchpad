@@ -167,7 +167,7 @@ export const Route = createFileRoute("/compare/software-of-excellence")({
   head: () =>
     templateHead({
       path: PATH,
-      title: "DentDock vs Software of Excellence · Dental practice software compared (2026)",
+      title: "DentDock vs Software of Excellence (2026)",
       description:
         "An honest comparison of DentDock and Software of Excellence (EXACT) for UK private practices. Compare features, support, transparency and approach.",
       crumbs: [

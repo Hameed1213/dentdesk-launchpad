@@ -183,7 +183,7 @@ export const Route = createFileRoute("/solutions/private-practices")({
       path: PATH,
       title: "Dental software for UK private practices | DentDock",
       description:
-        "Practice software for UK private dental practices: online booking with your prices, reminders, recalls, forms and payments. Set up in a day. £49 a month, no contract.",
+        "Software for UK private dental practices: online booking with your prices, reminders, recalls, forms and payments. Set up in a day. £49 a month, no contract.",
       crumbs: [
         { name: "Solutions", path: "/solutions" },
         { name: "Private practices", path: PATH },

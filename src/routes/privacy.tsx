@@ -5,13 +5,13 @@ export const Route = createFileRoute("/privacy")({
   component: PrivacyPage,
   head: () => ({
     meta: [
-      { title: "Privacy Policy | Dent Dock" },
+      { title: "Privacy Policy | DentDock" },
       {
         name: "description",
         content:
           "How Dent Dock collects, stores and processes data under UK GDPR. Patient data, retention, and your rights.",
       },
-      { property: "og:title", content: "Privacy Policy | Dent Dock" },
+      { property: "og:title", content: "Privacy Policy | DentDock" },
       {
         property: "og:description",
         content:

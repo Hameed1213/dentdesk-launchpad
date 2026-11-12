@@ -338,7 +338,7 @@ export const Route = createFileRoute("/features/calendar")({
       path: PATH,
       title: "Dental appointment calendar and diary software | DentDock",
       description:
-        "A dental diary with a column for each clinician, clear visit statuses, working hours, leave and blocked time, and medical alerts on every appointment. £49 a month.",
+        "A dental diary with a column per clinician, clear visit statuses, working hours, leave and blocked time, and medical alerts on every appointment. £49 a month.",
       crumbs: [
         { name: "Features", path: "/features" },
         { name: "Calendar", path: PATH },

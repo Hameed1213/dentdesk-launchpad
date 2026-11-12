@@ -155,9 +155,9 @@ export const Route = createFileRoute("/compare/ismile-dental-software")({
   head: () =>
     templateHead({
       path: PATH,
-      title: "DentDock vs iSmile Dental Software",
+      title: "DentDock vs iSmile Dental Software (2026)",
       description:
-        "DentDock vs iSmile Dental Software for UK private practices: published £49/mo pricing, online booking, automated reminders, recalls and forms, set up yourself without a demo.",
+        "DentDock vs iSmile Dental Software for UK private practices: published £49/mo pricing, online booking, reminders, recalls and forms, set up without a demo.",
       crumbs: [
         { name: "Compare", path: "/compare" },
         { name: "DentDock vs iSmile", path: PATH },

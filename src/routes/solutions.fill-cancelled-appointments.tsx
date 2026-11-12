@@ -204,7 +204,7 @@ export const Route = createFileRoute("/solutions/fill-cancelled-appointments")({
   head: () =>
     templateHead({
       path: PATH,
-      title: "Fill cancelled dental appointments from a waitlist | DentDock",
+      title: "Fill cancelled dental appointments | DentDock",
       description:
         "When a patient cancels, DentDock suggests waitlist patients and patients due a recall, and your team offers the slot in a couple of clicks. £49 a month.",
       crumbs: [

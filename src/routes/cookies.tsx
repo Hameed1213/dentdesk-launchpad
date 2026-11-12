@@ -6,13 +6,13 @@ export const Route = createFileRoute("/cookies")({
   component: CookiesPage,
   head: () => ({
     meta: [
-      { title: "Cookie Policy | Dent Dock" },
+      { title: "Cookie Policy | DentDock" },
       {
         name: "description",
         content:
-          "How Dent Dock uses cookies. Essential cookies, optional analytics on dentdock.co.uk, and the tracking practices can add to their booking pages, each only with your consent.",
+          "How Dent Dock uses cookies: essential cookies, optional analytics on dentdock.co.uk, and booking page tracking practices can add, each only with your consent.",
       },
-      { property: "og:title", content: "Cookie Policy | Dent Dock" },
+      { property: "og:title", content: "Cookie Policy | DentDock" },
       {
         property: "og:description",
         content:

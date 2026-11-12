@@ -68,9 +68,9 @@ export const Route = createFileRoute("/guides/missed-appointment-fees")({
   head: () => {
     const head = templateHead({
       path: PATH,
-      title: `${TITLE} | DentDock`,
+      title: TITLE,
       description:
-        "Missed-appointment and late-cancellation fees in UK private dentistry: what's allowed, NHS rules, how much notice to ask for, when to waive a fee, and a policy template.",
+        "Missed-appointment and late-cancellation fees in UK private dentistry: what's allowed, NHS rules, notice periods, when to waive a fee, and a policy template.",
       crumbs: [
         { name: "Guides", path: "/guides" },
         { name: "Missed appointment fees", path: PATH },
