@@ -16,7 +16,7 @@ import {
  * texts only 8am to 8pm, portal link in the 72h/24h messages, 5-step recalls (3 on by default),
  * recalls skip patients with a booking, bulk send, staff-sent waitlist offers that don't hold the slot,
  * one-way texts, no reply-to-confirm. Texts are not yet live in production (launch wording kept by Hariss).
- * Photos (Unsplash, free licence): NtFfR3xULbQ, eL4xIEuHzzk, h8uuH7h17Ds, iNiGA6063y8.
+ * Photos (Unsplash, free licence): NtFfR3xULbQ, uWVWQ8gF8PE, XH2JFgT4Abc, PIM07Y2OHzE.
  */
 
 const PATH = "/features/reminders-and-recalls";
@@ -95,22 +95,22 @@ const content: PlatformContent = {
         title: "Online booking and forms",
         body: "Patients book online, see your prices and fill in their medical history before they arrive.",
         to: "/features",
-        image: "/images/home/patient-booking.webp",
-        alt: "Woman smiling while booking on her phone",
+        image: "/images/pages/tablet-form.webp",
+        alt: "Woman filling in a form on a tablet",
       },
       {
         title: "Payments and deposits",
         body: "Deposits, payment links and fair cancellation fees, decided by you case by case.",
         to: "/solutions/reduce-no-shows",
-        image: "/images/pages/reception-payment.webp",
-        alt: "Receptionist at a front desk while a patient pays by card",
+        image: "/images/pages/contactless-payment.webp",
+        alt: "Phone held over a card reader to pay",
       },
       {
         title: "Reports",
         body: "Money taken by clinician, where your bookings come from, and your no-show rate.",
         to: "/features",
-        image: "/images/home/practice-laptop.webp",
-        alt: "Practice manager working on a laptop at her desk",
+        image: "/images/pages/manager-laptop.webp",
+        alt: "Woman smiling at her laptop in a bright office",
       },
     ],
   },

@@ -364,7 +364,7 @@ export function FaqSection({
             {title}
           </h2>
         </Reveal>
-        <Accordion type="single" collapsible className="w-full faq-accordion">
+        <Accordion type="multiple" className="w-full faq-accordion">
           {items.map((f, i) => (
             <AccordionItem key={f.question} value={`q${i}`} className="border-b border-[#EEEEEE]">
               <AccordionTrigger className="text-left text-[16px] sm:text-[17px] font-medium text-[#0F172A] py-5 hover:no-underline">
@@ -446,20 +446,21 @@ export function FeatureCards({ items }: { items: FeatureCard[] }) {
               className="grid grid-cols-1 lg:grid-cols-[0.85fr_1.15fr] gap-12 lg:gap-16 items-center"
             >
               <Reveal className={flip ? "lg:order-2" : ""}>
-                <h2 className="text-3xl md:text-[38px] font-semibold tracking-tight text-[#0F172A] leading-[1.15]">
+                <h2 className="text-3xl md:text-[38px] font-semibold tracking-tight text-[#2563EB] leading-[1.15]">
                   {f.title}
                 </h2>
                 <p className="mt-4 text-[17px] text-[#475569] leading-[1.6]">{f.body}</p>
                 {f.points && (
-                  <ul className="mt-6 space-y-3">
+                  <ul className="mt-6 space-y-3 pl-5">
                     {f.points.map((pt) => (
                       <li
                         key={pt}
-                        className="flex items-start gap-3 text-[16px] text-[#0F172A] leading-[1.5]"
+                        className="flex items-start gap-3.5 text-[17px] text-[#0F172A] leading-[1.5]"
                       >
-                        <span className="mt-0.5 w-5 h-5 rounded-full bg-[#EFF6FF] flex items-center justify-center flex-shrink-0">
-                          <Check className="w-3 h-3 text-[#2563EB]" strokeWidth={3} />
-                        </span>
+                        <span
+                          aria-hidden="true"
+                          className="mt-[10px] h-1.5 w-1.5 rounded-full bg-[#0F172A] flex-shrink-0"
+                        />
                         {pt}
                       </li>
                     ))}

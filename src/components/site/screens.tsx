@@ -9,13 +9,11 @@ import { ArrowRight, Bell, Check, MessageSquare, RefreshCw, Search } from "lucid
 
 /** Browser-style window around an app screen. `zoom` is the magnified close-up placed over a corner. */
 export function AppWindow({
-  url,
   title,
   children,
   zoom,
   zoomSide = "right",
 }: {
-  url: string;
   title: string;
   children: ReactNode;
   zoom?: ReactNode;
@@ -29,9 +27,6 @@ export function AppWindow({
             <span className="w-2.5 h-2.5 rounded-full bg-[#ff5f57]" />
             <span className="w-2.5 h-2.5 rounded-full bg-[#febc2e]" />
             <span className="w-2.5 h-2.5 rounded-full bg-[#28c840]" />
-          </div>
-          <div className="flex-1 mx-3 bg-white rounded-md px-3 py-1 text-[11px] text-[#94A3B8] text-center font-mono truncate">
-            {url}
           </div>
         </div>
         <div className="h-12 border-b border-[#E2E8F0] flex items-center justify-between px-5">
@@ -86,7 +81,6 @@ export function RemindersScreen() {
   ];
   return (
     <AppWindow
-      url="app.dentdock.co.uk/automations"
       title="Automations"
       zoom={
         <div className="w-[230px]">
@@ -95,8 +89,10 @@ export function RemindersScreen() {
             <p className="text-[12px] font-semibold text-[#0F172A]">Text to Sarah M.</p>
           </div>
           <p className="mt-2.5 rounded-xl rounded-tl-sm bg-neutral-100 px-3 py-2 text-[12px] leading-[1.45] text-[#334155]">
-            Hi Sarah, a reminder of your check-up on Thu 14 Nov at 10:30. Need to change it? View
-            your appointment
+            Hi Sarah, a reminder of your check-up on Thu 14 Nov at 10:30. Need to change it?{" "}
+            <span className="text-[#2563EB] underline underline-offset-2">
+              View your appointment
+            </span>
           </p>
           <p className="mt-2 text-[11px] text-[#64748B]">Sent 24 hours before</p>
         </div>
@@ -135,7 +131,6 @@ export function RecallsScreen() {
   ];
   return (
     <AppWindow
-      url="app.dentdock.co.uk/recalls"
       title="Recalls"
       zoomSide="left"
       zoom={
@@ -213,7 +208,6 @@ export function FillSlotScreen() {
   ];
   return (
     <AppWindow
-      url="app.dentdock.co.uk/calendar"
       title="Fill this slot"
       zoom={
         <div className="w-[210px] flex items-start gap-2.5">
@@ -268,7 +262,6 @@ export function FillSlotScreen() {
 export function MessageEditorScreen() {
   return (
     <AppWindow
-      url="app.dentdock.co.uk/automations"
       title="24-hour reminder"
       zoomSide="right"
       zoom={

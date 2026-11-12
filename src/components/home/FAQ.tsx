@@ -31,7 +31,7 @@ export default function FAQ() {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6, delay: 0.1 }}
         >
-          <Accordion type="single" collapsible className="w-full faq-accordion">
+          <Accordion type="multiple" className="w-full faq-accordion">
             {faqItems.map((item) => (
               <AccordionItem
                 key={item.id}

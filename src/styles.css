@@ -306,3 +306,15 @@
 .faq-accordion [role="region"][data-state="closed"] {
   display: none;
 }
+
+.faq-accordion [role="region"] {
+  animation: none !important;
+}
+.faq-accordion button[data-state] {
+  outline: none;
+}
+.faq-accordion button[data-state]:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 4px;
+  border-radius: 6px;
+}

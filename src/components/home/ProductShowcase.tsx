@@ -47,14 +47,6 @@ const tabDescriptions = [
   "Every message sent to a patient, in one place",
 ];
 
-const tabUrls = [
-  "app.dentdock.co.uk/calendar",
-  "book.dentdock.co.uk/smile-dental",
-  "book.dentdock.co.uk/smile-dental/portal",
-  "app.dentdock.co.uk/payments",
-  "app.dentdock.co.uk/recalls",
-  "app.dentdock.co.uk/inbox",
-];
 
 /* =========================================================
    SHARED MOCKUP TOPBAR (for app screens)
@@ -1357,9 +1349,7 @@ export default function ProductShowcase({ hideHeading = false }: { hideHeading?:
                     <div className="w-2.5 h-2.5 rounded-full bg-[#febc2e]" />
                     <div className="w-2.5 h-2.5 rounded-full bg-[#28c840]" />
                   </div>
-                  <div className="flex-1 bg-white rounded-md mx-4 px-3 py-1 text-[11px] text-neutral-400 text-center font-mono truncate">
-                    {tabUrls[activeTab]}
-                  </div>
+
                 </div>
                 {/* Mockup */}
                 <div className="h-[460px] overflow-hidden relative bg-[#F8FAFC] pointer-events-none">
