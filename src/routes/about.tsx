@@ -11,7 +11,7 @@ import { PillCard } from "@/components/site/cards";
  * £49 a month per practice, no contract or setup fees, 30-day trial, first 30 practices via the
  * waitlist, WhatsApp support, data stored in London, export any time, ICO ZC132966, company details
  * as in the footer. Does not claim a founding year, team size, office or customer numbers.
- * Photos: existing site photos (Unsplash free licence).
+ * Photos: Magnific (Freepik) free licence, credited in the footer.
  */
 
 const PATH = "/about";
@@ -64,10 +64,10 @@ function AboutPage() {
             "DentDock brings online booking, reminders, recalls, forms and payments together in one place, for one published price, with support from the people who build it.",
           visual: (
             <PhotoPanel
-              src="/images/solutions/hub.webp"
-              alt="Dentist smiling at a patient in a bright surgery"
-              height={933}
-              position="object-[60%_40%]"
+              src="/images/pages/about-patient.webp"
+              alt="Patient smiling at her dentist from the dental chair"
+              height={934}
+              position="object-[0%_35%]"
             >
               <PillCard className={at.topLeft} icon="dot" text="£49 a month, one price" />
               <FloatCard className={`${at.bottomRight} px-4 py-2.5 flex items-center gap-2`}>
@@ -107,10 +107,10 @@ function AboutPage() {
           </Reveal>
           <Reveal delay={0.1} className="lg:order-1">
             <PhotoPanel
-              src="/images/home/support-dev.webp"
-              alt="Developers working at their screens in a bright office"
-              height={933}
-              position="object-[60%_40%]"
+              src="/images/pages/about-team.webp"
+              alt="Three colleagues looking at a laptop together in a bright office"
+              height={934}
+              position="object-[50%_40%]"
             >
               <PillCard
                 className={at.bottomLeft}
@@ -174,10 +174,10 @@ function AboutPage() {
           </Reveal>
           <Reveal delay={0.1}>
             <PhotoPanel
-              src="/images/solutions/private.webp"
-              alt="Dentist talking with a patient in a private surgery"
-              height={1050}
-              position="object-[55%_45%]"
+              src="/images/pages/about-surgery.webp"
+              alt="Dentist treating a patient with a dental microscope in a modern surgery"
+              height={934}
+              position="object-[25%_50%]"
             >
               <PillCard className={at.topRight} icon="dot" text="Opening to 30 practices" />
             </PhotoPanel>
