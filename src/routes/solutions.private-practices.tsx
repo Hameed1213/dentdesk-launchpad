@@ -121,6 +121,7 @@ const content: SolutionStoryContent = {
   },
   controls: {
     title: "Run it your way",
+    link: { label: "See online booking", to: "/features/online-booking" },
     intro:
       "These are real DentDock settings for a private practice. Change any of them whenever you like.",
     groups: [

@@ -41,9 +41,10 @@ const content: SolutionStoryContent = {
         height={936}
         position="object-[50%_55%]"
       >
-        <TextMessageCard
+        <PillCard
           className="absolute left-2 sm:left-3 lg:-left-6 top-4 sm:top-6 lg:top-10"
-          when="Sent 72 hours before"
+          icon="bell"
+          text="Reminder sent · 72 hours before"
         />
         <PillCard
           className="absolute right-2 sm:right-3 lg:-right-6 bottom-4 sm:bottom-6 lg:bottom-10"
@@ -66,7 +67,7 @@ const content: SolutionStoryContent = {
       },
       {
         Icon: PhoneCall,
-        text: "Reception still spends hours on the phone confirming, rebooking and chasing.",
+        text: "Reception still spends hours on the phone every week, confirming appointments, rebooking and chasing patients.",
       },
     ],
   },
@@ -121,6 +122,7 @@ const content: SolutionStoryContent = {
   },
   controls: {
     title: "You set the rules",
+    link: { label: "See reminders and recalls", to: "/features/reminders-and-recalls" },
     intro:
       "These are real DentDock settings. Change any of them whenever you like, and patients see your policy before they book.",
     groups: [

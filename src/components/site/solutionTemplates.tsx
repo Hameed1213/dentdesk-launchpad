@@ -51,7 +51,7 @@ export type StoryHeroContent = {
 function StoryHero({ hero }: { hero: StoryHeroContent }) {
   return (
     <section className="relative overflow-hidden bg-white pt-28 lg:pt-36 pb-16 px-6">
-      <div className="mx-auto max-w-6xl grid grid-cols-1 lg:grid-cols-[1.15fr_0.85fr] gap-12 items-center">
+      <div className="mx-auto max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         <Reveal>
           <nav aria-label="Breadcrumb" className="mb-5 text-[13px] text-[#64748B]">
             <Link to="/" className="hover:text-[#2563EB]">
@@ -141,7 +141,7 @@ function StoryTimeline({
           </h2>
           <p className="mt-5 text-[18px] text-[#475569] leading-[1.6]">{intro}</p>
         </Reveal>
-        <ol className="relative mt-16">
+        <ol className="relative mt-20">
           {/* the line: left on phones, centre from md */}
           <span
             aria-hidden="true"
@@ -153,7 +153,7 @@ function StoryTimeline({
               <Reveal
                 key={s.time + s.title}
                 delay={0.04 * i}
-                className={i < stops.length - 1 ? "pb-12 md:pb-16" : ""}
+                className={i < stops.length - 1 ? "pb-20 md:pb-32" : ""}
               >
                 <li className="relative list-none grid grid-cols-1 md:grid-cols-2 md:gap-16 items-center pl-9 md:pl-0">
                   <span
@@ -191,15 +191,18 @@ function StoryTimeline({
 
 export type Control = { label: string; value: ReactNode };
 export type ControlGroup = { group: string; items: Control[] };
+type ControlsLink = { label: string; to: string };
 
 function WhatYouControl({
   title,
   intro,
   groups,
+  link,
 }: {
   title: string;
   intro: string;
   groups: ControlGroup[];
+  link?: ControlsLink;
 }) {
   return (
     <section className="bg-gradient-to-b from-[#F7F9FF] to-[#F1F5FE] border-y border-[#EEF2FB] py-14 md:py-16 px-6">
@@ -209,6 +212,16 @@ function WhatYouControl({
             {title}
           </h2>
           <p className="mt-4 text-[16px] text-[#475569] leading-[1.6]">{intro}</p>
+          <div className="mt-8 flex flex-col sm:flex-row gap-3">
+            <Link to="/waitlist" className={primaryButton}>
+              Join the waitlist <ArrowRight className="w-4 h-4" />
+            </Link>
+            {link && (
+              <Link to={link.to as "/features"} className={pillButton}>
+                {link.label}
+              </Link>
+            )}
+          </div>
         </Reveal>
         <Reveal delay={0.08}>
           <div className="rounded-2xl bg-white border border-[#E5EDFB] shadow-[0_20px_50px_-35px_rgba(15,23,42,0.35)] p-4 space-y-3 max-w-md lg:ml-auto">
@@ -265,9 +278,9 @@ function Slider({
 }) {
   return (
     <label className="block">
-      <span className="flex items-baseline justify-between gap-3 text-[14px] text-[#475569]">
+      <span className="flex items-baseline justify-between gap-3 text-[15px] text-[#475569]">
         {label}
-        <span className="text-[16px] font-semibold text-[#0F172A] tabular-nums">
+        <span className="text-[20px] font-semibold text-[#0F172A] tabular-nums">
           {format(value)}
         </span>
       </span>
@@ -278,7 +291,7 @@ function Slider({
         step={step}
         value={value}
         onChange={(e) => onChange(Number(e.target.value))}
-        className="mt-2 w-full accent-[#2563EB]"
+        className="mt-3 w-full h-2 accent-[#2563EB]"
       />
     </label>
   );
@@ -296,19 +309,19 @@ function CalcShell({
   result: ReactNode;
 }) {
   return (
-    <section className="bg-white py-16 md:py-20 px-6">
-      <div className="mx-auto max-w-4xl">
+    <section className="bg-white py-20 md:py-28 px-6">
+      <div className="mx-auto max-w-6xl">
         <Reveal className="text-center max-w-2xl mx-auto">
-          <h2 className="text-3xl md:text-[38px] font-semibold tracking-tight text-[#0F172A] leading-[1.1]">
+          <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-[#0F172A] leading-[1.1]">
             {title}
           </h2>
-          <p className="mt-4 text-[16px] text-[#475569] leading-[1.6]">{intro}</p>
+          <p className="mt-5 text-[18px] text-[#475569] leading-[1.6]">{intro}</p>
         </Reveal>
-        <Reveal delay={0.08} className="mt-10">
-          <div className="rounded-3xl border border-[#E5EDFB] bg-white p-6 md:p-8">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">{controls}</div>
-            <div className="mt-7 rounded-2xl bg-[#F5F8FF] px-6 py-5">{result}</div>
-            <p className="mt-3 text-center text-[12px] text-[#94A3B8]">
+        <Reveal delay={0.08} className="mt-12">
+          <div className="rounded-[28px] border border-[#E5EDFB] bg-white p-7 md:p-12 shadow-[0_30px_70px_-45px_rgba(15,23,42,0.35)]">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">{controls}</div>
+            <div className="mt-10 rounded-2xl bg-[#F5F8FF] px-6 py-8 md:py-10">{result}</div>
+            <p className="mt-4 text-center text-[13px] text-[#94A3B8]">
               Your own figures, worked out in your browser. Not a promise of results.
             </p>
           </div>
@@ -321,12 +334,12 @@ function CalcShell({
 function Result({ label, value, accent }: { label: string; value: string; accent?: boolean }) {
   return (
     <div className="text-center">
-      <p className="text-[13px] text-[#64748B]">{label}</p>
+      <p className="text-[15px] text-[#64748B]">{label}</p>
       <p
-        className={`mt-1 text-[28px] font-semibold tracking-tight leading-none ${accent ? "text-[#2563EB]" : "text-[#0F172A]"}`}
+        className={`mt-2 text-[40px] md:text-[48px] font-semibold tracking-tight leading-none ${accent ? "text-[#2563EB]" : "text-[#0F172A]"}`}
       >
         {value}
-        <span className="text-[13px] font-normal text-[#64748B]"> a month</span>
+        <span className="text-[15px] font-normal text-[#64748B]"> a month</span>
       </p>
     </div>
   );
@@ -449,7 +462,7 @@ export type SolutionStoryContent = {
   hero: StoryHeroContent;
   sounds: { title: string; lines: Pain[] };
   story: { title: string; highlight?: string; intro: string; stops: Stop[] };
-  controls: { title: string; intro: string; groups: ControlGroup[] };
+  controls: { title: string; intro: string; groups: ControlGroup[]; link?: ControlsLink };
   calculator: ReactNode;
   features: { title: string; highlight?: string; items: OtherArea[] };
   faq: Faq[];
