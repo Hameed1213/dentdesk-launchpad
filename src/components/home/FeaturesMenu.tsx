@@ -272,7 +272,7 @@ export function FeaturesMenuMobile({ onNavigate }: { onNavigate: () => void }) {
         type="button"
         aria-expanded={open}
         onClick={() => setOpen((v) => !v)}
-        className="w-full flex items-center justify-between text-[15px] font-medium text-neutral-800 px-3 py-3.5 rounded-lg hover:bg-neutral-100 border-b border-neutral-100"
+        className="w-full flex items-center justify-between text-[15px] font-medium text-neutral-800 px-3 py-3.5 hover:bg-neutral-50 border-b border-neutral-100"
       >
         Features
         <ChevronDown
@@ -280,11 +280,11 @@ export function FeaturesMenuMobile({ onNavigate }: { onNavigate: () => void }) {
         />
       </button>
       {open && (
-        <div className="mt-1 mb-2 ml-2 border-l border-[#E5EDFB] pl-2 flex flex-col">
+        <div className="mt-2 mb-3 ml-2 border-l border-[#E5EDFB] pl-2 flex flex-col gap-0.5">
           <Link
             to="/features"
             onClick={onNavigate}
-            className="px-3 py-2 text-sm font-semibold text-[#2563EB] rounded-lg hover:bg-[#F3F7FF]"
+            className="px-3 py-3 text-[15px] font-semibold text-[#2563EB] rounded-lg hover:bg-[#F3F7FF]"
           >
             All features
           </Link>
@@ -293,7 +293,7 @@ export function FeaturesMenuMobile({ onNavigate }: { onNavigate: () => void }) {
               key={to}
               to={to}
               onClick={onNavigate}
-              className="flex items-center gap-2.5 px-3 py-2 text-sm text-neutral-700 rounded-lg hover:bg-[#F3F7FF]"
+              className="flex items-center gap-3 px-3 py-3 text-[15px] text-neutral-700 rounded-lg hover:bg-[#F3F7FF]"
             >
               <Icon className="w-4 h-4 text-[#2563EB]" strokeWidth={1.9} />
               {label}

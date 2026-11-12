@@ -183,7 +183,7 @@ export default function Navbar() {
                     setMobileOpen(false);
                     smoothScrollTo(e, l.href);
                   }}
-                  className="flex items-center justify-between text-[15px] font-medium text-neutral-800 px-3 py-3.5 rounded-lg hover:bg-neutral-100 border-b border-neutral-100"
+                  className="flex items-center justify-between text-[15px] font-medium text-neutral-800 px-3 py-3.5 hover:bg-neutral-50 border-b border-neutral-100"
                 >
                   {l.label}
                   <ChevronRight className="w-4 h-4 text-neutral-400" />
@@ -193,7 +193,7 @@ export default function Navbar() {
                   key={l.label}
                   to={l.href as "/compare"}
                   onClick={() => setMobileOpen(false)}
-                  className="flex items-center justify-between text-[15px] font-medium text-neutral-800 px-3 py-3.5 rounded-lg hover:bg-neutral-100 border-b border-neutral-100"
+                  className="flex items-center justify-between text-[15px] font-medium text-neutral-800 px-3 py-3.5 hover:bg-neutral-50 border-b border-neutral-100"
                 >
                   {l.label}
                   <ChevronRight className="w-4 h-4 text-neutral-400" />
