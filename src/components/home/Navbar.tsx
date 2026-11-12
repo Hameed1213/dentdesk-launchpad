@@ -7,16 +7,11 @@ import {
   MegaMenuDesktop,
   MegaMenuMobile,
   featuresMenu,
+  resourcesMenu,
   solutionsMenu,
 } from "@/components/home/FeaturesMenu";
 
-const navLinks = [
-  { label: "Features", href: "/features" },
-  { label: "Pricing", href: "/pricing" },
-  { label: "Support", href: "/#support" },
-  { label: "Comparisons", href: "/compare" },
-  { label: "FAQ", href: "/#faq" },
-];
+const navLinks = [{ label: "Pricing", href: "/pricing" }];
 
 function Logo() {
   return (
@@ -115,6 +110,7 @@ export default function Navbar() {
                   </Link>
                 ),
               )}
+            <MegaMenuDesktop menu={resourcesMenu} />
           </nav>
 
           <div className="hidden lg:flex items-center gap-5">
@@ -207,6 +203,7 @@ export default function Navbar() {
                 </Link>
               ),
             )}
+          <MegaMenuMobile menu={resourcesMenu} onNavigate={() => setMobileOpen(false)} />
         </nav>
         <div className="p-5 border-t border-neutral-100">
           <Link

@@ -3,6 +3,12 @@ import { createPortal } from "react-dom";
 import { Link } from "@tanstack/react-router";
 import {
   ArrowRightLeft,
+  BookOpen,
+  Calculator,
+  HelpCircle,
+  Lock,
+  MessageCircle,
+  Scale,
   BarChart3,
   Bell,
   Building2,
@@ -106,6 +112,44 @@ export const solutionsMenu: MenuConfig = {
   ],
 };
 
+export const resourcesMenu: MenuConfig = {
+  label: "Resources",
+  intro: {
+    title: "Resources",
+    text: "Practical guides, free tools and answers for UK private dental practices.",
+    cta: "Read the guides",
+    to: "/guides",
+  },
+  allLabel: "All guides",
+  columns: [
+    {
+      title: "Learn and explore",
+      items: [
+        { label: "Guides", to: "/guides", Icon: BookOpen },
+        { label: "Free tools", to: "/tools", Icon: Calculator },
+        { label: "Comparisons", to: "/compare", Icon: Scale },
+        { label: "Switching to DentDock", to: "/features/switching", Icon: ArrowRightLeft },
+      ],
+    },
+    {
+      title: "Support and help",
+      items: [
+        { label: "FAQs", to: "/faq", Icon: HelpCircle },
+        { label: "Contact", to: "/contact", Icon: MessageCircle },
+        { label: "Security and data", to: "/features/security", Icon: ShieldCheck },
+      ],
+    },
+    {
+      title: "About DentDock",
+      items: [
+        { label: "Early access", to: "/waitlist", Icon: Sparkles },
+        { label: "Privacy", to: "/privacy", Icon: Lock },
+        { label: "Data processing (DPA)", to: "/dpa", Icon: FileText },
+      ],
+    },
+  ],
+};
+
 /** Typed-route escape hatch: menu paths are plain strings. */
 function To({ to, ...rest }: { to: string } & Omit<React.ComponentProps<typeof Link>, "to">) {
   return <Link to={to as "/features"} {...rest} />;
@@ -148,7 +192,10 @@ const divider = "lg:border-l lg:border-[#DBEAFE] lg:pl-10";
 
 function MenuLayout({ menu, onClose }: { menu: MenuConfig; onClose: () => void }) {
   return (
-    <div className="grid grid-cols-[1fr_1fr_1fr] gap-10 items-stretch pr-4">
+    <div
+      className="grid gap-10 items-stretch pr-4"
+      style={{ gridTemplateColumns: `repeat(${menu.columns.length + 1}, minmax(0, 1fr))` }}
+    >
       <Intro menu={menu} onClose={onClose} />
       {menu.columns.map((col) => (
         <div key={col.title} className={divider}>

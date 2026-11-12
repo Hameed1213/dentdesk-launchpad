@@ -688,18 +688,22 @@ export function templateHead({
           })),
         }),
       },
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          mainEntity: faq.map((f) => ({
-            "@type": "Question",
-            name: f.question,
-            acceptedAnswer: { "@type": "Answer", text: f.answer },
-          })),
-        }),
-      },
+      ...(faq.length
+        ? [
+            {
+              type: "application/ld+json",
+              children: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                mainEntity: faq.map((f) => ({
+                  "@type": "Question",
+                  name: f.question,
+                  acceptedAnswer: { "@type": "Answer", text: f.answer },
+                })),
+              }),
+            },
+          ]
+        : []),
     ],
   };
 }

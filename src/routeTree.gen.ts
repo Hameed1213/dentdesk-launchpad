@@ -10,11 +10,14 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CookiesRouteImport } from './routes/cookies'
 import { Route as DpaRouteImport } from './routes/dpa'
+import { Route as FaqRouteImport } from './routes/faq'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as TermsRouteImport } from './routes/terms'
+import { Route as ToolsRouteImport } from './routes/tools'
 import { Route as WaitlistRouteImport } from './routes/waitlist'
 import { Route as CompareIndexRouteImport } from './routes/compare.index'
 import { Route as CompareDentallyRouteImport } from './routes/compare.dentally'
@@ -29,6 +32,8 @@ import { Route as FeaturesRemindersAndRecallsRouteImport } from './routes/featur
 import { Route as FeaturesReportsRouteImport } from './routes/features.reports'
 import { Route as FeaturesSecurityRouteImport } from './routes/features.security'
 import { Route as FeaturesSwitchingRouteImport } from './routes/features.switching'
+import { Route as GuidesIndexRouteImport } from './routes/guides.index'
+import { Route as GuidesMissedAppointmentFeesRouteImport } from './routes/guides.missed-appointment-fees'
 import { Route as SolutionsIndexRouteImport } from './routes/solutions.index'
 import { Route as SolutionsBringPatientsBackRouteImport } from './routes/solutions.bring-patients-back'
 import { Route as SolutionsCutAdminRouteImport } from './routes/solutions.cut-admin'
@@ -46,6 +51,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CookiesRoute = CookiesRouteImport.update({
   id: '/cookies',
   path: '/cookies',
@@ -54,6 +64,11 @@ const CookiesRoute = CookiesRouteImport.update({
 const DpaRoute = DpaRouteImport.update({
   id: '/dpa',
   path: '/dpa',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaqRoute = FaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PricingRoute = PricingRouteImport.update({
@@ -69,6 +84,11 @@ const PrivacyRoute = PrivacyRouteImport.update({
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
   path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ToolsRoute = ToolsRouteImport.update({
+  id: '/tools',
+  path: '/tools',
   getParentRoute: () => rootRouteImport,
 } as any)
 const WaitlistRoute = WaitlistRouteImport.update({
@@ -144,6 +164,17 @@ const FeaturesSwitchingRoute = FeaturesSwitchingRouteImport.update({
   path: '/features/switching',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GuidesIndexRoute = GuidesIndexRouteImport.update({
+  id: '/guides/',
+  path: '/guides/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GuidesMissedAppointmentFeesRoute =
+  GuidesMissedAppointmentFeesRouteImport.update({
+    id: '/guides/missed-appointment-fees',
+    path: '/guides/missed-appointment-fees',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const SolutionsIndexRoute = SolutionsIndexRouteImport.update({
   id: '/solutions/',
   path: '/solutions/',
@@ -207,11 +238,14 @@ const ApiPublicVerifyWaitlistSignupRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
   '/cookies': typeof CookiesRoute
   '/dpa': typeof DpaRoute
+  '/faq': typeof FaqRoute
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
   '/terms': typeof TermsRoute
+  '/tools': typeof ToolsRoute
   '/waitlist': typeof WaitlistRoute
   '/compare/dentally': typeof CompareDentallyRoute
   '/compare/ismile-dental-software': typeof CompareIsmileDentalSoftwareRoute
@@ -224,6 +258,7 @@ export interface FileRoutesByFullPath {
   '/features/reports': typeof FeaturesReportsRoute
   '/features/security': typeof FeaturesSecurityRoute
   '/features/switching': typeof FeaturesSwitchingRoute
+  '/guides/missed-appointment-fees': typeof GuidesMissedAppointmentFeesRoute
   '/solutions/bring-patients-back': typeof SolutionsBringPatientsBackRoute
   '/solutions/cut-admin': typeof SolutionsCutAdminRoute
   '/solutions/deposits-and-late-cancellations': typeof SolutionsDepositsAndLateCancellationsRoute
@@ -234,17 +269,21 @@ export interface FileRoutesByFullPath {
   '/solutions/reduce-no-shows': typeof SolutionsReduceNoShowsRoute
   '/compare/': typeof CompareIndexRoute
   '/features/': typeof FeaturesIndexRoute
+  '/guides/': typeof GuidesIndexRoute
   '/solutions/': typeof SolutionsIndexRoute
   '/api/public/count-visit': typeof ApiPublicCountVisitRoute
   '/api/public/verify-waitlist-signup': typeof ApiPublicVerifyWaitlistSignupRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
   '/cookies': typeof CookiesRoute
   '/dpa': typeof DpaRoute
+  '/faq': typeof FaqRoute
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
   '/terms': typeof TermsRoute
+  '/tools': typeof ToolsRoute
   '/waitlist': typeof WaitlistRoute
   '/compare/dentally': typeof CompareDentallyRoute
   '/compare/ismile-dental-software': typeof CompareIsmileDentalSoftwareRoute
@@ -257,6 +296,7 @@ export interface FileRoutesByTo {
   '/features/reports': typeof FeaturesReportsRoute
   '/features/security': typeof FeaturesSecurityRoute
   '/features/switching': typeof FeaturesSwitchingRoute
+  '/guides/missed-appointment-fees': typeof GuidesMissedAppointmentFeesRoute
   '/solutions/bring-patients-back': typeof SolutionsBringPatientsBackRoute
   '/solutions/cut-admin': typeof SolutionsCutAdminRoute
   '/solutions/deposits-and-late-cancellations': typeof SolutionsDepositsAndLateCancellationsRoute
@@ -267,6 +307,7 @@ export interface FileRoutesByTo {
   '/solutions/reduce-no-shows': typeof SolutionsReduceNoShowsRoute
   '/compare': typeof CompareIndexRoute
   '/features': typeof FeaturesIndexRoute
+  '/guides': typeof GuidesIndexRoute
   '/solutions': typeof SolutionsIndexRoute
   '/api/public/count-visit': typeof ApiPublicCountVisitRoute
   '/api/public/verify-waitlist-signup': typeof ApiPublicVerifyWaitlistSignupRoute
@@ -274,11 +315,14 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
   '/cookies': typeof CookiesRoute
   '/dpa': typeof DpaRoute
+  '/faq': typeof FaqRoute
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
   '/terms': typeof TermsRoute
+  '/tools': typeof ToolsRoute
   '/waitlist': typeof WaitlistRoute
   '/compare/dentally': typeof CompareDentallyRoute
   '/compare/ismile-dental-software': typeof CompareIsmileDentalSoftwareRoute
@@ -291,6 +335,7 @@ export interface FileRoutesById {
   '/features/reports': typeof FeaturesReportsRoute
   '/features/security': typeof FeaturesSecurityRoute
   '/features/switching': typeof FeaturesSwitchingRoute
+  '/guides/missed-appointment-fees': typeof GuidesMissedAppointmentFeesRoute
   '/solutions/bring-patients-back': typeof SolutionsBringPatientsBackRoute
   '/solutions/cut-admin': typeof SolutionsCutAdminRoute
   '/solutions/deposits-and-late-cancellations': typeof SolutionsDepositsAndLateCancellationsRoute
@@ -301,6 +346,7 @@ export interface FileRoutesById {
   '/solutions/reduce-no-shows': typeof SolutionsReduceNoShowsRoute
   '/compare/': typeof CompareIndexRoute
   '/features/': typeof FeaturesIndexRoute
+  '/guides/': typeof GuidesIndexRoute
   '/solutions/': typeof SolutionsIndexRoute
   '/api/public/count-visit': typeof ApiPublicCountVisitRoute
   '/api/public/verify-waitlist-signup': typeof ApiPublicVerifyWaitlistSignupRoute
@@ -309,11 +355,14 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/contact'
     | '/cookies'
     | '/dpa'
+    | '/faq'
     | '/pricing'
     | '/privacy'
     | '/terms'
+    | '/tools'
     | '/waitlist'
     | '/compare/dentally'
     | '/compare/ismile-dental-software'
@@ -326,6 +375,7 @@ export interface FileRouteTypes {
     | '/features/reports'
     | '/features/security'
     | '/features/switching'
+    | '/guides/missed-appointment-fees'
     | '/solutions/bring-patients-back'
     | '/solutions/cut-admin'
     | '/solutions/deposits-and-late-cancellations'
@@ -336,17 +386,21 @@ export interface FileRouteTypes {
     | '/solutions/reduce-no-shows'
     | '/compare/'
     | '/features/'
+    | '/guides/'
     | '/solutions/'
     | '/api/public/count-visit'
     | '/api/public/verify-waitlist-signup'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/contact'
     | '/cookies'
     | '/dpa'
+    | '/faq'
     | '/pricing'
     | '/privacy'
     | '/terms'
+    | '/tools'
     | '/waitlist'
     | '/compare/dentally'
     | '/compare/ismile-dental-software'
@@ -359,6 +413,7 @@ export interface FileRouteTypes {
     | '/features/reports'
     | '/features/security'
     | '/features/switching'
+    | '/guides/missed-appointment-fees'
     | '/solutions/bring-patients-back'
     | '/solutions/cut-admin'
     | '/solutions/deposits-and-late-cancellations'
@@ -369,17 +424,21 @@ export interface FileRouteTypes {
     | '/solutions/reduce-no-shows'
     | '/compare'
     | '/features'
+    | '/guides'
     | '/solutions'
     | '/api/public/count-visit'
     | '/api/public/verify-waitlist-signup'
   id:
     | '__root__'
     | '/'
+    | '/contact'
     | '/cookies'
     | '/dpa'
+    | '/faq'
     | '/pricing'
     | '/privacy'
     | '/terms'
+    | '/tools'
     | '/waitlist'
     | '/compare/dentally'
     | '/compare/ismile-dental-software'
@@ -392,6 +451,7 @@ export interface FileRouteTypes {
     | '/features/reports'
     | '/features/security'
     | '/features/switching'
+    | '/guides/missed-appointment-fees'
     | '/solutions/bring-patients-back'
     | '/solutions/cut-admin'
     | '/solutions/deposits-and-late-cancellations'
@@ -402,6 +462,7 @@ export interface FileRouteTypes {
     | '/solutions/reduce-no-shows'
     | '/compare/'
     | '/features/'
+    | '/guides/'
     | '/solutions/'
     | '/api/public/count-visit'
     | '/api/public/verify-waitlist-signup'
@@ -409,11 +470,14 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ContactRoute: typeof ContactRoute
   CookiesRoute: typeof CookiesRoute
   DpaRoute: typeof DpaRoute
+  FaqRoute: typeof FaqRoute
   PricingRoute: typeof PricingRoute
   PrivacyRoute: typeof PrivacyRoute
   TermsRoute: typeof TermsRoute
+  ToolsRoute: typeof ToolsRoute
   WaitlistRoute: typeof WaitlistRoute
   CompareDentallyRoute: typeof CompareDentallyRoute
   CompareIsmileDentalSoftwareRoute: typeof CompareIsmileDentalSoftwareRoute
@@ -426,6 +490,7 @@ export interface RootRouteChildren {
   FeaturesReportsRoute: typeof FeaturesReportsRoute
   FeaturesSecurityRoute: typeof FeaturesSecurityRoute
   FeaturesSwitchingRoute: typeof FeaturesSwitchingRoute
+  GuidesMissedAppointmentFeesRoute: typeof GuidesMissedAppointmentFeesRoute
   SolutionsBringPatientsBackRoute: typeof SolutionsBringPatientsBackRoute
   SolutionsCutAdminRoute: typeof SolutionsCutAdminRoute
   SolutionsDepositsAndLateCancellationsRoute: typeof SolutionsDepositsAndLateCancellationsRoute
@@ -436,6 +501,7 @@ export interface RootRouteChildren {
   SolutionsReduceNoShowsRoute: typeof SolutionsReduceNoShowsRoute
   CompareIndexRoute: typeof CompareIndexRoute
   FeaturesIndexRoute: typeof FeaturesIndexRoute
+  GuidesIndexRoute: typeof GuidesIndexRoute
   SolutionsIndexRoute: typeof SolutionsIndexRoute
   ApiPublicCountVisitRoute: typeof ApiPublicCountVisitRoute
   ApiPublicVerifyWaitlistSignupRoute: typeof ApiPublicVerifyWaitlistSignupRoute
@@ -450,6 +516,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/cookies': {
       id: '/cookies'
       path: '/cookies'
@@ -462,6 +535,13 @@ declare module '@tanstack/react-router' {
       path: '/dpa'
       fullPath: '/dpa'
       preLoaderRoute: typeof DpaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faq': {
+      id: '/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof FaqRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/pricing': {
@@ -483,6 +563,13 @@ declare module '@tanstack/react-router' {
       path: '/terms'
       fullPath: '/terms'
       preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tools': {
+      id: '/tools'
+      path: '/tools'
+      fullPath: '/tools'
+      preLoaderRoute: typeof ToolsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/waitlist': {
@@ -583,6 +670,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FeaturesSwitchingRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/guides/': {
+      id: '/guides/'
+      path: '/guides'
+      fullPath: '/guides/'
+      preLoaderRoute: typeof GuidesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/guides/missed-appointment-fees': {
+      id: '/guides/missed-appointment-fees'
+      path: '/guides/missed-appointment-fees'
+      fullPath: '/guides/missed-appointment-fees'
+      preLoaderRoute: typeof GuidesMissedAppointmentFeesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/solutions/': {
       id: '/solutions/'
       path: '/solutions'
@@ -665,11 +766,14 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ContactRoute: ContactRoute,
   CookiesRoute: CookiesRoute,
   DpaRoute: DpaRoute,
+  FaqRoute: FaqRoute,
   PricingRoute: PricingRoute,
   PrivacyRoute: PrivacyRoute,
   TermsRoute: TermsRoute,
+  ToolsRoute: ToolsRoute,
   WaitlistRoute: WaitlistRoute,
   CompareDentallyRoute: CompareDentallyRoute,
   CompareIsmileDentalSoftwareRoute: CompareIsmileDentalSoftwareRoute,
@@ -682,6 +786,7 @@ const rootRouteChildren: RootRouteChildren = {
   FeaturesReportsRoute: FeaturesReportsRoute,
   FeaturesSecurityRoute: FeaturesSecurityRoute,
   FeaturesSwitchingRoute: FeaturesSwitchingRoute,
+  GuidesMissedAppointmentFeesRoute: GuidesMissedAppointmentFeesRoute,
   SolutionsBringPatientsBackRoute: SolutionsBringPatientsBackRoute,
   SolutionsCutAdminRoute: SolutionsCutAdminRoute,
   SolutionsDepositsAndLateCancellationsRoute:
@@ -694,6 +799,7 @@ const rootRouteChildren: RootRouteChildren = {
   SolutionsReduceNoShowsRoute: SolutionsReduceNoShowsRoute,
   CompareIndexRoute: CompareIndexRoute,
   FeaturesIndexRoute: FeaturesIndexRoute,
+  GuidesIndexRoute: GuidesIndexRoute,
   SolutionsIndexRoute: SolutionsIndexRoute,
   ApiPublicCountVisitRoute: ApiPublicCountVisitRoute,
   ApiPublicVerifyWaitlistSignupRoute: ApiPublicVerifyWaitlistSignupRoute,

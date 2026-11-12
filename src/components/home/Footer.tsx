@@ -15,9 +15,6 @@ const productLinks: ProductLink[] = [
   { label: "Security", href: "/features/security", internal: true },
   { label: "Switching", href: "/features/switching", internal: true },
   { label: "Solutions", href: "/solutions", internal: true },
-  { label: "Support", href: "/#support" },
-  { label: "Comparisons", href: "/compare", internal: true },
-  { label: "FAQ", href: "/#faq" },
 ];
 
 type CompanyLink = {
@@ -28,7 +25,11 @@ type CompanyLink = {
 };
 
 const companyLinks: CompanyLink[] = [
-  { label: "Contact", href: "https://wa.me/447404488089", external: true },
+  { label: "Guides", href: "/guides", internal: true },
+  { label: "Free tools", href: "/tools", internal: true },
+  { label: "Comparisons", href: "/compare", internal: true },
+  { label: "FAQs", href: "/faq", internal: true },
+  { label: "Contact", href: "/contact", internal: true },
   { label: "Join the waitlist", href: "/waitlist", internal: true },
 ];
 
@@ -46,7 +47,11 @@ export default function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-8">
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
-            <Link to="/" aria-label="Dent Dock — go to homepage" className="flex items-center gap-2">
+            <Link
+              to="/"
+              aria-label="Dent Dock — go to homepage"
+              className="flex items-center gap-2"
+            >
               <ToothIcon size={22} color="#60A5FA" />
               <span
                 className="text-lg tracking-tight"
@@ -104,14 +109,14 @@ export default function Footer() {
           {/* Company */}
           <div>
             <p className="text-[12px] font-semibold text-white/40 uppercase tracking-[0.14em] mb-4">
-              Company
+              Resources
             </p>
             <ul className="space-y-2.5">
               {companyLinks.map((l) =>
                 l.internal ? (
                   <li key={l.label}>
                     <Link
-                      to="/waitlist"
+                      to={l.href as "/waitlist"}
                       className="text-[14px] text-white/70 hover:text-white transition-colors"
                     >
                       {l.label}
@@ -168,12 +173,11 @@ export default function Footer() {
             <p className="text-[13px] text-white/40">
               © {new Date().getFullYear()} Dent Dock. All rights reserved.
             </p>
-            <p className="text-[13px] text-white/40">
-              Made in the UK
-            </p>
+            <p className="text-[13px] text-white/40">Made in the UK</p>
           </div>
           <p className="text-[11px] text-white/30 text-center sm:text-left leading-[1.5]">
-            Dent Dock is a trading name of Paradigm Network Limited.<br />
+            Dent Dock is a trading name of Paradigm Network Limited.
+            <br />
             Company No. 16903048 · Registered in England and Wales · ICO No. ZC132966
           </p>
           <p className="text-[11px] text-white/30 text-center sm:text-left leading-[1.5]">
