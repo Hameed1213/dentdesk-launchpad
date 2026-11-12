@@ -72,8 +72,6 @@ function Bullets({ items }: { items: string[] }) {
 
 const rowHeading =
   "text-3xl md:text-[40px] font-semibold tracking-tight text-[#2563EB] leading-[1.15]";
-const panel =
-  "rounded-[28px] bg-gradient-to-br from-[#EFF6FF] via-[#E0EAFF] to-[#DBEAFE] ring-1 ring-white";
 /** Panel for rows that sit on a tinted background: lighter, with an edge, so it stands off the tint. */
 const panelOnTint =
   "rounded-[28px] bg-gradient-to-br from-white to-[#EEF4FF] ring-1 ring-[#DBEAFE]";
@@ -116,17 +114,51 @@ export function TrustStrip() {
 /* Feature rows: three alternating rows, text one side, panel the other */
 /* ------------------------------------------------------------------ */
 
+/** Photo inside a light panel, with DentDock cards placed over the edges (kept off the person). */
+function PhotoPanel({
+  src,
+  alt,
+  height,
+  position,
+  children,
+}: {
+  src: string;
+  alt: string;
+  height: number;
+  position: string;
+  children: ReactNode;
+}) {
+  return (
+    <div className={`relative ${panelOnTint} p-6 sm:p-8`}>
+      <img
+        src={src}
+        alt={alt}
+        width={1400}
+        height={height}
+        loading="lazy"
+        className={`w-full aspect-[4/3] object-cover ${position} rounded-2xl`}
+      />
+      {children}
+    </div>
+  );
+}
+
 function BookingVisual() {
   return (
-    <div className="relative h-full min-h-[360px] flex items-center justify-center p-6">
-      <FloatCard className="w-[80%] max-w-[340px] p-5">
-        <p className="text-[15px] font-semibold text-[#0F172A]">Book an appointment</p>
-        <p className="mt-1 text-[12px] text-[#64748B]">Check-up · 30 min · Thu 14 Nov</p>
-        <div className="mt-4 grid grid-cols-3 gap-2">
-          {["9:00", "9:30", "10:15", "11:00", "14:30", "15:45"].map((t) => (
+    <PhotoPanel
+      src="/images/home/patient-booking.webp"
+      alt="Woman smiling while booking on her phone"
+      height={933}
+      position="object-[50%_40%]"
+    >
+      <FloatCard className="absolute -right-3 sm:-right-6 bottom-6 sm:bottom-10 w-[220px] p-4">
+        <p className="text-[13px] font-semibold text-[#0F172A]">Book an appointment</p>
+        <p className="mt-0.5 text-[11px] text-[#64748B]">Check-up · 30 min · Thu 14 Nov</p>
+        <div className="mt-3 grid grid-cols-3 gap-1.5">
+          {["9:00", "9:30", "10:15"].map((t) => (
             <span
               key={t}
-              className={`rounded-lg border px-2 py-2 text-center text-[12px] font-medium ${
+              className={`rounded-md border px-1 py-1.5 text-center text-[11px] font-medium ${
                 t === "9:30"
                   ? "border-[#2563EB] bg-[#2563EB] text-white"
                   : "border-neutral-200 text-[#334155]"
@@ -136,18 +168,18 @@ function BookingVisual() {
             </span>
           ))}
         </div>
-        <div className="mt-4 rounded-lg bg-[#2563EB] py-2 text-center text-[12px] font-semibold text-white">
+        <div className="mt-3 rounded-md bg-[#2563EB] py-1.5 text-center text-[11px] font-semibold text-white">
           Confirm booking
         </div>
       </FloatCard>
-      <FloatCard className="absolute right-[4%] bottom-[7%] w-[190px] p-4">
+      <FloatCard className="absolute -left-3 sm:-left-6 top-6 sm:top-10 w-[180px] p-4">
         <div className="flex items-center gap-2">
-          <span className="w-7 h-7 rounded-lg bg-[#EFF6FF] flex items-center justify-center">
+          <span className="w-6 h-6 rounded-md bg-[#EFF6FF] flex items-center justify-center">
             <FileText className="w-3.5 h-3.5 text-[#2563EB]" />
           </span>
           <p className="text-[12px] font-semibold text-[#0F172A]">Medical history</p>
         </div>
-        <ul className="mt-3 space-y-1.5">
+        <ul className="mt-2.5 space-y-1.5">
           {["Medications", "Allergies", "Conditions"].map((l) => (
             <li key={l} className="flex items-center gap-2 text-[11px] text-[#475569]">
               <span className="w-3.5 h-3.5 rounded bg-[#2563EB] flex items-center justify-center">
@@ -157,98 +189,98 @@ function BookingVisual() {
             </li>
           ))}
         </ul>
-        <p className="mt-3 text-[11px] font-semibold text-emerald-600">
+        <p className="mt-2.5 text-[11px] font-semibold text-emerald-600">
           Completed before the visit
         </p>
       </FloatCard>
-    </div>
+    </PhotoPanel>
   );
 }
 
 function FrontDeskVisual() {
   return (
-    <div className="relative h-full min-h-[360px] flex items-center justify-center p-6">
-      <FloatCard className="absolute left-[6%] top-[8%] px-4 py-2.5 flex items-center gap-2">
+    <PhotoPanel
+      src="/images/home/dentist-patient.webp"
+      alt="Dentist talking with a smiling patient in a modern surgery"
+      height={1050}
+      position="object-[45%_50%]"
+    >
+      <FloatCard className="absolute -right-3 sm:-right-6 top-6 sm:top-10 px-4 py-2.5 flex items-center gap-2">
         <Bell className="w-4 h-4 text-[#2563EB]" />
         <span className="text-[12px] font-medium text-[#0F172A]">Reminder sent to Sarah M.</span>
       </FloatCard>
-      <FloatCard className="w-[84%] max-w-[360px] p-5 mt-6">
+      <FloatCard className="absolute -left-3 sm:-left-6 bottom-6 sm:bottom-10 w-[240px] p-4">
         <div className="flex items-center justify-between">
-          <p className="text-[15px] font-semibold text-[#0F172A]">Cancelled slot</p>
-          <span className="text-[11px] text-[#64748B]">Thu 14 Nov · 10:30</span>
+          <p className="text-[13px] font-semibold text-[#0F172A]">Cancelled slot</p>
+          <span className="text-[10px] text-[#64748B]">Thu · 10:30</span>
         </div>
-        <div className="mt-4 rounded-xl border border-neutral-100">
-          <div className="grid grid-cols-3 px-3 py-2 text-[11px] font-medium text-[#64748B] border-b border-neutral-100">
-            <span>Patient</span>
-            <span>Waiting for</span>
-            <span className="text-right">Status</span>
-          </div>
+        <div className="mt-2.5 space-y-1.5">
           {[
-            { n: "James T.", w: "Check-up", offer: true },
-            { n: "Priya K.", w: "Hygiene", offer: false },
-            { n: "Tom R.", w: "Check-up", offer: false },
+            { n: "James T.", offer: true },
+            { n: "Priya K.", offer: false },
           ].map((r) => (
             <div
               key={r.n}
-              className="grid grid-cols-3 items-center px-3 py-2.5 text-[12px] text-[#334155]"
+              className="flex items-center justify-between rounded-lg border border-neutral-100 px-2.5 py-1.5 text-[11px] text-[#334155]"
             >
               <span>{r.n}</span>
-              <span>{r.w}</span>
-              <span className="text-right">
-                {r.offer ? (
-                  <span className="inline-flex items-center gap-1 rounded-full bg-[#2563EB] px-2.5 py-1 text-[11px] font-semibold text-white">
-                    Offer slot <ArrowRight className="w-3 h-3" />
-                  </span>
-                ) : (
-                  <span className="text-[11px] text-[#94A3B8]">On waitlist</span>
-                )}
-              </span>
+              {r.offer ? (
+                <span className="inline-flex items-center gap-1 rounded-full bg-[#2563EB] px-2 py-0.5 text-[10px] font-semibold text-white">
+                  Offer slot <ArrowRight className="w-3 h-3" />
+                </span>
+              ) : (
+                <span className="text-[10px] text-[#94A3B8]">On waitlist</span>
+              )}
             </div>
           ))}
         </div>
       </FloatCard>
-      <FloatCard className="absolute right-[5%] bottom-[7%] px-4 py-2.5 flex items-center gap-2">
+      <FloatCard className="absolute -right-3 sm:-right-6 bottom-6 sm:bottom-10 px-4 py-2.5 flex items-center gap-2">
         <RefreshCw className="w-4 h-4 text-[#2563EB]" />
         <span className="text-[12px] font-medium text-[#0F172A]">Recall due · follow-up sent</span>
       </FloatCard>
-    </div>
+    </PhotoPanel>
   );
 }
 
 function MoneyVisual() {
   const bars = [38, 52, 46, 64, 58, 72, 80];
   return (
-    <div className="relative h-full min-h-[360px] flex items-center justify-center p-6">
-      <FloatCard className="w-[80%] max-w-[350px] p-5 mt-6">
-        <p className="text-[15px] font-semibold text-[#0F172A]">Takings by clinician</p>
-        <p className="mt-1 text-[12px] text-[#64748B]">This month</p>
-        <div className="mt-5 flex items-end gap-2.5 h-[110px]">
+    <PhotoPanel
+      src="/images/home/clinician-laptop.webp"
+      alt="Clinician in a white coat working on a laptop"
+      height={933}
+      position="object-[60%_40%]"
+    >
+      <FloatCard className="absolute -left-3 sm:-left-6 bottom-6 sm:bottom-10 w-[210px] p-4">
+        <p className="text-[13px] font-semibold text-[#0F172A]">Takings by clinician</p>
+        <p className="mt-0.5 text-[11px] text-[#64748B]">This month</p>
+        <div className="mt-3 flex items-end gap-1.5 h-[56px]">
           {bars.map((h, i) => (
             <div
               key={i}
-              className={`flex-1 rounded-t-md ${i === bars.length - 1 ? "bg-[#2563EB]" : "bg-[#BFDBFE]"}`}
+              className={`flex-1 rounded-t ${i === bars.length - 1 ? "bg-[#2563EB]" : "bg-[#BFDBFE]"}`}
               style={{ height: `${h}%` }}
             />
           ))}
         </div>
-        <p className="mt-4 text-[11px] text-[#64748B]">Bookings from</p>
-        <div className="mt-2 flex gap-2">
-          {["Google", "Instagram", "Direct"].map((s) => (
+        <div className="mt-3 flex gap-1.5">
+          {["Google", "Instagram", "Direct"].map((src) => (
             <span
-              key={s}
-              className="rounded-full bg-[#EFF6FF] px-2.5 py-1 text-[11px] font-medium text-[#2563EB]"
+              key={src}
+              className="rounded-full bg-[#EFF6FF] px-2 py-0.5 text-[10px] font-medium text-[#2563EB]"
             >
-              {s}
+              {src}
             </span>
           ))}
         </div>
       </FloatCard>
-      <FloatCard className="absolute right-[5%] top-[7%] px-4 py-3">
+      <FloatCard className="absolute -right-3 sm:-right-6 top-6 sm:top-10 px-4 py-3">
         <p className="text-[11px] text-[#64748B]">Deposit paid</p>
         <p className="text-[18px] font-semibold text-[#0F172A]">£50.00</p>
         <p className="mt-0.5 text-[11px] font-semibold text-emerald-600">Paid online ✓</p>
       </FloatCard>
-    </div>
+    </PhotoPanel>
   );
 }
 
@@ -308,9 +340,7 @@ export function FeatureRows() {
                 </Link>
               </Reveal>
               <Reveal delay={0.1} className={flip ? "lg:order-1" : ""}>
-                <div className={`${panel} overflow-hidden`} aria-hidden="true">
-                  <Visual />
-                </div>
+                <Visual />
               </Reveal>
             </div>
           );
