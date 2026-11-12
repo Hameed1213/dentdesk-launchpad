@@ -177,10 +177,10 @@ const content: PlatformContent = {
       "Stored in London, encrypted, and only seen by the people in your team who need to see it.",
     visual: (
       <PhotoPanel
-        src="/images/pages/security-dev.webp"
-        alt="Developer working at screens of code"
-        height={934}
-        position="object-[70%_40%]"
+        src="/images/pages/hero-security.webp"
+        alt="Smiling dentist in his surgery"
+        height={1778}
+        position="object-[50%_28%]"
       >
         <PillCard
           className="absolute left-2 sm:left-3 lg:-left-6 bottom-4 sm:bottom-6 lg:bottom-10"

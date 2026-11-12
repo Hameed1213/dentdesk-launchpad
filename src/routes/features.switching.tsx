@@ -189,13 +189,13 @@ const content: PlatformContent = {
       "Set up your practice, bring your patients across and start taking bookings, at your own pace.",
     visual: (
       <PhotoPanel
-        src="/images/pages/switching-relaxed.webp"
-        alt="Woman smiling at her laptop"
-        height={2100}
-        position="object-[50%_40%]"
+        src="/images/pages/hero-switching.webp"
+        alt="Clinician working at screens showing dental scans"
+        height={933}
+        position="object-[60%_45%]"
       >
         <PillCard
-          className="absolute right-2 sm:right-3 lg:-right-6 bottom-4 sm:bottom-6 lg:bottom-10"
+          className="absolute left-2 sm:left-3 lg:-left-6 bottom-4 sm:bottom-6 lg:bottom-10"
           icon="dot"
           text="Booking page is live"
         />

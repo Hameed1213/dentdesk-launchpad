@@ -202,12 +202,12 @@ const content: PlatformContent = {
       "Medical histories, consent forms and questionnaires completed online, signed, and saved to the patient's record.",
     visual: (
       <PhotoPanel
-        src="/images/pages/tablet-writing.webp"
-        alt="Woman writing on a tablet"
-        height={1750}
-        position="object-[40%_35%]"
+        src="/images/pages/hero-forms.webp"
+        alt="Person filling in a form on their phone"
+        height={933}
+        position="object-[50%_45%]"
       >
-        <MedicalHistoryCard className="absolute right-2 sm:right-3 lg:-right-6 bottom-4 sm:bottom-6 lg:bottom-10" />
+        <MedicalHistoryCard className="absolute left-2 sm:left-3 lg:-left-6 top-4 sm:top-6 lg:top-10" />
       </PhotoPanel>
     ),
   },

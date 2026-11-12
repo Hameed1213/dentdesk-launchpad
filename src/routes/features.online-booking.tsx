@@ -206,12 +206,12 @@ const content: PlatformContent = {
       "Patients book the right treatment at a time that's really free, then manage their appointments without calling you.",
     visual: (
       <PhotoPanel
-        src="/images/pages/patient-phone.webp"
-        alt="Woman laughing as she looks at her phone"
-        height={1867}
-        position="object-[50%_30%]"
+        src="/images/pages/hero-booking.webp"
+        alt="Man looking at his phone"
+        height={933}
+        position="object-[55%_35%]"
       >
-        <BookingPriceCard className="absolute right-2 sm:right-3 lg:-right-6 bottom-4 sm:bottom-6 lg:bottom-10" />
+        <BookingPriceCard className="absolute left-2 sm:left-3 lg:-left-6 bottom-4 sm:bottom-6 lg:bottom-10" />
       </PhotoPanel>
     ),
   },

@@ -197,10 +197,10 @@ const content: PlatformContent = {
       "Money taken, appointments, new patients and where your bookings come from, in plain numbers.",
     visual: (
       <PhotoPanel
-        src="/images/pages/reports-laptop.webp"
-        alt="Woman working on a laptop"
-        height={2100}
-        position="object-[50%_82%]"
+        src="/images/pages/hero-reports.webp"
+        alt="Dentist showing a patient a scan on screen"
+        height={1751}
+        position="object-[50%_35%]"
       >
         <TakingsCard className="absolute left-2 sm:left-3 lg:-left-6 bottom-4 sm:bottom-6 lg:bottom-10" />
       </PhotoPanel>

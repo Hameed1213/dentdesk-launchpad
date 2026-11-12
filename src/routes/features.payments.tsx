@@ -153,10 +153,10 @@ const content: PlatformContent = {
       "Payment links, deposits and fair cancellation fees through your own Stripe account, with every payment and receipt in one place.",
     visual: (
       <PhotoPanel
-        src="/images/pages/counter-tablet.webp"
-        alt="Woman at a front counter with a payment tablet"
-        height={934}
-        position="object-[65%_40%]"
+        src="/images/pages/hero-payments.webp"
+        alt="Dentist with a smiling patient in the chair"
+        height={933}
+        position="object-[50%_40%]"
       >
         <PillCard
           className="absolute left-2 sm:left-3 lg:-left-6 bottom-4 sm:bottom-6 lg:bottom-10"

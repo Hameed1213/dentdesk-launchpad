@@ -246,10 +246,10 @@ const content: PlatformContent = {
     intro: "See every clinician, every appointment and who's arrived, so the day runs on time.",
     visual: (
       <PhotoPanel
-        src="/images/pages/calendar-phone.webp"
-        alt="Woman smiling on a phone call at her desk"
+        src="/images/pages/hero-calendar.webp"
+        alt="Two clinicians looking at an appointment on a tablet"
         height={788}
-        position="object-[60%_40%]"
+        position="object-[50%_35%]"
       >
         <PillCard
           className="absolute left-2 sm:left-3 lg:-left-6 bottom-4 sm:bottom-6 lg:bottom-10"
