@@ -29,6 +29,7 @@ import { Route as FeaturesRemindersAndRecallsRouteImport } from './routes/featur
 import { Route as FeaturesReportsRouteImport } from './routes/features.reports'
 import { Route as FeaturesSecurityRouteImport } from './routes/features.security'
 import { Route as FeaturesSwitchingRouteImport } from './routes/features.switching'
+import { Route as SolutionsIndexRouteImport } from './routes/solutions.index'
 import { Route as SolutionsPrivatePracticesRouteImport } from './routes/solutions.private-practices'
 import { Route as SolutionsReduceNoShowsRouteImport } from './routes/solutions.reduce-no-shows'
 import { Route as ApiPublicCountVisitRouteImport } from './routes/api/public/count-visit'
@@ -137,6 +138,11 @@ const FeaturesSwitchingRoute = FeaturesSwitchingRouteImport.update({
   path: '/features/switching',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SolutionsIndexRoute = SolutionsIndexRouteImport.update({
+  id: '/solutions/',
+  path: '/solutions/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SolutionsPrivatePracticesRoute =
   SolutionsPrivatePracticesRouteImport.update({
     id: '/solutions/private-practices',
@@ -183,6 +189,7 @@ export interface FileRoutesByFullPath {
   '/solutions/reduce-no-shows': typeof SolutionsReduceNoShowsRoute
   '/compare/': typeof CompareIndexRoute
   '/features/': typeof FeaturesIndexRoute
+  '/solutions/': typeof SolutionsIndexRoute
   '/api/public/count-visit': typeof ApiPublicCountVisitRoute
   '/api/public/verify-waitlist-signup': typeof ApiPublicVerifyWaitlistSignupRoute
 }
@@ -209,6 +216,7 @@ export interface FileRoutesByTo {
   '/solutions/reduce-no-shows': typeof SolutionsReduceNoShowsRoute
   '/compare': typeof CompareIndexRoute
   '/features': typeof FeaturesIndexRoute
+  '/solutions': typeof SolutionsIndexRoute
   '/api/public/count-visit': typeof ApiPublicCountVisitRoute
   '/api/public/verify-waitlist-signup': typeof ApiPublicVerifyWaitlistSignupRoute
 }
@@ -236,6 +244,7 @@ export interface FileRoutesById {
   '/solutions/reduce-no-shows': typeof SolutionsReduceNoShowsRoute
   '/compare/': typeof CompareIndexRoute
   '/features/': typeof FeaturesIndexRoute
+  '/solutions/': typeof SolutionsIndexRoute
   '/api/public/count-visit': typeof ApiPublicCountVisitRoute
   '/api/public/verify-waitlist-signup': typeof ApiPublicVerifyWaitlistSignupRoute
 }
@@ -264,6 +273,7 @@ export interface FileRouteTypes {
     | '/solutions/reduce-no-shows'
     | '/compare/'
     | '/features/'
+    | '/solutions/'
     | '/api/public/count-visit'
     | '/api/public/verify-waitlist-signup'
   fileRoutesByTo: FileRoutesByTo
@@ -290,6 +300,7 @@ export interface FileRouteTypes {
     | '/solutions/reduce-no-shows'
     | '/compare'
     | '/features'
+    | '/solutions'
     | '/api/public/count-visit'
     | '/api/public/verify-waitlist-signup'
   id:
@@ -316,6 +327,7 @@ export interface FileRouteTypes {
     | '/solutions/reduce-no-shows'
     | '/compare/'
     | '/features/'
+    | '/solutions/'
     | '/api/public/count-visit'
     | '/api/public/verify-waitlist-signup'
   fileRoutesById: FileRoutesById
@@ -343,6 +355,7 @@ export interface RootRouteChildren {
   SolutionsReduceNoShowsRoute: typeof SolutionsReduceNoShowsRoute
   CompareIndexRoute: typeof CompareIndexRoute
   FeaturesIndexRoute: typeof FeaturesIndexRoute
+  SolutionsIndexRoute: typeof SolutionsIndexRoute
   ApiPublicCountVisitRoute: typeof ApiPublicCountVisitRoute
   ApiPublicVerifyWaitlistSignupRoute: typeof ApiPublicVerifyWaitlistSignupRoute
 }
@@ -489,6 +502,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FeaturesSwitchingRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/solutions/': {
+      id: '/solutions/'
+      path: '/solutions'
+      fullPath: '/solutions/'
+      preLoaderRoute: typeof SolutionsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/solutions/private-practices': {
       id: '/solutions/private-practices'
       path: '/solutions/private-practices'
@@ -543,6 +563,7 @@ const rootRouteChildren: RootRouteChildren = {
   SolutionsReduceNoShowsRoute: SolutionsReduceNoShowsRoute,
   CompareIndexRoute: CompareIndexRoute,
   FeaturesIndexRoute: FeaturesIndexRoute,
+  SolutionsIndexRoute: SolutionsIndexRoute,
   ApiPublicCountVisitRoute: ApiPublicCountVisitRoute,
   ApiPublicVerifyWaitlistSignupRoute: ApiPublicVerifyWaitlistSignupRoute,
 }

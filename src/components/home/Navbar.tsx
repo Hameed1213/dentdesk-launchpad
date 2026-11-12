@@ -3,7 +3,12 @@ import { ChevronRight, Menu, X } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { cn } from "@/lib/utils";
 import ToothIcon from "@/components/icons/ToothIcon";
-import { FeaturesMenuDesktop, FeaturesMenuMobile } from "@/components/home/FeaturesMenu";
+import {
+  MegaMenuDesktop,
+  MegaMenuMobile,
+  featuresMenu,
+  solutionsMenu,
+} from "@/components/home/FeaturesMenu";
 
 const navLinks = [
   { label: "Features", href: "/features" },
@@ -86,7 +91,8 @@ export default function Navbar() {
           <Logo />
 
           <nav className="hidden lg:flex items-center gap-8">
-            <FeaturesMenuDesktop />
+            <MegaMenuDesktop menu={featuresMenu} />
+            <MegaMenuDesktop menu={solutionsMenu} />
             {navLinks
               .filter((l) => l.label !== "Features")
               .map((l) =>
@@ -171,7 +177,8 @@ export default function Navbar() {
           </button>
         </div>
         <nav className="flex-1 overflow-y-auto px-3 py-3 flex flex-col">
-          <FeaturesMenuMobile onNavigate={() => setMobileOpen(false)} />
+          <MegaMenuMobile menu={featuresMenu} onNavigate={() => setMobileOpen(false)} />
+          <MegaMenuMobile menu={solutionsMenu} onNavigate={() => setMobileOpen(false)} />
           {navLinks
             .filter((l) => l.label !== "Features")
             .map((l) =>
