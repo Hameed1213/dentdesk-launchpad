@@ -382,17 +382,17 @@ export function SupportRow() {
 }
 
 /* ------------------------------------------------------------------ */
-/* Switch in a day: text alongside a photo with floating cards         */
+/* Switching: text alongside a photo with floating cards               */
 /* ------------------------------------------------------------------ */
 
 const steps = [
   {
-    title: "Set up your practice",
-    body: "Opening hours, treatments and team. Reminders come ready to go.",
+    title: "Plan the move",
+    body: "Agree what comes across and pick a quiet day to go live.",
   },
   {
-    title: "Bring your patients",
-    body: "Upload your patient list as a CSV and DentDock matches the columns.",
+    title: "Set up and bring your patients",
+    body: "Opening hours, treatments and team, then your patient list from a CSV, checked with us.",
   },
   {
     title: "Go live",
@@ -436,16 +436,16 @@ export function SwitchRow() {
               </FloatCard>
               <FloatCard className="px-4 py-2.5 flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-emerald-500" />
-                <span className="text-[12px] font-medium text-[#0F172A]">Booking page is live</span>
+                <span className="text-[12px] font-medium text-[#0F172A]">Go-live date agreed</span>
               </FloatCard>
             </div>
           </div>
         </Reveal>
         <Reveal delay={0.1} className="lg:order-1">
-          <h2 className={rowHeading}>Switch in a single day</h2>
+          <h2 className={rowHeading}>Switching, planned with you</h2>
           <p className="mt-5 text-[17px] text-[#334155] leading-[1.6]">
-            No kick-off calls and no site visits. Set it up yourself, with us on WhatsApp if you
-            want a hand.
+            Setting up takes a day. Moving your practice takes a little planning, and we help with
+            every step on WhatsApp.
           </p>
           <ol className="mt-6 space-y-5">
             {steps.map((s, i) => (
@@ -460,9 +460,17 @@ export function SwitchRow() {
               </li>
             ))}
           </ol>
-          <Link to="/waitlist" className={`mt-8 ${pillButton}`}>
-            Join the waitlist
-          </Link>
+          <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-4">
+            <Link to="/waitlist" className={pillButton}>
+              Join the waitlist
+            </Link>
+            <Link
+              to="/features/switching"
+              className="text-[15px] font-semibold text-[#2563EB] hover:underline"
+            >
+              How switching works
+            </Link>
+          </div>
         </Reveal>
       </div>
     </section>

@@ -60,7 +60,7 @@ export type Fact = { figure: string; text: string; source: { label: string; url:
 /* Sections                                                            */
 /* ------------------------------------------------------------------ */
 
-function SectionTitle({
+export function SectionTitle({
   title,
   highlight,
   intro,

@@ -1,18 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { MessageCircle } from "lucide-react";
+import { CalendarDays, ClipboardList, FileCheck2, MessageCircle, Rocket } from "lucide-react";
 import { PhotoPanel } from "@/components/site/ui";
 import PageShell from "@/components/site/PageShell";
-import { ClosingBand, TrustStrip } from "@/components/site/ui";
+import { ClosingBand, Reveal, TrustStrip } from "@/components/site/ui";
 import {
   FaqSection,
   FeatureCards,
-  Fit,
   OtherAreas,
   PageHeroSplit,
-  Steps,
+  SectionTitle,
   templateHead,
   type PlatformContent,
-  type Step,
 } from "@/components/site/templates";
 import { PillCard } from "@/components/site/cards";
 import { AppWindow } from "@/components/site/screens";
@@ -292,24 +290,73 @@ const content: PlatformContent = {
   ],
 };
 
-const plan: Step[] = [
+const plan = [
   {
+    Icon: ClipboardList,
+    when: "A few weeks before",
     title: "Plan the move",
     body: "Check your notice period with your current supplier, agree with us what comes across, and pick a quiet day to go live.",
   },
   {
+    Icon: FileCheck2,
+    when: "1 to 2 weeks before",
     title: "Set up and check",
-    body: "Add your hours, treatments and team, then export your patient list and check the import with us before go-live.",
+    body: "Add your hours, treatments and team, then export your patient list and check the import with us.",
   },
   {
+    Icon: CalendarDays,
+    when: "The days before",
     title: "Move your diary",
     body: "Booked appointments aren't imported. Add upcoming ones to DentDock, or let them finish in your old diary.",
   },
   {
+    Icon: Rocket,
+    when: "Go-live day",
     title: "Go live",
     body: "Share your booking link and switch on reminders. Keep access to your old system for past records.",
   },
 ];
+
+/** The move as a timeline: across the page on desktop, down a line on phones. */
+function MovePlan() {
+  return (
+    <section className="bg-gradient-to-b from-[#F7F9FF] to-[#F1F5FE] border-b border-[#EEF2FB] py-16 md:py-24 px-6">
+      <div className="mx-auto max-w-6xl">
+        <SectionTitle
+          title="How a switch"
+          highlight="works"
+          intro="Most of the work is planning and checking, not uploading. We're on WhatsApp for every step."
+        />
+        <ol className="relative grid grid-cols-1 lg:grid-cols-4 gap-8 lg:gap-6">
+          <span
+            aria-hidden="true"
+            className="hidden lg:block absolute top-7 left-[12.5%] right-[12.5%] h-px bg-[#BFDBFE]"
+          />
+          <span
+            aria-hidden="true"
+            className="lg:hidden absolute top-2 bottom-2 left-7 w-px bg-[#BFDBFE]"
+          />
+          {plan.map(({ Icon, when, title, body }, i) => (
+            <Reveal key={title} delay={i * 0.08}>
+              <li className="relative list-none flex lg:flex-col lg:items-center gap-5 lg:gap-0 lg:text-center">
+                <span className="relative z-10 w-14 h-14 rounded-2xl bg-[#2563EB] shadow-[0_8px_20px_-8px_rgba(37,99,235,0.6)] flex items-center justify-center flex-shrink-0">
+                  <Icon className="w-6 h-6 text-white" strokeWidth={1.8} />
+                </span>
+                <div className="flex-1 rounded-3xl bg-white border border-[#E5EDFB] p-6 lg:mt-6 lg:w-full">
+                  <p className="text-[12px] font-semibold uppercase tracking-wide text-[#2563EB]">
+                    Step {i + 1} · {when}
+                  </p>
+                  <h3 className="mt-2 text-[19px] font-semibold text-[#0F172A]">{title}</h3>
+                  <p className="mt-2 text-[15px] text-[#475569] leading-[1.6]">{body}</p>
+                </div>
+              </li>
+            </Reveal>
+          ))}
+        </ol>
+      </div>
+    </section>
+  );
+}
 
 function SwitchingPage() {
   const c = content;
@@ -317,30 +364,7 @@ function SwitchingPage() {
     <PageShell>
       <PageHeroSplit hero={c.hero} />
       <TrustStrip />
-      <Steps
-        title="How a switch"
-        highlight="works"
-        intro="Most of the work is planning and checking, not uploading. We'll help at every step."
-        steps={plan}
-      />
-      <Fit
-        title="What comes"
-        highlight="across"
-        yesTitle="Comes across to DentDock"
-        yes={[
-          "Patient names, contact details and addresses",
-          "Dates of birth and NHS numbers",
-          "Allergies, conditions and notes",
-          "Check-up and hygiene recall dates",
-        ]}
-        noTitle="Stays in your old system"
-        no={[
-          "Booked and past appointments",
-          "Treatment history and charts",
-          "Payments and balances",
-          "X-rays, photos and documents",
-        ]}
-      />
+      <MovePlan />
       <FeatureCards items={c.features} />
       <OtherAreas {...c.others} />
       <FaqSection items={c.faq} />

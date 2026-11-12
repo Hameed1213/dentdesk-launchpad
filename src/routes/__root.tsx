@@ -33,7 +33,7 @@ export const Route = createRootRoute({
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Dent Dock" },
-      { name: "description", content: "Online booking, automated reminders, payments and recalls for UK private dental practices. Live within the day. No contracts." },
+      { name: "description", content: "Online booking, automated reminders, payments and recalls for UK private dental practices. No setup fees. No contracts." },
       { name: "author", content: "Dent Dock" },
       { property: "og:title", content: "Dent Dock" },
       { property: "og:description", content: "Dental practice management software for UK private practices. Online booking, automated reminders, payments and recalls." },
