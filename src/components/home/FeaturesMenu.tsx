@@ -131,7 +131,7 @@ const divider = "lg:border-l lg:border-[#DBEAFE] lg:pl-10";
 /** Intro box, then two grouped columns of list rows. */
 function MenuLayout({ onClose }: { onClose: () => void }) {
   return (
-    <div className="grid grid-cols-[0.85fr_1fr_1fr] gap-10 items-stretch">
+    <div className="grid grid-cols-[1fr_1fr_1fr] gap-10 items-stretch pr-4">
       <Intro onClose={onClose} />
       <div className={divider}>
         <ColTitle>Your patients</ColTitle>
@@ -220,8 +220,8 @@ export function FeaturesMenuDesktop() {
             : "opacity-0 invisible -translate-y-1 pointer-events-none",
         )}
       >
-        <div className="mx-auto max-w-[1400px] rounded-3xl bg-white border border-[#E5EDFB] shadow-[0_24px_60px_-24px_rgba(15,23,42,0.28)] p-6 lg:p-8">
-          <div className="mx-auto max-w-6xl">
+        <div className="mx-auto max-w-[1400px] rounded-3xl bg-white border border-[#E5EDFB] shadow-[0_24px_60px_-24px_rgba(15,23,42,0.28)] p-5 lg:p-6">
+          <div>
             <MenuLayout onClose={close} />
           </div>
         </div>
