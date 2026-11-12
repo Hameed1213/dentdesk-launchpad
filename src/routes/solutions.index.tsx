@@ -109,22 +109,9 @@ const types: HubRow[] = [
   },
 ];
 
-function RowGroup({
-  title,
-  rows,
-  startFlipped = false,
-}: {
-  title: string;
-  rows: HubRow[];
-  startFlipped?: boolean;
-}) {
+function RowGroup({ rows, startFlipped = false }: { rows: HubRow[]; startFlipped?: boolean }) {
   return (
-    <div className="space-y-16 md:space-y-24">
-      <Reveal>
-        <p className="text-center text-[15px] font-semibold uppercase tracking-[0.14em] text-[#2563EB]">
-          {title}
-        </p>
-      </Reveal>
+    <div className="rounded-[40px] bg-gradient-to-br from-[#E8F0FF] via-[#F3F0FF] to-[#E6F4FF] px-6 py-12 sm:px-10 md:px-14 md:py-16 space-y-16 md:space-y-24">
       {rows.map((r, i) => {
         const flip = (i % 2 === 1) !== startFlipped;
         return (
@@ -148,22 +135,42 @@ function RowGroup({
   );
 }
 
+function GroupTitle({
+  title,
+  highlight,
+  intro,
+}: {
+  title: string;
+  highlight: string;
+  intro: string;
+}) {
+  return (
+    <Reveal className="mx-auto max-w-3xl text-center mb-12 md:mb-16">
+      <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-[#0F172A] leading-[1.1]">
+        {title} <span className="text-[#2563EB]">{highlight}</span>
+      </h2>
+      <p className="mt-5 text-[18px] text-[#475569] leading-[1.6]">{intro}</p>
+    </Reveal>
+  );
+}
+
 function HubRows() {
   return (
     <section className="bg-white py-16 md:py-24 px-6">
       <div className="mx-auto max-w-6xl">
-        <Reveal className="mx-auto max-w-3xl text-center mb-12 md:mb-16">
-          <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-[#2563EB] leading-[1.1]">
-            Start from what's getting in the way
-          </h2>
-          <p className="mt-5 text-[18px] text-[#475569] leading-[1.6]">
-            Pick the problem your practice wants to fix, or the kind of practice you run, and see
-            how DentDock helps.
-          </p>
-        </Reveal>
-        <div className="rounded-[40px] bg-gradient-to-br from-[#E8F0FF] via-[#F3F0FF] to-[#E6F4FF] px-6 py-12 sm:px-10 md:px-14 md:py-16 space-y-20 md:space-y-28">
-          <RowGroup title="By problem" rows={problems} />
-          <RowGroup title="By type of practice" rows={types} startFlipped />
+        <GroupTitle
+          title="Fix the problems"
+          highlight="that slow you down"
+          intro="Pick the problem your practice wants to fix and see how DentDock helps."
+        />
+        <RowGroup rows={problems} />
+        <div className="mt-24 md:mt-32">
+          <GroupTitle
+            title="Made for"
+            highlight="your kind of practice"
+            intro="Whether you're fully private, moving that way or just opening, here's how DentDock fits."
+          />
+          <RowGroup rows={types} startFlipped />
         </div>
       </div>
     </section>
@@ -219,8 +226,8 @@ function SolutionsPage() {
           secondary: { label: "See pricing", to: "/pricing" },
           visual: (
             <PhotoPanel {...solutionPhotos.hub}>
-              <PillCard className={at.topLeft} icon="dot" text="Slot refilled from the waitlist" />
-              <PillCard className={at.bottomLeft} icon="bell" text="Recall due · reminder sent" />
+              <ReminderTimelineCard className={at.bottomLeft} />
+              <FillSlotCard className={at.topRight} />
             </PhotoPanel>
           ),
         }}
