@@ -100,7 +100,7 @@ const types: HubRow[] = [
     card: <PillCard className={at.bottomLeft} icon="dot" text="First booking · from Google" />,
   },
   {
-    to: "/solutions/multi-site-groups",
+    to: "/waitlist",
     title: "Multi-site groups (coming soon)",
     body: "One login for up to five sites, an owner overview of every site and shared patient records. Register your interest.",
     explore: "Register interest",

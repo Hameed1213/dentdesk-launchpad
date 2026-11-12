@@ -100,7 +100,7 @@ export const solutionsMenu: MenuConfig = {
         { label: "Private practices", to: "/solutions/private-practices", Icon: Building2 },
         { label: "Going private", to: "/solutions/going-private", Icon: ArrowRightLeft },
         { label: "New practices", to: "/solutions/new-practices", Icon: Sparkles },
-        { label: "Multi-site groups", to: "/solutions/multi-site-groups", Icon: Network },
+        { label: "Multi-site groups", to: "/waitlist", Icon: Network },
       ],
     },
   ],

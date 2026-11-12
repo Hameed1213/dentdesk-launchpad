@@ -35,7 +35,6 @@ import { Route as SolutionsCutAdminRouteImport } from './routes/solutions.cut-ad
 import { Route as SolutionsDepositsAndLateCancellationsRouteImport } from './routes/solutions.deposits-and-late-cancellations'
 import { Route as SolutionsFillCancelledAppointmentsRouteImport } from './routes/solutions.fill-cancelled-appointments'
 import { Route as SolutionsGoingPrivateRouteImport } from './routes/solutions.going-private'
-import { Route as SolutionsMultiSiteGroupsRouteImport } from './routes/solutions.multi-site-groups'
 import { Route as SolutionsNewPracticesRouteImport } from './routes/solutions.new-practices'
 import { Route as SolutionsPrivatePracticesRouteImport } from './routes/solutions.private-practices'
 import { Route as SolutionsReduceNoShowsRouteImport } from './routes/solutions.reduce-no-shows'
@@ -178,12 +177,6 @@ const SolutionsGoingPrivateRoute = SolutionsGoingPrivateRouteImport.update({
   path: '/solutions/going-private',
   getParentRoute: () => rootRouteImport,
 } as any)
-const SolutionsMultiSiteGroupsRoute =
-  SolutionsMultiSiteGroupsRouteImport.update({
-    id: '/solutions/multi-site-groups',
-    path: '/solutions/multi-site-groups',
-    getParentRoute: () => rootRouteImport,
-  } as any)
 const SolutionsNewPracticesRoute = SolutionsNewPracticesRouteImport.update({
   id: '/solutions/new-practices',
   path: '/solutions/new-practices',
@@ -236,7 +229,6 @@ export interface FileRoutesByFullPath {
   '/solutions/deposits-and-late-cancellations': typeof SolutionsDepositsAndLateCancellationsRoute
   '/solutions/fill-cancelled-appointments': typeof SolutionsFillCancelledAppointmentsRoute
   '/solutions/going-private': typeof SolutionsGoingPrivateRoute
-  '/solutions/multi-site-groups': typeof SolutionsMultiSiteGroupsRoute
   '/solutions/new-practices': typeof SolutionsNewPracticesRoute
   '/solutions/private-practices': typeof SolutionsPrivatePracticesRoute
   '/solutions/reduce-no-shows': typeof SolutionsReduceNoShowsRoute
@@ -270,7 +262,6 @@ export interface FileRoutesByTo {
   '/solutions/deposits-and-late-cancellations': typeof SolutionsDepositsAndLateCancellationsRoute
   '/solutions/fill-cancelled-appointments': typeof SolutionsFillCancelledAppointmentsRoute
   '/solutions/going-private': typeof SolutionsGoingPrivateRoute
-  '/solutions/multi-site-groups': typeof SolutionsMultiSiteGroupsRoute
   '/solutions/new-practices': typeof SolutionsNewPracticesRoute
   '/solutions/private-practices': typeof SolutionsPrivatePracticesRoute
   '/solutions/reduce-no-shows': typeof SolutionsReduceNoShowsRoute
@@ -305,7 +296,6 @@ export interface FileRoutesById {
   '/solutions/deposits-and-late-cancellations': typeof SolutionsDepositsAndLateCancellationsRoute
   '/solutions/fill-cancelled-appointments': typeof SolutionsFillCancelledAppointmentsRoute
   '/solutions/going-private': typeof SolutionsGoingPrivateRoute
-  '/solutions/multi-site-groups': typeof SolutionsMultiSiteGroupsRoute
   '/solutions/new-practices': typeof SolutionsNewPracticesRoute
   '/solutions/private-practices': typeof SolutionsPrivatePracticesRoute
   '/solutions/reduce-no-shows': typeof SolutionsReduceNoShowsRoute
@@ -341,7 +331,6 @@ export interface FileRouteTypes {
     | '/solutions/deposits-and-late-cancellations'
     | '/solutions/fill-cancelled-appointments'
     | '/solutions/going-private'
-    | '/solutions/multi-site-groups'
     | '/solutions/new-practices'
     | '/solutions/private-practices'
     | '/solutions/reduce-no-shows'
@@ -375,7 +364,6 @@ export interface FileRouteTypes {
     | '/solutions/deposits-and-late-cancellations'
     | '/solutions/fill-cancelled-appointments'
     | '/solutions/going-private'
-    | '/solutions/multi-site-groups'
     | '/solutions/new-practices'
     | '/solutions/private-practices'
     | '/solutions/reduce-no-shows'
@@ -409,7 +397,6 @@ export interface FileRouteTypes {
     | '/solutions/deposits-and-late-cancellations'
     | '/solutions/fill-cancelled-appointments'
     | '/solutions/going-private'
-    | '/solutions/multi-site-groups'
     | '/solutions/new-practices'
     | '/solutions/private-practices'
     | '/solutions/reduce-no-shows'
@@ -444,7 +431,6 @@ export interface RootRouteChildren {
   SolutionsDepositsAndLateCancellationsRoute: typeof SolutionsDepositsAndLateCancellationsRoute
   SolutionsFillCancelledAppointmentsRoute: typeof SolutionsFillCancelledAppointmentsRoute
   SolutionsGoingPrivateRoute: typeof SolutionsGoingPrivateRoute
-  SolutionsMultiSiteGroupsRoute: typeof SolutionsMultiSiteGroupsRoute
   SolutionsNewPracticesRoute: typeof SolutionsNewPracticesRoute
   SolutionsPrivatePracticesRoute: typeof SolutionsPrivatePracticesRoute
   SolutionsReduceNoShowsRoute: typeof SolutionsReduceNoShowsRoute
@@ -639,13 +625,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SolutionsGoingPrivateRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/solutions/multi-site-groups': {
-      id: '/solutions/multi-site-groups'
-      path: '/solutions/multi-site-groups'
-      fullPath: '/solutions/multi-site-groups'
-      preLoaderRoute: typeof SolutionsMultiSiteGroupsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/solutions/new-practices': {
       id: '/solutions/new-practices'
       path: '/solutions/new-practices'
@@ -710,7 +689,6 @@ const rootRouteChildren: RootRouteChildren = {
   SolutionsFillCancelledAppointmentsRoute:
     SolutionsFillCancelledAppointmentsRoute,
   SolutionsGoingPrivateRoute: SolutionsGoingPrivateRoute,
-  SolutionsMultiSiteGroupsRoute: SolutionsMultiSiteGroupsRoute,
   SolutionsNewPracticesRoute: SolutionsNewPracticesRoute,
   SolutionsPrivatePracticesRoute: SolutionsPrivatePracticesRoute,
   SolutionsReduceNoShowsRoute: SolutionsReduceNoShowsRoute,
