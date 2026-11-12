@@ -6,13 +6,13 @@ export const Route = createFileRoute("/cookies")({
   component: CookiesPage,
   head: () => ({
     meta: [
-      { title: "Cookie Policy — Dent Dock" },
+      { title: "Cookie Policy | Dent Dock" },
       {
         name: "description",
         content:
           "How Dent Dock uses cookies. Essential cookies, optional analytics on dentdock.co.uk, and the tracking practices can add to their booking pages, each only with your consent.",
       },
-      { property: "og:title", content: "Cookie Policy — Dent Dock" },
+      { property: "og:title", content: "Cookie Policy | Dent Dock" },
       {
         property: "og:description",
         content:
@@ -42,25 +42,25 @@ function CookiesPage() {
         <p>These are required for the platform to work. They cannot be disabled.</p>
         <ul className="list-disc pl-5 space-y-1.5">
           <li>
-            <strong className="text-[#0F172A] font-semibold">Sign-in</strong> — keeps you signed in to the practice app or patient portal. Stored in your browser's local storage by Supabase Auth, and removed when you sign out.
+            <strong className="text-[#0F172A] font-semibold">Sign-in:</strong> keeps you signed in to the practice app or patient portal. Stored in your browser's local storage by Supabase Auth, and removed when you sign out.
           </li>
           <li>
-            <strong className="text-[#0F172A] font-semibold">Onboarding progress</strong> — stores your setup wizard progress locally so you can resume if you close the browser. Stored in localStorage, not a cookie.
+            <strong className="text-[#0F172A] font-semibold">Onboarding progress:</strong> stores your setup wizard progress locally so you can resume if you close the browser. Stored in localStorage, not a cookie.
           </li>
           <li>
-            <strong className="text-[#0F172A] font-semibold">Practice app preferences</strong> — screen choices in the practice app, such as the calendar view, filters and the last clinician or treatment picked. Stored in localStorage, not a cookie.
+            <strong className="text-[#0F172A] font-semibold">Practice app preferences:</strong> screen choices in the practice app, such as the calendar view, filters and the last clinician or treatment picked. Stored in localStorage, not a cookie.
           </li>
           <li>
-            <strong className="text-[#0F172A] font-semibold">Booking page cookie choice</strong> — remembers whether a patient accepted or rejected cookies on a practice's booking page (<strong className="text-[#0F172A] font-semibold">dd_tracking_consent_v1</strong>). Stored in localStorage, not a cookie, and only on booking pages where the practice has added its own analytics or advertising account.
+            <strong className="text-[#0F172A] font-semibold">Booking page cookie choice:</strong> remembers whether a patient accepted or rejected cookies on a practice's booking page (<strong className="text-[#0F172A] font-semibold">dd_tracking_consent_v1</strong>). Stored in localStorage, not a cookie, and only on booking pages where the practice has added its own analytics or advertising account.
           </li>
           <li>
-            <strong className="text-[#0F172A] font-semibold">Deposit payment</strong> — while a patient pays a deposit during online booking, a reference to their held booking is kept so that reloading the page does not lose it (<strong className="text-[#0F172A] font-semibold">dentdock_hold_</strong> followed by the practice's address). Stored in localStorage, not a cookie, and removed when the booking is finished or the hold ends.
+            <strong className="text-[#0F172A] font-semibold">Deposit payment:</strong> while a patient pays a deposit during online booking, a reference to their held booking is kept so that reloading the page does not lose it (<strong className="text-[#0F172A] font-semibold">dentdock_hold_</strong> followed by the practice's address). Stored in localStorage, not a cookie, and removed when the booking is finished or the hold ends.
           </li>
           <li>
-            <strong className="text-[#0F172A] font-semibold">Patient portal to booking</strong> — when a signed-in patient chooses to book from the patient portal, their name, contact details and date of birth are passed to the booking page so they do not have to type them again. Stored in the browser tab's session storage and removed as soon as the booking page has read them.
+            <strong className="text-[#0F172A] font-semibold">Patient portal to booking:</strong> when a signed-in patient chooses to book from the patient portal, their name, contact details and date of birth are passed to the booking page so they do not have to type them again. Stored in the browser tab's session storage and removed as soon as the booking page has read them.
           </li>
           <li>
-            <strong className="text-[#0F172A] font-semibold">Booking progress</strong> — while a patient books online, the treatment, clinician and day they have chosen, and the name, contact details, date of birth, gender and postcode they have typed, are kept for 30 minutes after the last change so that reloading the page does not lose them (<strong className="text-[#0F172A] font-semibold">dentdock_booking_</strong> followed by the practice's address). Health form answers, the consent ticks and the chosen time are not kept. Stored in the browser tab's session storage, not a cookie, and removed when the booking is made or the tab is closed, or the next time the page loads after the 30 minutes.
+            <strong className="text-[#0F172A] font-semibold">Booking progress:</strong> while a patient books online, the treatment, clinician and day they have chosen, and the name, contact details, date of birth, gender and postcode they have typed, are kept for 30 minutes after the last change so that reloading the page does not lose them (<strong className="text-[#0F172A] font-semibold">dentdock_booking_</strong> followed by the practice's address). Health form answers, the consent ticks and the chosen time are not kept. Stored in the browser tab's session storage, not a cookie, and removed when the booking is made or the tab is closed, or the next time the page loads after the 30 minutes.
           </li>
         </ul>
       </LegalSection>

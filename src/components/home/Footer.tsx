@@ -138,27 +138,6 @@ export default function Footer() {
               <br />
               Company No. 16903048 · Registered in England and Wales · ICO No. ZC132966
             </p>
-            <p>
-              Some photos by{" "}
-              <a
-                href="https://www.magnific.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline underline-offset-2 hover:text-white/60"
-              >
-                Freepik
-              </a>{" "}
-              and{" "}
-              <a
-                href="https://unsplash.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline underline-offset-2 hover:text-white/60"
-              >
-                Unsplash
-              </a>
-              .
-            </p>
           </div>
           <ul className="flex flex-wrap lg:flex-nowrap lg:flex-shrink-0 gap-x-6 gap-y-2 whitespace-nowrap">
             {legalLinks.map((l) => (

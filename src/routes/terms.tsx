@@ -5,13 +5,13 @@ export const Route = createFileRoute("/terms")({
   component: TermsPage,
   head: () => ({
     meta: [
-      { title: "Terms of Service — Dent Dock" },
+      { title: "Terms of Service | Dent Dock" },
       {
         name: "description",
         content:
-          "The terms governing your use of Dent Dock — accounts, billing, text messages, refunds, patient payments, acceptable use and liability.",
+          "The terms governing your use of Dent Dock: accounts, billing, text messages, refunds, patient payments, acceptable use and liability.",
       },
-      { property: "og:title", content: "Terms of Service — Dent Dock" },
+      { property: "og:title", content: "Terms of Service | Dent Dock" },
       {
         property: "og:description",
         content: "The terms governing your use of Dent Dock.",
