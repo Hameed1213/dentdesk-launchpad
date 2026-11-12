@@ -6,6 +6,9 @@ type ProductLink = { label: string; href: string; internal?: boolean };
 const productLinks: ProductLink[] = [
   { label: "Features", href: "/features", internal: true },
   { label: "Pricing", href: "/pricing", internal: true },
+  { label: "Reminders and recalls", href: "/features/reminders-and-recalls", internal: true },
+  { label: "Reduce no-shows", href: "/solutions/reduce-no-shows", internal: true },
+  { label: "Private practices", href: "/solutions/private-practices", internal: true },
   { label: "Support", href: "/#support" },
   { label: "Comparisons", href: "/compare", internal: true },
   { label: "FAQ", href: "/#faq" },

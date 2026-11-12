@@ -9,6 +9,9 @@ Dent Dock helps UK private dental practices run their day-to-day: patients book 
 - [Home](/): What DentDock does, support, switching, pricing summary, FAQ and waitlist signup.
 - [Features](/features): Online booking, patient portal, reminders and recalls, forms, payments and reports.
 - [Pricing](/pricing): £49 a month per practice, what's included, plans coming soon.
+- [Reminders and recalls](/features/reminders-and-recalls): Reminders 72, 24 and 2 hours before each appointment, recall follow-ups, waitlist.
+- [Reduce no-shows](/solutions/reduce-no-shows): Evidence on reminders, fair cancellation fees, refilling gaps.
+- [Private practices](/solutions/private-practices): DentDock for UK private dental practices.
 - [Waitlist](/waitlist): Join the early-access waitlist.
 - [Privacy](/privacy): Privacy policy.
 - [Terms](/terms): Terms of service.

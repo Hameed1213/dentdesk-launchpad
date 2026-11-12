@@ -9,7 +9,7 @@ const TITLE = "Features | DentDock dental software for UK private practices";
 const DESCRIPTION =
   "Online booking, a patient portal, reminders and recalls, digital forms and medical history, payments and deposits, and reports. One system for UK private dental practices.";
 
-export const Route = createFileRoute("/features")({
+export const Route = createFileRoute("/features/")({
   component: FeaturesPage,
   head: () => ({
     meta: [
