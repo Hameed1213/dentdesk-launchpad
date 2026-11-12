@@ -6,8 +6,14 @@ import {
   SpendCalculator,
   type SolutionStoryContent,
 } from "@/components/site/solutionTemplates";
-import { MedicalHistoryCard, PillCard, ReminderTimelineCard } from "@/components/site/cards";
-import { BookingPhone } from "@/components/site/phoneScreens";
+import {
+  BookingPriceCard,
+  MedicalHistoryCard,
+  PillCard,
+  ReminderTimelineCard,
+} from "@/components/site/cards";
+import { PhotoPanel } from "@/components/site/ui";
+import { ClipboardList, Layers, PhoneCall } from "lucide-react";
 import { featurePages } from "@/components/site/featurePages";
 
 /*
@@ -32,14 +38,37 @@ const content: SolutionStoryContent = {
     highlight: "UK private dental practices",
     intro:
       "Diary, online booking with your prices, reminders, recalls, forms and payments in one place. Set it up yourself in a day.",
-    visual: <BookingPhone />,
+    visual: (
+      <PhotoPanel
+        src="/images/home/dentist-patient.webp"
+        alt="Dentist talking with a smiling patient in a modern surgery"
+        height={1050}
+        position="object-[45%_50%]"
+      >
+        <BookingPriceCard className="absolute right-2 sm:right-3 lg:-right-6 top-4 sm:top-6 lg:top-10" />
+        <PillCard
+          className="absolute left-2 sm:left-3 lg:-left-6 bottom-4 sm:bottom-6 lg:bottom-10"
+          icon="dot"
+          text="Health form completed before the visit"
+        />
+      </PhotoPanel>
+    ),
   },
   sounds: {
     title: "Does this sound like your practice?",
     lines: [
-      "Patients ring to ask what a check-up costs.",
-      "New patients fill in forms on a clipboard in the waiting room.",
-      "We pay for separate tools that don't talk to each other.",
+      {
+        Icon: PhoneCall,
+        text: "Patients have to ring to find out what a treatment costs or when you're free.",
+      },
+      {
+        Icon: ClipboardList,
+        text: "New patients still fill in paper forms, or a separate forms tool, before the visit.",
+      },
+      {
+        Icon: Layers,
+        text: "You pay for several tools and a practice system that don't talk to each other.",
+      },
     ],
   },
   story: {
@@ -94,13 +123,26 @@ const content: SolutionStoryContent = {
     title: "Run it your way",
     intro:
       "These are real DentDock settings for a private practice. Change any of them whenever you like.",
-    items: [
-      { label: "Online booking", value: <On /> },
-      { label: "Prices shown on your booking page", value: "Every treatment" },
-      { label: "Health form inside online booking", value: <On /> },
-      { label: "Deposit on whitening", value: "£50" },
-      { label: "Free cancellation up to", value: "48 hours before" },
-      { label: "Patients can join the waitlist online", value: <On /> },
+    groups: [
+      {
+        group: "Online booking",
+        items: [
+          { label: "Patients can book online", value: <On /> },
+          { label: "Prices on your booking page", value: "Every treatment" },
+          { label: "Health form inside the booking", value: <On /> },
+        ],
+      },
+      {
+        group: "Payments",
+        items: [
+          { label: "Deposit on whitening", value: "£50" },
+          { label: "Free cancellation up to", value: "48 hours before" },
+        ],
+      },
+      {
+        group: "Waitlist",
+        items: [{ label: "Patients can join online", value: <On /> }],
+      },
     ],
   },
   calculator: <SpendCalculator />,

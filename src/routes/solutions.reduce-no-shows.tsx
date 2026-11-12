@@ -7,7 +7,8 @@ import {
   type SolutionStoryContent,
 } from "@/components/site/solutionTemplates";
 import { FillSlotCard, PillCard, TextMessageCard } from "@/components/site/cards";
-import { ReminderPhone } from "@/components/site/phoneScreens";
+import { PhotoPanel } from "@/components/site/ui";
+import { CalendarX, Clock, PhoneCall } from "lucide-react";
 import { featurePages } from "@/components/site/featurePages";
 
 /*
@@ -33,14 +34,40 @@ const content: SolutionStoryContent = {
     highlight: "shouldn't mean an empty chair",
     intro:
       "DentDock reminds every patient, makes it easy to cancel in time, and helps you hand the slot to someone who wants it.",
-    visual: <ReminderPhone />,
+    visual: (
+      <PhotoPanel
+        src="/images/pages/empty-surgery.webp"
+        alt="An empty dental chair in a modern surgery"
+        height={936}
+        position="object-[50%_55%]"
+      >
+        <TextMessageCard
+          className="absolute left-2 sm:left-3 lg:-left-6 top-4 sm:top-6 lg:top-10"
+          when="Sent 72 hours before"
+        />
+        <PillCard
+          className="absolute right-2 sm:right-3 lg:-right-6 bottom-4 sm:bottom-6 lg:bottom-10"
+          icon="dot"
+          text="Slot refilled from the waitlist"
+        />
+      </PhotoPanel>
+    ),
   },
   sounds: {
     title: "Does this sound like your practice?",
     lines: [
-      "Monday's 9am is empty again, and nobody phoned.",
-      "Reception spends the morning ringing patients to remind them.",
-      "Someone cancels and the slot stays empty, because there's no time to fill it.",
+      {
+        Icon: CalendarX,
+        text: "Your system sends reminders, but patients still forget, and there's no easy way for them to cancel.",
+      },
+      {
+        Icon: Clock,
+        text: "When someone cancels, the slot sits empty because there's no quick way to find someone to fill it.",
+      },
+      {
+        Icon: PhoneCall,
+        text: "Reception still spends hours on the phone confirming, rebooking and chasing.",
+      },
     ],
   },
   story: {
@@ -96,14 +123,27 @@ const content: SolutionStoryContent = {
     title: "You set the rules",
     intro:
       "These are real DentDock settings. Change any of them whenever you like, and patients see your policy before they book.",
-    items: [
-      { label: "Reminder 72 hours before", value: <On /> },
-      { label: "Reminder 24 hours before", value: <On /> },
-      { label: "Reminder 2 hours before", value: <On /> },
-      { label: "Free cancellation up to", value: "48 hours before" },
-      { label: "Late cancellation fee", value: "£20" },
-      { label: "Missed appointment fee", value: "£40" },
-      { label: "Patients can join the waitlist online", value: <On /> },
+    groups: [
+      {
+        group: "Reminders",
+        items: [
+          { label: "72 hours before", value: <On /> },
+          { label: "24 hours before", value: <On /> },
+          { label: "2 hours before", value: <On /> },
+        ],
+      },
+      {
+        group: "Cancellations",
+        items: [
+          { label: "Free cancellation up to", value: "48 hours before" },
+          { label: "Late cancellation fee", value: "£20" },
+          { label: "Missed appointment fee", value: "£40" },
+        ],
+      },
+      {
+        group: "Waitlist",
+        items: [{ label: "Patients can join online", value: <On /> }],
+      },
     ],
   },
   calculator: <NoShowCalculator />,

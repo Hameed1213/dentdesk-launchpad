@@ -2,7 +2,7 @@ import { useState, type ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import PageShell from "@/components/site/PageShell";
-import { ClosingBand, Reveal, TrustStrip, pillButton, primaryButton } from "@/components/site/ui";
+import { ClosingBand, Reveal, pillButton, primaryButton } from "@/components/site/ui";
 import {
   FaqSection,
   OtherAreas,
@@ -23,20 +23,6 @@ import { Toggle } from "@/components/site/screens";
 /* ------------------------------------------------------------------ */
 /* Pieces                                                             */
 /* ------------------------------------------------------------------ */
-
-/** A phone outline around patient-facing content. */
-export function Phone({ children }: { children: ReactNode }) {
-  return (
-    <div className="mx-auto w-[280px] rounded-[40px] bg-[#0F172A] p-2.5 shadow-[0_40px_80px_-30px_rgba(15,23,42,0.55)]">
-      <div className="rounded-[32px] bg-[#F8FAFC] overflow-hidden min-h-[480px] flex flex-col">
-        <div className="flex justify-center pt-2.5 pb-1">
-          <span className="h-1.5 w-16 rounded-full bg-[#CBD5E1]" />
-        </div>
-        <div className="flex-1 px-4 pb-5 pt-2">{children}</div>
-      </div>
-    </div>
-  );
-}
 
 /** A soft tinted panel with a faint grid: the signature background for every Solutions fragment. */
 function Grid({ children, className = "" }: { children: ReactNode; className?: string }) {
@@ -99,64 +85,34 @@ function StoryHero({ hero }: { hero: StoryHeroContent }) {
             £49 a month per practice, everything included. No contract.
           </p>
         </Reveal>
-        <Reveal delay={0.1}>
-          <Grid className="py-10 px-4">{hero.visual}</Grid>
-        </Reveal>
+        <Reveal delay={0.1}>{hero.visual}</Reveal>
       </div>
     </section>
   );
 }
 
-const solutionLinks: { label: string; to: string }[] = [
-  { label: "Reduce no-shows", to: "/solutions/reduce-no-shows" },
-  { label: "Private practices", to: "/solutions/private-practices" },
-];
+export type Pain = { text: string; Icon: typeof ArrowRight };
 
-function SolutionPills({ current }: { current: string }) {
+function SoundsLikeYou({ title, lines }: { title: string; lines: Pain[] }) {
   return (
-    <div className="bg-white px-6 pb-4">
-      <div className="mx-auto max-w-6xl flex flex-wrap items-center gap-2 border-t border-neutral-100 pt-6">
-        <span className="mr-2 text-[13px] font-medium text-[#64748B]">More solutions:</span>
-        {solutionLinks.map((s) => (
-          <Link
-            key={s.to}
-            to={s.to as "/solutions"}
-            aria-current={s.to === current ? "page" : undefined}
-            className={
-              s.to === current
-                ? "rounded-xl bg-[#2563EB] px-4 py-2 text-[13px] font-semibold text-white"
-                : "rounded-xl border border-[#DBEAFE] bg-white px-4 py-2 text-[13px] font-medium text-[#2563EB] hover:border-[#2563EB]"
-            }
-          >
-            {s.label}
-          </Link>
-        ))}
-        <Link
-          to="/solutions"
-          className="ml-auto text-[13px] font-semibold text-[#2563EB] hover:underline"
-        >
-          All solutions →
-        </Link>
-      </div>
-    </div>
-  );
-}
-
-function SoundsLikeYou({ title, lines }: { title: string; lines: string[] }) {
-  return (
-    <section className="bg-white py-16 md:py-24 px-6">
+    <section className="bg-gradient-to-b from-[#F7F9FF] to-[#F1F5FE] border-y border-[#EEF2FB] py-16 md:py-24 px-6">
       <div className="mx-auto max-w-6xl">
-        <Reveal>
-          <h2 className="text-[15px] font-semibold uppercase tracking-[0.14em] text-[#2563EB]">
+        <Reveal className="text-center max-w-3xl mx-auto">
+          <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-[#0F172A] leading-[1.1]">
             {title}
           </h2>
         </Reveal>
-        <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-x-10 gap-y-8">
-          {lines.map((l, i) => (
-            <Reveal key={l} delay={i * 0.08}>
-              <p className="border-l-2 border-[#2563EB] pl-5 text-[22px] md:text-[26px] font-medium tracking-tight text-[#0F172A] leading-[1.3]">
-                {l}
-              </p>
+        <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-5">
+          {lines.map(({ text, Icon }, i) => (
+            <Reveal key={text} delay={i * 0.08}>
+              <div className="h-full rounded-3xl bg-white border border-[#E5EDFB] p-7">
+                <span className="w-11 h-11 rounded-2xl bg-[#FEF2F2] flex items-center justify-center">
+                  <Icon className="w-5 h-5 text-[#DC2626]" strokeWidth={1.8} />
+                </span>
+                <p className="mt-5 text-[19px] font-semibold tracking-tight text-[#0F172A] leading-[1.4]">
+                  {text}
+                </p>
+              </div>
             </Reveal>
           ))}
         </div>
@@ -179,45 +135,45 @@ function StoryTimeline({
   stops: Stop[];
 }) {
   return (
-    <section className="bg-gradient-to-b from-white via-[#F7F9FF] to-white py-16 md:py-24 px-6">
+    <section className="bg-white py-16 md:py-24 px-6">
       <div className="mx-auto max-w-5xl">
-        <Reveal className="max-w-3xl">
+        <Reveal className="text-center max-w-3xl mx-auto">
           <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-[#0F172A] leading-[1.1]">
             {title} {highlight && <span className="text-[#2563EB]">{highlight}</span>}
           </h2>
           <p className="mt-5 text-[18px] text-[#475569] leading-[1.6]">{intro}</p>
         </Reveal>
-        <ol className="relative mt-14">
+        <ol className="relative mt-14 pl-9 md:pl-12">
           <span
             aria-hidden="true"
-            className="absolute left-[7px] md:left-[131px] top-2 bottom-2 w-0.5 bg-[#BFDBFE]"
+            className="absolute left-[11px] md:left-[15px] top-4 bottom-4 w-0.5 bg-gradient-to-b from-[#BFDBFE] via-[#93C5FD] to-[#BFDBFE]"
           />
           {stops.map((s, i) => (
             <Reveal
               key={s.time + s.title}
               delay={0.04 * i}
-              className={i < stops.length - 1 ? "pb-14 md:pb-16" : ""}
+              className={i < stops.length - 1 ? "pb-6" : ""}
             >
-              <li className="relative list-none grid grid-cols-1 md:grid-cols-[110px_1fr] gap-x-10 pl-8 md:pl-0">
+              <li className="relative list-none">
                 <span
                   aria-hidden="true"
-                  className="absolute left-0 md:left-[124px] top-1.5 w-4 h-4 rounded-full bg-white border-[3px] border-[#2563EB]"
-                />
-                <p className="text-[14px] font-semibold text-[#2563EB] md:text-right md:pt-0.5 mb-2 md:mb-0">
-                  {s.time}
-                </p>
-                <div className="md:pl-10 grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-6 items-start">
-                  <div>
-                    <h3 className="text-[20px] font-semibold text-[#0F172A] tracking-tight">
+                  className="absolute -left-9 md:-left-12 top-7 w-6 h-6 md:w-8 md:h-8 rounded-full bg-[#2563EB] ring-4 ring-white flex items-center justify-center text-[11px] md:text-[13px] font-semibold text-white"
+                >
+                  {i + 1}
+                </span>
+                <div className="rounded-3xl bg-white border border-[#E5EDFB] shadow-[0_12px_40px_-24px_rgba(15,23,42,0.25)] overflow-hidden grid grid-cols-1 md:grid-cols-[1fr_320px]">
+                  <div className="p-6 md:p-8">
+                    <span className="inline-block rounded-lg bg-[#EFF6FF] px-2.5 py-1 text-[12px] font-semibold text-[#2563EB]">
+                      {s.time}
+                    </span>
+                    <h3 className="mt-3 text-[20px] font-semibold text-[#0F172A] tracking-tight">
                       {s.title}
                     </h3>
-                    <p className="mt-2 text-[16px] text-[#475569] leading-[1.6] max-w-md">
-                      {s.body}
-                    </p>
+                    <p className="mt-2 text-[16px] text-[#475569] leading-[1.6]">{s.body}</p>
                   </div>
-                  <div aria-hidden="true" className="lg:w-[280px]">
-                    {s.visual}
-                  </div>
+                  <Grid className="!rounded-none md:border-l md:border-[#E5EDFB] ring-0 flex items-center justify-center p-6 min-h-[150px]">
+                    <div aria-hidden="true">{s.visual}</div>
+                  </Grid>
                 </div>
               </li>
             </Reveal>
@@ -229,36 +185,57 @@ function StoryTimeline({
 }
 
 export type Control = { label: string; value: ReactNode };
+export type ControlGroup = { group: string; items: Control[] };
 
 function WhatYouControl({
   title,
   intro,
-  items,
+  groups,
 }: {
   title: string;
   intro: string;
-  items: Control[];
+  groups: ControlGroup[];
 }) {
   return (
-    <section className="bg-white py-16 md:py-24 px-6">
-      <div className="mx-auto max-w-6xl grid grid-cols-1 lg:grid-cols-[0.8fr_1.2fr] gap-10 items-center">
+    <section className="bg-gradient-to-b from-[#F7F9FF] to-[#F1F5FE] border-y border-[#EEF2FB] py-16 md:py-24 px-6">
+      <div className="mx-auto max-w-6xl grid grid-cols-1 lg:grid-cols-[0.8fr_1.2fr] gap-12 items-center">
         <Reveal>
-          <h2 className="text-3xl md:text-[42px] font-semibold tracking-tight text-[#0F172A] leading-[1.1]">
+          <h2 className="text-3xl md:text-[44px] font-semibold tracking-tight text-[#0F172A] leading-[1.1]">
             {title}
           </h2>
           <p className="mt-5 text-[17px] text-[#475569] leading-[1.6]">{intro}</p>
         </Reveal>
         <Reveal delay={0.08}>
-          <Grid className="p-5 sm:p-7">
-            <div className="rounded-2xl bg-white border border-[#E5EDFB] divide-y divide-[#F1F5F9]">
-              {items.map((c) => (
-                <div key={c.label} className="flex items-center justify-between gap-4 px-5 py-4">
-                  <span className="text-[15px] text-[#0F172A]">{c.label}</span>
-                  <span className="text-[14px] font-semibold text-[#2563EB]">{c.value}</span>
+          <div className="rounded-3xl bg-white border border-[#E5EDFB] shadow-[0_30px_70px_-40px_rgba(15,23,42,0.35)] overflow-hidden">
+            <div className="flex items-center gap-2 border-b border-[#EEF2FB] px-6 py-4">
+              <span className="w-2.5 h-2.5 rounded-full bg-[#ff5f57]" />
+              <span className="w-2.5 h-2.5 rounded-full bg-[#febc2e]" />
+              <span className="w-2.5 h-2.5 rounded-full bg-[#28c840]" />
+              <span className="ml-3 text-[14px] font-semibold text-[#0F172A]">Settings</span>
+            </div>
+            <div className="p-6 space-y-6">
+              {groups.map((g) => (
+                <div key={g.group}>
+                  <p className="text-[12px] font-semibold uppercase tracking-[0.12em] text-[#64748B]">
+                    {g.group}
+                  </p>
+                  <div className="mt-2.5 rounded-2xl border border-[#EEF2FB] divide-y divide-[#F1F5F9]">
+                    {g.items.map((c) => (
+                      <div
+                        key={c.label}
+                        className="flex items-center justify-between gap-4 px-4 py-3"
+                      >
+                        <span className="text-[14px] text-[#0F172A]">{c.label}</span>
+                        <span className="text-[14px] font-semibold text-[#2563EB] whitespace-nowrap">
+                          {c.value}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               ))}
             </div>
-          </Grid>
+          </div>
         </Reveal>
       </div>
     </section>
@@ -289,11 +266,14 @@ function Slider({
   format: (n: number) => string;
   onChange: (n: number) => void;
 }) {
+  const pct = ((value - min) / (max - min)) * 100;
   return (
     <label className="block">
-      <span className="flex items-center justify-between text-[14px] text-[#334155]">
+      <span className="flex items-center justify-between text-[14px] font-medium text-[#334155]">
         {label}
-        <span className="font-semibold text-[#0F172A]">{format(value)}</span>
+        <span className="rounded-lg bg-[#EFF6FF] px-2.5 py-1 text-[14px] font-semibold text-[#1D4ED8] tabular-nums">
+          {format(value)}
+        </span>
       </span>
       <input
         type="range"
@@ -302,8 +282,13 @@ function Slider({
         step={step}
         value={value}
         onChange={(e) => onChange(Number(e.target.value))}
-        className="mt-3 w-full accent-[#2563EB]"
+        className="dd-range mt-3 w-full"
+        style={{ background: `linear-gradient(to right, #2563EB ${pct}%, #E2E8F0 ${pct}%)` }}
       />
+      <span className="mt-1 flex justify-between text-[11px] text-[#94A3B8]">
+        <span>{format(min)}</span>
+        <span>{format(max)}</span>
+      </span>
     </label>
   );
 }
@@ -320,32 +305,48 @@ function CalcShell({
   result: ReactNode;
 }) {
   return (
-    <section className="bg-[#0F162B] py-16 md:py-24 px-6 relative overflow-hidden">
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0"
-        style={{
-          background: "radial-gradient(45% 55% at 0% 0%, rgba(37,99,235,0.35), transparent 70%)",
-        }}
-      />
-      <div className="relative mx-auto max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-        <Reveal>
-          <h2 className="text-3xl md:text-[42px] font-semibold tracking-tight text-white leading-[1.1]">
+    <section className="bg-white py-16 md:py-24 px-6">
+      <div className="mx-auto max-w-6xl">
+        <Reveal className="text-center max-w-3xl mx-auto">
+          <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-[#0F172A] leading-[1.1]">
             {title}
           </h2>
-          <p className="mt-5 text-[17px] text-[#CBD5E1] leading-[1.6]">{intro}</p>
+          <p className="mt-5 text-[17px] text-[#475569] leading-[1.6]">{intro}</p>
         </Reveal>
-        <Reveal delay={0.08}>
-          <div className="rounded-3xl bg-white p-7 md:p-8">
-            <div className="space-y-6">{controls}</div>
-            <div className="mt-7 border-t border-neutral-100 pt-6">{result}</div>
-            <p className="mt-4 text-[12px] text-[#94A3B8]">
-              Your own figures, worked out in your browser. Not a promise of results.
-            </p>
+        <Reveal delay={0.08} className="mt-12">
+          <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] rounded-[28px] overflow-hidden border border-[#E5EDFB] shadow-[0_30px_70px_-40px_rgba(15,23,42,0.35)]">
+            <div className="bg-white p-7 md:p-10 space-y-7">{controls}</div>
+            <div className="relative overflow-hidden bg-gradient-to-br from-[#2563EB] to-[#1D4ED8] p-7 md:p-10 text-white flex flex-col justify-center">
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute -top-16 -right-16 h-56 w-56 rounded-full"
+                style={{
+                  background: "radial-gradient(circle, rgba(255,255,255,0.2), transparent 70%)",
+                }}
+              />
+              <div className="relative">{result}</div>
+              <p className="relative mt-6 text-[12px] text-white/70">
+                Your own figures, worked out in your browser. Not a promise of results.
+              </p>
+            </div>
           </div>
         </Reveal>
       </div>
     </section>
+  );
+}
+
+function Result({ label, value, small }: { label: string; value: string; small?: boolean }) {
+  return (
+    <div>
+      <p className="text-[14px] text-white/80">{label}</p>
+      <p
+        className={`mt-1 font-semibold tracking-tight leading-none ${small ? "text-[30px]" : "text-[48px]"}`}
+      >
+        {value}
+        <span className="text-[15px] font-normal text-white/80"> a month</span>
+      </p>
+    </div>
   );
 }
 
@@ -359,7 +360,7 @@ export function NoShowCalculator() {
   return (
     <CalcShell
       title="What do no-shows cost your practice?"
-      intro="Move the sliders to match your practice. The average private check-up was £55 in 2024 (Competition and Markets Authority), so we've started there."
+      intro="Move the sliders to match your practice. We've started at £55, the average private check-up in 2024 (Competition and Markets Authority)."
       controls={
         <>
           <Slider
@@ -390,22 +391,11 @@ export function NoShowCalculator() {
         </>
       }
       result={
-        <div className="grid grid-cols-2 gap-4">
-          <div>
-            <p className="text-[13px] text-[#64748B]">Lost to no-shows</p>
-            <p className="mt-1 text-[32px] font-semibold tracking-tight text-[#0F172A] leading-none">
-              {gbp(perMonth)}
-              <span className="text-[14px] font-normal text-[#64748B]"> a month</span>
-            </p>
-          </div>
-          <div>
-            <p className="text-[13px] text-[#64748B]">Saving just one a week</p>
-            <p className="mt-1 text-[32px] font-semibold tracking-tight text-[#2563EB] leading-none">
-              {gbp(onePerWeek)}
-              <span className="text-[14px] font-normal text-[#64748B]"> a month</span>
-            </p>
-          </div>
-          <p className="col-span-2 text-[14px] text-[#334155]">DentDock is £49 a month.</p>
+        <div className="space-y-6">
+          <Result label="Lost to no-shows" value={gbp(perMonth)} />
+          <div className="h-px bg-white/20" />
+          <Result label="Saving just one a week" value={gbp(onePerWeek)} small />
+          <p className="text-[14px] text-white/85">DentDock is £49 a month.</p>
         </div>
       }
     />
@@ -421,7 +411,7 @@ export function SpendCalculator() {
   return (
     <CalcShell
       title="What do you pay for software now?"
-      intro="Add up what you pay each month for your practice system, reminder texts and any separate booking or forms tools. Everything is your own figure."
+      intro="Add up what you pay each month for your practice system, reminder texts and any separate booking or forms tools."
       controls={
         <>
           <Slider
@@ -454,22 +444,11 @@ export function SpendCalculator() {
         </>
       }
       result={
-        <div className="grid grid-cols-2 gap-4">
-          <div>
-            <p className="text-[13px] text-[#64748B]">You pay now</p>
-            <p className="mt-1 text-[32px] font-semibold tracking-tight text-[#0F172A] leading-none">
-              {gbp(total)}
-              <span className="text-[14px] font-normal text-[#64748B]"> a month</span>
-            </p>
-          </div>
-          <div>
-            <p className="text-[13px] text-[#64748B]">DentDock</p>
-            <p className="mt-1 text-[32px] font-semibold tracking-tight text-[#2563EB] leading-none">
-              £49
-              <span className="text-[14px] font-normal text-[#64748B]"> a month</span>
-            </p>
-          </div>
-          <p className="col-span-2 text-[14px] text-[#334155]">
+        <div className="space-y-6">
+          <Result label="You pay now" value={gbp(total)} />
+          <div className="h-px bg-white/20" />
+          <Result label="DentDock" value="£49" small />
+          <p className="text-[14px] text-white/85">
             Includes 200 texts a month, then 8p a text. Check what your current system does that
             DentDock doesn't, such as NHS claims or charting.
           </p>
@@ -486,9 +465,9 @@ export function SpendCalculator() {
 export type SolutionStoryContent = {
   path: string;
   hero: StoryHeroContent;
-  sounds: { title: string; lines: string[] };
+  sounds: { title: string; lines: Pain[] };
   story: { title: string; highlight?: string; intro: string; stops: Stop[] };
-  controls: { title: string; intro: string; items: Control[] };
+  controls: { title: string; intro: string; groups: ControlGroup[] };
   calculator: ReactNode;
   features: { title: string; highlight?: string; items: OtherArea[] };
   faq: Faq[];
@@ -499,13 +478,11 @@ export function SolutionStoryPage({ content }: { content: SolutionStoryContent }
   return (
     <PageShell>
       <StoryHero hero={c.hero} />
-      <SolutionPills current={c.path} />
       <SoundsLikeYou {...c.sounds} />
       <StoryTimeline {...c.story} />
       <WhatYouControl {...c.controls} />
       {c.calculator}
       <OtherAreas {...c.features} />
-      <TrustStrip />
       <FaqSection items={c.faq} />
       <ClosingBand />
     </PageShell>
