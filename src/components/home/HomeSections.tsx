@@ -247,12 +247,12 @@ function MoneyVisual() {
   const bars = [38, 52, 46, 64, 58, 72, 80];
   return (
     <PhotoPanel
-      src="/images/home/clinician-laptop.webp"
-      alt="Clinician in a white coat working on a laptop"
+      src="/images/home/reception-payment.webp"
+      alt="Receptionist taking a card payment at the front desk"
       height={933}
-      position="object-[60%_40%]"
+      position="object-[15%_40%]"
     >
-      <FloatCard className="absolute -left-3 sm:-left-6 bottom-6 sm:bottom-10 w-[210px] p-4">
+      <FloatCard className="absolute -right-3 sm:-right-6 top-6 sm:top-10 w-[210px] p-4">
         <p className="text-[13px] font-semibold text-[#0F172A]">Takings by clinician</p>
         <p className="mt-0.5 text-[11px] text-[#64748B]">This month</p>
         <div className="mt-3 flex items-end gap-1.5 h-[56px]">
@@ -275,7 +275,7 @@ function MoneyVisual() {
           ))}
         </div>
       </FloatCard>
-      <FloatCard className="absolute -right-3 sm:-right-6 top-6 sm:top-10 px-4 py-3">
+      <FloatCard className="absolute -right-3 sm:-right-6 bottom-6 sm:bottom-10 px-4 py-3">
         <p className="text-[11px] text-[#64748B]">Deposit paid</p>
         <p className="text-[18px] font-semibold text-[#0F172A]">£50.00</p>
         <p className="mt-0.5 text-[11px] font-semibold text-emerald-600">Paid online ✓</p>
@@ -427,7 +427,7 @@ export function SolutionsGrid() {
 /* ------------------------------------------------------------------ */
 /* Support: photo with floating cards, text alongside                  */
 /* Photos: Unsplash, free under the Unsplash licence                   */
-/* (QzY81G7dbOo, HBMPQZZondc).                                         */
+/* (CPs2X8JYmS8, HBMPQZZondc, eL4xIEuHzzk, Bg81yWKZlMg, h8uuH7h17Ds).                                         */
 /* ------------------------------------------------------------------ */
 
 export function SupportRow() {
@@ -440,12 +440,12 @@ export function SupportRow() {
         <Reveal>
           <div className={`relative ${panelOnTint} p-6 sm:p-8`}>
             <img
-              src="/images/home/support-phone.webp"
-              alt="Woman smiling on a phone call at her desk"
+              src="/images/home/support-dev.webp"
+              alt="Developers working at their screens in a bright office"
               width={1400}
-              height={788}
+              height={933}
               loading="lazy"
-              className="w-full aspect-[4/3] object-cover object-[65%_50%] rounded-2xl"
+              className="w-full aspect-[4/3] object-cover object-[70%_50%] rounded-2xl"
             />
             <FloatCard className="absolute -left-3 sm:-left-6 bottom-6 sm:bottom-10 w-[210px] p-4">
               <div className="flex items-center gap-2">
