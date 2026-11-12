@@ -17,14 +17,6 @@ import { FaqSection, templateHead, type Faq } from "@/components/site/templates"
 
 const PATH = "/pricing";
 
-const points = [
-  "Every feature, for your whole practice",
-  "Unlimited dentists and staff",
-  "200 texts a month, then 8p a text",
-  "No setup fee and no contract",
-  "Cancel any time",
-];
-
 const included = [
   {
     title: "Calendar and diary",
@@ -65,29 +57,6 @@ const included = [
     title: "Setup and support",
     body: "Import your patients from a CSV, go live in a day, and get same-day help on WhatsApp.",
     to: "/features/switching",
-  },
-];
-
-const comingSoon = [
-  {
-    name: "Multi-site",
-    items: [
-      "Everything in Starter",
-      "Up to 5 sites, one login",
-      "Owner overview of every site",
-      "Shared patient records",
-      "Book any site from one reception",
-    ],
-  },
-  {
-    name: "Enterprise",
-    items: [
-      "Everything in Multi-site",
-      "Unlimited sites and regions",
-      "Your own booking domain",
-      "Data migration done for you",
-      "Dedicated account manager",
-    ],
   },
 ];
 
@@ -168,60 +137,173 @@ function Hero() {
           </Link>
         </nav>
         <h1
-          className="font-semibold text-[#0F172A] text-[40px] leading-[1.1] md:text-[60px]"
+          className="font-semibold text-[#0F172A] text-[40px] leading-[1.1] md:text-[58px]"
           style={{ letterSpacing: "-0.035em" }}
         >
-          £49 a month. <span className="text-[#2563EB]">For your whole practice.</span>
+          Simple pricing <span className="text-[#2563EB]">for every practice</span>
         </h1>
         <p className="mt-6 text-[19px] text-[#334155] leading-[1.6] max-w-2xl mx-auto">
-          Unlimited dentists and staff, 200 texts a month included, and every feature. We're opening
-          in stages, so join the waitlist for early access.
+          One price for your whole practice, billed monthly. No setup fee, no contract, and no VAT
+          added.
         </p>
       </Reveal>
     </section>
   );
 }
 
+type Plan = {
+  name: string;
+  blurb: string;
+  price: string;
+  priceNote: string;
+  cta: string;
+  ctaNote: string;
+  featuresNote: string;
+  features: string[];
+  live?: boolean;
+};
+
+const plans: Plan[] = [
+  {
+    name: "Starter",
+    blurb: "Everything a single practice needs, from the first booking to the last recall.",
+    price: "£49",
+    priceNote: "Per practice, per month",
+    cta: "Join the waitlist",
+    ctaNote: "No payment needed to join",
+    featuresNote: "Every feature, for your whole practice",
+    features: [
+      "Unlimited dentists and staff",
+      "Online booking and patient portal",
+      "Reminders and recalls",
+      "Forms and medical history",
+      "Payments and deposits",
+      "200 texts a month, then 8p a text",
+      "Priority WhatsApp support",
+    ],
+    live: true,
+  },
+  {
+    name: "Multi-site",
+    blurb: "For groups that want every site in one place.",
+    price: "Coming soon",
+    priceNote: "No price yet",
+    cta: "Register interest",
+    ctaNote: "We'll keep you posted",
+    featuresNote: "Everything in Starter, plus",
+    features: [
+      "Up to 5 sites, one login",
+      "Owner overview of every site",
+      "Shared patient records",
+      "Book any site from one reception",
+      "Team messaging",
+      "Membership plans",
+    ],
+  },
+  {
+    name: "Enterprise",
+    blurb: "For larger groups with head-office needs.",
+    price: "Coming soon",
+    priceNote: "No price yet",
+    cta: "Register interest",
+    ctaNote: "We'll keep you posted",
+    featuresNote: "Everything in Multi-site, plus",
+    features: [
+      "Unlimited sites and regions",
+      "Your own booking domain",
+      "Data migration done for you",
+      "Dedicated account manager",
+      "Head-office templates and automations",
+    ],
+  },
+];
+
 function PlanCard() {
   return (
     <section id="plan" className="bg-white pb-16 md:pb-24 px-6 scroll-mt-24">
-      <Reveal className="mx-auto max-w-4xl">
-        <div className="rounded-[32px] bg-white border border-[#DBEAFE] shadow-[0_40px_90px_-50px_rgba(37,99,235,0.55)] overflow-hidden grid grid-cols-1 md:grid-cols-[0.9fr_1.1fr]">
-          <div className="bg-gradient-to-br from-[#2563EB] to-[#1D4ED8] p-8 md:p-10 text-white flex flex-col">
-            <p className="text-[15px] font-semibold text-white/80">Starter</p>
-            <p className="mt-4 flex items-end gap-2">
-              <span className="text-7xl font-semibold tracking-tight leading-none">£49</span>
-              <span className="pb-1.5 text-[16px] text-white/85">a month</span>
-            </p>
-            <p className="mt-3 text-[16px] text-white/90">Per practice. No VAT added.</p>
-            <div className="mt-auto pt-10 flex flex-col gap-3">
-              <Link
-                to="/waitlist"
-                className="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-6 py-3 text-sm font-semibold text-[#2563EB] hover:bg-[#EFF6FF] transition-colors"
+      <div className="mx-auto max-w-6xl grid grid-cols-1 md:grid-cols-3 gap-5 items-stretch">
+        {plans.map((p, i) => (
+          <Reveal key={p.name} delay={i * 0.06} className="h-full">
+            <div
+              className={`h-full rounded-3xl border flex flex-col overflow-hidden ${
+                p.live
+                  ? "border-[#2563EB] shadow-[0_30px_70px_-40px_rgba(37,99,235,0.6)]"
+                  : "border-[#E5EDFB]"
+              }`}
+            >
+              <div
+                className={`p-7 ${p.live ? "bg-gradient-to-b from-[#EEF4FF] to-white" : "bg-white"}`}
               >
-                Join the waitlist <ArrowRight className="w-4 h-4" />
-              </Link>
-              <p className="text-center text-[13px] text-white/80">No payment needed to join</p>
-            </div>
-          </div>
-          <div className="p-8 md:p-10">
-            <p className="text-[15px] font-semibold text-[#0F172A]">Starter includes</p>
-            <ul className="mt-5 space-y-3.5">
-              {points.map((item) => (
-                <li
-                  key={item}
-                  className="flex items-start gap-3 text-[16px] text-[#0F172A] leading-[1.45]"
-                >
-                  <span className="mt-0.5 w-5 h-5 rounded-full bg-[#2563EB] flex items-center justify-center flex-shrink-0">
-                    <Check className="w-3 h-3 text-white" strokeWidth={3} />
+                <div className="flex items-center justify-between gap-3">
+                  <p className="text-[24px] font-semibold tracking-tight text-[#0F172A]">
+                    {p.name}
+                  </p>
+                  <span
+                    className={`rounded-lg px-2.5 py-1 text-[12px] font-semibold ${
+                      p.live ? "bg-[#2563EB] text-white" : "bg-[#F1F5F9] text-[#64748B]"
+                    }`}
+                  >
+                    {p.live ? "Available now" : "Coming soon"}
                   </span>
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </Reveal>
+                </div>
+                <p className="mt-2 text-[14px] text-[#475569] leading-[1.55] md:min-h-[44px]">
+                  {p.blurb}
+                </p>
+                <p className="mt-6 leading-none h-[48px] flex items-end">
+                  {p.live ? (
+                    <span className="text-[48px] font-semibold tracking-tight text-[#0F172A]">
+                      {p.price}
+                    </span>
+                  ) : (
+                    <span className="text-[30px] font-semibold tracking-tight text-[#64748B]">
+                      {p.price}
+                    </span>
+                  )}
+                </p>
+                <p className="mt-2 text-[14px] text-[#64748B]">{p.priceNote}</p>
+                <Link
+                  to="/waitlist"
+                  className={`mt-6 w-full inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3 text-sm font-semibold transition-colors ${
+                    p.live
+                      ? "bg-[#2563EB] text-white hover:bg-[#1D4ED8] shadow-md shadow-blue-500/20"
+                      : "border border-[#2563EB] text-[#2563EB] hover:bg-[#EFF6FF]"
+                  }`}
+                >
+                  {p.cta} {p.live && <ArrowRight className="w-4 h-4" />}
+                </Link>
+                <p className="mt-3 text-center text-[13px] text-[#64748B]">{p.ctaNote}</p>
+              </div>
+              <div className="border-t border-[#EEF2FB] p-7 flex-1">
+                <p className="text-[18px] font-semibold text-[#0F172A]">Features</p>
+                <p className="mt-1 text-[13px] text-[#64748B]">{p.featuresNote}</p>
+                <ul className="mt-5 space-y-3">
+                  {p.features.map((f) => (
+                    <li
+                      key={f}
+                      className="flex items-start gap-3 text-[14px] text-[#334155] leading-[1.45]"
+                    >
+                      <span
+                        className={`mt-0.5 w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 ${
+                          p.live ? "bg-[#2563EB]" : "border-2 border-[#CBD5E1]"
+                        }`}
+                      >
+                        <Check
+                          className={`w-3 h-3 ${p.live ? "text-white" : "text-[#94A3B8]"}`}
+                          strokeWidth={3}
+                        />
+                      </span>
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </Reveal>
+        ))}
+      </div>
+      <p className="mt-6 text-center text-[13px] text-[#64748B]">
+        Billed monthly. No setup fee, no contract, cancel any time. No VAT is added.
+      </p>
     </section>
   );
 }
@@ -262,59 +344,12 @@ function Included() {
   );
 }
 
-function ComingSoon() {
-  return (
-    <section className="bg-white py-16 md:py-24 px-6">
-      <div className="mx-auto max-w-5xl">
-        <Reveal className="text-center max-w-2xl mx-auto mb-10">
-          <h2 className="text-2xl md:text-[34px] font-semibold tracking-tight text-[#0F172A] leading-[1.15]">
-            Running more than one site?
-          </h2>
-          <p className="mt-4 text-[16px] text-[#475569] leading-[1.6]">
-            Plans for groups are coming soon. There's no price yet, so register your interest and
-            we'll keep you posted.
-          </p>
-        </Reveal>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-          {comingSoon.map((plan, i) => (
-            <Reveal key={plan.name} delay={i * 0.08}>
-              <div className="h-full rounded-3xl border border-[#E5EDFB] bg-[#F8FAFC] p-7 flex flex-col">
-                <div className="flex items-center justify-between">
-                  <p className="text-[19px] font-semibold text-[#0F172A]">{plan.name}</p>
-                  <span className="rounded-lg bg-white border border-[#E5EDFB] px-2.5 py-1 text-[12px] font-semibold text-[#64748B]">
-                    Coming soon
-                  </span>
-                </div>
-                <ul className="mt-5 space-y-2.5 flex-1">
-                  {plan.items.map((it) => (
-                    <li key={it} className="flex items-start gap-2.5 text-[14px] text-[#475569]">
-                      <Check
-                        className="w-4 h-4 mt-0.5 text-[#94A3B8] flex-shrink-0"
-                        strokeWidth={2.5}
-                      />
-                      {it}
-                    </li>
-                  ))}
-                </ul>
-                <Link to="/waitlist" className={`mt-6 self-start ${pillButton}`}>
-                  Register interest
-                </Link>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
 function PricingPage() {
   return (
     <PageShell>
       <Hero />
       <PlanCard />
       <Included />
-      <ComingSoon />
       <FaqSection items={faq} />
       <ClosingBand />
     </PageShell>
