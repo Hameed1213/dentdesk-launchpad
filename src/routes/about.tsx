@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Check, MessageCircle, PoundSterling, Scale, ShieldCheck, X } from "lucide-react";
+import { MessageCircle, PoundSterling, Scale, ShieldCheck } from "lucide-react";
 import PageShell from "@/components/site/PageShell";
 import { ClosingBand, FloatCard, PhotoPanel, Reveal, TrustStrip } from "@/components/site/ui";
 import { PageHeroSplit, SectionTitle, templateHead } from "@/components/site/templates";
@@ -37,21 +37,6 @@ const values = [
     title: "Straight about what we do",
     body: "We say what DentDock doesn't do as clearly as what it does, so you can decide whether it fits before you join.",
   },
-];
-
-const does = [
-  "Online booking, with your treatments and prices",
-  "Reminders and recalls by text and email",
-  "Digital forms and medical histories",
-  "Payment links, deposits and cancellation fees",
-  "Reports on bookings, takings and no-shows",
-];
-
-const doesnt = [
-  "NHS claims, UDAs or banding",
-  "Tooth charting or treatment plans",
-  "X-ray and imaging integration",
-  "Multi-site groups (coming soon)",
 ];
 
 export const Route = createFileRoute("/about")({
@@ -159,53 +144,8 @@ function AboutPage() {
         </div>
       </section>
 
-      {/* Does / doesn't */}
-      <section className="bg-white py-16 md:py-24 px-6">
-        <div className="mx-auto max-w-5xl">
-          <SectionTitle title="What DentDock" highlight="does, and doesn't" />
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            <Reveal className="h-full">
-              <div className="h-full rounded-3xl border border-[#BFDBFE] bg-gradient-to-b from-[#EFF6FF] to-white p-7 md:p-8">
-                <p className="text-[19px] font-semibold text-[#2563EB]">DentDock does</p>
-                <ul className="mt-6 space-y-4">
-                  {does.map((d) => (
-                    <li
-                      key={d}
-                      className="flex items-start gap-3 text-[16px] text-[#0F172A] leading-[1.5]"
-                    >
-                      <span className="mt-0.5 w-5 h-5 rounded-full bg-[#2563EB] flex items-center justify-center flex-shrink-0">
-                        <Check className="w-3 h-3 text-white" strokeWidth={3} />
-                      </span>
-                      {d}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </Reveal>
-            <Reveal delay={0.08} className="h-full">
-              <div className="h-full rounded-3xl border border-[#E5EDFB] bg-[#F8FAFC] p-7 md:p-8">
-                <p className="text-[19px] font-semibold text-[#334155]">DentDock doesn't do</p>
-                <ul className="mt-6 space-y-4">
-                  {doesnt.map((d) => (
-                    <li
-                      key={d}
-                      className="flex items-start gap-3 text-[16px] text-[#475569] leading-[1.5]"
-                    >
-                      <span className="mt-0.5 w-5 h-5 rounded-full bg-[#E2E8F0] flex items-center justify-center flex-shrink-0">
-                        <X className="w-3 h-3 text-[#64748B]" strokeWidth={3} />
-                      </span>
-                      {d}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-
       {/* Where we are today: text + photo on a tint */}
-      <section className="bg-gradient-to-b from-[#F7F9FF] to-[#EEF3FF] border-t border-[#EEF2FB] py-16 md:py-24 px-6">
+      <section className="bg-white py-16 md:py-24 px-6">
         <div className="mx-auto max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <Reveal>
             <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-foreground leading-[1.1]">
