@@ -340,7 +340,7 @@ function ComparisonTable({ c }: { c: CompareContent }) {
         <Reveal>
           <div className="rounded-3xl bg-white ring-1 ring-[#DBEAFE]">
             <div
-              className={`${cols} sticky top-[68px] lg:top-[74px] z-10 items-end gap-2 rounded-t-3xl border-b border-[#E5EDFB] bg-white px-4 md:px-7 py-4`}
+              className={`${cols} items-end gap-2 rounded-t-3xl border-b border-[#E5EDFB] bg-white px-4 md:px-7 py-4`}
             >
               <p className="text-[13px] font-semibold text-[#64748B]">Features</p>
               <div className="text-center">
