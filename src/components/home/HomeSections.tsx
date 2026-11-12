@@ -3,69 +3,87 @@ import { Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
-  BarChart3,
   Bell,
-  CalendarCheck,
+  CalendarX,
   Check,
-  FileDown,
-  MapPin,
+  FileText,
   MessageCircle,
-  ShieldCheck,
+  PhoneOff,
+  RefreshCw,
   Upload,
-  UserRound,
-  Wrench,
 } from "lucide-react";
 import { WaitlistForm } from "@/components/home/HeroSection";
 
 const WHATSAPP = "https://wa.me/447404488089";
 const ENTRANCE = { duration: 0.6, ease: [0.22, 1, 0.36, 1] as const };
 
-function SectionHeading({ eyebrow, title, intro }: { eyebrow?: string; title: ReactNode; intro?: ReactNode }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={ENTRANCE}
-      className="mx-auto max-w-2xl text-center mb-12 md:mb-16"
-    >
-      {eyebrow && (
-        <p className="text-[13px] font-semibold uppercase text-brand-blue mb-4" style={{ letterSpacing: "0.14em" }}>
-          {eyebrow}
-        </p>
-      )}
-      <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-foreground leading-[1.1]">{title}</h2>
-      {intro && <p className="mt-5 text-base md:text-lg text-muted-foreground leading-relaxed">{intro}</p>}
-    </motion.div>
-  );
-}
-
 const primaryButton =
   "inline-flex items-center justify-center gap-2 rounded-xl bg-[#2563EB] px-6 py-3 text-sm font-semibold text-white shadow-md shadow-blue-500/20 transition-colors hover:bg-[#1d4ed8]";
 const secondaryButton =
   "inline-flex items-center justify-center gap-2 rounded-xl border border-[#2563EB] px-6 py-3 text-sm font-semibold text-[#2563EB] transition-colors hover:bg-[#EFF6FF]";
+/** Outline pill, like the "See all … features" buttons on Dentally's rows. */
+const pillButton =
+  "inline-flex items-center justify-center gap-2 rounded-full border border-[#2563EB] px-6 py-3 text-[15px] font-medium text-[#2563EB] transition-colors hover:bg-[#2563EB] hover:text-white";
+
+/** Floating white card used on the pastel panels. */
+function FloatCard({ className = "", children }: { className?: string; children: ReactNode }) {
+  return (
+    <div className={`rounded-2xl bg-white/95 backdrop-blur border border-white shadow-[0_12px_40px_-12px_rgba(15,23,42,0.18)] ${className}`}>
+      {children}
+    </div>
+  );
+}
+
+function Reveal({ children, className = "", delay = 0 }: { children: ReactNode; className?: string; delay?: number }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{ ...ENTRANCE, delay }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+function Bullets({ items }: { items: string[] }) {
+  return (
+    <ul className="mt-5 space-y-3">
+      {items.map((p) => (
+        <li key={p} className="flex items-start gap-3 text-[17px] text-[#0F172A] leading-[1.5]">
+          <span aria-hidden="true" className="mt-[10px] h-1.5 w-1.5 rounded-full bg-[#0F172A] flex-shrink-0" />
+          {p}
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+const rowHeading = "text-3xl md:text-[40px] font-semibold tracking-tight text-[#2563EB] leading-[1.15]";
+const panel = "rounded-[28px] bg-gradient-to-br from-[#EFF6FF] via-[#E0EAFF] to-[#DBEAFE]";
 
 /* ------------------------------------------------------------------ */
-/* Trust strip: checkable facts, straight under the hero               */
+/* Trust strip: checkable facts, no icons                              */
 /* ------------------------------------------------------------------ */
 
 const trustItems = [
-  { Icon: MapPin, text: "Data stored in London, UK" },
-  { Icon: ShieldCheck, text: "ICO registered (ZC132966)" },
-  { Icon: MessageCircle, text: "Same-day WhatsApp support" },
-  { Icon: FileDown, text: "Export your data any time" },
+  "Data stored in London, UK",
+  "Encrypted in transit and at rest",
+  "Two-step login",
+  "ICO registered",
+  "Card payments by Stripe",
 ];
 
 export function TrustStrip() {
   return (
-    <section aria-label="Why practices can trust DentDock" className="bg-white border-y border-neutral-100">
-      <ul className="mx-auto max-w-6xl px-6 py-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
-        {trustItems.map(({ Icon, text }) => (
-          <li key={text} className="flex items-center gap-3 justify-start lg:justify-center">
-            <span className="w-9 h-9 rounded-lg bg-[#EFF6FF] flex items-center justify-center flex-shrink-0">
-              <Icon className="w-4 h-4 text-[#2563EB]" strokeWidth={2} />
-            </span>
-            <span className="text-[14px] font-medium text-[#0F172A]">{text}</span>
+    <section aria-label="How DentDock keeps practice data safe" className="bg-white border-y border-neutral-100">
+      <ul className="mx-auto max-w-6xl px-6 py-5 flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
+        {trustItems.map((text, i) => (
+          <li key={text} className="flex items-center gap-6 text-[14px] font-medium text-[#334155]">
+            {i > 0 && <span aria-hidden="true" className="hidden sm:block h-4 w-px bg-neutral-200" />}
+            {text}
           </li>
         ))}
       </ul>
@@ -74,89 +92,240 @@ export function TrustStrip() {
 }
 
 /* ------------------------------------------------------------------ */
-/* What DentDock does: three blocks, each linking out                  */
+/* Feature rows: three alternating rows, text one side, panel the other */
 /* ------------------------------------------------------------------ */
 
-const featureBlocks = [
+function BookingVisual() {
+  return (
+    <div className="relative h-full min-h-[360px] flex items-center justify-center p-6">
+      <FloatCard className="w-[80%] max-w-[340px] p-5">
+        <p className="text-[15px] font-semibold text-[#0F172A]">Book an appointment</p>
+        <p className="mt-1 text-[12px] text-[#64748B]">Check-up · 30 min · Thu 14 Nov</p>
+        <div className="mt-4 grid grid-cols-3 gap-2">
+          {["9:00", "9:30", "10:15", "11:00", "14:30", "15:45"].map((t) => (
+            <span
+              key={t}
+              className={`rounded-lg border px-2 py-2 text-center text-[12px] font-medium ${
+                t === "9:30" ? "border-[#2563EB] bg-[#2563EB] text-white" : "border-neutral-200 text-[#334155]"
+              }`}
+            >
+              {t}
+            </span>
+          ))}
+        </div>
+        <div className="mt-4 rounded-lg bg-[#2563EB] py-2 text-center text-[12px] font-semibold text-white">Confirm booking</div>
+      </FloatCard>
+      <FloatCard className="absolute right-[4%] bottom-[7%] w-[190px] p-4">
+        <div className="flex items-center gap-2">
+          <span className="w-7 h-7 rounded-lg bg-[#EFF6FF] flex items-center justify-center">
+            <FileText className="w-3.5 h-3.5 text-[#2563EB]" />
+          </span>
+          <p className="text-[12px] font-semibold text-[#0F172A]">Medical history</p>
+        </div>
+        <ul className="mt-3 space-y-1.5">
+          {["Medications", "Allergies", "Conditions"].map((l) => (
+            <li key={l} className="flex items-center gap-2 text-[11px] text-[#475569]">
+              <span className="w-3.5 h-3.5 rounded bg-[#2563EB] flex items-center justify-center">
+                <Check className="w-2.5 h-2.5 text-white" strokeWidth={3} />
+              </span>
+              {l}
+            </li>
+          ))}
+        </ul>
+        <p className="mt-3 text-[11px] font-semibold text-emerald-600">Completed before the visit</p>
+      </FloatCard>
+    </div>
+  );
+}
+
+function FrontDeskVisual() {
+  return (
+    <div className="relative h-full min-h-[360px] flex items-center justify-center p-6">
+      <FloatCard className="absolute left-[6%] top-[8%] px-4 py-2.5 flex items-center gap-2">
+        <Bell className="w-4 h-4 text-[#2563EB]" />
+        <span className="text-[12px] font-medium text-[#0F172A]">Reminder sent to Sarah M.</span>
+      </FloatCard>
+      <FloatCard className="w-[84%] max-w-[360px] p-5">
+        <div className="flex items-center justify-between">
+          <p className="text-[15px] font-semibold text-[#0F172A]">Cancelled slot</p>
+          <span className="text-[11px] text-[#64748B]">Thu 14 Nov · 10:30</span>
+        </div>
+        <div className="mt-4 rounded-xl border border-neutral-100">
+          <div className="grid grid-cols-3 px-3 py-2 text-[11px] font-medium text-[#64748B] border-b border-neutral-100">
+            <span>Patient</span>
+            <span>Waiting for</span>
+            <span className="text-right">Status</span>
+          </div>
+          {[
+            { n: "James T.", w: "Check-up", offer: true },
+            { n: "Priya K.", w: "Hygiene", offer: false },
+            { n: "Tom R.", w: "Check-up", offer: false },
+          ].map((r) => (
+            <div key={r.n} className="grid grid-cols-3 items-center px-3 py-2.5 text-[12px] text-[#334155]">
+              <span>{r.n}</span>
+              <span>{r.w}</span>
+              <span className="text-right">
+                {r.offer ? (
+                  <span className="inline-flex items-center gap-1 rounded-full bg-[#2563EB] px-2.5 py-1 text-[11px] font-semibold text-white">
+                    Offer slot <ArrowRight className="w-3 h-3" />
+                  </span>
+                ) : (
+                  <span className="text-[11px] text-[#94A3B8]">On waitlist</span>
+                )}
+              </span>
+            </div>
+          ))}
+        </div>
+      </FloatCard>
+      <FloatCard className="absolute right-[5%] bottom-[7%] px-4 py-2.5 flex items-center gap-2">
+        <RefreshCw className="w-4 h-4 text-[#2563EB]" />
+        <span className="text-[12px] font-medium text-[#0F172A]">Recall due · follow-up sent</span>
+      </FloatCard>
+    </div>
+  );
+}
+
+function MoneyVisual() {
+  const bars = [38, 52, 46, 64, 58, 72, 80];
+  return (
+    <div className="relative h-full min-h-[360px] flex items-center justify-center p-6">
+      <FloatCard className="w-[80%] max-w-[350px] p-5 mt-6">
+        <p className="text-[15px] font-semibold text-[#0F172A]">Takings by clinician</p>
+        <p className="mt-1 text-[12px] text-[#64748B]">This month</p>
+        <div className="mt-5 flex items-end gap-2.5 h-[110px]">
+          {bars.map((h, i) => (
+            <div
+              key={i}
+              className={`flex-1 rounded-t-md ${i === bars.length - 1 ? "bg-[#2563EB]" : "bg-[#BFDBFE]"}`}
+              style={{ height: `${h}%` }}
+            />
+          ))}
+        </div>
+        <p className="mt-4 text-[11px] text-[#64748B]">Bookings from</p>
+        <div className="mt-2 flex gap-2">
+          {["Google", "Instagram", "Direct"].map((s) => (
+            <span key={s} className="rounded-full bg-[#EFF6FF] px-2.5 py-1 text-[11px] font-medium text-[#2563EB]">
+              {s}
+            </span>
+          ))}
+        </div>
+      </FloatCard>
+      <FloatCard className="absolute right-[5%] top-[7%] px-4 py-3">
+        <p className="text-[11px] text-[#64748B]">Deposit paid</p>
+        <p className="text-[18px] font-semibold text-[#0F172A]">£50.00</p>
+        <p className="mt-0.5 text-[11px] font-semibold text-emerald-600">Paid online ✓</p>
+      </FloatCard>
+    </div>
+  );
+}
+
+const featureRows = [
   {
-    Icon: CalendarCheck,
-    label: "Patients",
-    title: "Patients book and fill in their forms before they arrive",
+    title: "Patients book and get ready before they arrive",
+    lead: "Give patients a simple way to book and prepare with:",
     points: [
       "Online booking from your own booking page",
       "Digital forms and medical history",
       "A patient portal, no password or app needed",
     ],
-    link: "See patient features",
+    button: "See all patient features",
+    Visual: BookingVisual,
+  },
+  {
+    title: "Reminders and recalls that run on their own",
+    lead: "Take the chasing off your reception team with:",
+    points: ["Automatic email and text reminders", "Recalls that follow up for you", "A waitlist to fill cancelled slots"],
+    button: "See all front desk features",
+    Visual: FrontDeskVisual,
+  },
+  {
+    title: "Get paid on time and know your numbers",
+    lead: "See exactly how the practice is doing with:",
+    points: ["Payments, deposits and payment links", "Reports and takings by clinician", "See where your bookings come from"],
+    button: "See payments and reports",
+    Visual: MoneyVisual,
+  },
+];
+
+export function FeatureRows() {
+  return (
+    <section className="bg-white py-16 md:py-24 px-6">
+      <div className="mx-auto max-w-6xl space-y-16 md:space-y-24">
+        {featureRows.map(({ title, lead, points, button, Visual }, i) => {
+          const flip = i % 2 === 1;
+          return (
+            <div key={title} className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+              <Reveal className={flip ? "lg:order-2" : ""}>
+                <h2 className={rowHeading}>{title}</h2>
+                <p className="mt-5 text-[17px] text-[#334155]">{lead}</p>
+                <Bullets items={points} />
+                <Link to="/features" className={`mt-8 ${pillButton}`}>
+                  {button}
+                </Link>
+              </Reveal>
+              <Reveal delay={0.1} className={flip ? "lg:order-1" : ""}>
+                <div className={`${panel} overflow-hidden`} aria-hidden="true">
+                  <Visual />
+                </div>
+              </Reveal>
+            </div>
+          );
+        })}
+      </div>
+    </section>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* What it solves: four everyday problems                              */
+/* ------------------------------------------------------------------ */
+
+const solutions = [
+  {
+    Icon: CalendarX,
+    title: "Reduce no-shows",
+    body: "Patients get a reminder by email and text before every appointment, so fewer forget and fewer chairs sit empty.",
+  },
+  {
+    Icon: RefreshCw,
+    title: "Fill cancelled appointments",
+    body: "When a patient cancels, offer the free slot to patients on your waitlist in a couple of clicks, so the time isn't lost.",
+  },
+  {
+    Icon: PhoneOff,
+    title: "Spend less time on the phone",
+    body: "Patients book online and fill in their forms before they arrive, so reception isn't stuck on calls or chasing paperwork.",
   },
   {
     Icon: Bell,
-    label: "Front desk",
-    title: "Reminders and recalls go out on their own",
-    points: [
-      "Automatic email and text reminders",
-      "Recalls that follow up for you",
-      "A waitlist to fill cancelled slots",
-    ],
-    link: "See front desk features",
-  },
-  {
-    Icon: BarChart3,
-    label: "Money and numbers",
-    title: "Get paid and know your numbers",
-    points: [
-      "Payments, deposits and payment links",
-      "Reports and takings by clinician",
-      "See where your bookings come from",
-    ],
-    link: "See payments and reports",
+    title: "Bring patients back",
+    body: "Recalls go out on time and follow up on their own, and you can send happy patients your Google review link.",
   },
 ];
 
-export function FeatureBlocks() {
+export function SolutionsGrid() {
   return (
-    <section className="relative bg-gradient-to-b from-white via-[#F5F8FF] to-white py-16 md:py-24 px-6">
+    <section className="bg-gradient-to-b from-white via-[#F5F8FF] to-white py-16 md:py-24 px-6">
       <div className="mx-auto max-w-6xl">
-        <SectionHeading
-          eyebrow="What DentDock does"
-          title={
-            <>
-              One system for your <span className="text-[#2563EB]">whole practice day</span>
-            </>
-          }
-          intro="From the first booking to the last recall, without three separate tools and three separate bills."
-        />
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-          {featureBlocks.map(({ Icon, label, title, points, link }, i) => (
-            <motion.div
-              key={label}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ ...ENTRANCE, delay: i * 0.1 }}
-              className="rounded-2xl border border-neutral-200 bg-white p-7 flex flex-col shadow-sm"
-            >
-              <div className="flex items-center gap-3">
-                <span className="w-10 h-10 rounded-xl bg-[#EFF6FF] flex items-center justify-center">
+        <Reveal className="mx-auto max-w-2xl text-center mb-12 md:mb-14">
+          <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-foreground leading-[1.1]">
+            Fixes for the problems <span className="text-[#2563EB]">your front desk faces every day</span>
+          </h2>
+        </Reveal>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {solutions.map(({ Icon, title, body }, i) => (
+            <Reveal key={title} delay={i * 0.08}>
+              <div className="h-full rounded-2xl border border-neutral-200 bg-white p-6 flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
+                <span className="w-11 h-11 rounded-xl bg-[#EFF6FF] flex items-center justify-center">
                   <Icon className="w-5 h-5 text-[#2563EB]" strokeWidth={1.75} />
                 </span>
-                <span className="text-[13px] font-semibold uppercase text-[#2563EB]" style={{ letterSpacing: "0.1em" }}>
-                  {label}
-                </span>
+                <h3 className="mt-5 text-[19px] font-semibold text-[#0F172A] tracking-tight">{title}</h3>
+                <p className="mt-2 text-[15px] text-[#475569] leading-[1.6] flex-1">{body}</p>
+                <Link to="/features" className="mt-5 text-[14px] font-medium text-[#2563EB] hover:underline">
+                  Find out more →
+                </Link>
               </div>
-              <h3 className="mt-5 text-[20px] font-semibold text-foreground tracking-tight leading-snug">{title}</h3>
-              <ul className="mt-5 space-y-3 flex-1">
-                {points.map((p) => (
-                  <li key={p} className="flex items-start gap-2.5 text-[15px] text-[#475569] leading-[1.5]">
-                    <Check className="w-4 h-4 text-[#2563EB] mt-1 flex-shrink-0" />
-                    {p}
-                  </li>
-                ))}
-              </ul>
-              <Link to="/features" className="mt-6 text-[14px] font-medium text-[#2563EB] hover:underline">
-                {link} →
-              </Link>
-            </motion.div>
+            </Reveal>
           ))}
         </div>
       </div>
@@ -165,149 +334,137 @@ export function FeatureBlocks() {
 }
 
 /* ------------------------------------------------------------------ */
-/* Support                                                             */
+/* Support: photo with floating cards, text alongside                  */
+/* Photos: Unsplash, free under the Unsplash licence (iw7gOkFLNI0,     */
+/* kxtmtiMVM38).                                                       */
 /* ------------------------------------------------------------------ */
 
-const supportPoints = [
-  {
-    Icon: MessageCircle,
-    title: "WhatsApp, same-day reply",
-    body: "Message us on WhatsApp and a real person replies the same day. No chatbot, no ticket queue, no escalation form.",
-  },
-  {
-    Icon: Wrench,
-    title: "The person who built it fixes it",
-    body: "Your message goes straight to the person who built DentDock. Nothing is outsourced, and nothing is passed along a chain.",
-  },
-  {
-    Icon: Upload,
-    title: "Help moving your patients",
-    body: "Export your patient list from your current system as a CSV. We'll help you match the columns so nothing gets lost.",
-  },
-  {
-    Icon: UserRound,
-    title: "Set up with you, not left to you",
-    body: "The first 30 practices get priority support and help shaping what we build next.",
-  },
-];
-
-export function SupportSection() {
+export function SupportRow() {
   return (
-    <section id="support" className="relative bg-[#0F162B] py-16 md:py-24 px-6 overflow-hidden scroll-mt-24">
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0"
-        style={{
-          background:
-            "radial-gradient(50% 60% at 85% 10%, rgba(37,99,235,0.35) 0%, rgba(37,99,235,0) 70%), radial-gradient(40% 50% at 10% 90%, rgba(56,189,248,0.18) 0%, rgba(56,189,248,0) 70%)",
-        }}
-      />
-      <div className="relative mx-auto max-w-6xl">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={ENTRANCE}
-          className="mx-auto max-w-2xl text-center mb-12 md:mb-16"
-        >
-          <p className="text-[13px] font-semibold uppercase text-[#60A5FA] mb-4" style={{ letterSpacing: "0.14em" }}>
-            Support
+    <section id="support" className="bg-white py-16 md:py-24 px-6 scroll-mt-24">
+      <div className="mx-auto max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+        <Reveal>
+          <div className={`relative ${panel} p-8 sm:p-12`}>
+            <img
+              src="/images/home/support-call.webp"
+              alt="Woman smiling on a phone call at her desk"
+              width={1400}
+              height={788}
+              loading="lazy"
+              className="w-full aspect-[4/3] object-cover rounded-2xl"
+            />
+            <FloatCard className="absolute left-3 sm:left-4 top-6 sm:top-8 w-[220px] p-4">
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-emerald-500" />
+                <p className="text-[12px] font-semibold text-[#0F172A]">WhatsApp</p>
+              </div>
+              <p className="mt-3 rounded-xl rounded-tl-sm bg-neutral-100 px-3 py-2 text-[12px] text-[#334155]">
+                How do I change our opening hours for Christmas?
+              </p>
+              <p className="mt-2 ml-6 rounded-xl rounded-tr-sm bg-[#DCFCE7] px-3 py-2 text-[12px] text-[#14532D]">
+                Settings, then Opening hours. I'll walk you through it now.
+              </p>
+            </FloatCard>
+            <FloatCard className="absolute right-3 sm:right-4 bottom-6 sm:bottom-8 px-4 py-2.5 flex items-center gap-2">
+              <MessageCircle className="w-4 h-4 text-[#2563EB]" />
+              <span className="text-[12px] font-medium text-[#0F172A]">Real person, same-day reply</span>
+            </FloatCard>
+          </div>
+        </Reveal>
+        <Reveal delay={0.1}>
+          <h2 className={rowHeading}>Support from the people who built it</h2>
+          <p className="mt-5 text-[17px] text-[#334155] leading-[1.6]">
+            When you need help, you message us on WhatsApp and talk to someone who knows DentDock inside out, because
+            they built it. No chatbot, no ticket number, no waiting days for an answer.
           </p>
-          <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-white leading-[1.1]">
-            Real support from <span className="text-[#60A5FA]">the people who built it</span>
-          </h2>
-          <p className="mt-5 text-base md:text-lg text-[#CBD5E1] leading-relaxed">
-            Most dental software companies sell you the product and disappear. We do the opposite: when you need help,
-            you talk to a real person who knows DentDock inside out.
-          </p>
-        </motion.div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-          {supportPoints.map(({ Icon, title, body }, i) => (
-            <motion.div
-              key={title}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ ...ENTRANCE, delay: i * 0.08 }}
-              className="rounded-2xl border border-white/10 bg-white/[0.04] p-7"
-            >
-              <span className="w-10 h-10 rounded-xl bg-[#2563EB]/20 flex items-center justify-center">
-                <Icon className="w-5 h-5 text-[#93C5FD]" strokeWidth={1.75} />
-              </span>
-              <h3 className="mt-5 text-[19px] font-semibold text-white tracking-tight">{title}</h3>
-              <p className="mt-2 text-[15px] text-[#CBD5E1] leading-[1.6]">{body}</p>
-            </motion.div>
-          ))}
-        </div>
-        <div className="mt-10 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3">
-          <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className={primaryButton}>
-            <MessageCircle className="w-4 h-4" /> Message us on WhatsApp
+          <Bullets
+            items={[
+              "Same-day replies on WhatsApp",
+              "Help importing your patients from your current system",
+              "Priority support for the first 30 practices",
+            ]}
+          />
+          <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className={`mt-8 ${pillButton}`}>
+            Message us on WhatsApp
           </a>
-          <Link
-            to="/waitlist"
-            className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/30 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10"
-          >
-            Join the waitlist <ArrowRight className="w-4 h-4" />
-          </Link>
-        </div>
-        <p className="mt-4 text-center text-[13px] text-[#94A3B8]">
-          Please don't send patient details over WhatsApp.
-        </p>
+          <p className="mt-3 text-[13px] text-[#64748B]">Please don't send patient details over WhatsApp.</p>
+        </Reveal>
       </div>
     </section>
   );
 }
 
 /* ------------------------------------------------------------------ */
-/* Switch in a day                                                     */
+/* Switch in a day: text alongside a photo with floating cards         */
 /* ------------------------------------------------------------------ */
 
 const steps = [
-  {
-    title: "Set up your practice",
-    body: "Add your opening hours, treatments and team. Reminders and automations come ready with sensible defaults.",
-  },
-  {
-    title: "Bring your patients",
-    body: "Export your patient list as a CSV from your current system and upload it. DentDock matches the columns for you.",
-  },
-  {
-    title: "Go live",
-    body: "Share your booking link and let reminders and recalls start running. Most practices are live within the day.",
-  },
+  { title: "Set up your practice", body: "Opening hours, treatments and team. Reminders come ready to go." },
+  { title: "Bring your patients", body: "Upload your patient list as a CSV and DentDock matches the columns." },
+  { title: "Go live", body: "Share your booking link and let reminders and recalls start running." },
 ];
 
-export function SwitchSteps() {
+export function SwitchRow() {
   return (
-    <section className="bg-white py-16 md:py-24 px-6">
-      <div className="mx-auto max-w-6xl">
-        <SectionHeading
-          eyebrow="Switching"
-          title={
-            <>
-              Switch in <span className="text-[#2563EB]">a single day</span>
-            </>
-          }
-          intro="Set it up yourself, with us on WhatsApp if you want a hand."
-        />
-        <ol className="grid grid-cols-1 md:grid-cols-3 gap-5">
-          {steps.map((s, i) => (
-            <motion.li
-              key={s.title}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ ...ENTRANCE, delay: i * 0.1 }}
-              className="rounded-2xl border border-neutral-200 bg-[#F8FAFC] p-7"
-            >
-              <span className="w-9 h-9 rounded-full bg-[#2563EB] text-white text-[15px] font-semibold flex items-center justify-center">
-                {i + 1}
-              </span>
-              <h3 className="mt-5 text-[19px] font-semibold text-foreground tracking-tight">{s.title}</h3>
-              <p className="mt-2 text-[15px] text-[#475569] leading-[1.6]">{s.body}</p>
-            </motion.li>
-          ))}
-        </ol>
+    <section className="bg-gradient-to-b from-white via-[#F5F8FF] to-white py-16 md:py-24 px-6">
+      <div className="mx-auto max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+        <Reveal className="lg:order-2">
+          <div className={`relative ${panel} p-8 sm:p-12`}>
+            <img
+              src="/images/home/front-desk.webp"
+              alt="Receptionist smiling at her desk computer"
+              width={1400}
+              height={933}
+              loading="lazy"
+              className="w-full aspect-[4/3] object-cover object-[60%_50%] rounded-2xl"
+            />
+            <FloatCard className="absolute left-3 sm:left-4 top-6 sm:top-8 w-[190px] p-4">
+              <p className="text-[12px] font-semibold text-[#0F172A]">Practice setup</p>
+              <ul className="mt-3 space-y-2">
+                {["Opening hours", "Treatments", "Team"].map((l) => (
+                  <li key={l} className="flex items-center gap-2 text-[12px] text-[#334155]">
+                    <span className="w-4 h-4 rounded-full bg-[#2563EB] flex items-center justify-center">
+                      <Check className="w-2.5 h-2.5 text-white" strokeWidth={3} />
+                    </span>
+                    {l}
+                  </li>
+                ))}
+              </ul>
+            </FloatCard>
+            <div className="absolute right-3 sm:right-4 bottom-6 sm:bottom-8 flex flex-col items-end gap-2">
+              <FloatCard className="px-4 py-2.5 flex items-center gap-2">
+                <Upload className="w-4 h-4 text-[#2563EB]" />
+                <span className="text-[12px] font-medium text-[#0F172A]">patients.csv · columns matched</span>
+              </FloatCard>
+              <FloatCard className="px-4 py-2.5 flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-emerald-500" />
+                <span className="text-[12px] font-medium text-[#0F172A]">Booking page is live</span>
+              </FloatCard>
+            </div>
+          </div>
+        </Reveal>
+        <Reveal delay={0.1} className="lg:order-1">
+          <h2 className={rowHeading}>Switch in a single day</h2>
+          <p className="mt-5 text-[17px] text-[#334155] leading-[1.6]">
+            No kick-off calls and no site visits. Set it up yourself, with us on WhatsApp if you want a hand.
+          </p>
+          <ol className="mt-6 space-y-5">
+            {steps.map((s, i) => (
+              <li key={s.title} className="flex gap-4">
+                <span className="w-8 h-8 rounded-full border-2 border-[#2563EB] text-[#2563EB] text-[14px] font-semibold flex items-center justify-center flex-shrink-0">
+                  {i + 1}
+                </span>
+                <div>
+                  <p className="text-[17px] font-semibold text-[#0F172A]">{s.title}</p>
+                  <p className="mt-1 text-[15px] text-[#475569] leading-[1.6]">{s.body}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+          <Link to="/waitlist" className={`mt-8 ${pillButton}`}>
+            Join the waitlist
+          </Link>
+        </Reveal>
       </div>
     </section>
   );
@@ -331,10 +488,7 @@ export function PricingTeaser() {
     <section className="relative bg-gradient-to-br from-[#DBEAFE] via-[#EFF6FF] to-white py-16 md:py-24 px-6">
       <div className="mx-auto max-w-5xl rounded-3xl border border-neutral-200 bg-white p-8 md:p-12 shadow-sm grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
         <div>
-          <p className="text-[13px] font-semibold uppercase text-brand-blue" style={{ letterSpacing: "0.14em" }}>
-            Pricing
-          </p>
-          <h2 className="mt-4 text-3xl md:text-5xl font-medium tracking-tight text-foreground leading-[1.1]">
+          <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-foreground leading-[1.1]">
             One plan. <span className="text-[#2563EB]">£49 a month.</span>
           </h2>
           <p className="mt-5 text-base md:text-lg text-muted-foreground leading-relaxed">

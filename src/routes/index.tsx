@@ -6,10 +6,11 @@ import FeaturesSection from "@/components/home/FeaturesSection";
 import FAQ from "@/components/home/FAQ";
 import {
   ClosingBand,
-  FeatureBlocks,
+  FeatureRows,
   PricingTeaser,
-  SupportSection,
-  SwitchSteps,
+  SolutionsGrid,
+  SupportRow,
+  SwitchRow,
   TrustStrip,
 } from "@/components/home/HomeSections";
 import { homeFaq } from "@/lib/homeFaq";
@@ -117,9 +118,10 @@ function Index() {
       <section id="features" className="scroll-mt-24">
         <FeaturesSection />
       </section>
-      <FeatureBlocks />
-      <SupportSection />
-      <SwitchSteps />
+      <FeatureRows />
+      <SolutionsGrid />
+      <SupportRow />
+      <SwitchRow />
       <PricingTeaser />
       <section id="faq" className="scroll-mt-24">
         <FAQ />

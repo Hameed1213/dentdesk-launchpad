@@ -158,9 +158,6 @@ export function WaitlistForm({ className = "mt-10" }: { className?: string } = {
       {error && (
         <p className="text-sm text-red-500 text-center w-full mt-1">{error}</p>
       )}
-      <p className="text-[13px] text-neutral-500 text-center w-full mt-1">
-        We'll email you personally when your place is ready. No sales calls.
-      </p>
     </div>
   );
 }
@@ -200,7 +197,7 @@ export default function HeroSection() {
           variants={{ container: makeContainer(0.05), item: itemBlurSlide }}
         >
           <p className="text-lg text-neutral-500 max-w-xl mx-auto text-center leading-relaxed mt-5">
-            Online booking, reminders, recalls, forms and payments in one place. £49 a month per practice, with real support from the people who built it.
+            Online booking, automated reminders, payments and recalls in one simple system. Built for UK private practices, for £49 a month.
           </p>
         </AnimatedGroup>
 
