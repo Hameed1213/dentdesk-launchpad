@@ -345,110 +345,145 @@ function Result({ label, value, accent }: { label: string; value: string; accent
   );
 }
 
-/** What missed appointments cost a practice, from its own numbers. */
-export function NoShowCalculator() {
-  const [missed, setMissed] = useState(3);
-  const [value, setValue] = useState(55);
-  const [weeks, setWeeks] = useState(48);
-  const perMonth = (missed * value * weeks) / 12;
-  const onePerWeek = (value * weeks) / 12;
+export type CalcSlider = {
+  key: string;
+  label: string;
+  min: number;
+  max: number;
+  step?: number;
+  start: number;
+  money?: boolean;
+};
+export type CalcResult = { label: string; value: string; accent?: boolean };
+
+/** A calculator built from the practice's own numbers. Each page sets its sliders and how results are worked out. */
+export function Calculator({
+  title,
+  intro,
+  sliders,
+  results,
+  note,
+}: {
+  title: string;
+  intro: string;
+  sliders: CalcSlider[];
+  results: (v: Record<string, number>) => CalcResult[];
+  note?: string;
+}) {
+  const [values, setValues] = useState<Record<string, number>>(() =>
+    Object.fromEntries(sliders.map((sl) => [sl.key, sl.start])),
+  );
+  const out = results(values);
   return (
     <CalcShell
-      title="What do no-shows cost your practice?"
-      intro="Move the sliders to match your practice. We've started at £55, the average private check-up in 2024 (Competition and Markets Authority)."
+      title={title}
+      intro={intro}
       controls={
         <>
-          <Slider
-            label="Missed appointments a week"
-            value={missed}
-            min={0}
-            max={20}
-            format={(n) => String(n)}
-            onChange={setMissed}
-          />
-          <Slider
-            label="Average appointment value"
-            value={value}
-            min={20}
-            max={300}
-            step={5}
-            format={gbp}
-            onChange={setValue}
-          />
-          <Slider
-            label="Weeks open a year"
-            value={weeks}
-            min={40}
-            max={52}
-            format={(n) => String(n)}
-            onChange={setWeeks}
-          />
+          {sliders.map((sl) => (
+            <Slider
+              key={sl.key}
+              label={sl.label}
+              value={values[sl.key]}
+              min={sl.min}
+              max={sl.max}
+              step={sl.step}
+              format={sl.money ? gbp : (n) => String(n)}
+              onChange={(n) => setValues((v) => ({ ...v, [sl.key]: n }))}
+            />
+          ))}
         </>
       }
       result={
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 sm:divide-x sm:divide-[#DBEAFE]">
-          <Result label="Lost to no-shows" value={gbp(perMonth)} />
-          <Result label="Saving just one a week" value={gbp(onePerWeek)} accent />
-          <Result label="DentDock costs" value="£49" />
+        <div>
+          <div
+            className={`grid grid-cols-1 gap-5 sm:divide-x sm:divide-[#DBEAFE] ${out.length === 3 ? "sm:grid-cols-3" : "sm:grid-cols-2"}`}
+          >
+            {out.map((r) => (
+              <Result key={r.label} label={r.label} value={r.value} accent={r.accent} />
+            ))}
+          </div>
+          {note && (
+            <p className="mt-7 mx-auto max-w-xl text-center text-[13px] leading-[1.6] text-[#64748B]">
+              {note}
+            </p>
+          )}
         </div>
       }
     />
   );
 }
 
+export const money = gbp;
+
+/** What missed appointments cost a practice, from its own numbers. */
+export function NoShowCalculator() {
+  return (
+    <Calculator
+      title="What do no-shows cost your practice?"
+      intro="Move the sliders to match your practice. We've started at £55, the average private check-up in 2024 (Competition and Markets Authority)."
+      sliders={[
+        { key: "missed", label: "Missed appointments a week", min: 0, max: 20, start: 3 },
+        {
+          key: "value",
+          label: "Average appointment value",
+          min: 20,
+          max: 300,
+          step: 5,
+          start: 55,
+          money: true,
+        },
+        { key: "weeks", label: "Weeks open a year", min: 40, max: 52, start: 48 },
+      ]}
+      results={(v) => [
+        { label: "Lost to no-shows", value: gbp((v.missed * v.value * v.weeks) / 12) },
+        { label: "Saving just one a week", value: gbp((v.value * v.weeks) / 12), accent: true },
+        { label: "DentDock costs", value: "£49" },
+      ]}
+    />
+  );
+}
+
 /** What a practice pays now for separate tools, against DentDock. */
 export function SpendCalculator() {
-  const [pms, setPms] = useState(150);
-  const [texts, setTexts] = useState(40);
-  const [extras, setExtras] = useState(30);
-  const total = pms + texts + extras;
   return (
-    <CalcShell
+    <Calculator
       title="What do you pay for software now?"
       intro="Add up what you pay each month for your practice system, reminder texts and any separate booking or forms tools."
-      controls={
-        <>
-          <Slider
-            label="Practice software"
-            value={pms}
-            min={0}
-            max={600}
-            step={10}
-            format={gbp}
-            onChange={setPms}
-          />
-          <Slider
-            label="Reminder texts"
-            value={texts}
-            min={0}
-            max={200}
-            step={5}
-            format={gbp}
-            onChange={setTexts}
-          />
-          <Slider
-            label="Booking, forms or other tools"
-            value={extras}
-            min={0}
-            max={200}
-            step={5}
-            format={gbp}
-            onChange={setExtras}
-          />
-        </>
-      }
-      result={
-        <div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:divide-x sm:divide-[#DBEAFE]">
-            <Result label="You pay now" value={gbp(total)} />
-            <Result label="DentDock" value="£49" accent />
-          </div>
-          <p className="mt-4 text-center text-[13px] text-[#64748B]">
-            Includes 200 texts a month, then 8p a text. Check what your current system does that
-            DentDock doesn't, such as NHS claims or charting.
-          </p>
-        </div>
-      }
+      sliders={[
+        {
+          key: "pms",
+          label: "Practice software",
+          min: 0,
+          max: 600,
+          step: 10,
+          start: 150,
+          money: true,
+        },
+        {
+          key: "texts",
+          label: "Reminder texts",
+          min: 0,
+          max: 200,
+          step: 5,
+          start: 40,
+          money: true,
+        },
+        {
+          key: "extras",
+          label: "Booking, forms or other tools",
+          min: 0,
+          max: 200,
+          step: 5,
+          start: 30,
+          money: true,
+        },
+      ]}
+      results={(v) => [
+        { label: "You pay now", value: gbp(v.pms + v.texts + v.extras) },
+        { label: "DentDock", value: "£49", accent: true },
+      ]}
+      note="Includes 200 texts a month, then 8p a text. Check what your current system does that DentDock doesn't, such as NHS claims or charting."
     />
   );
 }
@@ -511,3 +546,11 @@ export function SolutionsHubHero({
     </section>
   );
 }
+
+/** Where to put DentDock cards on a hero photo: inside on phones and tablets, over the edge on large screens. */
+export const at = {
+  topLeft: "absolute left-2 sm:left-3 lg:-left-6 top-4 sm:top-6 lg:top-10",
+  topRight: "absolute right-2 sm:right-3 lg:-right-6 top-4 sm:top-6 lg:top-10",
+  bottomLeft: "absolute left-2 sm:left-3 lg:-left-6 bottom-4 sm:bottom-6 lg:bottom-10",
+  bottomRight: "absolute right-2 sm:right-3 lg:-right-6 bottom-4 sm:bottom-6 lg:bottom-10",
+};

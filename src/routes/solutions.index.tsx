@@ -52,11 +52,43 @@ function SolutionsPage() {
         items={[
           {
             title: "Reduce no-shows",
-            body: "Reminders, an easy way to cancel, a waitlist to refill gaps, and a fair fee policy.",
+            body: "Reminders, an easy way to cancel and a fair fee policy.",
             to: "/solutions/reduce-no-shows",
             image: "/images/pages/empty-surgery.webp",
-            alt: "An empty, modern dental surgery",
+            alt: "An empty dental chair in a modern surgery",
             position: "object-[50%_55%]",
+          },
+          {
+            title: "Fill cancelled appointments",
+            body: "Offer gaps to patients on your waitlist in a couple of clicks.",
+            to: "/solutions/fill-cancelled-appointments",
+            image: "/images/pages/hero-booking.webp",
+            alt: "Woman smiling as she uses her phone at home",
+            position: "object-[55%_35%]",
+          },
+          {
+            title: "Cut admin and phone time",
+            body: "Booking, forms, reminders and recalls that run themselves.",
+            to: "/solutions/cut-admin",
+            image: "/images/home/practice-laptop.webp",
+            alt: "Practice manager working on a laptop at her desk",
+            position: "object-[70%_40%]",
+          },
+          {
+            title: "Deposits and late cancellations",
+            body: "Deposits on the treatments you choose, and fees decided case by case.",
+            to: "/solutions/deposits-and-late-cancellations",
+            image: "/images/pages/contactless-payment.webp",
+            alt: "Phone held over a card reader to pay",
+            position: "object-center",
+          },
+          {
+            title: "Bring patients back",
+            body: "Recalls that follow up until patients book, and Google review links.",
+            to: "/solutions/bring-patients-back",
+            image: "/images/pages/hero-reports.webp",
+            alt: "Dentist showing a patient a scan on screen",
+            position: "object-[50%_35%]",
           },
         ]}
       />
@@ -66,11 +98,35 @@ function SolutionsPage() {
         items={[
           {
             title: "Private practices",
-            body: "Everything a UK private practice runs on, for £49 a month with no contract.",
+            body: "Everything a UK private practice runs on, for £49 a month.",
             to: "/solutions/private-practices",
-            image: "/images/pages/hero-calendar.webp",
-            alt: "Dentist matching a shade guide for a smiling patient",
-            position: "object-[45%_35%]",
+            image: "/images/home/dentist-patient.webp",
+            alt: "Dentist talking with a smiling patient",
+            position: "object-[45%_50%]",
+          },
+          {
+            title: "Going private",
+            body: "Show your prices, take deposits and let patients book online.",
+            to: "/solutions/going-private",
+            image: "/images/pages/hero-security.webp",
+            alt: "Smiling dentist in his surgery",
+            position: "object-[50%_28%]",
+          },
+          {
+            title: "New practices",
+            body: "Ready for your first patient in a day, with no contract.",
+            to: "/solutions/new-practices",
+            image: "/images/pages/hero-switching.webp",
+            alt: "Smiling dentist sitting by the dental chair",
+            position: "object-[45%_25%]",
+          },
+          {
+            title: "Multi-site groups",
+            body: "Coming soon: one login and an overview of every site.",
+            to: "/solutions/multi-site-groups",
+            image: "/images/pages/hero-features.webp",
+            alt: "Dentist treating a patient in a bright surgery",
+            position: "object-[60%_40%]",
           },
         ]}
       />

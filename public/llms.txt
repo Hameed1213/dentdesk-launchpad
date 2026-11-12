@@ -18,6 +18,13 @@ Dent Dock helps UK private dental practices run their day-to-day: patients book 
 - [Switching to DentDock](/features/switching): Guided setup and CSV patient import.
 - [Reminders and recalls](/features/reminders-and-recalls): Reminders 72, 24 and 2 hours before each appointment, recall follow-ups, waitlist.
 - [Reduce no-shows](/solutions/reduce-no-shows): Evidence on reminders, fair cancellation fees, refilling gaps.
+- [Fill cancelled appointments](/solutions/fill-cancelled-appointments): Waitlist offers for cancelled slots.
+- [Cut admin and phone time](/solutions/cut-admin): Booking, forms, reminders and recalls that run themselves.
+- [Deposits and late cancellations](/solutions/deposits-and-late-cancellations): Deposits on chosen treatments and fees decided case by case.
+- [Bring patients back](/solutions/bring-patients-back): Recalls with follow-ups and Google review links.
+- [Going private](/solutions/going-private): Software for practices moving to private care.
+- [New practices](/solutions/new-practices): Set up a new practice in a day.
+- [Multi-site groups](/solutions/multi-site-groups): Coming soon; register interest.
 - [Private practices](/solutions/private-practices): DentDock for UK private dental practices.
 - [Waitlist](/waitlist): Join the early-access waitlist.
 - [Privacy](/privacy): Privacy policy.

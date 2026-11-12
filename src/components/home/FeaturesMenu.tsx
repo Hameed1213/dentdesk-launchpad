@@ -13,7 +13,11 @@ import {
   CreditCard,
   FileText,
   Globe,
+  Network,
+  PhoneOff,
+  RefreshCw,
   ShieldCheck,
+  Sparkles,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -74,11 +78,30 @@ export const solutionsMenu: MenuConfig = {
   columns: [
     {
       title: "By problem",
-      items: [{ label: "Reduce no-shows", to: "/solutions/reduce-no-shows", Icon: CalendarX }],
+      items: [
+        { label: "Reduce no-shows", to: "/solutions/reduce-no-shows", Icon: CalendarX },
+        {
+          label: "Fill cancelled appointments",
+          to: "/solutions/fill-cancelled-appointments",
+          Icon: RefreshCw,
+        },
+        { label: "Cut admin and phone time", to: "/solutions/cut-admin", Icon: PhoneOff },
+        {
+          label: "Deposits and late cancellations",
+          to: "/solutions/deposits-and-late-cancellations",
+          Icon: CreditCard,
+        },
+        { label: "Bring patients back", to: "/solutions/bring-patients-back", Icon: Bell },
+      ],
     },
     {
       title: "By practice type",
-      items: [{ label: "Private practices", to: "/solutions/private-practices", Icon: Building2 }],
+      items: [
+        { label: "Private practices", to: "/solutions/private-practices", Icon: Building2 },
+        { label: "Going private", to: "/solutions/going-private", Icon: ArrowRightLeft },
+        { label: "New practices", to: "/solutions/new-practices", Icon: Sparkles },
+        { label: "Multi-site groups", to: "/solutions/multi-site-groups", Icon: Network },
+      ],
     },
   ],
 };
