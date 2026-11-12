@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { Link } from "@tanstack/react-router";
 import {
   ArrowRight,
@@ -166,9 +167,14 @@ function MenuLayout({ onClose }: { onClose: () => void }) {
 /** Desktop: "Features" opens a full-width panel under the navbar (hover or click). */
 export function FeaturesMenuDesktop() {
   const [open, setOpen] = useState(false);
+  const [top, setTop] = useState(80);
+  const [mounted, setMounted] = useState(false);
   const closeTimer = useRef<number | null>(null);
   const wrap = useRef<HTMLDivElement | null>(null);
+  const panel = useRef<HTMLDivElement | null>(null);
   const close = () => setOpen(false);
+
+  useEffect(() => setMounted(true), []);
 
   const openNow = () => {
     if (closeTimer.current) window.clearTimeout(closeTimer.current);
@@ -179,10 +185,28 @@ export function FeaturesMenuDesktop() {
     closeTimer.current = window.setTimeout(() => setOpen(false), 180);
   };
 
+  // The panel lives in document.body (see below), so place it just under the navbar bar.
+  useEffect(() => {
+    if (!open) return;
+    const place = () => {
+      const bar = wrap.current?.closest("header")?.firstElementChild as HTMLElement | null;
+      if (bar) setTop(bar.getBoundingClientRect().bottom);
+    };
+    place();
+    window.addEventListener("scroll", place, { passive: true });
+    window.addEventListener("resize", place);
+    return () => {
+      window.removeEventListener("scroll", place);
+      window.removeEventListener("resize", place);
+    };
+  }, [open]);
+
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
     const onClick = (e: MouseEvent) => {
-      if (wrap.current && !wrap.current.contains(e.target as Node)) setOpen(false);
+      const t = e.target as Node;
+      if (wrap.current?.contains(t) || panel.current?.contains(t)) return;
+      setOpen(false);
     };
     document.addEventListener("keydown", onKey);
     document.addEventListener("mousedown", onClick);
@@ -192,8 +216,31 @@ export function FeaturesMenuDesktop() {
     };
   }, []);
 
+  /*
+   * Rendered into document.body: once the page scrolls, the navbar pill gets a backdrop blur,
+   * and a blurred parent becomes the containing block for its children, which squashed the panel
+   * to the pill's width. Outside the navbar it always spans the page.
+   */
+  const panelEl = (
+    <div
+      ref={panel}
+      onMouseEnter={openNow}
+      onMouseLeave={closeSoon}
+      style={{ top }}
+      className={cn(
+        "hidden lg:block fixed inset-x-0 z-50 pt-2 px-4 lg:px-8 transition-[opacity,transform,visibility] duration-200",
+        open
+          ? "opacity-100 visible translate-y-0"
+          : "opacity-0 invisible -translate-y-1 pointer-events-none",
+      )}
+    >
+      <div className="mx-auto max-w-[1400px] rounded-3xl bg-white border border-[#E5EDFB] shadow-[0_24px_60px_-24px_rgba(15,23,42,0.28)] p-5 lg:p-6">
+        <MenuLayout onClose={close} />
+      </div>
+    </div>
+  );
+
   return (
-    // Not positioned on purpose: the panel is placed against the fixed header, so it spans the page.
     <div ref={wrap} onMouseEnter={openNow} onMouseLeave={closeSoon}>
       <button
         type="button"
@@ -211,21 +258,7 @@ export function FeaturesMenuDesktop() {
           strokeWidth={2.25}
         />
       </button>
-
-      <div
-        className={cn(
-          "absolute inset-x-0 top-full pt-2 px-4 lg:px-8 transition-all duration-200",
-          open
-            ? "opacity-100 visible translate-y-0"
-            : "opacity-0 invisible -translate-y-1 pointer-events-none",
-        )}
-      >
-        <div className="mx-auto max-w-[1400px] rounded-3xl bg-white border border-[#E5EDFB] shadow-[0_24px_60px_-24px_rgba(15,23,42,0.28)] p-5 lg:p-6">
-          <div>
-            <MenuLayout onClose={close} />
-          </div>
-        </div>
-      </div>
+      {mounted && createPortal(panelEl, document.body)}
     </div>
   );
 }
@@ -239,7 +272,7 @@ export function FeaturesMenuMobile({ onNavigate }: { onNavigate: () => void }) {
         type="button"
         aria-expanded={open}
         onClick={() => setOpen((v) => !v)}
-        className="w-full flex items-center justify-between text-sm font-medium text-neutral-700 hover:text-neutral-900 px-3 py-2.5 rounded-lg hover:bg-neutral-100"
+        className="w-full flex items-center justify-between text-[15px] font-medium text-neutral-800 px-3 py-3.5 rounded-lg hover:bg-neutral-100 border-b border-neutral-100"
       >
         Features
         <ChevronDown
