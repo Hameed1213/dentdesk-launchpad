@@ -59,7 +59,7 @@ export const featurePages = {
   },
   switching: {
     title: "Switching to DentDock",
-    body: "Bring your patients across with a CSV and go live in a day.",
+    body: "Plan the move, bring your patients across with a CSV and go live when you're ready.",
     to: "/features/switching",
     image: "/images/pages/hero-switching.webp",
     position: "object-[45%_25%]",

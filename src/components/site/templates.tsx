@@ -118,7 +118,7 @@ export function PageHeroSplit({ hero }: { hero: HeroContent }) {
             )}
           </div>
           <p className="mt-5 text-[14px] text-[#64748B]">
-            £49 a month per practice · No contract · Live within the day
+            £49 a month per practice · No contract · No setup fees
           </p>
         </Reveal>
         <Reveal delay={0.1}>{hero.visual}</Reveal>

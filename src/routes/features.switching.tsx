@@ -1,7 +1,19 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { MessageCircle } from "lucide-react";
 import { PhotoPanel } from "@/components/site/ui";
-import { PlatformPage, templateHead, type PlatformContent } from "@/components/site/templates";
+import PageShell from "@/components/site/PageShell";
+import { ClosingBand, TrustStrip } from "@/components/site/ui";
+import {
+  FaqSection,
+  FeatureCards,
+  Fit,
+  OtherAreas,
+  PageHeroSplit,
+  Steps,
+  templateHead,
+  type PlatformContent,
+  type Step,
+} from "@/components/site/templates";
 import { PillCard } from "@/components/site/cards";
 import { AppWindow } from "@/components/site/screens";
 import { Badge, Btn, Panel, RowList, Table, Ticks, Zoom } from "@/components/site/screenKit";
@@ -16,6 +28,8 @@ import { othersFor } from "@/components/site/featurePages";
  * allergies, conditions, notes) and check-up/hygiene recall dates; WhatsApp support (site claim).
  * Not claimed: importing appointments, history, payments, charts or forms; direct links to other
  * systems; consent handling on import (open bug); medications shown on the profile; a fixed setup time.
+ * Reworked 12 Nov 2026 (Hariss): switching is a planned move, not upload and go. The page now says
+ * what stays in the old system, that booked appointments must be added by hand, and to allow weeks.
  * Photo: Magnific (Freepik) free licence, credited in the page footer.
  */
 
@@ -184,9 +198,9 @@ const content: PlatformContent = {
       { label: "Switching to DentDock", to: PATH },
     ],
     title: "Switch to DentDock",
-    highlight: "in a day",
+    highlight: "with a plan",
     intro:
-      "Set up your practice, bring your patients across and start taking bookings, at your own pace.",
+      "Setting up DentDock is quick. Moving a whole practice takes a little planning, so here's what comes across, what stays behind, and how we help.",
     visual: (
       <PhotoPanel
         src="/images/pages/hero-switching.webp"
@@ -197,7 +211,7 @@ const content: PlatformContent = {
         <PillCard
           className="absolute left-2 sm:left-3 lg:-left-6 bottom-4 sm:bottom-6 lg:bottom-10"
           icon="dot"
-          text="Booking page is live"
+          text="Go-live date agreed"
         />
       </PhotoPanel>
     ),
@@ -215,7 +229,7 @@ const content: PlatformContent = {
     },
     {
       title: "Bring your patients with a CSV",
-      body: "Export your patient list from your current system and upload it. DentDock matches the columns for you.",
+      body: "Export your patient list from your current system and upload it. DentDock matches the columns, and we'll check the file with you first.",
       points: [
         "Guides for Dentally, SoE, R4 and more",
         "Change any column match",
@@ -234,8 +248,8 @@ const content: PlatformContent = {
       visual: <LiveScreen />,
     },
     {
-      title: "Help when you want it",
-      body: "If anything isn't clear, message us on WhatsApp and talk to the people who built DentDock.",
+      title: "Help planning the move",
+      body: "Message us on WhatsApp and talk to the people who built DentDock, from choosing a go-live date to your first week.",
       points: [
         "Same-day replies",
         "Help checking your patient file",
@@ -247,24 +261,29 @@ const content: PlatformContent = {
   others: othersFor(["security", "booking", "reminders"]),
   faq: [
     {
+      question: "How long does switching take?",
+      answer:
+        "Setting up DentDock can be done in a day. Allow a few weeks for the whole move: giving notice to your current supplier, getting your patient export, checking the import and adding upcoming appointments. We'll help you choose a go-live date that suits your practice.",
+    },
+    {
       question: "What can we bring across from our current system?",
       answer:
         "Your patients, including names, contact details, date of birth, address, NHS number, allergies, conditions and notes, plus their check-up and hygiene recall dates. Appointment history, payments and charts aren't imported.",
     },
     {
+      question: "What happens to appointments that are already booked?",
+      answer:
+        "They aren't imported. Add upcoming appointments to the DentDock calendar before you go live, or let them finish in your old diary while new bookings go into DentDock.",
+    },
+    {
+      question: "Do we need to keep our old system?",
+      answer:
+        "Keep access to it for past treatment notes, charts, X-rays and payments, because DentDock doesn't import them and you still need to keep patient records. Ask your current supplier what access they offer after you leave.",
+    },
+    {
       question: "Which systems can we switch from?",
       answer:
         "Any system that can export your patient list as a CSV file. DentDock has step-by-step export guides for Dentally, Software of Excellence (EXACT), Carestream R4, Curve Dental and Practiceworks.",
-    },
-    {
-      question: "How long does it take?",
-      answer:
-        "Most practices are set up within the day. Every step can be skipped and finished later, and everything can be changed afterwards.",
-    },
-    {
-      question: "Do we have to connect payments straight away?",
-      answer:
-        "No. You can skip the payments step and connect your Stripe account whenever you're ready.",
     },
     {
       question: "Is there a contract or setup fee?",
@@ -273,14 +292,71 @@ const content: PlatformContent = {
   ],
 };
 
+const plan: Step[] = [
+  {
+    title: "Plan the move",
+    body: "Check your notice period with your current supplier, agree with us what comes across, and pick a quiet day to go live.",
+  },
+  {
+    title: "Set up and check",
+    body: "Add your hours, treatments and team, then export your patient list and check the import with us before go-live.",
+  },
+  {
+    title: "Move your diary",
+    body: "Booked appointments aren't imported. Add upcoming ones to DentDock, or let them finish in your old diary.",
+  },
+  {
+    title: "Go live",
+    body: "Share your booking link and switch on reminders. Keep access to your old system for past records.",
+  },
+];
+
+function SwitchingPage() {
+  const c = content;
+  return (
+    <PageShell>
+      <PageHeroSplit hero={c.hero} />
+      <TrustStrip />
+      <Steps
+        title="How a switch"
+        highlight="works"
+        intro="Most of the work is planning and checking, not uploading. We'll help at every step."
+        steps={plan}
+      />
+      <Fit
+        title="What comes"
+        highlight="across"
+        yesTitle="Comes across to DentDock"
+        yes={[
+          "Patient names, contact details and addresses",
+          "Dates of birth and NHS numbers",
+          "Allergies, conditions and notes",
+          "Check-up and hygiene recall dates",
+        ]}
+        noTitle="Stays in your old system"
+        no={[
+          "Booked and past appointments",
+          "Treatment history and charts",
+          "Payments and balances",
+          "X-rays, photos and documents",
+        ]}
+      />
+      <FeatureCards items={c.features} />
+      <OtherAreas {...c.others} />
+      <FaqSection items={c.faq} />
+      <ClosingBand />
+    </PageShell>
+  );
+}
+
 export const Route = createFileRoute("/features/switching")({
-  component: () => <PlatformPage content={content} />,
+  component: SwitchingPage,
   head: () =>
     templateHead({
       path: PATH,
-      title: "Switch dental software in a day | DentDock",
+      title: "Switching dental software to DentDock | DentDock",
       description:
-        "Switch to DentDock from Dentally, Software of Excellence, R4 and more: guided setup, CSV patient import with column matching, and same-day help. No contract.",
+        "Switching dental software? See what comes across to DentDock, what stays in your old system, and how to plan the move from Dentally, SoE, R4 and more.",
       crumbs: [
         { name: "Features", path: "/features" },
         { name: "Switching to DentDock", path: PATH },

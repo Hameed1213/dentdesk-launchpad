@@ -55,7 +55,7 @@ const included = [
   },
   {
     title: "Setup and support",
-    body: "Import your patients from a CSV, go live in a day, and get same-day help on WhatsApp.",
+    body: "Import your patients from a CSV, plan your go-live date, and get same-day help on WhatsApp.",
     to: "/features/switching",
   },
 ];

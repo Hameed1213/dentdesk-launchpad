@@ -51,9 +51,9 @@ const groups: { id: string; title: string; items: Faq[] }[] = [
           "Yes. Export your patient list as a CSV and upload it. DentDock matches the columns for you and brings across check-up and hygiene recall dates. Appointment history, payments and charts aren't imported.",
       },
       {
-        question: "How long does setup take?",
+        question: "How long does switching take?",
         answer:
-          "Most practices are set up within the day. Every step can be skipped and finished later, and everything can be changed afterwards.",
+          "Setting up DentDock can be done in a day. Allow a few weeks for the whole move: giving notice to your current supplier, getting your patient export, checking the import and adding upcoming appointments, which aren't imported. We'll help you choose a go-live date.",
       },
       {
         question: "Does it work for mixed NHS and private practices?",

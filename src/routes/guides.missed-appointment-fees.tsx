@@ -158,11 +158,8 @@ function GuidePage() {
                 Guides
               </Link>
             </nav>
-            <span className="mt-6 inline-block rounded-lg bg-[#EFF6FF] px-2.5 py-1 text-[12px] font-semibold text-[#2563EB]">
-              Cancellations and fees
-            </span>
             <h1
-              className="mt-4 font-semibold text-[#0F172A] text-[36px] leading-[1.15] md:text-[50px]"
+              className="mt-6 font-semibold text-[#0F172A] text-[36px] leading-[1.15] md:text-[50px]"
               style={{ letterSpacing: "-0.03em" }}
             >
               {TITLE}

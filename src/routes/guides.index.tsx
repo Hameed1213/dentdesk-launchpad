@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import PageShell from "@/components/site/PageShell";
-import { ClosingBand, Reveal, pillButton } from "@/components/site/ui";
+import { ClosingBand, Reveal } from "@/components/site/ui";
 import { templateHead } from "@/components/site/templates";
 import { SolutionsHubHero } from "@/components/site/solutionTemplates";
 import { guides } from "@/components/site/guides";
@@ -39,10 +39,7 @@ function GuidesPage() {
                 to={`/guides/${g.slug}` as "/guides"}
                 className="group h-full rounded-3xl bg-white border border-[#E5EDFB] p-7 flex flex-col transition-colors duration-200 hover:border-[#2563EB]"
               >
-                <span className="self-start rounded-lg bg-[#EFF6FF] px-2.5 py-1 text-[12px] font-semibold text-[#2563EB]">
-                  {g.topic}
-                </span>
-                <h2 className="mt-5 text-[21px] font-semibold tracking-tight text-[#0F172A] leading-[1.3]">
+                <h2 className="text-[21px] font-semibold tracking-tight text-[#0F172A] leading-[1.3]">
                   {g.title}
                 </h2>
                 <p className="mt-3 text-[15px] text-[#475569] leading-[1.6] flex-1">{g.summary}</p>
@@ -56,18 +53,6 @@ function GuidesPage() {
               </Link>
             </Reveal>
           ))}
-          <Reveal delay={0.1} className="h-full">
-            <div className="h-full rounded-3xl border border-dashed border-[#CBD5E1] bg-[#F8FAFC] p-7 flex flex-col justify-center">
-              <h2 className="text-[19px] font-semibold text-[#0F172A]">More guides on the way</h2>
-              <p className="mt-2 text-[15px] text-[#475569] leading-[1.6]">
-                Reminder texts and PECR, recall intervals, and switching dental software. Is there
-                something you'd like us to cover?
-              </p>
-              <Link to="/contact" className={`mt-6 self-start ${pillButton}`}>
-                Suggest a guide
-              </Link>
-            </div>
-          </Reveal>
         </div>
       </section>
       <ClosingBand />

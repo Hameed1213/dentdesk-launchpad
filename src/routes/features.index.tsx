@@ -87,8 +87,8 @@ const rows: HubRow[] = [
   },
   {
     key: "switching",
-    title: "Switch to DentDock in a day",
-    body: "A guided setup, your patients brought across from a CSV with the columns matched for you, and help on WhatsApp if you want it.",
+    title: "Switch to DentDock with a plan",
+    body: "A clear plan for the move, your patients brought across from a CSV with the columns matched for you, and help on WhatsApp at every step.",
     explore: "Explore switching",
     card: <ReminderTimelineCard className={`${L} ${B}`} />,
   },
