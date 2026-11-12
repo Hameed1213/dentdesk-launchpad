@@ -22,10 +22,25 @@ const pillButton =
   "inline-flex items-center justify-center gap-2 rounded-full border border-[#2563EB] px-6 py-3 text-[15px] font-medium text-[#2563EB] transition-colors hover:bg-[#2563EB] hover:text-white";
 
 /** Floating white card used on the pastel panels. z-10 keeps the absolutely placed ones in front. */
+/** Phones: cards shrink a little, anchored to the corner they sit in, so they cover less of the photo. */
+function phoneScale(className: string) {
+  const left = className.includes("left-2");
+  const right = className.includes("right-2");
+  const top = className.includes("top-4");
+  const bottom = className.includes("bottom-4");
+  if (top && left) return "origin-top-left";
+  if (top && right) return "origin-top-right";
+  if (bottom && left) return "origin-bottom-left";
+  if (bottom && right) return "origin-bottom-right";
+  if (left) return "origin-left";
+  if (right) return "origin-right";
+  return "origin-center";
+}
+
 function FloatCard({ className = "", children }: { className?: string; children: ReactNode }) {
   return (
     <div
-      className={`z-10 rounded-2xl bg-white/95 backdrop-blur border border-white shadow-[0_12px_40px_-12px_rgba(15,23,42,0.22)] ${className}`}
+      className={`z-10 rounded-2xl bg-white/95 backdrop-blur border border-white shadow-[0_12px_40px_-12px_rgba(15,23,42,0.22)] max-sm:scale-[0.8] ${phoneScale(className)} ${className}`}
     >
       {children}
     </div>
@@ -151,7 +166,7 @@ function BookingVisual() {
       height={933}
       position="object-[50%_40%]"
     >
-      <FloatCard className="absolute -right-3 sm:-right-6 bottom-6 sm:bottom-10 w-[220px] p-4">
+      <FloatCard className="absolute right-2 sm:right-3 lg:-right-6 bottom-4 sm:bottom-6 lg:bottom-10 w-[220px] p-4">
         <p className="text-[13px] font-semibold text-[#0F172A]">Book an appointment</p>
         <p className="mt-0.5 text-[11px] text-[#64748B]">Check-up · 30 min · Thu 14 Nov</p>
         <div className="mt-3 grid grid-cols-3 gap-1.5">
@@ -172,7 +187,7 @@ function BookingVisual() {
           Confirm booking
         </div>
       </FloatCard>
-      <FloatCard className="absolute -left-3 sm:-left-6 top-6 sm:top-10 w-[180px] p-4">
+      <FloatCard className="absolute left-2 sm:left-3 lg:-left-6 top-4 sm:top-6 lg:top-10 w-[180px] p-4">
         <div className="flex items-center gap-2">
           <span className="w-6 h-6 rounded-md bg-[#EFF6FF] flex items-center justify-center">
             <FileText className="w-3.5 h-3.5 text-[#2563EB]" />
@@ -205,11 +220,11 @@ function FrontDeskVisual() {
       height={1050}
       position="object-[45%_50%]"
     >
-      <FloatCard className="absolute -right-3 sm:-right-6 top-6 sm:top-10 px-4 py-2.5 flex items-center gap-2">
+      <FloatCard className="absolute right-2 sm:right-3 lg:-right-6 top-4 sm:top-6 lg:top-10 px-4 py-2.5 flex items-center gap-2">
         <Bell className="w-4 h-4 text-[#2563EB]" />
         <span className="text-[12px] font-medium text-[#0F172A]">Reminder sent to Sarah M.</span>
       </FloatCard>
-      <FloatCard className="absolute -left-3 sm:-left-6 bottom-6 sm:bottom-10 w-[240px] p-4">
+      <FloatCard className="absolute left-2 sm:left-3 lg:-left-6 bottom-4 sm:bottom-6 lg:bottom-10 w-[240px] p-4">
         <div className="flex items-center justify-between">
           <p className="text-[13px] font-semibold text-[#0F172A]">Cancelled slot</p>
           <span className="text-[10px] text-[#64748B]">Thu · 10:30</span>
@@ -235,7 +250,7 @@ function FrontDeskVisual() {
           ))}
         </div>
       </FloatCard>
-      <FloatCard className="absolute -right-3 sm:-right-6 bottom-6 sm:bottom-10 px-4 py-2.5 flex items-center gap-2">
+      <FloatCard className="absolute right-2 sm:right-3 lg:-right-6 bottom-4 sm:bottom-6 lg:bottom-10 px-4 py-2.5 flex items-center gap-2">
         <RefreshCw className="w-4 h-4 text-[#2563EB]" />
         <span className="text-[12px] font-medium text-[#0F172A]">Recall due · follow-up sent</span>
       </FloatCard>
@@ -247,12 +262,12 @@ function MoneyVisual() {
   const bars = [38, 52, 46, 64, 58, 72, 80];
   return (
     <PhotoPanel
-      src="/images/home/reception-payment.webp"
-      alt="Receptionist taking a card payment at the front desk"
+      src="/images/home/practice-laptop.webp"
+      alt="Practice manager working on a laptop at her desk"
       height={933}
-      position="object-[15%_40%]"
+      position="object-[70%_40%]"
     >
-      <FloatCard className="absolute -right-3 sm:-right-6 top-6 sm:top-10 w-[210px] p-4">
+      <FloatCard className="absolute left-2 sm:left-3 lg:-left-6 top-4 sm:top-6 lg:top-10 w-[210px] p-4">
         <p className="text-[13px] font-semibold text-[#0F172A]">Takings by clinician</p>
         <p className="mt-0.5 text-[11px] text-[#64748B]">This month</p>
         <div className="mt-3 flex items-end gap-1.5 h-[56px]">
@@ -275,7 +290,7 @@ function MoneyVisual() {
           ))}
         </div>
       </FloatCard>
-      <FloatCard className="absolute -right-3 sm:-right-6 bottom-6 sm:bottom-10 px-4 py-3">
+      <FloatCard className="absolute left-2 sm:left-3 lg:-left-6 bottom-4 sm:bottom-6 lg:bottom-10 px-4 py-3">
         <p className="text-[11px] text-[#64748B]">Deposit paid</p>
         <p className="text-[18px] font-semibold text-[#0F172A]">£50.00</p>
         <p className="mt-0.5 text-[11px] font-semibold text-emerald-600">Paid online ✓</p>
@@ -427,7 +442,7 @@ export function SolutionsGrid() {
 /* ------------------------------------------------------------------ */
 /* Support: photo with floating cards, text alongside                  */
 /* Photos: Unsplash, free under the Unsplash licence                   */
-/* (CPs2X8JYmS8, HBMPQZZondc, eL4xIEuHzzk, Bg81yWKZlMg, h8uuH7h17Ds).                                         */
+/* (CPs2X8JYmS8, HBMPQZZondc, eL4xIEuHzzk, Bg81yWKZlMg, iNiGA6063y8).                                         */
 /* ------------------------------------------------------------------ */
 
 export function SupportRow() {
@@ -447,7 +462,7 @@ export function SupportRow() {
               loading="lazy"
               className="w-full aspect-[4/3] object-cover object-[70%_50%] rounded-2xl"
             />
-            <FloatCard className="absolute -left-3 sm:-left-6 bottom-6 sm:bottom-10 w-[210px] p-4">
+            <FloatCard className="absolute left-2 sm:left-3 lg:-left-6 bottom-4 sm:bottom-6 lg:bottom-10 w-[210px] p-4">
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-emerald-500" />
                 <p className="text-[12px] font-semibold text-[#0F172A]">WhatsApp</p>
@@ -459,7 +474,7 @@ export function SupportRow() {
                 Settings, then Opening hours. I'll walk you through it now.
               </p>
             </FloatCard>
-            <FloatCard className="absolute -left-3 sm:-left-6 top-6 sm:top-10 px-4 py-2.5 flex items-center gap-2">
+            <FloatCard className="absolute left-2 sm:left-3 lg:-left-6 top-4 sm:top-6 lg:top-10 px-4 py-2.5 flex items-center gap-2">
               <MessageCircle className="w-4 h-4 text-[#2563EB]" />
               <span className="text-[12px] font-medium text-[#0F172A]">
                 Real person, same-day reply
@@ -528,7 +543,7 @@ export function SwitchRow() {
               loading="lazy"
               className="w-full aspect-[4/3] object-cover object-[70%_40%] rounded-2xl"
             />
-            <FloatCard className="absolute -left-3 sm:-left-6 top-6 sm:top-10 w-[180px] p-4">
+            <FloatCard className="absolute left-2 sm:left-3 lg:-left-6 top-4 sm:top-6 lg:top-10 w-[180px] p-4">
               <p className="text-[12px] font-semibold text-[#0F172A]">Practice setup</p>
               <ul className="mt-3 space-y-2">
                 {["Opening hours", "Treatments", "Team"].map((l) => (
@@ -541,7 +556,7 @@ export function SwitchRow() {
                 ))}
               </ul>
             </FloatCard>
-            <div className="absolute -left-3 sm:-left-6 bottom-6 sm:bottom-10 z-10 flex flex-col items-start gap-2">
+            <div className="absolute left-2 sm:left-3 lg:-left-6 bottom-4 sm:bottom-6 lg:bottom-10 z-10 flex flex-col items-start gap-2">
               <FloatCard className="px-4 py-2.5 flex items-center gap-2">
                 <Upload className="w-4 h-4 text-[#2563EB]" />
                 <span className="text-[12px] font-medium text-[#0F172A]">
