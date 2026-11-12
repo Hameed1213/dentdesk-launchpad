@@ -12,7 +12,6 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CookiesRouteImport } from './routes/cookies'
 import { Route as DpaRouteImport } from './routes/dpa'
-import { Route as FeaturesRouteImport } from './routes/features'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as TermsRouteImport } from './routes/terms'
@@ -21,6 +20,10 @@ import { Route as CompareIndexRouteImport } from './routes/compare.index'
 import { Route as CompareDentallyRouteImport } from './routes/compare.dentally'
 import { Route as CompareIsmileDentalSoftwareRouteImport } from './routes/compare.ismile-dental-software'
 import { Route as CompareSoftwareOfExcellenceRouteImport } from './routes/compare.software-of-excellence'
+import { Route as FeaturesIndexRouteImport } from './routes/features.index'
+import { Route as FeaturesRemindersAndRecallsRouteImport } from './routes/features.reminders-and-recalls'
+import { Route as SolutionsPrivatePracticesRouteImport } from './routes/solutions.private-practices'
+import { Route as SolutionsReduceNoShowsRouteImport } from './routes/solutions.reduce-no-shows'
 import { Route as ApiPublicCountVisitRouteImport } from './routes/api/public/count-visit'
 import { Route as ApiPublicVerifyWaitlistSignupRouteImport } from './routes/api/public/verify-waitlist-signup'
 
@@ -37,11 +40,6 @@ const CookiesRoute = CookiesRouteImport.update({
 const DpaRoute = DpaRouteImport.update({
   id: '/dpa',
   path: '/dpa',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const FeaturesRoute = FeaturesRouteImport.update({
-  id: '/features',
-  path: '/features',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PricingRoute = PricingRouteImport.update({
@@ -86,6 +84,28 @@ const CompareSoftwareOfExcellenceRoute =
     path: '/compare/software-of-excellence',
     getParentRoute: () => rootRouteImport,
   } as any)
+const FeaturesIndexRoute = FeaturesIndexRouteImport.update({
+  id: '/features/',
+  path: '/features/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FeaturesRemindersAndRecallsRoute =
+  FeaturesRemindersAndRecallsRouteImport.update({
+    id: '/features/reminders-and-recalls',
+    path: '/features/reminders-and-recalls',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const SolutionsPrivatePracticesRoute =
+  SolutionsPrivatePracticesRouteImport.update({
+    id: '/solutions/private-practices',
+    path: '/solutions/private-practices',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const SolutionsReduceNoShowsRoute = SolutionsReduceNoShowsRouteImport.update({
+  id: '/solutions/reduce-no-shows',
+  path: '/solutions/reduce-no-shows',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiPublicCountVisitRoute = ApiPublicCountVisitRouteImport.update({
   id: '/api/public/count-visit',
   path: '/api/public/count-visit',
@@ -102,7 +122,6 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/cookies': typeof CookiesRoute
   '/dpa': typeof DpaRoute
-  '/features': typeof FeaturesRoute
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
   '/terms': typeof TermsRoute
@@ -110,7 +129,11 @@ export interface FileRoutesByFullPath {
   '/compare/dentally': typeof CompareDentallyRoute
   '/compare/ismile-dental-software': typeof CompareIsmileDentalSoftwareRoute
   '/compare/software-of-excellence': typeof CompareSoftwareOfExcellenceRoute
+  '/features/reminders-and-recalls': typeof FeaturesRemindersAndRecallsRoute
+  '/solutions/private-practices': typeof SolutionsPrivatePracticesRoute
+  '/solutions/reduce-no-shows': typeof SolutionsReduceNoShowsRoute
   '/compare/': typeof CompareIndexRoute
+  '/features/': typeof FeaturesIndexRoute
   '/api/public/count-visit': typeof ApiPublicCountVisitRoute
   '/api/public/verify-waitlist-signup': typeof ApiPublicVerifyWaitlistSignupRoute
 }
@@ -118,7 +141,6 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/cookies': typeof CookiesRoute
   '/dpa': typeof DpaRoute
-  '/features': typeof FeaturesRoute
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
   '/terms': typeof TermsRoute
@@ -126,7 +148,11 @@ export interface FileRoutesByTo {
   '/compare/dentally': typeof CompareDentallyRoute
   '/compare/ismile-dental-software': typeof CompareIsmileDentalSoftwareRoute
   '/compare/software-of-excellence': typeof CompareSoftwareOfExcellenceRoute
+  '/features/reminders-and-recalls': typeof FeaturesRemindersAndRecallsRoute
+  '/solutions/private-practices': typeof SolutionsPrivatePracticesRoute
+  '/solutions/reduce-no-shows': typeof SolutionsReduceNoShowsRoute
   '/compare': typeof CompareIndexRoute
+  '/features': typeof FeaturesIndexRoute
   '/api/public/count-visit': typeof ApiPublicCountVisitRoute
   '/api/public/verify-waitlist-signup': typeof ApiPublicVerifyWaitlistSignupRoute
 }
@@ -135,7 +161,6 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/cookies': typeof CookiesRoute
   '/dpa': typeof DpaRoute
-  '/features': typeof FeaturesRoute
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
   '/terms': typeof TermsRoute
@@ -143,7 +168,11 @@ export interface FileRoutesById {
   '/compare/dentally': typeof CompareDentallyRoute
   '/compare/ismile-dental-software': typeof CompareIsmileDentalSoftwareRoute
   '/compare/software-of-excellence': typeof CompareSoftwareOfExcellenceRoute
+  '/features/reminders-and-recalls': typeof FeaturesRemindersAndRecallsRoute
+  '/solutions/private-practices': typeof SolutionsPrivatePracticesRoute
+  '/solutions/reduce-no-shows': typeof SolutionsReduceNoShowsRoute
   '/compare/': typeof CompareIndexRoute
+  '/features/': typeof FeaturesIndexRoute
   '/api/public/count-visit': typeof ApiPublicCountVisitRoute
   '/api/public/verify-waitlist-signup': typeof ApiPublicVerifyWaitlistSignupRoute
 }
@@ -153,7 +182,6 @@ export interface FileRouteTypes {
     | '/'
     | '/cookies'
     | '/dpa'
-    | '/features'
     | '/pricing'
     | '/privacy'
     | '/terms'
@@ -161,7 +189,11 @@ export interface FileRouteTypes {
     | '/compare/dentally'
     | '/compare/ismile-dental-software'
     | '/compare/software-of-excellence'
+    | '/features/reminders-and-recalls'
+    | '/solutions/private-practices'
+    | '/solutions/reduce-no-shows'
     | '/compare/'
+    | '/features/'
     | '/api/public/count-visit'
     | '/api/public/verify-waitlist-signup'
   fileRoutesByTo: FileRoutesByTo
@@ -169,7 +201,6 @@ export interface FileRouteTypes {
     | '/'
     | '/cookies'
     | '/dpa'
-    | '/features'
     | '/pricing'
     | '/privacy'
     | '/terms'
@@ -177,7 +208,11 @@ export interface FileRouteTypes {
     | '/compare/dentally'
     | '/compare/ismile-dental-software'
     | '/compare/software-of-excellence'
+    | '/features/reminders-and-recalls'
+    | '/solutions/private-practices'
+    | '/solutions/reduce-no-shows'
     | '/compare'
+    | '/features'
     | '/api/public/count-visit'
     | '/api/public/verify-waitlist-signup'
   id:
@@ -185,7 +220,6 @@ export interface FileRouteTypes {
     | '/'
     | '/cookies'
     | '/dpa'
-    | '/features'
     | '/pricing'
     | '/privacy'
     | '/terms'
@@ -193,7 +227,11 @@ export interface FileRouteTypes {
     | '/compare/dentally'
     | '/compare/ismile-dental-software'
     | '/compare/software-of-excellence'
+    | '/features/reminders-and-recalls'
+    | '/solutions/private-practices'
+    | '/solutions/reduce-no-shows'
     | '/compare/'
+    | '/features/'
     | '/api/public/count-visit'
     | '/api/public/verify-waitlist-signup'
   fileRoutesById: FileRoutesById
@@ -202,7 +240,6 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CookiesRoute: typeof CookiesRoute
   DpaRoute: typeof DpaRoute
-  FeaturesRoute: typeof FeaturesRoute
   PricingRoute: typeof PricingRoute
   PrivacyRoute: typeof PrivacyRoute
   TermsRoute: typeof TermsRoute
@@ -210,7 +247,11 @@ export interface RootRouteChildren {
   CompareDentallyRoute: typeof CompareDentallyRoute
   CompareIsmileDentalSoftwareRoute: typeof CompareIsmileDentalSoftwareRoute
   CompareSoftwareOfExcellenceRoute: typeof CompareSoftwareOfExcellenceRoute
+  FeaturesRemindersAndRecallsRoute: typeof FeaturesRemindersAndRecallsRoute
+  SolutionsPrivatePracticesRoute: typeof SolutionsPrivatePracticesRoute
+  SolutionsReduceNoShowsRoute: typeof SolutionsReduceNoShowsRoute
   CompareIndexRoute: typeof CompareIndexRoute
+  FeaturesIndexRoute: typeof FeaturesIndexRoute
   ApiPublicCountVisitRoute: typeof ApiPublicCountVisitRoute
   ApiPublicVerifyWaitlistSignupRoute: typeof ApiPublicVerifyWaitlistSignupRoute
 }
@@ -236,13 +277,6 @@ declare module '@tanstack/react-router' {
       path: '/dpa'
       fullPath: '/dpa'
       preLoaderRoute: typeof DpaRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/features': {
-      id: '/features'
-      path: '/features'
-      fullPath: '/features'
-      preLoaderRoute: typeof FeaturesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/pricing': {
@@ -301,6 +335,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CompareSoftwareOfExcellenceRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/features/': {
+      id: '/features/'
+      path: '/features'
+      fullPath: '/features/'
+      preLoaderRoute: typeof FeaturesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/features/reminders-and-recalls': {
+      id: '/features/reminders-and-recalls'
+      path: '/features/reminders-and-recalls'
+      fullPath: '/features/reminders-and-recalls'
+      preLoaderRoute: typeof FeaturesRemindersAndRecallsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/solutions/private-practices': {
+      id: '/solutions/private-practices'
+      path: '/solutions/private-practices'
+      fullPath: '/solutions/private-practices'
+      preLoaderRoute: typeof SolutionsPrivatePracticesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/solutions/reduce-no-shows': {
+      id: '/solutions/reduce-no-shows'
+      path: '/solutions/reduce-no-shows'
+      fullPath: '/solutions/reduce-no-shows'
+      preLoaderRoute: typeof SolutionsReduceNoShowsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/public/count-visit': {
       id: '/api/public/count-visit'
       path: '/api/public/count-visit'
@@ -322,7 +384,6 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CookiesRoute: CookiesRoute,
   DpaRoute: DpaRoute,
-  FeaturesRoute: FeaturesRoute,
   PricingRoute: PricingRoute,
   PrivacyRoute: PrivacyRoute,
   TermsRoute: TermsRoute,
@@ -330,7 +391,11 @@ const rootRouteChildren: RootRouteChildren = {
   CompareDentallyRoute: CompareDentallyRoute,
   CompareIsmileDentalSoftwareRoute: CompareIsmileDentalSoftwareRoute,
   CompareSoftwareOfExcellenceRoute: CompareSoftwareOfExcellenceRoute,
+  FeaturesRemindersAndRecallsRoute: FeaturesRemindersAndRecallsRoute,
+  SolutionsPrivatePracticesRoute: SolutionsPrivatePracticesRoute,
+  SolutionsReduceNoShowsRoute: SolutionsReduceNoShowsRoute,
   CompareIndexRoute: CompareIndexRoute,
+  FeaturesIndexRoute: FeaturesIndexRoute,
   ApiPublicCountVisitRoute: ApiPublicCountVisitRoute,
   ApiPublicVerifyWaitlistSignupRoute: ApiPublicVerifyWaitlistSignupRoute,
 }
