@@ -17,56 +17,55 @@ import { FaqSection, templateHead, type Faq } from "@/components/site/templates"
 
 const PATH = "/pricing";
 
-const included = [
+const points = [
+  "Every feature, for your whole practice",
   "Unlimited dentists and staff",
-  "Calendar and diary",
-  "Online booking and patient portal",
-  "Reminders and recalls",
-  "Waitlist to fill cancelled slots",
-  "Digital forms and medical history",
-  "Payments, deposits and payment links",
-  "Reports and booking sources",
-  "200 texts a month included",
-  "Unlimited patients and records",
-  "Full data export any time",
-  "Priority WhatsApp support",
+  "200 texts a month, then 8p a text",
+  "No setup fee and no contract",
+  "Cancel any time",
 ];
 
-const team = [
-  { who: "1 dentist", detail: "and 2 staff" },
-  { who: "4 dentists", detail: "and 6 staff" },
-  { who: "10 dentists", detail: "and 15 staff" },
-];
-
-const examples = [
-  { month: "A quiet month", texts: "150 texts", extra: "£0", total: "£49" },
-  { month: "A typical month", texts: "400 texts", extra: "200 × 8p = £16", total: "£65" },
-  { month: "A busy month", texts: "700 texts", extra: "500 × 8p = £40", total: "£89" },
-];
-
-const youPay = ["£49 a month for your practice", "8p for each text over 200 in a month"];
-const youDont = [
-  "A setup fee",
-  "Anything per dentist or per user",
-  "A contract or minimum term",
-  "Anything to leave or export your data",
-  "A cut of your patients' payments",
-];
-
-const jobs = [
-  "Online booking",
-  "Appointment reminders",
-  "Recalls",
-  "Patient forms",
-  "Deposits and payments",
-  "Reports",
-];
-
-const promises = [
-  { title: "No contract", body: "Pay monthly and stay because it works." },
-  { title: "Cancel any time", body: "No notice period and no exit fee." },
-  { title: "Your data is yours", body: "Download everything whenever you like." },
-  { title: "No setup fee", body: "Set it up yourself in a day, for nothing." },
+const included = [
+  {
+    title: "Calendar and diary",
+    body: "A column for each clinician, visit statuses, working hours, leave and blocked time.",
+    to: "/features/calendar",
+  },
+  {
+    title: "Online booking and patient portal",
+    body: "Your own booking page with your prices, and a portal where patients manage their visits.",
+    to: "/features/online-booking",
+  },
+  {
+    title: "Reminders and recalls",
+    body: "Reminders 72, 24 and 2 hours before, recalls that follow up, and a waitlist for gaps.",
+    to: "/features/reminders-and-recalls",
+  },
+  {
+    title: "Forms and medical history",
+    body: "Health and consent forms filled in and signed before the visit, saved to the record.",
+    to: "/features/forms",
+  },
+  {
+    title: "Payments and deposits",
+    body: "Payment links, deposits and fair fees through your own Stripe account. DentDock takes no cut.",
+    to: "/features/payments",
+  },
+  {
+    title: "Reports",
+    body: "Money taken by clinician, no-show rates, booking sources and an export for your accountant.",
+    to: "/features/reports",
+  },
+  {
+    title: "Security and data",
+    body: "Stored in London, encrypted, two-step login, and a full export of your data any time.",
+    to: "/features/security",
+  },
+  {
+    title: "Setup and support",
+    body: "Import your patients from a CSV, go live in a day, and get same-day help on WhatsApp.",
+    to: "/features/switching",
+  },
 ];
 
 const comingSoon = [
@@ -206,23 +205,20 @@ function PlanCard() {
             </div>
           </div>
           <div className="p-8 md:p-10">
-            <p className="text-[15px] font-semibold text-[#0F172A]">Everything included</p>
-            <ul className="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3">
-              {included.map((item) => (
+            <p className="text-[15px] font-semibold text-[#0F172A]">Starter includes</p>
+            <ul className="mt-5 space-y-3.5">
+              {points.map((item) => (
                 <li
                   key={item}
-                  className="flex items-start gap-2.5 text-[14px] text-[#334155] leading-[1.45]"
+                  className="flex items-start gap-3 text-[16px] text-[#0F172A] leading-[1.45]"
                 >
-                  <span className="mt-0.5 w-4 h-4 rounded-full bg-[#2563EB] flex items-center justify-center flex-shrink-0">
-                    <Check className="w-2.5 h-2.5 text-white" strokeWidth={3} />
+                  <span className="mt-0.5 w-5 h-5 rounded-full bg-[#2563EB] flex items-center justify-center flex-shrink-0">
+                    <Check className="w-3 h-3 text-white" strokeWidth={3} />
                   </span>
                   {item}
                 </li>
               ))}
             </ul>
-            <p className="mt-6 pt-5 border-t border-neutral-100 text-[13px] text-[#64748B]">
-              No setup fee · No contract · Cancel any time
-            </p>
           </div>
         </div>
       </Reveal>
@@ -230,184 +226,37 @@ function PlanCard() {
   );
 }
 
-function SamePrice() {
-  return (
-    <section className="bg-white pb-16 md:pb-24">
-      <Reveal className="px-6 text-center">
-        <h2 className={sectionTitle}>
-          Same price, <span className="text-[#2563EB]">however big your team</span>
-        </h2>
-      </Reveal>
-      <div className="mt-10 border-y border-neutral-200">
-        <ul className="mx-auto max-w-6xl grid grid-cols-1 md:grid-cols-3">
-          {team.map((t, i) => (
-            <li
-              key={t.who}
-              className={`px-6 py-8 text-center border-neutral-200 ${i < team.length - 1 ? "border-b md:border-b-0 md:border-r" : ""}`}
-            >
-              <p className="text-[17px] font-semibold text-[#0F172A]">
-                {t.who} <span className="font-normal text-[#64748B]">{t.detail}</span>
-              </p>
-              <p className="mt-2 text-[34px] font-semibold tracking-tight text-[#2563EB] leading-none">
-                £49 <span className="text-[14px] font-normal text-[#64748B]">a month</span>
-              </p>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </section>
-  );
-}
-
-function Examples() {
+function Included() {
   return (
     <section className="bg-gradient-to-b from-[#F7F9FF] to-[#F1F5FE] border-y border-[#EEF2FB] py-16 md:py-24 px-6">
-      <div className="mx-auto max-w-4xl">
-        <Reveal className="text-center max-w-2xl mx-auto">
-          <h2 className={sectionTitle}>
-            What a month <span className="text-[#2563EB]">really costs</span>
+      <div className="mx-auto max-w-6xl">
+        <Reveal className="text-center max-w-2xl mx-auto mb-12">
+          <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-[#0F172A] leading-[1.1]">
+            Everything in <span className="text-[#2563EB]">the plan</span>
           </h2>
           <p className="mt-5 text-[17px] text-[#475569] leading-[1.6]">
-            The only thing that changes your bill is how many texts you send. Emails are included.
+            One price covers all of it. Nothing is a paid extra apart from texts over 200 a month.
           </p>
         </Reveal>
-        <Reveal delay={0.08} className="mt-10">
-          <div className="rounded-3xl bg-white border border-[#E5EDFB] overflow-hidden">
-            <div className="hidden sm:grid grid-cols-[1.2fr_1fr_1.3fr_0.8fr] px-6 py-3 text-[13px] font-medium text-[#64748B] border-b border-[#EEF2FB]">
-              <span>Month</span>
-              <span>Texts sent</span>
-              <span>Extra texts</span>
-              <span className="text-right">You pay</span>
-            </div>
-            {examples.map((e) => (
-              <div
-                key={e.month}
-                className="grid grid-cols-2 sm:grid-cols-[1.2fr_1fr_1.3fr_0.8fr] gap-y-1 px-6 py-5 border-b last:border-b-0 border-[#F1F5F9] items-center"
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {included.map((f, i) => (
+            <Reveal key={f.title} delay={i * 0.04}>
+              <Link
+                to={f.to as "/features"}
+                className="group h-full rounded-3xl bg-white border border-[#E5EDFB] p-6 flex flex-col transition-colors duration-200 hover:border-[#2563EB]"
               >
-                <span className="text-[16px] font-semibold text-[#0F172A]">{e.month}</span>
-                <span className="text-[15px] text-[#475569] text-right sm:text-left">
-                  {e.texts}
+                <h3 className="text-[17px] font-semibold text-[#0F172A] tracking-tight">
+                  {f.title}
+                </h3>
+                <p className="mt-2 text-[14px] text-[#475569] leading-[1.6] flex-1">{f.body}</p>
+                <span className="mt-4 inline-flex items-center gap-1.5 text-[13px] font-semibold text-[#2563EB]">
+                  Find out more{" "}
+                  <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
                 </span>
-                <span className="text-[15px] text-[#475569]">{e.extra}</span>
-                <span className="text-[22px] font-semibold text-[#2563EB] text-right">
-                  {e.total}
-                </span>
-              </div>
-            ))}
-          </div>
-          <p className="mt-4 text-center text-[13px] text-[#64748B]">
-            200 texts are included every month. A long message can count as more than one text. No
-            VAT is added.
-          </p>
-        </Reveal>
-      </div>
-    </section>
-  );
-}
-
-function PayDont() {
-  return (
-    <section className="bg-white py-16 md:py-24 px-6">
-      <div className="mx-auto max-w-5xl">
-        <Reveal className="text-center max-w-2xl mx-auto mb-12">
-          <h2 className={sectionTitle}>
-            No hidden costs. <span className="text-[#2563EB]">Here's everything.</span>
-          </h2>
-        </Reveal>
-        <div className="grid grid-cols-1 md:grid-cols-2 rounded-[28px] overflow-hidden border border-[#E5EDFB]">
-          <Reveal className="bg-gradient-to-br from-[#EFF6FF] to-[#E0EAFF] p-8 md:p-10">
-            <p className="text-[18px] font-semibold text-[#0F172A]">What you pay</p>
-            <ul className="mt-5 space-y-3">
-              {youPay.map((y) => (
-                <li key={y} className="flex items-start gap-3 text-[16px] text-[#0F172A]">
-                  <span
-                    aria-hidden="true"
-                    className="mt-[9px] h-1.5 w-1.5 rounded-full bg-[#2563EB] flex-shrink-0"
-                  />
-                  {y}
-                </li>
-              ))}
-            </ul>
-            <p className="mt-6 text-[14px] text-[#475569] leading-[1.6]">
-              When patients pay you online, the money goes to your own Stripe account. Stripe
-              charges its standard fee, and DentDock takes nothing.
-            </p>
-          </Reveal>
-          <Reveal delay={0.08} className="bg-white p-8 md:p-10">
-            <p className="text-[18px] font-semibold text-[#0F172A]">What you don't pay</p>
-            <ul className="mt-5 space-y-3">
-              {youDont.map((y) => (
-                <li key={y} className="flex items-start gap-3 text-[16px] text-[#475569]">
-                  <span
-                    aria-hidden="true"
-                    className="mt-[9px] h-1.5 w-1.5 rounded-full bg-[#94A3B8] flex-shrink-0"
-                  />
-                  {y}
-                </li>
-              ))}
-            </ul>
-          </Reveal>
+              </Link>
+            </Reveal>
+          ))}
         </div>
-      </div>
-    </section>
-  );
-}
-
-function OneSubscription() {
-  return (
-    <section className="bg-gradient-to-b from-[#F7F9FF] to-[#F1F5FE] border-y border-[#EEF2FB] py-16 md:py-24 px-6">
-      <div className="mx-auto max-w-5xl text-center">
-        <Reveal>
-          <h2 className={sectionTitle}>
-            One subscription <span className="text-[#2563EB]">instead of a pile of tools</span>
-          </h2>
-          <p className="mt-5 text-[17px] text-[#475569] leading-[1.6] max-w-2xl mx-auto">
-            Many practices pay separately for booking, reminder texts and forms on top of their
-            practice system. DentDock does all of these in one place.
-          </p>
-        </Reveal>
-        <Reveal delay={0.08} className="mt-10 flex flex-wrap justify-center gap-3">
-          {jobs.map((j) => (
-            <span
-              key={j}
-              className="rounded-xl bg-white border border-[#DBEAFE] px-5 py-3 text-[15px] font-medium text-[#0F172A]"
-            >
-              {j}
-            </span>
-          ))}
-        </Reveal>
-        <Reveal delay={0.12} className="mt-10">
-          <Link to="/features" className={pillButton}>
-            See every feature
-          </Link>
-        </Reveal>
-      </div>
-    </section>
-  );
-}
-
-function Promises() {
-  return (
-    <section className="bg-white py-16 md:py-20">
-      <Reveal className="px-6 text-center">
-        <h2 className={sectionTitle}>
-          No catch. <span className="text-[#2563EB]">No small print.</span>
-        </h2>
-      </Reveal>
-      <div className="mt-10 border-y border-neutral-200">
-        <ul className="mx-auto max-w-7xl grid grid-cols-2 lg:grid-cols-4">
-          {promises.map((p, i) => (
-            <li
-              key={p.title}
-              className={`px-6 py-8 text-center border-neutral-200 ${i < 3 ? "lg:border-r" : ""} ${i % 2 === 0 ? "border-r" : ""} ${
-                i < 2 ? "border-b lg:border-b-0" : ""
-              }`}
-            >
-              <p className="text-[17px] font-semibold text-[#0F172A]">{p.title}</p>
-              <p className="mt-1.5 text-[14px] text-[#64748B] leading-snug">{p.body}</p>
-            </li>
-          ))}
-        </ul>
       </div>
     </section>
   );
@@ -415,7 +264,7 @@ function Promises() {
 
 function ComingSoon() {
   return (
-    <section className="bg-white pb-16 md:pb-24 px-6">
+    <section className="bg-white py-16 md:py-24 px-6">
       <div className="mx-auto max-w-5xl">
         <Reveal className="text-center max-w-2xl mx-auto mb-10">
           <h2 className="text-2xl md:text-[34px] font-semibold tracking-tight text-[#0F172A] leading-[1.15]">
@@ -464,11 +313,7 @@ function PricingPage() {
     <PageShell>
       <Hero />
       <PlanCard />
-      <SamePrice />
-      <Examples />
-      <PayDont />
-      <OneSubscription />
-      <Promises />
+      <Included />
       <ComingSoon />
       <FaqSection items={faq} />
       <ClosingBand />
