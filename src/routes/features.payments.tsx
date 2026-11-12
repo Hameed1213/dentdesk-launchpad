@@ -154,12 +154,12 @@ const content: PlatformContent = {
     visual: (
       <PhotoPanel
         src="/images/pages/hero-payments.webp"
-        alt="Dentist with a smiling patient in the chair"
+        alt="Receptionist at a dental front desk while a patient pays by phone"
         height={933}
-        position="object-[50%_40%]"
+        position="object-[50%_35%]"
       >
         <PillCard
-          className="absolute left-2 sm:left-3 lg:-left-6 bottom-4 sm:bottom-6 lg:bottom-10"
+          className="absolute right-2 sm:right-3 lg:-right-6 bottom-4 sm:bottom-6 lg:bottom-10"
           icon="dot"
           text="Payment link paid · £75.00"
         />

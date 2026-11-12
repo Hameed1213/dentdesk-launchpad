@@ -38,8 +38,8 @@ export const featurePages = {
     body: "Payment links, deposits and fair fees through your own Stripe account.",
     to: "/features/payments",
     image: "/images/pages/hero-payments.webp",
-    position: "object-[50%_40%]",
-    alt: "Dentist with a smiling patient in the chair",
+    position: "object-[50%_35%]",
+    alt: "Receptionist at a dental front desk while a patient pays by phone",
   },
   reports: {
     title: "Reports",
