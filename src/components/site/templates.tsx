@@ -34,6 +34,8 @@ import {
 export type InternalLink = { label: string; to: string };
 
 export type HeroContent = {
+  /** Optional breadcrumb trail shown above the H1 (Home is added automatically). */
+  crumbs?: InternalLink[];
   /** The page's one H1. `highlight` is shown in blue after `title`. */
   title: string;
   highlight: string;
@@ -83,6 +85,21 @@ export function PageHeroSplit({ hero }: { hero: HeroContent }) {
     <section className="relative overflow-hidden bg-gradient-to-b from-[#EAF1FF] via-[#F3F7FF] to-white pt-28 pb-16 lg:pt-36 lg:pb-20 px-6">
       <div className="mx-auto max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
         <Reveal>
+          {hero.crumbs && (
+            <nav aria-label="Breadcrumb" className="mb-5 text-[13px] text-[#64748B]">
+              <Link to="/" className="hover:text-[#2563EB]">
+                Home
+              </Link>
+              {hero.crumbs.map((c) => (
+                <span key={c.to}>
+                  {" / "}
+                  <Link to={c.to} className="hover:text-[#2563EB]">
+                    {c.label}
+                  </Link>
+                </span>
+              ))}
+            </nav>
+          )}
           <h1
             className="font-semibold text-[#0F172A] text-[38px] leading-[1.12] md:text-[52px]"
             style={{ letterSpacing: "-0.03em" }}
@@ -406,42 +423,120 @@ export function RelatedLinks({
   );
 }
 
+/** Compact split cards (Dentally style): a DentDock screen on a tinted half, a heading and one short paragraph. */
+export type FeatureCard = { title: string; body: string; visual: ReactNode };
+
+const cardTints = ["from-[#EFF6FF] to-[#DBEAFE]", "from-[#EEF2FF] to-[#E0E7FF]"];
+
+export function FeatureCards({ items }: { items: FeatureCard[] }) {
+  return (
+    <section className="bg-white py-16 md:py-24 px-6">
+      <div className="mx-auto max-w-5xl space-y-8 md:space-y-10">
+        {items.map((f, i) => {
+          const flip = i % 2 === 1;
+          const tint = cardTints[i % cardTints.length];
+          return (
+            <Reveal key={f.title}>
+              <div
+                className={`grid grid-cols-1 md:grid-cols-2 rounded-[28px] overflow-hidden bg-gradient-to-br ${tint}`}
+              >
+                <div
+                  className={`relative flex items-center justify-center min-h-[260px] md:min-h-[300px] p-8 bg-white/40 ${flip ? "md:order-2" : ""}`}
+                  aria-hidden="true"
+                >
+                  <div className="md:scale-[1.15] lg:scale-[1.25]">{f.visual}</div>
+                </div>
+                <div
+                  className={`p-8 md:p-12 flex flex-col justify-center ${flip ? "md:order-1" : ""}`}
+                >
+                  <h2 className="text-[26px] md:text-[30px] font-semibold tracking-tight text-[#2563EB] leading-[1.2]">
+                    {f.title}
+                  </h2>
+                  <p className="mt-4 text-[17px] text-[#334155] leading-[1.6]">{f.body}</p>
+                </div>
+              </div>
+            </Reveal>
+          );
+        })}
+      </div>
+    </section>
+  );
+}
+
+/** "How DentDock supports the rest of your practice": photo cards linking to other pages. */
+export type OtherArea = { title: string; body: string; to: string; image: string; alt: string };
+
+export function OtherAreas({
+  title,
+  highlight,
+  items,
+}: {
+  title: string;
+  highlight?: string;
+  items: OtherArea[];
+}) {
+  return (
+    <section className="bg-gradient-to-b from-[#F7F9FF] to-[#F1F5FE] border-y border-[#EEF2FB] py-16 md:py-24 px-6">
+      <div className="mx-auto max-w-6xl">
+        <Reveal className="max-w-2xl mb-10 md:mb-12">
+          <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-foreground leading-[1.1]">
+            {title} {highlight && <span className="text-[#2563EB]">{highlight}</span>}
+          </h2>
+        </Reveal>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+          {items.map((o, i) => (
+            <Reveal key={o.title} delay={i * 0.08}>
+              <Link
+                to={o.to}
+                className="group h-full flex flex-col rounded-3xl overflow-hidden border border-[#E5EDFB] bg-white transition-colors duration-200 hover:border-[#2563EB]"
+              >
+                <img
+                  src={o.image}
+                  alt={o.alt}
+                  width={1400}
+                  height={933}
+                  loading="lazy"
+                  className="w-full aspect-[16/10] object-cover"
+                />
+                <div className="p-6 flex flex-col flex-1">
+                  <h3 className="text-[19px] font-semibold text-[#0F172A] tracking-tight">
+                    {o.title}
+                  </h3>
+                  <p className="mt-2 text-[15px] text-[#475569] leading-[1.6] flex-1">{o.body}</p>
+                  <span className="mt-5 inline-flex items-center gap-1.5 text-[14px] font-semibold text-[#2563EB]">
+                    Find out more
+                    <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+                  </span>
+                </div>
+              </Link>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /* ------------------------------------------------------------------ */
 /* Page templates                                                      */
 /* ------------------------------------------------------------------ */
 
 export type PlatformContent = {
   hero: HeroContent;
-  rows: Row[];
-  steps: { title: string; highlight?: string; intro?: string; items: Step[] };
-  limits: {
-    title: string;
-    highlight?: string;
-    yesTitle: string;
-    yes: string[];
-    noTitle: string;
-    no: string[];
-  };
+  features: FeatureCard[];
+  others: { title: string; highlight?: string; items: OtherArea[] };
   faq: Faq[];
-  related: { title: string; highlight?: string; items: Related[] };
 };
 
-/** One feature area: what it does, how it works, its limits, FAQ, related solutions. */
+/** One feature area, kept short (Dentally style): hero, split feature cards, other areas, FAQ. */
 export function PlatformPage({ content }: { content: PlatformContent }) {
   const c = content;
   return (
     <PageShell>
       <PageHeroSplit hero={c.hero} />
       <TrustStrip />
-      <Rows rows={c.rows} />
-      <Steps
-        title={c.steps.title}
-        highlight={c.steps.highlight}
-        intro={c.steps.intro}
-        steps={c.steps.items}
-      />
-      <Fit {...c.limits} />
-      <RelatedLinks {...c.related} />
+      <FeatureCards items={c.features} />
+      <OtherAreas {...c.others} />
       <FaqSection items={c.faq} />
       <ClosingBand />
     </PageShell>

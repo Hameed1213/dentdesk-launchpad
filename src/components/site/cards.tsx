@@ -214,3 +214,31 @@ export function TakingsCard({ className }: { className: string }) {
     </FloatCard>
   );
 }
+
+/** How a message is sent: the patient's channel, with email as the back-up. */
+export function ChannelCard({ className }: { className: string }) {
+  return (
+    <FloatCard className={`${className} w-[230px] p-4`}>
+      <p className="text-[13px] font-semibold text-[#0F172A]">Send by</p>
+      <ul className="mt-2.5 space-y-1.5">
+        {[
+          { t: "Text", d: "Patient's choice", on: true },
+          { t: "Email", d: "Back-up if a text can't go", on: false },
+        ].map((r) => (
+          <li
+            key={r.t}
+            className={`flex items-center justify-between rounded-lg px-2.5 py-2 text-[12px] ${
+              r.on
+                ? "bg-[#EFF6FF] text-[#1D4ED8] font-semibold"
+                : "border border-neutral-100 text-[#334155]"
+            }`}
+          >
+            <span>{r.t}</span>
+            <span className="text-[10px] font-normal text-[#64748B]">{r.d}</span>
+          </li>
+        ))}
+      </ul>
+      <p className="mt-3 text-[11px] text-[#64748B]">Texts go between 8am and 8pm</p>
+    </FloatCard>
+  );
+}
