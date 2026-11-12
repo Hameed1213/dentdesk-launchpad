@@ -9,7 +9,7 @@ export const ENTRANCE = { duration: 0.6, ease: [0.22, 1, 0.36, 1] as const };
 
 /** Outline pill, like the "See all … features" buttons on Dentally's rows. */
 export const pillButton =
-  "inline-flex items-center justify-center gap-2 rounded-full border border-[#2563EB] px-6 py-3 text-[15px] font-medium text-[#2563EB] transition-colors hover:bg-[#2563EB] hover:text-white";
+  "inline-flex items-center justify-center gap-2 rounded-xl border border-[#2563EB] px-6 py-3 text-[15px] font-medium text-[#2563EB] transition-colors hover:bg-[#2563EB] hover:text-white";
 
 /** Floating white card used on the pastel panels. z-10 keeps the absolutely placed ones in front. */
 export const primaryButton =

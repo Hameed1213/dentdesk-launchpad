@@ -94,7 +94,7 @@ function Intro({ menu, onClose }: { menu: MenuConfig; onClose: () => void }) {
       <p className="text-[20px] font-semibold text-[#2563EB] leading-snug">{menu.intro.title}</p>
       <p className="mt-2 text-[14px] text-[#334155] leading-relaxed">{menu.intro.text}</p>
       <To to={menu.intro.to} onClick={onClose} className="mt-auto pt-6 self-start">
-        <span className="inline-flex items-center gap-1.5 rounded-full bg-[#2563EB] px-5 py-2.5 text-[14px] font-semibold text-white hover:bg-[#1D4ED8] transition-colors">
+        <span className="inline-flex items-center gap-1.5 rounded-xl bg-[#2563EB] px-5 py-2.5 text-[14px] font-semibold text-white hover:bg-[#1D4ED8] transition-colors">
           {menu.intro.cta} <ChevronRight className="w-4 h-4" />
         </span>
       </To>
