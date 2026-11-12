@@ -6,7 +6,7 @@ export default function FAQ() {
   const faqItems = homeFaq;
 
   return (
-    <section className="bg-white py-16 md:py-24">
+    <section className="bg-white pt-16 md:pt-24 pb-4 md:pb-6">
       <div className="max-w-3xl mx-auto px-6">
         {/* Header */}
         <motion.div

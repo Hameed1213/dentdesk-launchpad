@@ -161,7 +161,7 @@ export function PhotoPanel({
 
 export function ClosingBand() {
   return (
-    <section className="bg-white py-16 md:py-24 px-6">
+    <section className="bg-white pt-8 md:pt-10 pb-16 md:pb-24 px-6">
       <Reveal className="mx-auto max-w-6xl">
         <div className="relative overflow-hidden rounded-[32px] bg-gradient-to-br from-[#2563EB] to-[#1D4ED8] px-6 py-14 md:py-20 text-center">
           <div

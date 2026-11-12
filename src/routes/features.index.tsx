@@ -1,6 +1,5 @@
 import type { ReactNode } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Lock, MapPin, ShieldCheck, UserCheck } from "lucide-react";
 import PageShell from "@/components/site/PageShell";
 import {
   ClosingBand,
@@ -146,10 +145,10 @@ function HubRows() {
 
 function TrustBand() {
   const items = [
-    { Icon: MapPin, title: "UK hosted", sub: "Stored in London" },
-    { Icon: Lock, title: "Encrypted", sub: "In transit and at rest" },
-    { Icon: UserCheck, title: "Two-step login", sub: "For owners and managers" },
-    { Icon: ShieldCheck, title: "ICO registered", sub: "ZC132966" },
+    { title: "UK hosted", sub: "Stored in London" },
+    { title: "Encrypted", sub: "In transit and at rest" },
+    { title: "Two-step login", sub: "For owners and managers" },
+    { title: "ICO registered", sub: "ZC132966" },
   ];
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-[#E8F0FF] via-[#F1EEFF] to-[#E3F2FF] py-16 md:py-24 px-6">
@@ -173,22 +172,12 @@ function TrustBand() {
             who need it. You can download everything at any time.
           </p>
           <ul className="mt-7 grid grid-cols-1 sm:grid-cols-2 gap-3">
-            {items.map(({ Icon, title, sub }) => (
-              <li
-                key={title}
-                className="flex items-center gap-3.5 rounded-2xl bg-white border border-[#E5EDFB] px-4 py-3.5"
-              >
-                <span className="w-10 h-10 rounded-xl bg-[#EFF6FF] flex items-center justify-center flex-shrink-0">
-                  <Icon className="w-[18px] h-[18px] text-[#2563EB]" strokeWidth={1.9} />
+            {items.map(({ title, sub }) => (
+              <li key={title} className="rounded-2xl bg-white border border-[#E5EDFB] px-5 py-3.5">
+                <span className="block text-[15px] font-semibold text-[#0F172A] leading-tight">
+                  {title}
                 </span>
-                <span className="min-w-0">
-                  <span className="block text-[15px] font-semibold text-[#0F172A] leading-tight">
-                    {title}
-                  </span>
-                  <span className="block mt-0.5 text-[13px] text-[#64748B] leading-tight">
-                    {sub}
-                  </span>
-                </span>
+                <span className="block mt-1 text-[13px] text-[#64748B] leading-tight">{sub}</span>
               </li>
             ))}
           </ul>
@@ -259,12 +248,12 @@ function FeaturesPage() {
           secondary: { label: "See pricing", to: "/pricing" },
           visual: (
             <PhotoPanel
-              src="/images/home/dentist-patient.webp"
-              alt="Dentist talking with a smiling patient in a modern surgery"
-              height={1050}
-              position="object-[45%_50%]"
+              src="/images/pages/hero-features.webp"
+              alt="Dentist treating a patient in a bright, modern surgery"
+              height={934}
+              position="object-[60%_40%]"
             >
-              <BookingPriceCard className={`${R} ${T}`} />
+              <BookingPriceCard className={`${L} ${T}`} />
               <PillCard className={`${L} ${B}`} icon="refresh" text="Recall due · follow-up sent" />
             </PhotoPanel>
           ),

@@ -357,7 +357,7 @@ export function FaqSection({
   items: Faq[];
 }) {
   return (
-    <section className="bg-white py-16 md:py-24 px-6">
+    <section className="bg-white pt-16 md:pt-24 pb-4 md:pb-6 px-6">
       <div className="mx-auto max-w-3xl">
         <Reveal className="text-center mb-10">
           <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-foreground leading-[1.1]">
