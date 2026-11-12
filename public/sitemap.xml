@@ -145,6 +145,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://dentdock.co.uk/about</loc>
+    <lastmod>2026-11-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://dentdock.co.uk/contact</loc>
     <lastmod>2026-11-12</lastmod>
     <changefreq>monthly</changefreq>

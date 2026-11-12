@@ -28,6 +28,7 @@ const companyLinks: CompanyLink[] = [
   { label: "Guides", href: "/guides", internal: true },
   { label: "Free tools", href: "/tools", internal: true },
   { label: "Comparisons", href: "/compare", internal: true },
+  { label: "About", href: "/about", internal: true },
   { label: "FAQs", href: "/faq", internal: true },
   { label: "Contact", href: "/contact", internal: true },
   { label: "Join the waitlist", href: "/waitlist", internal: true },

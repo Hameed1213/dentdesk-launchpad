@@ -29,6 +29,7 @@ Dent Dock helps UK private dental practices run their day-to-day: patients book 
 - [Missed appointment fees](/guides/missed-appointment-fees): Can a private dentist charge for a missed appointment? Rules, NHS position, policy template.
 - [Free tools](/tools): No-show cost and software spend calculators.
 - [FAQs](/faq): Pricing, switching, patients and data questions.
+- [About](/about): The company behind DentDock, what it stands for and what it does and doesn't do.
 - [Contact](/contact): WhatsApp and email.
 - [Waitlist](/waitlist): Join the early-access waitlist.
 - [Privacy](/privacy): Privacy policy.

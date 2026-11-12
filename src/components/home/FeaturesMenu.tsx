@@ -142,6 +142,7 @@ export const resourcesMenu: MenuConfig = {
     {
       title: "About DentDock",
       items: [
+        { label: "About us", to: "/about", Icon: Building2 },
         { label: "Early access", to: "/waitlist", Icon: Sparkles },
         { label: "Privacy", to: "/privacy", Icon: Lock },
         { label: "Data processing (DPA)", to: "/dpa", Icon: FileText },
