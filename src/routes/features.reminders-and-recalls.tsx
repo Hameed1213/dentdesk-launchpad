@@ -1,13 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PhotoPanel } from "@/components/site/ui";
 import { PlatformPage, templateHead, type PlatformContent } from "@/components/site/templates";
+import { TextMessageCard } from "@/components/site/cards";
 import {
-  ChannelCard,
-  FillSlotCard,
-  RecallListCard,
-  ReminderTimelineCard,
-  TextMessageCard,
-} from "@/components/site/cards";
+  FillSlotScreen,
+  MessageEditorScreen,
+  RecallsScreen,
+  RemindersScreen,
+} from "@/components/site/screens";
 
 /*
  * Platform page: Reminders and recalls (short, Dentally-style layout).
@@ -48,23 +48,43 @@ const content: PlatformContent = {
   features: [
     {
       title: "Reminders before every appointment",
-      body: "Patients get a reminder 72 hours, 24 hours and 2 hours before each confirmed appointment, with a link to cancel or rearrange. Nobody at the practice has to send a thing.",
-      visual: <ReminderTimelineCard className="relative" />,
+      body: "Patients are reminded three times before each confirmed appointment, without anyone at the practice sending a thing.",
+      points: [
+        "72 hours, 24 hours and 2 hours before",
+        "A link to cancel or rearrange, no password",
+        "Booking confirmations sent straight away",
+      ],
+      visual: <RemindersScreen />,
     },
     {
       title: "Recalls that follow up for you",
-      body: "When a check-up or hygiene visit is completed, the next recall is set. If a patient doesn't book, DentDock follows up, and stops as soon as they do.",
-      visual: <RecallListCard className="relative" />,
+      body: "The next recall is set when a check-up or hygiene visit is completed, and DentDock chases it until the patient books.",
+      points: [
+        "Up to five follow-ups, three on to start with",
+        "A booking link in every recall",
+        "Send to everyone due in one go",
+      ],
+      visual: <RecallsScreen />,
     },
     {
       title: "Fill cancelled slots",
-      body: "When a slot opens up, DentDock suggests patients from your waitlist and patients due a recall. Offer it in a couple of clicks; the first to tap the link books it.",
-      visual: <FillSlotCard className="relative" />,
+      body: "When a slot opens up, DentDock lines up the patients most likely to want it.",
+      points: [
+        "Waitlist patients, longest waiting first",
+        "Patients due a recall included",
+        "Offer by text or email in a couple of clicks",
+      ],
+      visual: <FillSlotScreen />,
     },
     {
       title: "Your words, their preferred channel",
-      body: "Edit every message so it sounds like your practice. Each one goes by text or email, whichever the patient prefers, and texts are only sent between 8am and 8pm.",
-      visual: <ChannelCard className="relative" />,
+      body: "Every message is yours to edit, and goes the way each patient prefers.",
+      points: [
+        "Text or email, with email as the back-up",
+        "Texts only between 8am and 8pm",
+        "Service messages only, never promotions",
+      ],
+      visual: <MessageEditorScreen />,
     },
   ],
   others: {

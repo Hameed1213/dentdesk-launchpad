@@ -423,39 +423,53 @@ export function RelatedLinks({
   );
 }
 
-/** Compact split cards (Dentally style): a DentDock screen on a tinted half, a heading and one short paragraph. */
-export type FeatureCard = { title: string; body: string; visual: ReactNode };
-
-const cardTints = ["from-[#EFF6FF] to-[#DBEAFE]", "from-[#EEF2FF] to-[#E0E7FF]"];
+/** Feature rows (Jane style): an open row with a large DentDock screen, a heading, one line and short ticks. */
+export type FeatureCard = { title: string; body: string; points?: string[]; visual: ReactNode };
 
 export function FeatureCards({ items }: { items: FeatureCard[] }) {
   return (
-    <section className="bg-white py-16 md:py-24 px-6">
-      <div className="mx-auto max-w-5xl space-y-8 md:space-y-10">
+    <section className="relative overflow-hidden bg-white py-16 md:py-28 px-6">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(45% 30% at 100% 25%, rgba(219,234,254,0.7), transparent 70%), radial-gradient(45% 30% at 0% 70%, rgba(224,231,255,0.6), transparent 70%)",
+        }}
+      />
+      <div className="relative mx-auto max-w-6xl space-y-24 md:space-y-32">
         {items.map((f, i) => {
           const flip = i % 2 === 1;
-          const tint = cardTints[i % cardTints.length];
           return (
-            <Reveal key={f.title}>
-              <div
-                className={`grid grid-cols-1 md:grid-cols-2 rounded-[28px] overflow-hidden bg-gradient-to-br ${tint}`}
-              >
-                <div
-                  className={`relative flex items-center justify-center min-h-[260px] md:min-h-[300px] p-8 bg-white/40 ${flip ? "md:order-2" : ""}`}
-                  aria-hidden="true"
-                >
-                  <div className="md:scale-[1.15] lg:scale-[1.25]">{f.visual}</div>
-                </div>
-                <div
-                  className={`p-8 md:p-12 flex flex-col justify-center ${flip ? "md:order-1" : ""}`}
-                >
-                  <h2 className="text-[26px] md:text-[30px] font-semibold tracking-tight text-[#2563EB] leading-[1.2]">
-                    {f.title}
-                  </h2>
-                  <p className="mt-4 text-[17px] text-[#334155] leading-[1.6]">{f.body}</p>
-                </div>
-              </div>
-            </Reveal>
+            <div
+              key={f.title}
+              className="grid grid-cols-1 lg:grid-cols-[0.85fr_1.15fr] gap-12 lg:gap-16 items-center"
+            >
+              <Reveal className={flip ? "lg:order-2" : ""}>
+                <h2 className="text-3xl md:text-[38px] font-semibold tracking-tight text-[#0F172A] leading-[1.15]">
+                  {f.title}
+                </h2>
+                <p className="mt-4 text-[17px] text-[#475569] leading-[1.6]">{f.body}</p>
+                {f.points && (
+                  <ul className="mt-6 space-y-3">
+                    {f.points.map((pt) => (
+                      <li
+                        key={pt}
+                        className="flex items-start gap-3 text-[16px] text-[#0F172A] leading-[1.5]"
+                      >
+                        <span className="mt-0.5 w-5 h-5 rounded-full bg-[#EFF6FF] flex items-center justify-center flex-shrink-0">
+                          <Check className="w-3 h-3 text-[#2563EB]" strokeWidth={3} />
+                        </span>
+                        {pt}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </Reveal>
+              <Reveal delay={0.1} className={`${flip ? "lg:order-1" : ""} pb-6`}>
+                <div aria-hidden="true">{f.visual}</div>
+              </Reveal>
+            </div>
           );
         })}
       </div>
