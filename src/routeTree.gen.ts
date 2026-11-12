@@ -21,7 +21,14 @@ import { Route as CompareDentallyRouteImport } from './routes/compare.dentally'
 import { Route as CompareIsmileDentalSoftwareRouteImport } from './routes/compare.ismile-dental-software'
 import { Route as CompareSoftwareOfExcellenceRouteImport } from './routes/compare.software-of-excellence'
 import { Route as FeaturesIndexRouteImport } from './routes/features.index'
+import { Route as FeaturesCalendarRouteImport } from './routes/features.calendar'
+import { Route as FeaturesFormsRouteImport } from './routes/features.forms'
+import { Route as FeaturesOnlineBookingRouteImport } from './routes/features.online-booking'
+import { Route as FeaturesPaymentsRouteImport } from './routes/features.payments'
 import { Route as FeaturesRemindersAndRecallsRouteImport } from './routes/features.reminders-and-recalls'
+import { Route as FeaturesReportsRouteImport } from './routes/features.reports'
+import { Route as FeaturesSecurityRouteImport } from './routes/features.security'
+import { Route as FeaturesSwitchingRouteImport } from './routes/features.switching'
 import { Route as SolutionsPrivatePracticesRouteImport } from './routes/solutions.private-practices'
 import { Route as SolutionsReduceNoShowsRouteImport } from './routes/solutions.reduce-no-shows'
 import { Route as ApiPublicCountVisitRouteImport } from './routes/api/public/count-visit'
@@ -89,12 +96,47 @@ const FeaturesIndexRoute = FeaturesIndexRouteImport.update({
   path: '/features/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FeaturesCalendarRoute = FeaturesCalendarRouteImport.update({
+  id: '/features/calendar',
+  path: '/features/calendar',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FeaturesFormsRoute = FeaturesFormsRouteImport.update({
+  id: '/features/forms',
+  path: '/features/forms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FeaturesOnlineBookingRoute = FeaturesOnlineBookingRouteImport.update({
+  id: '/features/online-booking',
+  path: '/features/online-booking',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FeaturesPaymentsRoute = FeaturesPaymentsRouteImport.update({
+  id: '/features/payments',
+  path: '/features/payments',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const FeaturesRemindersAndRecallsRoute =
   FeaturesRemindersAndRecallsRouteImport.update({
     id: '/features/reminders-and-recalls',
     path: '/features/reminders-and-recalls',
     getParentRoute: () => rootRouteImport,
   } as any)
+const FeaturesReportsRoute = FeaturesReportsRouteImport.update({
+  id: '/features/reports',
+  path: '/features/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FeaturesSecurityRoute = FeaturesSecurityRouteImport.update({
+  id: '/features/security',
+  path: '/features/security',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FeaturesSwitchingRoute = FeaturesSwitchingRouteImport.update({
+  id: '/features/switching',
+  path: '/features/switching',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SolutionsPrivatePracticesRoute =
   SolutionsPrivatePracticesRouteImport.update({
     id: '/solutions/private-practices',
@@ -129,7 +171,14 @@ export interface FileRoutesByFullPath {
   '/compare/dentally': typeof CompareDentallyRoute
   '/compare/ismile-dental-software': typeof CompareIsmileDentalSoftwareRoute
   '/compare/software-of-excellence': typeof CompareSoftwareOfExcellenceRoute
+  '/features/calendar': typeof FeaturesCalendarRoute
+  '/features/forms': typeof FeaturesFormsRoute
+  '/features/online-booking': typeof FeaturesOnlineBookingRoute
+  '/features/payments': typeof FeaturesPaymentsRoute
   '/features/reminders-and-recalls': typeof FeaturesRemindersAndRecallsRoute
+  '/features/reports': typeof FeaturesReportsRoute
+  '/features/security': typeof FeaturesSecurityRoute
+  '/features/switching': typeof FeaturesSwitchingRoute
   '/solutions/private-practices': typeof SolutionsPrivatePracticesRoute
   '/solutions/reduce-no-shows': typeof SolutionsReduceNoShowsRoute
   '/compare/': typeof CompareIndexRoute
@@ -148,7 +197,14 @@ export interface FileRoutesByTo {
   '/compare/dentally': typeof CompareDentallyRoute
   '/compare/ismile-dental-software': typeof CompareIsmileDentalSoftwareRoute
   '/compare/software-of-excellence': typeof CompareSoftwareOfExcellenceRoute
+  '/features/calendar': typeof FeaturesCalendarRoute
+  '/features/forms': typeof FeaturesFormsRoute
+  '/features/online-booking': typeof FeaturesOnlineBookingRoute
+  '/features/payments': typeof FeaturesPaymentsRoute
   '/features/reminders-and-recalls': typeof FeaturesRemindersAndRecallsRoute
+  '/features/reports': typeof FeaturesReportsRoute
+  '/features/security': typeof FeaturesSecurityRoute
+  '/features/switching': typeof FeaturesSwitchingRoute
   '/solutions/private-practices': typeof SolutionsPrivatePracticesRoute
   '/solutions/reduce-no-shows': typeof SolutionsReduceNoShowsRoute
   '/compare': typeof CompareIndexRoute
@@ -168,7 +224,14 @@ export interface FileRoutesById {
   '/compare/dentally': typeof CompareDentallyRoute
   '/compare/ismile-dental-software': typeof CompareIsmileDentalSoftwareRoute
   '/compare/software-of-excellence': typeof CompareSoftwareOfExcellenceRoute
+  '/features/calendar': typeof FeaturesCalendarRoute
+  '/features/forms': typeof FeaturesFormsRoute
+  '/features/online-booking': typeof FeaturesOnlineBookingRoute
+  '/features/payments': typeof FeaturesPaymentsRoute
   '/features/reminders-and-recalls': typeof FeaturesRemindersAndRecallsRoute
+  '/features/reports': typeof FeaturesReportsRoute
+  '/features/security': typeof FeaturesSecurityRoute
+  '/features/switching': typeof FeaturesSwitchingRoute
   '/solutions/private-practices': typeof SolutionsPrivatePracticesRoute
   '/solutions/reduce-no-shows': typeof SolutionsReduceNoShowsRoute
   '/compare/': typeof CompareIndexRoute
@@ -189,7 +252,14 @@ export interface FileRouteTypes {
     | '/compare/dentally'
     | '/compare/ismile-dental-software'
     | '/compare/software-of-excellence'
+    | '/features/calendar'
+    | '/features/forms'
+    | '/features/online-booking'
+    | '/features/payments'
     | '/features/reminders-and-recalls'
+    | '/features/reports'
+    | '/features/security'
+    | '/features/switching'
     | '/solutions/private-practices'
     | '/solutions/reduce-no-shows'
     | '/compare/'
@@ -208,7 +278,14 @@ export interface FileRouteTypes {
     | '/compare/dentally'
     | '/compare/ismile-dental-software'
     | '/compare/software-of-excellence'
+    | '/features/calendar'
+    | '/features/forms'
+    | '/features/online-booking'
+    | '/features/payments'
     | '/features/reminders-and-recalls'
+    | '/features/reports'
+    | '/features/security'
+    | '/features/switching'
     | '/solutions/private-practices'
     | '/solutions/reduce-no-shows'
     | '/compare'
@@ -227,7 +304,14 @@ export interface FileRouteTypes {
     | '/compare/dentally'
     | '/compare/ismile-dental-software'
     | '/compare/software-of-excellence'
+    | '/features/calendar'
+    | '/features/forms'
+    | '/features/online-booking'
+    | '/features/payments'
     | '/features/reminders-and-recalls'
+    | '/features/reports'
+    | '/features/security'
+    | '/features/switching'
     | '/solutions/private-practices'
     | '/solutions/reduce-no-shows'
     | '/compare/'
@@ -247,7 +331,14 @@ export interface RootRouteChildren {
   CompareDentallyRoute: typeof CompareDentallyRoute
   CompareIsmileDentalSoftwareRoute: typeof CompareIsmileDentalSoftwareRoute
   CompareSoftwareOfExcellenceRoute: typeof CompareSoftwareOfExcellenceRoute
+  FeaturesCalendarRoute: typeof FeaturesCalendarRoute
+  FeaturesFormsRoute: typeof FeaturesFormsRoute
+  FeaturesOnlineBookingRoute: typeof FeaturesOnlineBookingRoute
+  FeaturesPaymentsRoute: typeof FeaturesPaymentsRoute
   FeaturesRemindersAndRecallsRoute: typeof FeaturesRemindersAndRecallsRoute
+  FeaturesReportsRoute: typeof FeaturesReportsRoute
+  FeaturesSecurityRoute: typeof FeaturesSecurityRoute
+  FeaturesSwitchingRoute: typeof FeaturesSwitchingRoute
   SolutionsPrivatePracticesRoute: typeof SolutionsPrivatePracticesRoute
   SolutionsReduceNoShowsRoute: typeof SolutionsReduceNoShowsRoute
   CompareIndexRoute: typeof CompareIndexRoute
@@ -342,11 +433,60 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FeaturesIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/features/calendar': {
+      id: '/features/calendar'
+      path: '/features/calendar'
+      fullPath: '/features/calendar'
+      preLoaderRoute: typeof FeaturesCalendarRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/features/forms': {
+      id: '/features/forms'
+      path: '/features/forms'
+      fullPath: '/features/forms'
+      preLoaderRoute: typeof FeaturesFormsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/features/online-booking': {
+      id: '/features/online-booking'
+      path: '/features/online-booking'
+      fullPath: '/features/online-booking'
+      preLoaderRoute: typeof FeaturesOnlineBookingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/features/payments': {
+      id: '/features/payments'
+      path: '/features/payments'
+      fullPath: '/features/payments'
+      preLoaderRoute: typeof FeaturesPaymentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/features/reminders-and-recalls': {
       id: '/features/reminders-and-recalls'
       path: '/features/reminders-and-recalls'
       fullPath: '/features/reminders-and-recalls'
       preLoaderRoute: typeof FeaturesRemindersAndRecallsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/features/reports': {
+      id: '/features/reports'
+      path: '/features/reports'
+      fullPath: '/features/reports'
+      preLoaderRoute: typeof FeaturesReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/features/security': {
+      id: '/features/security'
+      path: '/features/security'
+      fullPath: '/features/security'
+      preLoaderRoute: typeof FeaturesSecurityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/features/switching': {
+      id: '/features/switching'
+      path: '/features/switching'
+      fullPath: '/features/switching'
+      preLoaderRoute: typeof FeaturesSwitchingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/solutions/private-practices': {
@@ -391,7 +531,14 @@ const rootRouteChildren: RootRouteChildren = {
   CompareDentallyRoute: CompareDentallyRoute,
   CompareIsmileDentalSoftwareRoute: CompareIsmileDentalSoftwareRoute,
   CompareSoftwareOfExcellenceRoute: CompareSoftwareOfExcellenceRoute,
+  FeaturesCalendarRoute: FeaturesCalendarRoute,
+  FeaturesFormsRoute: FeaturesFormsRoute,
+  FeaturesOnlineBookingRoute: FeaturesOnlineBookingRoute,
+  FeaturesPaymentsRoute: FeaturesPaymentsRoute,
   FeaturesRemindersAndRecallsRoute: FeaturesRemindersAndRecallsRoute,
+  FeaturesReportsRoute: FeaturesReportsRoute,
+  FeaturesSecurityRoute: FeaturesSecurityRoute,
+  FeaturesSwitchingRoute: FeaturesSwitchingRoute,
   SolutionsPrivatePracticesRoute: SolutionsPrivatePracticesRoute,
   SolutionsReduceNoShowsRoute: SolutionsReduceNoShowsRoute,
   CompareIndexRoute: CompareIndexRoute,

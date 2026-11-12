@@ -479,16 +479,26 @@ export function FeatureCards({ items }: { items: FeatureCard[] }) {
 }
 
 /** "How DentDock supports the rest of your practice": photo cards linking to other pages. */
-export type OtherArea = { title: string; body: string; to: string; image: string; alt: string };
+export type OtherArea = {
+  title: string;
+  body: string;
+  to: string;
+  image: string;
+  alt: string;
+  /** object-position class to keep the person in frame */
+  position?: string;
+};
 
 export function OtherAreas({
   title,
   highlight,
   items,
+  cols = 3,
 }: {
   title: string;
   highlight?: string;
   items: OtherArea[];
+  cols?: 3 | 4;
 }) {
   return (
     <section className="bg-gradient-to-b from-[#F7F9FF] to-[#F1F5FE] border-y border-[#EEF2FB] py-16 md:py-24 px-6">
@@ -498,7 +508,9 @@ export function OtherAreas({
             {title} {highlight && <span className="text-[#2563EB]">{highlight}</span>}
           </h2>
         </Reveal>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div
+          className={`grid grid-cols-1 sm:grid-cols-2 gap-5 ${cols === 4 ? "lg:grid-cols-4" : "md:grid-cols-3"}`}
+        >
           {items.map((o, i) => (
             <Reveal key={o.title} delay={i * 0.08}>
               <Link
@@ -511,7 +523,7 @@ export function OtherAreas({
                   width={1400}
                   height={933}
                   loading="lazy"
-                  className="w-full aspect-[16/10] object-cover"
+                  className={`w-full aspect-[16/10] object-cover ${o.position ?? ""}`}
                 />
                 <div className="p-6 flex flex-col flex-1">
                   <h3 className="text-[19px] font-semibold text-[#0F172A] tracking-tight">

@@ -55,7 +55,7 @@ export function AppWindow({
   );
 }
 
-function Toggle({ on = true }: { on?: boolean }) {
+export function Toggle({ on = true }: { on?: boolean }) {
   return (
     <span
       className={`relative inline-flex h-5 w-9 rounded-full ${on ? "bg-[#2563EB]" : "bg-[#CBD5E1]"}`}

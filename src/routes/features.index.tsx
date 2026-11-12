@@ -2,6 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import PageShell from "@/components/site/PageShell";
 import PageHero from "@/components/site/PageHero";
+import { OtherAreas } from "@/components/site/templates";
+import { allFeaturePages } from "@/components/site/featurePages";
 import ProductShowcase from "@/components/home/ProductShowcase";
 import BentoGrid from "@/components/home/BentoGrid";
 
@@ -55,6 +57,7 @@ function FeaturesPage() {
         intro="Online booking, a patient portal, reminders and recalls, digital forms, payments and reports. One system for UK private dental practices, from first booking to last recall."
         secondary={{ label: "See pricing", to: "/pricing" }}
       />
+      <OtherAreas title="Explore" highlight="each feature" cols={4} items={allFeaturePages} />
       <ProductShowcase hideHeading />
       <BentoGrid />
       <section className="bg-background pb-20 md:pb-28 px-6">
