@@ -59,10 +59,10 @@ export const solutionPhotos = {
     height: 1638,
     position: "object-[50%_60%]",
   }, // pxOQ-P97sA8
-  multiSite: { src: "/images/solutions/multi-site.webp", alt: "Bright reception desk in a modern practice", height: 953, position: "object-[60%_50%]" }, // nMyM7fxpokE
+  multiSite: {
     src: "/images/solutions/multi-site.webp",
-    alt: "A team of professionals standing together in an office",
-    height: 788,
-    position: "object-[50%_35%]",
-  }, // q1jHh0MWTFk
+    alt: "Bright reception desk in a modern practice",
+    height: 953,
+    position: "object-[60%_50%]",
+  }, // nMyM7fxpokE
 } satisfies Record<string, SolutionPhoto>;
