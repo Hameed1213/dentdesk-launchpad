@@ -318,36 +318,3 @@
   outline-offset: 4px;
   border-radius: 6px;
 }
-
-/* Calculator sliders on the Solutions pages */
-.dd-range {
-  -webkit-appearance: none;
-  appearance: none;
-  height: 6px;
-  border-radius: 9999px;
-  outline: none;
-}
-.dd-range::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 22px;
-  height: 22px;
-  border-radius: 9999px;
-  background: #fff;
-  border: 3px solid #2563eb;
-  box-shadow: 0 4px 12px -2px rgba(37, 99, 235, 0.45);
-  cursor: pointer;
-}
-.dd-range::-moz-range-thumb {
-  width: 18px;
-  height: 18px;
-  border-radius: 9999px;
-  background: #fff;
-  border: 3px solid #2563eb;
-  box-shadow: 0 4px 12px -2px rgba(37, 99, 235, 0.45);
-  cursor: pointer;
-}
-.dd-range:focus-visible::-webkit-slider-thumb {
-  outline: 2px solid #2563eb;
-  outline-offset: 3px;
-}

@@ -95,27 +95,25 @@ export type Pain = { text: string; Icon: typeof ArrowRight };
 
 function SoundsLikeYou({ title, lines }: { title: string; lines: Pain[] }) {
   return (
-    <section className="bg-gradient-to-b from-[#F7F9FF] to-[#F1F5FE] border-y border-[#EEF2FB] py-16 md:py-24 px-6">
-      <div className="mx-auto max-w-6xl">
-        <Reveal className="text-center max-w-3xl mx-auto">
-          <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-[#0F172A] leading-[1.1]">
-            {title}
-          </h2>
-        </Reveal>
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-5">
-          {lines.map(({ text, Icon }, i) => (
-            <Reveal key={text} delay={i * 0.08}>
-              <div className="h-full rounded-3xl bg-white border border-[#E5EDFB] p-7">
-                <span className="w-11 h-11 rounded-2xl bg-[#FEF2F2] flex items-center justify-center">
-                  <Icon className="w-5 h-5 text-[#DC2626]" strokeWidth={1.8} />
-                </span>
-                <p className="mt-5 text-[19px] font-semibold tracking-tight text-[#0F172A] leading-[1.4]">
-                  {text}
-                </p>
-              </div>
-            </Reveal>
+    <section className="bg-white pt-16 md:pt-20">
+      <Reveal className="px-6 text-center">
+        <h2 className="text-2xl md:text-[34px] font-semibold tracking-tight text-[#0F172A] leading-[1.15]">
+          {title}
+        </h2>
+      </Reveal>
+      <div className="mt-10 border-y border-neutral-200">
+        <ul className="mx-auto max-w-7xl grid grid-cols-1 md:grid-cols-3">
+          {lines.map(({ text }, i) => (
+            <li
+              key={text}
+              className={`px-8 py-8 md:py-10 text-center border-neutral-200 ${i < lines.length - 1 ? "border-b md:border-b-0 md:border-r" : ""}`}
+            >
+              <p className="text-[17px] md:text-[18px] font-medium text-[#0F172A] leading-[1.5] max-w-sm mx-auto">
+                {text}
+              </p>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </section>
   );
@@ -136,48 +134,55 @@ function StoryTimeline({
 }) {
   return (
     <section className="bg-white py-16 md:py-24 px-6">
-      <div className="mx-auto max-w-5xl">
+      <div className="mx-auto max-w-6xl">
         <Reveal className="text-center max-w-3xl mx-auto">
           <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-[#0F172A] leading-[1.1]">
             {title} {highlight && <span className="text-[#2563EB]">{highlight}</span>}
           </h2>
           <p className="mt-5 text-[18px] text-[#475569] leading-[1.6]">{intro}</p>
         </Reveal>
-        <ol className="relative mt-14 pl-9 md:pl-12">
+        <ol className="relative mt-16">
+          {/* the line: left on phones, centre from md */}
           <span
             aria-hidden="true"
-            className="absolute left-[11px] md:left-[15px] top-4 bottom-4 w-0.5 bg-gradient-to-b from-[#BFDBFE] via-[#93C5FD] to-[#BFDBFE]"
+            className="absolute left-[9px] md:left-1/2 md:-translate-x-1/2 top-2 bottom-2 w-px bg-[#BFDBFE]"
           />
-          {stops.map((s, i) => (
-            <Reveal
-              key={s.time + s.title}
-              delay={0.04 * i}
-              className={i < stops.length - 1 ? "pb-6" : ""}
-            >
-              <li className="relative list-none">
-                <span
-                  aria-hidden="true"
-                  className="absolute -left-9 md:-left-12 top-7 w-6 h-6 md:w-8 md:h-8 rounded-full bg-[#2563EB] ring-4 ring-white flex items-center justify-center text-[11px] md:text-[13px] font-semibold text-white"
-                >
-                  {i + 1}
-                </span>
-                <div className="rounded-3xl bg-white border border-[#E5EDFB] shadow-[0_12px_40px_-24px_rgba(15,23,42,0.25)] overflow-hidden grid grid-cols-1 md:grid-cols-[1fr_320px]">
-                  <div className="p-6 md:p-8">
-                    <span className="inline-block rounded-lg bg-[#EFF6FF] px-2.5 py-1 text-[12px] font-semibold text-[#2563EB]">
+          {stops.map((s, i) => {
+            const right = i % 2 === 1;
+            return (
+              <Reveal
+                key={s.time + s.title}
+                delay={0.04 * i}
+                className={i < stops.length - 1 ? "pb-12 md:pb-16" : ""}
+              >
+                <li className="relative list-none grid grid-cols-1 md:grid-cols-2 md:gap-16 items-center pl-9 md:pl-0">
+                  <span
+                    aria-hidden="true"
+                    className="absolute left-0 md:left-1/2 md:-translate-x-1/2 top-1 md:top-1/2 md:-translate-y-1/2 w-[19px] h-[19px] rounded-full bg-white border-[4px] border-[#2563EB]"
+                  />
+                  <div className={`${right ? "md:order-2 md:text-left" : "md:text-right"}`}>
+                    <p className="text-[13px] font-semibold uppercase tracking-[0.1em] text-[#2563EB]">
                       {s.time}
-                    </span>
-                    <h3 className="mt-3 text-[20px] font-semibold text-[#0F172A] tracking-tight">
+                    </p>
+                    <h3 className="mt-2 text-[22px] font-semibold text-[#0F172A] tracking-tight">
                       {s.title}
                     </h3>
-                    <p className="mt-2 text-[16px] text-[#475569] leading-[1.6]">{s.body}</p>
+                    <p
+                      className={`mt-2 text-[16px] text-[#475569] leading-[1.6] max-w-md ${right ? "" : "md:ml-auto"}`}
+                    >
+                      {s.body}
+                    </p>
                   </div>
-                  <Grid className="!rounded-none md:border-l md:border-[#E5EDFB] ring-0 flex items-center justify-center p-6 min-h-[150px]">
-                    <div aria-hidden="true">{s.visual}</div>
-                  </Grid>
-                </div>
-              </li>
-            </Reveal>
-          ))}
+                  <div
+                    aria-hidden="true"
+                    className={`mt-5 md:mt-0 flex ${right ? "md:order-1 md:justify-end" : "md:justify-start"}`}
+                  >
+                    {s.visual}
+                  </div>
+                </li>
+              </Reveal>
+            );
+          })}
         </ol>
       </div>
     </section>
@@ -197,44 +202,36 @@ function WhatYouControl({
   groups: ControlGroup[];
 }) {
   return (
-    <section className="bg-gradient-to-b from-[#F7F9FF] to-[#F1F5FE] border-y border-[#EEF2FB] py-16 md:py-24 px-6">
-      <div className="mx-auto max-w-6xl grid grid-cols-1 lg:grid-cols-[0.8fr_1.2fr] gap-12 items-center">
+    <section className="bg-gradient-to-b from-[#F7F9FF] to-[#F1F5FE] border-y border-[#EEF2FB] py-14 md:py-16 px-6">
+      <div className="mx-auto max-w-5xl grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-10 items-center">
         <Reveal>
-          <h2 className="text-3xl md:text-[44px] font-semibold tracking-tight text-[#0F172A] leading-[1.1]">
+          <h2 className="text-3xl md:text-[38px] font-semibold tracking-tight text-[#0F172A] leading-[1.1]">
             {title}
           </h2>
-          <p className="mt-5 text-[17px] text-[#475569] leading-[1.6]">{intro}</p>
+          <p className="mt-4 text-[16px] text-[#475569] leading-[1.6]">{intro}</p>
         </Reveal>
         <Reveal delay={0.08}>
-          <div className="rounded-3xl bg-white border border-[#E5EDFB] shadow-[0_30px_70px_-40px_rgba(15,23,42,0.35)] overflow-hidden">
-            <div className="flex items-center gap-2 border-b border-[#EEF2FB] px-6 py-4">
-              <span className="w-2.5 h-2.5 rounded-full bg-[#ff5f57]" />
-              <span className="w-2.5 h-2.5 rounded-full bg-[#febc2e]" />
-              <span className="w-2.5 h-2.5 rounded-full bg-[#28c840]" />
-              <span className="ml-3 text-[14px] font-semibold text-[#0F172A]">Settings</span>
-            </div>
-            <div className="p-6 space-y-6">
-              {groups.map((g) => (
-                <div key={g.group}>
-                  <p className="text-[12px] font-semibold uppercase tracking-[0.12em] text-[#64748B]">
-                    {g.group}
-                  </p>
-                  <div className="mt-2.5 rounded-2xl border border-[#EEF2FB] divide-y divide-[#F1F5F9]">
-                    {g.items.map((c) => (
-                      <div
-                        key={c.label}
-                        className="flex items-center justify-between gap-4 px-4 py-3"
-                      >
-                        <span className="text-[14px] text-[#0F172A]">{c.label}</span>
-                        <span className="text-[14px] font-semibold text-[#2563EB] whitespace-nowrap">
-                          {c.value}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
+          <div className="rounded-2xl bg-white border border-[#E5EDFB] shadow-[0_20px_50px_-35px_rgba(15,23,42,0.35)] p-4 space-y-3 max-w-md lg:ml-auto">
+            {groups.map((g) => (
+              <div key={g.group}>
+                <p className="px-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-[#94A3B8]">
+                  {g.group}
+                </p>
+                <div className="mt-1.5 rounded-xl bg-[#F8FAFC] divide-y divide-white">
+                  {g.items.map((c) => (
+                    <div
+                      key={c.label}
+                      className="flex items-center justify-between gap-4 px-3.5 py-2"
+                    >
+                      <span className="text-[13px] text-[#0F172A]">{c.label}</span>
+                      <span className="text-[13px] font-semibold text-[#2563EB] whitespace-nowrap scale-90 origin-right">
+                        {c.value}
+                      </span>
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
         </Reveal>
       </div>
@@ -266,12 +263,11 @@ function Slider({
   format: (n: number) => string;
   onChange: (n: number) => void;
 }) {
-  const pct = ((value - min) / (max - min)) * 100;
   return (
     <label className="block">
-      <span className="flex items-center justify-between text-[14px] font-medium text-[#334155]">
+      <span className="flex items-baseline justify-between gap-3 text-[14px] text-[#475569]">
         {label}
-        <span className="rounded-lg bg-[#EFF6FF] px-2.5 py-1 text-[14px] font-semibold text-[#1D4ED8] tabular-nums">
+        <span className="text-[16px] font-semibold text-[#0F172A] tabular-nums">
           {format(value)}
         </span>
       </span>
@@ -282,13 +278,8 @@ function Slider({
         step={step}
         value={value}
         onChange={(e) => onChange(Number(e.target.value))}
-        className="dd-range mt-3 w-full"
-        style={{ background: `linear-gradient(to right, #2563EB ${pct}%, #E2E8F0 ${pct}%)` }}
+        className="mt-2 w-full accent-[#2563EB]"
       />
-      <span className="mt-1 flex justify-between text-[11px] text-[#94A3B8]">
-        <span>{format(min)}</span>
-        <span>{format(max)}</span>
-      </span>
     </label>
   );
 }
@@ -305,30 +296,21 @@ function CalcShell({
   result: ReactNode;
 }) {
   return (
-    <section className="bg-white py-16 md:py-24 px-6">
-      <div className="mx-auto max-w-6xl">
-        <Reveal className="text-center max-w-3xl mx-auto">
-          <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-[#0F172A] leading-[1.1]">
+    <section className="bg-white py-16 md:py-20 px-6">
+      <div className="mx-auto max-w-4xl">
+        <Reveal className="text-center max-w-2xl mx-auto">
+          <h2 className="text-3xl md:text-[38px] font-semibold tracking-tight text-[#0F172A] leading-[1.1]">
             {title}
           </h2>
-          <p className="mt-5 text-[17px] text-[#475569] leading-[1.6]">{intro}</p>
+          <p className="mt-4 text-[16px] text-[#475569] leading-[1.6]">{intro}</p>
         </Reveal>
-        <Reveal delay={0.08} className="mt-12">
-          <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] rounded-[28px] overflow-hidden border border-[#E5EDFB] shadow-[0_30px_70px_-40px_rgba(15,23,42,0.35)]">
-            <div className="bg-white p-7 md:p-10 space-y-7">{controls}</div>
-            <div className="relative overflow-hidden bg-gradient-to-br from-[#2563EB] to-[#1D4ED8] p-7 md:p-10 text-white flex flex-col justify-center">
-              <div
-                aria-hidden="true"
-                className="pointer-events-none absolute -top-16 -right-16 h-56 w-56 rounded-full"
-                style={{
-                  background: "radial-gradient(circle, rgba(255,255,255,0.2), transparent 70%)",
-                }}
-              />
-              <div className="relative">{result}</div>
-              <p className="relative mt-6 text-[12px] text-white/70">
-                Your own figures, worked out in your browser. Not a promise of results.
-              </p>
-            </div>
+        <Reveal delay={0.08} className="mt-10">
+          <div className="rounded-3xl border border-[#E5EDFB] bg-white p-6 md:p-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">{controls}</div>
+            <div className="mt-7 rounded-2xl bg-[#F5F8FF] px-6 py-5">{result}</div>
+            <p className="mt-3 text-center text-[12px] text-[#94A3B8]">
+              Your own figures, worked out in your browser. Not a promise of results.
+            </p>
           </div>
         </Reveal>
       </div>
@@ -336,15 +318,15 @@ function CalcShell({
   );
 }
 
-function Result({ label, value, small }: { label: string; value: string; small?: boolean }) {
+function Result({ label, value, accent }: { label: string; value: string; accent?: boolean }) {
   return (
-    <div>
-      <p className="text-[14px] text-white/80">{label}</p>
+    <div className="text-center">
+      <p className="text-[13px] text-[#64748B]">{label}</p>
       <p
-        className={`mt-1 font-semibold tracking-tight leading-none ${small ? "text-[30px]" : "text-[48px]"}`}
+        className={`mt-1 text-[28px] font-semibold tracking-tight leading-none ${accent ? "text-[#2563EB]" : "text-[#0F172A]"}`}
       >
         {value}
-        <span className="text-[15px] font-normal text-white/80"> a month</span>
+        <span className="text-[13px] font-normal text-[#64748B]"> a month</span>
       </p>
     </div>
   );
@@ -391,11 +373,10 @@ export function NoShowCalculator() {
         </>
       }
       result={
-        <div className="space-y-6">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 sm:divide-x sm:divide-[#DBEAFE]">
           <Result label="Lost to no-shows" value={gbp(perMonth)} />
-          <div className="h-px bg-white/20" />
-          <Result label="Saving just one a week" value={gbp(onePerWeek)} small />
-          <p className="text-[14px] text-white/85">DentDock is £49 a month.</p>
+          <Result label="Saving just one a week" value={gbp(onePerWeek)} accent />
+          <Result label="DentDock costs" value="£49" />
         </div>
       }
     />
@@ -444,11 +425,12 @@ export function SpendCalculator() {
         </>
       }
       result={
-        <div className="space-y-6">
-          <Result label="You pay now" value={gbp(total)} />
-          <div className="h-px bg-white/20" />
-          <Result label="DentDock" value="£49" small />
-          <p className="text-[14px] text-white/85">
+        <div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:divide-x sm:divide-[#DBEAFE]">
+            <Result label="You pay now" value={gbp(total)} />
+            <Result label="DentDock" value="£49" accent />
+          </div>
+          <p className="mt-4 text-center text-[13px] text-[#64748B]">
             Includes 200 texts a month, then 8p a text. Check what your current system does that
             DentDock doesn't, such as NHS claims or charting.
           </p>
