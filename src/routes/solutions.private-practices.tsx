@@ -13,6 +13,7 @@ import {
   ReminderTimelineCard,
 } from "@/components/site/cards";
 import { PhotoPanel } from "@/components/site/ui";
+import { solutionPhotos } from "@/components/site/solutionPages";
 import { ClipboardList, Layers, PhoneCall } from "lucide-react";
 import { featurePages } from "@/components/site/featurePages";
 
@@ -39,13 +40,8 @@ const content: SolutionStoryContent = {
     intro:
       "Diary, online booking with your prices, reminders, recalls, forms and payments in one place. Set it up yourself in a day.",
     visual: (
-      <PhotoPanel
-        src="/images/home/dentist-patient.webp"
-        alt="Dentist talking with a smiling patient in a modern surgery"
-        height={1050}
-        position="object-[45%_50%]"
-      >
-        <BookingPriceCard className="absolute right-2 sm:right-3 lg:-right-6 top-4 sm:top-6 lg:top-10" />
+      <PhotoPanel {...solutionPhotos.private}>
+        <BookingPriceCard className="absolute right-2 sm:right-3 lg:-right-6 bottom-4 sm:bottom-6 lg:bottom-10" />
         <PillCard
           className="absolute left-2 sm:left-3 lg:-left-6 bottom-4 sm:bottom-6 lg:bottom-10"
           icon="dot"

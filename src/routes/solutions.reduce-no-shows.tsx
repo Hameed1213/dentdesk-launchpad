@@ -8,6 +8,7 @@ import {
 } from "@/components/site/solutionTemplates";
 import { FillSlotCard, PillCard, TextMessageCard } from "@/components/site/cards";
 import { PhotoPanel } from "@/components/site/ui";
+import { solutionPhotos } from "@/components/site/solutionPages";
 import { CalendarX, Clock, PhoneCall } from "lucide-react";
 import { featurePages } from "@/components/site/featurePages";
 
@@ -35,12 +36,7 @@ const content: SolutionStoryContent = {
     intro:
       "DentDock reminds every patient, makes it easy to cancel in time, and helps you hand the slot to someone who wants it.",
     visual: (
-      <PhotoPanel
-        src="/images/pages/empty-surgery.webp"
-        alt="An empty dental chair in a modern surgery"
-        height={936}
-        position="object-[50%_55%]"
-      >
+      <PhotoPanel {...solutionPhotos.noShows}>
         <PillCard
           className="absolute left-2 sm:left-3 lg:-left-6 top-4 sm:top-6 lg:top-10"
           icon="bell"

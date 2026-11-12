@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { CalendarX, ClipboardList, Clock } from "lucide-react";
 import { PhotoPanel } from "@/components/site/ui";
+import { solutionPhotos } from "@/components/site/solutionPages";
 import { templateHead } from "@/components/site/templates";
 import {
   Calculator,
@@ -38,12 +39,7 @@ const content: SolutionStoryContent = {
     intro:
       "When a patient cancels, DentDock lines up the patients who want an earlier appointment, and your team offers the slot in a couple of clicks.",
     visual: (
-      <PhotoPanel
-        src="/images/pages/hero-booking.webp"
-        alt="Woman smiling as she uses her phone at home"
-        height={934}
-        position="object-[55%_35%]"
-      >
+      <PhotoPanel {...solutionPhotos.fillCancelled}>
         <PillCard className={at.topLeft} icon="bell" text="Earlier appointment offered" />
         <PillCard className={at.bottomLeft} icon="dot" text="Booked from the waitlist" />
       </PhotoPanel>

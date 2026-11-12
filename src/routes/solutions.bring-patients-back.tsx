@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { CalendarClock, MailX, Star } from "lucide-react";
 import { PhotoPanel } from "@/components/site/ui";
+import { solutionPhotos } from "@/components/site/solutionPages";
 import { templateHead } from "@/components/site/templates";
 import {
   Calculator,
@@ -38,12 +39,7 @@ const content: SolutionStoryContent = {
     intro:
       "Recalls set themselves when a visit is completed and follow up until patients book. And you can send happy patients your Google review link.",
     visual: (
-      <PhotoPanel
-        src="/images/pages/hero-reports.webp"
-        alt="Dentist showing a patient a scan on screen"
-        height={1751}
-        position="object-[50%_35%]"
-      >
+      <PhotoPanel {...solutionPhotos.bringBack}>
         <PillCard className={at.topRight} icon="bell" text="Recall due · reminder sent" />
         <PillCard className={at.bottomLeft} icon="dot" text="Booked from the recall link" />
       </PhotoPanel>

@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { CalendarX, PhoneCall, Receipt } from "lucide-react";
 import { PhotoPanel } from "@/components/site/ui";
+import { solutionPhotos } from "@/components/site/solutionPages";
 import { templateHead } from "@/components/site/templates";
 import {
   SolutionStoryPage,
@@ -34,12 +35,7 @@ const content: SolutionStoryContent = {
     intro:
       "Show your prices, take deposits, and give private patients online booking and reminders, all for £49 a month with no contract.",
     visual: (
-      <PhotoPanel
-        src="/images/pages/hero-security.webp"
-        alt="Smiling dentist in his surgery"
-        height={1778}
-        position="object-[50%_28%]"
-      >
+      <PhotoPanel {...solutionPhotos.goingPrivate}>
         <BookingPriceCard className={at.topLeft} />
         <PillCard className={at.bottomRight} icon="dot" text="Deposit paid online · £50" />
       </PhotoPanel>

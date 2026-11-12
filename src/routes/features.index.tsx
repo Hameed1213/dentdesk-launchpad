@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import PageShell from "@/components/site/PageShell";
+import { TrustBand } from "@/components/site/TrustBand";
 import {
   ClosingBand,
   PhotoPanel,
@@ -138,58 +139,6 @@ function HubRows() {
             );
           })}
         </div>
-      </div>
-    </section>
-  );
-}
-
-function TrustBand() {
-  const items = [
-    { title: "UK hosted", sub: "Stored in London" },
-    { title: "Encrypted", sub: "In transit and at rest" },
-    { title: "Two-step login", sub: "For owners and managers" },
-    { title: "ICO registered", sub: "ZC132966" },
-  ];
-  return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-[#E8F0FF] via-[#F1EEFF] to-[#E3F2FF] py-16 md:py-24 px-6">
-      <div className="mx-auto max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        <Reveal>
-          <PhotoPanel
-            src={featurePages.security.image}
-            alt={featurePages.security.alt}
-            height={1778}
-            position={featurePages.security.position ?? ""}
-          >
-            <PillCard className={`${L} ${B}`} icon="dot" text="Two-step login on" />
-          </PhotoPanel>
-        </Reveal>
-        <Reveal delay={0.08}>
-          <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-[#0F172A] leading-[1.1]">
-            <span className="text-[#2563EB]">A partner</span> you can trust
-          </h2>
-          <p className="mt-5 text-[17px] text-[#334155] leading-[1.65]">
-            Patient data is stored in the UK, encrypted, and only seen by the people in your team
-            who need it. You can download everything at any time.
-          </p>
-          <ul className="mt-7 grid grid-cols-1 sm:grid-cols-2 gap-3">
-            {items.map(({ title, sub }) => (
-              <li key={title} className="rounded-2xl bg-white border border-[#E5EDFB] px-5 py-3.5">
-                <span className="block text-[15px] font-semibold text-[#0F172A] leading-tight">
-                  {title}
-                </span>
-                <span className="block mt-1 text-[13px] text-[#64748B] leading-tight">{sub}</span>
-              </li>
-            ))}
-          </ul>
-          <div className="mt-8 flex flex-col sm:flex-row gap-3">
-            <Link to="/features/security" className={primaryButton}>
-              Explore security and data
-            </Link>
-            <Link to="/dpa" className={pillButton}>
-              Read our DPA
-            </Link>
-          </div>
-        </Reveal>
       </div>
     </section>
   );

@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { FileSignature, Rocket, Wallet } from "lucide-react";
 import { PhotoPanel } from "@/components/site/ui";
+import { solutionPhotos } from "@/components/site/solutionPages";
 import { templateHead } from "@/components/site/templates";
 import {
   SolutionStoryPage,
@@ -35,12 +36,7 @@ const content: SolutionStoryContent = {
     intro:
       "Set up your diary, online booking, forms and reminders in a day, for £49 a month with no contract and no setup fees.",
     visual: (
-      <PhotoPanel
-        src="/images/pages/hero-switching.webp"
-        alt="Smiling dentist sitting by the dental chair"
-        height={934}
-        position="object-[45%_25%]"
-      >
+      <PhotoPanel {...solutionPhotos.newPractices}>
         <PillCard className={at.topLeft} icon="dot" text="Booking page is live" />
         <PillCard className={at.bottomLeft} icon="dot" text="First booking · from Google" />
       </PhotoPanel>

@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ClipboardList, PhoneCall, Wallet } from "lucide-react";
 import { PhotoPanel } from "@/components/site/ui";
+import { solutionPhotos } from "@/components/site/solutionPages";
 import { templateHead } from "@/components/site/templates";
 import {
   Calculator,
@@ -37,12 +38,7 @@ const content: SolutionStoryContent = {
     intro:
       "Online booking, forms before the visit, reminders, recalls and payment links that run themselves, so your team isn't stuck chasing.",
     visual: (
-      <PhotoPanel
-        src="/images/home/practice-laptop.webp"
-        alt="Practice manager working on a laptop at her desk"
-        height={933}
-        position="object-[70%_40%]"
-      >
+      <PhotoPanel {...solutionPhotos.cutAdmin}>
         <PillCard className={at.topLeft} icon="dot" text="Booked online · no call needed" />
         <PillCard className={at.bottomLeft} icon="bell" text="Recalls sent for you" />
       </PhotoPanel>

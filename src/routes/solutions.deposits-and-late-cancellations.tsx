@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Ban, MessageSquareWarning, PhoneOff } from "lucide-react";
 import { PhotoPanel } from "@/components/site/ui";
+import { solutionPhotos } from "@/components/site/solutionPages";
 import { templateHead } from "@/components/site/templates";
 import {
   Calculator,
@@ -38,12 +39,7 @@ const content: SolutionStoryContent = {
     intro:
       "Ask for a deposit on the treatments you choose, show your cancellation policy before patients book, and decide each fee case by case.",
     visual: (
-      <PhotoPanel
-        src="/images/pages/contactless-payment.webp"
-        alt="Phone held over a card reader to pay"
-        height={750}
-        position="object-[50%_50%]"
-      >
+      <PhotoPanel {...solutionPhotos.deposits}>
         <PillCard className={at.topLeft} icon="dot" text="Deposit paid online · £50" />
         <PillCard
           className={at.bottomRight}
