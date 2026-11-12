@@ -2,8 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import PageShell from "@/components/site/PageShell";
 import { ClosingBand } from "@/components/site/ui";
 import { FaqSection, OtherAreas, templateHead, type Faq } from "@/components/site/templates";
-import { SolutionHero } from "@/components/site/solutionTemplates";
-import { PillCard } from "@/components/site/cards";
+import { SolutionsHubHero } from "@/components/site/solutionTemplates";
 
 /* Solutions hub: links to each Solutions page, grouped by problem and by type of practice. */
 
@@ -42,26 +41,10 @@ export const Route = createFileRoute("/solutions/")({
 function SolutionsPage() {
   return (
     <PageShell>
-      <SolutionHero
-        hero={{
-          crumbs: [{ label: "Solutions", to: PATH }],
-          title: "Fixes for the problems",
-          highlight: "your practice faces",
-          intro: "Start from what's getting in the way, and see how DentDock helps.",
-          photo: {
-            src: "/images/pages/hero-features.webp",
-            alt: "Dentist treating a patient in a bright, modern surgery",
-            height: 934,
-            position: "object-[60%_40%]",
-          },
-          cards: (
-            <PillCard
-              className="absolute left-2 sm:left-6 lg:-left-6 bottom-6 sm:bottom-10"
-              icon="dot"
-              text="Rebooked from the waitlist"
-            />
-          ),
-        }}
+      <SolutionsHubHero
+        title="Fixes for the problems"
+        highlight="your practice faces"
+        intro="Start from what's getting in the way, and see how DentDock helps."
       />
       <OtherAreas
         title="By"
