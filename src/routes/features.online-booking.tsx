@@ -16,7 +16,7 @@ import { othersFor } from "@/components/site/featurePages";
  * rearrange, forms, payment history + receipts, details, consent; data/deletion are requests),
  * waitlist join online. Not claimed: paying from the portal, long minimum notice, 1-2 week booking
  * windows, online deposits as live, self-service export/deletion.
- * Photo (Unsplash, free licence): R6dSBkz32B8.
+ * Photo: Magnific (Freepik) free licence, credited in the page footer.
  */
 
 const PATH = "/features/online-booking";
@@ -207,8 +207,8 @@ const content: PlatformContent = {
     visual: (
       <PhotoPanel
         src="/images/pages/hero-booking.webp"
-        alt="Man looking at his phone"
-        height={933}
+        alt="Woman smiling as she uses her phone at home"
+        height={934}
         position="object-[55%_35%]"
       >
         <BookingPriceCard className="absolute left-2 sm:left-3 lg:-left-6 bottom-4 sm:bottom-6 lg:bottom-10" />

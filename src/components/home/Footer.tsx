@@ -177,6 +177,27 @@ export default function Footer() {
             Dent Dock is a trading name of Paradigm Network Limited.<br />
             Company No. 16903048 · Registered in England and Wales · ICO No. ZC132966
           </p>
+          <p className="text-[11px] text-white/30 text-center sm:text-left leading-[1.5]">
+            Some photos by{" "}
+            <a
+              href="https://www.magnific.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline underline-offset-2 hover:text-white/60"
+            >
+              Freepik
+            </a>{" "}
+            and{" "}
+            <a
+              href="https://unsplash.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline underline-offset-2 hover:text-white/60"
+            >
+              Unsplash
+            </a>
+            .
+          </p>
         </div>
       </div>
     </footer>

@@ -7,8 +7,8 @@ export const featurePages = {
     body: "Your whole team's day in one diary, with who's arrived and who's late.",
     to: "/features/calendar",
     image: "/images/pages/hero-calendar.webp",
-    position: "object-[50%_35%]",
-    alt: "Two clinicians looking at an appointment on a tablet",
+    position: "object-[45%_35%]",
+    alt: "Dentist matching a shade guide for a smiling patient",
   },
   booking: {
     title: "Online booking and portal",
@@ -16,7 +16,7 @@ export const featurePages = {
     to: "/features/online-booking",
     image: "/images/pages/hero-booking.webp",
     position: "object-[55%_35%]",
-    alt: "Man looking at his phone",
+    alt: "Woman smiling as she uses her phone at home",
   },
   reminders: {
     title: "Reminders and recalls",
@@ -62,8 +62,8 @@ export const featurePages = {
     body: "Bring your patients across with a CSV and go live in a day.",
     to: "/features/switching",
     image: "/images/pages/hero-switching.webp",
-    position: "object-[60%_45%]",
-    alt: "Clinician working at screens showing dental scans",
+    position: "object-[45%_25%]",
+    alt: "Smiling dentist sitting by the dental chair",
   },
 } satisfies Record<string, OtherArea>;
 

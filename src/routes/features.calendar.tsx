@@ -15,7 +15,7 @@ import { othersFor } from "@/components/site/featurePages";
  * block time for one or all clinicians with repeats, per-clinician hours and leave, online booking
  * respects hours/leave/blocks, visit drawer actions. Not claimed: drag to move, colours by treatment,
  * appointment search, two-way messaging.
- * Photo (Unsplash, free licence): QzY81G7dbOo.
+ * Photo: Magnific (Freepik) free licence, credited in the page footer.
  */
 
 const PATH = "/features/calendar";
@@ -247,9 +247,9 @@ const content: PlatformContent = {
     visual: (
       <PhotoPanel
         src="/images/pages/hero-calendar.webp"
-        alt="Two clinicians looking at an appointment on a tablet"
-        height={788}
-        position="object-[50%_35%]"
+        alt="Dentist matching a shade guide for a smiling patient"
+        height={934}
+        position="object-[45%_35%]"
       >
         <PillCard
           className="absolute left-2 sm:left-3 lg:-left-6 bottom-4 sm:bottom-6 lg:bottom-10"

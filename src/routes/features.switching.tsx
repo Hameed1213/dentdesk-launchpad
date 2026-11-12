@@ -16,7 +16,7 @@ import { othersFor } from "@/components/site/featurePages";
  * allergies, conditions, notes) and check-up/hygiene recall dates; WhatsApp support (site claim).
  * Not claimed: importing appointments, history, payments, charts or forms; direct links to other
  * systems; consent handling on import (open bug); medications shown on the profile; a fixed setup time.
- * Photo (Unsplash, free licence): Dj5HnHMtkH0.
+ * Photo: Magnific (Freepik) free licence, credited in the page footer.
  */
 
 const PATH = "/features/switching";
@@ -190,9 +190,9 @@ const content: PlatformContent = {
     visual: (
       <PhotoPanel
         src="/images/pages/hero-switching.webp"
-        alt="Clinician working at screens showing dental scans"
-        height={933}
-        position="object-[60%_45%]"
+        alt="Smiling dentist sitting by the dental chair"
+        height={934}
+        position="object-[45%_25%]"
       >
         <PillCard
           className="absolute left-2 sm:left-3 lg:-left-6 bottom-4 sm:bottom-6 lg:bottom-10"
