@@ -312,6 +312,7 @@ const problems = [
     body: "The average practice spends £150–250 a month on software that still needs three tools to do what one should.",
     preview: <PricePreview />,
     rgb: ROSE,
+    link: { label: "£49 a month, everything included", href: "/pricing" },
   },
   {
     Icon: HeadphoneOff,
@@ -319,6 +320,7 @@ const problems = [
     body: "Most dental software companies sell you the product and disappear. A chatbot, a help article and a 72-hour ticket.",
     preview: <ComplexityPreview />,
     rgb: AMBER,
+    link: { label: "Support from the people who built it", href: "/#support" },
   },
   {
     Icon: ClipboardList,
@@ -326,6 +328,7 @@ const problems = [
     body: "Manual reminders. Chasing deposits. Sending forms one by one. Hours every week on tasks that should happen automatically.",
     preview: <NoShowsPreview />,
     rgb: ORANGE,
+    link: { label: "See what runs automatically", href: "/features" },
   },
 ];
 
@@ -405,6 +408,12 @@ export default function FeaturesSection() {
                     <p className="mt-3 text-[14px] text-muted-foreground leading-relaxed">
                       {problem.body}
                     </p>
+                    <a
+                      href={problem.link.href}
+                      className="mt-3 text-[14px] font-medium text-[#2563EB] hover:underline"
+                    >
+                      {problem.link.label} →
+                    </a>
                     <div className="mt-6 flex-1 flex items-end">
                       <div className="w-full">{problem.preview}</div>
                     </div>

@@ -4,8 +4,9 @@ import ToothIcon from "@/components/icons/ToothIcon";
 
 type ProductLink = { label: string; href: string; internal?: boolean };
 const productLinks: ProductLink[] = [
-  { label: "Features", href: "/#about" },
-  { label: "Pricing", href: "/#pricing" },
+  { label: "Features", href: "/features", internal: true },
+  { label: "Pricing", href: "/pricing", internal: true },
+  { label: "Support", href: "/#support" },
   { label: "Comparisons", href: "/compare", internal: true },
   { label: "FAQ", href: "/#faq" },
 ];

@@ -4,6 +4,7 @@ import { AnimatedGroup } from "@/components/ui/animated-group";
 import { visitTracking } from "@/lib/visitSource";
 import { AuroraBackground } from "@/components/ui/aurora-background";
 import DashboardAnimation from "@/components/home/DashboardAnimation";
+import { Link } from "@tanstack/react-router";
 
 const transition = {
   type: "spring" as const,
@@ -24,7 +25,8 @@ const makeContainer = (delay: number) => ({
   },
 });
 
-function WaitlistForm() {
+/** The email waitlist form. Used in the hero and again in the closing band. */
+export function WaitlistForm({ className = "mt-10" }: { className?: string } = {}) {
   const [email, setEmail] = useState("");
   const [website, setWebsite] = useState(""); // honeypot — see handleSubmit
   const [submitted, setSubmitted] = useState(false);
@@ -104,7 +106,7 @@ function WaitlistForm() {
   }
 
   return (
-    <div className="flex flex-col items-center gap-2 max-w-md mx-auto mt-10 w-full">
+    <div className={`flex flex-col items-center gap-2 max-w-md mx-auto w-full ${className}`}>
       <form
         onSubmit={handleSubmit}
         className="flex flex-col sm:flex-row gap-3 w-full"
@@ -156,6 +158,9 @@ function WaitlistForm() {
       {error && (
         <p className="text-sm text-red-500 text-center w-full mt-1">{error}</p>
       )}
+      <p className="text-[13px] text-neutral-500 text-center w-full mt-1">
+        We'll email you personally when your place is ready. No sales calls.
+      </p>
     </div>
   );
 }
@@ -195,7 +200,7 @@ export default function HeroSection() {
           variants={{ container: makeContainer(0.05), item: itemBlurSlide }}
         >
           <p className="text-lg text-neutral-500 max-w-xl mx-auto text-center leading-relaxed mt-5">
-            Online booking, automated reminders, payments and recalls. Built for UK private practices.
+            Online booking, reminders, recalls, forms and payments in one place. £49 a month per practice, with real support from the people who built it.
           </p>
         </AnimatedGroup>
 
@@ -231,10 +236,17 @@ export default function HeroSection() {
           className="mt-4 flex justify-center"
           variants={{ container: makeContainer(0.18), item: itemBlurSlide }}
         >
+          <div className="flex flex-col items-center">
           <p className="text-sm text-neutral-400 text-center max-w-sm mx-auto mt-5 leading-relaxed">
             Be one of the{" "}
             <span className="text-neutral-700 font-medium">first 30 practices</span>, get priority support and help shape the product from day one.
           </p>
+          <p className="text-sm text-center mt-3">
+            <Link to="/pricing" className="text-[#2563EB] font-medium hover:underline">
+              See what's included and pricing →
+            </Link>
+          </p>
+          </div>
         </AnimatedGroup>
 
         {/* Dashboard animation */}

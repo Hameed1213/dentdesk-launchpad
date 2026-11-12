@@ -6,7 +6,9 @@ Dent Dock helps UK private dental practices run their day-to-day: patients book 
 
 ## Pages
 
-- [Home](/): Product overview, features, pricing and waitlist signup.
+- [Home](/): What DentDock does, support, switching, pricing summary, FAQ and waitlist signup.
+- [Features](/features): Online booking, patient portal, reminders and recalls, forms, payments and reports.
+- [Pricing](/pricing): £49 a month per practice, what's included, plans coming soon.
 - [Waitlist](/waitlist): Join the early-access waitlist.
 - [Privacy](/privacy): Privacy policy.
 - [Terms](/terms): Terms of service.
