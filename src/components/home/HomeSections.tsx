@@ -17,18 +17,16 @@ import { WaitlistForm } from "@/components/home/HeroSection";
 const WHATSAPP = "https://wa.me/447404488089";
 const ENTRANCE = { duration: 0.6, ease: [0.22, 1, 0.36, 1] as const };
 
-const primaryButton =
-  "inline-flex items-center justify-center gap-2 rounded-xl bg-[#2563EB] px-6 py-3 text-sm font-semibold text-white shadow-md shadow-blue-500/20 transition-colors hover:bg-[#1d4ed8]";
-const secondaryButton =
-  "inline-flex items-center justify-center gap-2 rounded-xl border border-[#2563EB] px-6 py-3 text-sm font-semibold text-[#2563EB] transition-colors hover:bg-[#EFF6FF]";
 /** Outline pill, like the "See all … features" buttons on Dentally's rows. */
 const pillButton =
   "inline-flex items-center justify-center gap-2 rounded-full border border-[#2563EB] px-6 py-3 text-[15px] font-medium text-[#2563EB] transition-colors hover:bg-[#2563EB] hover:text-white";
 
-/** Floating white card used on the pastel panels. */
+/** Floating white card used on the pastel panels. z-10 keeps the absolutely placed ones in front. */
 function FloatCard({ className = "", children }: { className?: string; children: ReactNode }) {
   return (
-    <div className={`rounded-2xl bg-white/95 backdrop-blur border border-white shadow-[0_12px_40px_-12px_rgba(15,23,42,0.18)] ${className}`}>
+    <div
+      className={`z-10 rounded-2xl bg-white/95 backdrop-blur border border-white shadow-[0_12px_40px_-12px_rgba(15,23,42,0.22)] ${className}`}
+    >
       {children}
     </div>
   );
@@ -62,27 +60,20 @@ function Bullets({ items }: { items: string[] }) {
 }
 
 const rowHeading = "text-3xl md:text-[40px] font-semibold tracking-tight text-[#2563EB] leading-[1.15]";
-const panel = "rounded-[28px] bg-gradient-to-br from-[#EFF6FF] via-[#E0EAFF] to-[#DBEAFE]";
+const panel = "rounded-[28px] bg-gradient-to-br from-[#EFF6FF] via-[#E0EAFF] to-[#DBEAFE] ring-1 ring-white";
 
 /* ------------------------------------------------------------------ */
-/* Trust strip: checkable facts, no icons                              */
+/* Trust strip: three checkable facts in one bar                       */
 /* ------------------------------------------------------------------ */
 
-const trustItems = [
-  "Data stored in London, UK",
-  "Encrypted in transit and at rest",
-  "Two-step login",
-  "ICO registered",
-  "Card payments by Stripe",
-];
+const trustItems = ["Data stored in London, UK", "Encrypted data", "ICO registered"];
 
 export function TrustStrip() {
   return (
-    <section aria-label="How DentDock keeps practice data safe" className="bg-white border-y border-neutral-100">
-      <ul className="mx-auto max-w-6xl px-6 py-5 flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
-        {trustItems.map((text, i) => (
-          <li key={text} className="flex items-center gap-6 text-[14px] font-medium text-[#334155]">
-            {i > 0 && <span aria-hidden="true" className="hidden sm:block h-4 w-px bg-neutral-200" />}
+    <section aria-label="How DentDock keeps practice data safe" className="bg-white pt-4 pb-12 md:pb-16 px-6">
+      <ul className="mx-auto w-full sm:w-fit flex flex-col sm:flex-row items-stretch sm:items-center rounded-2xl sm:rounded-full border border-[#DBEAFE] bg-gradient-to-r from-[#F5F8FF] via-white to-[#F5F8FF] shadow-[0_8px_30px_-12px_rgba(37,99,235,0.25)] divide-y sm:divide-y-0 sm:divide-x divide-[#DBEAFE]">
+        {trustItems.map((text) => (
+          <li key={text} className="px-10 py-4 text-center text-[16px] font-semibold tracking-tight text-[#0F172A]">
             {text}
           </li>
         ))}
@@ -145,7 +136,7 @@ function FrontDeskVisual() {
         <Bell className="w-4 h-4 text-[#2563EB]" />
         <span className="text-[12px] font-medium text-[#0F172A]">Reminder sent to Sarah M.</span>
       </FloatCard>
-      <FloatCard className="w-[84%] max-w-[360px] p-5">
+      <FloatCard className="w-[84%] max-w-[360px] p-5 mt-6">
         <div className="flex items-center justify-between">
           <p className="text-[15px] font-semibold text-[#0F172A]">Cancelled slot</p>
           <span className="text-[11px] text-[#64748B]">Thu 14 Nov · 10:30</span>
@@ -249,7 +240,7 @@ const featureRows = [
 
 export function FeatureRows() {
   return (
-    <section className="bg-white py-16 md:py-24 px-6">
+    <section className="bg-gradient-to-b from-[#F7F9FF] via-[#F1F5FE] to-[#F7F9FF] border-y border-[#EEF2FB] py-16 md:py-24 px-6">
       <div className="mx-auto max-w-6xl space-y-16 md:space-y-24">
         {featureRows.map(({ title, lead, points, button, Visual }, i) => {
           const flip = i % 2 === 1;
@@ -277,7 +268,7 @@ export function FeatureRows() {
 }
 
 /* ------------------------------------------------------------------ */
-/* What it solves: four everyday problems                              */
+/* What it solves: heading on the left, four tinted cards on the right */
 /* ------------------------------------------------------------------ */
 
 const solutions = [
@@ -285,46 +276,60 @@ const solutions = [
     Icon: CalendarX,
     title: "Reduce no-shows",
     body: "Patients get a reminder by email and text before every appointment, so fewer forget and fewer chairs sit empty.",
+    tint: "from-[#EFF6FF] to-white",
   },
   {
     Icon: RefreshCw,
     title: "Fill cancelled appointments",
     body: "When a patient cancels, offer the free slot to patients on your waitlist in a couple of clicks, so the time isn't lost.",
+    tint: "from-[#F0F9FF] to-white",
   },
   {
     Icon: PhoneOff,
     title: "Spend less time on the phone",
     body: "Patients book online and fill in their forms before they arrive, so reception isn't stuck on calls or chasing paperwork.",
+    tint: "from-[#F0F9FF] to-white",
   },
   {
     Icon: Bell,
     title: "Bring patients back",
     body: "Recalls go out on time and follow up on their own, and you can send happy patients your Google review link.",
+    tint: "from-[#EFF6FF] to-white",
   },
 ];
 
 export function SolutionsGrid() {
   return (
-    <section className="bg-gradient-to-b from-white via-[#F5F8FF] to-white py-16 md:py-24 px-6">
-      <div className="mx-auto max-w-6xl">
-        <Reveal className="mx-auto max-w-2xl text-center mb-12 md:mb-14">
+    <section className="bg-white py-16 md:py-28 px-6">
+      <div className="mx-auto max-w-6xl grid grid-cols-1 lg:grid-cols-[0.9fr_1.4fr] gap-10 lg:gap-14 items-start">
+        <Reveal className="lg:sticky lg:top-28">
           <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-foreground leading-[1.1]">
             Fixes for the problems <span className="text-[#2563EB]">your front desk faces every day</span>
           </h2>
+          <p className="mt-5 text-[17px] text-[#475569] leading-[1.6]">
+            The jobs that eat into reception's day, handled by the software instead.
+          </p>
+          <Link to="/features" className={`mt-8 ${pillButton}`}>
+            See all features
+          </Link>
         </Reveal>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {solutions.map(({ Icon, title, body }, i) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          {solutions.map(({ Icon, title, body, tint }, i) => (
             <Reveal key={title} delay={i * 0.08}>
-              <div className="h-full rounded-2xl border border-neutral-200 bg-white p-6 flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
-                <span className="w-11 h-11 rounded-xl bg-[#EFF6FF] flex items-center justify-center">
+              <Link
+                to="/features"
+                className={`group h-full rounded-3xl border border-[#E5EDFB] bg-gradient-to-b ${tint} p-7 flex flex-col transition-all duration-300 hover:-translate-y-1 hover:border-[#BFDBFE] hover:shadow-[0_20px_50px_-20px_rgba(37,99,235,0.35)]`}
+              >
+                <span className="w-12 h-12 rounded-2xl bg-white shadow-sm ring-1 ring-[#DBEAFE] flex items-center justify-center">
                   <Icon className="w-5 h-5 text-[#2563EB]" strokeWidth={1.75} />
                 </span>
-                <h3 className="mt-5 text-[19px] font-semibold text-[#0F172A] tracking-tight">{title}</h3>
+                <h3 className="mt-6 text-[20px] font-semibold text-[#0F172A] tracking-tight">{title}</h3>
                 <p className="mt-2 text-[15px] text-[#475569] leading-[1.6] flex-1">{body}</p>
-                <Link to="/features" className="mt-5 text-[14px] font-medium text-[#2563EB] hover:underline">
-                  Find out more →
-                </Link>
-              </div>
+                <span className="mt-6 inline-flex items-center gap-1.5 text-[14px] font-semibold text-[#2563EB]">
+                  Find out more
+                  <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+                </span>
+              </Link>
             </Reveal>
           ))}
         </div>
@@ -335,25 +340,25 @@ export function SolutionsGrid() {
 
 /* ------------------------------------------------------------------ */
 /* Support: photo with floating cards, text alongside                  */
-/* Photos: Unsplash, free under the Unsplash licence (iw7gOkFLNI0,     */
-/* kxtmtiMVM38).                                                       */
+/* Photos: Unsplash, free under the Unsplash licence                   */
+/* (QzY81G7dbOo, HBMPQZZondc).                                         */
 /* ------------------------------------------------------------------ */
 
 export function SupportRow() {
   return (
-    <section id="support" className="bg-white py-16 md:py-24 px-6 scroll-mt-24">
+    <section id="support" className="bg-gradient-to-b from-white via-[#F5F8FF] to-white py-16 md:py-24 px-6 scroll-mt-24">
       <div className="mx-auto max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
         <Reveal>
-          <div className={`relative ${panel} p-8 sm:p-12`}>
+          <div className={`relative ${panel} p-6 sm:p-8`}>
             <img
-              src="/images/home/support-call.webp"
+              src="/images/home/support-phone.webp"
               alt="Woman smiling on a phone call at her desk"
               width={1400}
               height={788}
               loading="lazy"
-              className="w-full aspect-[4/3] object-cover rounded-2xl"
+              className="w-full aspect-[4/3] object-cover object-[65%_50%] rounded-2xl"
             />
-            <FloatCard className="absolute left-3 sm:left-4 top-6 sm:top-8 w-[220px] p-4">
+            <FloatCard className="absolute -left-3 sm:-left-6 bottom-6 sm:bottom-10 w-[210px] p-4">
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-emerald-500" />
                 <p className="text-[12px] font-semibold text-[#0F172A]">WhatsApp</p>
@@ -361,11 +366,11 @@ export function SupportRow() {
               <p className="mt-3 rounded-xl rounded-tl-sm bg-neutral-100 px-3 py-2 text-[12px] text-[#334155]">
                 How do I change our opening hours for Christmas?
               </p>
-              <p className="mt-2 ml-6 rounded-xl rounded-tr-sm bg-[#DCFCE7] px-3 py-2 text-[12px] text-[#14532D]">
+              <p className="mt-2 ml-5 rounded-xl rounded-tr-sm bg-[#DCFCE7] px-3 py-2 text-[12px] text-[#14532D]">
                 Settings, then Opening hours. I'll walk you through it now.
               </p>
             </FloatCard>
-            <FloatCard className="absolute right-3 sm:right-4 bottom-6 sm:bottom-8 px-4 py-2.5 flex items-center gap-2">
+            <FloatCard className="absolute -left-3 sm:-left-6 top-6 sm:top-10 px-4 py-2.5 flex items-center gap-2">
               <MessageCircle className="w-4 h-4 text-[#2563EB]" />
               <span className="text-[12px] font-medium text-[#0F172A]">Real person, same-day reply</span>
             </FloatCard>
@@ -387,7 +392,6 @@ export function SupportRow() {
           <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className={`mt-8 ${pillButton}`}>
             Message us on WhatsApp
           </a>
-          <p className="mt-3 text-[13px] text-[#64748B]">Please don't send patient details over WhatsApp.</p>
         </Reveal>
       </div>
     </section>
@@ -406,19 +410,19 @@ const steps = [
 
 export function SwitchRow() {
   return (
-    <section className="bg-gradient-to-b from-white via-[#F5F8FF] to-white py-16 md:py-24 px-6">
+    <section className="bg-white py-16 md:py-24 px-6">
       <div className="mx-auto max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
         <Reveal className="lg:order-2">
-          <div className={`relative ${panel} p-8 sm:p-12`}>
+          <div className={`relative ${panel} p-6 sm:p-8`}>
             <img
-              src="/images/home/front-desk.webp"
-              alt="Receptionist smiling at her desk computer"
+              src="/images/home/switching-laptop.webp"
+              alt="Woman smiling while working on a laptop"
               width={1400}
               height={933}
               loading="lazy"
-              className="w-full aspect-[4/3] object-cover object-[60%_50%] rounded-2xl"
+              className="w-full aspect-[4/3] object-cover object-[70%_40%] rounded-2xl"
             />
-            <FloatCard className="absolute left-3 sm:left-4 top-6 sm:top-8 w-[190px] p-4">
+            <FloatCard className="absolute -left-3 sm:-left-6 top-6 sm:top-10 w-[180px] p-4">
               <p className="text-[12px] font-semibold text-[#0F172A]">Practice setup</p>
               <ul className="mt-3 space-y-2">
                 {["Opening hours", "Treatments", "Team"].map((l) => (
@@ -431,7 +435,7 @@ export function SwitchRow() {
                 ))}
               </ul>
             </FloatCard>
-            <div className="absolute right-3 sm:right-4 bottom-6 sm:bottom-8 flex flex-col items-end gap-2">
+            <div className="absolute -left-3 sm:-left-6 bottom-6 sm:bottom-10 z-10 flex flex-col items-start gap-2">
               <FloatCard className="px-4 py-2.5 flex items-center gap-2">
                 <Upload className="w-4 h-4 text-[#2563EB]" />
                 <span className="text-[12px] font-medium text-[#0F172A]">patients.csv · columns matched</span>
@@ -471,49 +475,71 @@ export function SwitchRow() {
 }
 
 /* ------------------------------------------------------------------ */
-/* Pricing teaser                                                      */
+/* Pricing teaser: blue price panel + what's included                  */
 /* ------------------------------------------------------------------ */
 
 const included = [
   "Unlimited dentists and staff",
   "Online booking and patient portal",
   "Automated reminders and recalls",
-  "200 texts a month included, then 8p",
+  "Digital forms and medical history",
   "Payments and deposits",
+  "200 texts a month, then 8p",
   "Priority WhatsApp support",
 ];
 
 export function PricingTeaser() {
   return (
     <section className="relative bg-gradient-to-br from-[#DBEAFE] via-[#EFF6FF] to-white py-16 md:py-24 px-6">
-      <div className="mx-auto max-w-5xl rounded-3xl border border-neutral-200 bg-white p-8 md:p-12 shadow-sm grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-        <div>
-          <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-foreground leading-[1.1]">
-            One plan. <span className="text-[#2563EB]">£49 a month.</span>
-          </h2>
-          <p className="mt-5 text-base md:text-lg text-muted-foreground leading-relaxed">
-            Per practice, not per user. No setup fees, no contract, and the price is on the website, not behind a sales call.
-          </p>
-          <div className="mt-8 flex flex-col sm:flex-row gap-3">
-            <Link to="/waitlist" className={primaryButton}>
-              Join the waitlist <ArrowRight className="w-4 h-4" />
-            </Link>
-            <Link to="/pricing" className={secondaryButton}>
-              See full pricing
-            </Link>
+      <Reveal className="mx-auto max-w-5xl">
+        <div className="grid grid-cols-1 md:grid-cols-[1fr_1.25fr] rounded-[28px] overflow-hidden bg-white border border-white shadow-[0_30px_80px_-30px_rgba(37,99,235,0.4)]">
+          <div className="relative overflow-hidden bg-gradient-to-br from-[#2563EB] to-[#1D4ED8] p-8 md:p-12 text-white">
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute -top-20 -right-20 h-64 w-64 rounded-full"
+              style={{ background: "radial-gradient(circle, rgba(255,255,255,0.22), transparent 70%)" }}
+            />
+            <p className="relative text-[15px] font-medium text-white/80">One plan for every practice</p>
+            <div className="relative mt-4 flex items-end gap-2">
+              <span className="text-6xl md:text-7xl font-semibold tracking-tight leading-none">£49</span>
+              <span className="pb-1.5 text-[17px] text-white/80">a month</span>
+            </div>
+            <p className="relative mt-3 text-[16px] text-white/85">Per practice, not per user.</p>
+            <div className="relative mt-10 flex flex-col sm:flex-row md:flex-col lg:flex-row gap-3">
+              <Link
+                to="/waitlist"
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-6 py-3 text-sm font-semibold text-[#2563EB] shadow-md transition-colors hover:bg-[#EFF6FF]"
+              >
+                Join the waitlist <ArrowRight className="w-4 h-4" />
+              </Link>
+              <Link
+                to="/pricing"
+                className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/50 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10"
+              >
+                See full pricing
+              </Link>
+            </div>
+          </div>
+          <div className="p-8 md:p-12">
+            <h2 className="text-3xl md:text-[40px] font-medium tracking-tight text-foreground leading-[1.1]">
+              Everything included. <span className="text-[#2563EB]">No surprises.</span>
+            </h2>
+            <ul className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
+              {included.map((item) => (
+                <li key={item} className="flex items-start gap-3 text-[15px] text-[#0F172A] leading-[1.45]">
+                  <span className="mt-0.5 w-5 h-5 rounded-full bg-[#EFF6FF] flex items-center justify-center flex-shrink-0">
+                    <Check className="w-3 h-3 text-[#2563EB]" strokeWidth={3} />
+                  </span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <p className="mt-8 pt-6 border-t border-neutral-100 text-[14px] text-[#64748B]">
+              No setup fees, no contract, and no sales call to find out the price.
+            </p>
           </div>
         </div>
-        <ul className="space-y-3.5">
-          {included.map((item) => (
-            <li key={item} className="flex items-center gap-3 text-[15px] text-[#0F172A]">
-              <span className="w-6 h-6 rounded-full bg-[#EFF6FF] flex items-center justify-center flex-shrink-0">
-                <Check className="w-3.5 h-3.5 text-[#2563EB]" strokeWidth={2.5} />
-              </span>
-              {item}
-            </li>
-          ))}
-        </ul>
-      </div>
+      </Reveal>
     </section>
   );
 }

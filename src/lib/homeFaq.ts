@@ -6,7 +6,7 @@ export const homeFaq: FaqItem[] = [
     id: "cost",
     question: "How much does DentDock cost?",
     answer:
-      "£49 a month per practice, with unlimited dentists and staff. 200 texts a month are included, then 8p per text. Emails are unlimited. No setup fees and no contract.",
+      "£49 a month per practice, with unlimited dentists and staff. 200 texts a month are included, then 8p per text. No setup fees and no contract.",
   },
   {
     id: "import",
