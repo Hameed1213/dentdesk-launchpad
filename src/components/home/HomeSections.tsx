@@ -17,6 +17,10 @@ import { WaitlistForm } from "@/components/home/HeroSection";
 const WHATSAPP = "https://wa.me/447404488089";
 const ENTRANCE = { duration: 0.6, ease: [0.22, 1, 0.36, 1] as const };
 
+const primaryButton =
+  "inline-flex items-center justify-center gap-2 rounded-xl bg-[#2563EB] px-6 py-3 text-sm font-semibold text-white shadow-md shadow-blue-500/20 transition-colors hover:bg-[#1d4ed8]";
+const secondaryButton =
+  "inline-flex items-center justify-center gap-2 rounded-xl border border-[#2563EB] px-6 py-3 text-sm font-semibold text-[#2563EB] transition-colors hover:bg-[#EFF6FF]";
 /** Outline pill, like the "See all … features" buttons on Dentally's rows. */
 const pillButton =
   "inline-flex items-center justify-center gap-2 rounded-full border border-[#2563EB] px-6 py-3 text-[15px] font-medium text-[#2563EB] transition-colors hover:bg-[#2563EB] hover:text-white";
@@ -61,20 +65,35 @@ function Bullets({ items }: { items: string[] }) {
 
 const rowHeading = "text-3xl md:text-[40px] font-semibold tracking-tight text-[#2563EB] leading-[1.15]";
 const panel = "rounded-[28px] bg-gradient-to-br from-[#EFF6FF] via-[#E0EAFF] to-[#DBEAFE] ring-1 ring-white";
+/** Panel for rows that sit on a tinted background: lighter, with an edge, so it stands off the tint. */
+const panelOnTint =
+  "rounded-[28px] bg-gradient-to-br from-white to-[#EEF4FF] ring-1 ring-[#DBEAFE] shadow-[0_24px_60px_-30px_rgba(37,99,235,0.35)]";
 
 /* ------------------------------------------------------------------ */
 /* Trust strip: three checkable facts in one bar                       */
 /* ------------------------------------------------------------------ */
 
-const trustItems = ["Data stored in London, UK", "Encrypted data", "ICO registered"];
+const trustItems = [
+  { title: "Hosted in London", detail: "Practice and patient records stored in the UK" },
+  { title: "Encrypted", detail: "In transit and at rest" },
+  { title: "ICO registered", detail: "Registration ZC132966" },
+  { title: "UK registered company", detail: "Paradigm Network Limited, No. 16903048" },
+  { title: "No lock-in", detail: "No contract. Export your data any time" },
+];
 
 export function TrustStrip() {
   return (
-    <section aria-label="How DentDock keeps practice data safe" className="bg-white pt-4 pb-12 md:pb-16 px-6">
-      <ul className="mx-auto w-full sm:w-fit flex flex-col sm:flex-row items-stretch sm:items-center rounded-2xl sm:rounded-full border border-[#DBEAFE] bg-gradient-to-r from-[#F5F8FF] via-white to-[#F5F8FF] shadow-[0_8px_30px_-12px_rgba(37,99,235,0.25)] divide-y sm:divide-y-0 sm:divide-x divide-[#DBEAFE]">
-        {trustItems.map((text) => (
-          <li key={text} className="px-10 py-4 text-center text-[16px] font-semibold tracking-tight text-[#0F172A]">
-            {text}
+    <section aria-label="Why practices can trust DentDock" className="bg-white border-y border-neutral-200">
+      <ul className="mx-auto max-w-7xl grid grid-cols-2 lg:grid-cols-5">
+        {trustItems.map(({ title, detail }, i) => (
+          <li
+            key={title}
+            className={`px-6 py-6 lg:py-7 text-center border-neutral-200 ${i < 4 ? "lg:border-r border-b lg:border-b-0" : ""} ${
+              i % 2 === 0 && i < 4 ? "border-r" : ""
+            } ${i === 4 ? "col-span-2 lg:col-span-1" : ""}`}
+          >
+            <p className="text-[16px] font-semibold tracking-tight text-[#0F172A]">{title}</p>
+            <p className="mt-1 text-[13px] text-[#64748B] leading-snug">{detail}</p>
           </li>
         ))}
       </ul>
@@ -224,9 +243,9 @@ const featureRows = [
   },
   {
     title: "Reminders and recalls that run on their own",
-    lead: "Take the chasing off your reception team with:",
+    lead: "Take the chasing off your practice team with:",
     points: ["Automatic email and text reminders", "Recalls that follow up for you", "A waitlist to fill cancelled slots"],
-    button: "See all front desk features",
+    button: "See all reminder and recall features",
     Visual: FrontDeskVisual,
   },
   {
@@ -287,7 +306,7 @@ const solutions = [
   {
     Icon: PhoneOff,
     title: "Spend less time on the phone",
-    body: "Patients book online and fill in their forms before they arrive, so reception isn't stuck on calls or chasing paperwork.",
+    body: "Patients book online and fill in their forms before they arrive, so your team isn't stuck on calls or chasing paperwork.",
     tint: "from-[#F0F9FF] to-white",
   },
   {
@@ -304,10 +323,10 @@ export function SolutionsGrid() {
       <div className="mx-auto max-w-6xl grid grid-cols-1 lg:grid-cols-[0.9fr_1.4fr] gap-10 lg:gap-14 items-start">
         <Reveal className="lg:sticky lg:top-28">
           <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-foreground leading-[1.1]">
-            Fixes for the problems <span className="text-[#2563EB]">your front desk faces every day</span>
+            Fixes for the problems <span className="text-[#2563EB]">your practice faces every day</span>
           </h2>
           <p className="mt-5 text-[17px] text-[#475569] leading-[1.6]">
-            The jobs that eat into reception's day, handled by the software instead.
+            The everyday jobs that slow a practice down, handled by the software instead.
           </p>
           <Link to="/features" className={`mt-8 ${pillButton}`}>
             See all features
@@ -346,10 +365,10 @@ export function SolutionsGrid() {
 
 export function SupportRow() {
   return (
-    <section id="support" className="bg-gradient-to-b from-white via-[#F5F8FF] to-white py-16 md:py-24 px-6 scroll-mt-24">
+    <section id="support" className="bg-gradient-to-b from-[#EAF1FF] to-[#F2F6FF] pt-16 md:pt-24 pb-10 md:pb-12 px-6 scroll-mt-24">
       <div className="mx-auto max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
         <Reveal>
-          <div className={`relative ${panel} p-6 sm:p-8`}>
+          <div className={`relative ${panelOnTint} p-6 sm:p-8`}>
             <img
               src="/images/home/support-phone.webp"
               alt="Woman smiling on a phone call at her desk"
@@ -410,10 +429,10 @@ const steps = [
 
 export function SwitchRow() {
   return (
-    <section className="bg-white py-16 md:py-24 px-6">
+    <section className="bg-gradient-to-b from-[#F2F6FF] to-[#EAF1FF] pt-10 md:pt-12 pb-16 md:pb-24 px-6">
       <div className="mx-auto max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
         <Reveal className="lg:order-2">
-          <div className={`relative ${panel} p-6 sm:p-8`}>
+          <div className={`relative ${panelOnTint} p-6 sm:p-8`}>
             <img
               src="/images/home/switching-laptop.webp"
               alt="Woman smiling while working on a laptop"
@@ -490,56 +509,67 @@ const included = [
 
 export function PricingTeaser() {
   return (
-    <section className="relative bg-gradient-to-br from-[#DBEAFE] via-[#EFF6FF] to-white py-16 md:py-24 px-6">
-      <Reveal className="mx-auto max-w-5xl">
-        <div className="grid grid-cols-1 md:grid-cols-[1fr_1.25fr] rounded-[28px] overflow-hidden bg-white border border-white shadow-[0_30px_80px_-30px_rgba(37,99,235,0.4)]">
-          <div className="relative overflow-hidden bg-gradient-to-br from-[#2563EB] to-[#1D4ED8] p-8 md:p-12 text-white">
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute -top-20 -right-20 h-64 w-64 rounded-full"
-              style={{ background: "radial-gradient(circle, rgba(255,255,255,0.22), transparent 70%)" }}
-            />
-            <p className="relative text-[15px] font-medium text-white/80">One plan for every practice</p>
-            <div className="relative mt-4 flex items-end gap-2">
-              <span className="text-6xl md:text-7xl font-semibold tracking-tight leading-none">£49</span>
-              <span className="pb-1.5 text-[17px] text-white/80">a month</span>
+    <section className="relative overflow-hidden bg-[#0F162B] py-16 md:py-24 px-6">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(45% 55% at 15% 10%, rgba(37,99,235,0.35), transparent 70%), radial-gradient(40% 50% at 90% 90%, rgba(56,189,248,0.18), transparent 70%)",
+        }}
+      />
+      <div className="relative mx-auto max-w-5xl">
+        <Reveal className="text-center max-w-2xl mx-auto">
+          <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-white leading-[1.1]">
+            Simple pricing. <span className="text-[#60A5FA]">No surprises.</span>
+          </h2>
+          <p className="mt-5 text-[17px] text-[#CBD5E1] leading-[1.6]">
+            One plan with everything included, and the price is on the website, not behind a sales call.
+          </p>
+        </Reveal>
+        <Reveal delay={0.1} className="mt-12">
+          <div className="rounded-[28px] bg-white shadow-[0_40px_100px_-40px_rgba(0,0,0,0.6)] overflow-hidden">
+            <div className="grid grid-cols-1 md:grid-cols-[minmax(0,0.85fr)_minmax(0,1.4fr)]">
+              <div className="p-8 md:p-10 md:border-r border-neutral-100 flex flex-col">
+                <span className="self-start rounded-full bg-[#EFF6FF] px-3 py-1 text-[12px] font-semibold text-[#2563EB]">
+                  Starter
+                </span>
+                <div className="mt-5 flex items-end gap-2">
+                  <span className="text-6xl font-semibold tracking-tight text-[#0F172A] leading-none">£49</span>
+                  <span className="pb-1 text-[16px] text-[#64748B]">a month</span>
+                </div>
+                <p className="mt-2 text-[15px] text-[#475569]">Per practice, not per user.</p>
+                <div className="mt-8 flex flex-col gap-3">
+                  <Link to="/waitlist" className={primaryButton}>
+                    Join the waitlist <ArrowRight className="w-4 h-4" />
+                  </Link>
+                  <Link to="/pricing" className={secondaryButton}>
+                    See full pricing
+                  </Link>
+                </div>
+              </div>
+              <div className="p-8 md:p-10">
+                <p className="text-[15px] font-semibold text-[#0F172A]">Everything your practice needs:</p>
+                <ul className="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
+                  {included.map((item) => (
+                    <li key={item} className="flex items-start gap-3 text-[15px] text-[#0F172A] leading-[1.45]">
+                      <span className="mt-0.5 w-5 h-5 rounded-full bg-[#2563EB] flex items-center justify-center flex-shrink-0">
+                        <Check className="w-3 h-3 text-white" strokeWidth={3} />
+                      </span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
-            <p className="relative mt-3 text-[16px] text-white/85">Per practice, not per user.</p>
-            <div className="relative mt-10 flex flex-col sm:flex-row md:flex-col lg:flex-row gap-3">
-              <Link
-                to="/waitlist"
-                className="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-6 py-3 text-sm font-semibold text-[#2563EB] shadow-md transition-colors hover:bg-[#EFF6FF]"
-              >
-                Join the waitlist <ArrowRight className="w-4 h-4" />
-              </Link>
-              <Link
-                to="/pricing"
-                className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/50 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10"
-              >
-                See full pricing
-              </Link>
+            <div className="bg-[#F8FAFC] border-t border-neutral-100 px-8 md:px-10 py-4 flex flex-wrap justify-center gap-x-8 gap-y-1 text-[14px] font-medium text-[#475569]">
+              <span>No setup fees</span>
+              <span>No contract</span>
+              <span>Cancel any time</span>
             </div>
           </div>
-          <div className="p-8 md:p-12">
-            <h2 className="text-3xl md:text-[40px] font-medium tracking-tight text-foreground leading-[1.1]">
-              Everything included. <span className="text-[#2563EB]">No surprises.</span>
-            </h2>
-            <ul className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
-              {included.map((item) => (
-                <li key={item} className="flex items-start gap-3 text-[15px] text-[#0F172A] leading-[1.45]">
-                  <span className="mt-0.5 w-5 h-5 rounded-full bg-[#EFF6FF] flex items-center justify-center flex-shrink-0">
-                    <Check className="w-3 h-3 text-[#2563EB]" strokeWidth={3} />
-                  </span>
-                  {item}
-                </li>
-              ))}
-            </ul>
-            <p className="mt-8 pt-6 border-t border-neutral-100 text-[14px] text-[#64748B]">
-              No setup fees, no contract, and no sales call to find out the price.
-            </p>
-          </div>
-        </div>
-      </Reveal>
+        </Reveal>
+      </div>
     </section>
   );
 }
@@ -551,15 +581,27 @@ export function PricingTeaser() {
 export function ClosingBand() {
   return (
     <section className="bg-white py-16 md:py-24 px-6">
-      <div className="mx-auto max-w-3xl text-center">
-        <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-foreground leading-[1.1]">
-          Ready for software that <span className="text-[#2563EB]">works for you?</span>
-        </h2>
-        <p className="mt-5 text-base md:text-lg text-muted-foreground leading-relaxed">
-          Join the waitlist and be one of the first 30 practices on DentDock.
-        </p>
-        <WaitlistForm className="mt-8" />
-      </div>
+      <Reveal className="mx-auto max-w-6xl">
+        <div className="relative overflow-hidden rounded-[32px] bg-gradient-to-br from-[#2563EB] to-[#1D4ED8] px-6 py-14 md:py-20 text-center">
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0"
+            style={{
+              background:
+                "radial-gradient(40% 60% at 85% 0%, rgba(255,255,255,0.22), transparent 70%), radial-gradient(35% 50% at 10% 100%, rgba(255,255,255,0.12), transparent 70%)",
+            }}
+          />
+          <div className="relative mx-auto max-w-2xl">
+            <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-white leading-[1.1]">
+              Ready for software that works for your practice?
+            </h2>
+            <p className="mt-5 text-[17px] text-white/85 leading-[1.6]">
+              Join the waitlist and be one of the first 30 practices on DentDock.
+            </p>
+            <WaitlistForm className="mt-8" onDark />
+          </div>
+        </div>
+      </Reveal>
     </section>
   );
 }

@@ -26,7 +26,7 @@ const makeContainer = (delay: number) => ({
 });
 
 /** The email waitlist form. Used in the hero and again in the closing band. */
-export function WaitlistForm({ className = "mt-10" }: { className?: string } = {}) {
+export function WaitlistForm({ className = "mt-10", onDark = false }: { className?: string; onDark?: boolean } = {}) {
   const [email, setEmail] = useState("");
   const [website, setWebsite] = useState(""); // honeypot — see handleSubmit
   const [submitted, setSubmitted] = useState(false);
@@ -99,7 +99,7 @@ export function WaitlistForm({ className = "mt-10" }: { className?: string } = {
 
   if (submitted) {
     return (
-      <p className="text-sm text-green-600 font-medium text-center mt-2">
+      <p className={`text-sm font-medium text-center mt-2 ${onDark ? "text-white" : "text-green-600"}`}>
         ✓ You're on the list. We'll be in touch soon.
       </p>
     );
@@ -140,7 +140,7 @@ export function WaitlistForm({ className = "mt-10" }: { className?: string } = {
         <button
           type="submit"
           disabled={isLoading}
-          className="bg-[#2563EB] text-white text-sm font-semibold px-6 py-3 rounded-xl hover:bg-[#1d4ed8] transition-all shadow-md shadow-blue-500/20 whitespace-nowrap disabled:opacity-60"
+          className={`text-sm font-semibold px-6 py-3 rounded-xl transition-all shadow-md whitespace-nowrap disabled:opacity-60 ${onDark ? "bg-white text-[#2563EB] hover:bg-[#EFF6FF]" : "bg-[#2563EB] text-white hover:bg-[#1d4ed8] shadow-blue-500/20"}`}
         >
           {isLoading ? "Joining..." : "Join the waitlist →"}
         </button>
@@ -156,7 +156,7 @@ export function WaitlistForm({ className = "mt-10" }: { className?: string } = {
         />
       )}
       {error && (
-        <p className="text-sm text-red-500 text-center w-full mt-1">{error}</p>
+        <p className={`text-sm text-center w-full mt-1 ${onDark ? "text-red-100" : "text-red-500"}`}>{error}</p>
       )}
     </div>
   );
