@@ -323,12 +323,12 @@ function MovePlan() {
       <div className="mx-auto max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
         <Reveal className="order-2 lg:order-1">
           <img
-            src="/images/pages/reception-payment.webp"
-            alt="Receptionist at the front desk taking a card payment on a tablet"
+            src="/images/pages/switching-dentist.webp"
+            alt="Dentist talking a patient through her treatment in the surgery"
             width={1400}
-            height={934}
+            height={1050}
             loading="lazy"
-            className="w-full aspect-[4/3] lg:aspect-[4/5] object-cover object-[12%_50%] rounded-3xl shadow-[0_24px_60px_-28px_rgba(15,23,42,0.35)]"
+            className="w-full aspect-[4/3] lg:aspect-[4/5] object-cover object-[58%_50%] rounded-3xl shadow-[0_24px_60px_-28px_rgba(15,23,42,0.35)]"
           />
         </Reveal>
         <div className="order-1 lg:order-2">
