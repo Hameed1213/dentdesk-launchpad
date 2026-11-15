@@ -48,12 +48,12 @@ const groups: { id: string; title: string; items: Faq[] }[] = [
       {
         question: "Can we bring our patients from our current system?",
         answer:
-          "Yes. Export your patient list as a CSV and upload it. DentDock matches the columns for you and brings across check-up and hygiene recall dates. Appointment history, payments and charts aren't imported.",
+          "Yes. Export your patient list as a CSV and upload it. DentDock matches the columns for you and brings across check-up and hygiene recall dates. We bring your upcoming appointments across too. Past appointment history, payments and charts aren't imported.",
       },
       {
         question: "How long does switching take?",
         answer:
-          "Setting up DentDock can be done in a day. Allow a few weeks for the whole move: giving notice to your current supplier, getting your patient export, checking the import and adding upcoming appointments, which aren't imported. We'll help you choose a go-live date.",
+          "Setting up DentDock can be done in a day. Allow a few weeks for the whole move: giving notice to your current supplier, getting your exports and checking the import with us. We bring your upcoming appointments across for you and help you choose a go-live date.",
       },
       {
         question: "Does it work for mixed NHS and private practices?",
