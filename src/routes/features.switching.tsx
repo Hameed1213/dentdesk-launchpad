@@ -1,21 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
-import {
-  ArrowRightLeft,
-  Check,
-  ClipboardList,
-  MessageCircle,
-  Rocket,
-  Settings2,
-} from "lucide-react";
+import { MessageCircle } from "lucide-react";
 import { PhotoPanel } from "@/components/site/ui";
 import PageShell from "@/components/site/PageShell";
-import { ClosingBand, Reveal, TrustStrip, WHATSAPP } from "@/components/site/ui";
+import { ClosingBand, Reveal, TrustStrip } from "@/components/site/ui";
 import {
   FaqSection,
   FeatureCards,
   OtherAreas,
   PageHeroSplit,
-  SectionTitle,
   templateHead,
   type PlatformContent,
 } from "@/components/site/templates";
@@ -303,94 +295,71 @@ const content: PlatformContent = {
 
 const plan = [
   {
-    Icon: ClipboardList,
     when: "A few weeks before",
     title: "Plan the move together",
     body: "Tell us which system you use now. We'll check your notice period with you and pick a quiet day to go live.",
-    we: "We plan the dates with you",
   },
   {
-    Icon: Settings2,
     when: "1 to 2 weeks before",
     title: "Set up your practice",
     body: "Add your hours, treatments and team. Most of it comes with sensible defaults, and every step can be changed later.",
-    we: "We check your setup",
   },
   {
-    Icon: ArrowRightLeft,
     when: "The week before",
     title: "Bring everything across",
     body: "Export your patients and upcoming appointments from your current system. We import them, match each booking to the right patient and dentist, and check the numbers with you.",
-    we: "We do the import for you",
   },
   {
-    Icon: Rocket,
     when: "Go-live day",
     title: "Go live",
     body: "We bring across anything booked since the first import. Share your booking link, and patients get their reminders as normal.",
-    we: "We're on WhatsApp all day",
   },
 ];
 
-/** The move: four numbered steps in one panel, across on desktop and stacked on phones. */
+/** The move: practice photo on the left, the four steps as a numbered list on the right. */
 function MovePlan() {
   return (
-    <section className="bg-gradient-to-b from-[#F7F9FF] to-[#EEF3FE] border-b border-[#EEF2FB] py-16 md:py-24 px-6">
-      <div className="mx-auto max-w-6xl">
-        <SectionTitle
-          title="How a switch"
-          highlight="works"
-          intro="You keep running the practice while we do the moving, so your diary carries on without a gap."
-        />
-        <Reveal>
-          <ol className="overflow-hidden rounded-3xl bg-white border border-[#E5EDFB] shadow-[0_24px_60px_-28px_rgba(37,99,235,0.3)] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
-            {plan.map(({ Icon, when, title, body, we }, i) => (
-              <li
-                key={title}
-                className={`relative list-none flex flex-col p-7 md:p-8 border-[#EEF2FB] ${
-                  i > 0 ? "border-t md:border-t-0" : ""
-                } ${i % 2 === 1 ? "md:border-l" : ""} ${i >= 2 ? "md:border-t lg:border-t-0" : ""} ${
-                  i === 2 ? "lg:border-l" : ""
-                }`}
-              >
-                <span
-                  aria-hidden="true"
-                  className="absolute top-0 left-0 right-0 h-1"
-                  style={{ background: "#2563EB", opacity: 0.25 + i * 0.25 }}
-                />
-                <div className="flex items-center justify-between">
-                  <span className="text-[44px] font-semibold leading-none tracking-tight text-[#2563EB]">
-                    {String(i + 1).padStart(2, "0")}
+    <section className="bg-white border-b border-[#EEF2FB] py-16 md:py-24 px-6">
+      <div className="mx-auto max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-stretch">
+        <Reveal className="order-2 lg:order-1 h-full">
+          <img
+            src="/images/pages/manager-laptop.webp"
+            alt="Practice manager talking through plans at her laptop"
+            width={1400}
+            height={934}
+            loading="lazy"
+            className="w-full h-full min-h-[320px] aspect-[4/3] lg:aspect-auto object-cover object-[70%_50%] rounded-3xl shadow-[0_24px_60px_-28px_rgba(15,23,42,0.35)]"
+          />
+        </Reveal>
+        <div className="order-1 lg:order-2">
+          <Reveal>
+            <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-foreground leading-[1.1]">
+              How a switch <span className="text-[#2563EB]">works</span>
+            </h2>
+            <p className="mt-5 text-[17px] text-[#475569] leading-[1.7]">
+              You keep running the practice while we do the moving, so your diary carries on without
+              a gap.
+            </p>
+          </Reveal>
+          <ol className="mt-8">
+            {plan.map(({ when, title, body }, i) => (
+              <Reveal key={title} delay={i * 0.06}>
+                <li className="list-none flex gap-5 py-6 border-t border-[#EEF2FB]">
+                  <span className="w-10 h-10 rounded-full bg-[#2563EB] text-white text-[16px] font-semibold flex items-center justify-center flex-shrink-0">
+                    {i + 1}
                   </span>
-                  <Icon className="w-6 h-6 text-[#93C5FD]" strokeWidth={1.8} />
-                </div>
-                <p className="mt-6 text-[13px] font-medium text-[#64748B]">{when}</p>
-                <h3 className="mt-1.5 text-[20px] font-semibold tracking-tight text-[#0F172A]">
-                  {title}
-                </h3>
-                <p className="mt-3 text-[15px] text-[#475569] leading-[1.65]">{body}</p>
-                <p className="mt-auto pt-6 flex items-start gap-2 text-[14px] font-medium text-[#0F172A]">
-                  <Check
-                    className="w-4 h-4 mt-0.5 text-emerald-600 flex-shrink-0"
-                    strokeWidth={2.5}
-                  />
-                  {we}
-                </p>
-              </li>
+                  <div>
+                    <h3 className="text-[19px] font-semibold tracking-tight text-[#0F172A]">
+                      {title}
+                    </h3>
+                    <p className="mt-0.5 text-[13px] font-medium text-[#94A3B8]">{when}</p>
+                    <p className="mt-2 text-[15px] text-[#475569] leading-[1.65]">{body}</p>
+                  </div>
+                </li>
+              </Reveal>
             ))}
           </ol>
-        </Reveal>
-        <p className="mt-8 text-center text-[15px] text-[#475569]">
-          Questions about your switch?{" "}
-          <a
-            href={WHATSAPP}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-semibold text-[#2563EB] hover:underline"
-          >
-            Message us on WhatsApp
-          </a>
-        </p>
+        </div>
       </div>
     </section>
   );
