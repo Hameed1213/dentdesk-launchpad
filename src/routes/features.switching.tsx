@@ -15,6 +15,7 @@ import {
   FeatureCards,
   OtherAreas,
   PageHeroSplit,
+  SectionTitle,
   templateHead,
   type PlatformContent,
 } from "@/components/site/templates";
@@ -313,14 +314,14 @@ const plan = [
     when: "1 to 2 weeks before",
     title: "Set up your practice",
     body: "Add your hours, treatments and team. Most of it comes with sensible defaults, and every step can be changed later.",
-    we: "We check your setup with you",
+    we: "We check your setup",
   },
   {
     Icon: ArrowRightLeft,
     when: "The week before",
     title: "Bring everything across",
     body: "Export your patients and upcoming appointments from your current system. We import them, match each booking to the right patient and dentist, and check the numbers with you.",
-    we: "We import and check it for you",
+    we: "We do the import for you",
   },
   {
     Icon: Rocket,
@@ -331,85 +332,65 @@ const plan = [
   },
 ];
 
-const handled = [
-  "Importing your patients and their recall dates",
-  "Importing your upcoming appointments",
-  "Matching each booking to the right dentist",
-  "Checking the numbers with you before go-live",
-];
-
-/** The move: what we handle on the left, the four steps down a timeline on the right. */
+/** The move: four numbered steps in one panel, across on desktop and stacked on phones. */
 function MovePlan() {
   return (
     <section className="bg-gradient-to-b from-[#F7F9FF] to-[#EEF3FE] border-b border-[#EEF2FB] py-16 md:py-24 px-6">
-      <div className="mx-auto max-w-6xl grid grid-cols-1 lg:grid-cols-[5fr_7fr] gap-12 lg:gap-16 items-start">
+      <div className="mx-auto max-w-6xl">
+        <SectionTitle
+          title="How a switch"
+          highlight="works"
+          intro="You keep running the practice while we do the moving, so your diary carries on without a gap."
+        />
         <Reveal>
-          <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-foreground leading-[1.1]">
-            How a switch <span className="text-[#2563EB]">works</span>
-          </h2>
-          <p className="mt-5 text-[17px] text-[#334155] leading-[1.7]">
-            You keep running the practice while we do the moving, so your diary carries on without a
-            gap.
-          </p>
-          <div className="mt-8 rounded-3xl bg-[#0F162B] p-7 shadow-[0_24px_60px_-24px_rgba(15,22,43,0.55)]">
-            <p className="text-[12px] font-semibold uppercase tracking-[0.14em] text-[#93C5FD]">
-              What we handle for you
-            </p>
-            <ul className="mt-5 space-y-3.5">
-              {handled.map((t) => (
-                <li
-                  key={t}
-                  className="flex items-start gap-3 text-[15px] text-white/85 leading-[1.5]"
-                >
-                  <span className="mt-0.5 w-5 h-5 rounded-full bg-[#2563EB] flex items-center justify-center flex-shrink-0">
-                    <Check className="w-3 h-3 text-white" strokeWidth={3} />
+          <ol className="overflow-hidden rounded-3xl bg-white border border-[#E5EDFB] shadow-[0_24px_60px_-28px_rgba(37,99,235,0.3)] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+            {plan.map(({ Icon, when, title, body, we }, i) => (
+              <li
+                key={title}
+                className={`relative list-none flex flex-col p-7 md:p-8 border-[#EEF2FB] ${
+                  i > 0 ? "border-t md:border-t-0" : ""
+                } ${i % 2 === 1 ? "md:border-l" : ""} ${i >= 2 ? "md:border-t lg:border-t-0" : ""} ${
+                  i === 2 ? "lg:border-l" : ""
+                }`}
+              >
+                <span
+                  aria-hidden="true"
+                  className="absolute top-0 left-0 right-0 h-1"
+                  style={{ background: "#2563EB", opacity: 0.25 + i * 0.25 }}
+                />
+                <div className="flex items-center justify-between">
+                  <span className="text-[44px] font-semibold leading-none tracking-tight text-[#2563EB]">
+                    {String(i + 1).padStart(2, "0")}
                   </span>
-                  {t}
-                </li>
-              ))}
-            </ul>
-            <a
-              href={WHATSAPP}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-7 inline-flex items-center gap-2 rounded-xl bg-white px-5 py-2.5 text-[14px] font-semibold text-[#0F162B] transition-colors hover:bg-[#DBEAFE]"
-            >
-              <MessageCircle className="w-4 h-4 text-emerald-600" /> Plan your switch on WhatsApp
-            </a>
-          </div>
-        </Reveal>
-
-        <ol className="relative space-y-5">
-          <span
-            aria-hidden="true"
-            className="absolute top-6 bottom-6 left-6 w-px bg-gradient-to-b from-[#93C5FD] via-[#BFDBFE] to-[#2563EB]"
-          />
-          {plan.map(({ Icon, when, title, body, we }, i) => (
-            <Reveal key={title} delay={i * 0.08}>
-              <li className="relative list-none flex gap-4 md:gap-5">
-                <span className="relative z-10 w-12 h-12 rounded-2xl bg-[#2563EB] shadow-[0_8px_20px_-8px_rgba(37,99,235,0.6)] flex items-center justify-center flex-shrink-0">
-                  <Icon className="w-5 h-5 text-white" strokeWidth={1.8} />
-                </span>
-                <div className="flex-1 min-w-0 rounded-3xl bg-white border border-[#E5EDFB] shadow-[0_12px_40px_-20px_rgba(37,99,235,0.25)] p-6 md:p-7">
-                  <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
-                    <span className="text-[13px] font-semibold text-[#94A3B8]">Step {i + 1}</span>
-                    <span className="rounded-full bg-[#EFF6FF] px-3 py-1 text-[12px] font-semibold text-[#2563EB]">
-                      {when}
-                    </span>
-                  </div>
-                  <h3 className="mt-3 text-[20px] font-semibold tracking-tight text-[#0F172A]">
-                    {title}
-                  </h3>
-                  <p className="mt-2 text-[15px] text-[#475569] leading-[1.65]">{body}</p>
-                  <p className="mt-4 pt-4 border-t border-[#EEF2FB] flex items-center gap-2 text-[14px] font-medium text-[#0F172A]">
-                    <Check className="w-4 h-4 text-emerald-600 flex-shrink-0" strokeWidth={2.5} />{" "}
-                    {we}
-                  </p>
+                  <Icon className="w-6 h-6 text-[#93C5FD]" strokeWidth={1.8} />
                 </div>
+                <p className="mt-6 text-[13px] font-medium text-[#64748B]">{when}</p>
+                <h3 className="mt-1.5 text-[20px] font-semibold tracking-tight text-[#0F172A]">
+                  {title}
+                </h3>
+                <p className="mt-3 text-[15px] text-[#475569] leading-[1.65]">{body}</p>
+                <p className="mt-auto pt-6 flex items-start gap-2 text-[14px] font-medium text-[#0F172A]">
+                  <Check
+                    className="w-4 h-4 mt-0.5 text-emerald-600 flex-shrink-0"
+                    strokeWidth={2.5}
+                  />
+                  {we}
+                </p>
               </li>
-            </Reveal>
-          ))}
-        </ol>
+            ))}
+          </ol>
+        </Reveal>
+        <p className="mt-8 text-center text-[15px] text-[#475569]">
+          Questions about your switch?{" "}
+          <a
+            href={WHATSAPP}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-semibold text-[#2563EB] hover:underline"
+          >
+            Message us on WhatsApp
+          </a>
+        </p>
       </div>
     </section>
   );
