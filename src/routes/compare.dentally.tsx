@@ -134,9 +134,9 @@ export const Route = createFileRoute("/compare/dentally")({
   head: () =>
     templateHead({
       path: PATH,
-      title: "DentDock vs Dentally · Pricing and features compared (2026)",
+      title: "DentDock vs Dentally: pricing and features (2026)",
       description:
-        "An honest comparison of DentDock and Dentally for UK private dental practices. Pricing from £49 vs £125–£320, features, support and when each is the right fit.",
+        "An honest comparison of DentDock and Dentally for UK private dental practices. Pricing from £49 vs £125+, features, support and when each is the right fit.",
       crumbs: [
         { name: "Compare", path: "/compare" },
         { name: "DentDock vs Dentally", path: PATH },

@@ -57,12 +57,12 @@ export const compareFaq: Faq[] = [
   {
     question: "What happens after I sign up?",
     answer:
-      "You go through the 8-step setup: practice details, opening hours, treatments, team, patient import, a preview of your booking page, payments and text messages. Setting up can be done in a day. Moving from another system takes a little longer, because booked appointments and history aren't imported, and we'll help you plan it. If you get stuck, message us on WhatsApp and we'll help in real time.",
+      "You go through the 8-step setup: practice details, opening hours, treatments, team, patient import, a preview of your booking page, payments and text messages. Setting up can be done in a day. Moving from another system takes a little longer, as you give notice and we bring your patients and upcoming appointments across. We'll help you plan it. If you get stuck, message us on WhatsApp and we'll help in real time.",
   },
   {
     question: "Do you help me move from my current system?",
     answer:
-      "Yes. Export your patient list from your existing software as CSV, upload it, and we'll check the column matches with you. Patients and their recall dates come across. Appointment history, payments and charts stay in your old system, so keep access to it for past records.",
+      "Yes. Export your patient list from your existing software as CSV, upload it, and we'll check the column matches with you. Patients, their recall dates and your upcoming appointments come across. Past appointment history, payments and charts stay in your old system, so keep access to it for past records.",
   },
   {
     question: "What if something breaks?",

@@ -167,7 +167,7 @@ export const Route = createFileRoute("/solutions/going-private")({
       path: PATH,
       title: "Software for dental practices going private | DentDock",
       description:
-        "Moving your dental practice to private care? Show your prices, take deposits, set a fair cancellation policy and let patients book online. £49 a month, no contract.",
+        "Moving your dental practice to private care? Show your prices, take deposits, set a fair cancellation policy and take online bookings. £49 a month, no contract.",
       crumbs: [
         { name: "Solutions", path: "/solutions" },
         { name: "Going private", path: PATH },

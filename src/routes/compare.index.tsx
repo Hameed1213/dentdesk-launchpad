@@ -34,9 +34,9 @@ export const Route = createFileRoute("/compare/")({
   head: () =>
     templateHead({
       path: PATH,
-      title: "Compare DentDock · Honest comparisons vs UK dental software",
+      title: "Compare DentDock with UK dental software | DentDock",
       description:
-        "Honest, side-by-side comparisons of DentDock against the major UK dental practice management systems. Pick a comparison to see pricing, features and setup head-to-head.",
+        "Honest, side-by-side comparisons of DentDock and the major UK dental practice systems: pricing, features and setup, head-to-head.",
       crumbs: [{ name: "Compare", path: PATH }],
       faq: [],
     }),

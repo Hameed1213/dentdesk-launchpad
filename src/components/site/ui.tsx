@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import { createContext, useContext, type ReactNode } from "react";
 import { motion } from "framer-motion";
 import { WaitlistForm } from "@/components/home/HeroSection";
 
@@ -127,6 +127,9 @@ export function TrustStrip() {
 }
 
 /** Photo inside a light panel, with DentDock cards placed over the edges (kept off the person). */
+/** True inside a page hero: the hero photo loads first instead of lazily (faster largest paint). */
+export const HeroImage = createContext(false);
+
 export function PhotoPanel({
   src,
   alt,
@@ -140,6 +143,7 @@ export function PhotoPanel({
   position: string;
   children: ReactNode;
 }) {
+  const hero = useContext(HeroImage);
   return (
     <div className={`relative ${panelOnTint} p-6 sm:p-8`}>
       <img
@@ -147,7 +151,8 @@ export function PhotoPanel({
         alt={alt}
         width={1400}
         height={height}
-        loading="lazy"
+        loading={hero ? "eager" : "lazy"}
+        fetchPriority={hero ? "high" : "auto"}
         className={`w-full aspect-[4/3] object-cover ${position} rounded-2xl`}
       />
       {children}

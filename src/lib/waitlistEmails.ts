@@ -134,8 +134,8 @@ export function thankYouEmail(s: WaitlistSignup) {
 export function alertEmail(s: WaitlistSignup) {
   const rows: [string, string][] = [
     ["Email", s.email],
-    ["Practice", s.practiceName || "—"],
-    ["Role", s.role || "—"],
+    ["Practice", s.practiceName || "Not given"],
+    ["Role", s.role || "Not given"],
   ];
   const text = [
     "New waitlist sign-up on dentdock.co.uk",

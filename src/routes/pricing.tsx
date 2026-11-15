@@ -112,7 +112,7 @@ export const Route = createFileRoute("/pricing")({
   head: () =>
     templateHead({
       path: PATH,
-      title: "Pricing | DentDock, £49 a month per practice, no contract",
+      title: "Pricing: £49 a month per practice, no contract | DentDock",
       description:
         "DentDock is £49 a month for your whole practice: unlimited dentists and staff, 200 texts a month included then 8p each. No setup fee, no contract, no VAT added.",
       crumbs: [{ name: "Pricing", path: PATH }],

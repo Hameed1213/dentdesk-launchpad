@@ -21,7 +21,7 @@ const WhatsAppButton = lazy(() => import("@/components/home/WhatsAppButton"));
 const SITE = "https://dentdock.co.uk";
 const TITLE = "DentDock | Dental software for UK private practices";
 const DESCRIPTION =
-  "Online booking, reminders, recalls, forms and payments for UK private dental practices. £49 a month per practice, no contract, with real support from the people who built it.";
+  "Online booking, reminders, recalls, forms and payments for UK private dental practices. £49 a month, no contract, with same-day support from the team.";
 
 // Old one-page links (dentdock.co.uk/#pricing and so on) now live on their own pages.
 // Browsers never send the # part to the server, so this has to happen in the page.

@@ -154,7 +154,7 @@ export const Route = createFileRoute("/features/reminders-and-recalls")({
       path: PATH,
       title: "Dental appointment reminders and recall software | DentDock",
       description:
-        "Automatic text and email reminders 72 hours, 24 hours and 2 hours before every appointment, recalls that follow up, and a waitlist to fill cancelled slots. Included in £49 a month.",
+        "Automatic text and email reminders 72, 24 and 2 hours before every appointment, recalls that follow up, and a waitlist for cancelled slots. £49 a month.",
       crumbs: [
         { name: "Features", path: "/features" },
         { name: "Reminders and recalls", path: PATH },

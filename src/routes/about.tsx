@@ -46,7 +46,7 @@ export const Route = createFileRoute("/about")({
       path: PATH,
       title: "About DentDock | Practice software for UK private dentistry",
       description:
-        "DentDock is practice software for UK private dental practices: online booking, reminders, recalls, forms and payments for one published price, with same-day support.",
+        "DentDock is practice software for UK private dental practices: booking, reminders, recalls, forms and payments for one published price, with same-day support.",
       crumbs: [{ name: "About", path: PATH }],
       faq: [],
     }),

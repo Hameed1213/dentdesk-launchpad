@@ -42,7 +42,7 @@ export const homeFaq: FaqItem[] = [
     id: "setup",
     question: "How long does it take to switch to DentDock?",
     answer:
-      "Setting up DentDock can be done in a day, as opening hours, treatments and reminders come with sensible defaults. Allow a few weeks for the whole move: giving notice to your current supplier, exporting your patients, checking the import and adding upcoming appointments, which aren't imported. We'll help you plan it on WhatsApp.",
+      "Setting up DentDock can be done in a day, as opening hours, treatments and reminders come with sensible defaults. Allow a few weeks for the whole move: giving notice to your current supplier, exporting your patients and upcoming appointments, and checking the import with us. We bring the appointments across for you and help you plan it on WhatsApp.",
   },
   {
     id: "contract",

@@ -15,7 +15,7 @@ export const Route = createFileRoute("/contact")({
   head: () =>
     templateHead({
       path: PATH,
-      title: "Contact DentDock",
+      title: "Contact DentDock | WhatsApp and email",
       description:
         "Talk to the people who built DentDock on WhatsApp or by email. Questions about pricing, switching or how DentDock works for your practice.",
       crumbs: [{ name: "Contact", path: PATH }],

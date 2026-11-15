@@ -292,7 +292,7 @@ export const Route = createFileRoute("/features/online-booking")({
   head: () =>
     templateHead({
       path: PATH,
-      title: "Online booking and patient portal for dental practices | DentDock",
+      title: "Online booking and patient portal for dentists | DentDock",
       description:
         "Your own dental booking page with prices, clinicians and only free times, health forms inside the booking, and a patient portal with no password. £49 a month.",
       crumbs: [

@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { CalendarDays, ClipboardList, FileCheck2, MessageCircle, Rocket } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 import { PhotoPanel } from "@/components/site/ui";
 import PageShell from "@/components/site/PageShell";
 import { ClosingBand, Reveal, TrustStrip } from "@/components/site/ui";
@@ -8,7 +8,6 @@ import {
   FeatureCards,
   OtherAreas,
   PageHeroSplit,
-  SectionTitle,
   templateHead,
   type PlatformContent,
 } from "@/components/site/templates";
@@ -24,10 +23,14 @@ import { othersFor } from "@/components/site/featurePages";
  * Dentally, Software of Excellence (EXACT), Curve Dental, Carestream R4 and Practiceworks; columns
  * matched automatically and changeable; imports patients (name, contact, DOB, address, NHS number,
  * allergies, conditions, notes) and check-up/hygiene recall dates; WhatsApp support (site claim).
- * Not claimed: importing appointments, history, payments, charts or forms; direct links to other
+ * Not claimed: importing appointment history, payments, charts or forms; direct links to other
  * systems; consent handling on import (open bug); medications shown on the profile; a fixed setup time.
  * Reworked 12 Nov 2026 (Hariss): switching is a planned move, not upload and go. The page now says
- * what stays in the old system, that booked appointments must be added by hand, and to allow weeks.
+ * what stays in the old system, and to allow weeks.
+ * 15 Nov 2026 (Hariss): upcoming appointments ARE brought across, by us. The app has no appointment
+ * import today (patientImporter.ts makes patients + recalls only), so this needs building before the
+ * first switch: match by previous_patient_ref, map clinicians, insert as "confirmed". Reminders
+ * then work with no other change (process-automations reads confirmed future appointments).
  * Photo: Magnific (Freepik) free licence, credited in the page footer.
  */
 
@@ -261,17 +264,17 @@ const content: PlatformContent = {
     {
       question: "How long does switching take?",
       answer:
-        "Setting up DentDock can be done in a day. Allow a few weeks for the whole move: giving notice to your current supplier, getting your patient export, checking the import and adding upcoming appointments. We'll help you choose a go-live date that suits your practice.",
+        "Setting up DentDock can be done in a day. Allow a few weeks for the whole move: giving notice to your current supplier, getting your exports and checking the import with us. We'll help you choose a go-live date that suits your practice.",
     },
     {
       question: "What can we bring across from our current system?",
       answer:
-        "Your patients, including names, contact details, date of birth, address, NHS number, allergies, conditions and notes, plus their check-up and hygiene recall dates. Appointment history, payments and charts aren't imported.",
+        "Your patients, including names, contact details, date of birth, address, NHS number, allergies, conditions and notes, plus their check-up and hygiene recall dates and your upcoming appointments. Past appointment history, payments and charts aren't imported.",
     },
     {
       question: "What happens to appointments that are already booked?",
       answer:
-        "They aren't imported. Add upcoming appointments to the DentDock calendar before you go live, or let them finish in your old diary while new bookings go into DentDock.",
+        "We bring them across. Export your upcoming appointments, we import them and match each one to the right patient and dentist, then bring across anything booked since on go-live day. Patients get their reminders as normal.",
     },
     {
       question: "Do we need to keep our old system?",
@@ -292,67 +295,71 @@ const content: PlatformContent = {
 
 const plan = [
   {
-    Icon: ClipboardList,
     when: "A few weeks before",
-    title: "Plan the move",
-    body: "Check your notice period with your current supplier, agree with us what comes across, and pick a quiet day to go live.",
+    title: "Plan the move together",
+    body: "Tell us which system you use now. We'll check your notice period with you and pick a quiet day to go live.",
   },
   {
-    Icon: FileCheck2,
     when: "1 to 2 weeks before",
-    title: "Set up and check",
-    body: "Add your hours, treatments and team, then export your patient list and check the import with us.",
+    title: "Set up your practice",
+    body: "Add your hours, treatments and team. Most of it comes with sensible defaults, and every step can be changed later.",
   },
   {
-    Icon: CalendarDays,
-    when: "The days before",
-    title: "Move your diary",
-    body: "Booked appointments aren't imported. Add upcoming ones to DentDock, or let them finish in your old diary.",
+    when: "The week before",
+    title: "Bring everything across",
+    body: "Export your patients and upcoming appointments from your current system. We import them, match each booking to the right patient and dentist, and check the numbers with you.",
   },
   {
-    Icon: Rocket,
     when: "Go-live day",
     title: "Go live",
-    body: "Share your booking link and switch on reminders. Keep access to your old system for past records.",
+    body: "We bring across anything booked since the first import. Share your booking link, and patients get their reminders as normal.",
   },
 ];
 
-/** The move as a timeline: across the page on desktop, down a line on phones. */
+/** The move: practice photo on the left, the four steps as a numbered list on the right. */
 function MovePlan() {
   return (
-    <section className="bg-gradient-to-b from-[#F7F9FF] to-[#F1F5FE] border-b border-[#EEF2FB] py-16 md:py-24 px-6">
-      <div className="mx-auto max-w-6xl">
-        <SectionTitle
-          title="How a switch"
-          highlight="works"
-          intro="Most of the work is planning and checking, not uploading. We're on WhatsApp for every step."
-        />
-        <ol className="relative grid grid-cols-1 lg:grid-cols-4 gap-8 lg:gap-6">
-          <span
-            aria-hidden="true"
-            className="hidden lg:block absolute top-7 left-[12.5%] right-[12.5%] h-px bg-[#BFDBFE]"
+    <section className="bg-white border-b border-[#EEF2FB] py-16 md:py-24 px-6">
+      <div className="mx-auto max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <Reveal className="order-2 lg:order-1">
+          <img
+            src="/images/pages/switching-dentist.webp"
+            alt="Dentist talking a patient through her treatment in the surgery"
+            width={1400}
+            height={1050}
+            loading="lazy"
+            className="w-full aspect-[4/3] lg:aspect-[4/5] object-cover object-[58%_50%] rounded-3xl shadow-[0_24px_60px_-28px_rgba(15,23,42,0.35)]"
           />
-          <span
-            aria-hidden="true"
-            className="lg:hidden absolute top-2 bottom-2 left-7 w-px bg-[#BFDBFE]"
-          />
-          {plan.map(({ Icon, when, title, body }, i) => (
-            <Reveal key={title} delay={i * 0.08}>
-              <li className="relative list-none flex lg:flex-col lg:items-center gap-5 lg:gap-0 lg:text-center">
-                <span className="relative z-10 w-14 h-14 rounded-2xl bg-[#2563EB] shadow-[0_8px_20px_-8px_rgba(37,99,235,0.6)] flex items-center justify-center flex-shrink-0">
-                  <Icon className="w-6 h-6 text-white" strokeWidth={1.8} />
-                </span>
-                <div className="flex-1 rounded-3xl bg-white border border-[#E5EDFB] p-6 lg:mt-6 lg:w-full">
-                  <p className="text-[12px] font-semibold uppercase tracking-wide text-[#2563EB]">
-                    Step {i + 1} · {when}
-                  </p>
-                  <h3 className="mt-2 text-[19px] font-semibold text-[#0F172A]">{title}</h3>
-                  <p className="mt-2 text-[15px] text-[#475569] leading-[1.6]">{body}</p>
-                </div>
-              </li>
-            </Reveal>
-          ))}
-        </ol>
+        </Reveal>
+        <div className="order-1 lg:order-2">
+          <Reveal>
+            <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-foreground leading-[1.1]">
+              How a switch <span className="text-[#2563EB]">works</span>
+            </h2>
+            <p className="mt-5 text-[17px] text-[#475569] leading-[1.7]">
+              You keep running the practice while we do the moving, so your diary carries on without
+              a gap.
+            </p>
+          </Reveal>
+          <ol className="mt-8">
+            {plan.map(({ when, title, body }, i) => (
+              <Reveal key={title} delay={i * 0.06}>
+                <li className="list-none flex gap-5 py-6 border-t border-[#EEF2FB]">
+                  <span className="w-10 h-10 rounded-full bg-[#2563EB] text-white text-[16px] font-semibold flex items-center justify-center flex-shrink-0">
+                    {i + 1}
+                  </span>
+                  <div>
+                    <h3 className="text-[19px] font-semibold tracking-tight text-[#0F172A]">
+                      {title}
+                    </h3>
+                    <p className="mt-0.5 text-[13px] font-medium text-[#94A3B8]">{when}</p>
+                    <p className="mt-2 text-[15px] text-[#475569] leading-[1.65]">{body}</p>
+                  </div>
+                </li>
+              </Reveal>
+            ))}
+          </ol>
+        </div>
       </div>
     </section>
   );
