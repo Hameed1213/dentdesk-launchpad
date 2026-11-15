@@ -320,15 +320,15 @@ const plan = [
 function MovePlan() {
   return (
     <section className="bg-white border-b border-[#EEF2FB] py-16 md:py-24 px-6">
-      <div className="mx-auto max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-stretch">
-        <Reveal className="order-2 lg:order-1 h-full">
+      <div className="mx-auto max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <Reveal className="order-2 lg:order-1">
           <img
-            src="/images/pages/manager-laptop.webp"
-            alt="Practice manager talking through plans at her laptop"
+            src="/images/pages/reception-payment.webp"
+            alt="Receptionist at the front desk taking a card payment on a tablet"
             width={1400}
             height={934}
             loading="lazy"
-            className="w-full h-full min-h-[320px] aspect-[4/3] lg:aspect-auto object-cover object-[70%_50%] rounded-3xl shadow-[0_24px_60px_-28px_rgba(15,23,42,0.35)]"
+            className="w-full aspect-[4/3] lg:aspect-[4/5] object-cover object-[12%_50%] rounded-3xl shadow-[0_24px_60px_-28px_rgba(15,23,42,0.35)]"
           />
         </Reveal>
         <div className="order-1 lg:order-2">
