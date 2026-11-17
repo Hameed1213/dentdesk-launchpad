@@ -25,7 +25,7 @@ export const Route = createFileRoute("/dpa")({
 
 function DpaPage() {
   return (
-    <LegalLayout title="Data Processing Agreement" updated="9 November 2026">
+    <LegalLayout title="Data Processing Agreement" updated="17 November 2026">
       <p>
         This Data Processing Agreement ("DPA") is between the dental practice that holds a Dent Dock account (the "Practice") and PARADIGM NETWORK LIMITED, trading as Dent Dock, a company registered in England and Wales (company number 16903048), whose registered office is at 11 Dronfield Road, Salford, M6 7FN ("Dent Dock", "we", "us").
       </p>
@@ -78,7 +78,7 @@ function DpaPage() {
         <ul className="list-disc pl-5 space-y-1.5">
           <li>to respond to patients and others using their rights, including by providing exports of a patient's records. If we receive a request directly, we will pass it to the Practice and not answer it ourselves;</li>
           <li>to keep personal data secure;</li>
-          <li>with data protection impact assessments and any consultation with the Information Commissioner's Office, where they relate to Dent Dock.</li>
+          <li>with data protection impact assessments and any consultation with the Information Commission (formerly the Information Commissioner's Office), where they relate to Dent Dock.</li>
         </ul>
       </LegalSection>
 
@@ -133,7 +133,7 @@ function DpaPage() {
           <li>Each practice's data is kept separate by database access rules, and staff permissions within a practice are set by role.</li>
           <li>Records of who did what are kept in the app.</li>
           <li>Practice accounts have two-step login with an authenticator app. It is required for owners and practice managers, and optional for other staff.</li>
-          <li>Our internal tools require two-factor sign-in and do not show patient records. Our team sees a practice's account only through a recorded support session, and direct access to the production database is limited to named administrators.</li>
+          <li>Our internal tools require two-factor sign-in and have no direct access to patient records: they show practice-level details, totals and counts only. Our team sees patient records only through a recorded support session in the Practice's own account. Our support team can also see anything the Practice puts in a support request or its attachments, so Practices should avoid including patient details there. Direct access to the production database is limited to named administrators.</li>
           <li>Online booking and waitlist forms are protected against automated abuse.</li>
         </ul>
       </LegalSection>
@@ -145,7 +145,7 @@ function DpaPage() {
           <li><strong className="text-[#0F172A] font-semibold">Twilio:</strong> sending text messages, used for a Practice only once texts are switched on for it. Twilio Inc. is in the United States. Transfers rely on the UK Extension to the EU-US Data Privacy Framework and, if that does not apply, the UK Addendum.</li>
           <li><strong className="text-[#0F172A] font-semibold">Resend:</strong> sending emails.</li>
           <li><strong className="text-[#0F172A] font-semibold">Vercel:</strong> hosting the practice app and the online booking site.</li>
-          <li><strong className="text-[#0F172A] font-semibold">Cloudflare:</strong> protecting online booking and waitlist forms from automated abuse.</li>
+          <li><strong className="text-[#0F172A] font-semibold">Cloudflare:</strong> protecting sign-up, patient sign-in links, online booking and waitlist forms from automated abuse.</li>
         </ul>
       </LegalSection>
 
