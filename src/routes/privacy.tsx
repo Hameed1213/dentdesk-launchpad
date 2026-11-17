@@ -109,7 +109,7 @@ function PrivacyPage() {
           <li><strong className="text-[#0F172A] font-semibold">Resend:</strong> sending emails.</li>
           <li><strong className="text-[#0F172A] font-semibold">Vercel:</strong> hosting the practice app and the online booking site.</li>
           <li><strong className="text-[#0F172A] font-semibold">Cloudflare:</strong> protecting sign-up, patient sign-in links, online booking and waitlist forms from automated abuse (it checks the visitor's IP address and browser details), and hosting dentdock.co.uk.</li>
-          <li><strong className="text-[#0F172A] font-semibold">Google:</strong> website analytics on dentdock.co.uk, only if you accept analytics cookies, and website fonts. Google never receives patient data from us.</li>
+          <li><strong className="text-[#0F172A] font-semibold">Google:</strong> website analytics on dentdock.co.uk, only if you accept analytics cookies. Google never receives patient data from us.</li>
         </ul>
         <p>
           A practice can choose to add its own Google Analytics, Google Ads or Meta account to its online booking page. Those companies then work for the practice, not for Dent Dock, and are only used if the patient accepts cookies on that page. We never send them a patient's name, contact details, date of birth, health information or form answers. See our <a href="/cookies" className="text-[#2563EB] hover:underline">Cookie Policy</a>.
