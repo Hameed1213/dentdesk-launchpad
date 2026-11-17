@@ -26,7 +26,7 @@ export const Route = createFileRoute("/privacy")({
 
 function PrivacyPage() {
   return (
-    <LegalLayout title="Privacy Policy" updated="9 November 2026">
+    <LegalLayout title="Privacy Policy" updated="17 November 2026">
       <LegalSection heading="Who we are">
         <p>
           Dent Dock is a dental practice management platform. Dent Dock is a trading name of PARADIGM NETWORK LIMITED, a company registered in England and Wales (company number 16903048), whose registered office is at 11 Dronfield Road, Salford, M6 7FN. Our ICO registration number is ZC132966.
@@ -104,11 +104,11 @@ function PrivacyPage() {
         <p>We use the following companies to provide the service:</p>
         <ul className="list-disc pl-5 space-y-1.5">
           <li><strong className="text-[#0F172A] font-semibold">Supabase:</strong> database, sign-in, file storage and server functions. Data stored in London, UK.</li>
-          <li><strong className="text-[#0F172A] font-semibold">Stripe:</strong> subscription billing. Patient payments go through the practice's own Stripe account, under the practice's own agreement with Stripe. For a patient payment, Stripe receives the amount, the card details, what the payment is for (such as "Deposit: Check-up"), our reference numbers for the payment, and, for a deposit paid online, the patient's email address.</li>
+          <li><strong className="text-[#0F172A] font-semibold">Stripe:</strong> subscription billing. Patient payments go through the practice's own Stripe account, under the practice's own agreement with Stripe. For a patient payment, Stripe receives the amount, the card details, what the payment is for (such as "Deposit: Check-up"), our reference numbers for the payment, and, for a deposit paid online, the patient's email address. For a refund, Stripe also receives the reason the practice types, so practices should not write health details there.</li>
           <li><strong className="text-[#0F172A] font-semibold">Twilio:</strong> sending text messages, once texts are switched on for a practice. Twilio receives the patient's mobile number and the message, and the practice's name as the sender.</li>
           <li><strong className="text-[#0F172A] font-semibold">Resend:</strong> sending emails.</li>
           <li><strong className="text-[#0F172A] font-semibold">Vercel:</strong> hosting the practice app and the online booking site.</li>
-          <li><strong className="text-[#0F172A] font-semibold">Cloudflare:</strong> protecting online booking and waitlist forms from automated abuse, and hosting dentdock.co.uk.</li>
+          <li><strong className="text-[#0F172A] font-semibold">Cloudflare:</strong> protecting sign-up, patient sign-in links, online booking and waitlist forms from automated abuse (it checks the visitor's IP address and browser details), and hosting dentdock.co.uk.</li>
           <li><strong className="text-[#0F172A] font-semibold">Google:</strong> website analytics on dentdock.co.uk, only if you accept analytics cookies, and website fonts. Google never receives patient data from us.</li>
         </ul>
         <p>
@@ -136,7 +136,7 @@ function PrivacyPage() {
           <strong className="text-[#0F172A] font-semibold">Online bookings waiting for a deposit:</strong> while a patient pays a deposit online, the rest of their booking, including any health form answers, is held on our servers for a short time, usually up to 10 minutes. It is deleted as soon as the booking is finished or the hold ends.
         </p>
         <p>
-          <strong className="text-[#0F172A] font-semibold">Security records:</strong> short-lived records used to stop abuse: requests for patient portal sign-in links, sign-up attempts and counts of emails sent by staff for 2 days, and invitation confirmations for 24 hours.
+          <strong className="text-[#0F172A] font-semibold">Security records:</strong> short-lived records used to stop abuse: requests for patient portal sign-in links, online booking attempts, sign-up attempts and counts of emails sent by staff for 2 days, and invitation confirmations for 24 hours.
         </p>
         <p>
           <strong className="text-[#0F172A] font-semibold">Two-step login:</strong> a scrambled copy of each person's recovery codes, until they are replaced or two-step login is turned off, and attempts to use one, for no more than a day.
@@ -175,7 +175,7 @@ function PrivacyPage() {
           To use any of these rights, contact us at hello@dentdock.co.uk. We will respond within one month. If you are a patient, please contact your dental practice; we will pass on any request we receive to them.
         </p>
         <p>
-          You can also complain to the Information Commissioner's Office (ICO) at ico.org.uk or on 0303 123 1113.
+          You can also complain to the Information Commission (ICO), which took over from the Information Commissioner's Office on 30 September 2026, at ico.org.uk or on 0303 123 1113.
         </p>
       </LegalSection>
 
