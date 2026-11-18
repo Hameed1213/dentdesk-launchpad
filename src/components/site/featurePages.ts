@@ -51,7 +51,7 @@ export const featurePages = {
   },
   security: {
     title: "Security and data",
-    body: "Stored in London, encrypted, with two-step login and per-screen access.",
+    body: "Stored in Europe, encrypted, with two-step login and per-screen access.",
     to: "/features/security",
     image: "/images/pages/hero-security.webp",
     position: "object-[50%_28%]",

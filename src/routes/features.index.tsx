@@ -153,7 +153,7 @@ const faq: Faq[] = [
   {
     question: "Is DentDock cloud-based?",
     answer:
-      "Yes. It runs in your web browser on any computer, tablet or phone, with nothing to install. Your data is stored in London, UK.",
+      "Yes. It runs in your web browser on any computer, tablet or phone, with nothing to install. Your data is stored in Europe.",
   },
   {
     question: "Does DentDock do NHS claims or charting?",

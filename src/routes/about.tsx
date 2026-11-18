@@ -9,7 +9,7 @@ import { PillCard } from "@/components/site/cards";
 /*
  * About page: the company, not the founder (Hariss, 12 Nov 2026). Every claim matches other pages:
  * £49 a month per practice, no contract or setup fees, 30-day trial, first 30 practices via the
- * waitlist, WhatsApp support, data stored in London, export any time, ICO ZC132966, company details
+ * waitlist, WhatsApp support, data stored in Europe, export any time, ICO ZC132966, company details
  * as in the footer. Does not claim a founding year, team size, office or customer numbers.
  * Photos: Magnific (Freepik) free licence, credited in the footer.
  */
@@ -30,7 +30,7 @@ const values = [
   {
     Icon: ShieldCheck,
     title: "Your data stays yours",
-    body: "Records are stored in London and encrypted. Owners and managers can download everything at any time, so you're never locked in.",
+    body: "Records are stored in Europe and encrypted. Owners and managers can download everything at any time, so you're never locked in.",
   },
   {
     Icon: Scale,

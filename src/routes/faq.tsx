@@ -95,7 +95,7 @@ const groups: { id: string; title: string; items: Faq[] }[] = [
       {
         question: "Where is our patients' data stored?",
         answer:
-          "In London, UK. It's encrypted in transit and at rest, and our Data Processing Agreement sets out how we handle data for your practice.",
+          "In Europe: our main database and files are in London, UK, and nightly backup copies of files are in Stockholm, Sweden (EU). It's encrypted in transit and at rest, and our Data Processing Agreement sets out how we handle data for your practice.",
       },
       {
         question: "Can we take our data with us if we leave?",

@@ -50,7 +50,7 @@ const included = [
   },
   {
     title: "Security and data",
-    body: "Stored in London, encrypted, two-step login, and a full export of your data any time.",
+    body: "Stored in Europe, encrypted, two-step login, and a full export of your data any time.",
     to: "/features/security",
   },
   {

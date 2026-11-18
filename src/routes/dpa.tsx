@@ -25,7 +25,7 @@ export const Route = createFileRoute("/dpa")({
 
 function DpaPage() {
   return (
-    <LegalLayout title="Data Processing Agreement" updated="17 November 2026">
+    <LegalLayout title="Data Processing Agreement" updated="18 November 2026">
       <p>
         This Data Processing Agreement ("DPA") is between the dental practice that holds a Dent Dock account (the "Practice") and PARADIGM NETWORK LIMITED, trading as Dent Dock, a company registered in England and Wales (company number 16903048), whose registered office is at 11 Dronfield Road, Salford, M6 7FN ("Dent Dock", "we", "us").
       </p>
@@ -90,7 +90,7 @@ function DpaPage() {
 
       <LegalSection heading="10. At the end">
         <p>
-          When the Practice's account closes, we will, at the Practice's choice, return its personal data in a common electronic format or delete it, within 90 days, unless the law requires us to keep it. Dental records usually have to be kept for many years, so the Practice should ask for a copy of its patient records before its account closes.
+          When the Practice's account closes, we will, at the Practice's choice, return its personal data in a common electronic format or delete it, within 90 days, unless the law requires us to keep it. Copies in our backups are removed within a further 40 days. Dental records usually have to be kept for many years, so the Practice should ask for a copy of its patient records before its account closes.
         </p>
       </LegalSection>
 
@@ -129,12 +129,13 @@ function DpaPage() {
 
       <LegalSection heading="Annex 2: Security measures">
         <ul className="list-disc pl-5 space-y-1.5">
-          <li>Data is stored in London, UK, and encrypted in transit (TLS) and at rest.</li>
+          <li>Data is stored in London, UK, with nightly backup copies of files in Stockholm, Sweden (EU), and is encrypted in transit (TLS) and at rest.</li>
           <li>Each practice's data is kept separate by database access rules, and staff permissions within a practice are set by role.</li>
           <li>Records of who did what are kept in the app.</li>
           <li>Practice accounts have two-step login with an authenticator app. It is required for owners and practice managers, and optional for other staff.</li>
           <li>Our internal tools require two-factor sign-in and have no direct access to patient records: they show practice-level details, totals and counts only. Our team sees patient records only through a recorded support session in the Practice's own account. Our support team can also see anything the Practice puts in a support request or its attachments, so Practices should avoid including patient details there. Direct access to the production database is limited to named administrators.</li>
           <li>Online booking and waitlist forms are protected against automated abuse.</li>
+          <li>The database is backed up daily, and each backup is kept for 7 days. Stored files are copied each night to a separate backup in Stockholm, Sweden (EU), which is locked so that a copy cannot be changed or deleted for 35 days, even by the system that makes it. The old copy is removed within 40 days after the file is changed or deleted.</li>
         </ul>
       </LegalSection>
 
@@ -143,6 +144,7 @@ function DpaPage() {
           <li><strong className="text-[#0F172A] font-semibold">Supabase:</strong> database, sign-in, file storage and server functions. Data stored in London, UK.</li>
           <li><strong className="text-[#0F172A] font-semibold">Stripe:</strong> subscription billing. Patient payments go through the Practice's own Stripe account, under the Practice's own agreement with Stripe.</li>
           <li><strong className="text-[#0F172A] font-semibold">Twilio:</strong> sending text messages, used for a Practice only once texts are switched on for it. Twilio Inc. is in the United States. Transfers rely on the UK Extension to the EU-US Data Privacy Framework and, if that does not apply, the UK Addendum.</li>
+          <li><strong className="text-[#0F172A] font-semibold">Amazon Web Services:</strong> backup copies of stored files. Data stored in Stockholm, Sweden (EU), which UK law recognises as giving adequate protection.</li>
           <li><strong className="text-[#0F172A] font-semibold">Resend:</strong> sending emails.</li>
           <li><strong className="text-[#0F172A] font-semibold">Vercel:</strong> hosting the practice app and the online booking site.</li>
           <li><strong className="text-[#0F172A] font-semibold">Cloudflare:</strong> protecting sign-up, patient sign-in links, online booking and waitlist forms from automated abuse.</li>
