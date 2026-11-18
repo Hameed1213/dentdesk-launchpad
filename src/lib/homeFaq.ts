@@ -24,7 +24,7 @@ export const homeFaq: FaqItem[] = [
     id: "data",
     question: "Where is my patients' data stored?",
     answer:
-      "In London, UK. It's encrypted in transit and at rest, and our Data Processing Agreement sets out how we handle it for your practice.",
+      "In Europe: our main database and files are in London, UK, and nightly backup copies of files are in Stockholm, Sweden (EU). It's encrypted in transit and at rest, and our Data Processing Agreement sets out how we handle it for your practice.",
   },
   {
     id: "export",

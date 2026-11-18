@@ -9,7 +9,7 @@ import { othersFor } from "@/components/site/featurePages";
 
 /*
  * Platform page: Security and data. Claims checked against the app on 12 Nov 2026:
- * stored in London, UK, encrypted in transit and at rest (DPA page); ICO ZC132966; two-step login with
+ * stored in Europe (London, UK; file backups in Stockholm, Sweden from 18 Nov 2026), encrypted in transit and at rest (DPA page); ICO ZC132966; two-step login with
  * an authenticator app and recovery codes, required for owners and practice managers, optional for
  * other staff; sessions lock after 60 minutes idle, sign out of other devices; per-screen permissions
  * with role defaults (enforced in the database for patients, payments, forms, services, automations,
@@ -30,7 +30,7 @@ function StorageScreen() {
       title="Your data"
       zoom={
         <Zoom title="Stored in" width="w-[170px]">
-          <p className="text-[16px] font-semibold text-[#0F172A]">London, UK</p>
+          <p className="text-[16px] font-semibold text-[#0F172A]">Europe</p>
           <p className="mt-0.5 text-[11px] text-[#64748B]">Encrypted at rest and in transit</p>
         </Zoom>
       }
@@ -40,8 +40,8 @@ function StorageScreen() {
           {
             lead: <MapPin className="w-4 h-4 text-[#2563EB]" />,
             title: "Where it's stored",
-            sub: "London, UK",
-            right: <Badge tone="green">UK</Badge>,
+            sub: "London, UK, with backups in Sweden",
+            right: <Badge tone="green">Europe</Badge>,
           },
           {
             lead: <Lock className="w-4 h-4 text-[#2563EB]" />,
@@ -174,7 +174,7 @@ const content: PlatformContent = {
     title: "Patient data,",
     highlight: "looked after properly",
     intro:
-      "Stored in London, encrypted, and only seen by the people in your team who need to see it.",
+      "Stored in Europe, encrypted, and only seen by the people in your team who need to see it.",
     visual: (
       <PhotoPanel
         src="/images/pages/hero-security.webp"
@@ -192,10 +192,10 @@ const content: PlatformContent = {
   },
   features: [
     {
-      title: "Stored in the UK, encrypted",
-      body: "Your practice and patient records are stored in London and encrypted, under a published Data Processing Agreement.",
+      title: "Stored in Europe, encrypted",
+      body: "Your practice and patient records are stored in Europe and encrypted, under a published Data Processing Agreement.",
       points: [
-        "Stored in London, UK",
+        "Stored in Europe",
         "Encrypted in transit and at rest",
         "ICO registered: ZC132966",
       ],
@@ -237,7 +237,7 @@ const content: PlatformContent = {
     {
       question: "Where is our patients' data stored?",
       answer:
-        "In London, UK. It's encrypted in transit and at rest. Some suppliers, such as payment and messaging providers, may process limited data elsewhere, as set out in our Privacy policy and DPA.",
+        "In Europe: our main database and files are in London, UK, and nightly backup copies of files are in Stockholm, Sweden (EU). It's encrypted in transit and at rest. Some suppliers, such as payment and messaging providers, may process limited data elsewhere, as set out in our Privacy policy and DPA.",
     },
     {
       question: "Is DentDock registered with the ICO?",
@@ -274,7 +274,7 @@ export const Route = createFileRoute("/features/security")({
       path: PATH,
       title: "Dental software security and data protection | DentDock",
       description:
-        "Patient data stored in London and encrypted, two-step login, per-screen team access, an activity log and a full data export. ICO registered.",
+        "Patient data stored in Europe and encrypted, two-step login, per-screen team access, an activity log and a full data export. ICO registered.",
       crumbs: [
         { name: "Features", path: "/features" },
         { name: "Security and data", path: PATH },

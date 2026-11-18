@@ -97,7 +97,7 @@ export const panelOnTint =
 /* ------------------------------------------------------------------ */
 
 const trustItems = [
-  { title: "UK data storage", detail: "Practice and patient records kept in London" },
+  { title: "Stored in Europe", detail: "Practice and patient records kept in Europe" },
   { title: "Encrypted", detail: "In transit and at rest" },
   { title: "ICO registered", detail: "Registration ZC132966" },
   { title: "No lock-in", detail: "No contract. Export your data any time" },

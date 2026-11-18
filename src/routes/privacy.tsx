@@ -106,7 +106,7 @@ function PrivacyPage() {
           <li><strong className="text-[#0F172A] font-semibold">Supabase:</strong> database, sign-in, file storage and server functions. Data stored in London, UK.</li>
           <li><strong className="text-[#0F172A] font-semibold">Stripe:</strong> subscription billing. Patient payments go through the practice's own Stripe account, under the practice's own agreement with Stripe. For a patient payment, Stripe receives the amount, the card details, what the payment is for (such as "Deposit: Check-up"), our reference numbers for the payment, and, for a deposit paid online, the patient's email address. For a refund, Stripe also receives the reason the practice types, so practices should not write health details there.</li>
           <li><strong className="text-[#0F172A] font-semibold">Twilio:</strong> sending text messages, once texts are switched on for a practice. Twilio receives the patient's mobile number and the message, and the practice's name as the sender.</li>
-          <li><strong className="text-[#0F172A] font-semibold">Amazon Web Services:</strong> backup copies of stored files. Data stored in London, UK.</li>
+          <li><strong className="text-[#0F172A] font-semibold">Amazon Web Services:</strong> backup copies of stored files. Data stored in Stockholm, Sweden (EU).</li>
           <li><strong className="text-[#0F172A] font-semibold">Resend:</strong> sending emails.</li>
           <li><strong className="text-[#0F172A] font-semibold">Vercel:</strong> hosting the practice app and the online booking site.</li>
           <li><strong className="text-[#0F172A] font-semibold">Cloudflare:</strong> protecting sign-up, patient sign-in links, online booking and waitlist forms from automated abuse (it checks the visitor's IP address and browser details), and hosting dentdock.co.uk.</li>
@@ -119,7 +119,7 @@ function PrivacyPage() {
 
       <LegalSection heading="Where data is stored">
         <p>
-          Our database and files are stored in London, UK. Some of the companies above (Stripe, Twilio, Resend, Vercel, Cloudflare and Google) may process data outside the UK, including in the United States. Where that happens, we rely on the protections UK data protection law requires, such as UK adequacy regulations (including the UK Extension to the EU-US Data Privacy Framework) or the UK International Data Transfer Agreement or Addendum.
+          Our database and files are stored in London, UK. Nightly backup copies of files are stored in Stockholm, Sweden, which UK law recognises as giving adequate protection. Some of the companies above (Stripe, Twilio, Resend, Vercel, Cloudflare and Google) may process data outside the UK, including in the United States. Where that happens, we rely on the protections UK data protection law requires, such as UK adequacy regulations (including the UK Extension to the EU-US Data Privacy Framework) or the UK International Data Transfer Agreement or Addendum.
         </p>
       </LegalSection>
 
@@ -149,7 +149,7 @@ function PrivacyPage() {
           <strong className="text-[#0F172A] font-semibold">Records of support sessions:</strong> 24 months.
         </p>
         <p>
-          <strong className="text-[#0F172A] font-semibold">Backups:</strong> the database is backed up daily and each backup is kept for 7 days. Stored files are copied each night to a separate backup in London, UK, and the old copy is removed within 40 days after the file is changed or deleted. So data deleted from Dent Dock is gone from our backups within 40 days.
+          <strong className="text-[#0F172A] font-semibold">Backups:</strong> the database is backed up daily and each backup is kept for 7 days. Stored files are copied each night to a separate backup in Stockholm, Sweden (EU), and the old copy is removed within 40 days after the file is changed or deleted. So data deleted from Dent Dock is gone from our backups within 40 days.
         </p>
         <p>
           <strong className="text-[#0F172A] font-semibold">Online booking form totals:</strong> for as long as the practice has an account. They contain no personal data.

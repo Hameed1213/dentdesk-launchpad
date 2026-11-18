@@ -8,7 +8,7 @@ const B = "bottom-4 sm:bottom-6 lg:bottom-10";
 /** "A partner you can trust" band, used on the Features and Solutions hubs. */
 export function TrustBand() {
   const items = [
-    { title: "UK hosted", sub: "Stored in London" },
+    { title: "Stored in Europe", sub: "London and Sweden" },
     { title: "Encrypted", sub: "In transit and at rest" },
     { title: "Two-step login", sub: "For owners and managers" },
     { title: "ICO registered", sub: "ZC132966" },
@@ -31,7 +31,7 @@ export function TrustBand() {
             <span className="text-[#2563EB]">A partner</span> you can trust
           </h2>
           <p className="mt-5 text-[17px] text-[#334155] leading-[1.65]">
-            Patient data is stored in the UK, encrypted, and only seen by the people in your team
+            Patient data is stored in Europe, encrypted, and only seen by the people in your team
             who need it. You can download everything at any time.
           </p>
           <ul className="mt-7 grid grid-cols-1 sm:grid-cols-2 gap-3">
