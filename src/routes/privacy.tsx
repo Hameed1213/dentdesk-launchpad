@@ -9,13 +9,13 @@ export const Route = createFileRoute("/privacy")({
       {
         name: "description",
         content:
-          "How Dent Dock collects, stores and processes data under UK GDPR. Patient data, retention, and your rights.",
+          "How DentDock collects, stores and processes data under UK GDPR. Patient data, retention, and your rights.",
       },
       { property: "og:title", content: "Privacy Policy | DentDock" },
       {
         property: "og:description",
         content:
-          "How Dent Dock collects, stores and processes data under UK GDPR.",
+          "How DentDock collects, stores and processes data under UK GDPR.",
       },
     ],
     links: [
@@ -29,7 +29,7 @@ function PrivacyPage() {
     <LegalLayout title="Privacy Policy" updated="18 November 2026">
       <LegalSection heading="Who we are">
         <p>
-          Dent Dock is a dental practice management platform. Dent Dock is a trading name of PARADIGM NETWORK LIMITED, a company registered in England and Wales (company number 16903048), whose registered office is at 11 Dronfield Road, Salford, M6 7FN. Our ICO registration number is ZC132966.
+          DentDock is a dental practice management platform. DentDock is a trading name of PARADIGM NETWORK LIMITED, a company registered in England and Wales (company number 16903048), whose registered office is at 11 Dronfield Road, Salford, M6 7FN. Our ICO registration number is ZC132966.
         </p>
         <p>Contact: hello@dentdock.co.uk</p>
       </LegalSection>
@@ -39,7 +39,7 @@ function PrivacyPage() {
           <strong className="text-[#0F172A] font-semibold">For dental practices and their staff</strong>, we are the data controller. This policy explains how we use your account information.
         </p>
         <p>
-          <strong className="text-[#0F172A] font-semibold">For patients</strong>, the dental practice is the data controller and we are its data processor. We hold patient information only so the practice can use Dent Dock, and only on the practice's instructions, under our <a href="/dpa" className="text-[#2563EB] hover:underline">Data Processing Agreement</a>. If you are a patient, your practice's privacy notice explains how your information is used, and your practice is the first place to go with any request about it.
+          <strong className="text-[#0F172A] font-semibold">For patients</strong>, the dental practice is the data controller and we are its data processor. We hold patient information only so the practice can use DentDock, and only on the practice's instructions, under our <a href="/dpa" className="text-[#2563EB] hover:underline">Data Processing Agreement</a>. If you are a patient, your practice's privacy notice explains how your information is used, and your practice is the first place to go with any request about it.
         </p>
       </LegalSection>
 
@@ -57,10 +57,10 @@ function PrivacyPage() {
           <strong className="text-[#0F172A] font-semibold">Online booking form totals (for the practice):</strong> when a patient books online for a treatment that has a health form, we count, for the practice, how many people reach the form, how many finish it and how many go on to book. These are daily totals for each treatment. They contain no names, contact details, answers or other details about anyone, we cannot tell who a count came from, and we do not use cookies or store anything on the patient's device to make them. Every visitor is counted, whether or not they accept cookies.
         </p>
         <p>
-          <strong className="text-[#0F172A] font-semibold">Payment data:</strong> subscription and payment records, including the extra text charges on a practice's invoices. Card details are handled by Stripe and are never stored by Dent Dock. When a patient pays online, the card form comes directly from Stripe, and the patient's card details go straight to Stripe.
+          <strong className="text-[#0F172A] font-semibold">Payment data:</strong> subscription and payment records, including the extra text charges on a practice's invoices. Card details are handled by Stripe and are never stored by DentDock. When a patient pays online, the card form comes directly from Stripe, and the patient's card details go straight to Stripe.
         </p>
         <p>
-          <strong className="text-[#0F172A] font-semibold">Messages:</strong> emails and text messages sent to patients through Dent Dock, and messages you send to our support team. For each text we also keep a usage record, used to count and bill texts: the practice, the patient record, a scrambled version of the phone number with its last three digits, the date and its delivery status. If a patient stops texts, we keep the same kind of record of the stop, so that it keeps working.
+          <strong className="text-[#0F172A] font-semibold">Messages:</strong> emails and text messages sent to patients through DentDock, and messages you send to our support team. For each text we also keep a usage record, used to count and bill texts: the practice, the patient record, a scrambled version of the phone number with its last three digits, the date and its delivery status. If a patient stops texts, we keep the same kind of record of the stop, so that it keeps working.
         </p>
         <p>
           <strong className="text-[#0F172A] font-semibold">Website visit totals:</strong> for dentdock.co.uk, we count daily totals of visits and page views, by page, by where visitors came from, by device type and by country. They contain nothing about any one person, we cannot tell who a count came from, and we do not use cookies or store anything on your device to make them. Every visitor is counted, whether or not they accept cookies.
@@ -75,13 +75,13 @@ function PrivacyPage() {
 
       <LegalSection heading="How we use it and our legal basis">
         <p>
-          <strong className="text-[#0F172A] font-semibold">Contract:</strong> to provide Dent Dock to your practice, including billing and support.
+          <strong className="text-[#0F172A] font-semibold">Contract:</strong> to provide DentDock to your practice, including billing and support.
         </p>
         <p>
           <strong className="text-[#0F172A] font-semibold">Legitimate interests:</strong> to keep the service secure, prevent fraud and misuse, and improve the product.
         </p>
         <p>
-          <strong className="text-[#0F172A] font-semibold">Consent:</strong> to contact you about Dent Dock if you join the website waitlist. You can withdraw this at any time.
+          <strong className="text-[#0F172A] font-semibold">Consent:</strong> to contact you about DentDock if you join the website waitlist. You can withdraw this at any time.
         </p>
         <p>
           <strong className="text-[#0F172A] font-semibold">Legal obligation:</strong> to keep financial records and meet other legal duties.
@@ -93,10 +93,10 @@ function PrivacyPage() {
 
       <LegalSection heading="Support access">
         <p>
-          If a practice needs help, a member of the Dent Dock team may sign in to that practice's account through a named "Dent Dock Support" user. Each support session is short, is recorded, and the record can be seen by the practice.
+          If a practice needs help, a member of the DentDock team may sign in to that practice's account through a named "DentDock Support" user. Each support session is short, is recorded, and the record can be seen by the practice.
         </p>
         <p>
-          Once a practice's account has closed, we can no longer sign in to it this way. When the practice's data is deleted, the "Dent Dock Support" user is deleted with it. We keep our own record of each support session (who signed in, when and why) for 24 months.
+          Once a practice's account has closed, we can no longer sign in to it this way. When the practice's data is deleted, the "DentDock Support" user is deleted with it. We keep our own record of each support session (who signed in, when and why) for 24 months.
         </p>
       </LegalSection>
 
@@ -113,7 +113,7 @@ function PrivacyPage() {
           <li><strong className="text-[#0F172A] font-semibold">Google:</strong> website analytics on dentdock.co.uk, only if you accept analytics cookies. Google never receives patient data from us.</li>
         </ul>
         <p>
-          A practice can choose to add its own Google Analytics, Google Ads or Meta account to its online booking page. Those companies then work for the practice, not for Dent Dock, and are only used if the patient accepts cookies on that page. We never send them a patient's name, contact details, date of birth, health information or form answers. See our <a href="/cookies" className="text-[#2563EB] hover:underline">Cookie Policy</a>.
+          A practice can choose to add its own Google Analytics, Google Ads or Meta account to its online booking page. Those companies then work for the practice, not for DentDock, and are only used if the patient accepts cookies on that page. We never send them a patient's name, contact details, date of birth, health information or form answers. See our <a href="/cookies" className="text-[#2563EB] hover:underline">Cookie Policy</a>.
         </p>
       </LegalSection>
 
@@ -149,7 +149,7 @@ function PrivacyPage() {
           <strong className="text-[#0F172A] font-semibold">Records of support sessions:</strong> 24 months.
         </p>
         <p>
-          <strong className="text-[#0F172A] font-semibold">Backups:</strong> the database is backed up daily and each backup is kept for 7 days. Stored files are copied each night to a separate backup in Stockholm, Sweden (EU), and the old copy is removed within 40 days after the file is changed or deleted. So data deleted from Dent Dock is gone from our backups within 40 days.
+          <strong className="text-[#0F172A] font-semibold">Backups:</strong> the database is backed up daily and each backup is kept for 7 days. Stored files are copied each night to a separate backup in Stockholm, Sweden (EU), and the old copy is removed within 40 days after the file is changed or deleted. So data deleted from DentDock is gone from our backups within 40 days.
         </p>
         <p>
           <strong className="text-[#0F172A] font-semibold">Online booking form totals:</strong> for as long as the practice has an account. They contain no personal data.
