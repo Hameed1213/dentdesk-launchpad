@@ -1,8 +1,8 @@
-# Dent Dock
+# DentDock
 
 > Dental practice management software for UK private practices: online booking, automated reminders, payments and recalls.
 
-Dent Dock helps UK private dental practices run their day-to-day: patients book online, reminders go out automatically over SMS and email, payments are taken without chasing, and recalls keep chairs full. Built for private and mixed practices (no NHS UDA management). No contracts, no setup fees, live within the day.
+DentDock helps UK private dental practices run their day-to-day: patients book online, reminders go out automatically by text and email under the practice's own name, payments are taken without chasing, and recalls keep chairs full. Built for private and mixed practices (no NHS UDA management). No contracts and no setup fees. Setup can be done in a day; a full switch from another system is planned with you over a few weeks.
 
 ## Pages
 
@@ -16,7 +16,7 @@ Dent Dock helps UK private dental practices run their day-to-day: patients book 
 - [Reports](/features/reports): Money taken, no-show rates, booking sources, accountant export.
 - [Security and data](/features/security): storage in Europe, encryption, two-step login, team access, data export.
 - [Switching to DentDock](/features/switching): Guided setup and CSV patient import.
-- [Reminders and recalls](/features/reminders-and-recalls): Reminders 72, 24 and 2 hours before each appointment, recall follow-ups, waitlist.
+- [Reminders and recalls](/features/reminders-and-recalls): Reminders 72, 24 and 2 hours before each appointment, texts sent from the practice's own name (sender ID), recall follow-ups, waitlist.
 - [Reduce no-shows](/solutions/reduce-no-shows): Evidence on reminders, fair cancellation fees, refilling gaps.
 - [Fill cancelled appointments](/solutions/fill-cancelled-appointments): Waitlist offers for cancelled slots.
 - [Cut admin and phone time](/solutions/cut-admin): Booking, forms, reminders and recalls that run themselves.
@@ -35,8 +35,8 @@ Dent Dock helps UK private dental practices run their day-to-day: patients book 
 - [Privacy](/privacy): Privacy policy.
 - [Terms](/terms): Terms of service.
 - [Cookies](/cookies): Cookie policy.
-- [Data Processing Agreement](/dpa): How Dent Dock processes patient data for practices.
-- [Compare](/compare): Dent Dock compared with other UK dental software.
-- [Dent Dock vs Dentally](/compare/dentally)
-- [Dent Dock vs iSmile Dental Software](/compare/ismile-dental-software)
-- [Dent Dock vs Software of Excellence](/compare/software-of-excellence)
+- [Data Processing Agreement](/dpa): How DentDock processes patient data for practices.
+- [Compare](/compare): DentDock compared with other UK dental software.
+- [DentDock vs Dentally](/compare/dentally)
+- [DentDock vs iSmile Dental Software](/compare/ismile-dental-software)
+- [DentDock vs Software of Excellence](/compare/software-of-excellence)

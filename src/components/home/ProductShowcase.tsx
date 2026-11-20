@@ -1116,7 +1116,7 @@ const tabContent = [
     badge: "Smart Scheduling",
     title: "A calendar that runs your day for you",
     description:
-      "Book and move appointments in a couple of clicks, see your whole team at a glance, and let Dent Dock handle reminders, deposits and confirmations automatically.",
+      "Book and move appointments in a couple of clicks, see your whole team at a glance, and let DentDock handle reminders, deposits and confirmations automatically.",
     buttonText: "See the calendar",
   },
   {
@@ -1151,7 +1151,7 @@ const tabContent = [
     badge: "One Place",
     title: "Every patient message in one place",
     description:
-      "Every confirmation, reminder, recall and form Dent Dock sends a patient, in one place, with their full history one tap away.",
+      "Every confirmation, reminder, recall and form DentDock sends a patient, in one place, with their full history one tap away.",
     buttonText: "See the inbox",
   },
 ];

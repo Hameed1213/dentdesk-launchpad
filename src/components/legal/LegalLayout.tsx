@@ -26,7 +26,7 @@ export default function LegalLayout({
                 letterSpacing: "-0.02em",
               }}
             >
-              Dent Dock
+              DentDock
             </span>
           </Link>
           <Link

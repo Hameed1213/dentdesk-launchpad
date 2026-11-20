@@ -10,7 +10,7 @@ import { channelFor, cleanTracking, countryFrom, deviceFrom } from "@/lib/visitS
 // Both overridable by env only so the whole flow can be tested against stand-ins.
 const opsUrl = () => process.env.OPS_SUPABASE_URL || "https://befyhizctaqhtlebzsdj.supabase.co";
 const resendUrl = () => process.env.RESEND_URL || "https://api.resend.com/emails";
-const FROM = "Dent Dock <noreply@dentdock.co.uk>";
+const FROM = "DentDock <noreply@dentdock.co.uk>";
 const TEAM = "hello@dentdock.co.uk";
 
 async function sendEmail(

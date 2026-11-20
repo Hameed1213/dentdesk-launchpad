@@ -25,10 +25,10 @@ export const solutionPhotos = {
   }, // 3KgSopqBgYI
   cutAdmin: {
     src: "/images/solutions/cut-admin.webp",
-    alt: "Receptionist in a headset smiling at her computer",
-    height: 934,
-    position: "object-[70%_40%]",
-  }, // wnpf3Q5pkXA
+    alt: "Woman at her desk talking on the phone, with her laptop open",
+    height: 933,
+    position: "object-[35%_35%]",
+  }, // 6iYtb6X1qfA
   deposits: {
     src: "/images/solutions/deposits.webp",
     alt: "Patient paying by card on a card reader",

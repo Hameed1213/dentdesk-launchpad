@@ -30,7 +30,7 @@ const included = [
   },
   {
     title: "Reminders and recalls",
-    body: "Reminders 72, 24 and 2 hours before, recalls that follow up, and a waitlist for gaps.",
+    body: "Reminders 72, 24 and 2 hours before, texted from your practice's name, recalls that follow up, and a waitlist for gaps.",
     to: "/features/reminders-and-recalls",
   },
   {

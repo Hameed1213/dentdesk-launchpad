@@ -16,14 +16,14 @@ export const Route = createFileRoute("/waitlist")({
       {
         name: "description",
         content:
-          "Be among the first UK private practices to get early access to Dent Dock. Priority support and early access pricing locked in.",
+          "Be among the first UK private practices to get early access to DentDock. Priority support and early access pricing locked in.",
       },
       { property: "og:url", content: "https://dentdock.co.uk/waitlist" },
       { property: "og:title", content: "Join the waitlist | DentDock" },
       {
         property: "og:description",
         content:
-          "Be among the first UK private practices to get early access to Dent Dock.",
+          "Be among the first UK private practices to get early access to DentDock.",
       },
       { property: "og:image", content: "https://dentdock.co.uk/og-image.png" },
       { name: "twitter:image", content: "https://dentdock.co.uk/og-image.png" },
@@ -132,7 +132,7 @@ function WaitlistPage() {
                 letterSpacing: "-0.02em",
               }}
             >
-              Dent Dock
+              DentDock
             </span>
           </Link>
 
@@ -277,7 +277,7 @@ function WaitlistPage() {
                     Join the waitlist
                   </h2>
                   <p className="text-[15px] leading-[1.5] text-[#475569]">
-                    Be among the first UK private practices to get Dent Dock.
+                    Be among the first UK private practices to get DentDock.
                   </p>
                 </motion.div>
 
@@ -428,7 +428,7 @@ function WaitlistPage() {
                     transition={{ duration: 0.5, ease: EASE, delay: 0.6 }}
                     className="text-[12px] text-[#94A3B8] text-center"
                   >
-                    No spam. We'll only email you about Dent Dock.
+                    No spam. We'll only email you about DentDock.
                   </motion.p>
                 </form>
               </>

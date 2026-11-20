@@ -7,6 +7,7 @@ import {
   MessageEditorScreen,
   RecallsScreen,
   RemindersScreen,
+  SenderNameScreen,
 } from "@/components/site/screens";
 
 /*
@@ -16,6 +17,8 @@ import {
  * texts only 8am to 8pm, portal link in the 72h/24h messages, 5-step recalls (3 on by default),
  * recalls skip patients with a booking, bulk send, staff-sent waitlist offers that don't hold the slot,
  * one-way texts, no reply-to-confirm. Texts are not yet live in production (launch wording kept by Hariss).
+ * Sender name (checked 20 Nov 2026, hub e1ed624): texts come from the practice's own name, made from the
+ * practice name by _shared/senderName.ts (11 characters, UK limit), set up by DentDock, changed via support.
  * Photos (Unsplash, free licence): NtFfR3xULbQ, uWVWQ8gF8PE, XH2JFgT4Abc, PIM07Y2OHzE.
  */
 
@@ -55,6 +58,16 @@ const content: PlatformContent = {
         "Booking confirmations sent straight away",
       ],
       visual: <RemindersScreen />,
+    },
+    {
+      title: "Texts from your practice, not a random number",
+      body: "Every text shows your practice's name as the sender, so patients know straight away it's from you and trust the link inside.",
+      points: [
+        "Your practice name as the sender",
+        "Set up for you from your practice name",
+        "Up to 11 characters, the UK limit",
+      ],
+      visual: <SenderNameScreen />,
     },
     {
       title: "Recalls that follow up for you",
@@ -124,6 +137,11 @@ const content: PlatformContent = {
       question: "Do patients get a text or an email?",
       answer:
         "One message per reminder, by the patient's preferred channel. If a text can't be sent, an email goes instead.",
+    },
+    {
+      question: "Who do the texts come from?",
+      answer:
+        "Your practice. Every text shows your practice's name as the sender instead of a phone number, for example SmileDental. We make it from your practice name when we set up your texts (UK networks allow up to 11 characters), and you can ask us to change it. Patients can't reply to a name, so each text has a link to view or change the appointment.",
     },
     {
       question: "Can patients reply to confirm?",

@@ -82,6 +82,11 @@ const groups: { id: string; title: string; items: Faq[] }[] = [
           "Yes. Patients book from your booking page and manage their appointments in the portal, signing in with a link sent to their email, with no password.",
       },
       {
+        question: "Who do the texts come from?",
+        answer:
+          "Your practice. Every text shows your practice's name as the sender instead of a phone number. We make it from your practice name when we set up your texts (UK networks allow up to 11 characters), and you can ask us to change it.",
+      },
+      {
         question: "Can patients reply to texts?",
         answer:
           "Not yet. Texts are one-way, and each reminder includes a link to view or change the appointment.",

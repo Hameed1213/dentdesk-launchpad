@@ -73,13 +73,13 @@ export default function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-[1.5fr_1fr_1fr_1fr_1fr] gap-x-8 gap-y-10">
           {/* Brand + contact */}
           <div className="col-span-2 md:col-span-4 lg:col-span-1 lg:pr-8">
-            <Link to="/" aria-label="Dent Dock, go to homepage" className="flex items-center gap-2">
+            <Link to="/" aria-label="DentDock, go to homepage" className="flex items-center gap-2">
               <ToothIcon size={22} color="#60A5FA" />
               <span
                 className="text-lg tracking-tight"
                 style={{ color: "#60A5FA", fontWeight: 700, letterSpacing: "-0.02em" }}
               >
-                Dent Dock
+                DentDock
               </span>
             </Link>
             <p className="mt-4 text-[14px] leading-[1.65] text-white/60 max-w-[280px]">
@@ -131,10 +131,10 @@ export default function Footer() {
         <div className="mt-14 pt-6 border-t border-white/10 flex flex-col-reverse lg:flex-row lg:items-start lg:justify-between gap-6">
           <div className="space-y-2 text-[12px] leading-[1.6] text-white/35">
             <p className="text-[13px] text-white/50">
-              © {new Date().getFullYear()} Dent Dock. All rights reserved. Made in the UK.
+              © {new Date().getFullYear()} DentDock. All rights reserved. Made in the UK.
             </p>
             <p>
-              Dent Dock is a trading name of Paradigm Network Limited.
+              DentDock is a trading name of Paradigm Network Limited.
               <br />
               Company No. 16903048 · Registered in England and Wales · ICO No. ZC132966
             </p>

@@ -677,7 +677,7 @@ function EmailView() {
         {/* Footer */}
         <div className="border-t border-[#f1f5f9] px-4 py-2 flex items-center justify-between bg-[#fafafa]">
           <span className="text-[10px] text-neutral-300 font-medium">
-            Sent automatically by Dent Dock
+            Sent automatically by DentDock
           </span>
           <div className="w-2 h-2 rounded-full bg-[#22c55e]" />
         </div>
