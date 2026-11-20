@@ -543,8 +543,8 @@ export function SwitchRow() {
 }
 
 /* ------------------------------------------------------------------ */
-/* Guides row (Hariss chose option 4 on 20 Nov 2026): the newest guide, */
-/* the no-show calculator and the comparisons, side by side.            */
+/* Guides row (Hariss, 20 Nov 2026): option 4's card style, guides only, */
+/* the newest three in a row.                                          */
 /* ------------------------------------------------------------------ */
 
 const rowCard =
@@ -554,7 +554,8 @@ const rowLink =
 const rowArrow = "h-4 w-4 transition-transform group-hover:translate-x-1";
 
 export function GuidesRow() {
-  const g = guides[0];
+  // The newest three guides, in a row of three.
+  const shown = guides.slice(0, 3);
   return (
     <section className="bg-[#F7F9FF] py-16 md:py-24 px-6">
       <div className="mx-auto max-w-6xl">
@@ -563,85 +564,38 @@ export function GuidesRow() {
             Read our <span className="text-[#2563EB]">latest guides</span>
           </h2>
           <p className="mt-5 text-[17px] text-[#475569] leading-[1.6]">
-            Straightforward answers for private practices, plus a free calculator and honest
-            comparisons.
+            Straightforward answers for private practices, with the sources to check them.
           </p>
         </Reveal>
         <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
-          <Reveal className="h-full">
-            <Link
-              to={`/guides/${g.slug}` as "/guides"}
-              className={`${rowCard} h-full overflow-hidden`}
-            >
-              <img
-                src={g.image}
-                srcSet={photoSrcSet(g.image)}
-                sizes="(min-width: 768px) 370px, calc(100vw - 48px)"
-                alt={g.imageAlt}
-                width={1400}
-                height={933}
-                loading="lazy"
-                className="w-full aspect-[16/10] object-cover"
-              />
-              <div className="flex flex-1 flex-col p-7">
-                <p className="text-[14px] font-medium text-[#2563EB]">Guide</p>
-                <h3 className="mt-2 text-[20px] font-semibold tracking-tight text-[#0F172A] leading-[1.3]">
-                  {g.title}
-                </h3>
-                <span className={rowLink}>
-                  Read the guide <ArrowRight className={rowArrow} />
-                </span>
-              </div>
-            </Link>
-          </Reveal>
-          <Reveal delay={0.06} className="h-full">
-            <Link to="/tools" className={`${rowCard} h-full p-7`}>
-              {/* The calculator's own defaults on /tools: 3 a week, £55 a visit, 48 weeks a year. */}
-              <div className="rounded-2xl bg-[#F8FAFC] border border-[#E2E8F0] p-5">
-                <p className="text-[12px] text-[#64748B]">Missed appointments a week</p>
-                <p className="mt-1 text-[22px] font-semibold text-[#0F172A]">3</p>
-                <p className="mt-3 text-[12px] text-[#64748B]">Lost to no-shows a month</p>
-                <p className="mt-1 text-[22px] font-semibold text-[#2563EB]">£660</p>
-                <p className="mt-2 text-[11px] text-[#64748B]">
-                  Example: £55 a visit, open 48 weeks a year
-                </p>
-              </div>
-              <p className="mt-6 text-[14px] font-medium text-[#2563EB]">Free tool</p>
-              <h3 className="mt-2 text-[20px] font-semibold tracking-tight text-[#0F172A] leading-[1.3]">
-                What do no-shows cost your practice?
-              </h3>
-              <span className={rowLink}>
-                Try the calculator <ArrowRight className={rowArrow} />
-              </span>
-            </Link>
-          </Reveal>
-          <Reveal delay={0.12} className="h-full">
-            <Link to="/compare" className={`${rowCard} h-full p-7`}>
-              <div className="rounded-2xl bg-[#F8FAFC] border border-[#E2E8F0] p-5 text-[13px]">
-                <p className="mb-1 text-[12px] font-semibold text-[#0F172A]">DentDock</p>
-                {[
-                  ["Online booking included", "Yes"],
-                  ["Price on the website", "Yes"],
-                  ["Contract", "None"],
-                ].map(([a, b]) => (
-                  <div
-                    key={a}
-                    className="flex justify-between border-b border-[#E2E8F0] py-2 last:border-b-0"
-                  >
-                    <span className="text-[#475569]">{a}</span>
-                    <span className="font-semibold text-[#0F172A]">{b}</span>
-                  </div>
-                ))}
-              </div>
-              <p className="mt-6 text-[14px] font-medium text-[#2563EB]">Comparisons</p>
-              <h3 className="mt-2 text-[20px] font-semibold tracking-tight text-[#0F172A] leading-[1.3]">
-                DentDock compared with Dentally, SoE and iSmile
-              </h3>
-              <span className={rowLink}>
-                See the comparisons <ArrowRight className={rowArrow} />
-              </span>
-            </Link>
-          </Reveal>
+          {shown.map((g, i) => (
+            <Reveal key={g.slug} delay={i * 0.06} className="h-full">
+              <Link
+                to={`/guides/${g.slug}` as "/guides"}
+                className={`${rowCard} h-full overflow-hidden`}
+              >
+                <img
+                  src={g.image}
+                  srcSet={photoSrcSet(g.image)}
+                  sizes="(min-width: 768px) 370px, calc(100vw - 48px)"
+                  alt={g.imageAlt}
+                  width={1400}
+                  height={933}
+                  loading="lazy"
+                  className="w-full aspect-[16/10] object-cover"
+                />
+                <div className="flex flex-1 flex-col p-7">
+                  <p className="text-[14px] font-medium text-[#2563EB]">{g.topics[0]}</p>
+                  <h3 className="mt-2 text-[20px] font-semibold tracking-tight text-[#0F172A] leading-[1.3]">
+                    {g.title}
+                  </h3>
+                  <span className={rowLink}>
+                    Read the guide <ArrowRight className={rowArrow} />
+                  </span>
+                </div>
+              </Link>
+            </Reveal>
+          ))}
         </div>
         <div className="mt-8">
           <Link to="/guides" className={pillButton}>
