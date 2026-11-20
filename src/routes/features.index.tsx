@@ -72,6 +72,20 @@ const rows: HubRow[] = [
     card: <MedicalHistoryCard className={`${L} ${T}`} />,
   },
   {
+    key: "chart",
+    title: "A dental chart that keeps up with you",
+    body: "Chart existing work and findings, record BPE, BEWE, examinations and X-rays, and keep a full history of every change.",
+    explore: "Explore the dental chart",
+    card: <PillCard className={`${R} ${B}`} icon="dot" text="UR6 MOD composite · charted" />,
+  },
+  {
+    key: "plans",
+    title: "Treatment plans patients can say yes to",
+    body: "Plans and estimates from your price list, with options, versions and a printed estimate, and private plans patients can accept online.",
+    explore: "Explore treatment plans",
+    card: <PillCard className={`${L} ${B}`} icon="dot" text="Estimate accepted · Option A" />,
+  },
+  {
     key: "payments",
     title: "Get paid without chasing",
     body: "Payment links, deposits and fair cancellation fees through your own Stripe account, with numbered receipts and refunds in one place.",
@@ -148,7 +162,7 @@ const faq: Faq[] = [
   {
     question: "What does DentDock include?",
     answer:
-      "The diary, online booking and a patient portal, reminders and recalls, a waitlist, digital forms and medical history, payments and deposits, and reports, all in one plan at £49 a month per practice.",
+      "The diary, online booking and a patient portal, reminders and recalls, a waitlist, digital forms and medical history, a dental chart and treatment plans, payments and deposits, and reports, all in one plan at £49 a month per practice.",
   },
   {
     question: "Is DentDock cloud-based?",
@@ -156,9 +170,9 @@ const faq: Faq[] = [
       "Yes. It runs in your web browser on any computer, tablet or phone, with nothing to install. Your data is stored in Europe.",
   },
   {
-    question: "Does DentDock do NHS claims or charting?",
+    question: "Does DentDock do charting or NHS claims?",
     answer:
-      "No. DentDock is built for private practices and doesn't include NHS claims, UDAs, tooth charting or imaging.",
+      "DentDock includes a dental chart and treatment plans. It doesn't make NHS claims or count UDAs, and it doesn't connect to imaging software.",
   },
   {
     question: "Can we bring our patients from our current system?",

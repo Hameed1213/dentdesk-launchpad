@@ -162,7 +162,7 @@ const content: SolutionStoryContent = {
     {
       question: "Does DentDock do NHS claims?",
       answer:
-        "No. DentDock is built for private practices and doesn't include NHS claims, UDAs, charting or imaging.",
+        "No. DentDock includes a dental chart and treatment plans. It doesn't make NHS claims or count UDAs, and it doesn't connect to imaging software.",
     },
   ],
 };

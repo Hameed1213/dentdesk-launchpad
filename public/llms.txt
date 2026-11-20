@@ -7,11 +7,13 @@ DentDock helps UK private dental practices run their day-to-day: patients book o
 ## Pages
 
 - [Home](/): What DentDock does, support, switching, pricing summary, FAQ and waitlist signup.
-- [Features](/features): Online booking, patient portal, reminders and recalls, forms, payments and reports.
+- [Features](/features): Online booking, patient portal, reminders and recalls, forms, dental chart, treatment plans, payments and reports.
 - [Pricing](/pricing): £49 a month per practice, what's included, plans coming soon.
 - [Calendar](/features/calendar): Diary with a column per clinician, visit statuses, hours, leave and blocked time.
 - [Online booking and portal](/features/online-booking): Booking page with prices, health forms in the booking, patient portal.
 - [Forms and medical history](/features/forms): Form templates and builder, signatures, reminders, medical history saved to the record.
+- [Dental chart](/features/dental-chart): Chart existing work, findings and tooth status; BPE and BEWE; examinations with soft tissue; X-ray log with evaluations; full history of every change. Records what the clinician decides. No perio pocket chart, no imaging software link.
+- [Treatment plans](/features/treatment-plans): Plans and estimates from the practice's price list, options, NHS or private per line, versions, printed estimates; patients 16+ can accept private plans online (date of birth + texted code, typed name).
 - [Payments and deposits](/features/payments): Payment links, deposits, cancellation fees, refunds and numbered receipts via the practice's own Stripe.
 - [Reports](/features/reports): Money taken, no-show rates, booking sources, accountant export.
 - [Security and data](/features/security): storage in Europe, encryption, two-step login, team access, data export.

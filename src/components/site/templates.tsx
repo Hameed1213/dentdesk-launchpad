@@ -659,6 +659,8 @@ const OG_IMAGES: Record<string, string> = {
   "/features/online-booking": "/og/online-booking.jpg",
   "/features/reminders-and-recalls": "/og/reminders-and-recalls.jpg",
   "/features/forms": "/og/forms.jpg",
+  "/features/dental-chart": "/og/dental-chart.jpg",
+  "/features/treatment-plans": "/og/treatment-plans.jpg",
   "/features/payments": "/og/payments.jpg",
   "/features/reports": "/og/reports.jpg",
   "/features/security": "/og/security.jpg",
