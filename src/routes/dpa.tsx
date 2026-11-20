@@ -9,12 +9,12 @@ export const Route = createFileRoute("/dpa")({
       {
         name: "description",
         content:
-          "The Data Processing Agreement between dental practices and Dent Dock under UK GDPR Article 28.",
+          "The Data Processing Agreement between dental practices and DentDock under UK GDPR Article 28.",
       },
       { property: "og:title", content: "Data Processing Agreement | DentDock" },
       {
         property: "og:description",
-        content: "How Dent Dock processes patient data on behalf of dental practices.",
+        content: "How DentDock processes patient data on behalf of dental practices.",
       },
     ],
     links: [
@@ -27,15 +27,15 @@ function DpaPage() {
   return (
     <LegalLayout title="Data Processing Agreement" updated="18 November 2026">
       <p>
-        This Data Processing Agreement ("DPA") is between the dental practice that holds a Dent Dock account (the "Practice") and PARADIGM NETWORK LIMITED, trading as Dent Dock, a company registered in England and Wales (company number 16903048), whose registered office is at 11 Dronfield Road, Salford, M6 7FN ("Dent Dock", "we", "us").
+        This Data Processing Agreement ("DPA") is between the dental practice that holds a DentDock account (the "Practice") and PARADIGM NETWORK LIMITED, trading as DentDock, a company registered in England and Wales (company number 16903048), whose registered office is at 11 Dronfield Road, Salford, M6 7FN ("DentDock", "we", "us").
       </p>
       <p>
-        It forms part of our <a href="/terms" className="text-[#2563EB] hover:underline">Terms of Service</a> and applies whenever Dent Dock processes personal data on the Practice's behalf. It is accepted when the Practice creates its account. If this DPA and the Terms of Service disagree about personal data, this DPA applies.
+        It forms part of our <a href="/terms" className="text-[#2563EB] hover:underline">Terms of Service</a> and applies whenever DentDock processes personal data on the Practice's behalf. It is accepted when the Practice creates its account. If this DPA and the Terms of Service disagree about personal data, this DPA applies.
       </p>
 
       <LegalSection heading="1. Roles and the law">
         <p>
-          The Practice is the controller of the personal data it puts into Dent Dock, or that its patients give through Dent Dock. Dent Dock is its processor. "UK data protection law" means the UK GDPR and the Data Protection Act 2018. Words such as "controller", "processor", "personal data", "personal data breach" and "data subject" have the meanings given in the UK GDPR.
+          The Practice is the controller of the personal data it puts into DentDock, or that its patients give through DentDock. DentDock is its processor. "UK data protection law" means the UK GDPR and the Data Protection Act 2018. Words such as "controller", "processor", "personal data", "personal data breach" and "data subject" have the meanings given in the UK GDPR.
         </p>
       </LegalSection>
 
@@ -45,13 +45,13 @@ function DpaPage() {
 
       <LegalSection heading="3. Instructions">
         <p>
-          We process personal data only on the Practice's documented instructions. Those instructions are this DPA, the Terms of Service, the Practice's use and settings of Dent Dock, and any other written instructions the Practice gives us that we agree to. We will tell the Practice straight away if we believe an instruction breaks UK data protection law. If the law requires us to process personal data for another reason, we will tell the Practice first, unless the law forbids it.
+          We process personal data only on the Practice's documented instructions. Those instructions are this DPA, the Terms of Service, the Practice's use and settings of DentDock, and any other written instructions the Practice gives us that we agree to. We will tell the Practice straight away if we believe an instruction breaks UK data protection law. If the law requires us to process personal data for another reason, we will tell the Practice first, unless the law forbids it.
         </p>
       </LegalSection>
 
       <LegalSection heading="4. Our people">
         <p>
-          Only people who need access to provide, support or secure the service can access personal data, and they are bound by confidentiality. Our team signs in to a Practice's account only to help the Practice or to keep the service working, through a named "Dent Dock Support" user. Each support session is short, is recorded, and the record can be seen by the Practice. Once the Practice's account has closed, we can no longer start a support session, and when the Practice's data is deleted under section 10, the "Dent Dock Support" user is deleted with it. We keep our own record of each support session (who, when and why) for 24 months.
+          Only people who need access to provide, support or secure the service can access personal data, and they are bound by confidentiality. Our team signs in to a Practice's account only to help the Practice or to keep the service working, through a named "DentDock Support" user. Each support session is short, is recorded, and the record can be seen by the Practice. Once the Practice's account has closed, we can no longer start a support session, and when the Practice's data is deleted under section 10, the "DentDock Support" user is deleted with it. We keep our own record of each support session (who, when and why) for 24 months.
         </p>
       </LegalSection>
 
@@ -78,7 +78,7 @@ function DpaPage() {
         <ul className="list-disc pl-5 space-y-1.5">
           <li>to respond to patients and others using their rights, including by providing exports of a patient's records. If we receive a request directly, we will pass it to the Practice and not answer it ourselves;</li>
           <li>to keep personal data secure;</li>
-          <li>with data protection impact assessments and any consultation with the Information Commission (formerly the Information Commissioner's Office), where they relate to Dent Dock.</li>
+          <li>with data protection impact assessments and any consultation with the Information Commission (formerly the Information Commissioner's Office), where they relate to DentDock.</li>
         </ul>
       </LegalSection>
 
@@ -102,7 +102,7 @@ function DpaPage() {
 
       <LegalSection heading="12. The Practice's responsibilities">
         <p>
-          The Practice is responsible for having a lawful basis for the personal data it processes with Dent Dock, for telling its patients how their data is used (Dent Dock provides a standard patient privacy notice that the Practice can change), for the accuracy of the data, and for making sure its instructions to us are lawful.
+          The Practice is responsible for having a lawful basis for the personal data it processes with DentDock, for telling its patients how their data is used (DentDock provides a standard patient privacy notice that the Practice can change), for the accuracy of the data, and for making sure its instructions to us are lawful.
         </p>
         <p>
           If the Practice adds its own analytics or advertising accounts (such as Google Analytics, Google Ads or Meta) to its online booking page, those providers act for the Practice and are not our sub-processors. The Practice is responsible for its arrangements with them and for telling its patients (the standard patient privacy notice names them automatically). We only load them after the patient agrees on the booking page, and we never send them patients' names, contact details, dates of birth, health information or form answers.
@@ -119,7 +119,7 @@ function DpaPage() {
       </LegalSection>
 
       <LegalSection heading="Annex 1: Details of the processing">
-        <p><strong className="text-[#0F172A] font-semibold">Subject matter:</strong> providing Dent Dock, practice management software for dental practices, to the Practice.</p>
+        <p><strong className="text-[#0F172A] font-semibold">Subject matter:</strong> providing DentDock, practice management software for dental practices, to the Practice.</p>
         <p><strong className="text-[#0F172A] font-semibold">Duration:</strong> for as long as the Practice has an account, and until its data is returned or deleted under section 10.</p>
         <p><strong className="text-[#0F172A] font-semibold">Nature and purpose:</strong> storing and organising records; online booking and the patient portal; forms; appointment reminders, recalls and other messages, by email and, once switched on for the Practice, by text message; recording payments, and passing payment details to the Practice's own Stripe account when a patient pays online; holding an online booking and its form answers for a short time while a deposit is paid; reporting, including counting how many people reach, finish and book after a treatment's health form during online booking (daily totals per treatment, which contain no personal data and use no cookies or device storage); support; and keeping the service secure.</p>
         <p><strong className="text-[#0F172A] font-semibold">Types of personal data:</strong> name, date of birth, contact details, address, appointments, dental and treatment notes, form answers, signatures, files and images, payment records, messages, communication preferences, and records of text usage and of patients who have stopped texts.</p>

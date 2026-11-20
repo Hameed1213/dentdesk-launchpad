@@ -10,7 +10,7 @@ export const Route = createFileRoute("/cookies")({
       {
         name: "description",
         content:
-          "How Dent Dock uses cookies: essential cookies, optional analytics on dentdock.co.uk, and booking page tracking practices can add, each only with your consent.",
+          "How DentDock uses cookies: essential cookies, optional analytics on dentdock.co.uk, and booking page tracking practices can add, each only with your consent.",
       },
       { property: "og:title", content: "Cookie Policy | DentDock" },
       {
@@ -76,10 +76,10 @@ function CookiesPage() {
           Patients can change their choice at any time with "Cookie settings" at the bottom of the booking page.
         </p>
         <p>
-          Separately, for every practice, Dent Dock counts how many people reach, finish and book after a treatment's health form during online booking. These are daily totals with no details about anyone, and they use no cookies and store nothing on the device, so they do not depend on the cookie choice.
+          Separately, for every practice, DentDock counts how many people reach, finish and book after a treatment's health form during online booking. These are daily totals with no details about anyone, and they use no cookies and store nothing on the device, so they do not depend on the cookie choice.
         </p>
         <p>
-          On dentdock.co.uk itself, Dent Dock also counts daily totals of visits and page views (by page, where visitors came from, device type and country). These contain nothing about any one person, use no cookies and store nothing on your device, so they do not depend on your cookie choice either. When you join the waitlist, where you came from is kept with your sign-up, as our Privacy Policy explains.
+          On dentdock.co.uk itself, DentDock also counts daily totals of visits and page views (by page, where visitors came from, device type and country). These contain nothing about any one person, use no cookies and store nothing on your device, so they do not depend on your cookie choice either. When you join the waitlist, where you came from is kept with your sign-up, as our Privacy Policy explains.
         </p>
       </LegalSection>
 

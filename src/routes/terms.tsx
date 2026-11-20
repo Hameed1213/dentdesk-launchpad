@@ -9,12 +9,12 @@ export const Route = createFileRoute("/terms")({
       {
         name: "description",
         content:
-          "The terms governing your use of Dent Dock: accounts, billing, text messages, refunds, patient payments, acceptable use and liability.",
+          "The terms governing your use of DentDock: accounts, billing, text messages, refunds, patient payments, acceptable use and liability.",
       },
       { property: "og:title", content: "Terms of Service | DentDock" },
       {
         property: "og:description",
-        content: "The terms governing your use of Dent Dock.",
+        content: "The terms governing your use of DentDock.",
       },
     ],
     links: [
@@ -27,13 +27,13 @@ function TermsPage() {
   return (
     <LegalLayout title="Terms of Service" updated="4 November 2026">
       <p>
-        These Terms of Service govern your use of Dent Dock. Dent Dock is a trading name of PARADIGM NETWORK LIMITED, a company registered in England and Wales (company number 16903048), whose registered office is at 11 Dronfield Road, Salford, M6 7FN.
+        These Terms of Service govern your use of DentDock. DentDock is a trading name of PARADIGM NETWORK LIMITED, a company registered in England and Wales (company number 16903048), whose registered office is at 11 Dronfield Road, Salford, M6 7FN.
       </p>
       <p>By creating an account, you agree to these terms.</p>
 
       <LegalSection heading="1. The Service">
         <p>
-          Dent Dock provides dental practice management software, including online booking, calendar management, patient records, appointment reminders, text messages (once switched on for your practice), payments, and recalls.
+          DentDock provides dental practice management software, including online booking, calendar management, patient records, appointment reminders, text messages (once switched on for your practice), payments, and recalls.
         </p>
         <p>
           The platform is provided as-is on a subscription basis. We reserve the right to update, modify, or discontinue features with reasonable notice.
@@ -61,7 +61,7 @@ function TermsPage() {
 
       <LegalSection heading="4. Patient Data Responsibilities">
         <p>
-          As a dental practice using Dent Dock, you are the data controller for your patients' personal data. Dent Dock acts as a data processor on your behalf and processes patient data only to provide the service to you, under our <a href="/dpa" className="text-[#2563EB] hover:underline">Data Processing Agreement</a>, which forms part of these terms.
+          As a dental practice using DentDock, you are the data controller for your patients' personal data. DentDock acts as a data processor on your behalf and processes patient data only to provide the service to you, under our <a href="/dpa" className="text-[#2563EB] hover:underline">Data Processing Agreement</a>, which forms part of these terms.
         </p>
         <p>
           The third parties we use to provide the service are listed in the Data Processing Agreement and our Privacy Policy. We will tell you at least 30 days before we add or replace one.
@@ -83,7 +83,7 @@ function TermsPage() {
           <strong className="text-[#0F172A] font-semibold">Cancelling.</strong> You may cancel your subscription at any time via the Billing section in Settings. Cancellation takes effect at the end of the current billing period. Any extra text charges not yet billed (section 6) then go on a final invoice, which we take from your card.
         </p>
         <p>
-          <strong className="text-[#0F172A] font-semibold">If a payment fails.</strong> We will show an alert in the app and try the payment again, and your practice can keep working while we do. If it has still not been paid 7 days after it first failed, we will email your practice's owners, and your texts are limited to the amount included in your subscription. If the payment still has not been made when we stop trying, your account is put on hold until your card is updated: your team cannot use Dent Dock and automatic messages to patients stop. Your data is not deleted because of this.
+          <strong className="text-[#0F172A] font-semibold">If a payment fails.</strong> We will show an alert in the app and try the payment again, and your practice can keep working while we do. If it has still not been paid 7 days after it first failed, we will email your practice's owners, and your texts are limited to the amount included in your subscription. If the payment still has not been made when we stop trying, your account is put on hold until your card is updated: your team cannot use DentDock and automatic messages to patients stop. Your data is not deleted because of this.
         </p>
       </LegalSection>
 
@@ -119,7 +119,7 @@ function TermsPage() {
 
       <LegalSection heading="8. Taking Payments from Patients">
         <p>
-          You can take payments from your patients with Dent Dock, including payment links, deposits and late cancellation or no-show fees. These go through your own Stripe account, which you connect yourself and which is covered by your own agreement with Stripe.
+          You can take payments from your patients with DentDock, including payment links, deposits and late cancellation or no-show fees. These go through your own Stripe account, which you connect yourself and which is covered by your own agreement with Stripe.
         </p>
         <p>
           The money goes to your Stripe account, not to us. We take no share of it. You pay Stripe's fees.
@@ -131,7 +131,7 @@ function TermsPage() {
           <li>Refunds, disputes and chargebacks.</li>
         </ul>
         <p>
-          Dent Dock works out fees from your settings and offers them to your staff, but does not send a fee request by itself. If a patient cancels a booking with an online deposit through the patient portal, outside your free cancellation window, Dent Dock refunds the deposit automatically through your Stripe account. Inside that window, your late cancellation fee is the most you keep, and Dent Dock refunds any amount over it in the same way.
+          DentDock works out fees from your settings and offers them to your staff, but does not send a fee request by itself. If a patient cancels a booking with an online deposit through the patient portal, outside your free cancellation window, DentDock refunds the deposit automatically through your Stripe account. Inside that window, your late cancellation fee is the most you keep, and DentDock refunds any amount over it in the same way.
         </p>
       </LegalSection>
 
@@ -173,7 +173,7 @@ function TermsPage() {
 
       <LegalSection heading="13. Contact">
         <p>
-          PARADIGM NETWORK LIMITED (trading as Dent Dock)<br />
+          PARADIGM NETWORK LIMITED (trading as DentDock)<br />
           11 Dronfield Road, Salford, M6 7FN<br />
           Company number 16903048<br />
           hello@dentdock.co.uk<br />
