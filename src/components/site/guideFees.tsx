@@ -65,9 +65,10 @@ export const feesSources = [
 
 /**
  * How the article body is styled. "soft" is the current live look (tinted boxes, blue dots).
- * "plain" is the quieter editorial look being tried in the Option A variations (20 Nov 2026).
+ * "plain" is the quieter editorial look being tried in the Option A variations (20 Nov 2026), and
+ * "clean" is the same without the rule beside "The short answer" (Hariss, option A4).
  */
-export const GuideLook = createContext<"soft" | "plain">("soft");
+export const GuideLook = createContext<"soft" | "plain" | "clean">("soft");
 
 /** The guide's sections, for a table of contents. */
 export const feesToc = [
@@ -111,7 +112,7 @@ function A({ href, children }: { href: string; children: ReactNode }) {
 }
 
 function List({ items }: { items: ReactNode[] }) {
-  const plain = useContext(GuideLook) === "plain";
+  const plain = useContext(GuideLook) !== "soft";
   return (
     <ul className="mt-4 space-y-2.5">
       {items.map((it, i) => (
@@ -129,15 +130,18 @@ function List({ items }: { items: ReactNode[] }) {
 
 /** The guide's article text, from "The short answer" to the not-legal-advice note. */
 export function FeesGuideBody() {
-  const plain = useContext(GuideLook) === "plain";
+  const look = useContext(GuideLook);
+  const plain = look !== "soft";
   return (
     <>
       <div>
         <div
           className={
-            plain
-              ? "border-l-[3px] border-[#0F172A] pl-6 py-1"
-              : "rounded-3xl border border-[#BFDBFE] bg-[#F5F8FF] p-6 md:p-8"
+            look === "clean"
+              ? ""
+              : plain
+                ? "border-l-[3px] border-[#0F172A] pl-6 py-1"
+                : "rounded-3xl border border-[#BFDBFE] bg-[#F5F8FF] p-6 md:p-8"
           }
         >
           <p className={`text-[16px] font-semibold ${plain ? "text-[#0F172A]" : "text-[#2563EB]"}`}>

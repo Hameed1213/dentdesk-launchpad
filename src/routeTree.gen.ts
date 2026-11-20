@@ -41,6 +41,7 @@ import { Route as GuidesMockupARouteImport } from './routes/guides.mockup-a'
 import { Route as GuidesMockupA1RouteImport } from './routes/guides.mockup-a1'
 import { Route as GuidesMockupA2RouteImport } from './routes/guides.mockup-a2'
 import { Route as GuidesMockupA3RouteImport } from './routes/guides.mockup-a3'
+import { Route as GuidesMockupA4RouteImport } from './routes/guides.mockup-a4'
 import { Route as GuidesMockupBRouteImport } from './routes/guides.mockup-b'
 import { Route as GuidesMockupCRouteImport } from './routes/guides.mockup-c'
 import { Route as SolutionsIndexRouteImport } from './routes/solutions.index'
@@ -219,6 +220,11 @@ const GuidesMockupA3Route = GuidesMockupA3RouteImport.update({
   path: '/guides/mockup-a3',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GuidesMockupA4Route = GuidesMockupA4RouteImport.update({
+  id: '/guides/mockup-a4',
+  path: '/guides/mockup-a4',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const GuidesMockupBRoute = GuidesMockupBRouteImport.update({
   id: '/guides/mockup-b',
   path: '/guides/mockup-b',
@@ -320,6 +326,7 @@ export interface FileRoutesByFullPath {
   '/guides/mockup-a1': typeof GuidesMockupA1Route
   '/guides/mockup-a2': typeof GuidesMockupA2Route
   '/guides/mockup-a3': typeof GuidesMockupA3Route
+  '/guides/mockup-a4': typeof GuidesMockupA4Route
   '/guides/mockup-b': typeof GuidesMockupBRoute
   '/guides/mockup-c': typeof GuidesMockupCRoute
   '/solutions/bring-patients-back': typeof SolutionsBringPatientsBackRoute
@@ -367,6 +374,7 @@ export interface FileRoutesByTo {
   '/guides/mockup-a1': typeof GuidesMockupA1Route
   '/guides/mockup-a2': typeof GuidesMockupA2Route
   '/guides/mockup-a3': typeof GuidesMockupA3Route
+  '/guides/mockup-a4': typeof GuidesMockupA4Route
   '/guides/mockup-b': typeof GuidesMockupBRoute
   '/guides/mockup-c': typeof GuidesMockupCRoute
   '/solutions/bring-patients-back': typeof SolutionsBringPatientsBackRoute
@@ -415,6 +423,7 @@ export interface FileRoutesById {
   '/guides/mockup-a1': typeof GuidesMockupA1Route
   '/guides/mockup-a2': typeof GuidesMockupA2Route
   '/guides/mockup-a3': typeof GuidesMockupA3Route
+  '/guides/mockup-a4': typeof GuidesMockupA4Route
   '/guides/mockup-b': typeof GuidesMockupBRoute
   '/guides/mockup-c': typeof GuidesMockupCRoute
   '/solutions/bring-patients-back': typeof SolutionsBringPatientsBackRoute
@@ -464,6 +473,7 @@ export interface FileRouteTypes {
     | '/guides/mockup-a1'
     | '/guides/mockup-a2'
     | '/guides/mockup-a3'
+    | '/guides/mockup-a4'
     | '/guides/mockup-b'
     | '/guides/mockup-c'
     | '/solutions/bring-patients-back'
@@ -511,6 +521,7 @@ export interface FileRouteTypes {
     | '/guides/mockup-a1'
     | '/guides/mockup-a2'
     | '/guides/mockup-a3'
+    | '/guides/mockup-a4'
     | '/guides/mockup-b'
     | '/guides/mockup-c'
     | '/solutions/bring-patients-back'
@@ -558,6 +569,7 @@ export interface FileRouteTypes {
     | '/guides/mockup-a1'
     | '/guides/mockup-a2'
     | '/guides/mockup-a3'
+    | '/guides/mockup-a4'
     | '/guides/mockup-b'
     | '/guides/mockup-c'
     | '/solutions/bring-patients-back'
@@ -606,6 +618,7 @@ export interface RootRouteChildren {
   GuidesMockupA1Route: typeof GuidesMockupA1Route
   GuidesMockupA2Route: typeof GuidesMockupA2Route
   GuidesMockupA3Route: typeof GuidesMockupA3Route
+  GuidesMockupA4Route: typeof GuidesMockupA4Route
   GuidesMockupBRoute: typeof GuidesMockupBRoute
   GuidesMockupCRoute: typeof GuidesMockupCRoute
   SolutionsBringPatientsBackRoute: typeof SolutionsBringPatientsBackRoute
@@ -850,6 +863,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GuidesMockupA3RouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/guides/mockup-a4': {
+      id: '/guides/mockup-a4'
+      path: '/guides/mockup-a4'
+      fullPath: '/guides/mockup-a4'
+      preLoaderRoute: typeof GuidesMockupA4RouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/guides/mockup-b': {
       id: '/guides/mockup-b'
       path: '/guides/mockup-b'
@@ -974,6 +994,7 @@ const rootRouteChildren: RootRouteChildren = {
   GuidesMockupA1Route: GuidesMockupA1Route,
   GuidesMockupA2Route: GuidesMockupA2Route,
   GuidesMockupA3Route: GuidesMockupA3Route,
+  GuidesMockupA4Route: GuidesMockupA4Route,
   GuidesMockupBRoute: GuidesMockupBRoute,
   GuidesMockupCRoute: GuidesMockupCRoute,
   SolutionsBringPatientsBackRoute: SolutionsBringPatientsBackRoute,

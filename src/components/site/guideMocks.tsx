@@ -486,12 +486,20 @@ export function GuideLayoutC() {
 
 const TOPICS = TAGS.join(" · ");
 
-function Monogram({ dark = false, size = 44 }: { dark?: boolean; size?: number }) {
+function Monogram({
+  dark = false,
+  blue = false,
+  size = 44,
+}: {
+  dark?: boolean;
+  blue?: boolean;
+  size?: number;
+}) {
   return (
     <span
       aria-hidden="true"
       style={{ width: size, height: size, fontSize: size * 0.36 }}
-      className={`inline-flex flex-shrink-0 items-center justify-center rounded-md font-semibold ${dark ? "bg-[#0F172A] text-white" : "bg-[#E2E8F0] text-[#0F172A]"}`}
+      className={`inline-flex flex-shrink-0 items-center justify-center rounded-md font-semibold ${blue ? "bg-[#2563EB] text-white" : dark ? "bg-[#0F172A] text-white" : "bg-[#E2E8F0] text-[#0F172A]"}`}
     >
       HH
     </span>
@@ -525,8 +533,12 @@ function ProductLinks() {
           <Link to={r.to} className="group block">
             <span className="block text-[13px] text-[#64748B]">{r.kind}</span>
             <span className="text-[15px] font-semibold text-[#2563EB] group-hover:underline underline-offset-4">
-              {r.title}
-              <ArrowRight className="ml-1 inline h-3.5 w-3.5 align-[-2px]" />
+              {r.title.slice(0, r.title.lastIndexOf(" ") + 1)}
+              {/* The last word and the arrow never split across lines. */}
+              <span className="whitespace-nowrap">
+                {r.title.slice(r.title.lastIndexOf(" ") + 1)}
+                <ArrowRight className="ml-1 inline h-3.5 w-3.5 align-[-2px]" />
+              </span>
             </span>
           </Link>
         </li>
@@ -536,10 +548,10 @@ function ProductLinks() {
 }
 
 /** About the author, in the quieter style of the A variations: a rule, a monogram, two lines. */
-function PlainAboutAuthor({ dark = false }: { dark?: boolean }) {
+function PlainAboutAuthor({ dark = false, blue = false }: { dark?: boolean; blue?: boolean }) {
   return (
     <div className="border-t border-[#E2E8F0] pt-8 flex items-start gap-5">
-      <Monogram dark={dark} size={56} />
+      <Monogram dark={dark} blue={blue} size={56} />
       <div>
         <p className="text-[14px] text-[#64748B]">About the author</p>
         <p className="mt-0.5 text-[20px] font-semibold text-[#0F172A]">{AUTHOR.name}</p>
@@ -609,6 +621,58 @@ export function GuideLayoutA1() {
                 <FeesGuideBody />
                 <div className="mt-14">
                   <PlainAboutAuthor />
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+      </GuideLook.Provider>
+      <BelowArticle />
+    </PageShell>
+  );
+}
+
+/** A4 (Hariss's pick, 20 Nov): A1 with a grey header banner, no rule beside the short answer, blue HH. */
+export function GuideLayoutA4() {
+  return (
+    <PageShell>
+      <GuideLook.Provider value="clean">
+        <article className="bg-white">
+          <header className="px-6 pt-28 lg:pt-36 pb-12 bg-[#F8FAFC] border-b border-[#E2E8F0]">
+            <div className="mx-auto max-w-6xl">
+              <PlainCrumbs />
+              <p className="mt-8 text-[15px] font-medium text-[#2563EB]">{TOPICS}</p>
+              <div className="mt-3 max-w-4xl">
+                <H1 />
+                <p className="mt-6 text-[20px] text-[#475569] leading-[1.55] max-w-3xl">{LEAD}</p>
+              </div>
+            </div>
+          </header>
+          <div className="px-6 pb-16 md:pb-24">
+            <div className="mx-auto max-w-6xl pt-12 grid grid-cols-1 lg:grid-cols-[240px_1fr] gap-10 lg:gap-16">
+              <aside className="lg:sticky lg:top-28 self-start text-[14px]">
+                <p className="text-[#64748B]">Written by</p>
+                <Link
+                  to="/about"
+                  className="mt-1 block text-[16px] font-semibold text-[#0F172A] hover:text-[#2563EB]"
+                >
+                  {AUTHOR.name}
+                </Link>
+                <p className="text-[#64748B]">{AUTHOR.jobTitle}</p>
+                <p className="mt-4 text-[#64748B]">
+                  Updated {UPDATED}
+                  <br />
+                  {MINUTES} min read
+                </p>
+                <div className="mt-6 border-t border-[#E2E8F0] pt-6">
+                  <p className="text-[14px] font-semibold text-[#0F172A]">In DentDock</p>
+                  <ProductLinks />
+                </div>
+              </aside>
+              <div className="max-w-3xl">
+                <FeesGuideBody />
+                <div className="mt-14">
+                  <PlainAboutAuthor blue />
                 </div>
               </div>
             </div>
