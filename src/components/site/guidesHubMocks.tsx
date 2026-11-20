@@ -72,14 +72,14 @@ function Hub({ children }: { children: ReactNode }) {
 /* 1. Photo card: picture on top, topic, title, author, arrow          */
 /* ------------------------------------------------------------------ */
 
-function PhotoCard({ g }: { g: GuideMeta }) {
+function PhotoCard({ g, image }: { g: GuideMeta; image?: string }) {
   return (
     <Link
       to={href(g)}
       className="group h-full flex flex-col overflow-hidden rounded-3xl border border-[#E5EDFB] bg-white transition-colors duration-200 hover:border-[#2563EB]"
     >
       <Photo
-        g={g}
+        g={image ? { ...g, image } : g}
         sizes="(min-width: 1024px) 370px, (min-width: 768px) 50vw, calc(100vw - 48px)"
         className="w-full aspect-[16/10]"
       />
@@ -218,6 +218,39 @@ export function GuidesHub3() {
       <div className="mx-auto max-w-5xl space-y-6">
         {guides.map((g) => (
           <AnswerCard key={g.slug} g={g} />
+        ))}
+      </div>
+    </Hub>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* Photo options for design 1 (Hariss: the card photo is already used  */
+/* elsewhere; pick a new one). Unsplash, free licence.                  */
+/* ------------------------------------------------------------------ */
+
+const PHOTO_OPTIONS = [
+  { n: 1, id: "XJptUS8nbhs", note: "Empty dental chair" },
+  { n: 2, id: "e7MJLM5VGjY", note: "Empty dental surgery" },
+  { n: 3, id: "L0xOtAnv94Y", note: "Wall clock" },
+  { n: 4, id: "P1kP-BfIelI", note: "Calendar with a date circled" },
+  { n: 5, id: "J_4x_oxWzo0", note: "Waiting room chairs" },
+  { n: 6, id: "FoKO4DpXamQ", note: "Paper diary" },
+  { n: 7, id: "UvMtMAnDpRw", note: "Calendar on a phone" },
+];
+
+export function GuidesHubPhotos() {
+  const g = guides[0];
+  return (
+    <Hub>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-12">
+        {PHOTO_OPTIONS.map((o) => (
+          <div key={o.n}>
+            <p className="mb-3 text-[15px] font-semibold text-[#0F172A]">
+              Option {o.n} <span className="font-normal text-[#64748B]">· {o.note}</span>
+            </p>
+            <PhotoCard g={g} image={`/images/guides/option-${o.n}.webp`} />
+          </div>
         ))}
       </div>
     </Hub>

@@ -40,6 +40,7 @@ import { Route as GuidesMissedAppointmentFeesRouteImport } from './routes/guides
 import { Route as GuidesMockupHub1RouteImport } from './routes/guides.mockup-hub-1'
 import { Route as GuidesMockupHub2RouteImport } from './routes/guides.mockup-hub-2'
 import { Route as GuidesMockupHub3RouteImport } from './routes/guides.mockup-hub-3'
+import { Route as GuidesMockupPhotosRouteImport } from './routes/guides.mockup-photos'
 import { Route as SolutionsIndexRouteImport } from './routes/solutions.index'
 import { Route as SolutionsBringPatientsBackRouteImport } from './routes/solutions.bring-patients-back'
 import { Route as SolutionsCutAdminRouteImport } from './routes/solutions.cut-admin'
@@ -211,6 +212,11 @@ const GuidesMockupHub3Route = GuidesMockupHub3RouteImport.update({
   path: '/guides/mockup-hub-3',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GuidesMockupPhotosRoute = GuidesMockupPhotosRouteImport.update({
+  id: '/guides/mockup-photos',
+  path: '/guides/mockup-photos',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SolutionsIndexRoute = SolutionsIndexRouteImport.update({
   id: '/solutions/',
   path: '/solutions/',
@@ -301,6 +307,7 @@ export interface FileRoutesByFullPath {
   '/guides/mockup-hub-1': typeof GuidesMockupHub1Route
   '/guides/mockup-hub-2': typeof GuidesMockupHub2Route
   '/guides/mockup-hub-3': typeof GuidesMockupHub3Route
+  '/guides/mockup-photos': typeof GuidesMockupPhotosRoute
   '/solutions/bring-patients-back': typeof SolutionsBringPatientsBackRoute
   '/solutions/cut-admin': typeof SolutionsCutAdminRoute
   '/solutions/deposits-and-late-cancellations': typeof SolutionsDepositsAndLateCancellationsRoute
@@ -345,6 +352,7 @@ export interface FileRoutesByTo {
   '/guides/mockup-hub-1': typeof GuidesMockupHub1Route
   '/guides/mockup-hub-2': typeof GuidesMockupHub2Route
   '/guides/mockup-hub-3': typeof GuidesMockupHub3Route
+  '/guides/mockup-photos': typeof GuidesMockupPhotosRoute
   '/solutions/bring-patients-back': typeof SolutionsBringPatientsBackRoute
   '/solutions/cut-admin': typeof SolutionsCutAdminRoute
   '/solutions/deposits-and-late-cancellations': typeof SolutionsDepositsAndLateCancellationsRoute
@@ -390,6 +398,7 @@ export interface FileRoutesById {
   '/guides/mockup-hub-1': typeof GuidesMockupHub1Route
   '/guides/mockup-hub-2': typeof GuidesMockupHub2Route
   '/guides/mockup-hub-3': typeof GuidesMockupHub3Route
+  '/guides/mockup-photos': typeof GuidesMockupPhotosRoute
   '/solutions/bring-patients-back': typeof SolutionsBringPatientsBackRoute
   '/solutions/cut-admin': typeof SolutionsCutAdminRoute
   '/solutions/deposits-and-late-cancellations': typeof SolutionsDepositsAndLateCancellationsRoute
@@ -436,6 +445,7 @@ export interface FileRouteTypes {
     | '/guides/mockup-hub-1'
     | '/guides/mockup-hub-2'
     | '/guides/mockup-hub-3'
+    | '/guides/mockup-photos'
     | '/solutions/bring-patients-back'
     | '/solutions/cut-admin'
     | '/solutions/deposits-and-late-cancellations'
@@ -480,6 +490,7 @@ export interface FileRouteTypes {
     | '/guides/mockup-hub-1'
     | '/guides/mockup-hub-2'
     | '/guides/mockup-hub-3'
+    | '/guides/mockup-photos'
     | '/solutions/bring-patients-back'
     | '/solutions/cut-admin'
     | '/solutions/deposits-and-late-cancellations'
@@ -524,6 +535,7 @@ export interface FileRouteTypes {
     | '/guides/mockup-hub-1'
     | '/guides/mockup-hub-2'
     | '/guides/mockup-hub-3'
+    | '/guides/mockup-photos'
     | '/solutions/bring-patients-back'
     | '/solutions/cut-admin'
     | '/solutions/deposits-and-late-cancellations'
@@ -569,6 +581,7 @@ export interface RootRouteChildren {
   GuidesMockupHub1Route: typeof GuidesMockupHub1Route
   GuidesMockupHub2Route: typeof GuidesMockupHub2Route
   GuidesMockupHub3Route: typeof GuidesMockupHub3Route
+  GuidesMockupPhotosRoute: typeof GuidesMockupPhotosRoute
   SolutionsBringPatientsBackRoute: typeof SolutionsBringPatientsBackRoute
   SolutionsCutAdminRoute: typeof SolutionsCutAdminRoute
   SolutionsDepositsAndLateCancellationsRoute: typeof SolutionsDepositsAndLateCancellationsRoute
@@ -804,6 +817,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GuidesMockupHub3RouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/guides/mockup-photos': {
+      id: '/guides/mockup-photos'
+      path: '/guides/mockup-photos'
+      fullPath: '/guides/mockup-photos'
+      preLoaderRoute: typeof GuidesMockupPhotosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/solutions/': {
       id: '/solutions/'
       path: '/solutions'
@@ -913,6 +933,7 @@ const rootRouteChildren: RootRouteChildren = {
   GuidesMockupHub1Route: GuidesMockupHub1Route,
   GuidesMockupHub2Route: GuidesMockupHub2Route,
   GuidesMockupHub3Route: GuidesMockupHub3Route,
+  GuidesMockupPhotosRoute: GuidesMockupPhotosRoute,
   SolutionsBringPatientsBackRoute: SolutionsBringPatientsBackRoute,
   SolutionsCutAdminRoute: SolutionsCutAdminRoute,
   SolutionsDepositsAndLateCancellationsRoute:
