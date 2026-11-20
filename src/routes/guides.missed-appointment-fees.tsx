@@ -177,7 +177,7 @@ function GuidePage() {
           <div className="mx-auto max-w-3xl">
             <div>
               <div className="rounded-3xl border border-[#BFDBFE] bg-[#F5F8FF] p-6 md:p-8">
-                <p className="text-[13px] font-semibold uppercase tracking-[0.12em] text-[#2563EB]">
+                <p className="text-[16px] font-semibold text-[#2563EB]">
                   The short answer
                 </p>
                 <p className="mt-3 text-[18px] text-[#0F172A] leading-[1.65]">
