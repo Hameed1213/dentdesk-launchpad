@@ -1,5 +1,4 @@
 import { createContext, useContext, type ReactNode } from "react";
-import { motion } from "framer-motion";
 import { WaitlistForm } from "@/components/home/HeroSection";
 
 /* Shared building blocks for every marketing page (see docs/STYLE-GUIDE.md). */
@@ -48,6 +47,13 @@ export function FloatCard({
   );
 }
 
+/**
+ * Fades its content in once as it scrolls into view. The text is always in the server HTML at
+ * full opacity: the fade only applies when the inline script in __root.tsx has added the "js"
+ * class to <html> (so crawlers, AI bots and anyone without JavaScript see everything), and that
+ * same script marks each block data-shown as it enters the viewport. Never wrap a page's hero,
+ * H1 or main photo in this: it would delay Largest Contentful Paint.
+ */
 export function Reveal({
   children,
   className = "",
@@ -58,15 +64,15 @@ export function Reveal({
   delay?: number;
 }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{ ...ENTRANCE, delay }}
+    <div
+      data-reveal=""
+      // The inline script adds data-watched / data-shown before React hydrates; that is expected.
+      suppressHydrationWarning
       className={className}
+      style={delay ? { transitionDelay: `${delay}s` } : undefined}
     >
       {children}
-    </motion.div>
+    </div>
   );
 }
 
@@ -126,6 +132,26 @@ export function TrustStrip() {
   );
 }
 
+/**
+ * Smaller copies of every photo in public/images sit next to it as name-640.webp and name-960.webp
+ * (SEO audit 20 Nov 2026), so phones and tablets don't download the full-size file.
+ * When adding a photo, make both copies:
+ *   cwebp -resize 640 0 -q 68 x.webp -o x-640.webp && cwebp -resize 960 0 -q 66 x.webp -o x-960.webp
+ */
+const FULL_1200 = new Set([
+  "/images/pages/contactless-payment.webp",
+  "/images/pages/manager-laptop.webp",
+  "/images/pages/tablet-form.webp",
+]);
+export function photoSrcSet(src: string): string | undefined {
+  if (!/^\/images\/.+\.webp$/.test(src)) return undefined;
+  const base = src.slice(0, -".webp".length);
+  const full = FULL_1200.has(src) ? 1200 : 1400;
+  return `${base}-640.webp 640w, ${base}-960.webp 960w, ${src} ${full}w`;
+}
+/** Display width of a photo panel: half the page on laptops, the full width (less padding) on phones. */
+export const PANEL_SIZES = "(min-width: 1024px) 520px, calc(100vw - 48px)";
+
 /** Photo inside a light panel, with DentDock cards placed over the edges (kept off the person). */
 /** True inside a page hero: the hero photo loads first instead of lazily (faster largest paint). */
 export const HeroImage = createContext(false);
@@ -148,6 +174,8 @@ export function PhotoPanel({
     <div className={`relative ${panelOnTint} p-6 sm:p-8`}>
       <img
         src={src}
+        srcSet={photoSrcSet(src)}
+        sizes={PANEL_SIZES}
         alt={alt}
         width={1400}
         height={height}

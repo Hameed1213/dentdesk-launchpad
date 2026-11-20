@@ -38,7 +38,7 @@ export default function CookieBanner() {
         <p className="text-[14px] leading-[1.6] text-[#475569]">
           We'd like to use Google Analytics cookies to see how people use this website. They are
           only set if you accept.{" "}
-          <a href="/cookies" className="text-[#2563EB] hover:underline">
+          <a href="/cookies" className="text-[#2563EB] underline underline-offset-2">
             Cookie Policy
           </a>
         </p>

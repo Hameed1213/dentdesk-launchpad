@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { MessageCircle } from "lucide-react";
 import { PhotoPanel } from "@/components/site/ui";
 import PageShell from "@/components/site/PageShell";
-import { ClosingBand, Reveal, TrustStrip } from "@/components/site/ui";
+import { ClosingBand, PANEL_SIZES, Reveal, TrustStrip, photoSrcSet } from "@/components/site/ui";
 import {
   FaqSection,
   FeatureCards,
@@ -324,6 +324,8 @@ function MovePlan() {
         <Reveal className="order-2 lg:order-1">
           <img
             src="/images/pages/switching-dentist.webp"
+            srcSet={photoSrcSet("/images/pages/switching-dentist.webp")}
+            sizes={PANEL_SIZES}
             alt="Dentist talking a patient through her treatment in the surgery"
             width={1400}
             height={1050}
@@ -385,7 +387,7 @@ export const Route = createFileRoute("/features/switching")({
   head: () =>
     templateHead({
       path: PATH,
-      title: "Switching dental software to DentDock | DentDock",
+      title: "Switching dental software: what moves and how | DentDock",
       description:
         "Switching dental software? See what comes across to DentDock, what stays in your old system, and how to plan the move from Dentally, SoE, R4 and more.",
       crumbs: [

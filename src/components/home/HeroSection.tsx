@@ -26,7 +26,10 @@ const makeContainer = (delay: number) => ({
 });
 
 /** The email waitlist form. Used in the hero and again in the closing band. */
-export function WaitlistForm({ className = "mt-10", onDark = false }: { className?: string; onDark?: boolean } = {}) {
+export function WaitlistForm({
+  className = "mt-10",
+  onDark = false,
+}: { className?: string; onDark?: boolean } = {}) {
   const [email, setEmail] = useState("");
   const [website, setWebsite] = useState(""); // honeypot — see handleSubmit
   const [submitted, setSubmitted] = useState(false);
@@ -34,6 +37,11 @@ export function WaitlistForm({ className = "mt-10", onDark = false }: { classNam
   const [isLoading, setIsLoading] = useState(false);
   const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
   const turnstileRef = useRef<TurnstileInstance | null>(null);
+  // The Turnstile script is about 2 MB, so it loads only once someone starts using this form
+  // (focus, tap or typing), not on every page view. It runs invisibly, so the token is normally
+  // ready long before they press the button.
+  const [armed, setArmed] = useState(false);
+  const arm = () => setArmed(true);
   // Cloudflare Turnstile site key — publishable, safe to commit.
   // The "secret" key is in TURNSTILE_SECRET_KEY runtime secret.
   const siteKey = "0x4AAAAAADI8G4sRIlHtA1y7";
@@ -59,6 +67,7 @@ export function WaitlistForm({ className = "mt-10", onDark = false }: { classNam
       return;
     }
     if (!turnstileToken) {
+      setArmed(true);
       setError("Please wait a moment and try again.");
       return;
     }
@@ -72,7 +81,11 @@ export function WaitlistForm({ className = "mt-10", onDark = false }: { classNam
         body: JSON.stringify({
           email: trimmed,
           turnstile_token: turnstileToken,
-          tracking: { ...visitTracking(), signup_form: "hero", signup_page: window.location.pathname },
+          tracking: {
+            ...visitTracking(),
+            signup_form: "hero",
+            signup_page: window.location.pathname,
+          },
         }),
       });
 
@@ -99,7 +112,9 @@ export function WaitlistForm({ className = "mt-10", onDark = false }: { classNam
 
   if (submitted) {
     return (
-      <p className={`text-sm font-medium text-center mt-2 ${onDark ? "text-white" : "text-green-600"}`}>
+      <p
+        className={`text-sm font-medium text-center mt-2 ${onDark ? "text-white" : "text-green-600"}`}
+      >
         ✓ You're on the list. We'll be in touch soon.
       </p>
     );
@@ -109,6 +124,8 @@ export function WaitlistForm({ className = "mt-10", onDark = false }: { classNam
     <div className={`flex flex-col items-center gap-2 max-w-md mx-auto w-full ${className}`}>
       <form
         onSubmit={handleSubmit}
+        onFocus={arm}
+        onPointerDown={arm}
         className="flex flex-col sm:flex-row gap-3 w-full"
         noValidate
       >
@@ -145,7 +162,7 @@ export function WaitlistForm({ className = "mt-10", onDark = false }: { classNam
           {isLoading ? "Joining..." : "Join the waitlist →"}
         </button>
       </form>
-      {siteKey && (
+      {siteKey && armed && (
         <Turnstile
           ref={turnstileRef}
           siteKey={siteKey}
@@ -156,7 +173,11 @@ export function WaitlistForm({ className = "mt-10", onDark = false }: { classNam
         />
       )}
       {error && (
-        <p className={`text-sm text-center w-full mt-1 ${onDark ? "text-red-100" : "text-red-500"}`}>{error}</p>
+        <p
+          className={`text-sm text-center w-full mt-1 ${onDark ? "text-red-100" : "text-red-500"}`}
+        >
+          {error}
+        </p>
       )}
     </div>
   );
@@ -169,37 +190,21 @@ export default function HeroSection() {
         id="waitlist"
         className="relative w-full md:min-h-screen flex flex-col items-center justify-center pt-8 md:pt-28 pb-16 overflow-x-clip"
       >
-        {/* H1 */}
-        <AnimatedGroup
-          className="text-center max-w-3xl mx-auto"
-          variants={{
-            container: {
-              hidden: { opacity: 0 },
-              visible: {
-                opacity: 1,
-                transition: { staggerChildren: 0.1, delayChildren: 0 },
-              },
-            },
-            item: itemBlurSlide,
-          }}
-        >
+        {/* H1 and subheadline: not animated, so they are the first thing painted (LCP) and are
+            visible in the server HTML for crawlers and anyone without JavaScript. */}
+        <div className="text-center max-w-3xl mx-auto">
           <h1
             className="text-[2.5rem] md:text-[3.75rem] lg:text-[4.5rem] text-center text-neutral-900 leading-[1.15] tracking-[-0.03em] max-w-4xl mx-auto"
             style={{ fontWeight: 600 }}
           >
-            Dental software for{" "}
-            <span className="text-[#2563EB]">UK private practices</span>
+            Dental software for <span className="text-[#2563EB]">UK private practices</span>
           </h1>
-        </AnimatedGroup>
+        </div>
 
-        {/* Subheadline */}
-        <AnimatedGroup
-          variants={{ container: makeContainer(0.05), item: itemBlurSlide }}
-        >
-          <p className="text-lg text-neutral-500 max-w-xl mx-auto text-center leading-relaxed mt-5">
-            Online booking, automated reminders, payments and recalls in one simple system. Built for UK private practices, for £49 a month.
-          </p>
-        </AnimatedGroup>
+        <p className="text-lg text-neutral-500 max-w-xl mx-auto text-center leading-relaxed mt-5">
+          Online booking, automated reminders, payments and recalls in one simple system. Built for
+          UK private practices, for £49 a month.
+        </p>
 
         {/* Waitlist form */}
         <AnimatedGroup
@@ -215,16 +220,12 @@ export default function HeroSection() {
           variants={{ container: makeContainer(0.14), item: itemBlurSlide }}
         >
           <div className="flex items-center justify-center gap-2 flex-wrap">
-            {["No contracts", "No setup fees", "Same-day support"].map(
-              (t, i, arr) => (
-                <span key={t} className="flex items-center gap-2">
-                  <span className="text-xs text-neutral-400 font-medium">{t}</span>
-                  {i < arr.length - 1 && (
-                    <span className="w-1 h-1 bg-neutral-300 rounded-full" />
-                  )}
-                </span>
-              ),
-            )}
+            {["No contracts", "No setup fees", "Same-day support"].map((t, i, arr) => (
+              <span key={t} className="flex items-center gap-2">
+                <span className="text-xs text-neutral-500 font-medium">{t}</span>
+                {i < arr.length - 1 && <span className="w-1 h-1 bg-neutral-300 rounded-full" />}
+              </span>
+            ))}
           </div>
         </AnimatedGroup>
 
@@ -234,15 +235,15 @@ export default function HeroSection() {
           variants={{ container: makeContainer(0.18), item: itemBlurSlide }}
         >
           <div className="flex flex-col items-center">
-          <p className="text-sm text-neutral-400 text-center max-w-sm mx-auto mt-5 leading-relaxed">
-            Be one of the{" "}
-            <span className="text-neutral-700 font-medium">first 30 practices</span>, get priority support and help shape the product from day one.
-          </p>
-          <p className="text-sm text-center mt-3">
-            <Link to="/pricing" className="text-[#2563EB] font-medium hover:underline">
-              See what's included and pricing →
-            </Link>
-          </p>
+            <p className="text-sm text-neutral-500 text-center max-w-sm mx-auto mt-5 leading-relaxed">
+              Be one of the <span className="text-neutral-700 font-medium">first 30 practices</span>
+              , get priority support and help shape the product from day one.
+            </p>
+            <p className="text-sm text-center mt-3">
+              <Link to="/pricing" className="text-[#2563EB] font-medium hover:underline">
+                See what's included and pricing →
+              </Link>
+            </p>
           </div>
         </AnimatedGroup>
 

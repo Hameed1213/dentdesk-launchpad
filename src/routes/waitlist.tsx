@@ -5,34 +5,21 @@ import { visitTracking } from "@/lib/visitSource";
 import { motion } from "framer-motion";
 import { ArrowLeft, Check, Mail, Sparkles } from "lucide-react";
 import ToothIcon from "@/components/icons/ToothIcon";
+import { templateHead } from "@/components/site/templates";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
 export const Route = createFileRoute("/waitlist")({
   component: WaitlistPage,
-  head: () => ({
-    meta: [
-      { title: "Join the waitlist | DentDock" },
-      {
-        name: "description",
-        content:
-          "Be among the first UK private practices to get early access to DentDock. Priority support and early access pricing locked in.",
-      },
-      { property: "og:url", content: "https://dentdock.co.uk/waitlist" },
-      { property: "og:title", content: "Join the waitlist | DentDock" },
-      {
-        property: "og:description",
-        content:
-          "Be among the first UK private practices to get early access to DentDock.",
-      },
-      { property: "og:image", content: "https://dentdock.co.uk/og-image.png" },
-      { name: "twitter:image", content: "https://dentdock.co.uk/og-image.png" },
-      { name: "twitter:site", content: "@dentdock" },
-    ],
-    links: [
-      { rel: "canonical", href: "https://dentdock.co.uk/waitlist" },
-    ],
-  }),
+  head: () =>
+    templateHead({
+      path: "/waitlist",
+      title: "Join the waitlist | DentDock",
+      description:
+        "Be among the first UK private practices to get early access to DentDock. Priority support and early access pricing locked in.",
+      crumbs: [{ name: "Join the waitlist", path: "/waitlist" }],
+      faq: [],
+    }),
 });
 
 /* ---------------- Page ---------------- */
@@ -91,7 +78,11 @@ function WaitlistPage() {
           practice_name: trimmedPractice,
           role: role || undefined,
           turnstile_token: turnstileToken,
-          tracking: { ...visitTracking(), signup_form: "waitlist_page", signup_page: window.location.pathname },
+          tracking: {
+            ...visitTracking(),
+            signup_form: "waitlist_page",
+            signup_page: window.location.pathname,
+          },
         }),
       });
 
@@ -151,8 +142,7 @@ function WaitlistPage() {
           <motion.div
             className="absolute -top-40 -left-32 w-[560px] h-[560px] rounded-full"
             style={{
-              background:
-                "radial-gradient(ellipse, rgba(37,99,235,0.28), transparent 70%)",
+              background: "radial-gradient(ellipse, rgba(37,99,235,0.28), transparent 70%)",
             }}
             animate={{ x: [0, 120, -80, 0], y: [0, -90, 70, 0] }}
             transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
@@ -160,8 +150,7 @@ function WaitlistPage() {
           <motion.div
             className="absolute top-1/3 -right-40 w-[520px] h-[520px] rounded-full"
             style={{
-              background:
-                "radial-gradient(ellipse, rgba(96,165,250,0.30), transparent 70%)",
+              background: "radial-gradient(ellipse, rgba(96,165,250,0.30), transparent 70%)",
             }}
             animate={{ x: [0, -110, 70, 0], y: [0, 90, -70, 0] }}
             transition={{ duration: 11, repeat: Infinity, ease: "easeInOut" }}
@@ -169,8 +158,7 @@ function WaitlistPage() {
           <motion.div
             className="absolute -bottom-40 left-1/4 w-[500px] h-[500px] rounded-full"
             style={{
-              background:
-                "radial-gradient(ellipse, rgba(147,197,253,0.35), transparent 70%)",
+              background: "radial-gradient(ellipse, rgba(147,197,253,0.35), transparent 70%)",
             }}
             animate={{ x: [0, 100, -90, 0], y: [0, -70, 100, 0] }}
             transition={{ duration: 13, repeat: Infinity, ease: "easeInOut" }}
@@ -190,23 +178,13 @@ function WaitlistPage() {
               Early access
             </span>
           </motion.div>
-          <motion.h1
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: EASE, delay: 0.2 }}
-            className="text-3xl max-lg:text-4xl lg:text-5xl font-medium tracking-tight text-[#0F172A] leading-[1.1]"
-          >
-            Practice management,{" "}
-            <span className="text-[#2563EB]">finally friendly</span>
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: EASE, delay: 0.32 }}
-            className="text-[15px] lg:text-[16px] leading-[1.6] text-[#475569] mt-4"
-          >
+          {/* Not animated: the page's H1 is painted first and is in the server HTML. */}
+          <h1 className="text-3xl max-lg:text-4xl lg:text-5xl font-medium tracking-tight text-[#0F172A] leading-[1.1]">
+            Practice management, <span className="text-[#2563EB]">finally friendly</span>
+          </h1>
+          <p className="text-[15px] lg:text-[16px] leading-[1.6] text-[#475569] mt-4">
             Built for UK private practices. Add your email and our team will reach out directly.
-          </motion.p>
+          </p>
         </div>
 
         {/* Footer links — hidden on tablet (rendered at page bottom instead) */}
@@ -252,9 +230,7 @@ function WaitlistPage() {
                 <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-full bg-[#dcfce7]">
                   <Check className="w-7 h-7 text-[#16a34a]" strokeWidth={3} />
                 </div>
-                <h2 className="text-2xl font-medium text-foreground mb-2">
-                  You're on the list
-                </h2>
+                <h2 className="text-2xl font-medium text-foreground mb-2">You're on the list</h2>
                 <p className="text-[15px] leading-[1.6] text-[#475569] max-w-sm mx-auto">
                   Thanks for joining. We'll email you personally when early access opens.
                 </p>
@@ -281,11 +257,7 @@ function WaitlistPage() {
                   </p>
                 </motion.div>
 
-                <form
-                  onSubmit={handleSubmit}
-                  noValidate
-                  className="space-y-4"
-                >
+                <form onSubmit={handleSubmit} noValidate className="space-y-4">
                   {/* Honeypot — hidden from humans, irresistible to bots. Do not remove. */}
                   <input
                     type="text"
@@ -322,8 +294,7 @@ function WaitlistPage() {
                         className="w-full pl-10 pr-4 py-3 rounded-xl border border-neutral-200 bg-white text-base sm:text-sm text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:border-[#2563EB] transition-all"
                         style={
                           {
-                            ["--tw-ring-color" as string]:
-                              "rgba(37,99,235,0.3)",
+                            ["--tw-ring-color" as string]: "rgba(37,99,235,0.3)",
                           } as React.CSSProperties
                         }
                       />
@@ -352,8 +323,7 @@ function WaitlistPage() {
                       className="w-full px-4 py-3 rounded-xl border border-neutral-200 bg-white text-base sm:text-sm text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:border-[#2563EB] transition-all"
                       style={
                         {
-                          ["--tw-ring-color" as string]:
-                            "rgba(37,99,235,0.3)",
+                          ["--tw-ring-color" as string]: "rgba(37,99,235,0.3)",
                         } as React.CSSProperties
                       }
                     />
@@ -368,10 +338,7 @@ function WaitlistPage() {
                       htmlFor="role"
                       className="block text-[13px] font-medium text-[#0F172A] mb-1.5"
                     >
-                      Your role{" "}
-                      <span className="text-[#94A3B8] font-normal">
-                        (optional)
-                      </span>
+                      Your role <span className="text-[#94A3B8] font-normal">(optional)</span>
                     </label>
                     <select
                       id="role"
@@ -380,15 +347,12 @@ function WaitlistPage() {
                       className="w-full px-4 py-3 rounded-xl border border-neutral-200 bg-white text-base sm:text-sm text-neutral-900 focus:outline-none focus:ring-2 focus:border-[#2563EB] transition-all"
                       style={
                         {
-                          ["--tw-ring-color" as string]:
-                            "rgba(37,99,235,0.3)",
+                          ["--tw-ring-color" as string]: "rgba(37,99,235,0.3)",
                         } as React.CSSProperties
                       }
                     >
                       <option value="">Select your role</option>
-                      <option value="principal">
-                        Principal dentist / Owner
-                      </option>
+                      <option value="principal">Principal dentist / Owner</option>
                       <option value="associate">Associate dentist</option>
                       <option value="manager">Practice manager</option>
                       <option value="reception">Reception / Admin</option>
@@ -396,9 +360,7 @@ function WaitlistPage() {
                     </select>
                   </motion.div>
 
-                  {error && (
-                    <p className="text-sm text-red-500">{error}</p>
-                  )}
+                  {error && <p className="text-sm text-red-500">{error}</p>}
 
                   <motion.button
                     type="submit"

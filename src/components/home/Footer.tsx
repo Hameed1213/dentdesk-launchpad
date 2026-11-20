@@ -45,6 +45,9 @@ const columns: { title: string; links: FooterLink[] }[] = [
       { label: "Guides", to: "/guides" },
       { label: "Free tools", to: "/tools" },
       { label: "Comparisons", to: "/compare" },
+      { label: "DentDock vs Dentally", to: "/compare/dentally" },
+      { label: "DentDock vs Software of Excellence", to: "/compare/software-of-excellence" },
+      { label: "DentDock vs iSmile", to: "/compare/ismile-dental-software" },
       { label: "FAQs", to: "/faq" },
     ],
   },
@@ -113,7 +116,7 @@ export default function Footer() {
 
           {columns.map((col) => (
             <nav key={col.title} aria-label={col.title}>
-              <p className="text-[12px] font-semibold text-white/40 uppercase tracking-[0.14em] mb-4">
+              <p className="text-[12px] font-semibold text-white/60 uppercase tracking-[0.14em] mb-4">
                 {col.title}
               </p>
               <ul className="space-y-2.5">
@@ -131,8 +134,8 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="mt-14 pt-6 border-t border-white/10 flex flex-col-reverse lg:flex-row lg:items-start lg:justify-between gap-6">
-          <div className="space-y-2 text-[12px] leading-[1.6] text-white/35">
-            <p className="text-[13px] text-white/50">
+          <div className="space-y-2 text-[12px] leading-[1.6] text-white/60">
+            <p className="text-[13px] text-white/65">
               © {new Date().getFullYear()} DentDock. All rights reserved. Made in the UK.
             </p>
             <p>
@@ -146,7 +149,7 @@ export default function Footer() {
               <li key={l.label}>
                 <Link
                   to={l.to}
-                  className="text-[13px] text-white/55 hover:text-white transition-colors"
+                  className="text-[13px] text-white/65 hover:text-white transition-colors"
                 >
                   {l.label}
                 </Link>
@@ -156,7 +159,7 @@ export default function Footer() {
               <button
                 type="button"
                 onClick={openCookieSettings}
-                className="text-[13px] text-white/55 hover:text-white transition-colors"
+                className="text-[13px] text-white/65 hover:text-white transition-colors"
               >
                 Cookie settings
               </button>

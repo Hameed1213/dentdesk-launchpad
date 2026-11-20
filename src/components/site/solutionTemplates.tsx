@@ -52,7 +52,7 @@ function StoryHero({ hero }: { hero: StoryHeroContent }) {
   return (
     <section className="relative overflow-hidden bg-white pt-28 lg:pt-36 pb-16 px-6">
       <div className="mx-auto max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        <Reveal>
+        <div>
           <nav aria-label="Breadcrumb" className="mb-5 text-[13px] text-[#64748B]">
             <Link to="/" className="hover:text-[#2563EB]">
               Home
@@ -84,10 +84,10 @@ function StoryHero({ hero }: { hero: StoryHeroContent }) {
           <p className="mt-5 text-[14px] text-[#64748B]">
             £49 a month per practice, everything included. No contract.
           </p>
-        </Reveal>
-        <Reveal delay={0.1}>
+        </div>
+        <div>
           <HeroImage.Provider value>{hero.visual}</HeroImage.Provider>
-        </Reveal>
+        </div>
       </div>
     </section>
   );
@@ -536,7 +536,7 @@ export function SolutionsHubHero({
 }) {
   return (
     <section className="bg-white pt-28 lg:pt-36 pb-6 px-6">
-      <Reveal className="mx-auto max-w-3xl text-center">
+      <div className="mx-auto max-w-3xl text-center">
         <h1
           className="font-semibold text-[#0F172A] text-[40px] leading-[1.1] md:text-[58px]"
           style={{ letterSpacing: "-0.035em" }}
@@ -544,7 +544,7 @@ export function SolutionsHubHero({
           {title} <span className="text-[#2563EB]">{highlight}</span>
         </h1>
         <p className="mt-6 text-[19px] text-[#334155] leading-[1.6]">{intro}</p>
-      </Reveal>
+      </div>
     </section>
   );
 }

@@ -17,6 +17,7 @@ import {
   primaryButton,
   rowHeading,
   HeroImage,
+  photoSrcSet,
 } from "@/components/site/ui";
 
 /*
@@ -85,7 +86,7 @@ export function PageHeroSplit({ hero }: { hero: HeroContent }) {
   return (
     <section className="relative overflow-hidden bg-gradient-to-b from-[#EAF1FF] via-[#F3F7FF] to-white pt-28 pb-16 lg:pt-36 lg:pb-20 px-6">
       <div className="mx-auto max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-        <Reveal>
+        <div>
           {hero.crumbs && (
             <nav aria-label="Breadcrumb" className="mb-5 text-[13px] text-[#64748B]">
               <Link to="/" className="hover:text-[#2563EB]">
@@ -121,10 +122,10 @@ export function PageHeroSplit({ hero }: { hero: HeroContent }) {
           <p className="mt-5 text-[14px] text-[#64748B]">
             £49 a month per practice · No contract · No setup fees
           </p>
-        </Reveal>
-        <Reveal delay={0.1}>
+        </div>
+        <div>
           <HeroImage.Provider value>{hero.visual}</HeroImage.Provider>
-        </Reveal>
+        </div>
       </div>
     </section>
   );
@@ -414,7 +415,7 @@ export function RelatedLinks({
                 </h3>
                 <p className="mt-2 text-[15px] text-[#475569] leading-[1.6] flex-1">{r.body}</p>
                 <span className="mt-5 inline-flex items-center gap-1.5 text-[14px] font-semibold text-[#2563EB]">
-                  Find out more
+                  See {lowerFirst(r.title)}
                   <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
                 </span>
               </Link>
@@ -522,6 +523,8 @@ export function OtherAreas({
               >
                 <img
                   src={o.image}
+                  srcSet={photoSrcSet(o.image)}
+                  sizes="(min-width: 1024px) 360px, (min-width: 768px) 50vw, calc(100vw - 48px)"
                   alt={o.alt}
                   width={1400}
                   height={933}
@@ -534,7 +537,7 @@ export function OtherAreas({
                   </h3>
                   <p className="mt-2 text-[15px] text-[#475569] leading-[1.6] flex-1">{o.body}</p>
                   <span className="mt-5 inline-flex items-center gap-1.5 text-[14px] font-semibold text-[#2563EB]">
-                    Find out more
+                    See {lowerFirst(o.title)}
                     <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
                   </span>
                 </div>
@@ -651,6 +654,11 @@ export function AudiencePage({ content }: { content: AudienceContent }) {
 
 const SITE = "https://dentdock.co.uk";
 
+/** "Payments and deposits" -> "payments and deposits" for "See ..." link text (keeps DentDock, UK). */
+function lowerFirst(text: string) {
+  return /^[A-Z][a-z]/.test(text) ? text.charAt(0).toLowerCase() + text.slice(1) : text;
+}
+
 /** Title, description, canonical, Open Graph, breadcrumbs and FAQPage data for a template page. */
 /** Share image (1200x630, public/og) for each page, cropped from its hero photo. Others use /og-image.png. */
 const OG_IMAGES: Record<string, string> = {
@@ -675,6 +683,7 @@ const OG_IMAGES: Record<string, string> = {
   "/solutions/new-practices": "/og/new-practices.jpg",
   "/solutions/private-practices": "/og/private-practices.jpg",
   "/about": "/og/about.jpg",
+  "/guides/missed-appointment-fees": "/og/missed-appointment-fees.jpg",
   "/compare/dentally": "/og/compare-dentally.jpg",
   "/compare/ismile-dental-software": "/og/compare-ismile.jpg",
   "/compare/software-of-excellence": "/og/compare-soe.jpg",
@@ -686,12 +695,18 @@ export function templateHead({
   description,
   crumbs,
   faq,
+  ogType = "website",
+  scripts = [],
 }: {
   path: string;
   title: string;
   description: string;
   crumbs: { name: string; path: string }[];
   faq: Faq[];
+  /** "article" for guides. */
+  ogType?: "website" | "article";
+  /** Extra JSON-LD blocks for this page (for example a guide's Article). */
+  scripts?: object[];
 }) {
   const url = `${SITE}${path}`;
   const image = `${SITE}${OG_IMAGES[path] ?? "/og-image.png"}`;
@@ -702,7 +717,7 @@ export function templateHead({
       { property: "og:title", content: title },
       { property: "og:description", content: description },
       { property: "og:url", content: url },
-      { property: "og:type", content: "website" },
+      { property: "og:type", content: ogType },
       { property: "og:image", content: image },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
@@ -742,6 +757,7 @@ export function templateHead({
             },
           ]
         : []),
+      ...scripts.map((data) => ({ type: "application/ld+json", children: JSON.stringify(data) })),
     ],
   };
 }

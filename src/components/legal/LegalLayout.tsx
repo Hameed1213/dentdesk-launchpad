@@ -45,7 +45,7 @@ export default function LegalLayout({
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight text-foreground leading-[1.1] mb-3">
           {title}
         </h1>
-        <p className="text-[14px] text-[#94A3B8] mb-12">Last updated: {updated}</p>
+        <p className="text-[14px] text-[#64748B] mb-12">Last updated: {updated}</p>
 
         <div className="prose-legal text-[15px] leading-[1.7] text-[#475569] space-y-6">
           {children}
