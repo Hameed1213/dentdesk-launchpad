@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ComponentType } from "react";
 import { createPortal } from "react-dom";
 import { Link } from "@tanstack/react-router";
 import {
@@ -25,7 +25,6 @@ import {
   RefreshCw,
   ShieldCheck,
   Sparkles,
-  Stethoscope,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -35,7 +34,26 @@ import { cn } from "@/lib/utils";
  * Desktop panels render into document.body so the blurred, scrolled navbar can't squash them.
  */
 
-type MenuItem = { label: string; to: string; Icon: typeof Bell };
+type MenuIcon = ComponentType<{ className?: string; strokeWidth?: number }>;
+type MenuItem = { label: string; to: string; Icon: MenuIcon };
+
+/** A tooth, drawn in the same outline style as the lucide icons (lucide has no tooth). */
+function ToothIcon({ className, strokeWidth = 2 }: { className?: string; strokeWidth?: number }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={strokeWidth}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      aria-hidden="true"
+    >
+      <path d="M7 3c-2.2 0-4 1.8-4 4.5 0 2 .8 3.6 1.5 5.2.7 1.7 1 3.6 1.3 5.6.2 1.4.7 2.7 1.7 2.7 1.3 0 1.6-1.6 2-3.3.3-1.4.8-2.7 2.5-2.7s2.2 1.3 2.5 2.7c.4 1.7.7 3.3 2 3.3 1 0 1.5-1.3 1.7-2.7.3-2 .6-3.9 1.3-5.6.7-1.6 1.5-3.2 1.5-5.2C21 4.8 19.2 3 17 3c-1.8 0-2.9 1-5 1S8.8 3 7 3z" />
+    </svg>
+  );
+}
 type MenuConfig = {
   label: string;
   intro: { title: string; text: string; cta: string; to: string };
@@ -74,7 +92,7 @@ export const featuresMenu: MenuConfig = {
     {
       title: "Your clinicians",
       items: [
-        { label: "Dental chart", to: "/features/dental-chart", Icon: Stethoscope },
+        { label: "Dental chart", to: "/features/dental-chart", Icon: ToothIcon },
         { label: "Treatment plans", to: "/features/treatment-plans", Icon: ClipboardList },
       ],
     },

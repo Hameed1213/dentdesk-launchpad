@@ -515,60 +515,94 @@ export function IssueScreen() {
   );
 }
 
-/** The patient's plan page on a phone. */
-export function AcceptOnlinePhone() {
+/** The patient's plan page (booking site) in a browser window, with the texted-code close-up. */
+export function AcceptOnlineScreen() {
   return (
-    <div className="relative pb-4">
-      <div className="rounded-[28px] bg-gradient-to-br from-[#EFF6FF] to-[#E0EAFF] ring-1 ring-[#DBEAFE] py-10 px-4">
-        <div className="mx-auto w-[280px] rounded-[40px] border-[10px] border-[#0F172A] bg-white shadow-[0_30px_70px_-35px_rgba(15,23,42,0.45)] overflow-hidden">
-          <div className="px-4 pt-7 pb-4">
-            <p className="text-[10px] text-[#64748B]">Smile Dental</p>
-            <p className="mt-0.5 text-[15px] font-semibold text-[#0F172A]">
-              Your treatment estimate
-            </p>
-            <p className="mt-1 text-[10px] text-[#64748B]">
-              Dr Patel has prepared this estimate for you on 18 Nov.
-            </p>
-            <div className="mt-3 rounded-xl border-2 border-[#2563EB] p-3">
-              <div className="flex items-center justify-between">
+    <div className="relative">
+      <div className="rounded-2xl overflow-hidden border border-[#E2E8F0] bg-white shadow-[0_30px_70px_-35px_rgba(15,23,42,0.35)]">
+        <div className="h-9 bg-[#F1F5F9] border-b border-[#E2E8F0] flex items-center px-4 gap-3">
+          <div className="flex gap-1.5">
+            <span className="w-2.5 h-2.5 rounded-full bg-[#ff5f57]" />
+            <span className="w-2.5 h-2.5 rounded-full bg-[#febc2e]" />
+            <span className="w-2.5 h-2.5 rounded-full bg-[#28c840]" />
+          </div>
+          <div className="flex-1 max-w-[260px] h-5 rounded-md bg-white border border-[#E2E8F0] px-2 flex items-center text-[10px] text-[#94A3B8] truncate">
+            book.dentdock.co.uk/smile-dental/plan/…
+          </div>
+        </div>
+        <div className="bg-[#F8FAFC] p-4 sm:p-5">
+          <p className="text-[11px] text-[#64748B]">Smile Dental</p>
+          <p className="mt-0.5 text-[16px] font-semibold text-[#0F172A]">Your treatment estimate</p>
+          <p className="mt-1 text-[11px] text-[#64748B]">
+            Dr Patel has prepared this estimate for you on 18 Nov.
+          </p>
+          <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+            <div className="rounded-xl border-2 border-[#2563EB] bg-white p-3">
+              <div className="flex items-center justify-between gap-2">
                 <p className="text-[12px] font-semibold text-[#0F172A]">Option A · Implant</p>
                 <Badge tone="blue">Chosen</Badge>
               </div>
-              <p className="mt-1 text-[10px] text-[#2563EB]">Recommended by your dentist</p>
-              <p className="mt-2 text-[10px] text-[#334155]">
-                Implant placement · Hygiene visit · Implant crown
+              <p className="mt-1 text-[10px] font-medium text-[#2563EB]">
+                Recommended by your dentist
               </p>
-              <p className="mt-1 text-[10px] text-[#64748B]">
-                Tooth whitening · You can leave this out
-              </p>
+              <ul className="mt-2 space-y-1 text-[11px] text-[#334155]">
+                <li className="flex justify-between">
+                  <span>Implant placement</span>
+                  <span>£1,950</span>
+                </li>
+                <li className="flex justify-between">
+                  <span>Hygiene visit</span>
+                  <span>£75</span>
+                </li>
+                <li className="flex justify-between">
+                  <span>Implant crown</span>
+                  <span>£950</span>
+                </li>
+                <li className="flex justify-between text-[#94A3B8]">
+                  <span>Tooth whitening · You can leave this out</span>
+                  <span>£300</span>
+                </li>
+              </ul>
             </div>
-            <div className="mt-2 rounded-xl border border-[#E2E8F0] p-3">
-              <p className="text-[12px] font-medium text-[#0F172A]">Option B · Bridge</p>
-            </div>
-            <div className="mt-3 rounded-lg bg-[#2563EB] py-2 text-center text-[11px] font-semibold text-white">
-              Accept and agree to pay £2,975
-            </div>
-            <div className="mt-1.5 rounded-lg border border-[#E2E8F0] py-2 text-center text-[11px] font-medium text-[#334155]">
-              Decline
+            <div className="rounded-xl border border-[#E2E8F0] bg-white p-3">
+              <p className="text-[12px] font-semibold text-[#0F172A]">Option B · Bridge</p>
+              <ul className="mt-2 space-y-1 text-[11px] text-[#334155]">
+                <li className="flex justify-between">
+                  <span>Bridge preparation</span>
+                  <span>£450</span>
+                </li>
+                <li className="flex justify-between">
+                  <span>Bridge fit</span>
+                  <span>£1,100</span>
+                </li>
+              </ul>
+              <p className="mt-2 text-[10px] text-[#2563EB]">Choose this option</p>
             </div>
           </div>
+          <div className="mt-3 flex flex-wrap items-center justify-between gap-2 rounded-xl bg-white border border-[#E2E8F0] px-3 py-2.5">
+            <p className="text-[12px] font-semibold text-[#0F172A]">Option A · £2,975</p>
+            <div className="flex gap-1.5">
+              <Btn ghost>Decline</Btn>
+              <Btn>Accept and agree to pay £2,975</Btn>
+            </div>
+          </div>
+          <div className="h-10" />
         </div>
       </div>
-      <div className="absolute -bottom-6 right-3 lg:-right-8 z-10 w-[220px] rounded-2xl bg-white ring-4 ring-[#DBEAFE] shadow-[0_20px_50px_-15px_rgba(37,99,235,0.45)] p-4 max-sm:scale-[0.85] origin-bottom-right">
-        <p className="text-[12px] font-semibold text-[#0F172A]">Enter your code</p>
-        <p className="mt-1 text-[11px] text-[#64748B]">
-          We've texted a 6-digit code to 07••• •••089.
-        </p>
-        <div className="mt-2 flex gap-1">
-          {["4", "8", "1", "", "", ""].map((d, i) => (
-            <span
-              key={i}
-              className="w-6 h-7 rounded-md border border-[#CBD5E1] flex items-center justify-center text-[12px] font-semibold text-[#0F172A]"
-            >
-              {d}
-            </span>
-          ))}
-        </div>
+      <div className="absolute -bottom-6 left-3 lg:-left-8 z-10 rounded-2xl bg-white ring-4 ring-[#DBEAFE] shadow-[0_20px_50px_-15px_rgba(37,99,235,0.45)] p-4 max-sm:scale-[0.85] origin-bottom-left">
+        <Zoom title="Enter your code" width="w-[210px]">
+          <p className="text-[11px] text-[#64748B]">We've texted a 6-digit code to 07••• •••089.</p>
+          <div className="mt-2 flex gap-1">
+            {["4", "8", "1", "", "", ""].map((d, i) => (
+              <span
+                key={i}
+                className="w-6 h-7 rounded-md border border-[#CBD5E1] flex items-center justify-center text-[12px] font-semibold text-[#0F172A]"
+              >
+                {d}
+              </span>
+            ))}
+          </div>
+        </Zoom>
       </div>
     </div>
   );

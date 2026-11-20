@@ -142,15 +142,16 @@ const miniChart: [string, ToothMark | undefined][] = [
   ["1", { crown: true }],
 ];
 
+// Photo: Unsplash z8BIWPwV3zo (free licence).
 function ClinicalVisual() {
   return (
     <PhotoPanel
-      src="/images/pages/plan-consult.webp"
-      alt="Dentist talking a smiling patient through her treatment in the dental chair"
-      height={1050}
-      position="object-[45%_40%]"
+      src="/images/home/chart-row.webp"
+      alt="Dentist in a blue cap and mask adjusting the light over a patient in the chair"
+      height={933}
+      position="object-[55%_35%]"
     >
-      <FloatCard className="absolute right-2 sm:right-3 lg:-right-6 top-4 sm:top-6 lg:top-10 w-[220px] p-4">
+      <FloatCard className="absolute left-2 sm:left-3 lg:-left-6 top-4 sm:top-6 lg:top-10 w-[220px] p-4">
         <p className="text-[13px] font-semibold text-[#0F172A]">Chart · upper right</p>
         <div
           className="mt-3 grid gap-1"
@@ -162,7 +163,7 @@ function ClinicalVisual() {
         </div>
         <p className="mt-1 text-[11px] text-[#64748B]">UR6 MOD composite</p>
       </FloatCard>
-      <FloatCard className="absolute left-2 sm:left-3 lg:-left-6 bottom-4 sm:bottom-6 lg:bottom-10 px-4 py-3">
+      <FloatCard className="absolute right-2 sm:right-3 lg:-right-6 bottom-4 sm:bottom-6 lg:bottom-10 px-4 py-3">
         <p className="text-[11px] text-[#64748B]">Replace LL6 · Option A</p>
         <p className="text-[18px] font-semibold text-[#0F172A]">£2,975.00</p>
         <p className="mt-0.5 text-[11px] font-semibold text-emerald-600">Accepted online ✓</p>
