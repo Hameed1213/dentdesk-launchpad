@@ -638,7 +638,7 @@ export function GuideLayoutA4() {
     <PageShell>
       <GuideLook.Provider value="clean">
         <article className="bg-white">
-          <header className="px-6 pt-28 lg:pt-36 pb-12 bg-[#F8FAFC] border-b border-[#E2E8F0]">
+          <header className="px-6 pt-28 lg:pt-36 pb-12 bg-[#F8FAFC]">
             <div className="mx-auto max-w-6xl">
               <PlainCrumbs />
               <p className="mt-8 text-[15px] font-medium text-[#2563EB]">{TOPICS}</p>
