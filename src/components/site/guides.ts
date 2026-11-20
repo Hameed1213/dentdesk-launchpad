@@ -25,6 +25,10 @@ export type GuideMeta = {
   handles: string;
   /** The DentDock pages this guide is about. The first two show in the sidebar; all show below. */
   product: GuideProductLink[];
+  /** Photo on the /guides card: its own photo in public/images/guides (with -640/-960 copies),
+   *  not one used elsewhere on the site. */
+  image: string;
+  imageAlt: string;
 };
 
 export const guides: GuideMeta[] = [
@@ -39,6 +43,9 @@ export const guides: GuideMeta[] = [
     topics: ["Cancellations and fees", "Private practice"],
     lead: "Deposits and late-cancellation fees in UK private dentistry: what's allowed, how to tell patients, when to waive a fee, and a policy template you can adapt.",
     handles: "cancellations and fees",
+    // Unsplash J_4x_oxWzo0 (free licence), chosen by Hariss on 20 Nov 2026.
+    image: "/images/guides/missed-appointment-fees.webp",
+    imageAlt: "Three empty armchairs in a waiting room",
     product: [
       {
         kind: "Solution",
