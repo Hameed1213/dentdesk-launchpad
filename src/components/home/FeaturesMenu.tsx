@@ -14,6 +14,7 @@ import {
   Building2,
   CalendarDays,
   CalendarX,
+  ClipboardList,
   ChevronDown,
   ChevronRight,
   CreditCard,
@@ -24,6 +25,7 @@ import {
   RefreshCw,
   ShieldCheck,
   Sparkles,
+  Stethoscope,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -45,7 +47,7 @@ export const featuresMenu: MenuConfig = {
   label: "Features",
   intro: {
     title: "Dental practice software",
-    text: "Your diary, online booking, reminders, forms, payments and reports in one place, built for UK private practices.",
+    text: "Your diary, online booking, reminders, forms, charting, payments and reports in one place, built for UK private practices.",
     cta: "Explore DentDock",
     to: "/features",
   },
@@ -67,6 +69,13 @@ export const featuresMenu: MenuConfig = {
         { label: "Payments", to: "/features/payments", Icon: CreditCard },
         { label: "Reports", to: "/features/reports", Icon: BarChart3 },
         { label: "Security", to: "/features/security", Icon: ShieldCheck },
+      ],
+    },
+    {
+      title: "Your clinicians",
+      items: [
+        { label: "Dental chart", to: "/features/dental-chart", Icon: Stethoscope },
+        { label: "Treatment plans", to: "/features/treatment-plans", Icon: ClipboardList },
       ],
     },
   ],

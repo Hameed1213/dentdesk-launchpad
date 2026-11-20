@@ -23,10 +23,12 @@ import {
   rowHeading,
 } from "@/components/site/ui";
 
+import { Tooth, type ToothMark } from "@/components/site/clinicalScreens";
+
 export { ClosingBand, TrustStrip } from "@/components/site/ui";
 
 /* ------------------------------------------------------------------ */
-/* Feature rows: three alternating rows, text one side, panel the other */
+/* Feature rows: four alternating rows, text one side, panel the other */
 /* ------------------------------------------------------------------ */
 
 function BookingVisual() {
@@ -129,6 +131,46 @@ function FrontDeskVisual() {
   );
 }
 
+const miniChart: [string, ToothMark | undefined][] = [
+  ["8", undefined],
+  ["7", { fill: { o: "amalgam" } }],
+  ["6", { fill: { o: "composite", m: "composite", d: "composite" } }],
+  ["5", { fill: { o: "amalgam", d: "amalgam" } }],
+  ["4", undefined],
+  ["3", undefined],
+  ["2", undefined],
+  ["1", { crown: true }],
+];
+
+function ClinicalVisual() {
+  return (
+    <PhotoPanel
+      src="/images/pages/plan-consult.webp"
+      alt="Dentist talking a smiling patient through her treatment in the dental chair"
+      height={1050}
+      position="object-[45%_40%]"
+    >
+      <FloatCard className="absolute right-2 sm:right-3 lg:-right-6 top-4 sm:top-6 lg:top-10 w-[220px] p-4">
+        <p className="text-[13px] font-semibold text-[#0F172A]">Chart · upper right</p>
+        <div
+          className="mt-3 grid gap-1"
+          style={{ gridTemplateColumns: "repeat(8, minmax(0, 1fr))" }}
+        >
+          {miniChart.map(([n, m]) => (
+            <Tooth key={n} label={n} mark={m} />
+          ))}
+        </div>
+        <p className="mt-1 text-[11px] text-[#64748B]">UR6 MOD composite</p>
+      </FloatCard>
+      <FloatCard className="absolute left-2 sm:left-3 lg:-left-6 bottom-4 sm:bottom-6 lg:bottom-10 px-4 py-3">
+        <p className="text-[11px] text-[#64748B]">Replace LL6 · Option A</p>
+        <p className="text-[18px] font-semibold text-[#0F172A]">£2,975.00</p>
+        <p className="mt-0.5 text-[11px] font-semibold text-emerald-600">Accepted online ✓</p>
+      </FloatCard>
+    </PhotoPanel>
+  );
+}
+
 function MoneyVisual() {
   const bars = [38, 52, 46, 64, 58, 72, 80];
   return (
@@ -194,6 +236,18 @@ const featureRows = [
     button: "See all reminder and recall features",
     to: "/features/reminders-and-recalls",
     Visual: FrontDeskVisual,
+  },
+  {
+    title: "Chart and plan in one place",
+    lead: "Give your clinicians what they need in the same system with:",
+    points: [
+      "A dental chart with BPE, exams and X-rays",
+      "Treatment plans and printed estimates",
+      "Private plans patients can accept online",
+    ],
+    button: "See the dental chart and plans",
+    to: "/features/dental-chart",
+    Visual: ClinicalVisual,
   },
   {
     title: "Get paid on time and know your numbers",

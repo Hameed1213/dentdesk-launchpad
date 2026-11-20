@@ -39,6 +39,11 @@ const included = [
     to: "/features/forms",
   },
   {
+    title: "Dental chart and treatment plans",
+    body: "Chart, BPE, exams and X-rays, then plans and estimates patients can accept online.",
+    to: "/features/dental-chart",
+  },
+  {
     title: "Payments and deposits",
     body: "Payment links, deposits and fair fees through your own Stripe account. DentDock takes no cut.",
     to: "/features/payments",
@@ -177,6 +182,7 @@ const plans: Plan[] = [
       "Online booking and patient portal",
       "Reminders and recalls",
       "Forms and medical history",
+      "Dental chart and treatment plans",
       "Payments and deposits",
       "200 texts a month, then 8p a text",
       "Priority WhatsApp support",
@@ -320,7 +326,7 @@ function Included() {
             One price covers all of it. Nothing is a paid extra apart from texts over 200 a month.
           </p>
         </Reveal>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {included.map((f, i) => (
             <Reveal key={f.title} delay={i * 0.04}>
               <Link

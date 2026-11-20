@@ -96,8 +96,9 @@ const categories: CompareCategory[] = [
   {
     title: "Clinical",
     rows: [
-      { feature: "Tooth / perio chart", dentDock: no(), them: yes() },
-      { feature: "Treatment plan builder", dentDock: no(), them: yes("Care Manager") },
+      { feature: "Tooth chart and BPE", dentDock: yes(), them: yes() },
+      { feature: "Full perio (pocket) chart", dentDock: no(), them: yes() },
+      { feature: "Treatment plan builder", dentDock: yes(), them: yes("Care Manager") },
       {
         feature: "AI clinical note transcription",
         dentDock: no(),

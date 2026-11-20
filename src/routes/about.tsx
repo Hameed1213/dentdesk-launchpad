@@ -92,8 +92,8 @@ function AboutPage() {
             <div className="mt-6 space-y-5">
               <p className="text-[17px] text-[#334155] leading-[1.7]">
                 Most dental software was built for every kind of practice at once: NHS claims,
-                charting, imaging and multi-site groups. Private practices end up paying for
-                features they never use, and still chase patients by phone.
+                imaging and multi-site groups. Private practices end up paying for features they
+                never use, and still chase patients by phone.
               </p>
               <p className="text-[17px] text-[#334155] leading-[1.7]">
                 DentDock does the patient-facing work of a private practice well: letting patients

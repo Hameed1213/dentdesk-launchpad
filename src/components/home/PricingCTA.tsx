@@ -32,6 +32,7 @@ export default function PricingCTA({ asPage = false }: { asPage?: boolean } = {}
         "200 texts a month included, then 8p",
         "Payments & deposits",
         "Digital forms & medical history",
+        "Dental chart & treatment plans",
         "Ad tracking & booking sources",
         "Priority WhatsApp support",
         AND_MORE,
@@ -78,7 +79,9 @@ export default function PricingCTA({ asPage = false }: { asPage?: boolean } = {}
   const features = activePlan.features;
 
   return (
-    <section className={`relative bg-gradient-to-br from-[#DBEAFE] via-[#EFF6FF] to-white ${asPage ? "pt-28 pb-16 lg:pt-36 md:pb-24" : "py-16 md:py-24"} overflow-hidden`}>
+    <section
+      className={`relative bg-gradient-to-br from-[#DBEAFE] via-[#EFF6FF] to-white ${asPage ? "pt-28 pb-16 lg:pt-36 md:pb-24" : "py-16 md:py-24"} overflow-hidden`}
+    >
       {/* Top irregular fade to white */}
       <div
         className="pointer-events-none absolute inset-x-0 top-0 h-72 z-10"
@@ -146,12 +149,22 @@ export default function PricingCTA({ asPage = false }: { asPage?: boolean } = {}
                 >
                   <div className="flex items-center gap-4">
                     {isSelected ? (
-                      <CheckCircle2 size={22} className="text-white flex-shrink-0" strokeWidth={2.5} />
+                      <CheckCircle2
+                        size={22}
+                        className="text-white flex-shrink-0"
+                        strokeWidth={2.5}
+                      />
                     ) : (
-                      <Circle size={22} className="text-neutral-300 flex-shrink-0" strokeWidth={2} />
+                      <Circle
+                        size={22}
+                        className="text-neutral-300 flex-shrink-0"
+                        strokeWidth={2}
+                      />
                     )}
                     <div className="flex flex-col gap-1">
-                      <div className={`text-[17px] font-semibold ${isSelected ? "text-white" : "text-foreground"}`}>
+                      <div
+                        className={`text-[17px] font-semibold ${isSelected ? "text-white" : "text-foreground"}`}
+                      >
                         {plan.name}
                       </div>
                       {plan.note && (
@@ -170,13 +183,19 @@ export default function PricingCTA({ asPage = false }: { asPage?: boolean } = {}
                     <span
                       className={[
                         plan.priceSuffix ? "text-xl font-medium" : "text-sm font-medium",
-                        isSelected ? "text-white" : plan.comingSoon ? "text-[#94A3B8]" : "text-foreground",
+                        isSelected
+                          ? "text-white"
+                          : plan.comingSoon
+                            ? "text-[#94A3B8]"
+                            : "text-foreground",
                       ].join(" ")}
                     >
                       {plan.price}
                     </span>
                     {plan.priceSuffix && (
-                      <span className={`text-sm font-normal ${isSelected ? "text-white/70" : "text-[#94A3B8]"}`}>
+                      <span
+                        className={`text-sm font-normal ${isSelected ? "text-white/70" : "text-[#94A3B8]"}`}
+                      >
                         {plan.priceSuffix}
                       </span>
                     )}
@@ -257,7 +276,8 @@ export default function PricingCTA({ asPage = false }: { asPage?: boolean } = {}
               Listed in the <span className="text-[#2563EB]">DentDock patient directory</span>
             </h3>
             <p className="text-[15px] sm:text-[16px] leading-[1.55] text-[#64748b] mt-2">
-              Patients near you find your practice, see your real prices and free times, and book in seconds.
+              Patients near you find your practice, see your real prices and free times, and book in
+              seconds.
             </p>
           </div>
           <div className="flex flex-col items-stretch md:items-end gap-1 flex-shrink-0 w-full md:w-auto">
@@ -278,7 +298,6 @@ export default function PricingCTA({ asPage = false }: { asPage?: boolean } = {}
             Join the waitlist <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
-
       </div>
     </section>
   );

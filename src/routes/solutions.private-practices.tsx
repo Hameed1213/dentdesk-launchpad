@@ -23,7 +23,7 @@ import { featurePages } from "@/components/site/featurePages";
  * services from templates with prices, team, CSV import with matched columns, booking page, payments
  * can be skipped, reminders with ready wording); prices always shown on online booking; health form
  * and signature inside the booking, answers to the record; deposits per treatment; free-cancellation
- * window and fees as settings. Not built: NHS claims, charting, imaging, multi-site, membership plans.
+ * window and fees as settings. Not built: NHS claims, imaging, perio pocket charting, multi-site, membership plans.
  */
 
 const PATH = "/solutions/private-practices";
@@ -165,8 +165,9 @@ const content: SolutionStoryContent = {
         "DentDock doesn't do NHS claims, UDAs or banding, so a mixed practice would still need its NHS system for claims. You can mark NHS patients, and they're never charged cancellation fees.",
     },
     {
-      question: "Does DentDock do charting or imaging?",
-      answer: "No. DentDock doesn't include tooth charting, treatment plans or X-ray integration.",
+      question: "Does DentDock do charting and treatment plans?",
+      answer:
+        "Yes. Dentists record the chart (existing work, findings and tooth status), BPE and BEWE, examinations, soft-tissue findings and an X-ray log with evaluations, then build treatment plans from your price list with options, NHS or private on each line, and a printed estimate the patient signs. Patients can accept private plans online. DentDock doesn't connect to X-ray software or make NHS claims.",
     },
     {
       question: "Does DentDock do membership plans?",

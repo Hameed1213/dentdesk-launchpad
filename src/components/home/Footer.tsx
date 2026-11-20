@@ -17,6 +17,8 @@ const columns: { title: string; links: FooterLink[] }[] = [
       { label: "Online booking", to: "/features/online-booking" },
       { label: "Reminders and recalls", to: "/features/reminders-and-recalls" },
       { label: "Forms", to: "/features/forms" },
+      { label: "Dental chart", to: "/features/dental-chart" },
+      { label: "Treatment plans", to: "/features/treatment-plans" },
       { label: "Payments", to: "/features/payments" },
       { label: "Reports", to: "/features/reports" },
       { label: "Security", to: "/features/security" },

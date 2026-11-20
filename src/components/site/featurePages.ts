@@ -57,6 +57,22 @@ export const featurePages = {
     position: "object-[50%_28%]",
     alt: "Smiling dentist in his surgery",
   },
+  chart: {
+    title: "Dental chart",
+    body: "Chart existing work, findings, BPE, examinations and X-rays, with every change kept.",
+    to: "/features/dental-chart",
+    image: "/images/pages/chart-exam.webp",
+    position: "object-[40%_40%]",
+    alt: "Dentist examining a smiling patient's teeth",
+  },
+  plans: {
+    title: "Treatment plans",
+    body: "Plans and estimates from your price list, with options patients can accept online.",
+    to: "/features/treatment-plans",
+    image: "/images/pages/plan-consult.webp",
+    position: "object-[45%_40%]",
+    alt: "Dentist talking a smiling patient through her treatment in the dental chair",
+  },
   switching: {
     title: "Switching to DentDock",
     body: "Plan the move, bring your patients across with a CSV and go live when you're ready.",

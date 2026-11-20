@@ -26,6 +26,7 @@ import { Route as CompareIsmileDentalSoftwareRouteImport } from './routes/compar
 import { Route as CompareSoftwareOfExcellenceRouteImport } from './routes/compare.software-of-excellence'
 import { Route as FeaturesIndexRouteImport } from './routes/features.index'
 import { Route as FeaturesCalendarRouteImport } from './routes/features.calendar'
+import { Route as FeaturesDentalChartRouteImport } from './routes/features.dental-chart'
 import { Route as FeaturesFormsRouteImport } from './routes/features.forms'
 import { Route as FeaturesOnlineBookingRouteImport } from './routes/features.online-booking'
 import { Route as FeaturesPaymentsRouteImport } from './routes/features.payments'
@@ -33,6 +34,7 @@ import { Route as FeaturesRemindersAndRecallsRouteImport } from './routes/featur
 import { Route as FeaturesReportsRouteImport } from './routes/features.reports'
 import { Route as FeaturesSecurityRouteImport } from './routes/features.security'
 import { Route as FeaturesSwitchingRouteImport } from './routes/features.switching'
+import { Route as FeaturesTreatmentPlansRouteImport } from './routes/features.treatment-plans'
 import { Route as GuidesIndexRouteImport } from './routes/guides.index'
 import { Route as GuidesMissedAppointmentFeesRouteImport } from './routes/guides.missed-appointment-fees'
 import { Route as SolutionsIndexRouteImport } from './routes/solutions.index'
@@ -134,6 +136,11 @@ const FeaturesCalendarRoute = FeaturesCalendarRouteImport.update({
   path: '/features/calendar',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FeaturesDentalChartRoute = FeaturesDentalChartRouteImport.update({
+  id: '/features/dental-chart',
+  path: '/features/dental-chart',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const FeaturesFormsRoute = FeaturesFormsRouteImport.update({
   id: '/features/forms',
   path: '/features/forms',
@@ -168,6 +175,11 @@ const FeaturesSecurityRoute = FeaturesSecurityRouteImport.update({
 const FeaturesSwitchingRoute = FeaturesSwitchingRouteImport.update({
   id: '/features/switching',
   path: '/features/switching',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FeaturesTreatmentPlansRoute = FeaturesTreatmentPlansRouteImport.update({
+  id: '/features/treatment-plans',
+  path: '/features/treatment-plans',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GuidesIndexRoute = GuidesIndexRouteImport.update({
@@ -258,6 +270,7 @@ export interface FileRoutesByFullPath {
   '/compare/ismile-dental-software': typeof CompareIsmileDentalSoftwareRoute
   '/compare/software-of-excellence': typeof CompareSoftwareOfExcellenceRoute
   '/features/calendar': typeof FeaturesCalendarRoute
+  '/features/dental-chart': typeof FeaturesDentalChartRoute
   '/features/forms': typeof FeaturesFormsRoute
   '/features/online-booking': typeof FeaturesOnlineBookingRoute
   '/features/payments': typeof FeaturesPaymentsRoute
@@ -265,6 +278,7 @@ export interface FileRoutesByFullPath {
   '/features/reports': typeof FeaturesReportsRoute
   '/features/security': typeof FeaturesSecurityRoute
   '/features/switching': typeof FeaturesSwitchingRoute
+  '/features/treatment-plans': typeof FeaturesTreatmentPlansRoute
   '/guides/missed-appointment-fees': typeof GuidesMissedAppointmentFeesRoute
   '/solutions/bring-patients-back': typeof SolutionsBringPatientsBackRoute
   '/solutions/cut-admin': typeof SolutionsCutAdminRoute
@@ -297,6 +311,7 @@ export interface FileRoutesByTo {
   '/compare/ismile-dental-software': typeof CompareIsmileDentalSoftwareRoute
   '/compare/software-of-excellence': typeof CompareSoftwareOfExcellenceRoute
   '/features/calendar': typeof FeaturesCalendarRoute
+  '/features/dental-chart': typeof FeaturesDentalChartRoute
   '/features/forms': typeof FeaturesFormsRoute
   '/features/online-booking': typeof FeaturesOnlineBookingRoute
   '/features/payments': typeof FeaturesPaymentsRoute
@@ -304,6 +319,7 @@ export interface FileRoutesByTo {
   '/features/reports': typeof FeaturesReportsRoute
   '/features/security': typeof FeaturesSecurityRoute
   '/features/switching': typeof FeaturesSwitchingRoute
+  '/features/treatment-plans': typeof FeaturesTreatmentPlansRoute
   '/guides/missed-appointment-fees': typeof GuidesMissedAppointmentFeesRoute
   '/solutions/bring-patients-back': typeof SolutionsBringPatientsBackRoute
   '/solutions/cut-admin': typeof SolutionsCutAdminRoute
@@ -337,6 +353,7 @@ export interface FileRoutesById {
   '/compare/ismile-dental-software': typeof CompareIsmileDentalSoftwareRoute
   '/compare/software-of-excellence': typeof CompareSoftwareOfExcellenceRoute
   '/features/calendar': typeof FeaturesCalendarRoute
+  '/features/dental-chart': typeof FeaturesDentalChartRoute
   '/features/forms': typeof FeaturesFormsRoute
   '/features/online-booking': typeof FeaturesOnlineBookingRoute
   '/features/payments': typeof FeaturesPaymentsRoute
@@ -344,6 +361,7 @@ export interface FileRoutesById {
   '/features/reports': typeof FeaturesReportsRoute
   '/features/security': typeof FeaturesSecurityRoute
   '/features/switching': typeof FeaturesSwitchingRoute
+  '/features/treatment-plans': typeof FeaturesTreatmentPlansRoute
   '/guides/missed-appointment-fees': typeof GuidesMissedAppointmentFeesRoute
   '/solutions/bring-patients-back': typeof SolutionsBringPatientsBackRoute
   '/solutions/cut-admin': typeof SolutionsCutAdminRoute
@@ -378,6 +396,7 @@ export interface FileRouteTypes {
     | '/compare/ismile-dental-software'
     | '/compare/software-of-excellence'
     | '/features/calendar'
+    | '/features/dental-chart'
     | '/features/forms'
     | '/features/online-booking'
     | '/features/payments'
@@ -385,6 +404,7 @@ export interface FileRouteTypes {
     | '/features/reports'
     | '/features/security'
     | '/features/switching'
+    | '/features/treatment-plans'
     | '/guides/missed-appointment-fees'
     | '/solutions/bring-patients-back'
     | '/solutions/cut-admin'
@@ -417,6 +437,7 @@ export interface FileRouteTypes {
     | '/compare/ismile-dental-software'
     | '/compare/software-of-excellence'
     | '/features/calendar'
+    | '/features/dental-chart'
     | '/features/forms'
     | '/features/online-booking'
     | '/features/payments'
@@ -424,6 +445,7 @@ export interface FileRouteTypes {
     | '/features/reports'
     | '/features/security'
     | '/features/switching'
+    | '/features/treatment-plans'
     | '/guides/missed-appointment-fees'
     | '/solutions/bring-patients-back'
     | '/solutions/cut-admin'
@@ -456,6 +478,7 @@ export interface FileRouteTypes {
     | '/compare/ismile-dental-software'
     | '/compare/software-of-excellence'
     | '/features/calendar'
+    | '/features/dental-chart'
     | '/features/forms'
     | '/features/online-booking'
     | '/features/payments'
@@ -463,6 +486,7 @@ export interface FileRouteTypes {
     | '/features/reports'
     | '/features/security'
     | '/features/switching'
+    | '/features/treatment-plans'
     | '/guides/missed-appointment-fees'
     | '/solutions/bring-patients-back'
     | '/solutions/cut-admin'
@@ -496,6 +520,7 @@ export interface RootRouteChildren {
   CompareIsmileDentalSoftwareRoute: typeof CompareIsmileDentalSoftwareRoute
   CompareSoftwareOfExcellenceRoute: typeof CompareSoftwareOfExcellenceRoute
   FeaturesCalendarRoute: typeof FeaturesCalendarRoute
+  FeaturesDentalChartRoute: typeof FeaturesDentalChartRoute
   FeaturesFormsRoute: typeof FeaturesFormsRoute
   FeaturesOnlineBookingRoute: typeof FeaturesOnlineBookingRoute
   FeaturesPaymentsRoute: typeof FeaturesPaymentsRoute
@@ -503,6 +528,7 @@ export interface RootRouteChildren {
   FeaturesReportsRoute: typeof FeaturesReportsRoute
   FeaturesSecurityRoute: typeof FeaturesSecurityRoute
   FeaturesSwitchingRoute: typeof FeaturesSwitchingRoute
+  FeaturesTreatmentPlansRoute: typeof FeaturesTreatmentPlansRoute
   GuidesMissedAppointmentFeesRoute: typeof GuidesMissedAppointmentFeesRoute
   SolutionsBringPatientsBackRoute: typeof SolutionsBringPatientsBackRoute
   SolutionsCutAdminRoute: typeof SolutionsCutAdminRoute
@@ -641,6 +667,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FeaturesCalendarRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/features/dental-chart': {
+      id: '/features/dental-chart'
+      path: '/features/dental-chart'
+      fullPath: '/features/dental-chart'
+      preLoaderRoute: typeof FeaturesDentalChartRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/features/forms': {
       id: '/features/forms'
       path: '/features/forms'
@@ -688,6 +721,13 @@ declare module '@tanstack/react-router' {
       path: '/features/switching'
       fullPath: '/features/switching'
       preLoaderRoute: typeof FeaturesSwitchingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/features/treatment-plans': {
+      id: '/features/treatment-plans'
+      path: '/features/treatment-plans'
+      fullPath: '/features/treatment-plans'
+      preLoaderRoute: typeof FeaturesTreatmentPlansRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/guides/': {
@@ -800,6 +840,7 @@ const rootRouteChildren: RootRouteChildren = {
   CompareIsmileDentalSoftwareRoute: CompareIsmileDentalSoftwareRoute,
   CompareSoftwareOfExcellenceRoute: CompareSoftwareOfExcellenceRoute,
   FeaturesCalendarRoute: FeaturesCalendarRoute,
+  FeaturesDentalChartRoute: FeaturesDentalChartRoute,
   FeaturesFormsRoute: FeaturesFormsRoute,
   FeaturesOnlineBookingRoute: FeaturesOnlineBookingRoute,
   FeaturesPaymentsRoute: FeaturesPaymentsRoute,
@@ -807,6 +848,7 @@ const rootRouteChildren: RootRouteChildren = {
   FeaturesReportsRoute: FeaturesReportsRoute,
   FeaturesSecurityRoute: FeaturesSecurityRoute,
   FeaturesSwitchingRoute: FeaturesSwitchingRoute,
+  FeaturesTreatmentPlansRoute: FeaturesTreatmentPlansRoute,
   GuidesMissedAppointmentFeesRoute: GuidesMissedAppointmentFeesRoute,
   SolutionsBringPatientsBackRoute: SolutionsBringPatientsBackRoute,
   SolutionsCutAdminRoute: SolutionsCutAdminRoute,

@@ -485,7 +485,7 @@ export function SpendCalculator() {
         { label: "You pay now", value: gbp(v.pms + v.texts + v.extras) },
         { label: "DentDock", value: "£49", accent: true },
       ]}
-      note="Includes 200 texts a month, then 8p a text. Check what your current system does that DentDock doesn't, such as NHS claims or charting."
+      note="Includes 200 texts a month, then 8p a text. Check what your current system does that DentDock doesn't, such as NHS claims or imaging."
     />
   );
 }
