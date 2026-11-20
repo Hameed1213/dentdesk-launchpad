@@ -308,3 +308,72 @@ export function MessageEditorScreen() {
     </AppWindow>
   );
 }
+
+/* ------------------------------------------------------------------ */
+/* Texts from the practice's own name (alphanumeric sender ID)        */
+/* ------------------------------------------------------------------ */
+
+/*
+ * Checked against the hub on 20 Nov 2026 (main e1ed624):
+ * the sender is made from the practice name by _shared/senderName.ts (11 characters, UK limit;
+ * "Smile Dental" becomes "SmileDental"), set up by DentDock (Onboarding: "We set it up for you.
+ * To change it, contact DentDock support."). Texts are one-way (no inbound function).
+ * The message is the default 24-hour reminder (automationsData.ts) with the "Stop texts" line
+ * send-sms adds. Practice and patient names are examples.
+ */
+export const EXAMPLE_SENDER = "SmileDental";
+
+/** A phone's messages screen with the practice name as the sender. */
+export function SenderPhone({ className = "" }: { className?: string }) {
+  return (
+    <div
+      className={`mx-auto w-[280px] rounded-[40px] border-[10px] border-[#0F172A] bg-white shadow-[0_30px_70px_-35px_rgba(15,23,42,0.45)] overflow-hidden ${className}`}
+    >
+      <div className="bg-[#F8FAFC] border-b border-[#E2E8F0] px-4 pt-8 pb-3 text-center">
+        <div className="mx-auto w-11 h-11 rounded-full bg-[#2563EB] flex items-center justify-center text-white text-[15px] font-semibold">
+          S
+        </div>
+        <p className="mt-1.5 text-[13px] font-semibold text-[#0F172A]">{EXAMPLE_SENDER}</p>
+        <p className="text-[10px] text-[#64748B]">Text message</p>
+      </div>
+      <div className="px-3 py-4 min-h-[270px] bg-white">
+        <p className="text-center text-[10px] text-[#94A3B8]">Wed 13 Nov, 10:30</p>
+        <div className="mt-2 max-w-[220px] rounded-2xl rounded-bl-md bg-[#E9EEF5] px-3 py-2 text-[12px] leading-[1.45] text-[#0F172A]">
+          Don't forget your check-up tomorrow at 10:30! See you at Smile Dental.
+          <br />
+          <br />
+          Need to change it?
+          <br />
+          <span className="text-[#2563EB] underline underline-offset-2">book.dentdock.co.uk/…</span>
+          <br />
+          <br />
+          Stop texts:{" "}
+          <span className="text-[#2563EB] underline underline-offset-2">
+            book.dentdock.co.uk/o/…
+          </span>
+        </div>
+        <p className="mt-4 text-center text-[10px] text-[#94A3B8]">
+          You can't reply to this sender
+        </p>
+      </div>
+    </div>
+  );
+}
+
+/** Phone mock-up plus the sender-name close-up from DentDock's set-up screen. */
+export function SenderNameScreen() {
+  return (
+    <div className="relative pb-4">
+      <div className="rounded-[28px] bg-gradient-to-br from-[#EFF6FF] to-[#E0EAFF] ring-1 ring-[#DBEAFE] py-10 px-4">
+        <SenderPhone />
+      </div>
+      <div className="absolute -bottom-6 right-3 lg:-right-8 z-10 w-[230px] rounded-2xl bg-white ring-4 ring-[#DBEAFE] shadow-[0_20px_50px_-15px_rgba(37,99,235,0.45)] p-4 max-sm:scale-[0.85] origin-bottom-right">
+        <p className="text-[11px] text-[#64748B]">Your text sender name</p>
+        <p className="mt-1 text-[15px] font-semibold text-[#0F172A]">{EXAMPLE_SENDER}</p>
+        <p className="mt-1.5 text-[11px] leading-[1.45] text-[#64748B]">
+          Made from your practice name. We set it up for you.
+        </p>
+      </div>
+    </div>
+  );
+}

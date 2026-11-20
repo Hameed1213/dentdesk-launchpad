@@ -16,7 +16,7 @@ Dent Dock helps UK private dental practices run their day-to-day: patients book 
 - [Reports](/features/reports): Money taken, no-show rates, booking sources, accountant export.
 - [Security and data](/features/security): storage in Europe, encryption, two-step login, team access, data export.
 - [Switching to DentDock](/features/switching): Guided setup and CSV patient import.
-- [Reminders and recalls](/features/reminders-and-recalls): Reminders 72, 24 and 2 hours before each appointment, recall follow-ups, waitlist.
+- [Reminders and recalls](/features/reminders-and-recalls): Reminders 72, 24 and 2 hours before each appointment, texts sent from the practice's own name (sender ID), recall follow-ups, waitlist.
 - [Reduce no-shows](/solutions/reduce-no-shows): Evidence on reminders, fair cancellation fees, refilling gaps.
 - [Fill cancelled appointments](/solutions/fill-cancelled-appointments): Waitlist offers for cancelled slots.
 - [Cut admin and phone time](/solutions/cut-admin): Booking, forms, reminders and recalls that run themselves.

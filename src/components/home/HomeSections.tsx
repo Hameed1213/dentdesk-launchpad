@@ -180,17 +180,19 @@ const featureRows = [
       "A patient portal, no password or app needed",
     ],
     button: "See all patient features",
+    to: "/features/online-booking",
     Visual: BookingVisual,
   },
   {
     title: "Reminders and recalls that run on their own",
     lead: "Take the chasing off your practice team with:",
     points: [
-      "Automatic email and text reminders",
+      "Text and email reminders from your practice's name",
       "Recalls that follow up for you",
       "A waitlist to fill cancelled slots",
     ],
     button: "See all reminder and recall features",
+    to: "/features/reminders-and-recalls",
     Visual: FrontDeskVisual,
   },
   {
@@ -202,6 +204,7 @@ const featureRows = [
       "See where your bookings come from",
     ],
     button: "See payments and reports",
+    to: "/features/payments",
     Visual: MoneyVisual,
   },
 ];
@@ -210,7 +213,7 @@ export function FeatureRows() {
   return (
     <section className="bg-gradient-to-b from-[#F7F9FF] via-[#F1F5FE] to-[#F7F9FF] border-y border-[#EEF2FB] py-16 md:py-24 px-6">
       <div className="mx-auto max-w-6xl space-y-16 md:space-y-24">
-        {featureRows.map(({ title, lead, points, button, Visual }, i) => {
+        {featureRows.map(({ title, lead, points, button, to, Visual }, i) => {
           const flip = i % 2 === 1;
           return (
             <div
@@ -221,7 +224,7 @@ export function FeatureRows() {
                 <h2 className={rowHeading}>{title}</h2>
                 <p className="mt-5 text-[17px] text-[#334155]">{lead}</p>
                 <Bullets items={points} />
-                <Link to="/features" className={`mt-8 ${pillButton}`}>
+                <Link to={to} className={`mt-8 ${pillButton}`}>
                   {button}
                 </Link>
               </Reveal>

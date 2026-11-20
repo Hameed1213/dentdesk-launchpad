@@ -1,5 +1,6 @@
 import { ArrowRight, Bell, Check, FileText, MessageSquare, RefreshCw } from "lucide-react";
 import { FloatCard } from "@/components/site/ui";
+import { EXAMPLE_SENDER } from "@/components/site/screens";
 
 /*
  * Small DentDock-style cards that sit on top of page photos (see docs/STYLE-GUIDE.md).
@@ -7,13 +8,14 @@ import { FloatCard } from "@/components/site/ui";
  * Position classes come from the caller so each photo can keep the cards off faces.
  */
 
-/** A reminder text as the patient sees it (default wording, with the link to view or change). */
+/** A reminder text as the patient sees it: from the practice's name (sender ID), with the link to view or change. */
 export function TextMessageCard({ className, when }: { className: string; when: string }) {
   return (
     <FloatCard className={`${className} w-[240px] p-4`}>
       <div className="flex items-center gap-2">
         <MessageSquare className="w-4 h-4 text-[#2563EB]" />
-        <p className="text-[12px] font-semibold text-[#0F172A]">Text from your practice</p>
+        <p className="text-[12px] font-semibold text-[#0F172A]">{EXAMPLE_SENDER}</p>
+        <p className="text-[11px] text-[#64748B]">Text message</p>
       </div>
       <p className="mt-3 rounded-xl rounded-tl-sm bg-neutral-100 px-3 py-2 text-[12px] leading-[1.45] text-[#334155]">
         Hi Sarah, a reminder of your check-up on Thu 14 Nov at 10:30. Need to change it?{" "}
