@@ -9,6 +9,7 @@ import Footer from "@/components/home/Footer";
 import {
   ClosingBand,
   FeatureRows,
+  GuidesRow,
   SolutionsGrid,
   SupportRow,
   SwitchRow,
@@ -121,6 +122,7 @@ function Index() {
         <section id="pricing" className="scroll-mt-24">
           <PricingCTA />
         </section>
+        <GuidesRow />
         <section id="faq" className="scroll-mt-24">
           <FAQ />
         </section>

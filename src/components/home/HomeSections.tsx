@@ -26,6 +26,8 @@ import {
 } from "@/components/site/ui";
 
 import { Tooth, type ToothMark } from "@/components/site/clinicalScreens";
+import { GuideCard } from "@/components/site/GuideCard";
+import { guides } from "@/components/site/guides";
 
 export { ClosingBand, TrustStrip } from "@/components/site/ui";
 
@@ -536,6 +538,37 @@ export function SwitchRow() {
             </Link>
           </div>
         </Reveal>
+      </div>
+    </section>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* Guides: the newest guides as photo cards (Hariss, 20 Nov 2026)      */
+/* ------------------------------------------------------------------ */
+
+export function GuidesRow() {
+  const shown = guides.slice(0, 2);
+  return (
+    <section className="bg-[#F7F9FF] py-16 md:py-24 px-6">
+      <div className="mx-auto max-w-6xl grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-8 items-center">
+        {/* With one guide the text takes two columns; with two or more, one. */}
+        <Reveal className={shown.length > 1 ? "lg:col-span-1" : "lg:col-span-2 lg:pr-12"}>
+          <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-foreground leading-[1.1]">
+            Practical guides for <span className="text-[#2563EB]">private practices</span>
+          </h2>
+          <p className="mt-5 max-w-xl text-[17px] text-[#475569] leading-[1.6]">
+            Plain answers to the questions practice managers ask us, with the sources to check them.
+          </p>
+          <Link to="/guides" className={`mt-8 ${pillButton}`}>
+            See all guides
+          </Link>
+        </Reveal>
+        {shown.map((g, i) => (
+          <Reveal key={g.slug} delay={i * 0.08} className="h-full">
+            <GuideCard g={g} />
+          </Reveal>
+        ))}
       </div>
     </section>
   );
