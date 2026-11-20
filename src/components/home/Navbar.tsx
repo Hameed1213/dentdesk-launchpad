@@ -17,7 +17,7 @@ function Logo() {
   return (
     <Link
       to="/"
-      aria-label="Dent Dock, go to homepage"
+      aria-label="DentDock, go to homepage"
       className="flex items-center gap-2 shrink-0"
     >
       <ToothIcon size={22} color="#2563EB" />
@@ -25,7 +25,7 @@ function Logo() {
         className="text-lg tracking-tight"
         style={{ color: "#2563EB", fontWeight: 700, letterSpacing: "-0.02em" }}
       >
-        Dent Dock
+        DentDock
       </span>
     </Link>
   );

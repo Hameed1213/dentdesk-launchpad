@@ -604,7 +604,7 @@ function TabletDashboardMockup() {
       <div className="h-[52px] bg-white border-b border-[#E2E8F0] flex items-center justify-between px-4 flex-shrink-0">
         <div className="flex items-center gap-2">
           <ToothIcon size={18} color="#2563EB" />
-          <span className="text-[15px] font-bold text-[#0F172A]">Dent Dock</span>
+          <span className="text-[15px] font-bold text-[#0F172A]">DentDock</span>
         </div>
         <div className="flex items-center gap-3">
           <Search size={16} className="text-[#64748b]" />
@@ -724,7 +724,7 @@ function MobileDashboardMockup() {
       <div className="h-[48px] bg-white border-b border-[#E2E8F0] flex items-center justify-between px-3.5 flex-shrink-0">
         <div className="flex items-center gap-1.5">
           <ToothIcon size={16} color="#2563EB" />
-          <span className="text-[13px] font-bold text-[#0F172A]">Dent Dock</span>
+          <span className="text-[13px] font-bold text-[#0F172A]">DentDock</span>
         </div>
         <div className="flex items-center gap-2.5">
           <div className="relative">

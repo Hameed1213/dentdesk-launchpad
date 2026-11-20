@@ -1,6 +1,6 @@
 {
-  "name": "Dent Dock",
-  "short_name": "Dent Dock",
+  "name": "DentDock",
+  "short_name": "DentDock",
   "description": "Dental practice management software for UK private practices",
   "start_url": "/",
   "display": "browser",

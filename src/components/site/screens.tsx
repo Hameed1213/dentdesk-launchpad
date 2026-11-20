@@ -318,54 +318,55 @@ export function MessageEditorScreen() {
  * the sender is made from the practice name by _shared/senderName.ts (11 characters, UK limit;
  * "Smile Dental" becomes "SmileDental"), set up by DentDock (Onboarding: "We set it up for you.
  * To change it, contact DentDock support."). Texts are one-way (no inbound function).
- * The message is the default 24-hour reminder (automationsData.ts) with the "Stop texts" line
- * send-sms adds. Practice and patient names are examples.
+ * The notifications show the default 24-hour reminder and booking confirmation (automationsData.ts),
+ * shortened as a lock screen would. Practice and patient names are examples.
  */
 export const EXAMPLE_SENDER = "SmileDental";
 
-/** A phone's messages screen with the practice name as the sender. */
-export function SenderPhone({ className = "" }: { className?: string }) {
+/** One text as a lock-screen notification: the practice name is the sender. */
+function TextNotification({
+  when,
+  children,
+  faded = false,
+}: {
+  when: string;
+  children: ReactNode;
+  faded?: boolean;
+}) {
   return (
     <div
-      className={`mx-auto w-[280px] rounded-[40px] border-[10px] border-[#0F172A] bg-white shadow-[0_30px_70px_-35px_rgba(15,23,42,0.45)] overflow-hidden ${className}`}
+      className={`rounded-2xl bg-white/90 backdrop-blur px-4 py-3 shadow-[0_10px_30px_-12px_rgba(15,23,42,0.25)] ${faded ? "opacity-70" : ""}`}
     >
-      <div className="bg-[#F8FAFC] border-b border-[#E2E8F0] px-4 pt-8 pb-3 text-center">
-        <div className="mx-auto w-11 h-11 rounded-full bg-[#2563EB] flex items-center justify-center text-white text-[15px] font-semibold">
-          S
-        </div>
-        <p className="mt-1.5 text-[13px] font-semibold text-[#0F172A]">{EXAMPLE_SENDER}</p>
-        <p className="text-[10px] text-[#64748B]">Text message</p>
+      <div className="flex items-baseline justify-between gap-3">
+        <p className="text-[13px] font-semibold text-[#0F172A]">{EXAMPLE_SENDER}</p>
+        <p className="text-[11px] text-[#64748B]">{when}</p>
       </div>
-      <div className="px-3 py-4 min-h-[270px] bg-white">
-        <p className="text-center text-[10px] text-[#94A3B8]">Wed 13 Nov, 10:30</p>
-        <div className="mt-2 max-w-[220px] rounded-2xl rounded-bl-md bg-[#E9EEF5] px-3 py-2 text-[12px] leading-[1.45] text-[#0F172A]">
-          Don't forget your check-up tomorrow at 10:30! See you at Smile Dental.
-          <br />
-          <br />
-          Need to change it?
-          <br />
-          <span className="text-[#2563EB] underline underline-offset-2">book.dentdock.co.uk/…</span>
-          <br />
-          <br />
-          Stop texts:{" "}
-          <span className="text-[#2563EB] underline underline-offset-2">
-            book.dentdock.co.uk/o/…
-          </span>
-        </div>
-        <p className="mt-4 text-center text-[10px] text-[#94A3B8]">
-          You can't reply to this sender
-        </p>
-      </div>
+      <p className="mt-1 text-[12px] leading-[1.45] text-[#334155]">{children}</p>
     </div>
   );
 }
 
-/** Phone mock-up plus the sender-name close-up from DentDock's set-up screen. */
+/** Lock-screen view of two texts from the practice, plus the sender-name card from set-up. */
 export function SenderNameScreen() {
   return (
     <div className="relative pb-4">
-      <div className="rounded-[28px] bg-gradient-to-br from-[#EFF6FF] to-[#E0EAFF] ring-1 ring-[#DBEAFE] py-10 px-4">
-        <SenderPhone />
+      <div className="rounded-[28px] bg-gradient-to-br from-[#DBEAFE] via-[#E0EAFF] to-[#EEF4FF] ring-1 ring-[#DBEAFE] px-5 sm:px-10 pt-10 pb-14">
+        <div className="text-center">
+          <p className="text-[13px] font-medium text-[#475569]">Wednesday 13 November</p>
+          <p className="mt-1 text-[56px] sm:text-[64px] font-semibold leading-none tracking-tight text-[#0F172A]">
+            10:30
+          </p>
+        </div>
+        <div className="mx-auto mt-8 max-w-[360px] space-y-2.5">
+          <TextNotification when="now">
+            Don't forget your check-up tomorrow at 10:30! See you at Smile Dental. Need to change
+            it? <span className="text-[#2563EB]">book.dentdock.co.uk/…</span>
+          </TextNotification>
+          <TextNotification when="Mon" faded>
+            Hi Sarah, your check-up at Smile Dental on Thu 14 Nov at 10:30 with Dr Patel is
+            confirmed!
+          </TextNotification>
+        </div>
       </div>
       <div className="absolute -bottom-6 right-3 lg:-right-8 z-10 w-[230px] rounded-2xl bg-white ring-4 ring-[#DBEAFE] shadow-[0_20px_50px_-15px_rgba(37,99,235,0.45)] p-4 max-sm:scale-[0.85] origin-bottom-right">
         <p className="text-[11px] text-[#64748B]">Your text sender name</p>

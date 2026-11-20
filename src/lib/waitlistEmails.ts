@@ -28,32 +28,32 @@ const step = (n: number, title: string, body: string) => `
 export function thankYouEmail(s: WaitlistSignup) {
   const practice = s.practiceName ? ` for ${s.practiceName}` : "";
   const text = [
-    "You're on the Dent Dock waitlist",
+    "You're on the DentDock waitlist",
     "",
-    `Thank you for joining the Dent Dock waitlist${practice}.`,
+    `Thank you for joining the DentDock waitlist${practice}.`,
     "",
     "What happens next",
     "1. We'll email you as soon as a place opens for your practice.",
-    "2. We'll show you around Dent Dock and set it up with you: online booking, reminders, recalls and payments.",
+    "2. We'll show you around DentDock and set it up with you: online booking, reminders, recalls and payments.",
     "3. You go live, usually within the day. No contracts, no setup fees.",
     "",
     "Our first 30 practices get priority support and help shape the product from day one.",
     "",
-    `Explore Dent Dock: ${SITE}`,
+    `Explore DentDock: ${SITE}`,
     "",
     "Questions? Just reply to this email. It comes straight to our team.",
     "",
-    "The Dent Dock team",
+    "The DentDock team",
     "",
     "---",
     "You're receiving this because this email address was used to join the waitlist at dentdock.co.uk. Not you? Reply and we'll remove it.",
-    "Dent Dock is a trading name of Paradigm Network Limited. Company No. 16903048.",
+    "DentDock is a trading name of Paradigm Network Limited. Company No. 16903048.",
   ].join("\n");
 
   const html = `<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="color-scheme" content="light dark"><meta name="supported-color-schemes" content="light dark">
-<title>You're on the Dent Dock waitlist</title>
+<title>You're on the DentDock waitlist</title>
 <style>
   /* Dark mode only. Light mode uses the inline colours unchanged. Mail apps
      that darken pale backgrounds left dark text on dark blue (unreadable). */
@@ -81,7 +81,7 @@ export function thankYouEmail(s: WaitlistSignup) {
     <tr><td style="padding:0 4px 20px 4px">
       <a href="${SITE}" style="text-decoration:none">
         <img src="${SITE}/email/logo.png" width="28" height="28" alt="" style="vertical-align:middle;border:0">
-        <span style="font:700 19px/28px ${FONT};color:${BLUE};vertical-align:middle;letter-spacing:-0.02em">&nbsp;Dent Dock</span>
+        <span style="font:700 19px/28px ${FONT};color:${BLUE};vertical-align:middle;letter-spacing:-0.02em">&nbsp;DentDock</span>
       </a>
     </td></tr>
     <tr><td class="dd-card" style="background:#FFFFFF;border-radius:16px;border:1px solid #E2E8F0;overflow:hidden">
@@ -89,7 +89,7 @@ export function thankYouEmail(s: WaitlistSignup) {
         <tr><td style="background:${BLUE};background-image:linear-gradient(135deg,#2563EB,#1D4ED8);padding:36px 32px;border-radius:16px 16px 0 0">
           <div style="font:600 12px/1 ${FONT};letter-spacing:0.14em;text-transform:uppercase;color:#BFDBFE">Waitlist</div>
           <h1 style="margin:10px 0 0 0;font:700 28px/1.2 ${FONT};color:#FFFFFF;letter-spacing:-0.02em">You're on the list</h1>
-          <p style="margin:10px 0 0 0;font:16px/1.55 ${FONT};color:#DBEAFE">Thank you for joining the Dent Dock waitlist${esc(practice)}.</p>
+          <p style="margin:10px 0 0 0;font:16px/1.55 ${FONT};color:#DBEAFE">Thank you for joining the DentDock waitlist${esc(practice)}.</p>
         </td></tr>
         <tr><td style="padding:32px 32px 8px 32px">
           <h2 class="dd-ink" style="margin:0 0 18px 0;font:600 17px/1.3 ${FONT};color:${INK}">What happens next</h2>
@@ -109,26 +109,26 @@ export function thankYouEmail(s: WaitlistSignup) {
         <tr><td align="left" style="padding:28px 32px 8px 32px">
           <table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr>
             <td style="border-radius:999px;background:${BLUE}">
-              <a href="${SITE}" style="display:inline-block;padding:13px 26px;font:600 15px/1 ${FONT};color:#FFFFFF;text-decoration:none;border-radius:999px">Explore Dent Dock</a>
+              <a href="${SITE}" style="display:inline-block;padding:13px 26px;font:600 15px/1 ${FONT};color:#FFFFFF;text-decoration:none;border-radius:999px">Explore DentDock</a>
             </td>
           </tr></table>
         </td></tr>
         <tr><td class="dd-ink" style="padding:20px 32px 32px 32px;font:15px/1.6 ${FONT};color:${INK}">
           Questions? Just reply to this email. It comes straight to our team.<br><br>
-          The Dent Dock team
+          The DentDock team
         </td></tr>
       </table>
     </td></tr>
     <tr><td class="dd-muted" style="padding:22px 8px 0 8px;font:12px/1.6 ${FONT};color:${MUTED};text-align:center">
       You're receiving this because this email address was used to join the waitlist at <a href="${SITE}" class="dd-muted" style="color:${MUTED}">dentdock.co.uk</a>. Not you? Reply and we'll remove it.<br>
-      Dent Dock is a trading name of Paradigm Network Limited · Company No. 16903048<br>
+      DentDock is a trading name of Paradigm Network Limited · Company No. 16903048<br>
       <a href="${SITE}/privacy" class="dd-muted" style="color:${MUTED}">Privacy Policy</a>
     </td></tr>
   </table>
 </td></tr>
 </table>
 </body></html>`;
-  return { subject: "You're on the Dent Dock waitlist", text, html };
+  return { subject: "You're on the DentDock waitlist", text, html };
 }
 
 export function alertEmail(s: WaitlistSignup) {

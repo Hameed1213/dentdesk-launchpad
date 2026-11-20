@@ -445,7 +445,7 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
 
-  /* Dent Dock brand tokens */
+  /* DentDock brand tokens */
   --color-brand-blue: var(--brand-blue);
   --color-brand-blue-hover: var(--brand-blue-hover);
   --color-brand-blue-tint: var(--brand-blue-tint);
@@ -498,7 +498,7 @@
   --sidebar-border: oklch(0.929 0.013 255.508);
   --sidebar-ring: oklch(0.704 0.04 256.788);
 
-  /* Dent Dock brand tokens */
+  /* DentDock brand tokens */
   --brand-blue: #2563EB;
   --brand-blue-hover: #1D4ED8;
   --brand-blue-tint: #DBEAFE;

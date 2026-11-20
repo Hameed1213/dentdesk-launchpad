@@ -1,4 +1,4 @@
-import { ArrowRight, Bell, Check, FileText, MessageSquare, RefreshCw } from "lucide-react";
+import { ArrowRight, Bell, Check, FileText, RefreshCw } from "lucide-react";
 import { FloatCard } from "@/components/site/ui";
 import { EXAMPLE_SENDER } from "@/components/site/screens";
 
@@ -13,7 +13,6 @@ export function TextMessageCard({ className, when }: { className: string; when: 
   return (
     <FloatCard className={`${className} w-[240px] p-4`}>
       <div className="flex items-center gap-2">
-        <MessageSquare className="w-4 h-4 text-[#2563EB]" />
         <p className="text-[12px] font-semibold text-[#0F172A]">{EXAMPLE_SENDER}</p>
         <p className="text-[11px] text-[#64748B]">Text message</p>
       </div>
