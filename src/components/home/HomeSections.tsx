@@ -26,6 +26,7 @@ import {
 } from "@/components/site/ui";
 
 import { Tooth, type ToothMark } from "@/components/site/clinicalScreens";
+import { guides } from "@/components/site/guides";
 
 export { ClosingBand, TrustStrip } from "@/components/site/ui";
 
@@ -536,6 +537,71 @@ export function SwitchRow() {
             </Link>
           </div>
         </Reveal>
+      </div>
+    </section>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* Guides row (Hariss, 20 Nov 2026): option 4's card style, guides only, */
+/* the newest three in a row.                                          */
+/* ------------------------------------------------------------------ */
+
+const rowCard =
+  "group flex flex-col rounded-3xl border border-[#E5EDFB] bg-white transition-colors duration-200 hover:border-[#2563EB]";
+const rowLink =
+  "mt-auto pt-6 inline-flex items-center gap-1.5 text-[14px] font-semibold text-[#2563EB]";
+const rowArrow = "h-4 w-4 transition-transform group-hover:translate-x-1";
+
+export function GuidesRow() {
+  // The newest three guides, in a row of three.
+  const shown = guides.slice(0, 3);
+  return (
+    <section className="bg-[#F7F9FF] py-16 md:py-24 px-6">
+      <div className="mx-auto max-w-6xl">
+        <Reveal className="max-w-2xl">
+          <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-foreground leading-[1.1]">
+            Read our <span className="text-[#2563EB]">latest guides</span>
+          </h2>
+          <p className="mt-5 text-[17px] text-[#475569] leading-[1.6]">
+            Straightforward answers for private practices, with the sources to check them.
+          </p>
+        </Reveal>
+        <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
+          {shown.map((g, i) => (
+            <Reveal key={g.slug} delay={i * 0.06} className="h-full">
+              <Link
+                to={`/guides/${g.slug}` as "/guides"}
+                className={`${rowCard} h-full overflow-hidden`}
+              >
+                <img
+                  src={g.image}
+                  srcSet={photoSrcSet(g.image)}
+                  sizes="(min-width: 768px) 370px, calc(100vw - 48px)"
+                  alt={g.imageAlt}
+                  width={1400}
+                  height={933}
+                  loading="lazy"
+                  className="w-full aspect-[16/10] object-cover"
+                />
+                <div className="flex flex-1 flex-col p-7">
+                  <p className="text-[14px] font-medium text-[#2563EB]">{g.topics[0]}</p>
+                  <h3 className="mt-2 text-[20px] font-semibold tracking-tight text-[#0F172A] leading-[1.3]">
+                    {g.title}
+                  </h3>
+                  <span className={rowLink}>
+                    Read the guide <ArrowRight className={rowArrow} />
+                  </span>
+                </div>
+              </Link>
+            </Reveal>
+          ))}
+        </div>
+        <div className="mt-8">
+          <Link to="/guides" className={pillButton}>
+            See all guides
+          </Link>
+        </div>
       </div>
     </section>
   );
