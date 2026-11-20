@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import { createContext, useContext, type ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { primaryButton } from "@/components/site/ui";
@@ -63,6 +63,12 @@ export const feesSources = [
   },
 ];
 
+/**
+ * How the article body is styled. "soft" is the current live look (tinted boxes, blue dots).
+ * "plain" is the quieter editorial look being tried in the Option A variations (20 Nov 2026).
+ */
+export const GuideLook = createContext<"soft" | "plain">("soft");
+
 /** The guide's sections, for a table of contents. */
 export const feesToc = [
   { id: "when-can-a-private-practice-charge", label: "When can a private practice charge?" },
@@ -105,13 +111,14 @@ function A({ href, children }: { href: string; children: ReactNode }) {
 }
 
 function List({ items }: { items: ReactNode[] }) {
+  const plain = useContext(GuideLook) === "plain";
   return (
     <ul className="mt-4 space-y-2.5">
       {items.map((it, i) => (
         <li key={i} className="flex items-start gap-3 text-[17px] text-[#334155] leading-[1.7]">
           <span
             aria-hidden="true"
-            className="mt-[12px] h-1.5 w-1.5 rounded-full bg-[#2563EB] flex-shrink-0"
+            className={`mt-[12px] h-1.5 w-1.5 rounded-full flex-shrink-0 ${plain ? "bg-[#0F172A]" : "bg-[#2563EB]"}`}
           />
           <span>{it}</span>
         </li>
@@ -122,11 +129,20 @@ function List({ items }: { items: ReactNode[] }) {
 
 /** The guide's article text, from "The short answer" to the not-legal-advice note. */
 export function FeesGuideBody() {
+  const plain = useContext(GuideLook) === "plain";
   return (
     <>
       <div>
-        <div className="rounded-3xl border border-[#BFDBFE] bg-[#F5F8FF] p-6 md:p-8">
-          <p className="text-[16px] font-semibold text-[#2563EB]">The short answer</p>
+        <div
+          className={
+            plain
+              ? "border-l-[3px] border-[#0F172A] pl-6 py-1"
+              : "rounded-3xl border border-[#BFDBFE] bg-[#F5F8FF] p-6 md:p-8"
+          }
+        >
+          <p className={`text-[16px] font-semibold ${plain ? "text-[#0F172A]" : "text-[#2563EB]"}`}>
+            The short answer
+          </p>
           <p className="mt-3 text-[18px] text-[#0F172A] leading-[1.65]">
             Yes. A private dental practice can charge for a missed appointment or late cancellation,
             as long as the fee is fair and patients agreed to your policy before they booked. NHS
@@ -217,7 +233,9 @@ export function FeesGuideBody() {
         you use it.
       </P>
       <div>
-        <div className="mt-6 rounded-3xl border border-[#E5EDFB] bg-[#F8FAFC] p-6 md:p-8 text-[16px] text-[#0F172A] leading-[1.75] space-y-4">
+        <div
+          className={`mt-6 p-6 md:p-8 text-[16px] text-[#0F172A] leading-[1.75] space-y-4 ${plain ? "rounded-lg border border-[#E2E8F0] bg-white" : "rounded-3xl border border-[#E5EDFB] bg-[#F8FAFC]"}`}
+        >
           <p className="font-semibold">Cancellation and missed appointment policy</p>
           <p>
             We keep appointment time aside especially for you. If you need to cancel or change your
@@ -255,7 +273,14 @@ export function FeesGuideBody() {
         ]}
       />
       <div className="mt-8 flex flex-col sm:flex-row gap-3">
-        <Link to="/solutions/deposits-and-late-cancellations" className={primaryButton}>
+        <Link
+          to="/solutions/deposits-and-late-cancellations"
+          className={
+            plain
+              ? "inline-flex items-center gap-1.5 text-[16px] font-semibold text-[#2563EB] underline underline-offset-4"
+              : primaryButton
+          }
+        >
           See deposits and late cancellations <ArrowRight className="w-4 h-4" />
         </Link>
       </div>
@@ -268,7 +293,13 @@ export function FeesGuideBody() {
           </li>
         ))}
       </ul>
-      <p className="mt-8 rounded-2xl bg-[#F8FAFC] border border-[#E5EDFB] px-5 py-4 text-[14px] text-[#64748B] leading-[1.6]">
+      <p
+        className={
+          plain
+            ? "mt-10 border-t border-[#E2E8F0] pt-5 text-[14px] text-[#64748B] leading-[1.6]"
+            : "mt-8 rounded-2xl bg-[#F8FAFC] border border-[#E5EDFB] px-5 py-4 text-[14px] text-[#64748B] leading-[1.6]"
+        }
+      >
         This guide is general information, not legal advice. Check your policy with your indemnity
         provider or a solicitor before you rely on it.
       </p>

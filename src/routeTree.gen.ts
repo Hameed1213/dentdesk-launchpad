@@ -38,6 +38,9 @@ import { Route as FeaturesTreatmentPlansRouteImport } from './routes/features.tr
 import { Route as GuidesIndexRouteImport } from './routes/guides.index'
 import { Route as GuidesMissedAppointmentFeesRouteImport } from './routes/guides.missed-appointment-fees'
 import { Route as GuidesMockupARouteImport } from './routes/guides.mockup-a'
+import { Route as GuidesMockupA1RouteImport } from './routes/guides.mockup-a1'
+import { Route as GuidesMockupA2RouteImport } from './routes/guides.mockup-a2'
+import { Route as GuidesMockupA3RouteImport } from './routes/guides.mockup-a3'
 import { Route as GuidesMockupBRouteImport } from './routes/guides.mockup-b'
 import { Route as GuidesMockupCRouteImport } from './routes/guides.mockup-c'
 import { Route as SolutionsIndexRouteImport } from './routes/solutions.index'
@@ -201,6 +204,21 @@ const GuidesMockupARoute = GuidesMockupARouteImport.update({
   path: '/guides/mockup-a',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GuidesMockupA1Route = GuidesMockupA1RouteImport.update({
+  id: '/guides/mockup-a1',
+  path: '/guides/mockup-a1',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GuidesMockupA2Route = GuidesMockupA2RouteImport.update({
+  id: '/guides/mockup-a2',
+  path: '/guides/mockup-a2',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GuidesMockupA3Route = GuidesMockupA3RouteImport.update({
+  id: '/guides/mockup-a3',
+  path: '/guides/mockup-a3',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const GuidesMockupBRoute = GuidesMockupBRouteImport.update({
   id: '/guides/mockup-b',
   path: '/guides/mockup-b',
@@ -299,6 +317,9 @@ export interface FileRoutesByFullPath {
   '/features/treatment-plans': typeof FeaturesTreatmentPlansRoute
   '/guides/missed-appointment-fees': typeof GuidesMissedAppointmentFeesRoute
   '/guides/mockup-a': typeof GuidesMockupARoute
+  '/guides/mockup-a1': typeof GuidesMockupA1Route
+  '/guides/mockup-a2': typeof GuidesMockupA2Route
+  '/guides/mockup-a3': typeof GuidesMockupA3Route
   '/guides/mockup-b': typeof GuidesMockupBRoute
   '/guides/mockup-c': typeof GuidesMockupCRoute
   '/solutions/bring-patients-back': typeof SolutionsBringPatientsBackRoute
@@ -343,6 +364,9 @@ export interface FileRoutesByTo {
   '/features/treatment-plans': typeof FeaturesTreatmentPlansRoute
   '/guides/missed-appointment-fees': typeof GuidesMissedAppointmentFeesRoute
   '/guides/mockup-a': typeof GuidesMockupARoute
+  '/guides/mockup-a1': typeof GuidesMockupA1Route
+  '/guides/mockup-a2': typeof GuidesMockupA2Route
+  '/guides/mockup-a3': typeof GuidesMockupA3Route
   '/guides/mockup-b': typeof GuidesMockupBRoute
   '/guides/mockup-c': typeof GuidesMockupCRoute
   '/solutions/bring-patients-back': typeof SolutionsBringPatientsBackRoute
@@ -388,6 +412,9 @@ export interface FileRoutesById {
   '/features/treatment-plans': typeof FeaturesTreatmentPlansRoute
   '/guides/missed-appointment-fees': typeof GuidesMissedAppointmentFeesRoute
   '/guides/mockup-a': typeof GuidesMockupARoute
+  '/guides/mockup-a1': typeof GuidesMockupA1Route
+  '/guides/mockup-a2': typeof GuidesMockupA2Route
+  '/guides/mockup-a3': typeof GuidesMockupA3Route
   '/guides/mockup-b': typeof GuidesMockupBRoute
   '/guides/mockup-c': typeof GuidesMockupCRoute
   '/solutions/bring-patients-back': typeof SolutionsBringPatientsBackRoute
@@ -434,6 +461,9 @@ export interface FileRouteTypes {
     | '/features/treatment-plans'
     | '/guides/missed-appointment-fees'
     | '/guides/mockup-a'
+    | '/guides/mockup-a1'
+    | '/guides/mockup-a2'
+    | '/guides/mockup-a3'
     | '/guides/mockup-b'
     | '/guides/mockup-c'
     | '/solutions/bring-patients-back'
@@ -478,6 +508,9 @@ export interface FileRouteTypes {
     | '/features/treatment-plans'
     | '/guides/missed-appointment-fees'
     | '/guides/mockup-a'
+    | '/guides/mockup-a1'
+    | '/guides/mockup-a2'
+    | '/guides/mockup-a3'
     | '/guides/mockup-b'
     | '/guides/mockup-c'
     | '/solutions/bring-patients-back'
@@ -522,6 +555,9 @@ export interface FileRouteTypes {
     | '/features/treatment-plans'
     | '/guides/missed-appointment-fees'
     | '/guides/mockup-a'
+    | '/guides/mockup-a1'
+    | '/guides/mockup-a2'
+    | '/guides/mockup-a3'
     | '/guides/mockup-b'
     | '/guides/mockup-c'
     | '/solutions/bring-patients-back'
@@ -567,6 +603,9 @@ export interface RootRouteChildren {
   FeaturesTreatmentPlansRoute: typeof FeaturesTreatmentPlansRoute
   GuidesMissedAppointmentFeesRoute: typeof GuidesMissedAppointmentFeesRoute
   GuidesMockupARoute: typeof GuidesMockupARoute
+  GuidesMockupA1Route: typeof GuidesMockupA1Route
+  GuidesMockupA2Route: typeof GuidesMockupA2Route
+  GuidesMockupA3Route: typeof GuidesMockupA3Route
   GuidesMockupBRoute: typeof GuidesMockupBRoute
   GuidesMockupCRoute: typeof GuidesMockupCRoute
   SolutionsBringPatientsBackRoute: typeof SolutionsBringPatientsBackRoute
@@ -790,6 +829,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GuidesMockupARouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/guides/mockup-a1': {
+      id: '/guides/mockup-a1'
+      path: '/guides/mockup-a1'
+      fullPath: '/guides/mockup-a1'
+      preLoaderRoute: typeof GuidesMockupA1RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/guides/mockup-a2': {
+      id: '/guides/mockup-a2'
+      path: '/guides/mockup-a2'
+      fullPath: '/guides/mockup-a2'
+      preLoaderRoute: typeof GuidesMockupA2RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/guides/mockup-a3': {
+      id: '/guides/mockup-a3'
+      path: '/guides/mockup-a3'
+      fullPath: '/guides/mockup-a3'
+      preLoaderRoute: typeof GuidesMockupA3RouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/guides/mockup-b': {
       id: '/guides/mockup-b'
       path: '/guides/mockup-b'
@@ -911,6 +971,9 @@ const rootRouteChildren: RootRouteChildren = {
   FeaturesTreatmentPlansRoute: FeaturesTreatmentPlansRoute,
   GuidesMissedAppointmentFeesRoute: GuidesMissedAppointmentFeesRoute,
   GuidesMockupARoute: GuidesMockupARoute,
+  GuidesMockupA1Route: GuidesMockupA1Route,
+  GuidesMockupA2Route: GuidesMockupA2Route,
+  GuidesMockupA3Route: GuidesMockupA3Route,
   GuidesMockupBRoute: GuidesMockupBRoute,
   GuidesMockupCRoute: GuidesMockupCRoute,
   SolutionsBringPatientsBackRoute: SolutionsBringPatientsBackRoute,

@@ -5,7 +5,13 @@ import { ClosingBand, photoSrcSet, pillButton, primaryButton } from "@/component
 import { FaqSection } from "@/components/site/templates";
 import { featurePages } from "@/components/site/featurePages";
 import { AUTHOR } from "@/components/site/schema";
-import { FEES_TITLE, FeesGuideBody, feesFaq, feesToc } from "@/components/site/guideFees";
+import {
+  FEES_TITLE,
+  FeesGuideBody,
+  GuideLook,
+  feesFaq,
+  feesToc,
+} from "@/components/site/guideFees";
 
 /*
  * MOCK-UPS ONLY (20 Nov 2026): three layouts for a guide page, for Hariss to choose from. Inspired by
@@ -468,6 +474,276 @@ export function GuideLayoutC() {
       </section>
       <FaqSection items={feesFaq} />
       <ClosingBand />
+    </PageShell>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* Option A variations (Hariss, 20 Nov: "less like AI slop"): only the  */
+/* article part changes. No pills, no pastel gradients, fewer boxes;    */
+/* dark text with blue kept for links. The parts below stay as Option A. */
+/* ------------------------------------------------------------------ */
+
+const TOPICS = TAGS.join(" · ");
+
+function Monogram({ dark = false, size = 44 }: { dark?: boolean; size?: number }) {
+  return (
+    <span
+      aria-hidden="true"
+      style={{ width: size, height: size, fontSize: size * 0.36 }}
+      className={`inline-flex flex-shrink-0 items-center justify-center rounded-md font-semibold ${dark ? "bg-[#0F172A] text-white" : "bg-[#E2E8F0] text-[#0F172A]"}`}
+    >
+      HH
+    </span>
+  );
+}
+
+function PlainCrumbs({ onDark = false }: { onDark?: boolean }) {
+  const c = onDark ? "text-[#94A3B8] hover:text-white" : "text-[#64748B] hover:text-[#0F172A]";
+  return (
+    <nav
+      aria-label="Breadcrumb"
+      className={`text-[13px] ${onDark ? "text-[#94A3B8]" : "text-[#64748B]"}`}
+    >
+      <Link to="/" className={c}>
+        Home
+      </Link>
+      {" / "}
+      <Link to="/guides" className={c}>
+        Guides
+      </Link>
+    </nav>
+  );
+}
+
+/** Text links to the DentDock pages, no boxes. */
+function ProductLinks() {
+  return (
+    <ul className="mt-3 space-y-3">
+      {RELATED.slice(0, 2).map((r) => (
+        <li key={r.to}>
+          <Link to={r.to} className="group block">
+            <span className="block text-[13px] text-[#64748B]">{r.kind}</span>
+            <span className="text-[15px] font-semibold text-[#2563EB] group-hover:underline underline-offset-4">
+              {r.title}
+              <ArrowRight className="ml-1 inline h-3.5 w-3.5 align-[-2px]" />
+            </span>
+          </Link>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+/** About the author, in the quieter style of the A variations: a rule, a monogram, two lines. */
+function PlainAboutAuthor({ dark = false }: { dark?: boolean }) {
+  return (
+    <div className="border-t border-[#E2E8F0] pt-8 flex items-start gap-5">
+      <Monogram dark={dark} size={56} />
+      <div>
+        <p className="text-[14px] text-[#64748B]">About the author</p>
+        <p className="mt-0.5 text-[20px] font-semibold text-[#0F172A]">{AUTHOR.name}</p>
+        <p className="mt-2 text-[16px] text-[#334155] leading-[1.6] max-w-xl">
+          {AUTHOR.name} is the founder of DentDock, practice software for UK private dental
+          practices.
+        </p>
+        <Link
+          to="/guides"
+          className="mt-3 inline-flex items-center gap-1.5 text-[15px] font-semibold text-[#2563EB] hover:underline underline-offset-4"
+        >
+          Read more guides <ArrowRight className="h-4 w-4" />
+        </Link>
+      </div>
+    </div>
+  );
+}
+
+function BelowArticle() {
+  return (
+    <>
+      <SeeItInDentDockBand />
+      <FaqSection items={feesFaq} />
+      <ClosingBand />
+    </>
+  );
+}
+
+/** A1: editorial. White page, topic line above the title, a plain text sidebar split by rules. */
+export function GuideLayoutA1() {
+  return (
+    <PageShell>
+      <GuideLook.Provider value="plain">
+        <article className="bg-white">
+          <header className="px-6 pt-28 lg:pt-36 pb-10">
+            <div className="mx-auto max-w-6xl">
+              <PlainCrumbs />
+              <p className="mt-8 text-[15px] font-medium text-[#2563EB]">{TOPICS}</p>
+              <div className="mt-3 max-w-4xl">
+                <H1 />
+                <p className="mt-6 text-[20px] text-[#475569] leading-[1.55] max-w-3xl">{LEAD}</p>
+              </div>
+            </div>
+          </header>
+          <div className="px-6 pb-16 md:pb-24">
+            <div className="mx-auto max-w-6xl border-t border-[#E2E8F0] pt-10 grid grid-cols-1 lg:grid-cols-[240px_1fr] gap-10 lg:gap-16">
+              <aside className="lg:sticky lg:top-28 self-start text-[14px]">
+                <p className="text-[#64748B]">Written by</p>
+                <Link
+                  to="/about"
+                  className="mt-1 block text-[16px] font-semibold text-[#0F172A] hover:text-[#2563EB]"
+                >
+                  {AUTHOR.name}
+                </Link>
+                <p className="text-[#64748B]">{AUTHOR.jobTitle}</p>
+                <p className="mt-4 text-[#64748B]">
+                  Updated {UPDATED}
+                  <br />
+                  {MINUTES} min read
+                </p>
+                <div className="mt-6 border-t border-[#E2E8F0] pt-6">
+                  <p className="text-[14px] font-semibold text-[#0F172A]">In DentDock</p>
+                  <ProductLinks />
+                </div>
+              </aside>
+              <div className="max-w-3xl">
+                <FeesGuideBody />
+                <div className="mt-14">
+                  <PlainAboutAuthor />
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+      </GuideLook.Provider>
+      <BelowArticle />
+    </PageShell>
+  );
+}
+
+/** A2: one bordered sidebar card (author, topics, DentDock pages) and an intro with a rule. */
+export function GuideLayoutA2() {
+  return (
+    <PageShell>
+      <GuideLook.Provider value="plain">
+        <article className="bg-white">
+          <header className="px-6 pt-28 lg:pt-36 pb-12 border-b border-[#E2E8F0] bg-[#F8FAFC]">
+            <div className="mx-auto max-w-6xl">
+              <PlainCrumbs />
+              <div className="mt-6 max-w-4xl">
+                <H1 />
+                <p className="mt-5 max-w-3xl text-[20px] text-[#475569] leading-[1.55]">{LEAD}</p>
+              </div>
+              <div className="mt-6 flex items-center gap-3 text-[14px] text-[#64748B]">
+                <Monogram dark size={36} />
+                <span>
+                  By{" "}
+                  <Link to="/about" className="font-semibold text-[#0F172A] hover:text-[#2563EB]">
+                    {AUTHOR.name}
+                  </Link>
+                  {" · "}Updated {UPDATED} · {MINUTES} min read
+                </span>
+              </div>
+            </div>
+          </header>
+          <div className="px-6 py-12 md:pb-24">
+            <div className="mx-auto max-w-6xl grid grid-cols-1 lg:grid-cols-[260px_1fr] gap-10 lg:gap-16">
+              <aside className="lg:sticky lg:top-28 self-start rounded-lg border border-[#E2E8F0] bg-white text-[14px]">
+                <div className="flex items-center gap-3 p-5">
+                  <Monogram dark />
+                  <div>
+                    <p className="font-semibold text-[#0F172A]">{AUTHOR.name}</p>
+                    <p className="text-[#64748B]">{AUTHOR.jobTitle}</p>
+                  </div>
+                </div>
+                <div className="border-t border-[#E2E8F0] p-5">
+                  <p className="text-[#64748B]">Topics</p>
+                  <p className="mt-1 font-medium text-[#0F172A]">{TOPICS}</p>
+                </div>
+                <div className="border-t border-[#E2E8F0] p-5">
+                  <p className="font-semibold text-[#0F172A]">Do this in DentDock</p>
+                  <ProductLinks />
+                </div>
+              </aside>
+              <div className="max-w-3xl">
+                <FeesGuideBody />
+                <div className="mt-14">
+                  <PlainAboutAuthor dark />
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+      </GuideLook.Provider>
+      <BelowArticle />
+    </PageShell>
+  );
+}
+
+/** A3: dark navy header like the footer, then a quiet sidebar with ruled rows. */
+export function GuideLayoutA3() {
+  return (
+    <PageShell>
+      <GuideLook.Provider value="plain">
+        <article className="bg-white">
+          <header className="px-4 sm:px-6 pt-24 lg:pt-28">
+            <div className="mx-auto max-w-6xl rounded-[24px] bg-[#0F162B] px-6 py-10 md:px-12 md:py-14">
+              <PlainCrumbs onDark />
+              <p className="mt-8 text-[15px] font-medium text-[#93C5FD]">{TOPICS}</p>
+              <h1
+                className="mt-3 max-w-4xl font-semibold text-white text-[36px] leading-[1.15] md:text-[50px]"
+                style={{ letterSpacing: "-0.03em" }}
+              >
+                {FEES_TITLE}
+              </h1>
+              <p className="mt-6 max-w-3xl text-[19px] text-[#CBD5E1] leading-[1.55]">{LEAD}</p>
+              <div className="mt-8 flex items-center gap-3 text-[14px] text-[#94A3B8]">
+                <Monogram size={36} />
+                <span>
+                  <Link
+                    to="/about"
+                    className="font-semibold text-white hover:underline underline-offset-4"
+                  >
+                    {AUTHOR.name}
+                  </Link>
+                  , {AUTHOR.jobTitle} · Updated {UPDATED} · {MINUTES} min read
+                </span>
+              </div>
+            </div>
+          </header>
+          <div className="px-6 py-12 md:pb-24">
+            <div className="mx-auto max-w-6xl grid grid-cols-1 lg:grid-cols-[240px_1fr] gap-10 lg:gap-16">
+              <aside className="lg:sticky lg:top-28 self-start">
+                <p className="text-[14px] font-semibold text-[#0F172A]">Do this in DentDock</p>
+                <ul className="mt-3 border-t border-[#E2E8F0]">
+                  {RELATED.map((r) => (
+                    <li key={r.to} className="border-b border-[#E2E8F0]">
+                      <Link
+                        to={r.to}
+                        className="group flex items-center justify-between gap-3 py-3.5"
+                      >
+                        <span>
+                          <span className="block text-[12px] text-[#64748B]">{r.kind}</span>
+                          <span className="block text-[15px] font-medium text-[#0F172A] group-hover:text-[#2563EB]">
+                            {r.title}
+                          </span>
+                        </span>
+                        <ArrowRight className="h-4 w-4 flex-shrink-0 text-[#94A3B8] group-hover:text-[#2563EB]" />
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </aside>
+              <div className="max-w-3xl">
+                <FeesGuideBody />
+                <div className="mt-14">
+                  <PlainAboutAuthor dark />
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+      </GuideLook.Provider>
+      <BelowArticle />
     </PageShell>
   );
 }
