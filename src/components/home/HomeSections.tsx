@@ -15,10 +15,12 @@ import {
 import {
   Bullets,
   FloatCard,
+  PANEL_SIZES,
   PhotoPanel,
   Reveal,
   WHATSAPP,
   panelOnTint,
+  photoSrcSet,
   pillButton,
   rowHeading,
 } from "@/components/site/ui";
@@ -385,6 +387,8 @@ export function SupportRow() {
           <div className={`relative ${panelOnTint} p-6 sm:p-8`}>
             <img
               src="/images/home/support-dev.webp"
+              srcSet={photoSrcSet("/images/home/support-dev.webp")}
+              sizes={PANEL_SIZES}
               alt="Developers working at their screens in a bright office"
               width={1400}
               height={933}
@@ -466,6 +470,8 @@ export function SwitchRow() {
           <div className={`relative ${panelOnTint} p-6 sm:p-8`}>
             <img
               src="/images/home/switching-laptop.webp"
+              srcSet={photoSrcSet("/images/home/switching-laptop.webp")}
+              sizes={PANEL_SIZES}
               alt="Woman smiling while working on a laptop"
               width={1400}
               height={933}

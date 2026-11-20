@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+# The waitlist endpoint is not a page.
+Disallow: /api/
 
 Sitemap: https://dentdock.co.uk/sitemap.xml

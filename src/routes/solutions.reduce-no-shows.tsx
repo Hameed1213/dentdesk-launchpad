@@ -186,7 +186,7 @@ export const Route = createFileRoute("/solutions/reduce-no-shows")({
       path: PATH,
       title: "How to reduce dental no-shows and FTAs | DentDock",
       description:
-        "Reminders before every appointment, an easy way for patients to cancel, and a waitlist to refill the gap. Work out what no-shows cost your practice. £49 a month.",
+        "Reminders before every appointment, an easy way for patients to cancel, and a waitlist to refill the gap. See what no-shows cost your practice.",
       crumbs: [
         { name: "Solutions", path: "/solutions" },
         { name: "Reduce no-shows", path: PATH },

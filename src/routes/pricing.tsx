@@ -131,7 +131,7 @@ const sectionTitle =
 function Hero() {
   return (
     <section className="bg-gradient-to-b from-[#EAF1FF] via-[#F3F7FF] to-white pt-28 lg:pt-36 pb-10 px-6">
-      <Reveal className="mx-auto max-w-3xl text-center">
+      <div className="mx-auto max-w-3xl text-center">
         <nav aria-label="Breadcrumb" className="mb-5 text-[13px] text-[#64748B]">
           <Link to="/" className="hover:text-[#2563EB]">
             Home
@@ -151,7 +151,7 @@ function Hero() {
           One price for your whole practice, billed monthly. No setup fee, no contract, and no VAT
           added.
         </p>
-      </Reveal>
+      </div>
     </section>
   );
 }

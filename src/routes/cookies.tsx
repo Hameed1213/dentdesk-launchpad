@@ -1,28 +1,19 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { templateHead } from "@/components/site/templates";
 import LegalLayout, { LegalSection } from "@/components/legal/LegalLayout";
 import { openCookieSettings } from "@/lib/cookieConsent";
 
 export const Route = createFileRoute("/cookies")({
   component: CookiesPage,
-  head: () => ({
-    meta: [
-      { title: "Cookie Policy | DentDock" },
-      {
-        name: "description",
-        content:
-          "How DentDock uses cookies: essential cookies, optional analytics on dentdock.co.uk, and booking page tracking practices can add, each only with your consent.",
-      },
-      { property: "og:title", content: "Cookie Policy | DentDock" },
-      {
-        property: "og:description",
-        content:
-          "Essential cookies, optional analytics on dentdock.co.uk, and the tracking practices can add to their booking pages, each only with your consent.",
-      },
-    ],
-    links: [
-      { rel: "canonical", href: "https://dentdock.co.uk/cookies" },
-    ],
-  }),
+  head: () =>
+    templateHead({
+      path: "/cookies",
+      title: "Cookie Policy | DentDock",
+      description:
+        "How DentDock uses cookies: essential cookies, optional analytics on dentdock.co.uk, and booking page tracking practices can add, each only with your consent.",
+      crumbs: [{ name: "Cookie Policy", path: "/cookies" }],
+      faq: [],
+    }),
 });
 
 function CookiesPage() {
@@ -30,7 +21,8 @@ function CookiesPage() {
     <LegalLayout title="Cookie Policy" updated="9 November 2026">
       <LegalSection heading="What are cookies">
         <p>
-          Cookies are small text files stored on your device when you visit a website. They help us provide a working, secure experience.
+          Cookies are small text files stored on your device when you visit a website. They help us
+          provide a working, secure experience.
         </p>
       </LegalSection>
 
@@ -42,74 +34,142 @@ function CookiesPage() {
         <p>These are required for the platform to work. They cannot be disabled.</p>
         <ul className="list-disc pl-5 space-y-1.5">
           <li>
-            <strong className="text-[#0F172A] font-semibold">Sign-in:</strong> keeps you signed in to the practice app or patient portal. Stored in your browser's local storage by Supabase Auth, and removed when you sign out.
+            <strong className="text-[#0F172A] font-semibold">Sign-in:</strong> keeps you signed in
+            to the practice app or patient portal. Stored in your browser's local storage by
+            Supabase Auth, and removed when you sign out.
           </li>
           <li>
-            <strong className="text-[#0F172A] font-semibold">Onboarding progress:</strong> stores your setup wizard progress locally so you can resume if you close the browser. Stored in localStorage, not a cookie.
+            <strong className="text-[#0F172A] font-semibold">Onboarding progress:</strong> stores
+            your setup wizard progress locally so you can resume if you close the browser. Stored in
+            localStorage, not a cookie.
           </li>
           <li>
-            <strong className="text-[#0F172A] font-semibold">Practice app preferences:</strong> screen choices in the practice app, such as the calendar view, filters and the last clinician or treatment picked. Stored in localStorage, not a cookie.
+            <strong className="text-[#0F172A] font-semibold">Practice app preferences:</strong>{" "}
+            screen choices in the practice app, such as the calendar view, filters and the last
+            clinician or treatment picked. Stored in localStorage, not a cookie.
           </li>
           <li>
-            <strong className="text-[#0F172A] font-semibold">Booking page cookie choice:</strong> remembers whether a patient accepted or rejected cookies on a practice's booking page (<strong className="text-[#0F172A] font-semibold">dd_tracking_consent_v1</strong>). Stored in localStorage, not a cookie, and only on booking pages where the practice has added its own analytics or advertising account.
+            <strong className="text-[#0F172A] font-semibold">Booking page cookie choice:</strong>{" "}
+            remembers whether a patient accepted or rejected cookies on a practice's booking page (
+            <strong className="text-[#0F172A] font-semibold">dd_tracking_consent_v1</strong>).
+            Stored in localStorage, not a cookie, and only on booking pages where the practice has
+            added its own analytics or advertising account.
           </li>
           <li>
-            <strong className="text-[#0F172A] font-semibold">Deposit payment:</strong> while a patient pays a deposit during online booking, a reference to their held booking is kept so that reloading the page does not lose it (<strong className="text-[#0F172A] font-semibold">dentdock_hold_</strong> followed by the practice's address). Stored in localStorage, not a cookie, and removed when the booking is finished or the hold ends.
+            <strong className="text-[#0F172A] font-semibold">Deposit payment:</strong> while a
+            patient pays a deposit during online booking, a reference to their held booking is kept
+            so that reloading the page does not lose it (
+            <strong className="text-[#0F172A] font-semibold">dentdock_hold_</strong> followed by the
+            practice's address). Stored in localStorage, not a cookie, and removed when the booking
+            is finished or the hold ends.
           </li>
           <li>
-            <strong className="text-[#0F172A] font-semibold">Patient portal to booking:</strong> when a signed-in patient chooses to book from the patient portal, their name, contact details and date of birth are passed to the booking page so they do not have to type them again. Stored in the browser tab's session storage and removed as soon as the booking page has read them.
+            <strong className="text-[#0F172A] font-semibold">Patient portal to booking:</strong>{" "}
+            when a signed-in patient chooses to book from the patient portal, their name, contact
+            details and date of birth are passed to the booking page so they do not have to type
+            them again. Stored in the browser tab's session storage and removed as soon as the
+            booking page has read them.
           </li>
           <li>
-            <strong className="text-[#0F172A] font-semibold">Booking progress:</strong> while a patient books online, the treatment, clinician and day they have chosen, and the name, contact details, date of birth, gender and postcode they have typed, are kept for 30 minutes after the last change so that reloading the page does not lose them (<strong className="text-[#0F172A] font-semibold">dentdock_booking_</strong> followed by the practice's address). Health form answers, the consent ticks and the chosen time are not kept. Stored in the browser tab's session storage, not a cookie, and removed when the booking is made or the tab is closed, or the next time the page loads after the 30 minutes.
+            <strong className="text-[#0F172A] font-semibold">Booking progress:</strong> while a
+            patient books online, the treatment, clinician and day they have chosen, and the name,
+            contact details, date of birth, gender and postcode they have typed, are kept for 30
+            minutes after the last change so that reloading the page does not lose them (
+            <strong className="text-[#0F172A] font-semibold">dentdock_booking_</strong> followed by
+            the practice's address). Health form answers, the consent ticks and the chosen time are
+            not kept. Stored in the browser tab's session storage, not a cookie, and removed when
+            the booking is made or the tab is closed, or the next time the page loads after the 30
+            minutes.
           </li>
         </ul>
       </LegalSection>
 
       <LegalSection heading="Practices' online booking pages">
         <p>
-          A practice can choose to measure its own online booking page with its own Google Analytics, Google Ads or Meta (Facebook and Instagram) account, for example to see which of its adverts lead to bookings. If it does, the booking page asks the patient first, and nothing is loaded unless they click Accept.
+          A practice can choose to measure its own online booking page with its own Google
+          Analytics, Google Ads or Meta (Facebook and Instagram) account, for example to see which
+          of its adverts lead to bookings. If it does, the booking page asks the patient first, and
+          nothing is loaded unless they click Accept.
         </p>
         <p>
-          After Accept, these tools set cookies on that practice's booking page only: Google (<strong className="text-[#0F172A] font-semibold">_ga</strong>, <strong className="text-[#0F172A] font-semibold">_ga_</strong> followed by the practice's ID, and <strong className="text-[#0F172A] font-semibold">_gcl_au</strong>, lasting up to two years) and Meta (<strong className="text-[#0F172A] font-semibold">_fbp</strong> and <strong className="text-[#0F172A] font-semibold">_fbc</strong>, lasting 90 days). They are told which pages are viewed and the steps taken, for example that an appointment was booked. They are never sent a patient's name, contact details, date of birth, health information or form answers. The practice decides to use them and names them in its privacy notice.
+          After Accept, these tools set cookies on that practice's booking page only: Google (
+          <strong className="text-[#0F172A] font-semibold">_ga</strong>,{" "}
+          <strong className="text-[#0F172A] font-semibold">_ga_</strong> followed by the practice's
+          ID, and <strong className="text-[#0F172A] font-semibold">_gcl_au</strong>, lasting up to
+          two years) and Meta (<strong className="text-[#0F172A] font-semibold">_fbp</strong> and{" "}
+          <strong className="text-[#0F172A] font-semibold">_fbc</strong>, lasting 90 days). They are
+          told which pages are viewed and the steps taken, for example that an appointment was
+          booked. They are never sent a patient's name, contact details, date of birth, health
+          information or form answers. The practice decides to use them and names them in its
+          privacy notice.
         </p>
         <p>
-          Patients can change their choice at any time with "Cookie settings" at the bottom of the booking page.
+          Patients can change their choice at any time with "Cookie settings" at the bottom of the
+          booking page.
         </p>
         <p>
-          Separately, for every practice, DentDock counts how many people reach, finish and book after a treatment's health form during online booking. These are daily totals with no details about anyone, and they use no cookies and store nothing on the device, so they do not depend on the cookie choice.
+          Separately, for every practice, DentDock counts how many people reach, finish and book
+          after a treatment's health form during online booking. These are daily totals with no
+          details about anyone, and they use no cookies and store nothing on the device, so they do
+          not depend on the cookie choice.
         </p>
         <p>
-          On dentdock.co.uk itself, DentDock also counts daily totals of visits and page views (by page, where visitors came from, device type and country). These contain nothing about any one person, use no cookies and store nothing on your device, so they do not depend on your cookie choice either. When you join the waitlist, where you came from is kept with your sign-up, as our Privacy Policy explains.
+          On dentdock.co.uk itself, DentDock also counts daily totals of visits and page views (by
+          page, where visitors came from, device type and country). These contain nothing about any
+          one person, use no cookies and store nothing on your device, so they do not depend on your
+          cookie choice either. When you join the waitlist, where you came from is kept with your
+          sign-up, as our Privacy Policy explains.
         </p>
       </LegalSection>
 
       <LegalSection heading="Analytics cookies (only if you accept)">
         <p>
-          On dentdock.co.uk we use Google Analytics to see how many people visit and which pages they use. It sets the cookies <strong className="text-[#0F172A] font-semibold">_ga</strong> and <strong className="text-[#0F172A] font-semibold">_ga_RVEYZHHMEC</strong>, which last up to two years. They are only set if you click Accept on the cookie banner, and are removed if you change your mind. Google provides this service for us.
+          On dentdock.co.uk we use Google Analytics to see how many people visit and which pages
+          they use. It sets the cookies{" "}
+          <strong className="text-[#0F172A] font-semibold">_ga</strong> and{" "}
+          <strong className="text-[#0F172A] font-semibold">_ga_RVEYZHHMEC</strong>, which last up to
+          two years. They are only set if you click Accept on the cookie banner, and are removed if
+          you change your mind. Google provides this service for us.
         </p>
         <p>
-          We do not use advertising cookies or social media tracking pixels on dentdock.co.uk. The practice app does not use analytics cookies.
+          We do not use advertising cookies or social media tracking pixels on dentdock.co.uk. The
+          practice app does not use analytics cookies.
         </p>
         <p>
-          <button type="button" onClick={openCookieSettings} className="text-[#2563EB] hover:underline">Change your cookie choice</button>
+          <button
+            type="button"
+            onClick={openCookieSettings}
+            className="text-[#2563EB] hover:underline"
+          >
+            Change your cookie choice
+          </button>
         </p>
       </LegalSection>
 
       <LegalSection heading="Payment cookies">
         <p>
-          If you connect Stripe during onboarding, Stripe may set its own cookies to process payments securely. Stripe's card form loads only on the page where a patient pays a deposit, and Stripe may set its own cookies there to process the payment securely and prevent fraud. This is needed to take the payment, so it does not depend on the cookie choice. These are governed by Stripe's own cookie policy at stripe.com.
+          If you connect Stripe during onboarding, Stripe may set its own cookies to process
+          payments securely. Stripe's card form loads only on the page where a patient pays a
+          deposit, and Stripe may set its own cookies there to process the payment securely and
+          prevent fraud. This is needed to take the payment, so it does not depend on the cookie
+          choice. These are governed by Stripe's own cookie policy at stripe.com.
         </p>
       </LegalSection>
 
       <LegalSection heading="Marketing site (dentdock.co.uk)">
         <p>
-          Apart from Google Analytics (only if you accept), the website sets one cookie of its own provider, Cloudflare (<strong className="text-[#0F172A] font-semibold">__cf_bm</strong>), which protects the site from automated abuse and lasts 30 minutes. Your details submitted via the waitlist form are stored in our database only and are not shared with any advertising platform.
+          Apart from Google Analytics (only if you accept), the website sets one cookie of its own
+          provider, Cloudflare (<strong className="text-[#0F172A] font-semibold">__cf_bm</strong>),
+          which protects the site from automated abuse and lasts 30 minutes. Your details submitted
+          via the waitlist form are stored in our database only and are not shared with any
+          advertising platform.
         </p>
       </LegalSection>
 
       <LegalSection heading="Managing cookies">
         <p>
-          You can control cookies via your browser settings. Disabling essential cookies will prevent the platform from functioning correctly.
+          You can control cookies via your browser settings. Disabling essential cookies will
+          prevent the platform from functioning correctly.
         </p>
         <ul className="list-disc pl-5 space-y-1.5">
           <li>For Chrome: Settings → Privacy → Cookies</li>
@@ -120,14 +180,13 @@ function CookiesPage() {
 
       <LegalSection heading="Changes to this policy">
         <p>
-          We may update this policy as we add new features. Changes will be posted here with an updated date.
+          We may update this policy as we add new features. Changes will be posted here with an
+          updated date.
         </p>
       </LegalSection>
 
       <LegalSection heading="Contact">
-        <p>
-          If you have questions about our use of cookies, contact us at hello@dentdock.co.uk.
-        </p>
+        <p>If you have questions about our use of cookies, contact us at hello@dentdock.co.uk.</p>
       </LegalSection>
     </LegalLayout>
   );

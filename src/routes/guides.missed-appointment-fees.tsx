@@ -2,8 +2,9 @@ import type { ReactNode } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import PageShell from "@/components/site/PageShell";
-import { ClosingBand, Reveal, primaryButton } from "@/components/site/ui";
+import { ClosingBand, primaryButton } from "@/components/site/ui";
 import { FaqSection, templateHead, type Faq } from "@/components/site/templates";
+import { AUTHOR, ORG_ID, SITE, authorSchema } from "@/components/site/schema";
 
 /*
  * Guide: missed-appointment and late-cancellation fees in UK private dentistry.
@@ -65,10 +66,11 @@ const sources = [
 
 export const Route = createFileRoute("/guides/missed-appointment-fees")({
   component: GuidePage,
-  head: () => {
-    const head = templateHead({
+  head: () =>
+    templateHead({
       path: PATH,
-      title: TITLE,
+      // Under 60 characters so the whole title shows in search results.
+      title: "Can a dentist charge for a missed appointment? | DentDock",
       description:
         "Missed-appointment and late-cancellation fees in UK private dentistry: what's allowed, NHS rules, notice periods, when to waive a fee, and a policy template.",
       crumbs: [
@@ -76,27 +78,24 @@ export const Route = createFileRoute("/guides/missed-appointment-fees")({
         { name: "Missed appointment fees", path: PATH },
       ],
       faq,
-    });
-    return {
-      ...head,
+      ogType: "article",
       scripts: [
-        ...head.scripts,
         {
-          type: "application/ld+json",
-          children: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Article",
-            headline: TITLE,
-            dateModified: "2026-11-12",
-            datePublished: "2026-11-12",
-            author: { "@type": "Organization", name: "DentDock", url: "https://dentdock.co.uk" },
-            publisher: { "@type": "Organization", name: "DentDock", url: "https://dentdock.co.uk" },
-            mainEntityOfPage: `https://dentdock.co.uk${PATH}`,
-          }),
+          "@context": "https://schema.org",
+          "@type": "Article",
+          headline: TITLE,
+          description:
+            "Missed-appointment and late-cancellation fees in UK private dentistry: what's allowed, NHS rules, notice periods, when to waive a fee, and a policy template.",
+          image: `${SITE}/og/missed-appointment-fees.jpg`,
+          inLanguage: "en-GB",
+          datePublished: "2026-11-12",
+          dateModified: "2026-11-12",
+          author: authorSchema,
+          publisher: { "@id": ORG_ID },
+          mainEntityOfPage: `${SITE}${PATH}`,
         },
       ],
-    };
-  },
+    }),
 });
 
 function H2({ id, children }: { id?: string; children: ReactNode }) {
@@ -148,7 +147,7 @@ function GuidePage() {
     <PageShell>
       <article>
         <header className="bg-gradient-to-b from-[#EAF1FF] via-[#F3F7FF] to-white pt-28 lg:pt-36 pb-10 px-6">
-          <Reveal className="mx-auto max-w-3xl">
+          <div className="mx-auto max-w-3xl">
             <nav aria-label="Breadcrumb" className="text-[13px] text-[#64748B]">
               <Link to="/" className="hover:text-[#2563EB]">
                 Home
@@ -165,16 +164,20 @@ function GuidePage() {
               {TITLE}
             </h1>
             <p className="mt-5 text-[14px] text-[#64748B]">
-              By the DentDock team · Updated 12 November 2026 · 7 min read
+              By{" "}
+              <Link to="/about" className="font-medium text-[#334155] hover:text-[#2563EB]">
+                {AUTHOR.name}
+              </Link>
+              , {AUTHOR.jobTitle} · Updated 12 November 2026 · 7 min read
             </p>
-          </Reveal>
+          </div>
         </header>
 
         <div className="bg-white px-6 pb-16 md:pb-24">
           <div className="mx-auto max-w-3xl">
-            <Reveal>
+            <div>
               <div className="rounded-3xl border border-[#BFDBFE] bg-[#F5F8FF] p-6 md:p-8">
-                <p className="text-[13px] font-semibold uppercase tracking-[0.12em] text-[#2563EB]">
+                <p className="text-[16px] font-semibold text-[#2563EB]">
                   The short answer
                 </p>
                 <p className="mt-3 text-[18px] text-[#0F172A] leading-[1.65]">
@@ -185,7 +188,7 @@ function GuidePage() {
                   genuine reason.
                 </p>
               </div>
-            </Reveal>
+            </div>
 
             <H2>When can a private practice charge?</H2>
             <P>
@@ -272,7 +275,7 @@ function GuidePage() {
               Copy this, change the parts in brackets, and check it with your indemnity provider
               before you use it.
             </P>
-            <Reveal>
+            <div>
               <div className="mt-6 rounded-3xl border border-[#E5EDFB] bg-[#F8FAFC] p-6 md:p-8 text-[16px] text-[#0F172A] leading-[1.75] space-y-4">
                 <p className="font-semibold">Cancellation and missed appointment policy</p>
                 <p>
@@ -295,7 +298,7 @@ function GuidePage() {
                 </p>
                 <p>This policy applies to private appointments only.</p>
               </div>
-            </Reveal>
+            </div>
 
             <H2>How DentDock helps</H2>
             <P>
