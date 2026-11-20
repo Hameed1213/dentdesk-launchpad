@@ -142,14 +142,14 @@ const miniChart: [string, ToothMark | undefined][] = [
   ["1", { crown: true }],
 ];
 
-// Photo: Unsplash z8BIWPwV3zo (free licence).
+// Photo: Unsplash gNz0c0fRsd0 (free licence), chosen by Hariss.
 function ClinicalVisual() {
   return (
     <PhotoPanel
       src="/images/home/chart-row.webp"
-      alt="Dentist in a blue cap and mask adjusting the light over a patient in the chair"
+      alt="Dentist wearing loupes treating a patient, with a dental nurse beside him"
       height={933}
-      position="object-[55%_35%]"
+      position="object-[50%_30%]"
     >
       <FloatCard className="absolute left-2 sm:left-3 lg:-left-6 top-4 sm:top-6 lg:top-10 w-[220px] p-4">
         <p className="text-[13px] font-semibold text-[#0F172A]">Chart · upper right</p>
