@@ -15,6 +15,7 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CookiesRouteImport } from './routes/cookies'
 import { Route as DpaRouteImport } from './routes/dpa'
 import { Route as FaqRouteImport } from './routes/faq'
+import { Route as MockupHomeGuidesRouteImport } from './routes/mockup-home-guides'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as TermsRouteImport } from './routes/terms'
@@ -77,6 +78,11 @@ const DpaRoute = DpaRouteImport.update({
 const FaqRoute = FaqRouteImport.update({
   id: '/faq',
   path: '/faq',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MockupHomeGuidesRoute = MockupHomeGuidesRouteImport.update({
+  id: '/mockup-home-guides',
+  path: '/mockup-home-guides',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PricingRoute = PricingRouteImport.update({
@@ -261,6 +267,7 @@ export interface FileRoutesByFullPath {
   '/cookies': typeof CookiesRoute
   '/dpa': typeof DpaRoute
   '/faq': typeof FaqRoute
+  '/mockup-home-guides': typeof MockupHomeGuidesRoute
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
   '/terms': typeof TermsRoute
@@ -302,6 +309,7 @@ export interface FileRoutesByTo {
   '/cookies': typeof CookiesRoute
   '/dpa': typeof DpaRoute
   '/faq': typeof FaqRoute
+  '/mockup-home-guides': typeof MockupHomeGuidesRoute
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
   '/terms': typeof TermsRoute
@@ -344,6 +352,7 @@ export interface FileRoutesById {
   '/cookies': typeof CookiesRoute
   '/dpa': typeof DpaRoute
   '/faq': typeof FaqRoute
+  '/mockup-home-guides': typeof MockupHomeGuidesRoute
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
   '/terms': typeof TermsRoute
@@ -387,6 +396,7 @@ export interface FileRouteTypes {
     | '/cookies'
     | '/dpa'
     | '/faq'
+    | '/mockup-home-guides'
     | '/pricing'
     | '/privacy'
     | '/terms'
@@ -428,6 +438,7 @@ export interface FileRouteTypes {
     | '/cookies'
     | '/dpa'
     | '/faq'
+    | '/mockup-home-guides'
     | '/pricing'
     | '/privacy'
     | '/terms'
@@ -469,6 +480,7 @@ export interface FileRouteTypes {
     | '/cookies'
     | '/dpa'
     | '/faq'
+    | '/mockup-home-guides'
     | '/pricing'
     | '/privacy'
     | '/terms'
@@ -511,6 +523,7 @@ export interface RootRouteChildren {
   CookiesRoute: typeof CookiesRoute
   DpaRoute: typeof DpaRoute
   FaqRoute: typeof FaqRoute
+  MockupHomeGuidesRoute: typeof MockupHomeGuidesRoute
   PricingRoute: typeof PricingRoute
   PrivacyRoute: typeof PrivacyRoute
   TermsRoute: typeof TermsRoute
@@ -588,6 +601,13 @@ declare module '@tanstack/react-router' {
       path: '/faq'
       fullPath: '/faq'
       preLoaderRoute: typeof FaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mockup-home-guides': {
+      id: '/mockup-home-guides'
+      path: '/mockup-home-guides'
+      fullPath: '/mockup-home-guides'
+      preLoaderRoute: typeof MockupHomeGuidesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/pricing': {
@@ -831,6 +851,7 @@ const rootRouteChildren: RootRouteChildren = {
   CookiesRoute: CookiesRoute,
   DpaRoute: DpaRoute,
   FaqRoute: FaqRoute,
+  MockupHomeGuidesRoute: MockupHomeGuidesRoute,
   PricingRoute: PricingRoute,
   PrivacyRoute: PrivacyRoute,
   TermsRoute: TermsRoute,
