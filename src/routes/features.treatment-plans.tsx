@@ -3,7 +3,7 @@ import { PhotoPanel } from "@/components/site/ui";
 import { PlatformPage, templateHead, type PlatformContent } from "@/components/site/templates";
 import { PillCard } from "@/components/site/cards";
 import {
-  AcceptOnlinePhone,
+  AcceptOnlineScreen,
   BookFromPlanScreen,
   IssueScreen,
   PlanBuilderScreen,
@@ -31,7 +31,7 @@ import { othersFor } from "@/components/site/featurePages";
  * NOT claimed: payment links or finance for plans, PDF files, booking a whole plan online, drawn
  * signatures online, NHS forms (FP17DC), plan templates, "When suits you" (in progress).
  * Wording: the dentist recommends, never the software; accepting is not consent to treatment.
- * Photo (Unsplash, free licence): Bg81yWKZlMg.
+ * Photo (Unsplash, free licence): EyOml1yugrM.
  */
 
 const PATH = "/features/treatment-plans";
@@ -49,8 +49,8 @@ const content: PlatformContent = {
     visual: (
       <PhotoPanel
         src="/images/pages/plan-consult.webp"
-        alt="Dentist talking a smiling patient through her treatment in the dental chair"
-        height={1050}
+        alt="Dentist and dental nurse talking with a smiling patient in the dental chair"
+        height={935}
         position="object-[45%_40%]"
       >
         <PillCard
@@ -90,7 +90,7 @@ const content: PlatformContent = {
         "A copy of what they accepted by email",
         "Or they ask you to call them back",
       ],
-      visual: <AcceptOnlinePhone />,
+      visual: <AcceptOnlineScreen />,
     },
     {
       title: "Book and finish from the plan",

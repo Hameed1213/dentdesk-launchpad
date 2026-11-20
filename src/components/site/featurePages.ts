@@ -71,7 +71,7 @@ export const featurePages = {
     to: "/features/treatment-plans",
     image: "/images/pages/plan-consult.webp",
     position: "object-[45%_40%]",
-    alt: "Dentist talking a smiling patient through her treatment in the dental chair",
+    alt: "Dentist and dental nurse talking with a smiling patient in the dental chair",
   },
   switching: {
     title: "Switching to DentDock",
