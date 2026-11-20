@@ -25,6 +25,15 @@ export type GuideMeta = {
   handles: string;
   /** The DentDock pages this guide is about. The first two show in the sidebar; all show below. */
   product: GuideProductLink[];
+  /** Card photo on the /guides hub (public/images, with -640/-960 copies). */
+  image: string;
+  imageAlt: string;
+  /** What's inside, for the hub card (short phrases). */
+  inside: string[];
+  /** The guide's short answer, for the hub card teaser. */
+  shortAnswer: string;
+  /** Number of primary sources linked in the guide. */
+  sources: number;
 };
 
 export const guides: GuideMeta[] = [
@@ -39,6 +48,17 @@ export const guides: GuideMeta[] = [
     topics: ["Cancellations and fees", "Private practice"],
     lead: "Deposits and late-cancellation fees in UK private dentistry: what's allowed, how to tell patients, when to waive a fee, and a policy template you can adapt.",
     handles: "cancellations and fees",
+    image: "/images/solutions/deposits.webp",
+    imageAlt: "Patient paying by card on a card reader",
+    inside: [
+      "The short answer",
+      "What the NHS rules mean for mixed practices",
+      "Notice periods and fair fees",
+      "A cancellation policy you can copy",
+    ],
+    shortAnswer:
+      "Yes, as long as the fee is fair and patients agreed to your policy before they booked.",
+    sources: 5,
     product: [
       {
         kind: "Solution",
