@@ -29,6 +29,7 @@ DentDock helps UK private dental practices run their day-to-day: patients book o
 - [Private practices](https://dentdock.co.uk/solutions/private-practices): DentDock for UK private dental practices.
 - [Guides](https://dentdock.co.uk/guides): Practical guides for UK private dental practices.
 - [Missed appointment fees](https://dentdock.co.uk/guides/missed-appointment-fees): Can a private dentist charge for a missed appointment? Rules, NHS position, policy template.
+- [Reminder texts and consent](https://dentdock.co.uk/guides/reminder-texts-pecr): Can a dental practice text patients without consent? Reminders, recalls and marketing under PECR and UK GDPR.
 - [Free tools](https://dentdock.co.uk/tools): No-show cost and software spend calculators.
 - [FAQs](https://dentdock.co.uk/faq): Pricing, switching, patients and data questions.
 - [About](https://dentdock.co.uk/about): The company behind DentDock, what it stands for and what it does and doesn't do.

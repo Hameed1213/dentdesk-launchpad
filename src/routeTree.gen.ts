@@ -37,6 +37,7 @@ import { Route as FeaturesSwitchingRouteImport } from './routes/features.switchi
 import { Route as FeaturesTreatmentPlansRouteImport } from './routes/features.treatment-plans'
 import { Route as GuidesIndexRouteImport } from './routes/guides.index'
 import { Route as GuidesMissedAppointmentFeesRouteImport } from './routes/guides.missed-appointment-fees'
+import { Route as GuidesReminderTextsPecrRouteImport } from './routes/guides.reminder-texts-pecr'
 import { Route as SolutionsIndexRouteImport } from './routes/solutions.index'
 import { Route as SolutionsBringPatientsBackRouteImport } from './routes/solutions.bring-patients-back'
 import { Route as SolutionsCutAdminRouteImport } from './routes/solutions.cut-admin'
@@ -193,6 +194,11 @@ const GuidesMissedAppointmentFeesRoute =
     path: '/guides/missed-appointment-fees',
     getParentRoute: () => rootRouteImport,
   } as any)
+const GuidesReminderTextsPecrRoute = GuidesReminderTextsPecrRouteImport.update({
+  id: '/guides/reminder-texts-pecr',
+  path: '/guides/reminder-texts-pecr',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SolutionsIndexRoute = SolutionsIndexRouteImport.update({
   id: '/solutions/',
   path: '/solutions/',
@@ -280,6 +286,7 @@ export interface FileRoutesByFullPath {
   '/features/switching': typeof FeaturesSwitchingRoute
   '/features/treatment-plans': typeof FeaturesTreatmentPlansRoute
   '/guides/missed-appointment-fees': typeof GuidesMissedAppointmentFeesRoute
+  '/guides/reminder-texts-pecr': typeof GuidesReminderTextsPecrRoute
   '/solutions/bring-patients-back': typeof SolutionsBringPatientsBackRoute
   '/solutions/cut-admin': typeof SolutionsCutAdminRoute
   '/solutions/deposits-and-late-cancellations': typeof SolutionsDepositsAndLateCancellationsRoute
@@ -321,6 +328,7 @@ export interface FileRoutesByTo {
   '/features/switching': typeof FeaturesSwitchingRoute
   '/features/treatment-plans': typeof FeaturesTreatmentPlansRoute
   '/guides/missed-appointment-fees': typeof GuidesMissedAppointmentFeesRoute
+  '/guides/reminder-texts-pecr': typeof GuidesReminderTextsPecrRoute
   '/solutions/bring-patients-back': typeof SolutionsBringPatientsBackRoute
   '/solutions/cut-admin': typeof SolutionsCutAdminRoute
   '/solutions/deposits-and-late-cancellations': typeof SolutionsDepositsAndLateCancellationsRoute
@@ -363,6 +371,7 @@ export interface FileRoutesById {
   '/features/switching': typeof FeaturesSwitchingRoute
   '/features/treatment-plans': typeof FeaturesTreatmentPlansRoute
   '/guides/missed-appointment-fees': typeof GuidesMissedAppointmentFeesRoute
+  '/guides/reminder-texts-pecr': typeof GuidesReminderTextsPecrRoute
   '/solutions/bring-patients-back': typeof SolutionsBringPatientsBackRoute
   '/solutions/cut-admin': typeof SolutionsCutAdminRoute
   '/solutions/deposits-and-late-cancellations': typeof SolutionsDepositsAndLateCancellationsRoute
@@ -406,6 +415,7 @@ export interface FileRouteTypes {
     | '/features/switching'
     | '/features/treatment-plans'
     | '/guides/missed-appointment-fees'
+    | '/guides/reminder-texts-pecr'
     | '/solutions/bring-patients-back'
     | '/solutions/cut-admin'
     | '/solutions/deposits-and-late-cancellations'
@@ -447,6 +457,7 @@ export interface FileRouteTypes {
     | '/features/switching'
     | '/features/treatment-plans'
     | '/guides/missed-appointment-fees'
+    | '/guides/reminder-texts-pecr'
     | '/solutions/bring-patients-back'
     | '/solutions/cut-admin'
     | '/solutions/deposits-and-late-cancellations'
@@ -488,6 +499,7 @@ export interface FileRouteTypes {
     | '/features/switching'
     | '/features/treatment-plans'
     | '/guides/missed-appointment-fees'
+    | '/guides/reminder-texts-pecr'
     | '/solutions/bring-patients-back'
     | '/solutions/cut-admin'
     | '/solutions/deposits-and-late-cancellations'
@@ -530,6 +542,7 @@ export interface RootRouteChildren {
   FeaturesSwitchingRoute: typeof FeaturesSwitchingRoute
   FeaturesTreatmentPlansRoute: typeof FeaturesTreatmentPlansRoute
   GuidesMissedAppointmentFeesRoute: typeof GuidesMissedAppointmentFeesRoute
+  GuidesReminderTextsPecrRoute: typeof GuidesReminderTextsPecrRoute
   SolutionsBringPatientsBackRoute: typeof SolutionsBringPatientsBackRoute
   SolutionsCutAdminRoute: typeof SolutionsCutAdminRoute
   SolutionsDepositsAndLateCancellationsRoute: typeof SolutionsDepositsAndLateCancellationsRoute
@@ -744,6 +757,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GuidesMissedAppointmentFeesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/guides/reminder-texts-pecr': {
+      id: '/guides/reminder-texts-pecr'
+      path: '/guides/reminder-texts-pecr'
+      fullPath: '/guides/reminder-texts-pecr'
+      preLoaderRoute: typeof GuidesReminderTextsPecrRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/solutions/': {
       id: '/solutions/'
       path: '/solutions'
@@ -850,6 +870,7 @@ const rootRouteChildren: RootRouteChildren = {
   FeaturesSwitchingRoute: FeaturesSwitchingRoute,
   FeaturesTreatmentPlansRoute: FeaturesTreatmentPlansRoute,
   GuidesMissedAppointmentFeesRoute: GuidesMissedAppointmentFeesRoute,
+  GuidesReminderTextsPecrRoute: GuidesReminderTextsPecrRoute,
   SolutionsBringPatientsBackRoute: SolutionsBringPatientsBackRoute,
   SolutionsCutAdminRoute: SolutionsCutAdminRoute,
   SolutionsDepositsAndLateCancellationsRoute:
