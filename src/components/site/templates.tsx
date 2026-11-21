@@ -684,6 +684,7 @@ const OG_IMAGES: Record<string, string> = {
   "/solutions/private-practices": "/og/private-practices.jpg",
   "/about": "/og/about.jpg",
   "/guides/missed-appointment-fees": "/og/missed-appointment-fees.jpg",
+  "/guides/reminder-texts-pecr": "/og/reminder-texts-pecr.jpg",
   "/compare/dentally": "/og/compare-dentally.jpg",
   "/compare/ismile-dental-software": "/og/compare-ismile.jpg",
   "/compare/software-of-excellence": "/og/compare-soe.jpg",

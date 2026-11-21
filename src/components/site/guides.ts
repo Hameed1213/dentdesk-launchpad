@@ -33,6 +33,47 @@ export type GuideMeta = {
 
 export const guides: GuideMeta[] = [
   {
+    slug: "reminder-texts-pecr",
+    title: "Can a dental practice text patients without consent?",
+    summary:
+      "Reminders, recalls and marketing texts under PECR and UK GDPR: what a UK dental practice can send without asking first, what needs consent, and how to keep it simple.",
+    topic: "Texts and consent",
+    minutes: 8,
+    updated: "21 November 2026",
+    topics: ["Texts and consent", "Reminders and recalls"],
+    lead: "Reminders, recalls and marketing texts under PECR and UK GDPR: what a UK dental practice can send without asking first, what needs consent, and how to keep it simple.",
+    handles: "reminders and recalls",
+    // Unsplash rsbgKRJF8jk (free licence), picked 21 Nov 2026 for Hariss to confirm.
+    image: "/images/guides/reminder-texts-pecr.webp",
+    imageAlt: "Woman smiling as she reads a text on her phone at home",
+    product: [
+      {
+        kind: "Feature",
+        title: "Reminders and recalls",
+        body: "Reminders before every appointment and recall follow-ups, from your practice's name.",
+        to: "/features/reminders-and-recalls",
+        image: "/images/pages/phone-reminder.webp",
+        alt: "Woman smiling as she reads a message on her phone",
+      },
+      {
+        kind: "Solution",
+        title: "Reduce no-shows",
+        body: "Reminders before every appointment, an easy way to cancel, and a waitlist to refill the gap.",
+        to: "/solutions/reduce-no-shows",
+        image: "/images/solutions/no-shows.webp",
+        alt: "An empty dental chair in a clean, modern surgery",
+      },
+      {
+        kind: "Solution",
+        title: "Bring patients back",
+        body: "Recalls that follow up, so patients due a check-up don't drift away.",
+        to: "/solutions/bring-patients-back",
+        image: "/images/solutions/bring-back.webp",
+        alt: "Smiling young patient back in the dental chair",
+      },
+    ],
+  },
+  {
     slug: "missed-appointment-fees",
     title: "Can a private dentist charge for a missed appointment?",
     summary:
