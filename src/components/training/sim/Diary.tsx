@@ -126,15 +126,16 @@ function Block({
       className={`absolute z-[2] cursor-pointer overflow-hidden rounded-md ${highlight ? "ring-2 ring-[#2563EB] ring-offset-1" : ""}`}
       style={{
         top: yFor(b.start),
-        height: Math.max((b.minutes / 60) * HOUR_HEIGHT, 36),
+        // Training only (Hariss, 25 Nov): exactly as tall as the visit, so back-to-back visits
+        // never overlap, and no left line. The real app keeps a 36px minimum and a 3px left line.
+        height: (b.minutes / 60) * HOUR_HEIGHT - 2,
         left: `calc(${(col / cols) * 100}% + ${gap + 2}px)`,
         width: `calc(${100 / cols}% - ${gap * 2 + 4}px)`,
         background: `${c.color}1e`,
-        borderLeft: `3px solid ${c.color}`,
       }}
       data-testid={`booking-${b.id}`}
     >
-      <div className="px-1.5 py-1">
+      <div className="px-1.5 py-[1px] leading-[14px]">
         <span className="block truncate text-[11px] font-semibold" style={{ color: c.text }}>
           {b.patient}
         </span>

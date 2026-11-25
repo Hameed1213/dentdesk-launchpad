@@ -194,6 +194,7 @@ export function AppChrome({
             <button
               type="button"
               onClick={onNewAppointment}
+              data-tour="new-appointment"
               className="flex h-9 items-center gap-1.5 rounded-lg bg-[#2563EB] px-4 text-[13px] font-semibold text-white shadow-[0_1px_3px_rgba(37,99,235,0.3)] transition-colors hover:bg-[#1d4ed8]"
             >
               <Plus size={16} />

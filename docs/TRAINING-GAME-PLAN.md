@@ -165,3 +165,19 @@ do it urself". Decisions (all as recommended):
 training page asked the server again and showed the dark code screen while it waited. The last
 answer is now kept in memory for the tab (`session.ts`), so pages don't flash; the server is still
 asked every time and its answer wins (a removed code or Lock still applies at once).
+
+## 11. Round 3 (25 Nov evening, after #43 went live)
+
+Hariss: "get rid of the border lines on the left and … dont make them overlap"; "the top task blends
+in make it highlighted blue"; "view the day they want to book but use the new appointment draw not
+click on the map … teach them that way".
+- **Diary blocks (training only, Hariss's choice; the real app is unchanged):** no left line; each
+  block exactly as tall as the visit (minus a 2px gap), so back-to-back visits never overlap. The
+  real app keeps its 3px left line and 36px minimum.
+- **The call** sits in a blue box ("On the phone") on the task page and the "Your turn" page.
+- **The walkthrough teaches New appointment** (12 steps): look at Thursday → see Dr Shah is free at
+  9:30am → New appointment → Patel → Meena → £45 notice → Check-up → Dr. Shah → 10/12/2026 →
+  9:30am → Book. The New appointment form opens on today with "Any available" (as the app's header
+  button does), so date and dentist are set by hand. Your-turn hints teach the same way; booking by
+  clicking the diary still works there, it just isn't taught.
+- The walkthrough note sits beside the booking form, not over its other fields.

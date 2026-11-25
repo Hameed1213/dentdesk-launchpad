@@ -29,6 +29,15 @@ import {
  */
 
 export type DrawerPrefill = { date: string; start: number | null; clinicianId: string };
+/** What has been filled in so far (for the walkthrough). */
+export type DrawerState = {
+  search: string;
+  patientId: string | null;
+  service: string;
+  clinicianId: string;
+  date: string;
+  start: number | null;
+};
 
 const label = "text-[13px] font-medium text-[#0F172A]";
 const field =
@@ -51,7 +60,7 @@ export function AppointmentDrawer({
   /** Something the task doesn't use (e.g. "+ New patient"). */
   onOther: (what: string) => void;
   /** Walkthrough: told what has been filled in so far. */
-  onState?: (s: { search: string; patientId: string | null; service: string }) => void;
+  onState?: (s: DrawerState) => void;
   /** Returns true when the booking was accepted (the drawer then closes). */
   onBook: (a: Attempt & { note: string }) => Promise<boolean>;
 }) {
@@ -74,8 +83,8 @@ export function AppointmentDrawer({
   const [touched, setTouched] = useState(false);
 
   useEffect(() => {
-    onState?.({ search, patientId: patient?.id ?? null, service });
-  }, [search, patient, service, onState]);
+    onState?.({ search, patientId: patient?.id ?? null, service, clinicianId, date, start });
+  }, [search, patient, service, clinicianId, date, start, onState]);
 
   const svc = SERVICES.find((s) => s.name === service);
   const eligible = CLINICIANS.filter((c) => !svc || svc.clinicianIds.includes(c.id));
@@ -349,7 +358,7 @@ export function AppointmentDrawer({
                 </select>
               </div>
               <div className="flex gap-3" data-tour="when">
-                <div className="flex-1">
+                <div className="flex-1" data-tour="date">
                   <label className={label} htmlFor="sim-date">
                     Date
                   </label>
@@ -362,7 +371,7 @@ export function AppointmentDrawer({
                     className={`${field} ${normal}`}
                   />
                 </div>
-                <div className="flex-1">
+                <div className="flex-1" data-tour="time">
                   <label className={label} htmlFor="sim-time">
                     Time
                   </label>

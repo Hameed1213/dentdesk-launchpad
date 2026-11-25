@@ -530,9 +530,9 @@ export const REID: Scenario = {
     time: "He can only come after 2pm. Look for an afternoon time.",
   },
   hints: [
-    "Click WED 9 at the top of the week. Wednesday opens as a day, with a column for each dentist.",
-    "In R. Lewis's column, click free time at 3:00pm or 3:30pm, then choose Book appointment.",
-    "Search for Reid. Two patients come up: Tom Reid is the one born in 1979.",
+    "Click WED 9 at the top of the week to see Wednesday. R. Lewis is free at 3:00pm and 3:30pm.",
+    "Click New appointment, search for Reid, and choose Tom Reid: he's the one born in 1979.",
+    "Choose Scale & polish (R. Lewis is filled in for you), set the date to 09/12/2026 and the time to 3:00pm or 3:30pm.",
   ],
   recap: [
     "The appointment shows in Rachel Lewis's diary as Confirmed.",
