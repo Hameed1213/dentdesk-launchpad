@@ -36,7 +36,9 @@ import { Route as FeaturesSecurityRouteImport } from './routes/features.security
 import { Route as FeaturesSwitchingRouteImport } from './routes/features.switching'
 import { Route as FeaturesTreatmentPlansRouteImport } from './routes/features.treatment-plans'
 import { Route as GuidesIndexRouteImport } from './routes/guides.index'
+import { Route as GuidesDentalRecallTemplatesRouteImport } from './routes/guides.dental-recall-templates'
 import { Route as GuidesMissedAppointmentFeesRouteImport } from './routes/guides.missed-appointment-fees'
+import { Route as GuidesOnlineMedicalHistoryFormsRouteImport } from './routes/guides.online-medical-history-forms'
 import { Route as GuidesReminderTextsPecrRouteImport } from './routes/guides.reminder-texts-pecr'
 import { Route as SolutionsIndexRouteImport } from './routes/solutions.index'
 import { Route as SolutionsBringPatientsBackRouteImport } from './routes/solutions.bring-patients-back'
@@ -188,10 +190,22 @@ const GuidesIndexRoute = GuidesIndexRouteImport.update({
   path: '/guides/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GuidesDentalRecallTemplatesRoute =
+  GuidesDentalRecallTemplatesRouteImport.update({
+    id: '/guides/dental-recall-templates',
+    path: '/guides/dental-recall-templates',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const GuidesMissedAppointmentFeesRoute =
   GuidesMissedAppointmentFeesRouteImport.update({
     id: '/guides/missed-appointment-fees',
     path: '/guides/missed-appointment-fees',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const GuidesOnlineMedicalHistoryFormsRoute =
+  GuidesOnlineMedicalHistoryFormsRouteImport.update({
+    id: '/guides/online-medical-history-forms',
+    path: '/guides/online-medical-history-forms',
     getParentRoute: () => rootRouteImport,
   } as any)
 const GuidesReminderTextsPecrRoute = GuidesReminderTextsPecrRouteImport.update({
@@ -285,7 +299,9 @@ export interface FileRoutesByFullPath {
   '/features/security': typeof FeaturesSecurityRoute
   '/features/switching': typeof FeaturesSwitchingRoute
   '/features/treatment-plans': typeof FeaturesTreatmentPlansRoute
+  '/guides/dental-recall-templates': typeof GuidesDentalRecallTemplatesRoute
   '/guides/missed-appointment-fees': typeof GuidesMissedAppointmentFeesRoute
+  '/guides/online-medical-history-forms': typeof GuidesOnlineMedicalHistoryFormsRoute
   '/guides/reminder-texts-pecr': typeof GuidesReminderTextsPecrRoute
   '/solutions/bring-patients-back': typeof SolutionsBringPatientsBackRoute
   '/solutions/cut-admin': typeof SolutionsCutAdminRoute
@@ -327,7 +343,9 @@ export interface FileRoutesByTo {
   '/features/security': typeof FeaturesSecurityRoute
   '/features/switching': typeof FeaturesSwitchingRoute
   '/features/treatment-plans': typeof FeaturesTreatmentPlansRoute
+  '/guides/dental-recall-templates': typeof GuidesDentalRecallTemplatesRoute
   '/guides/missed-appointment-fees': typeof GuidesMissedAppointmentFeesRoute
+  '/guides/online-medical-history-forms': typeof GuidesOnlineMedicalHistoryFormsRoute
   '/guides/reminder-texts-pecr': typeof GuidesReminderTextsPecrRoute
   '/solutions/bring-patients-back': typeof SolutionsBringPatientsBackRoute
   '/solutions/cut-admin': typeof SolutionsCutAdminRoute
@@ -370,7 +388,9 @@ export interface FileRoutesById {
   '/features/security': typeof FeaturesSecurityRoute
   '/features/switching': typeof FeaturesSwitchingRoute
   '/features/treatment-plans': typeof FeaturesTreatmentPlansRoute
+  '/guides/dental-recall-templates': typeof GuidesDentalRecallTemplatesRoute
   '/guides/missed-appointment-fees': typeof GuidesMissedAppointmentFeesRoute
+  '/guides/online-medical-history-forms': typeof GuidesOnlineMedicalHistoryFormsRoute
   '/guides/reminder-texts-pecr': typeof GuidesReminderTextsPecrRoute
   '/solutions/bring-patients-back': typeof SolutionsBringPatientsBackRoute
   '/solutions/cut-admin': typeof SolutionsCutAdminRoute
@@ -414,7 +434,9 @@ export interface FileRouteTypes {
     | '/features/security'
     | '/features/switching'
     | '/features/treatment-plans'
+    | '/guides/dental-recall-templates'
     | '/guides/missed-appointment-fees'
+    | '/guides/online-medical-history-forms'
     | '/guides/reminder-texts-pecr'
     | '/solutions/bring-patients-back'
     | '/solutions/cut-admin'
@@ -456,7 +478,9 @@ export interface FileRouteTypes {
     | '/features/security'
     | '/features/switching'
     | '/features/treatment-plans'
+    | '/guides/dental-recall-templates'
     | '/guides/missed-appointment-fees'
+    | '/guides/online-medical-history-forms'
     | '/guides/reminder-texts-pecr'
     | '/solutions/bring-patients-back'
     | '/solutions/cut-admin'
@@ -498,7 +522,9 @@ export interface FileRouteTypes {
     | '/features/security'
     | '/features/switching'
     | '/features/treatment-plans'
+    | '/guides/dental-recall-templates'
     | '/guides/missed-appointment-fees'
+    | '/guides/online-medical-history-forms'
     | '/guides/reminder-texts-pecr'
     | '/solutions/bring-patients-back'
     | '/solutions/cut-admin'
@@ -541,7 +567,9 @@ export interface RootRouteChildren {
   FeaturesSecurityRoute: typeof FeaturesSecurityRoute
   FeaturesSwitchingRoute: typeof FeaturesSwitchingRoute
   FeaturesTreatmentPlansRoute: typeof FeaturesTreatmentPlansRoute
+  GuidesDentalRecallTemplatesRoute: typeof GuidesDentalRecallTemplatesRoute
   GuidesMissedAppointmentFeesRoute: typeof GuidesMissedAppointmentFeesRoute
+  GuidesOnlineMedicalHistoryFormsRoute: typeof GuidesOnlineMedicalHistoryFormsRoute
   GuidesReminderTextsPecrRoute: typeof GuidesReminderTextsPecrRoute
   SolutionsBringPatientsBackRoute: typeof SolutionsBringPatientsBackRoute
   SolutionsCutAdminRoute: typeof SolutionsCutAdminRoute
@@ -750,11 +778,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GuidesIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/guides/dental-recall-templates': {
+      id: '/guides/dental-recall-templates'
+      path: '/guides/dental-recall-templates'
+      fullPath: '/guides/dental-recall-templates'
+      preLoaderRoute: typeof GuidesDentalRecallTemplatesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/guides/missed-appointment-fees': {
       id: '/guides/missed-appointment-fees'
       path: '/guides/missed-appointment-fees'
       fullPath: '/guides/missed-appointment-fees'
       preLoaderRoute: typeof GuidesMissedAppointmentFeesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/guides/online-medical-history-forms': {
+      id: '/guides/online-medical-history-forms'
+      path: '/guides/online-medical-history-forms'
+      fullPath: '/guides/online-medical-history-forms'
+      preLoaderRoute: typeof GuidesOnlineMedicalHistoryFormsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/guides/reminder-texts-pecr': {
@@ -869,7 +911,9 @@ const rootRouteChildren: RootRouteChildren = {
   FeaturesSecurityRoute: FeaturesSecurityRoute,
   FeaturesSwitchingRoute: FeaturesSwitchingRoute,
   FeaturesTreatmentPlansRoute: FeaturesTreatmentPlansRoute,
+  GuidesDentalRecallTemplatesRoute: GuidesDentalRecallTemplatesRoute,
   GuidesMissedAppointmentFeesRoute: GuidesMissedAppointmentFeesRoute,
+  GuidesOnlineMedicalHistoryFormsRoute: GuidesOnlineMedicalHistoryFormsRoute,
   GuidesReminderTextsPecrRoute: GuidesReminderTextsPecrRoute,
   SolutionsBringPatientsBackRoute: SolutionsBringPatientsBackRoute,
   SolutionsCutAdminRoute: SolutionsCutAdminRoute,
