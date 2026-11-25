@@ -128,7 +128,18 @@ function TaskList({ role }: { role: Role }) {
               </div>
               <p className="mt-1 text-[13.5px] leading-[1.5] text-[#475569]">{m.story}</p>
               <p className="mt-1.5 text-[12.5px] text-[#64748B]">
-                About {m.minutes} minutes · Not open yet
+                About {m.minutes} minutes ·{" "}
+                {m.ready ? (
+                  <Link
+                    to="/training/$role/$task"
+                    params={{ role: role.id, task: m.id }}
+                    className="font-medium text-[#2563EB] hover:underline"
+                  >
+                    {progress.stars[m.id] ? "Play again" : "Start"}
+                  </Link>
+                ) : (
+                  "Not open yet"
+                )}
               </p>
             </div>
           </li>

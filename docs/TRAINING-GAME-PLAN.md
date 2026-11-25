@@ -105,3 +105,41 @@ accountant · turn on two-step login.
 
 When a hub screen a mission copies changes, update the mission in the same programme of work and
 bump its `checked` date. The game must never show a button the app doesn't have.
+
+## 9. Step 2: Reception task 2, "Book a phoned-in appointment" (25 Nov)
+
+**Decisions (Hariss, 25 Nov, after "dont assume, and no domino affect"):**
+- **D1 made-up data:** Oak Dental; Dr. Nadia Shah, Dr. Tom Ellis, hygienist Rachel Lewis; patients
+  Meena, Priya and Anil Patel and others; Check-up £55, New patient exam £85, Scale & polish £65,
+  Emergency £75, Filling £120 (`tasks/bookPhone.ts`).
+- **D2 logo:** "DentDock" one word in the copied sidebar (the app still shows "Dent Dock"; on its
+  leftovers list).
+- **D3 balance question:** kept. Right answer: mention the £45 now and offer to take it or text a
+  link (practice policy, Hariss's call, not a DentDock rule).
+- **D4 stars:** start on 3, lose 1 per mistake or hint, never below 1 (`starsFor`). A repeat of the
+  same mistake costs once.
+- **D5 diary view:** opens in **Week view**, as the app does the first time.
+
+**Copied from the app and checked in its code (hub @ #691), not guessed:**
+- Week view first; week label "7 December – 11 December 2026"; day headings "THU" / date / "N apts";
+  clicking a heading opens the day; overlapping visits side by side; striped outside practice
+  hours; a click on free time gives the hour or half hour, with no dentist ("Any available").
+- Day view: a column per clinician, "N appointments today" / "Not working today", striped outside
+  clinician hours, a click gives that clinician.
+- Left panel: month, Block time, DENTISTS, SHOW (Blocked ticked; Cancelled, Completed not), Show
+  weekend (off when the practice is shut at weekends).
+- Header: page title, search, bell, "New appointment". "View reports" only with the Analytics
+  permission, so not for a receptionist.
+- Drawer: sections and wording; search by name, phone or email; dentists listed only if they do the
+  service (one = picked automatically); times every 15 minutes "9:30am"; "— Taken" when the visit
+  would overlap the chosen dentist's, "— Blocked" past their day's end; with Any available a time
+  is taken only when every eligible working dentist is busy; times from the dentists' own hours;
+  "Outstanding balance: £45.00" notice; "Discard this booking?" / "Keep editing" / "Discard";
+  blue "Appointment booked for Meena Patel".
+- Recap lines say "if switched on in Automations" (the defaults a new practice gets were not checked).
+
+**Not copied (known):** times before "now" on today aren't marked "— Past"; the drawer's patient
+alerts, medical alerts and frequent no-show notices aren't used by this task; "+ New patient",
+Block time, other pages and other views show "isn't needed for this task".
+
+**On a mistake** the booking is not made (the real app would make it); the message says so.

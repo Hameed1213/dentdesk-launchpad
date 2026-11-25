@@ -43,3 +43,17 @@ export function clearProgress(): void {
     /* nothing to clear */
   }
 }
+
+/** Stars for a task (Hariss, 25 Nov): start on 3, lose 1 per mistake or hint, never below 1. */
+export function starsFor(mistakes: number, hints: number): number {
+  return Math.max(1, 3 - mistakes - hints);
+}
+
+/** Keeps the best stars for a task. */
+export function recordStars(taskId: string, stars: number): Progress {
+  const p = loadProgress();
+  const best = Math.max(p.stars[taskId] ?? 0, Math.min(3, Math.max(1, stars)));
+  const next = { ...p, stars: { ...p.stars, [taskId]: best } };
+  saveProgress(next);
+  return next;
+}

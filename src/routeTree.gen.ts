@@ -56,6 +56,7 @@ import { Route as ApiPublicVerifyWaitlistSignupRouteImport } from './routes/api/
 import { Route as ApiTrainingLockRouteImport } from './routes/api/training/lock'
 import { Route as ApiTrainingSessionRouteImport } from './routes/api/training/session'
 import { Route as ApiTrainingUnlockRouteImport } from './routes/api/training/unlock'
+import { Route as TrainingRoleTaskRouteImport } from './routes/training.$role_.$task'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -303,6 +304,11 @@ const ApiTrainingUnlockRoute = ApiTrainingUnlockRouteImport.update({
   path: '/api/training/unlock',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TrainingRoleTaskRoute = TrainingRoleTaskRouteImport.update({
+  id: '/training/$role_/$task',
+  path: '/training/$role/$task',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -352,6 +358,7 @@ export interface FileRoutesByFullPath {
   '/api/training/lock': typeof ApiTrainingLockRoute
   '/api/training/session': typeof ApiTrainingSessionRoute
   '/api/training/unlock': typeof ApiTrainingUnlockRoute
+  '/training/$role/$task': typeof TrainingRoleTaskRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -401,6 +408,7 @@ export interface FileRoutesByTo {
   '/api/training/lock': typeof ApiTrainingLockRoute
   '/api/training/session': typeof ApiTrainingSessionRoute
   '/api/training/unlock': typeof ApiTrainingUnlockRoute
+  '/training/$role/$task': typeof TrainingRoleTaskRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -451,6 +459,7 @@ export interface FileRoutesById {
   '/api/training/lock': typeof ApiTrainingLockRoute
   '/api/training/session': typeof ApiTrainingSessionRoute
   '/api/training/unlock': typeof ApiTrainingUnlockRoute
+  '/training/$role_/$task': typeof TrainingRoleTaskRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -502,6 +511,7 @@ export interface FileRouteTypes {
     | '/api/training/lock'
     | '/api/training/session'
     | '/api/training/unlock'
+    | '/training/$role/$task'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -551,6 +561,7 @@ export interface FileRouteTypes {
     | '/api/training/lock'
     | '/api/training/session'
     | '/api/training/unlock'
+    | '/training/$role/$task'
   id:
     | '__root__'
     | '/'
@@ -600,6 +611,7 @@ export interface FileRouteTypes {
     | '/api/training/lock'
     | '/api/training/session'
     | '/api/training/unlock'
+    | '/training/$role_/$task'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -650,6 +662,7 @@ export interface RootRouteChildren {
   ApiTrainingLockRoute: typeof ApiTrainingLockRoute
   ApiTrainingSessionRoute: typeof ApiTrainingSessionRoute
   ApiTrainingUnlockRoute: typeof ApiTrainingUnlockRoute
+  TrainingRoleTaskRoute: typeof TrainingRoleTaskRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -983,6 +996,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiTrainingUnlockRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/training/$role_/$task': {
+      id: '/training/$role_/$task'
+      path: '/training/$role/$task'
+      fullPath: '/training/$role/$task'
+      preLoaderRoute: typeof TrainingRoleTaskRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -1036,6 +1056,7 @@ const rootRouteChildren: RootRouteChildren = {
   ApiTrainingLockRoute: ApiTrainingLockRoute,
   ApiTrainingSessionRoute: ApiTrainingSessionRoute,
   ApiTrainingUnlockRoute: ApiTrainingUnlockRoute,
+  TrainingRoleTaskRoute: TrainingRoleTaskRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
