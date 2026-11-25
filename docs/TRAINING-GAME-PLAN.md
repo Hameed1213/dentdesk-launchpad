@@ -143,3 +143,25 @@ alerts, medical alerts and frequent no-show notices aren't used by this task; "+
 Block time, other pages and other views show "isn't needed for this task".
 
 **On a mistake** the booking is not made (the real app would make it); the message says so.
+
+## 10. Show first, then your turn (25 Nov, after step 2 went live)
+
+Hariss: "this shud be a walk through and then do it yourself … it shud show u first and then let u
+do it urself". Decisions (all as recommended):
+- **W1 guided clicks:** a blue ring round the next thing to click and a short note beside it; clicks
+  elsewhere in the pretend app are held back ("Click the part with the blue ring to carry on").
+  Steps that only explain have Next. No stars. (`sim/Walkthrough.tsx`)
+- **W2 a different call for your turn:** Tom Reid (born 4 April 1979) wants a scale and polish with
+  Rachel on Wednesday after 2pm; Thomas Reid (born 1951) is also on the books. Right times: 3:00pm to
+  3:30pm. Hints and stars as before.
+- **W3 order:** the walkthrough is required the first time; afterwards "Your turn" or "Show me
+  again". Seen walkthroughs are kept in the browser (`walked` in `dd_training_progress_v1`; cookie
+  policy line updated).
+- The £45 question (D3) now ends the walkthrough (not scored, as nothing in the walkthrough is).
+- **Not built:** a Back button inside the walkthrough (each step changes the screen, so going back
+  would mean undoing it). "Start the walkthrough again" is there instead.
+
+**The glitch** ("when u click buttons on the way … it shows the sign in page with the code"): each
+training page asked the server again and showed the dark code screen while it waited. The last
+answer is now kept in memory for the tab (`session.ts`), so pages don't flash; the server is still
+asked every time and its answer wins (a removed code or Lock still applies at once).

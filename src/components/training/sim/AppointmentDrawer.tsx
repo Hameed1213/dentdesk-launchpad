@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AlertTriangle, Search, UserPlus, X } from "lucide-react";
 import { Notice } from "./AppChrome";
 import {
@@ -43,12 +43,15 @@ export function AppointmentDrawer({
   onClose,
   onBook,
   onOther,
+  onState,
 }: {
   prefill: DrawerPrefill;
   bookings: Booking[];
   onClose: () => void;
   /** Something the task doesn't use (e.g. "+ New patient"). */
   onOther: (what: string) => void;
+  /** Walkthrough: told what has been filled in so far. */
+  onState?: (s: { search: string; patientId: string | null; service: string }) => void;
   /** Returns true when the booking was accepted (the drawer then closes). */
   onBook: (a: Attempt & { note: string }) => Promise<boolean>;
 }) {
@@ -69,6 +72,10 @@ export function AppointmentDrawer({
   const [saving, setSaving] = useState(false);
   const [discard, setDiscard] = useState(false);
   const [touched, setTouched] = useState(false);
+
+  useEffect(() => {
+    onState?.({ search, patientId: patient?.id ?? null, service });
+  }, [search, patient, service, onState]);
 
   const svc = SERVICES.find((s) => s.name === service);
   const eligible = CLINICIANS.filter((c) => !svc || svc.clinicianIds.includes(c.id));
@@ -169,6 +176,7 @@ export function AppointmentDrawer({
                     onBlur={() => setTimeout(() => setFocused(false), 200)}
                     placeholder="Search existing patients..."
                     aria-label="Search existing patients"
+                    data-tour="patient-search"
                     className={`h-10 w-full rounded-lg border bg-white pl-10 pr-3 text-[14px] focus:border-[#2563EB] focus:outline-none ${errors.patient ? bad : normal}`}
                   />
                 </div>
@@ -182,6 +190,7 @@ export function AppointmentDrawer({
                           <button
                             key={p.id}
                             type="button"
+                            data-tour={`patient-${p.id}`}
                             onMouseDown={() => {
                               setPatient(p);
                               setSearch("");
@@ -250,19 +259,21 @@ export function AppointmentDrawer({
                   </div>
                 </div>
                 {patient.owesPence > 0 && (
-                  <Notice
-                    tone="warning"
-                    icon={AlertTriangle}
-                    title={<>Outstanding balance: {money(patient.owesPence)}</>}
-                    className="mt-3"
-                  >
-                    <p className="text-[12px]">
-                      This patient has an unpaid balance. Consider collecting before booking.
-                    </p>
-                    <span className="mt-1 inline-block text-[12px] text-[#2563EB] underline">
-                      View in Payments →
-                    </span>
-                  </Notice>
+                  <div data-tour="balance">
+                    <Notice
+                      tone="warning"
+                      icon={AlertTriangle}
+                      title={<>Outstanding balance: {money(patient.owesPence)}</>}
+                      className="mt-3"
+                    >
+                      <p className="text-[12px]">
+                        This patient has an unpaid balance. Consider collecting before booking.
+                      </p>
+                      <span className="mt-1 inline-block text-[12px] text-[#2563EB] underline">
+                        View in Payments →
+                      </span>
+                    </Notice>
+                  </div>
                 )}
               </div>
             )}
@@ -278,6 +289,7 @@ export function AppointmentDrawer({
                 </label>
                 <select
                   id="sim-service"
+                  data-tour="service"
                   value={service}
                   onChange={(e) => chooseService(e.target.value)}
                   className={`${field} ${errors.service ? bad : normal}`}
@@ -318,7 +330,7 @@ export function AppointmentDrawer({
                   <span className="text-[13px] text-[#64748B]">mins</span>
                 </div>
               </div>
-              <div>
+              <div data-tour="dentist">
                 <label className={label} htmlFor="sim-dentist">
                   Dentist
                 </label>
@@ -336,7 +348,7 @@ export function AppointmentDrawer({
                   ))}
                 </select>
               </div>
-              <div className="flex gap-3">
+              <div className="flex gap-3" data-tour="when">
                 <div className="flex-1">
                   <label className={label} htmlFor="sim-date">
                     Date
@@ -458,6 +470,7 @@ export function AppointmentDrawer({
           <button
             type="button"
             onClick={book}
+            data-tour="book"
             disabled={saving}
             className={`h-11 w-full rounded-lg bg-[#2563EB] text-[14px] font-bold text-white transition-opacity hover:opacity-90 ${saving ? "cursor-wait opacity-60" : ""}`}
           >

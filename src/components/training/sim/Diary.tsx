@@ -193,6 +193,8 @@ export function Diary({
   onBlockTime,
   onOther,
   highlightId,
+  markSlot,
+  onMenu,
 }: {
   view: DiaryView;
   date: string;
@@ -203,6 +205,10 @@ export function Diary({
   onBlockTime: () => void;
   onOther: (what: string) => void;
   highlightId?: string | null;
+  /** Walkthrough: marks one half hour in the day view (data-tour="slot"). */
+  markSlot?: { clinicianId: string; date: string; start: number } | null;
+  /** Walkthrough: told when the slot menu opens or closes. */
+  onMenu?: (open: boolean) => void;
 }) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const rootRef = useRef<HTMLDivElement>(null);
@@ -213,6 +219,7 @@ export function Diary({
     if (scrollRef.current) scrollRef.current.scrollTop = yFor(8 * 60 + 40);
   }, [view]);
   useEffect(() => setMenu(null), [date, view]);
+  useEffect(() => onMenu?.(menu !== null), [menu, onMenu]);
   useEffect(() => {
     if (!menu) return;
     const esc = (e: KeyboardEvent) => e.key === "Escape" && setMenu(null);
@@ -346,6 +353,7 @@ export function Diary({
                     }}
                     className="flex-1 rounded border-r border-[#E2E8F0] py-2 text-center transition-colors last:border-r-0 hover:bg-[#2563EB]/5"
                     data-testid={`weekday-${d}`}
+                    data-tour={`weekday-${d}`}
                   >
                     <div className="text-[11px] font-medium uppercase text-[#64748B]">
                       {DAY_ABBR[weekday(d)]}
@@ -441,6 +449,13 @@ export function Diary({
                       <Lines
                         isOpen={(t) => practiceOpen(date, t) && !!hrs && t >= hrs[0] && t < hrs[1]}
                       />
+                      {markSlot && markSlot.clinicianId === c.id && markSlot.date === date && (
+                        <div
+                          data-tour="slot"
+                          className="pointer-events-none absolute left-0 right-0"
+                          style={{ top: yFor(markSlot.start), height: HOUR_HEIGHT / 2 }}
+                        />
+                      )}
                       <div
                         className="absolute inset-0 cursor-pointer"
                         onClick={(e) => clickFree(e, date, c.id)}
@@ -479,6 +494,7 @@ export function Diary({
             <button
               type="button"
               role="menuitem"
+              data-tour="menu-book"
               onClick={() => {
                 onPickSlot(menu.pick);
                 setMenu(null);

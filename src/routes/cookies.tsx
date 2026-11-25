@@ -86,7 +86,8 @@ function CookiesPage() {
             practice team member unlocks DentDock's staff training with their practice's code, a
             cookie (<strong className="text-[#0F172A] font-semibold">dd_training</strong>) keeps
             that browser unlocked for 30 days. It holds no personal details, and is removed by
-            "Lock". Their first name and training stars are kept in localStorage (
+            "Lock". Their first name, training stars and which walkthroughs they have seen are kept
+            in localStorage (
             <strong className="text-[#0F172A] font-semibold">dd_training_progress_v1</strong>) on
             that computer only, and are never sent to DentDock.
           </li>
