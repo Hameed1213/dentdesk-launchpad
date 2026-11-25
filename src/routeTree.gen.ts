@@ -49,8 +49,13 @@ import { Route as SolutionsGoingPrivateRouteImport } from './routes/solutions.go
 import { Route as SolutionsNewPracticesRouteImport } from './routes/solutions.new-practices'
 import { Route as SolutionsPrivatePracticesRouteImport } from './routes/solutions.private-practices'
 import { Route as SolutionsReduceNoShowsRouteImport } from './routes/solutions.reduce-no-shows'
+import { Route as TrainingIndexRouteImport } from './routes/training.index'
+import { Route as TrainingRoleRouteImport } from './routes/training.$role'
 import { Route as ApiPublicCountVisitRouteImport } from './routes/api/public/count-visit'
 import { Route as ApiPublicVerifyWaitlistSignupRouteImport } from './routes/api/public/verify-waitlist-signup'
+import { Route as ApiTrainingLockRouteImport } from './routes/api/training/lock'
+import { Route as ApiTrainingSessionRouteImport } from './routes/api/training/session'
+import { Route as ApiTrainingUnlockRouteImport } from './routes/api/training/unlock'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -262,6 +267,16 @@ const SolutionsReduceNoShowsRoute = SolutionsReduceNoShowsRouteImport.update({
   path: '/solutions/reduce-no-shows',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TrainingIndexRoute = TrainingIndexRouteImport.update({
+  id: '/training/',
+  path: '/training/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TrainingRoleRoute = TrainingRoleRouteImport.update({
+  id: '/training/$role',
+  path: '/training/$role',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiPublicCountVisitRoute = ApiPublicCountVisitRouteImport.update({
   id: '/api/public/count-visit',
   path: '/api/public/count-visit',
@@ -273,6 +288,21 @@ const ApiPublicVerifyWaitlistSignupRoute =
     path: '/api/public/verify-waitlist-signup',
     getParentRoute: () => rootRouteImport,
   } as any)
+const ApiTrainingLockRoute = ApiTrainingLockRouteImport.update({
+  id: '/api/training/lock',
+  path: '/api/training/lock',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiTrainingSessionRoute = ApiTrainingSessionRouteImport.update({
+  id: '/api/training/session',
+  path: '/api/training/session',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiTrainingUnlockRoute = ApiTrainingUnlockRouteImport.update({
+  id: '/api/training/unlock',
+  path: '/api/training/unlock',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -311,12 +341,17 @@ export interface FileRoutesByFullPath {
   '/solutions/new-practices': typeof SolutionsNewPracticesRoute
   '/solutions/private-practices': typeof SolutionsPrivatePracticesRoute
   '/solutions/reduce-no-shows': typeof SolutionsReduceNoShowsRoute
+  '/training/$role': typeof TrainingRoleRoute
   '/compare/': typeof CompareIndexRoute
   '/features/': typeof FeaturesIndexRoute
   '/guides/': typeof GuidesIndexRoute
   '/solutions/': typeof SolutionsIndexRoute
+  '/training/': typeof TrainingIndexRoute
   '/api/public/count-visit': typeof ApiPublicCountVisitRoute
   '/api/public/verify-waitlist-signup': typeof ApiPublicVerifyWaitlistSignupRoute
+  '/api/training/lock': typeof ApiTrainingLockRoute
+  '/api/training/session': typeof ApiTrainingSessionRoute
+  '/api/training/unlock': typeof ApiTrainingUnlockRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -355,12 +390,17 @@ export interface FileRoutesByTo {
   '/solutions/new-practices': typeof SolutionsNewPracticesRoute
   '/solutions/private-practices': typeof SolutionsPrivatePracticesRoute
   '/solutions/reduce-no-shows': typeof SolutionsReduceNoShowsRoute
+  '/training/$role': typeof TrainingRoleRoute
   '/compare': typeof CompareIndexRoute
   '/features': typeof FeaturesIndexRoute
   '/guides': typeof GuidesIndexRoute
   '/solutions': typeof SolutionsIndexRoute
+  '/training': typeof TrainingIndexRoute
   '/api/public/count-visit': typeof ApiPublicCountVisitRoute
   '/api/public/verify-waitlist-signup': typeof ApiPublicVerifyWaitlistSignupRoute
+  '/api/training/lock': typeof ApiTrainingLockRoute
+  '/api/training/session': typeof ApiTrainingSessionRoute
+  '/api/training/unlock': typeof ApiTrainingUnlockRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -400,12 +440,17 @@ export interface FileRoutesById {
   '/solutions/new-practices': typeof SolutionsNewPracticesRoute
   '/solutions/private-practices': typeof SolutionsPrivatePracticesRoute
   '/solutions/reduce-no-shows': typeof SolutionsReduceNoShowsRoute
+  '/training/$role': typeof TrainingRoleRoute
   '/compare/': typeof CompareIndexRoute
   '/features/': typeof FeaturesIndexRoute
   '/guides/': typeof GuidesIndexRoute
   '/solutions/': typeof SolutionsIndexRoute
+  '/training/': typeof TrainingIndexRoute
   '/api/public/count-visit': typeof ApiPublicCountVisitRoute
   '/api/public/verify-waitlist-signup': typeof ApiPublicVerifyWaitlistSignupRoute
+  '/api/training/lock': typeof ApiTrainingLockRoute
+  '/api/training/session': typeof ApiTrainingSessionRoute
+  '/api/training/unlock': typeof ApiTrainingUnlockRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -446,12 +491,17 @@ export interface FileRouteTypes {
     | '/solutions/new-practices'
     | '/solutions/private-practices'
     | '/solutions/reduce-no-shows'
+    | '/training/$role'
     | '/compare/'
     | '/features/'
     | '/guides/'
     | '/solutions/'
+    | '/training/'
     | '/api/public/count-visit'
     | '/api/public/verify-waitlist-signup'
+    | '/api/training/lock'
+    | '/api/training/session'
+    | '/api/training/unlock'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -490,12 +540,17 @@ export interface FileRouteTypes {
     | '/solutions/new-practices'
     | '/solutions/private-practices'
     | '/solutions/reduce-no-shows'
+    | '/training/$role'
     | '/compare'
     | '/features'
     | '/guides'
     | '/solutions'
+    | '/training'
     | '/api/public/count-visit'
     | '/api/public/verify-waitlist-signup'
+    | '/api/training/lock'
+    | '/api/training/session'
+    | '/api/training/unlock'
   id:
     | '__root__'
     | '/'
@@ -534,12 +589,17 @@ export interface FileRouteTypes {
     | '/solutions/new-practices'
     | '/solutions/private-practices'
     | '/solutions/reduce-no-shows'
+    | '/training/$role'
     | '/compare/'
     | '/features/'
     | '/guides/'
     | '/solutions/'
+    | '/training/'
     | '/api/public/count-visit'
     | '/api/public/verify-waitlist-signup'
+    | '/api/training/lock'
+    | '/api/training/session'
+    | '/api/training/unlock'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -579,12 +639,17 @@ export interface RootRouteChildren {
   SolutionsNewPracticesRoute: typeof SolutionsNewPracticesRoute
   SolutionsPrivatePracticesRoute: typeof SolutionsPrivatePracticesRoute
   SolutionsReduceNoShowsRoute: typeof SolutionsReduceNoShowsRoute
+  TrainingRoleRoute: typeof TrainingRoleRoute
   CompareIndexRoute: typeof CompareIndexRoute
   FeaturesIndexRoute: typeof FeaturesIndexRoute
   GuidesIndexRoute: typeof GuidesIndexRoute
   SolutionsIndexRoute: typeof SolutionsIndexRoute
+  TrainingIndexRoute: typeof TrainingIndexRoute
   ApiPublicCountVisitRoute: typeof ApiPublicCountVisitRoute
   ApiPublicVerifyWaitlistSignupRoute: typeof ApiPublicVerifyWaitlistSignupRoute
+  ApiTrainingLockRoute: typeof ApiTrainingLockRoute
+  ApiTrainingSessionRoute: typeof ApiTrainingSessionRoute
+  ApiTrainingUnlockRoute: typeof ApiTrainingUnlockRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -869,6 +934,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SolutionsReduceNoShowsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/training/': {
+      id: '/training/'
+      path: '/training'
+      fullPath: '/training/'
+      preLoaderRoute: typeof TrainingIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/training/$role': {
+      id: '/training/$role'
+      path: '/training/$role'
+      fullPath: '/training/$role'
+      preLoaderRoute: typeof TrainingRoleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/public/count-visit': {
       id: '/api/public/count-visit'
       path: '/api/public/count-visit'
@@ -881,6 +960,27 @@ declare module '@tanstack/react-router' {
       path: '/api/public/verify-waitlist-signup'
       fullPath: '/api/public/verify-waitlist-signup'
       preLoaderRoute: typeof ApiPublicVerifyWaitlistSignupRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/training/lock': {
+      id: '/api/training/lock'
+      path: '/api/training/lock'
+      fullPath: '/api/training/lock'
+      preLoaderRoute: typeof ApiTrainingLockRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/training/session': {
+      id: '/api/training/session'
+      path: '/api/training/session'
+      fullPath: '/api/training/session'
+      preLoaderRoute: typeof ApiTrainingSessionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/training/unlock': {
+      id: '/api/training/unlock'
+      path: '/api/training/unlock'
+      fullPath: '/api/training/unlock'
+      preLoaderRoute: typeof ApiTrainingUnlockRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -925,12 +1025,17 @@ const rootRouteChildren: RootRouteChildren = {
   SolutionsNewPracticesRoute: SolutionsNewPracticesRoute,
   SolutionsPrivatePracticesRoute: SolutionsPrivatePracticesRoute,
   SolutionsReduceNoShowsRoute: SolutionsReduceNoShowsRoute,
+  TrainingRoleRoute: TrainingRoleRoute,
   CompareIndexRoute: CompareIndexRoute,
   FeaturesIndexRoute: FeaturesIndexRoute,
   GuidesIndexRoute: GuidesIndexRoute,
   SolutionsIndexRoute: SolutionsIndexRoute,
+  TrainingIndexRoute: TrainingIndexRoute,
   ApiPublicCountVisitRoute: ApiPublicCountVisitRoute,
   ApiPublicVerifyWaitlistSignupRoute: ApiPublicVerifyWaitlistSignupRoute,
+  ApiTrainingLockRoute: ApiTrainingLockRoute,
+  ApiTrainingSessionRoute: ApiTrainingSessionRoute,
+  ApiTrainingUnlockRoute: ApiTrainingUnlockRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
