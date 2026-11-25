@@ -18,7 +18,7 @@ export const Route = createFileRoute("/cookies")({
 
 function CookiesPage() {
   return (
-    <LegalLayout title="Cookie Policy" updated="9 November 2026">
+    <LegalLayout title="Cookie Policy" updated="25 November 2026">
       <LegalSection heading="What are cookies">
         <p>
           Cookies are small text files stored on your device when you visit a website. They help us
@@ -80,6 +80,15 @@ function CookiesPage() {
             not kept. Stored in the browser tab's session storage, not a cookie, and removed when
             the booking is made or the tab is closed, or the next time the page loads after the 30
             minutes.
+          </li>
+          <li>
+            <strong className="text-[#0F172A] font-semibold">Staff training:</strong> when a
+            practice team member unlocks DentDock's staff training with their practice's code, a
+            cookie (<strong className="text-[#0F172A] font-semibold">dd_training</strong>) keeps
+            that browser unlocked for 30 days. It holds no personal details, and is removed by
+            "Lock". Their first name and training stars are kept in localStorage (
+            <strong className="text-[#0F172A] font-semibold">dd_training_progress_v1</strong>) on
+            that computer only, and are never sent to DentDock.
           </li>
         </ul>
       </LegalSection>

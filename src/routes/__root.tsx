@@ -140,10 +140,13 @@ function RootComponent() {
     countPageView(pathname);
   }, [pathname]);
 
+  // Staff training (docs/TRAINING-GAME-PLAN.md §4) loads no analytics, so it asks nothing.
+  const training = pathname === "/training" || pathname.startsWith("/training/");
+
   return (
     <>
       <Outlet />
-      <CookieBanner />
+      {!training && <CookieBanner />}
     </>
   );
 }
