@@ -13,7 +13,11 @@ import {
 } from "lucide-react";
 import { AppChrome, Notice, Toast } from "@/components/training/sim/AppChrome";
 import { Diary, type DiaryView, type SlotPick } from "@/components/training/sim/Diary";
-import { AppointmentDrawer, type DrawerPrefill } from "@/components/training/sim/AppointmentDrawer";
+import {
+  AppointmentDrawer,
+  type DrawerPrefill,
+  type DrawerState,
+} from "@/components/training/sim/AppointmentDrawer";
 import { Walkthrough, type TourStep } from "@/components/training/sim/Walkthrough";
 import {
   BALANCE_QUESTION,
@@ -38,28 +42,37 @@ import { loadProgress, recordStars, recordWalked, starsFor } from "@/lib/trainin
  */
 
 const TASK_ID = "book-phone";
+const EMPTY_DRAWER: DrawerState = {
+  search: "",
+  patientId: null,
+  service: "",
+  clinicianId: "",
+  date: "",
+  start: null,
+};
 const SLOT_930 = { clinicianId: "shah", date: TARGET_DAY, start: 9 * 60 + 30 };
 
 const TOUR: TourStep[] = [
   {
     next: true,
     title: "This is the DentDock Calendar",
-    text: "It opens on this week. Mrs Patel wants a check-up with Dr Shah next Thursday, before 11am. I'll show you each click, then it's your turn.",
+    text: "It opens on this week. Mrs Patel wants a check-up with Dr Shah next Thursday, before 11am. First look at Thursday to see when Dr Shah is free, then book it with New appointment.",
   },
   {
     target: "weekday-2026-12-10",
-    title: "Open Thursday",
+    title: "Look at Thursday",
     text: "Click THU 10. Thursday opens with a column for each dentist, so you can see who is free.",
   },
   {
     target: "slot",
-    title: "Pick a free time",
-    text: "Dr Shah is free at 9:30am, before 11. Click the free space at 9:30am in Dr. Shah's column.",
+    next: true,
+    title: "Find a free time",
+    text: "In Dr. Shah's column, 9:30am is free, and it's before 11. That's the time to book.",
   },
   {
-    target: "menu-book",
-    title: "Book it",
-    text: "Click Book appointment. The booking form opens with the dentist, date and time filled in.",
+    target: "new-appointment",
+    title: "Open New appointment",
+    text: "Click New appointment. It opens the booking form, where you fill in each detail.",
   },
   { target: "patient-search", title: "Find the patient", text: "Type Patel in the search box." },
   {
@@ -79,17 +92,29 @@ const TOUR: TourStep[] = [
     text: "Choose Check-up from the Service list.",
   },
   {
-    target: ["dentist", "when"],
-    next: true,
-    title: "Check the details",
-    text: "The dentist, date and time came from the slot you clicked: Dr. Shah, 10/12/2026, 9:30am. Always check them against what the caller asked.",
+    target: "dentist",
+    title: "Choose the dentist",
+    text: "Choose NS · Dr. Shah from the Dentist list.",
   },
-  { target: "book", title: "Book the appointment", text: "Click Book appointment." },
+  {
+    target: "date",
+    title: "Set the date",
+    text: "Set the date to Thursday 10 December (10/12/2026).",
+  },
+  {
+    target: "time",
+    title: "Set the time",
+    text: "Choose 9:30am. Times that are already booked say Taken.",
+  },
+  {
+    target: "book",
+    title: "Book the appointment",
+    text: "Check everything against the call, then click Book appointment.",
+  },
 ];
 
 type Phase = "intro" | "tour" | "question" | "turnBrief" | "play" | "done";
 type Message = { tone: "warning" | "danger" | "info"; title: string; text: string } | null;
-type DrawerState = { search: string; patientId: string | null; service: string };
 
 function StarsRow({ count, size = 16 }: { count: number; size?: number }) {
   return (
@@ -113,13 +138,19 @@ const secondary =
 const small =
   "flex h-8 items-center gap-1.5 rounded-lg border border-[#E2E8F0] bg-white px-3 text-[13px] font-medium hover:bg-[#F8FAFC] disabled:opacity-50";
 
-function CallCard({ sc, label }: { sc: Scenario; label: string }) {
+/** The caller's words, highlighted in blue so the task stands out (Hariss, 25 Nov). */
+function CallBar({ sc }: { sc: Scenario }) {
   return (
-    <div className="rounded-xl border border-[#E2E8F0] bg-white p-5">
-      <div className="mb-2 flex items-center gap-2 text-[13px] font-semibold">
-        <Phone size={15} className="text-[#2563EB]" aria-hidden /> {label}
+    <div className="flex items-start gap-3 rounded-lg border border-[#BFDBFE] bg-[#EFF6FF] px-4 py-2.5">
+      <span className="mt-0.5 flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-[#2563EB]">
+        <Phone size={14} className="text-white" aria-hidden />
+      </span>
+      <div className="min-w-0">
+        <p className="text-[12px] font-semibold uppercase tracking-[0.06em] text-[#1D4ED8]">
+          On the phone
+        </p>
+        <p className="text-[14.5px] font-medium leading-[1.5] text-[#1E3A8A]">"{sc.call}"</p>
       </div>
-      <p className="text-[14px] leading-[1.55] text-[#334155]">"{sc.call}"</p>
     </div>
   );
 }
@@ -143,12 +174,7 @@ export function BookPhoneTask({
   const [bookings, setBookings] = useState<Booking[]>(BOOKINGS);
   const [drawer, setDrawer] = useState<DrawerPrefill | null>(null);
   const [drawerKey, setDrawerKey] = useState(0);
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [drawerState, setDrawerState] = useState<DrawerState>({
-    search: "",
-    patientId: null,
-    service: "",
-  });
+  const [drawerState, setDrawerState] = useState<DrawerState>(EMPTY_DRAWER);
   const [toast, setToast] = useState<string | null>(null);
   const [newId, setNewId] = useState<string | null>(null);
   const simRef = useRef<HTMLDivElement>(null);
@@ -180,8 +206,7 @@ export function BookPhoneTask({
     setDate(TODAY);
     setBookings(BOOKINGS);
     setDrawer(null);
-    setMenuOpen(false);
-    setDrawerState({ search: "", patientId: null, service: "" });
+    setDrawerState(EMPTY_DRAWER);
     setToast(null);
     setNewId(null);
     setMessage(null);
@@ -207,17 +232,18 @@ export function BookPhoneTask({
     if (phase !== "tour") return;
     const done: Record<number, boolean> = {
       1: view === "day" && date === TARGET_DAY,
-      2: menuOpen,
       3: drawer !== null,
       4: drawerState.search.toLowerCase().includes("patel"),
       5: drawerState.patientId === "meena",
       7: drawerState.service === "Check-up",
+      8: drawerState.clinicianId === "shah",
+      9: drawerState.date === TARGET_DAY,
+      10: drawerState.start === 9 * 60 + 30,
     };
     if (done[step]) setStep((s) => s + 1);
-    // Lost the menu or the form (Escape, closing it): go back to picking the time.
-    else if ((step === 3 && !menuOpen && !drawer) || (step >= 4 && step <= 9 && !drawer))
-      setStep(2);
-  }, [phase, step, view, date, menuOpen, drawer, drawerState]);
+    // The form was closed part-way: go back to opening it.
+    else if (step >= 4 && step < TOUR.length && !drawer) setStep(3);
+  }, [phase, step, view, date, drawer, drawerState]);
 
   const sc = phase === "tour" || phase === "question" ? PATEL : REID;
   const stars = starsFor(mistakes, hints);
@@ -234,12 +260,11 @@ export function BookPhoneTask({
   const openDrawer = (p: DrawerPrefill) => {
     setMessage(null);
     setDrawerKey((k) => k + 1);
-    setDrawerState({ search: "", patientId: null, service: "" });
+    setDrawerState(EMPTY_DRAWER);
     setDrawer(p);
   };
   const pickSlot = (p: SlotPick) =>
     openDrawer({ date: p.date, start: p.start, clinicianId: p.clinicianId });
-  const onMenu = useCallback((open: boolean) => setMenuOpen(open), []);
   const onDrawerState = useCallback((s: DrawerState) => setDrawerState(s), []);
 
   const hint = () => {
@@ -377,7 +402,7 @@ export function BookPhoneTask({
           A different patient is on the phone. Book it on your own.
         </p>
         <div className="mt-5">
-          <CallCard sc={REID} label="The phone rings" />
+          <CallBar sc={REID} />
         </div>
         <p className="mt-4 text-[13px] text-[#64748B]">
           You start on 3 stars. A mistake or a hint costs one. You can start again at any time.
@@ -484,9 +509,8 @@ export function BookPhoneTask({
             )}
           </div>
         </div>
-        <div className="flex items-start gap-2 border-t border-[#F1F5F9] px-4 py-2.5 sm:px-6">
-          <Phone size={15} className="mt-1 flex-shrink-0 text-[#2563EB]" aria-hidden />
-          <p className="text-[14px] leading-[1.55] text-[#334155]">"{sc.call}"</p>
+        <div className="border-t border-[#F1F5F9] px-4 py-2.5 sm:px-6">
+          <CallBar sc={sc} />
         </div>
       </div>
 
@@ -510,7 +534,6 @@ export function BookPhoneTask({
               onOther={other}
               highlightId={newId}
               markSlot={touring ? SLOT_930 : null}
-              onMenu={onMenu}
             />
             {drawer && (
               <AppointmentDrawer

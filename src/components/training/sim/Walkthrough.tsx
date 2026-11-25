@@ -17,7 +17,9 @@ export type TourStep = {
   next?: boolean;
 };
 
-type Box = { top: number; left: number; width: number; height: number };
+/** `panelLeft`: the left edge of the booking form when the target is inside it (the note goes
+ * beside the form, not over its other fields). */
+type Box = { top: number; left: number; width: number; height: number; panelLeft: number | null };
 
 function measure(root: HTMLElement, targets: string[]): Box | null {
   const r = root.getBoundingClientRect();
@@ -30,7 +32,16 @@ function measure(root: HTMLElement, targets: string[]): Box | null {
   const left = Math.min(...rects.map((b) => b.left));
   const bottom = Math.max(...rects.map((b) => b.bottom));
   const right = Math.max(...rects.map((b) => b.right));
-  return { top: top - r.top, left: left - r.left, width: right - left, height: bottom - top };
+  const first = targets.map((t) => root.querySelector(`[data-tour="${t}"]`)).find(Boolean);
+  const panel = first?.closest('[role="dialog"]') as HTMLElement | null;
+  const panelLeft = panel ? panel.getBoundingClientRect().left - r.left : null;
+  return {
+    top: top - r.top,
+    left: left - r.left,
+    width: right - left,
+    height: bottom - top,
+    panelLeft,
+  };
 }
 
 export function Walkthrough({
@@ -80,7 +91,8 @@ export function Walkthrough({
             (Math.abs(b.top - prev.top) > 0.5 ||
               Math.abs(b.left - prev.left) > 0.5 ||
               Math.abs(b.width - prev.width) > 0.5 ||
-              Math.abs(b.height - prev.height) > 0.5));
+              Math.abs(b.height - prev.height) > 0.5 ||
+              b.panelLeft !== prev.panelLeft));
         if (changed) {
           boxRef.current = b;
           setBox(b);
@@ -132,6 +144,11 @@ export function Walkthrough({
     cardStyle = {
       left: Math.max(16, rootSize.w / 2 - CARD_W / 2),
       top: Math.max(16, rootSize.h / 2 - 90),
+    };
+  } else if (box.panelLeft !== null && box.panelLeft > CARD_W + 28) {
+    cardStyle = {
+      left: box.panelLeft - CARD_W - 16,
+      top: Math.min(Math.max(12, box.top), Math.max(12, rootSize.h - 200)),
     };
   } else if (box.left > CARD_W + 28) {
     cardStyle = {

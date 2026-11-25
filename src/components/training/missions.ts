@@ -52,7 +52,8 @@ export const ROLES: Role[] = [
         id: "book-phone",
         title: "Book a phoned-in appointment",
         story: "Mrs Patel rings: she'd like a check-up with Dr Shah next Thursday morning.",
-        learn: "Book from the diary: slot, patient, treatment, dentist and time.",
+        learn:
+          "Check the day, then book with New appointment: patient, treatment, dentist, date and time.",
         minutes: 5,
         ready: true,
         source: [
