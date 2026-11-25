@@ -33,6 +33,88 @@ export type GuideMeta = {
 
 export const guides: GuideMeta[] = [
   {
+    slug: "dental-deposits-nhs-private",
+    title: "Can a dentist ask for a deposit? NHS and private rules",
+    summary:
+      "When a UK dental practice can take a deposit: the NHS rules in England, fair private deposits and refunds, a decision table and a policy you can adapt.",
+    topic: "Deposits and refunds",
+    minutes: 8,
+    updated: "26 November 2026",
+    topics: ["Deposits and refunds", "NHS and private"],
+    lead: "When a UK dental practice can take a deposit: the NHS rules in England, fair private deposits and refunds, a decision table and a policy you can adapt.",
+    handles: "deposits and refunds",
+    // Unsplash ygVEIaDM6DE (free licence, Vitaly Gariev (@silverkblack)), picked 25 Nov 2026 for Hariss to confirm.
+    image: "/images/guides/dental-deposits-nhs-private.webp",
+    imageAlt: "Woman on a sofa holding a bank card while paying on her laptop",
+    product: [
+      {
+        kind: "Solution",
+        title: "Deposits and late cancellations",
+        body: "Deposits on the treatments you choose, and fees your team decides case by case.",
+        to: "/solutions/deposits-and-late-cancellations",
+        image: "/images/solutions/deposits.webp",
+        alt: "Patient paying by card on a card reader",
+      },
+      {
+        kind: "Feature",
+        title: "Payments and deposits",
+        body: "Payment links, deposits and fair fees through your own Stripe account.",
+        to: "/features/payments",
+        image: "/images/pages/hero-payments.webp",
+        alt: "Receptionist at a dental front desk while a patient pays by phone",
+      },
+      {
+        kind: "Feature",
+        title: "Online booking and portal",
+        body: "Patients book online, see your prices and manage their own appointments.",
+        to: "/features/online-booking",
+        image: "/images/pages/hero-booking.webp",
+        alt: "Woman smiling as she uses her phone at home",
+      },
+    ],
+  },
+  {
+    slug: "dental-treatment-plan-rules",
+    title: "What must a dental treatment plan include? (UK rules and a template)",
+    summary:
+      "What the GDC Standards say a dental treatment plan must include, estimate or fixed quote, NHS and private on one plan, signatures and consent, and a template you can adapt.",
+    topic: "Treatment plans",
+    minutes: 10,
+    updated: "26 November 2026",
+    topics: ["Treatment plans", "Costs and consent"],
+    lead: "What the GDC Standards say a dental treatment plan must include, estimate or fixed quote, NHS and private on one plan, signatures and consent, and a template you can adapt.",
+    handles: "treatment plans",
+    // Unsplash -m-4tYmtLlI (free licence, Caroline LM (@carocaro1987)), picked 25 Nov 2026 for Hariss to confirm.
+    image: "/images/guides/dental-treatment-plan-rules.webp",
+    imageAlt: "Dentist pointing to an X-ray on a screen as he talks a patient through it",
+    product: [
+      {
+        kind: "Feature",
+        title: "Treatment plans",
+        body: "Plans and estimates from your price list, with options patients can accept online.",
+        to: "/features/treatment-plans",
+        image: "/images/pages/plan-consult.webp",
+        alt: "Dentist and dental nurse talking with a smiling patient in the dental chair",
+      },
+      {
+        kind: "Feature",
+        title: "Dental chart",
+        body: "Chart existing work, findings, BPE, examinations and X-rays, with every change kept.",
+        to: "/features/dental-chart",
+        image: "/images/pages/chart-exam.webp",
+        alt: "Dentist examining a smiling patient's teeth",
+      },
+      {
+        kind: "Feature",
+        title: "Payments and deposits",
+        body: "Payment links, deposits and fair fees through your own Stripe account.",
+        to: "/features/payments",
+        image: "/images/pages/hero-payments.webp",
+        alt: "Receptionist at a dental front desk while a patient pays by phone",
+      },
+    ],
+  },
+  {
     slug: "reminder-texts-pecr",
     title: "Can a dental practice text patients without consent?",
     summary:

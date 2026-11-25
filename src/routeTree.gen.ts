@@ -36,6 +36,8 @@ import { Route as FeaturesSecurityRouteImport } from './routes/features.security
 import { Route as FeaturesSwitchingRouteImport } from './routes/features.switching'
 import { Route as FeaturesTreatmentPlansRouteImport } from './routes/features.treatment-plans'
 import { Route as GuidesIndexRouteImport } from './routes/guides.index'
+import { Route as GuidesDentalDepositsNhsPrivateRouteImport } from './routes/guides.dental-deposits-nhs-private'
+import { Route as GuidesDentalTreatmentPlanRulesRouteImport } from './routes/guides.dental-treatment-plan-rules'
 import { Route as GuidesMissedAppointmentFeesRouteImport } from './routes/guides.missed-appointment-fees'
 import { Route as GuidesReminderTextsPecrRouteImport } from './routes/guides.reminder-texts-pecr'
 import { Route as SolutionsIndexRouteImport } from './routes/solutions.index'
@@ -188,6 +190,18 @@ const GuidesIndexRoute = GuidesIndexRouteImport.update({
   path: '/guides/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GuidesDentalDepositsNhsPrivateRoute =
+  GuidesDentalDepositsNhsPrivateRouteImport.update({
+    id: '/guides/dental-deposits-nhs-private',
+    path: '/guides/dental-deposits-nhs-private',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const GuidesDentalTreatmentPlanRulesRoute =
+  GuidesDentalTreatmentPlanRulesRouteImport.update({
+    id: '/guides/dental-treatment-plan-rules',
+    path: '/guides/dental-treatment-plan-rules',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const GuidesMissedAppointmentFeesRoute =
   GuidesMissedAppointmentFeesRouteImport.update({
     id: '/guides/missed-appointment-fees',
@@ -285,6 +299,8 @@ export interface FileRoutesByFullPath {
   '/features/security': typeof FeaturesSecurityRoute
   '/features/switching': typeof FeaturesSwitchingRoute
   '/features/treatment-plans': typeof FeaturesTreatmentPlansRoute
+  '/guides/dental-deposits-nhs-private': typeof GuidesDentalDepositsNhsPrivateRoute
+  '/guides/dental-treatment-plan-rules': typeof GuidesDentalTreatmentPlanRulesRoute
   '/guides/missed-appointment-fees': typeof GuidesMissedAppointmentFeesRoute
   '/guides/reminder-texts-pecr': typeof GuidesReminderTextsPecrRoute
   '/solutions/bring-patients-back': typeof SolutionsBringPatientsBackRoute
@@ -327,6 +343,8 @@ export interface FileRoutesByTo {
   '/features/security': typeof FeaturesSecurityRoute
   '/features/switching': typeof FeaturesSwitchingRoute
   '/features/treatment-plans': typeof FeaturesTreatmentPlansRoute
+  '/guides/dental-deposits-nhs-private': typeof GuidesDentalDepositsNhsPrivateRoute
+  '/guides/dental-treatment-plan-rules': typeof GuidesDentalTreatmentPlanRulesRoute
   '/guides/missed-appointment-fees': typeof GuidesMissedAppointmentFeesRoute
   '/guides/reminder-texts-pecr': typeof GuidesReminderTextsPecrRoute
   '/solutions/bring-patients-back': typeof SolutionsBringPatientsBackRoute
@@ -370,6 +388,8 @@ export interface FileRoutesById {
   '/features/security': typeof FeaturesSecurityRoute
   '/features/switching': typeof FeaturesSwitchingRoute
   '/features/treatment-plans': typeof FeaturesTreatmentPlansRoute
+  '/guides/dental-deposits-nhs-private': typeof GuidesDentalDepositsNhsPrivateRoute
+  '/guides/dental-treatment-plan-rules': typeof GuidesDentalTreatmentPlanRulesRoute
   '/guides/missed-appointment-fees': typeof GuidesMissedAppointmentFeesRoute
   '/guides/reminder-texts-pecr': typeof GuidesReminderTextsPecrRoute
   '/solutions/bring-patients-back': typeof SolutionsBringPatientsBackRoute
@@ -414,6 +434,8 @@ export interface FileRouteTypes {
     | '/features/security'
     | '/features/switching'
     | '/features/treatment-plans'
+    | '/guides/dental-deposits-nhs-private'
+    | '/guides/dental-treatment-plan-rules'
     | '/guides/missed-appointment-fees'
     | '/guides/reminder-texts-pecr'
     | '/solutions/bring-patients-back'
@@ -456,6 +478,8 @@ export interface FileRouteTypes {
     | '/features/security'
     | '/features/switching'
     | '/features/treatment-plans'
+    | '/guides/dental-deposits-nhs-private'
+    | '/guides/dental-treatment-plan-rules'
     | '/guides/missed-appointment-fees'
     | '/guides/reminder-texts-pecr'
     | '/solutions/bring-patients-back'
@@ -498,6 +522,8 @@ export interface FileRouteTypes {
     | '/features/security'
     | '/features/switching'
     | '/features/treatment-plans'
+    | '/guides/dental-deposits-nhs-private'
+    | '/guides/dental-treatment-plan-rules'
     | '/guides/missed-appointment-fees'
     | '/guides/reminder-texts-pecr'
     | '/solutions/bring-patients-back'
@@ -541,6 +567,8 @@ export interface RootRouteChildren {
   FeaturesSecurityRoute: typeof FeaturesSecurityRoute
   FeaturesSwitchingRoute: typeof FeaturesSwitchingRoute
   FeaturesTreatmentPlansRoute: typeof FeaturesTreatmentPlansRoute
+  GuidesDentalDepositsNhsPrivateRoute: typeof GuidesDentalDepositsNhsPrivateRoute
+  GuidesDentalTreatmentPlanRulesRoute: typeof GuidesDentalTreatmentPlanRulesRoute
   GuidesMissedAppointmentFeesRoute: typeof GuidesMissedAppointmentFeesRoute
   GuidesReminderTextsPecrRoute: typeof GuidesReminderTextsPecrRoute
   SolutionsBringPatientsBackRoute: typeof SolutionsBringPatientsBackRoute
@@ -750,6 +778,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GuidesIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/guides/dental-deposits-nhs-private': {
+      id: '/guides/dental-deposits-nhs-private'
+      path: '/guides/dental-deposits-nhs-private'
+      fullPath: '/guides/dental-deposits-nhs-private'
+      preLoaderRoute: typeof GuidesDentalDepositsNhsPrivateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/guides/dental-treatment-plan-rules': {
+      id: '/guides/dental-treatment-plan-rules'
+      path: '/guides/dental-treatment-plan-rules'
+      fullPath: '/guides/dental-treatment-plan-rules'
+      preLoaderRoute: typeof GuidesDentalTreatmentPlanRulesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/guides/missed-appointment-fees': {
       id: '/guides/missed-appointment-fees'
       path: '/guides/missed-appointment-fees'
@@ -869,6 +911,8 @@ const rootRouteChildren: RootRouteChildren = {
   FeaturesSecurityRoute: FeaturesSecurityRoute,
   FeaturesSwitchingRoute: FeaturesSwitchingRoute,
   FeaturesTreatmentPlansRoute: FeaturesTreatmentPlansRoute,
+  GuidesDentalDepositsNhsPrivateRoute: GuidesDentalDepositsNhsPrivateRoute,
+  GuidesDentalTreatmentPlanRulesRoute: GuidesDentalTreatmentPlanRulesRoute,
   GuidesMissedAppointmentFeesRoute: GuidesMissedAppointmentFeesRoute,
   GuidesReminderTextsPecrRoute: GuidesReminderTextsPecrRoute,
   SolutionsBringPatientsBackRoute: SolutionsBringPatientsBackRoute,
