@@ -13,6 +13,7 @@ import {
   readCookie,
   sameOrigin,
   trainingConfig,
+  closedReason,
 } from "./trainingAccess.ts";
 
 const CODE = "K5RD-ANX2-SXKA-K3DJ";
@@ -105,5 +106,17 @@ test("quotes and spaces pasted around the secrets are ignored", () => {
   assert.equal(parseCodes(`'Oak=${HASH}'`)[0]?.hash, HASH);
   assert.ok(
     trainingConfig({ TRAINING_CODES: `"Oak=${HASH}"`, TRAINING_COOKIE_SECRET: `"${SECRET}"` }),
+  );
+});
+
+test("the switched-off answer names what is wrong, never a value", () => {
+  assert.deepEqual(closedReason({}), ["TRAINING_CODES missing", "TRAINING_COOKIE_SECRET missing"]);
+  assert.deepEqual(closedReason({ TRAINING_CODES: "K5RD-ANX2", TRAINING_COOKIE_SECRET: "abc" }), [
+    "TRAINING_CODES unreadable",
+    "TRAINING_COOKIE_SECRET too short",
+  ]);
+  assert.deepEqual(
+    closedReason({ TRAINING_CODES: `Oak=${HASH}`, TRAINING_COOKIE_SECRET: SECRET }),
+    [],
   );
 });

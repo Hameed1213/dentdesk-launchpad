@@ -182,3 +182,15 @@ export function trainingConfig(env: Record<string, string | undefined>): Trainin
   if (!secret || secret.length < 32 || entries.length === 0) return null;
   return { secret, entries };
 }
+
+/** Why training is shut, without showing any value: for the "not switched on" answer. */
+export function closedReason(env: Record<string, string | undefined>): string[] {
+  const reasons: string[] = [];
+  const codes = env.TRAINING_CODES;
+  if (!codes) reasons.push("TRAINING_CODES missing");
+  else if (parseCodes(codes).length === 0) reasons.push("TRAINING_CODES unreadable");
+  const secret = env.TRAINING_COOKIE_SECRET?.trim().replace(/^["']|["']$/g, "");
+  if (!secret) reasons.push("TRAINING_COOKIE_SECRET missing");
+  else if (secret.length < 32) reasons.push("TRAINING_COOKIE_SECRET too short");
+  return reasons;
+}
