@@ -33,6 +33,88 @@ export type GuideMeta = {
 
 export const guides: GuideMeta[] = [
   {
+    slug: "online-medical-history-forms",
+    title: "Can dental medical history forms be filled in online?",
+    summary:
+      "Online medical history forms for UK dental practices: the UK GDPR basis for health data, GDC and CQC expectations, how often to update, who checks the answers, and a set-up checklist.",
+    topic: "Forms and medical history",
+    minutes: 10,
+    updated: "25 November 2026",
+    topics: ["Forms and medical history", "Data protection"],
+    lead: "Online medical history forms for UK dental practices: the UK GDPR basis for health data, GDC and CQC expectations, how often to update, who checks the answers, and a set-up checklist.",
+    handles: "forms and medical history",
+    // Unsplash xDNwySMfR5I (free licence, Vitaly Gariev), picked 25 Nov 2026 for Hariss to confirm.
+    image: "/images/guides/online-medical-history-forms.webp",
+    imageAlt: "Clinician in a white coat writing on a form on a clipboard",
+    product: [
+      {
+        kind: "Feature",
+        title: "Forms and medical history",
+        body: "Health forms filled in and signed before patients arrive, and added to the record.",
+        to: "/features/forms",
+        image: "/images/pages/hero-forms.webp",
+        alt: "Person filling in a form on their phone",
+      },
+      {
+        kind: "Feature",
+        title: "Security and data",
+        body: "Database and files in London, UK, with two-step login and access set screen by screen.",
+        to: "/features/security",
+        image: "/images/pages/hero-security.webp",
+        alt: "Smiling dentist in his surgery",
+      },
+      {
+        kind: "Solution",
+        title: "Cut admin and phone time",
+        body: "Online booking, forms done before the visit and payment links, all in one place.",
+        to: "/solutions/cut-admin",
+        image: "/images/solutions/cut-admin.webp",
+        alt: "Woman at her desk talking on the phone, with her laptop open",
+      },
+    ],
+  },
+  {
+    slug: "dental-recall-templates",
+    title: "Dental recall messages: UK templates and when to send them",
+    summary:
+      "Copy-ready recall texts, emails and letters for NHS and private patients, a timeline for when to send each one, and NICE recall intervals by risk.",
+    topic: "Reminders and recalls",
+    minutes: 11,
+    updated: "25 November 2026",
+    topics: ["Reminders and recalls", "Templates"],
+    lead: "Copy-ready recall texts, emails and letters for NHS and private patients: invitation, reminder, due now, overdue and lapsed, with a timeline and NICE recall intervals.",
+    handles: "recalls",
+    // Unsplash RNUNbvIXUbg (free licence, Vitaly Gariev (@silverkblack)), picked 25 Nov 2026 for Hariss to confirm.
+    image: "/images/guides/dental-recall-templates.webp",
+    imageAlt: "Woman smiling as she reads a letter at her kitchen table",
+    product: [
+      {
+        kind: "Solution",
+        title: "Bring patients back",
+        body: "Recalls that follow up, so patients due a check-up don't drift away.",
+        to: "/solutions/bring-patients-back",
+        image: "/images/solutions/bring-back.webp",
+        alt: "Smiling young patient back in the dental chair",
+      },
+      {
+        kind: "Feature",
+        title: "Reminders and recalls",
+        body: "Reminders before every appointment and recall follow-ups, from your practice's name.",
+        to: "/features/reminders-and-recalls",
+        image: "/images/pages/phone-reminder.webp",
+        alt: "Woman smiling as she reads a message on her phone",
+      },
+      {
+        kind: "Solution",
+        title: "Reduce no-shows",
+        body: "Reminders before every appointment, an easy way to cancel, and a waitlist to refill the gap.",
+        to: "/solutions/reduce-no-shows",
+        image: "/images/solutions/no-shows.webp",
+        alt: "An empty dental chair in a clean, modern surgery",
+      },
+    ],
+  },
+  {
     slug: "reminder-texts-pecr",
     title: "Can a dental practice text patients without consent?",
     summary:
