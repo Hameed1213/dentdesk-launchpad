@@ -67,7 +67,7 @@ function Stars({ count }: { count: number }) {
 }
 
 function TaskList({ role }: { role: Role }) {
-  const [progress, setProgress] = useState<Progress>({ name: "", stars: {} });
+  const [progress, setProgress] = useState<Progress>({ name: "", stars: {}, walked: [] });
   useEffect(() => setProgress(loadProgress()), []);
 
   const earned = role.missions.reduce((n, m) => n + (progress.stars[m.id] ?? 0), 0);

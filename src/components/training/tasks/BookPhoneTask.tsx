@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import {
   AlertTriangle,
@@ -14,28 +14,82 @@ import {
 import { AppChrome, Notice, Toast } from "@/components/training/sim/AppChrome";
 import { Diary, type DiaryView, type SlotPick } from "@/components/training/sim/Diary";
 import { AppointmentDrawer, type DrawerPrefill } from "@/components/training/sim/AppointmentDrawer";
+import { Walkthrough, type TourStep } from "@/components/training/sim/Walkthrough";
 import {
   BALANCE_QUESTION,
   BOOKINGS,
-  HINTS,
+  PATEL,
   PRACTICE,
-  REAL_APP_RECAP,
+  REID,
   SERVICES,
+  TARGET_DAY,
   TODAY,
-  checkBooking,
+  checkAttempt,
+  type Attempt,
   type Booking,
+  type Scenario,
 } from "./bookPhone";
-import { loadProgress, recordStars, starsFor } from "@/lib/trainingProgress";
+import { loadProgress, recordStars, recordWalked, starsFor } from "@/lib/trainingProgress";
 
 /*
- * Reception task 2 (docs/TRAINING-GAME-PLAN.md): the phone call, the pretend diary and drawer,
- * hints, checks, the balance question, and the result. Nothing here leaves the browser.
+ * Reception task 2 (docs/TRAINING-GAME-PLAN.md §9-§10). Hariss, 25 Nov: show first, then let them
+ * do it. 1 intro, 2 walkthrough (Mrs Patel, guided clicks, no stars), 3 the £45 question, 4 your
+ * turn (Tom Reid, a different call, hints and stars), 5 result. Nothing leaves the browser.
  */
 
 const TASK_ID = "book-phone";
+const SLOT_930 = { clinicianId: "shah", date: TARGET_DAY, start: 9 * 60 + 30 };
 
-type Phase = "brief" | "play" | "question" | "done";
+const TOUR: TourStep[] = [
+  {
+    next: true,
+    title: "This is the DentDock Calendar",
+    text: "It opens on this week. Mrs Patel wants a check-up with Dr Shah next Thursday, before 11am. I'll show you each click, then it's your turn.",
+  },
+  {
+    target: "weekday-2026-12-10",
+    title: "Open Thursday",
+    text: "Click THU 10. Thursday opens with a column for each dentist, so you can see who is free.",
+  },
+  {
+    target: "slot",
+    title: "Pick a free time",
+    text: "Dr Shah is free at 9:30am, before 11. Click the free space at 9:30am in Dr. Shah's column.",
+  },
+  {
+    target: "menu-book",
+    title: "Book it",
+    text: "Click Book appointment. The booking form opens with the dentist, date and time filled in.",
+  },
+  { target: "patient-search", title: "Find the patient", text: "Type Patel in the search box." },
+  {
+    target: "patient-meena",
+    title: "Choose the right Patel",
+    text: "Three Patels come up. The caller is Meena: check the first name, and the phone number or date of birth if you're unsure. Click Meena Patel.",
+  },
+  {
+    target: "balance",
+    next: true,
+    title: "She owes £45",
+    text: "DentDock warns you when a patient has an unpaid balance. The booking can still go ahead. We'll come back to this at the end.",
+  },
+  {
+    target: "service",
+    title: "Choose the treatment",
+    text: "Choose Check-up from the Service list.",
+  },
+  {
+    target: ["dentist", "when"],
+    next: true,
+    title: "Check the details",
+    text: "The dentist, date and time came from the slot you clicked: Dr. Shah, 10/12/2026, 9:30am. Always check them against what the caller asked.",
+  },
+  { target: "book", title: "Book the appointment", text: "Click Book appointment." },
+];
+
+type Phase = "intro" | "tour" | "question" | "turnBrief" | "play" | "done";
 type Message = { tone: "warning" | "danger" | "info"; title: string; text: string } | null;
+type DrawerState = { search: string; patientId: string | null; service: string };
 
 function StarsRow({ count, size = 16 }: { count: number; size?: number }) {
   return (
@@ -52,6 +106,24 @@ function StarsRow({ count, size = 16 }: { count: number; size?: number }) {
   );
 }
 
+const primary =
+  "flex h-10 items-center justify-center gap-2 rounded-lg bg-[#2563EB] px-6 text-sm font-semibold text-white shadow-[0_1px_3px_rgba(37,99,235,0.3)] transition-colors hover:bg-[#1D4ED8]";
+const secondary =
+  "flex h-10 items-center justify-center gap-2 rounded-lg border border-[#E2E8F0] bg-white px-6 text-sm font-semibold hover:bg-[#F8FAFC]";
+const small =
+  "flex h-8 items-center gap-1.5 rounded-lg border border-[#E2E8F0] bg-white px-3 text-[13px] font-medium hover:bg-[#F8FAFC] disabled:opacity-50";
+
+function CallCard({ sc, label }: { sc: Scenario; label: string }) {
+  return (
+    <div className="rounded-xl border border-[#E2E8F0] bg-white p-5">
+      <div className="mb-2 flex items-center gap-2 text-[13px] font-semibold">
+        <Phone size={15} className="text-[#2563EB]" aria-hidden /> {label}
+      </div>
+      <p className="text-[14px] leading-[1.55] text-[#334155]">"{sc.call}"</p>
+    </div>
+  );
+}
+
 export function BookPhoneTask({
   role,
   position,
@@ -61,73 +133,129 @@ export function BookPhoneTask({
   position: number;
   total: number;
 }) {
-  const [phase, setPhase] = useState<Phase>("brief");
+  const [phase, setPhase] = useState<Phase>("intro");
+  const [walked, setWalked] = useState(false);
+  const [best, setBest] = useState(0);
+
+  // The pretend app
   const [view, setView] = useState<DiaryView>("week");
   const [date, setDate] = useState(TODAY);
   const [bookings, setBookings] = useState<Booking[]>(BOOKINGS);
   const [drawer, setDrawer] = useState<DrawerPrefill | null>(null);
   const [drawerKey, setDrawerKey] = useState(0);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [drawerState, setDrawerState] = useState<DrawerState>({
+    search: "",
+    patientId: null,
+    service: "",
+  });
+  const [toast, setToast] = useState<string | null>(null);
+  const [newId, setNewId] = useState<string | null>(null);
+  const simRef = useRef<HTMLDivElement>(null);
+
+  // Walkthrough
+  const [step, setStep] = useState(0);
+  const [answer, setAnswer] = useState<string | null>(null);
+
+  // Your turn
   const [mistakes, setMistakes] = useState(0);
   const [hints, setHints] = useState(0);
   const [message, setMessage] = useState<Message>(null);
-  const [toast, setToast] = useState<string | null>(null);
-  const [newId, setNewId] = useState<string | null>(null);
-  const [answer, setAnswer] = useState<string | null>(null);
   const [finalStars, setFinalStars] = useState(0);
-  const [best, setBest] = useState(0);
   const mistakeKeys = useRef(new Set<string>());
 
-  useEffect(() => setBest(loadProgress().stars[TASK_ID] ?? 0), []);
+  useEffect(() => {
+    const p = loadProgress();
+    setWalked(p.walked.includes(TASK_ID));
+    setBest(p.stars[TASK_ID] ?? 0);
+  }, []);
   useEffect(() => {
     if (!toast) return;
     const t = setTimeout(() => setToast(null), 3000);
     return () => clearTimeout(t);
   }, [toast]);
 
-  const stars = starsFor(mistakes, hints);
-
-  const restart = () => {
-    setPhase("play");
+  const resetApp = () => {
     setView("week");
     setDate(TODAY);
     setBookings(BOOKINGS);
     setDrawer(null);
-    setMistakes(0);
-    setHints(0);
-    setMessage(null);
+    setMenuOpen(false);
+    setDrawerState({ search: "", patientId: null, service: "" });
     setToast(null);
     setNewId(null);
-    setAnswer(null);
-    mistakeKeys.current = new Set();
+    setMessage(null);
   };
 
-  const other = (what: string) =>
+  const startTour = () => {
+    resetApp();
+    setStep(0);
+    setAnswer(null);
+    setPhase("tour");
+  };
+
+  const startTurn = () => {
+    resetApp();
+    setMistakes(0);
+    setHints(0);
+    mistakeKeys.current = new Set();
+    setPhase("play");
+  };
+
+  // Walkthrough: move on when the step's click has been done.
+  useEffect(() => {
+    if (phase !== "tour") return;
+    const done: Record<number, boolean> = {
+      1: view === "day" && date === TARGET_DAY,
+      2: menuOpen,
+      3: drawer !== null,
+      4: drawerState.search.toLowerCase().includes("patel"),
+      5: drawerState.patientId === "meena",
+      7: drawerState.service === "Check-up",
+    };
+    if (done[step]) setStep((s) => s + 1);
+    // Lost the menu or the form (Escape, closing it): go back to picking the time.
+    else if ((step === 3 && !menuOpen && !drawer) || (step >= 4 && step <= 9 && !drawer))
+      setStep(2);
+  }, [phase, step, view, date, menuOpen, drawer, drawerState]);
+
+  const sc = phase === "tour" || phase === "question" ? PATEL : REID;
+  const stars = starsFor(mistakes, hints);
+
+  const other = (what: string) => {
+    if (phase !== "play") return;
     setMessage({
       tone: "info",
       title: `${what} isn't needed for this task`,
-      text: "Book Mrs Patel's appointment from the Calendar.",
+      text: "Book the appointment from the Calendar.",
     });
+  };
 
   const openDrawer = (p: DrawerPrefill) => {
     setMessage(null);
     setDrawerKey((k) => k + 1);
+    setDrawerState({ search: "", patientId: null, service: "" });
     setDrawer(p);
   };
-
   const pickSlot = (p: SlotPick) =>
     openDrawer({ date: p.date, start: p.start, clinicianId: p.clinicianId });
+  const onMenu = useCallback((open: boolean) => setMenuOpen(open), []);
+  const onDrawerState = useCallback((s: DrawerState) => setDrawerState(s), []);
 
   const hint = () => {
-    if (hints >= HINTS.length) return;
-    setMessage({ tone: "info", title: `Hint ${hints + 1} of ${HINTS.length}`, text: HINTS[hints] });
+    if (hints >= REID.hints.length) return;
+    setMessage({
+      tone: "info",
+      title: `Hint ${hints + 1} of ${REID.hints.length}`,
+      text: REID.hints[hints],
+    });
     setHints((h) => h + 1);
   };
 
-  const book: Parameters<typeof AppointmentDrawer>[0]["onBook"] = async (a) => {
-    const v = checkBooking(a);
+  const book = async (a: Attempt & { note: string }) => {
+    const v = checkAttempt(sc, a);
     if (!v.ok) {
-      if (v.kind === "mistake") {
-        // The same mistake twice only costs once.
+      if (v.kind === "mistake" && phase === "play") {
         if (!mistakeKeys.current.has(v.key)) {
           mistakeKeys.current.add(v.key);
           setMistakes((m) => m + 1);
@@ -140,6 +268,7 @@ export function BookPhoneTask({
       }
       return false;
     }
+    const name = sc === PATEL ? "Meena Patel" : "Tom Reid";
     const id = `new-${Date.now()}`;
     setBookings((b) => [
       ...b,
@@ -149,36 +278,36 @@ export function BookPhoneTask({
         date: a.date,
         start: a.start!,
         minutes: SERVICES.find((x) => x.name === a.service)?.minutes ?? 30,
-        patient: "Meena Patel",
+        patient: name,
         treatment: a.service,
       },
     ]);
     setNewId(id);
     setDate(a.date);
     setMessage(null);
-    setToast("Appointment booked for Meena Patel");
-    setTimeout(() => setPhase("question"), 1600);
+    setToast(`Appointment booked for ${name}`);
+    if (phase === "tour") {
+      setStep(TOUR.length);
+      setTimeout(() => setPhase("question"), 1600);
+    } else {
+      const s = starsFor(mistakes, hints);
+      setFinalStars(s);
+      setTimeout(() => {
+        setBest(recordStars(TASK_ID, s).stars[TASK_ID] ?? s);
+        setPhase("done");
+      }, 1600);
+    }
     return true;
   };
 
-  const answerQuestion = (id: string) => {
-    if (answer) return;
-    setAnswer(id);
-    const correct = BALANCE_QUESTION.options.find((o) => o.id === id)?.correct;
-    const s = starsFor(mistakes + (correct ? 0 : 1), hints);
-    setFinalStars(s);
-    setBest(recordStars(TASK_ID, s).stars[TASK_ID] ?? s);
+  const finishWalkthrough = () => {
+    recordWalked(TASK_ID);
+    setWalked(true);
+    setPhase("turnBrief");
   };
 
-  const call = (
-    <p className="text-[14px] leading-[1.55] text-[#334155]">
-      "Hello, it's Meena Patel. Could I book a check-up with Dr Shah next Thursday, please? Any time
-      before 11 in the morning is fine."
-    </p>
-  );
-
-  /* ---------------- Brief ---------------- */
-  if (phase === "brief")
+  /* ---------------- 1. Intro ---------------- */
+  if (phase === "intro")
     return (
       <div className="mx-auto max-w-2xl px-4 py-8 sm:px-6 sm:py-10">
         <Link
@@ -192,39 +321,76 @@ export function BookPhoneTask({
           Task {position} of {total}
         </p>
         <h1 className="mt-1 text-2xl font-semibold tracking-tight">Book a phoned-in appointment</h1>
-        <div className="mt-6 rounded-xl border border-[#E2E8F0] bg-white p-5">
-          <div className="mb-2 flex items-center gap-2 text-[13px] font-semibold">
-            <Phone size={15} className="text-[#2563EB]" aria-hidden /> The phone rings
-          </div>
-          {call}
-        </div>
-        <div className="mt-4 rounded-xl border border-[#E2E8F0] bg-white p-5 text-[14px] leading-[1.6] text-[#334155]">
+        <div className="mt-6 rounded-xl border border-[#E2E8F0] bg-white p-5 text-[14px] leading-[1.6] text-[#334155]">
           <p className="font-semibold text-[#0F172A]">How it works</p>
-          <ul className="mt-2 list-disc space-y-1 pl-5">
+          <ol className="mt-2 list-decimal space-y-1 pl-5">
             <li>
-              You'll be in a copy of the DentDock Calendar for {PRACTICE}, a made-up practice. Book
-              the appointment as you would for real.
+              First I'll show you how, one click at a time, on a copy of the DentDock Calendar for{" "}
+              {PRACTICE}, a made-up practice.
             </li>
-            <li>You start on 3 stars. A mistake or a hint costs one star.</li>
-            <li>Start again at any time.</li>
-          </ul>
+            <li>
+              Then a different patient rings, and you book it on your own. You start on 3 stars, and
+              a mistake or a hint costs one.
+            </li>
+          </ol>
           {best > 0 && (
             <p className="mt-3 flex items-center gap-2 text-[13px] text-[#64748B]">
               Your best so far: <StarsRow count={best} size={14} />
             </p>
           )}
         </div>
-        <button
-          type="button"
-          onClick={restart}
-          className="mt-6 h-10 w-full rounded-lg bg-[#2563EB] text-sm font-semibold text-white shadow-[0_1px_3px_rgba(37,99,235,0.3)] transition-colors hover:bg-[#1D4ED8] sm:w-auto sm:px-8"
-        >
-          Start
-        </button>
+        <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+          {walked ? (
+            <>
+              <button type="button" onClick={() => setPhase("turnBrief")} className={primary}>
+                Your turn
+              </button>
+              <button type="button" onClick={startTour} className={secondary}>
+                Show me again
+              </button>
+            </>
+          ) : (
+            <button type="button" onClick={startTour} className={primary}>
+              Show me how
+            </button>
+          )}
+        </div>
       </div>
     );
 
-  /* ---------------- Result ---------------- */
+  /* ---------------- 4a. Your turn: the new call ---------------- */
+  if (phase === "turnBrief")
+    return (
+      <div className="mx-auto max-w-2xl px-4 py-8 sm:px-6 sm:py-10">
+        <Link
+          to="/training/$role"
+          params={{ role }}
+          className="inline-flex items-center gap-1 text-[13px] font-medium text-[#2563EB] hover:underline"
+        >
+          <ArrowLeft className="h-3.5 w-3.5" aria-hidden /> Tasks
+        </Link>
+        <p className="mt-4 text-[13px] text-[#64748B]">
+          Task {position} of {total}
+        </p>
+        <h1 className="mt-1 text-2xl font-semibold tracking-tight">Your turn</h1>
+        <p className="mt-2 text-[14px] text-[#475569]">
+          A different patient is on the phone. Book it on your own.
+        </p>
+        <div className="mt-5">
+          <CallCard sc={REID} label="The phone rings" />
+        </div>
+        <p className="mt-4 text-[13px] text-[#64748B]">
+          You start on 3 stars. A mistake or a hint costs one. You can start again at any time.
+        </p>
+        <div className="mt-6">
+          <button type="button" onClick={startTurn} className={primary}>
+            Start
+          </button>
+        </div>
+      </div>
+    );
+
+  /* ---------------- 5. Result ---------------- */
   if (phase === "done")
     return (
       <div className="mx-auto max-w-2xl px-4 py-8 sm:px-6 sm:py-10">
@@ -235,44 +401,33 @@ export function BookPhoneTask({
         <div className="mt-4 flex items-center gap-3">
           <StarsRow count={finalStars} size={26} />
           <span className="text-[14px] text-[#475569]">
-            {mistakes + (BALANCE_QUESTION.options.find((o) => o.id === answer)?.correct ? 0 : 1)}{" "}
-            mistake
-            {mistakes + (BALANCE_QUESTION.options.find((o) => o.id === answer)?.correct ? 0 : 1) ===
-            1
-              ? ""
-              : "s"}{" "}
-            · {hints} hint
-            {hints === 1 ? "" : "s"}
+            {mistakes} mistake{mistakes === 1 ? "" : "s"} · {hints} hint{hints === 1 ? "" : "s"}
           </span>
         </div>
         <div className="mt-6 rounded-xl border border-[#E2E8F0] bg-white p-5">
           <p className="text-[14px] font-semibold">In the real DentDock</p>
           <ul className="mt-2 list-disc space-y-1.5 pl-5 text-[14px] leading-[1.55] text-[#334155]">
-            {REAL_APP_RECAP.map((r) => (
+            {REID.recap.map((r) => (
               <li key={r}>{r}</li>
             ))}
           </ul>
         </div>
         <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-          <Link
-            to="/training/$role"
-            params={{ role }}
-            className="flex h-10 items-center justify-center rounded-lg bg-[#2563EB] px-6 text-sm font-semibold text-white transition-colors hover:bg-[#1D4ED8]"
-          >
+          <Link to="/training/$role" params={{ role }} className={primary}>
             Back to tasks
           </Link>
-          <button
-            type="button"
-            onClick={restart}
-            className="flex h-10 items-center justify-center gap-2 rounded-lg border border-[#E2E8F0] bg-white px-6 text-sm font-semibold hover:bg-[#F8FAFC]"
-          >
+          <button type="button" onClick={startTurn} className={secondary}>
             <RotateCcw size={15} aria-hidden /> Try again
+          </button>
+          <button type="button" onClick={startTour} className={secondary}>
+            Show me again
           </button>
         </div>
       </div>
     );
 
-  /* ---------------- Play (and the question on top) ---------------- */
+  /* ---------------- 2-4. The pretend app (walkthrough or your turn) ---------------- */
+  const touring = phase === "tour";
   const icon =
     message?.tone === "danger"
       ? XCircle
@@ -281,6 +436,7 @@ export function BookPhoneTask({
         : message?.title.startsWith("Hint")
           ? Lightbulb
           : Info;
+
   return (
     <div className="flex h-[calc(100vh-56px)] min-h-[640px] flex-col">
       <div className="flex-shrink-0 border-b border-[#E2E8F0] bg-white">
@@ -294,35 +450,47 @@ export function BookPhoneTask({
               ← Tasks
             </Link>
             <span className="truncate text-[14px] font-semibold">
-              Task {position} of {total}: Book a phoned-in appointment
+              Book a phoned-in appointment ·{" "}
+              {touring || phase === "question" ? "Watch how" : "Your turn"}
             </span>
           </div>
           <div className="flex items-center gap-3">
-            <StarsRow count={stars} />
-            <button
-              type="button"
-              onClick={hint}
-              disabled={hints >= HINTS.length || phase !== "play"}
-              className="h-8 rounded-lg border border-[#E2E8F0] bg-white px-3 text-[13px] font-medium hover:bg-[#F8FAFC] disabled:opacity-50"
-            >
-              Hint ({HINTS.length - hints} left)
-            </button>
-            <button
-              type="button"
-              onClick={restart}
-              className="flex h-8 items-center gap-1.5 rounded-lg border border-[#E2E8F0] bg-white px-3 text-[13px] font-medium hover:bg-[#F8FAFC]"
-            >
-              <RotateCcw size={14} aria-hidden /> Start again
-            </button>
+            {touring || phase === "question" ? (
+              <>
+                <button type="button" onClick={startTour} className={small}>
+                  <RotateCcw size={14} aria-hidden /> Start the walkthrough again
+                </button>
+                {walked && (
+                  <button type="button" onClick={() => setPhase("turnBrief")} className={small}>
+                    Skip to your turn
+                  </button>
+                )}
+              </>
+            ) : (
+              <>
+                <StarsRow count={stars} />
+                <button
+                  type="button"
+                  onClick={hint}
+                  disabled={hints >= REID.hints.length}
+                  className={small}
+                >
+                  Hint ({REID.hints.length - hints} left)
+                </button>
+                <button type="button" onClick={startTurn} className={small}>
+                  <RotateCcw size={14} aria-hidden /> Start again
+                </button>
+              </>
+            )}
           </div>
         </div>
         <div className="flex items-start gap-2 border-t border-[#F1F5F9] px-4 py-2.5 sm:px-6">
           <Phone size={15} className="mt-1 flex-shrink-0 text-[#2563EB]" aria-hidden />
-          {call}
+          <p className="text-[14px] leading-[1.55] text-[#334155]">"{sc.call}"</p>
         </div>
       </div>
 
-      <div className="relative min-h-0 flex-1 overflow-x-auto" data-sim-root>
+      <div ref={simRef} className="relative min-h-0 flex-1 overflow-x-auto" data-sim-root>
         <div className="h-full min-w-[720px]">
           <AppChrome
             practice={PRACTICE}
@@ -341,6 +509,8 @@ export function BookPhoneTask({
               onBlockTime={() => other("Block time")}
               onOther={other}
               highlightId={newId}
+              markSlot={touring ? SLOT_930 : null}
+              onMenu={onMenu}
             />
             {drawer && (
               <AppointmentDrawer
@@ -350,11 +520,22 @@ export function BookPhoneTask({
                 onClose={() => setDrawer(null)}
                 onBook={book}
                 onOther={other}
+                onState={onDrawerState}
               />
             )}
             <Toast message={toast} />
           </AppChrome>
         </div>
+
+        {touring && step < TOUR.length && (
+          <Walkthrough
+            rootRef={simRef}
+            step={TOUR[step]}
+            index={step}
+            total={TOUR.length}
+            onNext={() => setStep((s) => s + 1)}
+          />
+        )}
 
         {message && phase === "play" && (
           <div className="absolute bottom-4 left-4 z-[65] w-[min(400px,calc(100%-32px))] shadow-[0_4px_20px_rgba(0,0,0,0.15)]">
@@ -373,7 +554,7 @@ export function BookPhoneTask({
         )}
 
         {phase === "question" && (
-          <div className="absolute inset-0 z-[70] flex items-center justify-center bg-black/40 p-4 backdrop-blur-sm">
+          <div className="absolute inset-0 z-[90] flex items-center justify-center bg-black/40 p-4 backdrop-blur-sm">
             <div
               className="w-full max-w-[520px] rounded-2xl bg-white p-6 shadow-xl sm:p-7"
               role="dialog"
@@ -385,18 +566,17 @@ export function BookPhoneTask({
               </p>
               <div className="mt-4 space-y-2">
                 {BALANCE_QUESTION.options.map((o) => {
-                  const picked = answer === o.id;
                   const show = answer !== null;
                   return (
                     <button
                       key={o.id}
                       type="button"
-                      onClick={() => answerQuestion(o.id)}
+                      onClick={() => !answer && setAnswer(o.id)}
                       disabled={show}
                       className={`w-full rounded-lg border px-4 py-3 text-left text-[14px] transition-colors ${
                         show && o.correct
                           ? "border-[#16a34a] bg-[#f0fdf4]"
-                          : show && picked
+                          : show && answer === o.id
                             ? "border-[#dc2626] bg-[#fef2f2]"
                             : "border-[#E2E8F0] hover:border-[#2563EB]"
                       }`}
@@ -413,10 +593,10 @@ export function BookPhoneTask({
                   </p>
                   <button
                     type="button"
-                    onClick={() => setPhase("done")}
-                    className="mt-5 h-10 w-full rounded-lg bg-[#2563EB] text-sm font-semibold text-white hover:bg-[#1D4ED8]"
+                    onClick={finishWalkthrough}
+                    className={`${primary} mt-5 w-full`}
                   >
-                    See how you did
+                    Now it's your turn
                   </button>
                 </>
               )}

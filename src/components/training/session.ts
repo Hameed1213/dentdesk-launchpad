@@ -8,9 +8,22 @@ export type Session =
   | { state: "unlocked"; practice: string }
   | { state: "error" };
 
+/*
+ * The last answer, kept in memory while the tab is open, so moving between training pages
+ * doesn't flash the "checking" screen (Hariss, 25 Nov). The server is still asked on every page;
+ * its answer replaces this straight away (a removed code or Lock still takes effect).
+ * Only set in the browser: the server never runs the effects or handlers that write it.
+ */
+let lastKnown: Session | null = null;
+
 /** Asks the server whether this browser holds a training pass. */
 export function useTrainingSession() {
-  const [session, setSession] = useState<Session>({ state: "checking" });
+  const [session, setLocal] = useState<Session>(() => lastKnown ?? { state: "checking" });
+
+  const setSession = useCallback((s: Session) => {
+    if (s.state !== "checking" && s.state !== "error") lastKnown = s;
+    setLocal(s);
+  }, []);
 
   const refresh = useCallback(async () => {
     try {
@@ -22,9 +35,10 @@ export function useTrainingSession() {
         setSession({ state: "unlocked", practice: data.practice });
       else setSession({ state: "locked" });
     } catch {
-      setSession({ state: "error" });
+      // Keep what we last knew if the check fails mid-session; otherwise say so.
+      if (!lastKnown) setSession({ state: "error" });
     }
-  }, []);
+  }, [setSession]);
 
   useEffect(() => {
     void refresh();
@@ -36,7 +50,7 @@ export function useTrainingSession() {
     } finally {
       setSession({ state: "locked" });
     }
-  }, []);
+  }, [setSession]);
 
   return { session, setSession, refresh, lock };
 }
