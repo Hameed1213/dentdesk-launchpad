@@ -1,15 +1,31 @@
 import type { ReactNode } from "react";
-import type { Session } from "./session";
 import { Link } from "@tanstack/react-router";
-import { Lock, ShieldCheck } from "lucide-react";
 import ToothIcon from "@/components/icons/ToothIcon";
+import type { Session } from "./session";
 
 /*
- * The frame for every /training page: a plain top bar (no marketing navigation), the
- * "practice mode" notice, and the page. Training is never indexed (see the routes' head and
- * src/lib/seoHeaders.ts).
+ * Staff training is part of the software, not the marketing site: it follows the practice app's
+ * look (desk-care-hub: Login.tsx, the light page background, plain cards), with no marketing
+ * pieces (no mascot, no pills, no marketing navigation). See docs/TRAINING-GAME-PLAN.md.
  */
 
+/** The dark full-page frame the app uses for its sign-in page, with one white card. */
+export function SignInFrame({ children }: { children: ReactNode }) {
+  return (
+    <div className="flex min-h-screen items-center justify-center bg-[#0F172A] px-4 py-10">
+      <div className="w-full max-w-[400px] rounded-2xl bg-white p-8 shadow-[0_20px_60px_rgba(0,0,0,0.4)] sm:p-10">
+        <div className="mb-8 text-center">
+          <ToothIcon size={32} className="mx-auto mb-3" />
+          <p className="text-[22px] font-extrabold tracking-tight text-[#0F172A]">DentDock</p>
+          <p className="text-sm text-[#64748B]">Staff training</p>
+        </div>
+        {children}
+      </div>
+    </div>
+  );
+}
+
+/** The frame once unlocked: a plain top bar and the app's light page background. */
 export function TrainingShell({
   practice,
   onLock,
@@ -20,93 +36,63 @@ export function TrainingShell({
   children: ReactNode;
 }) {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#F7F9FF] to-[#EEF3FE] text-[#0F172A]">
-      <header className="border-b border-[#E2E8F0] bg-white/90 backdrop-blur">
-        <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3 sm:px-6">
-          <Link
-            to="/training"
-            className="flex items-center gap-2 rounded-lg focus-visible:outline-2 focus-visible:outline-[#2563EB]"
-          >
-            <ToothIcon size={26} />
-            <span className="text-[17px] font-semibold tracking-tight">DentDock</span>
-            <span className="hidden rounded-full bg-[#EFF6FF] px-2.5 py-0.5 text-[12px] font-semibold text-[#1D4ED8] sm:inline">
+    <div className="min-h-screen bg-[#F8FAFC] text-[#0F172A]">
+      <header className="border-b border-[#E2E8F0] bg-white">
+        <div className="mx-auto flex h-14 max-w-5xl items-center justify-between gap-3 px-4 sm:px-6">
+          <Link to="/training" className="flex items-center gap-2 rounded-md">
+            <ToothIcon size={22} />
+            <span className="text-[15px] font-bold tracking-tight">DentDock</span>
+            <span className="hidden border-l border-[#E2E8F0] pl-2 text-[14px] text-[#64748B] sm:inline">
               Staff training
             </span>
           </Link>
           {practice && (
-            <div className="flex min-w-0 items-center gap-2 sm:gap-3">
-              <span className="truncate text-[13px] text-[#475569]">{practice}</span>
+            <div className="flex min-w-0 items-center gap-4">
+              <span className="truncate text-[13px] text-[#64748B]">{practice}</span>
               {onLock && (
                 <button
                   type="button"
                   onClick={onLock}
-                  className="inline-flex flex-shrink-0 items-center gap-1.5 rounded-lg border border-[#E2E8F0] bg-white px-2.5 py-1.5 text-[12px] font-medium text-[#334155] transition-colors hover:border-[#2563EB] hover:text-[#2563EB]"
+                  className="flex-shrink-0 text-[13px] font-medium text-[#2563EB] hover:underline"
                 >
-                  <Lock className="h-3.5 w-3.5" aria-hidden />
                   Lock
                 </button>
               )}
             </div>
           )}
         </div>
-        <div className="border-t border-[#FDE68A] bg-[#FFFBEB]">
-          <p className="mx-auto flex max-w-6xl items-center gap-2 px-4 py-1.5 text-[12.5px] text-[#92400E] sm:px-6">
-            <ShieldCheck className="h-4 w-4 flex-shrink-0" aria-hidden />
-            Practice mode: made-up patients, and nothing is ever sent.
-          </p>
-        </div>
       </header>
-      <main className="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-14">{children}</main>
+      <main className="mx-auto max-w-5xl px-4 py-8 sm:px-6 sm:py-10">{children}</main>
     </div>
   );
 }
 
-export type CoachFace = "smile" | "grin" | "wink" | "gasp";
-
-/** The mascot with a speech bubble. */
-export function Coach({ face = "smile", children }: { face?: CoachFace; children: ReactNode }) {
-  return (
-    <div className="flex items-end gap-3">
-      <img
-        src={`/images/training/coach-${face}.webp`}
-        alt=""
-        width={72}
-        height={103}
-        className="h-[86px] w-auto flex-shrink-0 drop-shadow-sm sm:h-[103px]"
-      />
-      <div className="relative mb-3 rounded-2xl rounded-bl-md border border-[#DBEAFE] bg-white px-4 py-3 text-[15px] leading-[1.5] text-[#334155] shadow-sm">
-        {children}
-      </div>
-    </div>
-  );
-}
-
-/** Shown while the session is being checked, or when something went wrong. */
+/** Shown while the session is being checked, when training is off, or when something failed. */
 export function SessionNotice({ session, onRetry }: { session: Session; onRetry: () => void }) {
-  if (session.state === "checking")
-    return (
-      <p className="py-24 text-center text-[15px] text-[#64748B]" role="status">
-        Opening training…
-      </p>
-    );
-  if (session.state === "closed")
-    return (
-      <div className="mx-auto max-w-md py-16">
-        <Coach face="gasp">Training isn't switched on yet. Please check back soon.</Coach>
-      </div>
-    );
   return (
-    <div className="mx-auto max-w-md py-16 text-center">
-      <Coach face="gasp">
-        Training couldn't open. Check your internet connection and try again.
-      </Coach>
-      <button
-        type="button"
-        onClick={onRetry}
-        className="mt-6 rounded-xl bg-[#2563EB] px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#1D4ED8]"
-      >
-        Try again
-      </button>
-    </div>
+    <SignInFrame>
+      {session.state === "checking" ? (
+        <div className="flex justify-center py-4" role="status" aria-label="Opening training">
+          <div className="h-6 w-6 animate-spin rounded-full border-[3px] border-[#2563EB] border-t-transparent" />
+        </div>
+      ) : session.state === "closed" ? (
+        <p className="text-center text-sm text-[#475569]">
+          Training isn't switched on yet. Please check back soon.
+        </p>
+      ) : (
+        <div className="text-center">
+          <p className="text-sm text-[#475569]">
+            Training couldn't open. Check your internet connection and try again.
+          </p>
+          <button
+            type="button"
+            onClick={onRetry}
+            className="mt-5 h-10 w-full rounded-lg bg-[#2563EB] text-sm font-semibold text-white transition-colors hover:bg-[#1D4ED8]"
+          >
+            Try again
+          </button>
+        </div>
+      )}
+    </SignInFrame>
   );
 }

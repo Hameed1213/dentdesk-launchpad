@@ -9,7 +9,7 @@ export type RoleId = "reception" | "manager";
 export type Mission = {
   id: string;
   title: string;
-  /** The situation, as the coach tells it. */
+  /** The situation the task starts with. */
   story: string;
   /** What they will be able to do afterwards. */
   learn: string;

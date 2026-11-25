@@ -8,12 +8,11 @@ Decisions: "go with your recommendations" (T1-T6 below).
 
 A training game at **dentdock.co.uk/training**, behind a lock screen. Staff unlock it with their
 practice's access code, type their first name, pick **Receptionist** or **Practice manager**, and
-play short missions on a **pretend DentDock** with made-up patients. Each mission:
+play short tasks on a **pretend DentDock** with made-up patients. Each task:
 
-1. opens with a story from the coach (the DentDock mascot);
+1. opens with the situation ("Mrs Patel rings: …");
 2. shows a pretend screen with the real layout and the real button names;
-3. checks the **result**, not the clicks (booked the wrong dentist? the coach says why, and they
-   fix it);
+3. checks the **result**, not the clicks (booked the wrong dentist? it says why, and they fix it);
 4. offers hints, each costing a star (3 stars with no hints and no mistakes);
 5. ends with what the real DentDock would have done ("Mrs Patel now gets a reschedule message").
 
@@ -25,7 +24,7 @@ Finishing a role gives a certificate (name, role, date) to print or screenshot.
   dentist has tried the chart.
 - **T2:** one access code per practice, made by Hariss (`scripts/training-code.mjs`).
 - **T3:** the mission lists in §3, as proposed.
-- **T4:** the mascot is the coach (faces smile, grin, wink, gasp; `public/images/training/`).
+- **T4:** ~~the mascot is the coach~~ **Changed 25 Nov (Hariss):** "marketing is completely separate to the actual software". No mascot, no marketing pieces, no pills. Training looks like the practice app (its sign-in page, then its light pages and plain cards).
 - **T5:** managers don't see staff progress (no database). The certificate covers it for now.
 - **T6:** the four app problems found while researching are fixed in the hub as separate PRs (the
   hub repo isn't on this computer at writing; §7).
@@ -49,8 +48,8 @@ accountant · turn on two-step login.
 ## 4. Security
 
 - **Nothing real.** The game never talks to DentDock, Supabase, Stripe or Twilio. Patients and
-  practices are made up. Every screen says "Practice mode: made-up patients, and nothing is ever
-  sent."
+  practices are made up. (A "Practice mode…" notice on every screen was dropped on 25 Nov: Hariss
+  found it read as AI.)
 - **The lock is checked on the server** (`src/lib/trainingAccess.ts`, `src/routes/api/training/`):
   - codes are 16 characters from 31 letters and numbers (about 79 random bits), so guessing is not
     practical; a wrong guess also waits 0.8 s;
@@ -85,7 +84,7 @@ accountant · turn on two-step login.
 ## 6. Build steps (one website PR each; preview + click-by-click steps; merge only on "merge it")
 
 1. **Lock screen, code check, name and role picker, mission map** (missions show "Coming soon"). This plan.
-2. **The game:** mission player, coach, hints, stars, checks, recap, certificate; with
+2. **The game:** task player, hints, stars, checks, recap, certificate; with
    **Reception mission 2 (book a phoned-in appointment)** fully built to judge the quality.
 3. The other reception missions.
 4. The manager missions.

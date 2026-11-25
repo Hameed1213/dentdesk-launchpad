@@ -1,12 +1,12 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState, type FormEvent } from "react";
-import { ArrowRight, Clock, KeyRound, Loader2 } from "lucide-react";
-import { Coach, SessionNotice, TrainingShell } from "@/components/training/TrainingShell";
-import { useTrainingSession, type Session } from "@/components/training/session";
+import { ChevronRight } from "lucide-react";
+import { SessionNotice, SignInFrame, TrainingShell } from "@/components/training/TrainingShell";
+import { useTrainingSession } from "@/components/training/session";
 import { ROLES, totalMinutes, type RoleId } from "@/components/training/missions";
 import { loadProgress, saveProgress } from "@/lib/trainingProgress";
 
-// Staff training: lock screen, then name and role (docs/TRAINING-GAME-PLAN.md).
+// Staff training: unlock with the practice's code, then name and role (docs/TRAINING-GAME-PLAN.md).
 export const Route = createFileRoute("/training/")({
   component: TrainingHome,
   head: () => ({
@@ -20,22 +20,21 @@ export const Route = createFileRoute("/training/")({
 
 function TrainingHome() {
   const { session, setSession, refresh, lock } = useTrainingSession();
-  const practice = session.state === "unlocked" ? session.practice : undefined;
 
+  if (session.state === "locked")
+    return <LockScreen onUnlocked={(p) => setSession({ state: "unlocked", practice: p })} />;
+  if (session.state !== "unlocked") return <SessionNotice session={session} onRetry={refresh} />;
   return (
-    <TrainingShell practice={practice} onLock={practice ? lock : undefined}>
-      {session.state === "locked" ? (
-        <LockScreen onUnlocked={(p) => setSession({ state: "unlocked", practice: p })} />
-      ) : session.state === "unlocked" ? (
-        <RolePicker practice={session.practice} />
-      ) : (
-        <SessionNotice session={session as Session} onRetry={refresh} />
-      )}
+    <TrainingShell practice={session.practice} onLock={lock}>
+      <RolePicker practice={session.practice} />
     </TrainingShell>
   );
 }
 
-/* ---------------- Lock screen ---------------- */
+const inputClass =
+  "h-10 w-full rounded-lg border border-[#E2E8F0] bg-white px-3 text-sm text-[#0F172A] outline-none placeholder:text-[#94A3B8] focus:border-[#2563EB] focus:shadow-[0_0_0_3px_rgba(37,99,235,0.12)]";
+
+/* ---------------- Lock screen (the app's sign-in page) ---------------- */
 
 function LockScreen({ onUnlocked }: { onUnlocked: (practice: string) => void }) {
   const [code, setCode] = useState("");
@@ -45,8 +44,7 @@ function LockScreen({ onUnlocked }: { onUnlocked: (practice: string) => void }) 
   const submit = async (e: FormEvent) => {
     e.preventDefault();
     if (busy) return;
-    const clean = code.replace(/[^A-Za-z0-9]/g, "");
-    if (clean.length < 12) {
+    if (code.replace(/[^A-Za-z0-9]/g, "").length < 12) {
       setError("Enter the whole code: four groups of four letters and numbers.");
       return;
     }
@@ -70,89 +68,58 @@ function LockScreen({ onUnlocked }: { onUnlocked: (practice: string) => void }) 
   };
 
   return (
-    <div className="mx-auto grid max-w-5xl items-center gap-10 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
-      <div>
-        <h1 className="text-[34px] font-semibold leading-[1.1] tracking-tight md:text-[46px]">
-          Learn DentDock by <span className="text-[#2563EB]">doing it</span>
-        </h1>
-        <p className="mt-5 max-w-xl text-[17px] leading-[1.6] text-[#334155]">
-          Short missions on a made-up practice. Book, move and finish appointments, take payments
-          and set up your team, with a coach beside you. Nothing you do here touches real patients.
-        </p>
-        <ul className="mt-6 hidden space-y-2.5 text-[15px] text-[#334155] lg:block">
-          {[
-            "8 missions for reception, 9 for practice managers",
-            "The same screens and buttons as the real DentDock",
-            "Stars for each mission, and a certificate at the end",
-          ].map((t) => (
-            <li key={t} className="flex items-start gap-2.5">
-              <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[#0F172A]" />
-              {t}
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      <form
-        onSubmit={submit}
-        className="rounded-[28px] border border-[#DBEAFE] bg-white p-6 shadow-[0_10px_40px_-20px_rgba(37,99,235,0.35)] sm:p-8"
-        noValidate
-      >
-        <div className="flex items-center gap-3">
-          <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#EFF6FF] text-[#2563EB]">
-            <KeyRound className="h-5 w-5" aria-hidden />
-          </span>
-          <div>
-            <h2 className="text-[18px] font-semibold">Unlock training</h2>
-            <p className="text-[13px] text-[#64748B]">Your practice manager has the code.</p>
-          </div>
-        </div>
-
-        <label
-          htmlFor="training-code"
-          className="mt-6 block text-[13px] font-medium text-[#334155]"
+    <SignInFrame>
+      {error && (
+        <p
+          id="training-code-error"
+          role="alert"
+          className="mb-4 rounded-lg border border-[#FECACA] bg-[#FEF2F2] px-3 py-2.5 text-[13px] text-[#B91C1C]"
         >
-          Access code
-        </label>
-        <input
-          id="training-code"
-          value={code}
-          onChange={(e) => setCode(e.target.value.toUpperCase().slice(0, 24))}
-          autoComplete="off"
-          autoCapitalize="characters"
-          spellCheck={false}
-          inputMode="text"
-          placeholder="XXXX-XXXX-XXXX-XXXX"
-          aria-invalid={Boolean(error)}
-          aria-describedby={error ? "training-code-error" : undefined}
-          className="mt-1.5 w-full rounded-xl border border-[#CBD5E1] bg-white px-4 py-3 font-mono text-[17px] tracking-[0.12em] text-[#0F172A] outline-none transition-colors placeholder:text-[#CBD5E1] focus:border-[#2563EB] focus:ring-4 focus:ring-[#2563EB]/15"
-        />
-        {error && (
-          <p id="training-code-error" role="alert" className="mt-2 text-[13px] text-[#B91C1C]">
-            {error}
-          </p>
-        )}
+          {error}
+        </p>
+      )}
+      <form onSubmit={submit} className="space-y-5" noValidate>
+        <div>
+          <label
+            htmlFor="training-code"
+            className="mb-1.5 block text-[13px] font-medium text-[#0F172A]"
+          >
+            Access code
+          </label>
+          <input
+            id="training-code"
+            value={code}
+            onChange={(e) => setCode(e.target.value.toUpperCase().slice(0, 24))}
+            autoComplete="off"
+            autoCapitalize="characters"
+            spellCheck={false}
+            placeholder="XXXX-XXXX-XXXX-XXXX"
+            aria-invalid={Boolean(error)}
+            aria-describedby={error ? "training-code-error" : undefined}
+            className={`${inputClass} font-mono tracking-[0.08em]`}
+          />
+        </div>
         <button
           type="submit"
           disabled={busy}
-          className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#2563EB] px-6 py-3 text-[15px] font-semibold text-white shadow-md shadow-blue-500/20 transition-colors hover:bg-[#1D4ED8] disabled:cursor-wait disabled:opacity-80"
+          className="flex h-10 w-full items-center justify-center gap-2 rounded-lg bg-[#2563EB] text-sm font-semibold text-white shadow-[0_1px_3px_rgba(37,99,235,0.3)] transition-colors hover:bg-[#1D4ED8] disabled:opacity-60"
         >
           {busy ? (
-            <>
-              <Loader2 className="h-4 w-4 animate-spin" aria-hidden /> Checking…
-            </>
+            <span
+              className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent"
+              aria-label="Checking"
+            />
           ) : (
-            <>
-              Unlock training <ArrowRight className="h-4 w-4" aria-hidden />
-            </>
+            "Unlock training"
           )}
         </button>
-        <p className="mt-4 text-[12.5px] leading-[1.5] text-[#64748B]">
-          This computer stays unlocked for 30 days. Your name and stars are kept on this computer
-          only.
-        </p>
       </form>
-    </div>
+      <div className="mt-6 border-t border-[#E2E8F0] pt-4">
+        <p className="text-center text-[13px] text-[#64748B]">
+          Ask your practice manager for the code.
+        </p>
+      </div>
+    </SignInFrame>
   );
 }
 
@@ -182,18 +149,16 @@ function RolePicker({ practice }: { practice: string }) {
   };
 
   return (
-    <div className="mx-auto max-w-4xl">
-      <Coach face="grin">
-        Welcome to <strong className="font-semibold text-[#0F172A]">{practice}</strong>'s training!
-        I'll be with you on every mission. Tell me your first name, then pick your role.
-      </Coach>
+    <div className="mx-auto max-w-3xl">
+      <h1 className="text-2xl font-semibold tracking-tight">Staff training</h1>
+      <p className="mt-1 text-sm text-[#64748B]">{practice}</p>
 
-      <div className="mt-8 rounded-[24px] border border-[#DBEAFE] bg-white p-5 sm:p-6">
-        <label htmlFor="training-name" className="block text-[14px] font-semibold">
+      <div className="mt-6 rounded-xl border border-[#E2E8F0] bg-white p-5">
+        <label htmlFor="training-name" className="block text-[13px] font-medium">
           Your first name
         </label>
-        <p className="text-[13px] text-[#64748B]">
-          It goes on your certificate. It stays on this computer.
+        <p className="mt-0.5 text-[13px] text-[#64748B]">
+          Shown on your certificate. Kept on this computer only.
         </p>
         <input
           id="training-name"
@@ -203,10 +168,9 @@ function RolePicker({ practice }: { practice: string }) {
             setNameError(false);
           }}
           autoComplete="given-name"
-          placeholder="e.g. Sarah"
           aria-invalid={nameError}
           aria-describedby={nameError ? "training-name-error" : undefined}
-          className="mt-2 w-full max-w-sm rounded-xl border border-[#CBD5E1] px-4 py-2.5 text-[16px] outline-none focus:border-[#2563EB] focus:ring-4 focus:ring-[#2563EB]/15"
+          className={`${inputClass} mt-2 max-w-xs`}
         />
         {nameError && (
           <p id="training-name-error" role="alert" className="mt-2 text-[13px] text-[#B91C1C]">
@@ -215,40 +179,31 @@ function RolePicker({ practice }: { practice: string }) {
         )}
       </div>
 
-      <h1 className="mt-10 text-[26px] font-semibold tracking-tight md:text-[32px]">
-        What's your role?
-      </h1>
-      <div className="mt-5 grid gap-5 md:grid-cols-2">
-        {ROLES.map((r) => {
+      <h2 className="mt-8 text-[15px] font-semibold">Choose your role</h2>
+      <div className="mt-3 overflow-hidden rounded-xl border border-[#E2E8F0] bg-white">
+        {ROLES.map((r, i) => {
           const done = r.missions.filter((m) => stars[m.id]).length;
           return (
             <button
               key={r.id}
               type="button"
               onClick={() => choose(r.id)}
-              className="group flex flex-col rounded-[24px] border-2 border-[#DBEAFE] bg-white p-6 text-left transition-colors hover:border-[#2563EB] focus-visible:border-[#2563EB] focus-visible:outline-none"
+              className={`group flex w-full items-center gap-4 px-5 py-4 text-left transition-colors hover:bg-[#F8FAFC] focus-visible:bg-[#F8FAFC] focus-visible:outline-none ${
+                i > 0 ? "border-t border-[#E2E8F0]" : ""
+              }`}
             >
-              <span className="text-[13px] font-medium text-[#64748B]">{r.who}</span>
-              <span className="mt-1 text-[22px] font-semibold tracking-tight">{r.name}</span>
-              <span className="mt-2 text-[15px] leading-[1.5] text-[#334155]">{r.summary}</span>
-              <span className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-1 text-[13px] text-[#475569]">
-                <span>{r.missions.length} missions</span>
-                <span className="inline-flex items-center gap-1">
-                  <Clock className="h-3.5 w-3.5" aria-hidden /> about {totalMinutes(r)} minutes
+              <span className="min-w-0 flex-1">
+                <span className="block text-[15px] font-semibold">{r.name}</span>
+                <span className="mt-0.5 block text-[13px] text-[#64748B]">{r.summary}</span>
+                <span className="mt-1.5 block text-[12.5px] text-[#64748B]">
+                  {r.missions.length} tasks · about {totalMinutes(r)} minutes
+                  {done > 0 && ` · ${done} of ${r.missions.length} done`}
                 </span>
-                {done > 0 && (
-                  <span className="font-medium text-[#166534]">
-                    {done} of {r.missions.length} done
-                  </span>
-                )}
               </span>
-              <span className="mt-5 inline-flex items-center gap-1.5 text-[15px] font-semibold text-[#2563EB]">
-                {done > 0 ? "Carry on" : "Start"}
-                <ArrowRight
-                  className="h-4 w-4 transition-transform group-hover:translate-x-0.5"
-                  aria-hidden
-                />
-              </span>
+              <ChevronRight
+                className="h-5 w-5 flex-shrink-0 text-[#94A3B8] transition-colors group-hover:text-[#2563EB]"
+                aria-hidden
+              />
             </button>
           );
         })}
