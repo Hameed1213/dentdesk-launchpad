@@ -38,6 +38,7 @@ import { Route as FeaturesTreatmentPlansRouteImport } from './routes/features.tr
 import { Route as GuidesIndexRouteImport } from './routes/guides.index'
 import { Route as GuidesMissedAppointmentFeesRouteImport } from './routes/guides.missed-appointment-fees'
 import { Route as GuidesReminderTextsPecrRouteImport } from './routes/guides.reminder-texts-pecr'
+import { Route as GuidesSwitchingDentalSoftwareRouteImport } from './routes/guides.switching-dental-software'
 import { Route as SolutionsIndexRouteImport } from './routes/solutions.index'
 import { Route as SolutionsBringPatientsBackRouteImport } from './routes/solutions.bring-patients-back'
 import { Route as SolutionsCutAdminRouteImport } from './routes/solutions.cut-admin'
@@ -199,6 +200,12 @@ const GuidesReminderTextsPecrRoute = GuidesReminderTextsPecrRouteImport.update({
   path: '/guides/reminder-texts-pecr',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GuidesSwitchingDentalSoftwareRoute =
+  GuidesSwitchingDentalSoftwareRouteImport.update({
+    id: '/guides/switching-dental-software',
+    path: '/guides/switching-dental-software',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const SolutionsIndexRoute = SolutionsIndexRouteImport.update({
   id: '/solutions/',
   path: '/solutions/',
@@ -287,6 +294,7 @@ export interface FileRoutesByFullPath {
   '/features/treatment-plans': typeof FeaturesTreatmentPlansRoute
   '/guides/missed-appointment-fees': typeof GuidesMissedAppointmentFeesRoute
   '/guides/reminder-texts-pecr': typeof GuidesReminderTextsPecrRoute
+  '/guides/switching-dental-software': typeof GuidesSwitchingDentalSoftwareRoute
   '/solutions/bring-patients-back': typeof SolutionsBringPatientsBackRoute
   '/solutions/cut-admin': typeof SolutionsCutAdminRoute
   '/solutions/deposits-and-late-cancellations': typeof SolutionsDepositsAndLateCancellationsRoute
@@ -329,6 +337,7 @@ export interface FileRoutesByTo {
   '/features/treatment-plans': typeof FeaturesTreatmentPlansRoute
   '/guides/missed-appointment-fees': typeof GuidesMissedAppointmentFeesRoute
   '/guides/reminder-texts-pecr': typeof GuidesReminderTextsPecrRoute
+  '/guides/switching-dental-software': typeof GuidesSwitchingDentalSoftwareRoute
   '/solutions/bring-patients-back': typeof SolutionsBringPatientsBackRoute
   '/solutions/cut-admin': typeof SolutionsCutAdminRoute
   '/solutions/deposits-and-late-cancellations': typeof SolutionsDepositsAndLateCancellationsRoute
@@ -372,6 +381,7 @@ export interface FileRoutesById {
   '/features/treatment-plans': typeof FeaturesTreatmentPlansRoute
   '/guides/missed-appointment-fees': typeof GuidesMissedAppointmentFeesRoute
   '/guides/reminder-texts-pecr': typeof GuidesReminderTextsPecrRoute
+  '/guides/switching-dental-software': typeof GuidesSwitchingDentalSoftwareRoute
   '/solutions/bring-patients-back': typeof SolutionsBringPatientsBackRoute
   '/solutions/cut-admin': typeof SolutionsCutAdminRoute
   '/solutions/deposits-and-late-cancellations': typeof SolutionsDepositsAndLateCancellationsRoute
@@ -416,6 +426,7 @@ export interface FileRouteTypes {
     | '/features/treatment-plans'
     | '/guides/missed-appointment-fees'
     | '/guides/reminder-texts-pecr'
+    | '/guides/switching-dental-software'
     | '/solutions/bring-patients-back'
     | '/solutions/cut-admin'
     | '/solutions/deposits-and-late-cancellations'
@@ -458,6 +469,7 @@ export interface FileRouteTypes {
     | '/features/treatment-plans'
     | '/guides/missed-appointment-fees'
     | '/guides/reminder-texts-pecr'
+    | '/guides/switching-dental-software'
     | '/solutions/bring-patients-back'
     | '/solutions/cut-admin'
     | '/solutions/deposits-and-late-cancellations'
@@ -500,6 +512,7 @@ export interface FileRouteTypes {
     | '/features/treatment-plans'
     | '/guides/missed-appointment-fees'
     | '/guides/reminder-texts-pecr'
+    | '/guides/switching-dental-software'
     | '/solutions/bring-patients-back'
     | '/solutions/cut-admin'
     | '/solutions/deposits-and-late-cancellations'
@@ -543,6 +556,7 @@ export interface RootRouteChildren {
   FeaturesTreatmentPlansRoute: typeof FeaturesTreatmentPlansRoute
   GuidesMissedAppointmentFeesRoute: typeof GuidesMissedAppointmentFeesRoute
   GuidesReminderTextsPecrRoute: typeof GuidesReminderTextsPecrRoute
+  GuidesSwitchingDentalSoftwareRoute: typeof GuidesSwitchingDentalSoftwareRoute
   SolutionsBringPatientsBackRoute: typeof SolutionsBringPatientsBackRoute
   SolutionsCutAdminRoute: typeof SolutionsCutAdminRoute
   SolutionsDepositsAndLateCancellationsRoute: typeof SolutionsDepositsAndLateCancellationsRoute
@@ -764,6 +778,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GuidesReminderTextsPecrRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/guides/switching-dental-software': {
+      id: '/guides/switching-dental-software'
+      path: '/guides/switching-dental-software'
+      fullPath: '/guides/switching-dental-software'
+      preLoaderRoute: typeof GuidesSwitchingDentalSoftwareRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/solutions/': {
       id: '/solutions/'
       path: '/solutions'
@@ -871,6 +892,7 @@ const rootRouteChildren: RootRouteChildren = {
   FeaturesTreatmentPlansRoute: FeaturesTreatmentPlansRoute,
   GuidesMissedAppointmentFeesRoute: GuidesMissedAppointmentFeesRoute,
   GuidesReminderTextsPecrRoute: GuidesReminderTextsPecrRoute,
+  GuidesSwitchingDentalSoftwareRoute: GuidesSwitchingDentalSoftwareRoute,
   SolutionsBringPatientsBackRoute: SolutionsBringPatientsBackRoute,
   SolutionsCutAdminRoute: SolutionsCutAdminRoute,
   SolutionsDepositsAndLateCancellationsRoute:

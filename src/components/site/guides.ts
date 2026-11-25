@@ -33,6 +33,47 @@ export type GuideMeta = {
 
 export const guides: GuideMeta[] = [
   {
+    slug: "switching-dental-software",
+    title: "How to switch dental practice software: a UK checklist",
+    summary:
+      "A fair checklist for changing dental practice software in the UK: when it's worth it, what to ask any supplier, getting your data out, a migration timeline and old records.",
+    topic: "Switching software",
+    minutes: 10,
+    updated: "27 November 2026",
+    topics: ["Switching software", "Data and records"],
+    lead: "A fair checklist for changing dental practice software in the UK: when it's worth it, what to ask any supplier, getting your data out, a migration timeline and old records.",
+    handles: "switching and your data",
+    // Unsplash zy_4YdLFYBY (free licence, Vitaly Gariev (@silverkblack)), picked 25 Nov 2026 for Hariss to confirm.
+    image: "/images/guides/switching-dental-software.webp",
+    imageAlt: "Man reading through paperwork at his desk beside a laptop",
+    product: [
+      {
+        kind: "Feature",
+        title: "Switching to DentDock",
+        body: "Plan the move, bring your patients across with a CSV and go live when you're ready.",
+        to: "/features/switching",
+        image: "/images/pages/hero-switching.webp",
+        alt: "Smiling dentist sitting by the dental chair",
+      },
+      {
+        kind: "Feature",
+        title: "Security and data",
+        body: "Database and files in London, two-step login, per-screen access and a full export any time.",
+        to: "/features/security",
+        image: "/images/pages/hero-security.webp",
+        alt: "Smiling dentist in his surgery",
+      },
+      {
+        kind: "Feature",
+        title: "Online booking and portal",
+        body: "Patients book online, see your prices and manage their own appointments.",
+        to: "/features/online-booking",
+        image: "/images/pages/hero-booking.webp",
+        alt: "Woman smiling as she uses her phone at home",
+      },
+    ],
+  },
+  {
     slug: "reminder-texts-pecr",
     title: "Can a dental practice text patients without consent?",
     summary:
