@@ -14,6 +14,8 @@ export type Mission = {
   /** What they will be able to do afterwards. */
   learn: string;
   minutes: number;
+  /** Playable now (the others show "Not open yet"). */
+  ready?: boolean;
   /** Hub files the mission copies (desk-care-hub/src/...). */
   source: string[];
   checked: string;
@@ -52,7 +54,16 @@ export const ROLES: Role[] = [
         story: "Mrs Patel rings: she'd like a check-up with Dr Shah next Thursday morning.",
         learn: "Book from the diary: slot, patient, treatment, dentist and time.",
         minutes: 5,
-        source: ["pages/CalendarPage.tsx", "components/dashboard/NewAppointmentDrawer.tsx"],
+        ready: true,
+        source: [
+          "pages/CalendarPage.tsx",
+          "components/calendar/CalendarWeekView.tsx",
+          "components/calendar/CalendarDayView.tsx",
+          "components/calendar/CalendarMiniSidebar.tsx",
+          "components/calendar/SlotChoiceMenu.tsx",
+          "components/dashboard/NewAppointmentDrawer.tsx",
+          "lib/drawerTimes.ts",
+        ],
         checked: CHECKED,
       },
       {

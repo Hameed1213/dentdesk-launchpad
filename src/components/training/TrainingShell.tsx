@@ -29,16 +29,21 @@ export function SignInFrame({ children }: { children: ReactNode }) {
 export function TrainingShell({
   practice,
   onLock,
+  wide = false,
   children,
 }: {
   practice?: string;
   onLock?: () => void;
+  /** A task page: the pretend app uses the whole width. */
+  wide?: boolean;
   children: ReactNode;
 }) {
   return (
     <div className="min-h-screen bg-[#F8FAFC] text-[#0F172A]">
       <header className="border-b border-[#E2E8F0] bg-white">
-        <div className="mx-auto flex h-14 max-w-5xl items-center justify-between gap-3 px-4 sm:px-6">
+        <div
+          className={`mx-auto flex h-14 items-center justify-between gap-3 px-4 sm:px-6 ${wide ? "" : "max-w-5xl"}`}
+        >
           <Link to="/training" className="flex items-center gap-2 rounded-md">
             <ToothIcon size={22} />
             <span className="text-[15px] font-bold tracking-tight">DentDock</span>
@@ -62,7 +67,11 @@ export function TrainingShell({
           )}
         </div>
       </header>
-      <main className="mx-auto max-w-5xl px-4 py-8 sm:px-6 sm:py-10">{children}</main>
+      {wide ? (
+        <main>{children}</main>
+      ) : (
+        <main className="mx-auto max-w-5xl px-4 py-8 sm:px-6 sm:py-10">{children}</main>
+      )}
     </div>
   );
 }
