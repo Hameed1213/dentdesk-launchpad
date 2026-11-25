@@ -49,13 +49,20 @@ export type CodeEntry = { practice: string; hash: string };
 /** Reads TRAINING_CODES. Bad entries are skipped, never guessed at. */
 export function parseCodes(secret: string | undefined): CodeEntry[] {
   if (!secret) return [];
+  // Quotes and spaces pasted around the value, or around an entry, are ignored.
+  secret = secret.trim().replace(/^["']|["']$/g, "");
   const out: CodeEntry[] = [];
   for (const part of secret.split(";")) {
     const i = part.lastIndexOf("=");
     if (i < 1) continue;
-    const practice = part.slice(0, i).trim().slice(0, 80);
+    const practice = part
+      .slice(0, i)
+      .replace(/^[\s"']+/, "")
+      .trim()
+      .slice(0, 80);
     const hash = part
       .slice(i + 1)
+      .replace(/[\s"']+$/, "")
       .trim()
       .toLowerCase();
     if (practice && /^[0-9a-f]{64}$/.test(hash)) out.push({ practice, hash });
@@ -170,7 +177,7 @@ export type TrainingConfig = { secret: string; entries: CodeEntry[] } | null;
 
 /** Both secrets, or null: with either missing, training stays shut (never open by default). */
 export function trainingConfig(env: Record<string, string | undefined>): TrainingConfig {
-  const secret = env.TRAINING_COOKIE_SECRET;
+  const secret = env.TRAINING_COOKIE_SECRET?.trim().replace(/^["']|["']$/g, "");
   const entries = parseCodes(env.TRAINING_CODES);
   if (!secret || secret.length < 32 || entries.length === 0) return null;
   return { secret, entries };

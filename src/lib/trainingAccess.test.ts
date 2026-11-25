@@ -98,3 +98,12 @@ test("training stays shut unless both secrets are set", () => {
   );
   assert.ok(trainingConfig({ TRAINING_CODES: `Oak=${HASH}`, TRAINING_COOKIE_SECRET: SECRET }));
 });
+
+test("quotes and spaces pasted around the secrets are ignored", () => {
+  assert.equal(parseCodes(`"Oak Dental=${HASH}"`)[0]?.practice, "Oak Dental");
+  assert.equal(parseCodes(`  Oak Dental=${HASH}  \n`).length, 1);
+  assert.equal(parseCodes(`'Oak=${HASH}'`)[0]?.hash, HASH);
+  assert.ok(
+    trainingConfig({ TRAINING_CODES: `"Oak=${HASH}"`, TRAINING_COOKIE_SECRET: `"${SECRET}"` }),
+  );
+});
